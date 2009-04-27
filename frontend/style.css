@@ -1,0 +1,51 @@
+body {
+	
+	background-color: black;
+	
+}
+
+ul#menu {
+		
+	width: 100%;
+	background-color: grey;
+	overflow: auto;
+	padding-left: 12em;
+	margin-top: 2em;
+}
+
+ul#menu > li {
+	float: left;
+	overflow: auto;
+}
+
+ul#menu > li a {
+	padding: 15px 10px;
+	color: white;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+ul#menu > li a:hover {
+	background-color: lightgrey;
+}
+
+ul#menu ul {
+	overflow: auto;
+	float: left;
+	
+	
+}
+
+ul#menu ul li {
+	/*display: none; */
+	background-color: #ff6c50;
+	float: left;
+	display: inline;
+	}
+	
+ul#menu ul li a:hover {
+	background-color: white;
+	color: red;
+	padding: 15px 10px;
+}
