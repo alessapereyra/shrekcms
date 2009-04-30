@@ -2,13 +2,35 @@
 class Post extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_terms';
+    var $tabla = 'wp_posts';
 
     function __construct()
     {
         // Call the Model constructor
         parent::Model();
         $this->load->database('default');        
+    }
+    
+    function insert_article($values)
+    {
+    	$this->load->library('session');
+    	$this->load->helper('inflector');
+    	
+    	$values['post_author'] = $this->session->userdata('id');
+    	$values['post_type'] = 'post';
+    	$values['post_name'] = score($values['post_title']);
+    	
+    	$tags_id = $this->terms->insert_tags($values['tags']);
+    	unset($values['tags']);
+    	
+    	$terms_taxonomy_id = array_merge($tags_id, $values['terms_taxonomy_id']);
+
+    	unset($values['terms_taxonomy_id']);
+    	
+    	$post_id = $this->_insertar($values);
+    	
+    	$this->term_relationships->insertar($post_id, $terms_taxonomy_id);
+
     }
     
     function seleccionar($search = NULL, $limit = NULL)
@@ -34,8 +56,6 @@ class Post extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('id', 'DESC');
-    	
         $query = $this->db->get();
         return $query;
     }
@@ -49,9 +69,19 @@ class Post extends Model {
 
     	$values['post_status'] = 'draft';
     	$values['comment_status'] = 'closed';
-    	$values['ping_status'] = 'closed';    	   	
-        
+    	$values['ping_status'] = 'closed';
+    	
     	$this->db->insert($this->tabla, $values);
+    	
+    	$this->db->select($this->tabla . '.ID');
+    	$this->db->from($this->tabla);
+    	
+    	$this->db->where(array('post_date' => $values['post_date']));
+    	$this->db->limit(1, 0);
+    	$query = $this->db->get();
+    	$query = $query->row(); 
+    	
+    	return $query->ID;
     }
     
     function actualizar($values, $where)

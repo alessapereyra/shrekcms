@@ -29,8 +29,37 @@ class Terms extends Model {
 		}
 		
 		return $tmp;       	
-    }    
+    }
     
+    function insert_tags($values)
+    {
+    	$values = split(',', $values);
+    	$this->load->helper('inflector');
+    	
+    	foreach ($values as $value)
+    	{
+    		$value = trim($value);
+    		$this_tag = $this->_check_insert($value);
+    		
+    		if ($this_tag == FALSE)
+    		{
+    			$tmp['name'] = $value;
+    			$tmp['slug'] = score($value);
+    			$id = $this->_insertar($tmp);
+    			
+    			$this->term_taxonomy->insertar_tag($id);
+    			
+    			$tags[] = $this->_check_insert(trim($value));
+    		}
+    		else
+    		{
+    			$tags[] = $this_tag; 
+    		}
+    		
+    	}
+    	return $tags;
+    }
+       
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -54,24 +83,16 @@ class Terms extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('id', 'DESC');
-    	
         $query = $this->db->get();
         return $query;
     }
     
     function _insertar($values)
-    {	
-    	$values['post_date'] = date('Y-m-d G:i:s');
-    	$values['post_date_gmt'] = $values['post_date'];
-    	$values['post_modified'] = $values['post_date'];
-    	$values['post_modified_gmt'] = $values['post_date'];
-
-    	$values['post_status'] = 'draft';
-    	$values['comment_status'] = 'closed';
-    	$values['ping_status'] = 'closed';    	   	
-        
+    {   	   	   
     	$this->db->insert($this->tabla, $values);
+    	$query = $this->seleccionar($values);
+    	$query = $query->row();
+    	return $query->term_id;
     }
     
     function actualizar($values, $where)
@@ -94,14 +115,29 @@ class Terms extends Model {
     	}
     }
     
-    function _check($tabla, $id)
+    function _check_insert($value)
     {
-    	$this->db->select('id');
-    	$this->db->from($tabla);
-    	$this->db->where(array($this->fk => $id));
-    	$query = $this->db->get();
+    	$this->db->select('term_id');
+    	$this->db->from($this->tabla);
+    	$this->db->where(array('name' => trim($value)));
+    	$this->db->limit(1,0);
     	
-    	return $query->num_rows() == 0 ? TRUE : FALSE;
+    	$query = $this->db->get();
+
+    	if ($query->num_rows() == 0)
+    	{
+    		return FALSE; 
+    	}
+    	else
+    	{
+    		$query =  $query->row();
+    		
+    		//suma uno mas
+    		$this->term_taxonomy->update_record($query->term_id);
+    				
+    		return $query->term_id;
+    	}
+
     }    
 }
 /* End of file PropertyType.php */

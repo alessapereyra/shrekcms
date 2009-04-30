@@ -149,6 +149,27 @@ if ( ! function_exists('underscore'))
 
 // --------------------------------------------------------------------
 
+
+// --------------------------------------------------------------------
+
+/**
+ * Score
+ *
+ * Takes multiple words separated by spaces and scores them
+ *
+ * @access	public
+ * @param	string
+ * @return	str
+ */	
+if ( ! function_exists('score'))
+{
+	function score($str)
+	{
+		return preg_replace('/[\s]+/', '-', strtolower(trim($str)));
+	}
+}
+
+// --------------------------------------------------------------------
 /**
  * Humanize
  *

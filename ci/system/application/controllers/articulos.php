@@ -86,7 +86,8 @@ class Articulos extends DI_Controller {
 			$data['id'] = $this->input->post('id');
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');			
+			$data['tags'] = set_value('tags');
+			$data['categorias'] = $this->_categorias();					
 
 			$this->load->view('articulos/articulo', $data);
 			$this->__destruct();		
@@ -95,14 +96,30 @@ class Articulos extends DI_Controller {
 		else
 		{
 			$this->load->model('post');
+			$this->load->model('terms');
+			$this->load->model('term_relationships');
+			$this->load->model('term_taxonomy');
+			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = $this->input->post('texto');
-			// tags > $data['post_title'] = $this->input->post('texto');
+			$data['tags'] = $this->input->post('tags');
+			
+			//consigue los id de las cata
+			$categorias = $this->_categorias();
+			foreach($categorias as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					$terms_taxonomy_id[] = $key;
+				}
+			}
 
+			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
+			
 			if ($id == NULL)
 			{
-				$this->post->insert_article($data);
+				$time = $this->post->insert_article($data);
 			}
 			else
 			{
@@ -112,7 +129,7 @@ class Articulos extends DI_Controller {
 
 			if ($this->is_ajax != TRUE)
 			{
-				redirect('');
+				redirect('articulos/formulario');
 			}
 			else
 			{
