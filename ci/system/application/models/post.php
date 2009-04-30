@@ -22,8 +22,24 @@ class Post extends Model {
     	
     	$tags_id = $this->terms->insert_tags($values['tags']);
     	unset($values['tags']);
+
+    	if (is_array($tags_id))
+    	{
+    		foreach ($tags_id as $value)
+    		{
+    			$tmp[] = $value;
+    		}
+    	}
     	
-    	$terms_taxonomy_id = array_merge($tags_id, $values['terms_taxonomy_id']);
+    	if (is_array($values['terms_taxonomy_id']))
+    	{
+    		foreach ($values['terms_taxonomy_id'] as $value)
+    		{
+    			$tmp[] = $value;
+    		}
+    	}
+    	
+    	$terms_taxonomy_id = $tmp; //array_merge($tags_id, $values['terms_taxonomy_id']);
 
     	unset($values['terms_taxonomy_id']);
     	

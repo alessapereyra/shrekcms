@@ -53,8 +53,8 @@ class Term_taxonomy extends Model {
     	$tmp['term_taxonomy_id'] = $id;
     	$tmp['term_id'] = $id;
     	$tmp['taxonomy'] = 'post_tag';
-    	$tmp['parent'] = 0;
-    	$tmp['count'] = 1;
+    	$tmp['parent'] = "0";
+    	$tmp['count'] = "'1'";
     	
     	$this->_insertar($tmp);
     }

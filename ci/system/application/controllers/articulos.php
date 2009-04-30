@@ -107,6 +107,9 @@ class Articulos extends DI_Controller {
 			
 			//consigue los id de las cata
 			$categorias = $this->_categorias();
+			
+			$terms_taxonomy_id = NULL;
+			
 			foreach($categorias as $key => $value)
 			{
 				if ($this->input->post('' . $key . ''))
