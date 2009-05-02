@@ -37,7 +37,12 @@ class Articulos extends DI_Controller {
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
-		$data['categorias'] = $this->_categorias();			
+		$data['categorias'] = $this->_categorias();	
+		
+		$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
+		$data['distritos'] = $data['provincias'];		
+		$data['departamentos'] = $data['provincias'];		
+		$data['paices'] = $data['provincias'];				
 		
 		if ($id != NULL)
 		{
@@ -96,6 +101,7 @@ class Articulos extends DI_Controller {
 		else
 		{
 			$this->load->model('post');
+			$this->load->model('postmeta');
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
@@ -117,12 +123,23 @@ class Articulos extends DI_Controller {
 					$terms_taxonomy_id[] = $key;
 				}
 			}
+			
+			$tmp = array('provincia', 'distrito', 'pais', 'departamento');
+			
+			foreach ($tmp as $custom)
+			{
+				
+				if ($this->input->post($custom) != NULL)
+				{
+					$customs[$custom] = $this->input->post($custom);
+				}	
+			}
 
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
 			{
-				$time = $this->post->insert_article($data);
+				$time = $this->post->insert_article($data, $customs);
 			}
 			else
 			{

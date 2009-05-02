@@ -18,9 +18,20 @@
 
 	<fieldset>
 	<?php foreach($categorias as $key => $value): ?> 
-		<?php echo form_checkbox(array('name' => $key, 'value' => TRUE, 'id' => $key)); ?> <?php echo form_label($value . ':', $key);?>
+		 <?php echo form_label($value . ':', $key);?> <?php echo form_checkbox(array('name' => $key, 'value' => TRUE, 'id' => $key)); ?>
 	<?php endforeach; ?>	
 	</fieldset>
+	
+	<fieldset>
+	<?php echo form_label('Provincia: ', 'provincia');?>
+	<?php echo form_dropdown('provincia', $provincias, NULL,'id="provincia"'); ?>
+	<?php echo form_label('Departamento: ', 'departamento');?>
+	<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
+	<?php echo form_label('Distrito: ', 'distrito');?>
+	<?php echo form_dropdown('distrito', $distritos, NULL,'id="distrito"'); ?>
+	<?php echo form_label('País: ', 'pais');?>
+	<?php echo form_dropdown('pais', $paices, NULL,'id="pais"'); ?>	
+	</fieldset>	
 	
 	<?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'Submit' )); ?>
 	<?php echo form_close(); ?>

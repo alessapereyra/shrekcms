@@ -11,7 +11,7 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
-    function insert_article($values)
+    function insert_article($values, $customs)
     {
     	$this->load->library('session');
     	$this->load->helper('inflector');
@@ -20,7 +20,10 @@ class Post extends Model {
     	$values['post_type'] = 'post';
     	$values['post_name'] = score($values['post_title']);
     	
+    	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);
+    	
+    	//limpia los tags
     	unset($values['tags']);
 
     	if (is_array($tags_id))
@@ -45,7 +48,11 @@ class Post extends Model {
     	
     	$post_id = $this->_insertar($values);
     	
+    	$this->postmeta->insertar($customs, $post_id);
+    	
     	$this->term_relationships->insertar($post_id, $terms_taxonomy_id);
+    	
+    	
 
     }
     
