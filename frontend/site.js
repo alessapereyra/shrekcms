@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	 BACK = "todos"
+	 BACK_STATES = "otros departamentos"
 	
 		$("ul#menu > li > a").click(function(){
 			
@@ -15,9 +17,9 @@ $(document).ready(function() {
 		
 						//Setups get back content
 						//TODO: I hate how this works
-						if ($(this)[0].textContent != "<"){
+						if ($(this)[0].textContent != BACK){
 				
-							$(this)[0].textContent = "<";
+							$(this)[0].textContent = BACK;
 				
 						}
 						else {
@@ -49,9 +51,9 @@ $(document).ready(function() {
 
 						//Setups get back content
 						//TODO: I hate how this works
-						if ($(this)[0].textContent != "<"){
+						if ($(this)[0].textContent != BACK_STATES ){
 
-							$(this)[0].textContent = "<";
+							$(this)[0].textContent = BACK_STATES;
 
 						}
 						else {
