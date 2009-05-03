@@ -1,8 +1,10 @@
 body {
 	
-	background-color: black;
+	background-color: white;
 	
 }
+
+/* @group Setting up inline-menu */
 
 ul#menu {
 		
@@ -38,10 +40,11 @@ ul#menu ul {
 }
 
 ul#menu ul li {
-	/*display: none; */
 	background-color: #ff6c50;
 	float: left;
 	display: inline;
+	display: none;	
+	
 	}
 	
 ul#menu ul li a:hover {
@@ -49,3 +52,5 @@ ul#menu ul li a:hover {
 	color: red;
 	padding: 15px 10px;
 }
+
+/* @end */
