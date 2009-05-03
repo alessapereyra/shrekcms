@@ -9,7 +9,7 @@ body {
 ul#menu {
 		
 	width: 100%;
-	background-color: grey;
+	background-color: #b4b4b4;
 	overflow: auto;
 	padding-left: 12em;
 	margin-top: 2em;
@@ -30,17 +30,19 @@ ul#menu ul li.current {
 }
 
 ul#menu > li a:hover {
-	background-color: lightgrey;
+	background-color: #9b9b9b;
 }
 
-ul#menu ul {
+ul#menu ul,
+ul#menu ul > ul {
 	overflow: auto;
 	float: left;
 	
 	
 }
 
-ul#menu ul li {
+ul#menu li ul li,
+ul#menu li ul li ul li {
 	background-color: #ff6c50;
 	float: left;
 	display: inline;
@@ -58,6 +60,7 @@ ul#menu ul li a:hover {
 	color: red;
 	padding: 15px 10px;
 }
+
 
 
 
