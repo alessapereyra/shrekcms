@@ -3,7 +3,6 @@ $(document).ready(function() {
 	
 		$("ul#menu > li > a").click(function(){
 			
-						alert("hi");	
 			
 						father = $(this).parent();
 
@@ -39,10 +38,10 @@ $(document).ready(function() {
 
 					//Hides all the siblings
 					//Shows all the childs "li"
-					childs = father.find("li");
-					alert ( childs.length );
+					childs = father.find("ul");
+			//		alert ( childs.children().length );
 
-						if (childs.length > 1 ) { 
+						if (childs.children().length > 1 ) { 
 
 						father.siblings().toggle("fast");
 
@@ -57,7 +56,7 @@ $(document).ready(function() {
 						}
 						else {
 
-							$(this)[0].textContent = childs[0].innerHTML;
+							$(this)[0].textContent = childs.children()[0].innerHTML;
 
 						}
 					
