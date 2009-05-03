@@ -20,7 +20,8 @@ ul#menu > li {
 	overflow: auto;
 }
 
-ul#menu > li a {
+ul#menu > li a,
+ul#menu ul li.current {
 	padding: 15px 10px;
 	color: white;
 	text-decoration: none;
@@ -46,6 +47,11 @@ ul#menu ul li {
 	display: none;	
 	
 	}
+	
+ul#menu ul li.current {
+	background-color: black;
+	display: none;
+}	
 	
 ul#menu ul li a:hover {
 	background-color: white;
