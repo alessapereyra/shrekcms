@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	 BACK = "todos"
-	 BACK_STATES = "otros departamentos"
+	 BACK_STATES = "regresar"
 	
 		$("ul#menu > li > a").click(function(){
 			
