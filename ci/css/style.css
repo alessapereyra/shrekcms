@@ -1,2 +1,169 @@
-@CHARSET "UTF-8";
+/* @override http://localhost:8888/shrekcms/ci/css/style.css */
+
+body {
+	
+	background-color: #fff;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	letter-spacing: -1px;
+	word-spacing: 4px;
+}
+
+a {
+	color: #000;
+	font-style: italic;
+	text-transform: lowercase;
+}
+
+div#wrapper {
+	
+	width: 720px;
+	margin: 0px auto;
+}
+
+/* @group Top Menu */
+
+
+div#top_menu,
+div#footer_menu {
+	
+	background-color: black;
+	padding: 10px 0px;
+	color: white;
+	overflow: hidden;	
+}
+
+div#footer_menu {
+	padding-top: 2em;
+	padding-bottom: 5em;
+	margin-top: 2em;
+}
+
+div#top_menu p {
+	overflow: auto;
+	width: 920px;
+	height: 40px;
+	margin: 0px auto;
+	font-size: 2em;
+}
+
+div#top_menu p span.left,
+div#footer_menu p span.left {
+	float: left;
+	margin-left: 20px;
+}
+
+div#top_menu p span.right {
+	float: right;
+	margin-right: 20px;
+}
+
+
+/* @end */
+
+/* @group Logo Header */
+
+h1{
+
+	font-size: 6em;
+	float: left;
+	text-transform: lowercase;
+}
+
+/* @end */
+
+/* @group Setting up inline-menu */
+
+div#wrapper h2 {
+	
+	margin-top: 2em;
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+ul#menu {
+		
+	overflow: auto;
+	width: 780px;
+	text-transform: lowercase;
+	font-size: 1.4em;
+	margin: 0 auto 1em;
+	height: 80px;
+}
+
+ul#menu > li {
+	margin-right: 0.2em;
+	float: left;
+	text-align: right;
+
+}
+
+ul#menu > li a,
+ul#menu ul li.current {
+	width: 130px;
+	height: 40px;
+	color: #000;
+	text-decoration: none;
+	background-color: #f7f700;
+	padding-top: 0.8em;
+	padding-right: 8px;
+	display: block;
+}
+
+ul#menu > li a:hover {
+	background-color: #f6ec00;
+	height: 30px;
+	border-bottom: 10px solid #000;
+}
+
+
+/* @end */
+
+
+/* @group Contenido Backend */
+
+
+div#content.login_form {
+
+	width: 250px;
+	margin: 0px auto;
+	background-color: #f6ec00;
+	padding: 15px;
+	border: 5px solid #000;
+}
+
+div#content.login_form h3 {
+	clear: both;
+	float: none;
+	margin: 0em;
+	color: black;
+	font-size: 1.6em;
+	margin-bottom: 1em;
+}
+
+div#content.login_form form.log fieldset label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+
+div#content.login_form input#usuario,
+div#content.login_form input#password {
+	border: 0;
+	padding: 5px;
+	margin-bottom: 10px;
+	width: 240px;
+}
+
+div#content.login_form div.error {
+	margin: 1em 0px;
+	color: #f00;
+}
+
+
+div#content.login_form div#pie {
+	margin-top:  5px;
+}
+
+
+/* @end */
 

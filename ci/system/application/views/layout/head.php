@@ -64,4 +64,3 @@ tinyMCE.init({
 </head>
 <body>
 
-	<div id="wrap">

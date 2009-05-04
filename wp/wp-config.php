@@ -22,10 +22,7 @@ define('DB_NAME', 'shrek');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
-
-/** MySQL database password */
-define('DB_PORT', '3306');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -35,6 +32,9 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
+/** Eliminar esto si comete problemas  */
+define('WP_HOME', 'http://localhost:8888/shrekcms/wp'); 
 
 /**#@+
  * Authentication Unique Keys.
