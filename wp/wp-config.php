@@ -36,6 +36,9 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+/** Eliminar esto si comete problemas  */
+define('WP_HOME', 'http://localhost:8888/shrekcms/wp'); 
+
 /**#@+
  * Authentication Unique Keys.
  *
