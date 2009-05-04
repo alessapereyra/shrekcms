@@ -1,11 +1,10 @@
 /* @override http://localhost:8888/shrekcms/ci/css/style.css */
 
 body {
-	
-	background-color: #fff;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
+	background: #fff url(images/backend-background.png) 0 0;
 }
 
 a {
@@ -26,10 +25,15 @@ div#wrapper {
 div#top_menu,
 div#footer_menu {
 	
-	background-color: black;
-	padding: 10px 0px;
+	background-color: #282828;
+	padding: 20px 0px;
 	color: white;
 	overflow: hidden;	
+	height: 40px;
+}
+
+div#top_menu {
+	background: #282828 url(images/top-background.png) repeat-x 0 bottom;
 }
 
 div#footer_menu {
@@ -75,8 +79,8 @@ h1{
 
 div#wrapper h2 {
 	
-	margin-top: 2em;
-	font-size: 1.4em;
+	margin-top: 1em;
+	font-size: 2em;
 	margin-bottom: 10px;
 }
 
@@ -107,11 +111,12 @@ ul#menu ul li.current {
 	padding-top: 0.8em;
 	padding-right: 8px;
 	display: block;
+
 }
 
 ul#menu > li a:hover {
 	background-color: #f6ec00;
-	height: 30px;
+	height: 33px;
 	border-bottom: 10px solid #000;
 }
 
