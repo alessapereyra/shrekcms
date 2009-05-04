@@ -171,7 +171,6 @@ class Articulos extends DI_Controller {
 
 			if ($this->is_ajax != TRUE)
 			{
-				die('aaaaaaaaaaaaa');
 				redirect('articulos/formulario');
 			}
 			else
