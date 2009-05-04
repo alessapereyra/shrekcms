@@ -14,10 +14,10 @@
 		<div id="menu">
 			<ul>
 				<li class="articulo"><?php echo anchor('articulos/formulario', 'Articulo') ?></li>
-				<li class="foto"><?php echo anchor('', 'foto') ?></li>
-				<li class="video"><?php echo anchor('tipo_propiedades/index', 'video') ?></li>
-				<li class="audio"><?php echo anchor('propiedades/index', 'audio') ?></li>
-				<li class="document0"><?php echo anchor('configuraciones/index', 'documento') ?></li>					
+				<li class="foto"><?php echo anchor('fotos/formulario', 'foto') ?></li>
+				<li class="video"><?php echo anchor('', 'video') ?></li>
+				<li class="audio"><?php echo anchor('', 'audio') ?></li>
+				<li class="document0"><?php echo anchor('', 'documento') ?></li>					
 			</ul>
 		</div>
 		

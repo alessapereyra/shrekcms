@@ -124,7 +124,15 @@ class Articulos extends DI_Controller {
 				}
 			}
 			
-			$tmp = array('provincia', 'distrito', 'pais', 'departamento');
+			switch ($this->input->post('localizar'))
+			{
+				case 'mundo':
+					$tmp = array('pais');
+				break;
+				case 'peru':
+					$tmp = array('provincia', 'distrito', 'departamento');
+				break;
+			}
 			
 			foreach ($tmp as $custom)
 			{
@@ -134,7 +142,7 @@ class Articulos extends DI_Controller {
 					$customs[$custom] = $this->input->post($custom);
 				}	
 			}
-
+			
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
