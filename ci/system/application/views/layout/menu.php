@@ -11,14 +11,12 @@
 			<?php endif; ?>		
 		</div>
 		
-		<div id="menu">
-			<ul>
+			<ul id="menu">
 				<li class="articulo"><?php echo anchor('articulos/formulario', 'Articulo') ?></li>
 				<li class="foto"><?php echo anchor('fotos/formulario', 'foto') ?></li>
 				<li class="video"><?php echo anchor('', 'video') ?></li>
 				<li class="audio"><?php echo anchor('', 'audio') ?></li>
 				<li class="document0"><?php echo anchor('', 'documento') ?></li>					
-			</ul>
-		</div>
+			</ul> <!-- menu -->
 		
 	</div>

@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->config->item('charset'); ?>" />
 <title><?php echo $seccion; ?></title>
+<?php echo link_tag('css/reset.css'); ?>
 <?php echo link_tag('css/style.css'); ?>
 
 <!--  jQuery -->
