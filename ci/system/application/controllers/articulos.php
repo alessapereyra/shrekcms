@@ -92,7 +92,21 @@ class Articulos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
-			$data['categorias'] = $this->_categorias();					
+			$data['categorias'] = $this->_categorias();	
+
+			$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
+			$data['provincias_selected'] = '';
+			
+			$data['distritos'] = $data['provincias'];
+			$data['distritos_selected'] = '';
+					
+			$data['departamentos'] = $data['provincias'];
+			$data['departamentos_selected'] = '';
+					
+			$data['paices'] = $data['provincias'];
+			$data['paices_selected'] = '';				
+			
+			$data['form'] = $this->form;			
 
 			$this->load->view('articulos/articulo', $data);
 			$this->__destruct();		
@@ -157,6 +171,7 @@ class Articulos extends DI_Controller {
 
 			if ($this->is_ajax != TRUE)
 			{
+				die('aaaaaaaaaaaaa');
 				redirect('articulos/formulario');
 			}
 			else

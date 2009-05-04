@@ -11,12 +11,13 @@
 	<?php echo form_error('titulo'); ?>
 	<?php echo form_label('Titulo:', 'titulo');?> <?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 	<div id="upload-content">
+		<?php echo form_hidden('upload-content', 'subir'); ?>
 		<ul>
 			<li><a href="#subir">Subir</a></li>
 			<li><a href="#enlazar">Enlazar</a></li>
 		</ul>
 		<div id="subir">
-			Subo
+						<?php echo form_label('Foto:', 'foto');?> <?php echo form_upload(array('name' => 'foto', 'value' => '', 'id' => 'foto')); ?>
 		</div>
 		<div id="enlazar">
 			Enlazo

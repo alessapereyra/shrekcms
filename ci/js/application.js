@@ -12,7 +12,7 @@ $(document).ready(function(){
 	{
 		select: function(event, ui)
 		{
-			$("input[name='localizar']").attr("value", ui.panel.id);
+			$("input[name='upload-content']").attr("value", ui.panel.id);
 		}
 	});
 	
