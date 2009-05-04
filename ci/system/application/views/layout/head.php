@@ -19,8 +19,25 @@
 <script src="<?php echo $this->config->item('base_url'); ?>js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" language="javascript">
 tinyMCE.init({
-	mode : "textareas"
+	mode : "exact",
+	elements : "texto"
 });
+</script>
+
+
+<script type="text/javascript" src="http://www.swfupload.org/swfupload.js"></script> 
+
+<script type="text/javascript" language="javascript">
+	var swfu;
+	window.onload = function () {
+		var settings_object = {
+				upload_url : "http://www.swfupload.org/upload.php",
+				flash_url : "http://www.swfupload.org/swfupload.swf",
+				file_size_limit : "20 MB"
+		}; 
+
+		swfu = new SWFUpload(settings_object); 
+};
 </script>
 
 <!--[if lte IE 6]>

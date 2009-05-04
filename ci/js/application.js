@@ -8,4 +8,12 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#upload-content").tabs(
+	{
+		select: function(event, ui)
+		{
+			$("input[name='localizar']").attr("value", ui.panel.id);
+		}
+	});
+	
 });
