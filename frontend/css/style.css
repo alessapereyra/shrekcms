@@ -1,0 +1,459 @@
+body {
+	
+	background-color: white;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	letter-spacing: -1px;
+	word-spacing: 4px;
+}
+
+a {
+	color: #ff7e00;
+}
+
+div#wrapper {
+	
+	width: 920px;
+	margin: 0px auto;
+}
+
+/* @group Top Menu */
+
+
+div#top_menu {
+	
+	background-color: black;
+	padding: 10px 0px;
+	color: white;
+	overflow: hidden;	
+}
+
+div#top_menu p span.left {
+	float: left;
+	margin-left: 20px;
+}
+
+div#top_menu p span.right {
+	float: right;
+	margin-right: 20px;
+}
+
+
+/* @end */
+
+/* @group Top Ad */
+
+div#top_ad {
+	width: 800px;
+	margin: 20px auto;
+}
+
+div#top_ad img {
+	width: 800px;
+}
+
+/* @end */
+
+/* @group Logo Header */
+
+h1{
+
+	font-size: 6em;
+	float: left;
+	text-transform: lowercase;
+}
+
+h2 {
+	
+	clear: right;
+	float: left;
+	margin-top: 2.55em;
+	margin-left: 1em;
+	color: #ff4100;
+	font-size: 1.5em;
+}
+
+/* @end */
+
+/* @group Search Bar */
+
+input#busqueda {
+	border: 1px solid #aeaeae;
+}
+
+div#search_bar {
+	
+	float: right;
+	margin-top: 4.2em;
+}
+
+div#search_bar label {
+	
+	margin-right: 15px;
+	
+}
+
+
+
+/* @end */
+
+
+
+/* @group Menu Bar */
+
+div#menu_bar {
+	
+	clear: both;
+	overflow: auto;
+	background-color: #d0d0d0;	
+	margin-top: 8em;	
+	display: block;	
+}
+
+div#menu_bar p#tagline {
+	float: left;
+	padding: 5px 10px 5px 40px;
+	background-color: black;
+	color: #ff4100;
+	width: 130px;
+	
+}
+
+div#menu_bar p#tagline span.sitename {
+	
+	float: left;
+	display: block;
+}
+
+div#menu_bar p#tagline span.geomule {
+	
+	float: right;
+	display: block;
+	color: #e0e0e0;
+}
+
+div#menu_bar p#tagline span.geomule em {
+	color: white;
+}
+
+/* @end */
+
+/* @group Setting up inline-menu */
+
+ul#menu {
+		
+	overflow: auto;
+	float: left;
+	width: 740px;
+	text-transform: lowercase;
+	font-size: 0.9em;
+}
+
+ul#menu li {
+	border-left: 1px solid #f6f6ff;
+}
+
+ul#menu > li {
+	float: left;
+	overflow: auto;
+	background-color: #d0d0d0;
+}
+
+ul#menu > li a,
+ul#menu ul li.current {
+	padding: 6px 10px;
+	color: white;
+	text-decoration: none;
+	display: block;
+	float: left;
+}
+
+ul#menu > li a:hover {
+	background-color: #9b9b9b;
+}
+
+ul#menu ul,
+ul#menu ul > ul {
+	overflow: auto;
+	float: left;
+	
+	
+}
+
+ul#menu li ul li,
+ul#menu li ul li ul {
+	background-color: #ff4100;
+	float: left;
+	display: inline;
+	display: none;	
+	
+	}
+	
+
+ul#menu li ul li ul li{
+	
+	background-color: #e50000;
+}
+
+	
+ul#menu ul li.current {
+	background-color: #686868;
+	display: none;
+}	
+	
+ul#menu ul li a:hover {
+	background-color: #ffeee2;
+	color: #ff4100;
+	padding: 6px 10px;
+}
+
+
+
+
+/* @end */
+
+/* @group Top News */
+
+div#top_news {
+	
+	margin-top: 1.5em;
+}
+
+div#top_news div#top_news_image {
+	
+	float: left;
+	width: 400px;
+}
+
+div#top_news div#top_news_image img {
+	
+	width: 400px;
+}
+
+div#top_news div#top_news_text {
+	
+	float: left;
+	display: block;
+	width: 500px;
+	margin-left: 20px;
+	
+}
+
+div#top_news div#top_news_text h3 {
+	
+	font-size: 3em;
+	line-height: 1.1em;
+	color: #ff4100;
+	text-transform: lowercase;
+}
+
+div#top_news div#top_news_text p {
+	line-height: 1.3em;
+	margin-top: 0.5em;
+}
+
+/* @end */
+
+
+/* @group Main Content */
+
+div#content {
+	
+	clear: both;
+	margin-top: 18em;
+	overflow: auto;
+}
+
+/* @group Content Feed */
+
+div#content_feed {
+	
+	width: 480px;
+	float: left;
+	padding-bottom: 40px;
+}
+
+div#content_feed ul {
+	overflow: auto;
+	width: 470px;
+	margin: 0px auto;
+}
+
+div#content_feed ul li {
+	
+	float: left;
+	
+}
+
+div#content_feed ul li a {
+		
+	text-decoration: none;
+	display: block;
+	padding: 7px 30px;
+	border-style: solid;
+	border-width: 1px;
+	margin: 2px;
+}
+
+div#content_feed ul li a:hover,
+div#content_feed ul li a.active {
+	background-color: #ff7e00;
+	color: white;
+}
+
+
+div#content_feed dl,
+div#sidebar_central dl {
+	
+	clear: both;
+	margin-top: 1em;
+	overflow: auto;
+	
+}
+
+div#sidebar_central dl {
+	margin-top: 1em;
+}
+
+div#content_feed dl dt,
+div#sidebar_central dl dt {
+	
+	float: left;
+	width: 80px;
+	margin-right: 10px;
+	clear: both;
+}
+
+div#sidebar_central dl dt {
+	width: 45px;
+}
+
+div#content_feed dl dt img {
+	width: 80px;
+}
+
+div#content_feed dl dd,
+div#sidebar_central dd {
+	
+	float: left;
+	width: 390px;
+	clear: right;
+	line-height: 1.5em;
+	margin-bottom: 2em;
+	font-size: 0.9em;
+}
+
+div#sidebar_central dl dd {
+	width: 135px;
+	line-height: 1.1em;	
+	margin-bottom: 1em;
+}
+
+div#sidebar_central dl dd h6 {
+	color: #959595;
+	word-spacing: 8px;
+	font-size: 1.1em;
+}
+
+div#sidebar_central dl dd strong {
+	color: #5a5a5a;
+	text-transform: lowercase;
+	word-spacing: 9px;
+}
+
+div#sidebar_central dl dd p {
+	font-size: 0.8em;	
+}
+
+
+div#content_feed dl dd h5 {
+	color: #ff7e00;
+	font-size: 1.2em;
+}
+
+/* @end */
+
+
+
+
+
+
+div#sidebars {
+	
+	width: 440px;
+	float: right;
+}
+
+div#sidebars div#sidebar_central {
+	width: 190px;
+	float: left;
+	background-color: #f3f3f3;
+	padding: 20px 10px 40px;
+	overflow: auto;
+	border: 3px solid #d4d4d4;
+	margin-bottom: 2em;
+	margin-left: 5px;
+}
+
+div#sidebars div#sidebar_central h4	{
+	font-size: 1.3em;
+	color: #f23e00;
+	text-transform: lowercase;
+}
+
+div#sidebars div#sidebar_recomendados h4 {
+	font-size: 1em;
+	color: #f6e9e9;
+	text-transform: lowercase;	
+	margin-bottom: 1em;
+	clear: both;
+}
+
+div#sidebars div#sidebar_recomendados ul {
+	overflow: auto;
+	margin-bottom: 1em;
+}
+
+div#sidebars div#sidebar_recomendados li a{
+	float: left;
+	text-decoration: none;
+	display: block;
+	background-color: #deba77;
+	margin-left: 1px;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #070708;
+	padding: 4px 10px;
+}
+
+#sidebar_recomendados ul li {
+	overflow: auto;
+	float: left;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ff7e00;
+}
+
+#important p {
+	width: 200px;
+	margin: 0 auto 1em;
+	text-align: center;
+	padding: 10px;
+	color: #ffa400;
+	background-color: #626262;
+	font-size: 1.5em;
+}
+
+div#sidebars div#sidebar_recomendados li a:hover{
+	background-color: #ff7e00;
+	color: black;
+}
+
+
+div#sidebars div#sidebar_recomendados {
+	width: 185px;
+	float: right;
+	background-color: black;
+	color: #f23e00;
+	padding: 20px 10px 40px;
+}
+
+/* @end */
+
