@@ -6,10 +6,24 @@
 <title><?php echo $seccion; ?></title>
 <?php echo link_tag('css/style.css'); ?>
 
+<!--  jQuery -->
+<script src="<?php echo $this->config->item('base_url'); ?>js/jquery.js" type="text/javascript" language="javascript"></script>
+
+<!--  jQuery UI -->
+<script src="<?php echo $this->config->item('base_url'); ?>js/jquery-ui.js" type="text/javascript" language="javascript"></script>
+
+<!--  jQuery UI CSS-->
+<?php echo link_tag('css/jquery-ui.css'); ?>
+
+
 <!--[if lte IE 6]>
 	<?php echo link_tag('css/ie6.css'); ?>
 
 <![endif]-->
+
+<!--  theMagic -->
+<script src="<?php echo $this->config->item('base_url'); ?>js/application.js" type="text/javascript" language="javascript"></script>
+
 
 </head>
 <body>

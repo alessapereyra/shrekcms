@@ -22,15 +22,24 @@
 	<?php endforeach; ?>	
 	</fieldset>
 	
-	<fieldset>
-	<?php echo form_label('Provincia: ', 'provincia');?>
-	<?php echo form_dropdown('provincia', $provincias, NULL,'id="provincia"'); ?>
-	<?php echo form_label('Departamento: ', 'departamento');?>
-	<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
-	<?php echo form_label('Distrito: ', 'distrito');?>
-	<?php echo form_dropdown('distrito', $distritos, NULL,'id="distrito"'); ?>
-	<?php echo form_label('País: ', 'pais');?>
-	<?php echo form_dropdown('pais', $paices, NULL,'id="pais"'); ?>	
+	<fieldset id="localizar">
+		<?php echo form_hidden('localizar', 'peru'); ?>
+		<ul>
+			<li><a href="#peru">Perú</a></li>
+			<li><a href="#mundo">El mundo</a></li>
+		</ul>
+		<div id="peru">
+			<?php echo form_label('Provincia: ', 'provincia');?>
+			<?php echo form_dropdown('provincia', $provincias, NULL,'id="provincia"'); ?>
+			<?php echo form_label('Departamento: ', 'departamento');?>
+			<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
+			<?php echo form_label('Distrito: ', 'distrito');?>
+			<?php echo form_dropdown('distrito', $distritos, NULL,'id="distrito"'); ?>
+		</div>
+		<div id="mundo">
+			<?php echo form_label('País: ', 'pais');?>
+			<?php echo form_dropdown('pais', $paices, NULL,'id="pais"'); ?>
+		</div>	
 	</fieldset>	
 	
 	<?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'Submit' )); ?>

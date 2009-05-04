@@ -1,6 +1,6 @@
 <?php
 
-class Articulos extends DI_Controller {
+class Fotos extends DI_Controller {
 	
 	function index($page = 1, $per_page = NULL)
 	{
@@ -52,7 +52,7 @@ class Articulos extends DI_Controller {
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->view('articulos/articulo', $data);
+		$this->load->view('fotos/foto', $data);
 		$this->__destruct();		
 	}
 
@@ -94,7 +94,7 @@ class Articulos extends DI_Controller {
 			$data['tags'] = set_value('tags');
 			$data['categorias'] = $this->_categorias();					
 
-			$this->load->view('articulos/articulo', $data);
+			$this->load->view('fotos/foto', $data);
 			$this->__destruct();		
 
 		}
@@ -124,15 +124,7 @@ class Articulos extends DI_Controller {
 				}
 			}
 			
-			switch ($this->input->post('localizar'))
-			{
-				case 'mundo':
-					$tmp = array('pais');
-				break;
-				case 'peru':
-					$tmp = array('provincia', 'distrito', 'departamento');
-				break;
-			}
+			$tmp = array('provincia', 'distrito', 'pais', 'departamento');
 			
 			foreach ($tmp as $custom)
 			{
@@ -142,7 +134,7 @@ class Articulos extends DI_Controller {
 					$customs[$custom] = $this->input->post($custom);
 				}	
 			}
-			
+
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
@@ -157,7 +149,7 @@ class Articulos extends DI_Controller {
 
 			if ($this->is_ajax != TRUE)
 			{
-				redirect('articulos/formulario');
+				redirect('fotos/formulario');
 			}
 			else
 			{
