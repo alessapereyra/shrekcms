@@ -1,13 +1,14 @@
 body {
 	
-	background-color: black;
+	background-color: white;
 	
 }
 
+/* @group Setting up inline-menu */
+
 ul#menu {
 		
-	width: 100%;
-	background-color: grey;
+	background-color: #b4b4b4;
 	overflow: auto;
 	padding-left: 12em;
 	margin-top: 2em;
@@ -18,7 +19,8 @@ ul#menu > li {
 	overflow: auto;
 }
 
-ul#menu > li a {
+ul#menu > li a,
+ul#menu ul li.current {
 	padding: 15px 10px;
 	color: white;
 	text-decoration: none;
@@ -27,25 +29,46 @@ ul#menu > li a {
 }
 
 ul#menu > li a:hover {
-	background-color: lightgrey;
+	background-color: #9b9b9b;
 }
 
-ul#menu ul {
+ul#menu ul,
+ul#menu ul > ul {
 	overflow: auto;
 	float: left;
 	
 	
 }
 
-ul#menu ul li {
-	/*display: none; */
+ul#menu li ul li,
+ul#menu li ul li ul {
 	background-color: #ff6c50;
 	float: left;
 	display: inline;
+	display: none;	
+	
 	}
+	
+
+ul#menu li ul li ul li{
+	
+	background-color: #dcda69;
+}
+
+	
+ul#menu ul li.current {
+	background-color: black;
+	display: none;
+}	
 	
 ul#menu ul li a:hover {
 	background-color: white;
 	color: red;
 	padding: 15px 10px;
 }
+
+
+
+
+/* @end */
+
