@@ -68,7 +68,7 @@ h2 {
 	float: left;
 	margin-top: 2.55em;
 	margin-left: 1em;
-	color: #ff4100;
+	color: #ff7e00;
 	font-size: 1.5em;
 }
 
@@ -113,7 +113,7 @@ div#menu_bar p#tagline {
 	float: left;
 	padding: 5px 10px 5px 40px;
 	background-color: black;
-	color: #ff4100;
+	color: #ff7e00;
 	width: 130px;
 	
 }
@@ -216,6 +216,7 @@ ul#menu ul li a:hover {
 div#top_news {
 	
 	margin-top: 1.5em;
+	overflow: auto;
 }
 
 div#top_news div#top_news_image {
@@ -242,7 +243,7 @@ div#top_news div#top_news_text h3 {
 	
 	font-size: 3em;
 	line-height: 1.1em;
-	color: #ff4100;
+	color: #ff7e00;
 	text-transform: lowercase;
 }
 
@@ -259,7 +260,7 @@ div#top_news div#top_news_text p {
 div#content {
 	
 	clear: both;
-	margin-top: 18em;
+	margin-top: 1.5em;
 	overflow: auto;
 }
 
@@ -396,7 +397,7 @@ div#sidebars div#sidebar_central {
 
 div#sidebars div#sidebar_central h4	{
 	font-size: 1.3em;
-	color: #f23e00;
+	color: #ff7e00;
 	text-transform: lowercase;
 }
 
