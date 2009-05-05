@@ -162,7 +162,7 @@ class Fotos extends DI_Controller {
 	
 	function _reglas()
 	{
-		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[20]');
+		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
 		
 		return $reglas;
 	}
