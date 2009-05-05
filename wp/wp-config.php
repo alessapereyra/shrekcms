@@ -22,7 +22,11 @@ define('DB_NAME', 'shrek');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'takumi');
+
+// Para Dientuki
+// define('DB_PASSWORD', 'takumi');
+define('DB_PASSWORD', 'root');
+
 
 /** MySQL database password */
 define('DB_PORT', '3306');

@@ -3,7 +3,7 @@
 
   <div id="footer_menu">
      <p>
-       <span class="left">lamula </span>
+       <span class="left"> </span>
      </p>
   </div> <!-- footer_menu -->
 

@@ -1,7 +1,7 @@
 
 <div id="top_menu">
-   <p>
-     <span class="left">lamula </span>
+   <div>
+     <span class="left">lamula</span>
      	<?php if ($log) : ?>
 				<ul>
 					<li>Publicar</li>
@@ -10,11 +10,12 @@
 				</ul>
 			<?php endif; ?>		
 		
-   </p>
+   </div>
 </div> <!-- top_menu -->
 
 	
 		<div id="wrapper">
+		  
 		  <h2>Publicar</h2>
 		  <ul id="menu">
 				<li class="foto"><?php echo anchor('fotos/formulario', 'foto') ?></li>		    

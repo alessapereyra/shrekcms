@@ -11,7 +11,13 @@
 |	http://example.com/
 |
 */
-$tmp = 'http://' . $_SERVER['SERVER_NAME'] . '/shrekcms/ci/' ;
+
+// Para dientuki:
+// $tmp = 'http://' . $_SERVER['SERVER_NAME'] . '/shrekcms/ci/' ;
+$tmp = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/shrekcms/ci/' ;
+
+
+
 $config['base_url']	= $tmp;
 
 /*

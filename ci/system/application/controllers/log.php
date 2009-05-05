@@ -18,7 +18,7 @@ class Log extends DI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$data['destino'] = $this->session->userdata('url') != NULL ? $this->session->userdata('url'): 'home';
+		$data['destino'] = $this->session->userdata('url') != NULL ? $this->session->userdata('url'): "home";
 		$data['usuario'] = NULL;
 		$data['info'] = $this->error;
 		

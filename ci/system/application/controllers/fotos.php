@@ -37,6 +37,7 @@ class Fotos extends DI_Controller {
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
+		$data['photolink'] = NULL;		
 		$data['categorias'] = $this->_categorias();	
 		
 		$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
@@ -161,7 +162,7 @@ class Fotos extends DI_Controller {
 	
 	function _reglas()
 	{
-		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[20]');
+		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
 		
 		return $reglas;
 	}

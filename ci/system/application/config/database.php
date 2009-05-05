@@ -39,7 +39,10 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
-$db['default']['password'] = "takumi";
+
+// Para Dientuki
+// $db['default']['password'] = "takumi";
+$db['default']['password'] = "root";
 $db['default']['database'] = "shrek";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
