@@ -27,28 +27,54 @@ tinyMCE.init({
 
 
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
-
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
 
 <script type="text/javascript" language="javascript">
-	var swfu;
+var swfu;
+window.onload = function () {
+	swfu = new SWFUpload({
+		// Backend Settings
+		upload_url: "<?php echo $this->me_url; ?>upload",
+		post_params: {"PHPSESSID": "<?php echo session_id(); ?>"},
 
-	// The uploadStart event handler. This function variable is assigned to upload_start_handler in the settings object 
-	var myCustomUploadStartEventHandler = function (file) { var continue_with_upload; if (file.name === "the sky is blue") { continue_with_upload = true; } else { continue_with_upload = false; } return continue_with_upload; };
+		// File Upload Settings
+		file_size_limit : "2 MB",	// 2MB
+		file_types : "*.jpg",
+		file_types_description : "JPG Images",
+		file_upload_limit : "0",
 
-	 // The uploadSuccess event handler. This function variable is assigned to upload_success_handler in the settings object 
-	 var myCustomUploadSuccessEventHandler = function (file, server_data, receivedResponse) { alert("The file " + file.name + " has been delivered to the server. The server responded with " + server_data); }; 
+		// Event Handler Settings - these functions as defined in Handlers.js
+		//  The handlers are not part of SWFUpload but are part of my website and control how
+		//  my website reacts to the SWFUpload events.
+		file_queue_error_handler : fileQueueError,
+		file_dialog_complete_handler : fileDialogComplete,
+		upload_progress_handler : uploadProgress,
+		upload_error_handler : uploadError,
+		upload_success_handler : uploadSuccess,
+		upload_complete_handler : uploadComplete,
+
+		// Button Settings
+		button_image_url : "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
+		button_placeholder_id : "spanButtonPlaceholder",
+		button_width: 180,
+		button_height: 18,
+		button_text : '<span class="button">Select Images <span class="buttonSmall">(2 MB Max)</span></span>',
+		button_text_style : '.button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } .buttonSmall { font-size: 10pt; }',
+		button_text_top_padding: 0,
+		button_text_left_padding: 18,
+		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+		button_cursor: SWFUpload.CURSOR.HAND,
 		
-	window.onload = function () {
-		var settings_object = {
-				upload_url : "<?php echo $this->config->item('base_url'); ?>",
-				flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
-				file_size_limit : "20 MB",
+		// Flash Settings
+		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
 
-				upload_start_handler : myCustomUploadStartEventHandler,
-				upload_success_handler : myCustomUploadSuccessEventHandler 					
-		}; 
-
-		swfu = new SWFUpload(settings_object); 
+		custom_settings : {
+			upload_target : "divFileProgressContainer"
+		},
+		
+		// Debug Settings
+		debug: false
+	});
 };
 </script>
 

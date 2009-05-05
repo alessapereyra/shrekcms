@@ -165,22 +165,10 @@ class Fotos extends DI_Controller {
 		
 		return $reglas;
 	}
-	
-	function zona_check($value)
+
+	function upload()
 	{
-		$this->load->model('zones');
-		
-		$consulta = $this->zones->seleccionar(array('zona' => $value));
-		
-		if ($consulta->num_rows() > 0)		
-		{
-			//$this->form_validation->set_message('zona_check', 'La %s ya existe');
-			return false;
-		}
-		else
-		{
-			return true;
-		}			
+		die('asdf');
 	}
 		
 	function borrar($id)

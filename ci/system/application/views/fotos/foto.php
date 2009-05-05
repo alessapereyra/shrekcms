@@ -17,7 +17,7 @@
 			<li><a href="#enlazar">Enlazar</a></li>
 		</ul>
 		<div id="subir">
-						<?php echo form_label('Foto:', 'foto');?> <?php echo form_upload(array('name' => 'foto', 'value' => '', 'id' => 'foto')); ?>
+						<span id="spanButtonPlaceholder"></span>
 		</div>
 		<div id="enlazar">
 			Enlazo

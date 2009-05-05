@@ -1,5 +1,4 @@
 <?php
-
 class Articulos extends DI_Controller {
 	
 	function index($page = 1, $per_page = NULL)
