@@ -29,7 +29,9 @@
       <h3>Categorizar</h3>
     	<fieldset id="categories">
     	<?php foreach($categorias as $key => $value): ?> 
-    		 <?php echo form_label($value . ':', $key);?> <?php echo form_checkbox(array('name' => $key, 'value' => TRUE, 'id' => $key)); ?>
+        <span>  
+    		  <?php echo form_label($value . ':', $key);?> <?php echo form_checkbox(array('name' => $key, 'value' => TRUE, 'id' => $key)); ?>
+        </span>
     	<?php endforeach; ?>	
     	</fieldset>
 	
