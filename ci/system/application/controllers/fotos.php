@@ -37,6 +37,7 @@ class Fotos extends DI_Controller {
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
+		$data['photolink'] = NULL;		
 		$data['categorias'] = $this->_categorias();	
 		
 		$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');

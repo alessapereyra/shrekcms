@@ -11,15 +11,24 @@
 	<div id="text_content">	 
 	
     	<fieldset>
+    	<?php echo form_label('Titulo:', 'titulo');?> 
     	<?php echo form_error('titulo'); ?>
-    	<?php echo form_label('Titulo:', 'titulo');?> <?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
+    	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
+
+    	<?php echo form_label('', 'texto');?>
     	<?php echo form_error('texto'); ?>
-    	<?php echo form_label('', 'texto');?> <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
+  	  <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
+    	
+    	<?php echo form_label('Etiquetas: (separadas por comas)', 'tags');?>
     	<?php echo form_error('tags'); ?>
-    	<?php echo form_label('Etiquetas:', 'tags');?> <?php echo form_input(array('name' => 'tags', 'value' => $tags, 'id' => 'tags')); ?>
+  	  <?php echo form_input(array('name' => 'tags', 'value' => $tags, 'id' => 'tags')); ?>
+    	<em>violencia, robos, denuncias, serenazgo, etc</em>
     	</fieldset>
 
-    	<?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'Submit' )); ?>
+      <div id="end_form">
+    	  <?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'Enviar' )); ?>        
+      </div>
+
     	<?php echo form_close(); ?>
     	
 	</div> <!-- text_content -->
