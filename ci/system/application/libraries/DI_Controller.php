@@ -44,6 +44,8 @@ class DI_Controller extends Controller {
 		
 		$this->load->library('session');
 
+		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/';
+		
 		if ($this->uri->segment(2) != 'ajax')
 		{
 			//die('as'.$this->uri->segment(1));
@@ -75,9 +77,8 @@ class DI_Controller extends Controller {
 			
 			//$this->load->view('layout/' . $tmp['content']);
 			//$this->load->view('layout/' . $tmp['sidebar']);
-		}		
-
-		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $this->uri->segment(3);
+		}
+		
 	}
 	
 	function __destruct() {
