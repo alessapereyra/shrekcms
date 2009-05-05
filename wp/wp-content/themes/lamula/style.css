@@ -12,6 +12,10 @@ a {
 	color: #ff7e00;
 }
 
+#content_feed dl dd a {
+	display: block;
+}
+
 div#wrapper {
 	
 	width: 920px;
@@ -270,7 +274,7 @@ div#content {
 
 div#content_feed {
 	
-	width: 480px;
+	width: 470px;
 	float: left;
 	padding-bottom: 40px;
 }
@@ -308,7 +312,7 @@ div#content_feed dl,
 div#sidebar_central dl {
 	
 	clear: both;
-	margin-top: 1em;
+	margin-top: 2em;
 	overflow: auto;
 	
 }
@@ -326,6 +330,10 @@ div#sidebar_central dl dt {
 	clear: both;
 }
 
+div#content_feed dl dt {
+	margin-bottom: 15px;
+}
+
 div#sidebar_central dl dt {
 	width: 45px;
 }
@@ -338,7 +346,7 @@ div#content_feed dl dd,
 div#sidebar_central dd {
 	
 	float: left;
-	width: 390px;
+	width: 380px;
 	clear: right;
 	line-height: 1.5em;
 	margin-bottom: 2em;
@@ -375,6 +383,10 @@ div#content_feed dl dd h5 {
 
 div#content_feed dl dd h5 a {
 	text-decoration: none;
+}
+
+#content_feed dl dd p span a {
+	display: block;	
 }
 
 /* @end */
