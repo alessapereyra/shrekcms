@@ -48,7 +48,6 @@ class DI_Controller extends Controller {
 		
 		if ($this->uri->segment(2) != 'ajax')
 		{
-			//die('as'.$this->uri->segment(1));
 			if ($this->uri->segment(1) != 'log')
 			{
 				if ($this->session->userdata('usuario') == NULL)

@@ -1,4 +1,4 @@
-  <?php
+<?php
 class Post extends Model {
 	
 	var $campos = array();

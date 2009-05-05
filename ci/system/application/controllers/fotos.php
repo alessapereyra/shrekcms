@@ -166,7 +166,17 @@ class Fotos extends DI_Controller {
 		return $reglas;
 	}
 
-	function upload()
+	function ajax($accion)
+	{
+		switch ($accion)
+		{
+			case 'upload':
+				$this->_upload();
+			break;
+		}
+	}
+	
+	function _upload()
 	{
 		die('asdf');
 	}

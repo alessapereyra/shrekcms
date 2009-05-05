@@ -17,7 +17,16 @@
 			<li><a href="#enlazar">Enlazar</a></li>
 		</ul>
 		<div id="subir">
-						<span id="spanButtonPlaceholder"></span>
+
+			<div class="fieldset flash" id="fsUploadProgress">
+				<span class="legend">Upload Queue</span>
+			</div>
+			<div id="divStatus">0 Files Uploaded</div>
+			<div>
+				<span id="spanButtonPlaceHolder"></span>
+				<input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+			</div>
+
 		</div>
 		<div id="enlazar">
 			Enlazo
