@@ -24,16 +24,28 @@ div#wrapper {
 
 div#top_menu,
 div#footer_menu {
-	
 	background-color: #282828;
 	padding: 20px 0px;
 	color: white;
 	overflow: hidden;	
 	height: 40px;
+	clear: both;
 }
 
 div#top_menu {
 	background: #282828 url(images/top-background.png) repeat-x 0 bottom;
+}
+
+div#top_menu div ul {
+	float: right;
+	margin-top: 0.4em;
+}
+
+div#top_menu div ul li {
+	font-size: 0.5em;
+	float: left;
+	margin-right:1em ;
+	text-transform: lowercase;
 }
 
 div#footer_menu {
@@ -42,21 +54,28 @@ div#footer_menu {
 	margin-top: 2em;
 }
 
-div#top_menu p {
+div#top_menu div {
 	overflow: auto;
-	width: 920px;
+	width: 720px;
 	height: 40px;
 	margin: 0px auto;
 	font-size: 2em;
 }
 
-div#top_menu p span.left,
-div#footer_menu p span.left {
-	float: left;
-	margin-left: 20px;
+div#top_menu div a {
+	color: #f7fe6f;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
 }
 
-div#top_menu p span.right {
+div#top_menu div span.left,
+div#footer_menu div span.left {
+	float: left;
+
+}
+
+div#top_menu div span.right {
 	float: right;
 	margin-right: 20px;
 }
@@ -167,6 +186,52 @@ div#content.login_form div.error {
 
 div#content.login_form div#pie {
 	margin-top:  5px;
+}
+
+/* @end */
+
+/* @group Articulo */
+
+div#content.articulo {
+	
+}
+
+div#content.articulo label,
+div#content.articulo h3 {
+	display: block;
+	font-size: 1.2em;
+	margin-bottom: 0.5em;
+}
+
+div#content.articulo input#titulo,
+#texto_container table.mceLayout,
+div#content.articulo input#tags {
+	width: 550px !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	padding: 5px;
+	margin-bottom: 1.5em;
+}
+
+div#content.articulo input#titulo:focus,
+#texto_container table.mceLayout:focus,
+div#content.articulo input#tags:focus {
+	background-color: #f6f75d;
+}
+
+
+#texto_container table.mceLayout {
+	width: 560px !important;
+}
+
+div#content.articulo div#text_content {
+	float: left;
+	width: 550px;
+}
+
+div#content.articulo div#sidebar_content {
+	float: right;
+	width: 150px;
 }
 
 
