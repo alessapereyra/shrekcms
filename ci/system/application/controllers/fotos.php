@@ -179,7 +179,42 @@ class Fotos extends DI_Controller {
 	
 	function _upload()
 	{
-		die('asdf');
+		$tmp['allowed_types'] = 'jpg|jpeg|gif|png';
+		$tmp['encrypt_name'] = TRUE;
+		
+		$this->load->model('options');
+		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
+
+		$this->load->library('upload', $tmp);
+		
+		if ( ! $this->upload->do_upload('Filedata'))
+		{
+			$error = array('error' => $this->upload->display_errors(),
+							'upload_data' => $this->upload->data());
+			
+			//$this->load->view('upload_form', $error);
+			die(print_r($error));
+			
+		}	
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+			
+			//debe insertar en un post, la imagen, ver wp_post id=18
+			$this->load->model('post');
+			$name = ereg_replace($data['file_ext'], '' , $data['orig_name']);
+			$ext = ereg_replace('.', '' , $data['file_ext']);
+			$this->post->insert_attach($name, $ext);
+			
+			//debo manipular la imagen
+			
+			//debo crear el texto para el  post (img + descripcion)
+			
+			//debo poner un post con el texto
+			
+			die(print_r($data));
+		}		
+		
 	}
 		
 	function borrar($id)

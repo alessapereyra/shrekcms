@@ -27,8 +27,9 @@ tinyMCE.init({
 
 
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
 
 
 <script type="text/javascript" language="javascript">
@@ -39,22 +40,21 @@ window.onload = function () {
 		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
 		upload_url: "<?php echo $this->me_url; ?>ajax/upload",
 		post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
-		file_size_limit : "100 MB",
-		file_types : "*.*",
-		file_types_description : "All Files",
-		file_upload_limit : 100,
+		file_size_limit : "2 MB",
+		file_types : "*.jpg;*.jpeg;*.png;*.gif",
+		file_types_description : "Imagenes",
+		file_upload_limit : 10,
 		file_queue_limit : 0,
 		custom_settings : {
-			progressTarget : "fsUploadProgress",
-			cancelButtonId : "btnCancel"
-		},
-		debug: false,
+			progressTarget : "fsUploadProgress"
+		},		
+		debug: true,
 
 		// Button settings
 		button_image_url: "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
-		button_width: "61",
-		button_height: "22",
-		button_placeholder_id: "spanButtonPlaceHolder",
+		button_width: 61,
+		button_height: 22,
+		button_placeholder_id: "spanButtonPlaceholder",
 		
 		// The event handler functions are defined in handlers.js
 		file_queued_handler : fileQueued,

@@ -126,7 +126,6 @@ class Log extends DI_Controller {
 		}
 		else
 		{
-			//$this->form_validation->set_message('usuario_check', 'El %s no existe');
 			return false;
 		}			
 	}
@@ -141,8 +140,11 @@ class Log extends DI_Controller {
 		if ($consulta->num_rows() == 1)
 		{
 			$fila = $consulta->row();
-				
-			if ( md5($this->input->post('password')) == $fila->user_pass )
+			
+			$this->load->library('passwordhasher');
+			$this->passwordhasher->passwordhash(8, TRUE);
+			
+			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass == TRUE) )
 			{
 
 				$this->usuario['id'] = $fila->ID;

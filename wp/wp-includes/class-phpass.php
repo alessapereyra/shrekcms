@@ -111,9 +111,10 @@ class PasswordHash {
 	function crypt_private($password, $setting)
 	{
 		$output = '*0';
+		
 		if (substr($setting, 0, 2) == $output)
 			$output = '*1';
-
+		
 		if (substr($setting, 0, 3) != '$P$')
 			return $output;
 
@@ -250,7 +251,7 @@ class PasswordHash {
 		$hash = $this->crypt_private($password, $stored_hash);
 		if ($hash[0] == '*')
 			$hash = crypt($password, $stored_hash);
-
+			
 		return $hash == $stored_hash;
 	}
 }

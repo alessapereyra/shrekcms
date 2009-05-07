@@ -14,7 +14,7 @@ The FileProgress class is not part of SWFUpload.
 function fileQueued(file) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Pending...");
+		progress.setStatus("Verificando...");
 		progress.toggleCancel(true, this);
 
 	} catch (ex) {
@@ -61,10 +61,11 @@ function fileQueueError(file, errorCode, message) {
 
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
+		/*
 		if (numFilesSelected > 0) {
 			document.getElementById(this.customSettings.cancelButtonId).disabled = false;
 		}
-		
+		*/
 		/* I want auto start the upload and I can do that here */
 		this.startUpload();
 	} catch (ex)  {

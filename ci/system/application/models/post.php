@@ -11,6 +11,23 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
+    function insert_attach($name, $ext)
+    {
+    	$this->load->library('session');
+    	$this->load->helper('inflector');
+    	
+    	$values['post_author'] = $this->session->userdata('id');
+    	$values['post_type'] = 'attachment';
+    	$values['post_name'] = score($name);
+		$values['post_status'] = 'inherit';
+		$values['post_mime_type'] = 'image/' . $ext;
+
+		$post_id = $this->_insertar($values);
+    	
+		return $post_id;
+    }
+    
+    
     function insert_article($values, $customs)
     {
     	$this->load->library('session');
@@ -19,6 +36,7 @@ class Post extends Model {
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = score($values['post_title']);
+		$values['post_status'] = 'draft';    	
     	
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);
@@ -90,7 +108,6 @@ class Post extends Model {
     	$values['post_modified'] = $values['post_date'];
     	$values['post_modified_gmt'] = $values['post_date'];
 
-    	$values['post_status'] = 'draft';
     	$values['comment_status'] = 'closed';
     	$values['ping_status'] = 'closed';
     	

@@ -24,9 +24,8 @@ define('DB_USER', 'root');
 /** MySQL database password */
 
 // Para Dientuki
-// define('DB_PASSWORD', 'takumi');
-define('DB_PASSWORD', 'root');
-
+define('DB_PASSWORD', 'takumi');
+//define('DB_PASSWORD', 'root');
 
 /** MySQL database password */
 define('DB_PORT', '3306');

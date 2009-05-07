@@ -456,7 +456,7 @@ function wp_authenticate($username, $password) {
 		do_action( 'wp_login_failed', $username );
 		return $user;
 	}
-
+	
 	if ( !wp_check_password($password, $user->user_pass, $user->ID) ) {
 		do_action( 'wp_login_failed', $username );
 		return new WP_Error('incorrect_password', __('<strong>ERROR</strong>: Incorrect password.'));
@@ -1365,6 +1365,7 @@ function wp_check_password($password, $hash, $user_id = '') {
 	// If the hash is still md5...
 	if ( strlen($hash) <= 32 ) {
 		$check = ( $hash == md5($password) );
+		//1 - pass con md5 - pass
 		if ( $check && $user_id ) {
 			// Rehash using new hash.
 			wp_set_password($password, $user_id);
