@@ -8,16 +8,16 @@
 <?php echo link_tag('css/style.css'); ?>
 
 <!--  jQuery -->
-<script src="<?php echo $this->config->item('base_url'); ?>js/jquery.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/jquery.js" type="text/javascript" language="javascript"></script>
 
 <!--  jQuery UI -->
-<script src="<?php echo $this->config->item('base_url'); ?>js/jquery-ui.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/jquery-ui.js" type="text/javascript" language="javascript"></script>
 
 <!--  jQuery UI CSS-->
 <?php echo link_tag('css/jquery-ui.css'); ?>
 
 <!--  tiny editor -->
-<script src="<?php echo $this->config->item('base_url'); ?>js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" language="javascript">
 tinyMCE.init({
 	mode : "exact",
@@ -26,8 +26,8 @@ tinyMCE.init({
 </script>
 
 
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/handlers.js"></script>
 
 <script type="text/javascript" language="javascript">
 var swfu;
@@ -54,7 +54,7 @@ window.onload = function () {
 		upload_complete_handler : uploadComplete,
 
 		// Button Settings
-		button_image_url : "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
+		button_image_url : "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
 		button_placeholder_id : "spanButtonPlaceholder",
 		button_width: 180,
 		button_height: 18,
@@ -66,7 +66,7 @@ window.onload = function () {
 		button_cursor: SWFUpload.CURSOR.HAND,
 		
 		// Flash Settings
-		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
+		flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
 
 		custom_settings : {
 			upload_target : "divFileProgressContainer"
@@ -84,7 +84,7 @@ window.onload = function () {
 <![endif]-->
 
 <!--  theMagic -->
-<script src="<?php echo $this->config->item('base_url'); ?>js/application.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
 
 
 </head>
