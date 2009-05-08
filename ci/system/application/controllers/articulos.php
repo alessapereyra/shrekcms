@@ -93,16 +93,47 @@ class Articulos extends DI_Controller {
 			$data['tags'] = set_value('tags');
 			$data['categorias'] = $this->_categorias();	
 
-			$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
+			$data['provincias'] = array('Lima' => 'Lima', 'Callao' => 'Callao');
 			$data['provincias_selected'] = '';
 			
 			$data['distritos'] = $data['provincias'];
 			$data['distritos_selected'] = '';
 					
-			$data['departamentos'] = $data['provincias'];
+			//Dientuki:  Esto no se debería resolver simplemente creando un array de la primera 
+			// y luego creando un array adicional que repita el key/value de éste? 
+			$data['departamentos'] = array('Amazonas' => 'Amazonas', 
+			                                'Ancash' => 'Ancash', 
+			                                'Apurimac' => 'Apurimac', 
+			                                'Arequipa' => 'Arequipa', 
+			                                'Ancash' => 'Ancash', 			                                			                                			                                
+			                                'Ayacucho' => 'Ayacucho', 
+			                                'Cajamarca' => 'Cajamarca', 			                                			                                			                                
+			                                'Callao' => 'Callao', 
+			                                'Cusco' => 'Cusco', 			                                			                                			                                
+			                                'Huancavelica' => 'Huancavelica', 
+			                                'Ica' => 'Ica', 			                                			                                			                                
+			                                'Junin' => 'Junin', 
+			                                'La Libertad' => 'La Libertad', 			                                			                                			                                
+			                                'Lambayeque' => 'Lambayeque', 
+			                                'Lima' => 'Lima', 			                                			                                			                                
+			                                'Loreto' => 'Loreto', 
+			                                'Madrededios' => 'Madrededios', 			                                			                                			                                
+			                                'Moquegua' => 'Moquegua', 
+			                                'Pasco' => 'Pasco', 			                                			                                			                                
+			                                'Piura' => 'Piura', 
+			                                'Puno' => 'Puno', 			                                			                                			                                
+			                                'San Martin' => 'San Martin', 
+			                                'Tacna' => 'Tacna', 			                                			                                			                                
+			                                'Tumbes' => 'Tumbes', 
+			                                'Ucayali' => 'Ucayali'
+			                                );
 			$data['departamentos_selected'] = '';
 					
-			$data['paices'] = $data['provincias'];
+			$data['paices'] = array('Argentina' => 'Argentina',
+                              'Brasil' => 'Brasil',
+			                        'Chile' => 'Chile',
+			                        'Perú' => 'Perú'
+			                        );
 			$data['paices_selected'] = '';				
 			
 			$data['form'] = $this->form;			
