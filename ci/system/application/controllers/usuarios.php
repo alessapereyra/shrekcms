@@ -91,6 +91,9 @@ class Usuarios extends Controller {
 				//modificacion, no implementado todabia
 				//$where['id'] = $id;
 				//$this->users->actualizar($data, $where);
+				//arma los meta
+				//$this->usermeta->actualizar($meta, $id);
+				
 			}
 			
 			redirect('');

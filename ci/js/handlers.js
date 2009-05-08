@@ -101,12 +101,18 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 	}
 }
 
-function uploadSuccess(file, serverData) {
+function uploadSuccess(file, serverData, receivedResponse) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setComplete();
 		progress.setStatus("Complete.");
 		progress.toggleCancel(false);
+		if (receivedResponse) 
+		{
+			var tmp = typeof(serverData) === "undefined" ? "" : serverData;
+			var input = document.getElementById('files');
+			input.value = input.value + '-' + tmp;
+		}
 
 	} catch (ex) {
 		this.debug(ex);

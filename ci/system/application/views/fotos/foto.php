@@ -22,6 +22,7 @@
   			<li><a href="#enlazar">Enlazar</a></li>
   		</ul>
   		<div id="subir">
+  					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona la foto que desees subir:</p>
   					<span id="spanButtonPlaceholder"></span>
   					<div class="fieldset flash" id="fsUploadProgress"></div>

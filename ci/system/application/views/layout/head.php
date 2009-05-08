@@ -26,18 +26,11 @@ tinyMCE.init({
 });
 </script>
 
-<<<<<<< HEAD:ci/system/application/views/layout/head.php
 <?php if (isset($this->me_url)): ?>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
-=======
-
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/handlers.js"></script>
->>>>>>> fcf5f7f6dad2982c9f9c94239f7a552bec515a91:ci/system/application/views/layout/head.php
-
 
 <script type="text/javascript" language="javascript">
 var swfu;
@@ -72,33 +65,6 @@ window.onload = function () {
 		upload_error_handler : uploadError,
 		upload_success_handler : uploadSuccess,
 		upload_complete_handler : uploadComplete,
-<<<<<<< HEAD:ci/system/application/views/layout/head.php
-		queue_complete_handler : queueComplete	// Queue plugin event		
-				
-=======
-
-		// Button Settings
-		button_image_url : "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
-		button_placeholder_id : "spanButtonPlaceholder",
-		button_width: 180,
-		button_height: 18,
-		button_text : '<span class="button">Select Images <span class="buttonSmall">(2 MB Max)</span></span>',
-		button_text_style : '.button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } .buttonSmall { font-size: 10pt; }',
-		button_text_top_padding: 0,
-		button_text_left_padding: 18,
-		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
-		button_cursor: SWFUpload.CURSOR.HAND,
-		
-		// Flash Settings
-		flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
-
-		custom_settings : {
-			upload_target : "divFileProgressContainer"
-		},
-		
-		// Debug Settings
-		debug: false
->>>>>>> fcf5f7f6dad2982c9f9c94239f7a552bec515a91:ci/system/application/views/layout/head.php
 	});
 };
 </script>
@@ -114,4 +80,3 @@ window.onload = function () {
 
 </head>
 <body>
-

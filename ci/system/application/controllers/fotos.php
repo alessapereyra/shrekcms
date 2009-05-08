@@ -210,7 +210,7 @@ class Fotos extends DI_Controller {
 			
 			$values['post_author'] = $this->input->post('id');
 			$values['post_name'] = score(ereg_replace($photo['file_ext'], '' , $photo['orig_name']));
-			$values['post_mime_type'] = 'image/' . ereg_replace($photo['file_ext'], '' , $photo['orig_name']);;
+			$values['post_mime_type'] = 'image/' . ereg_replace('\.', '' , $photo['file_ext']);
 			$values['guid'] = $values['guid'] . $photo['file_name'];
 			
 			$the_photo = $this->post->insert_attach($values);
@@ -241,6 +241,7 @@ class Fotos extends DI_Controller {
 				}
 			}			
 			
+			echo $the_photo;
 			//debo crear el texto para el  post (img + descripcion)
 			
 			//debo poner un post con el texto
