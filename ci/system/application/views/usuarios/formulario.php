@@ -11,7 +11,7 @@
   			?>
 			<fieldset>
 
-			<?php echo form_label('Nombre:', 'usuario');?> 
+			<?php echo form_label('Usuario:', 'usuario');?> 
 			<?php echo form_error('usuario'); ?>
 			<?php echo form_input(array('name' => 'usuario', 'value' => $usuario, 'id' => 'usuario')); ?>
 			<br />

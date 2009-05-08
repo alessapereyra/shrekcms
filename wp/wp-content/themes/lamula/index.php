@@ -31,6 +31,7 @@ get_header(); ?>
     
     <h3>La noticia del día: <br />la mula en 2 líneas</h3>
     <p>
+        <span class="author">Por <a href="#">Pepito</a></span>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Cras augue arcu, mattis et, interdum a, placerat sed, massa. Nullam pretium. 
         Vestibulum risus turpis, pellentesque non, ultricies ut, posuere sed, tortor. 
@@ -43,7 +44,7 @@ get_header(); ?>
   <div id="top_news_footer">
     
     <a href="#" id="leer_mas_footer">Leer m&aacute;s</a>
-    <p class="comments"><em>12</em> comentarios</p>
+    <p class="comments"><a href="#"><em>12</em> comentarios</a></p>
     <p class="rate"><em>estrellas</em></p>
     
   </div> <!-- top_news_footer -->
