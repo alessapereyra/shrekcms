@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage Default_Theme
+ * @subpackage LaMula
  */
 
 function snippet($text,$length=64,$tail="...") {
@@ -37,9 +37,16 @@ get_header(); ?>
         Suspendisse volutpat porttitor elit. Sed venenatis. Vestibulum vitae velit a tellus 
         feugiat scelerisque. Pellentesque dolor.
     </p>
-    
+        
   </div> <!-- top_news_text -->
-  
+
+  <div id="top_news_footer">
+    
+    <a href="#" id="leer_mas_footer">Leer m&aacute;s</a>
+    <p class="comments"><em>12</em> comentarios</p>
+    <p class="rate"><em>estrellas</em></p>
+    
+  </div> <!-- top_news_footer -->
   
 </div> <!-- top_news -->
 

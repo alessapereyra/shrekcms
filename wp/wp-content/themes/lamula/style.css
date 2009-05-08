@@ -1,11 +1,10 @@
 /* @override http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css */
 
 body {
-	
-	background-color: white;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
+	background: #e8e9e9 url(images/background.png) repeat-x fixed center 99px;
 }
 
 a {
@@ -31,6 +30,7 @@ div#top_menu {
 	padding: 10px 0px;
 	color: white;
 	overflow: hidden;	
+	font-size: 0.8em;
 }
 
 div#top_menu p span.left {
@@ -66,17 +66,12 @@ h1{
 	font-size: 6em;
 	float: left;
 	text-transform: lowercase;
+	background-image: url(images/logo-transparent.png);
+	text-indent: -9000em;
+	width: 310px;
+	height: 80px;
 }
 
-h2 {
-	
-	clear: right;
-	float: left;
-	margin-top: 2.55em;
-	margin-left: 1em;
-	color: #ff7e00;
-	font-size: 1.5em;
-}
 
 /* @end */
 
@@ -89,8 +84,20 @@ input#busqueda {
 div#search_bar {
 	
 	float: right;
-	margin-top: 4.2em;
+	margin-top: 00.2em;
 }
+
+h2#status {
+	
+	clear: right;
+	float: left;
+	margin-top: 1.7em;
+	margin-bottom: 1em;
+	margin-left: 1em;
+	color: #fe008a;
+	font-size: 1.3em;
+}
+
 
 div#search_bar label {
 	
@@ -110,36 +117,31 @@ div#menu_bar {
 	
 	clear: both;
 	overflow: auto;
-	background-color: #d0d0d0;	
+	background-color: white;	
 	margin-top: 8em;	
 	display: block;	
 }
 
-div#menu_bar p#tagline {
-	float: left;
-	padding: 5px 10px 5px 40px;
+div#menu_bar p#tagline,
+div#menu_bar p#zonas {
+	padding: 5px 10px 5px 10px;
 	background-color: black;
-	color: #ff7e00;
-	width: 130px;
-	
-}
-
-div#menu_bar p#tagline span.sitename {
-	
-	float: left;
-	display: block;
-}
-
-div#menu_bar p#tagline span.geomule {
-	
-	float: right;
-	display: block;
+	width: 80px;
 	color: #e0e0e0;
+	float: left;	
+}
+
+div#menu_bar p#zonas {
+	width: 60px;
+	background-color: #5a5a5a;
+	text-align: center;
+	color: white;
 }
 
 div#menu_bar p#tagline span.geomule em {
 	color: white;
 }
+
 
 /* @end */
 
@@ -161,13 +163,14 @@ ul#menu li {
 ul#menu > li {
 	float: left;
 	overflow: auto;
-	background-color: #d0d0d0;
+	background-color: white;
+	color: black;
 }
 
 ul#menu > li a,
 ul#menu ul li.current {
 	padding: 6px 10px;
-	color: white;
+	color: black;
 	text-decoration: none;
 	display: block;
 	float: left;
@@ -187,7 +190,7 @@ ul#menu ul > ul {
 
 ul#menu li ul li,
 ul#menu li ul li ul {
-	background-color: #ff4100;
+	background-color: white;
 	float: left;
 	display: inline;
 	display: none;	
@@ -202,7 +205,7 @@ ul#menu li ul li ul li{
 
 	
 ul#menu ul li.current {
-	background-color: #686868;
+	background-color: #fe008a;
 	display: none;
 }	
 	
@@ -221,8 +224,10 @@ ul#menu ul li a:hover {
 
 div#top_news {
 	
-	margin-top: 1.5em;
+	margin-top: 1em;
 	overflow: auto;
+	background-color: white;
+	padding: 20px;
 }
 
 div#top_news div#top_news_image {
@@ -234,14 +239,15 @@ div#top_news div#top_news_image {
 div#top_news div#top_news_image img {
 	
 	width: 400px;
+	border: 5px solid #000;
 }
 
 div#top_news div#top_news_text {
 	
 	float: left;
 	display: block;
-	width: 500px;
-	margin-left: 20px;
+	width: 450px;
+	margin-left: 30px;
 	
 }
 
@@ -249,13 +255,17 @@ div#top_news div#top_news_text h3 {
 	
 	font-size: 3em;
 	line-height: 1.1em;
-	color: #ff7e00;
+	color: black;
 	text-transform: lowercase;
 }
 
 div#top_news div#top_news_text p {
 	line-height: 1.3em;
 	margin-top: 0.5em;
+}
+
+div#top_news_footer {
+	clear: both;
 }
 
 /* @end */
@@ -277,6 +287,7 @@ div#content_feed {
 	width: 470px;
 	float: left;
 	padding-bottom: 40px;
+	overflow: auto;
 }
 
 div#content_feed ul {
@@ -311,9 +322,9 @@ div#content_feed ul li a.active {
 div#content_feed dl,
 div#sidebar_central dl {
 	
-	clear: both;
+
 	margin-top: 2em;
-	overflow: auto;
+	overflow: hidden
 	
 }
 
@@ -328,6 +339,7 @@ div#sidebar_central dl dt {
 	width: 80px;
 	margin-right: 10px;
 	clear: both;
+	overflow: auto;
 }
 
 div#content_feed dl dt {

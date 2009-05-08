@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	 BACK = "todos"
+	 BACK = "todas"
 	 BACK_STATES = "regresar"
 	
 		$("ul#menu > li > a").click(function(){

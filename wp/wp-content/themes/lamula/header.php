@@ -24,7 +24,7 @@
   <div id="top_menu">
     <p>
       <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
-      <span class="right">iniciar sesi&oacute;n | reg&iacute;strate</span>
+      <span class="right"><a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a></span>
     </p>
   </div> <!-- top_menu -->
   
@@ -37,10 +37,10 @@
   
 
       <h1>La Mula</h1> 
-      <h2 id="status">...desaznadamente</h2>
   
   
       <div id="search_bar">
+          <h2 id="status">...desaznadamente en linea</h2>        
           <form action="#">
             <input type="text" name="busqueda" value="" id="busqueda" />
             <input type="submit" value="buscar" />
@@ -49,7 +49,8 @@
   
       <div id="menu_bar">
 
-        <p id="tagline"><span class="sitename">lamula.pe</span><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
+        <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
+        <p id="zonas">zonas</p>  <!-- zonas -->
 
         <ul id="menu">
           <li><a href="#">Lima y Callao</a>
@@ -61,7 +62,6 @@
                 <li><a href="#">Lima Norte</a>
           
                   <ul>
-                    <li class="current">Lima Norte</li>
                     <li><a href="#">Los Olivos</a></li>         
                     <li><a href="#">Carabayllo</a></li>           
                     <li><a href="#">Comas</a></li>         
