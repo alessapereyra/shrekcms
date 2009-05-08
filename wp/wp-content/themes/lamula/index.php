@@ -4,6 +4,21 @@
  * @subpackage Default_Theme
  */
 
+function snippet($text,$length=64,$tail="...") {
+    $text = trim($text);
+    $txtl = strlen($text);
+    if($txtl > $length) {
+        for($i=1;$text[$length-$i]!=" ";$i++) {
+            if($i == $length) {
+                return substr($text,0,$length) . $tail;
+            }
+        }
+        $text = substr($text,0,$length-$i+1) . $tail;
+    }
+    return $text;
+}
+
+
 get_header(); ?>
 
 <div id="top_news">
@@ -49,11 +64,18 @@ get_header(); ?>
 
 
           <dt>
+              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
               <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
+              </a>
           </dt>
           <dd>
               <h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
-              <?php the_excerpt('Leer el resto'); ?><a href="<?php the_permalink() ?>">Leer m&aacute;s</a>
+
+              <?php $content = get_the_content( $more_link_text, $stripteaser, "Leer el resto" );
+                    $content = snippet($content,235);
+                ?>
+
+              <?php echo $content ?><a href="<?php the_permalink() ?>">Leer m&aacute;s</a>
           </dd>
 
   		<?php endwhile; ?>
@@ -71,25 +93,6 @@ get_header(); ?>
 
   	<?php endif; ?>
   	
-    
-    
-      <dt>
-          <img src="<?php bloginfo('template_url'); ?>/images/feed1.png" alt="Noticia 1" title="Noticia 1"/>
-      </dt>
-      <dd>
-          <h5>Burdel gay en Huayc&aacute;n</h5>
-          net a través de una experiencia virtual única y diferente. 
-          Este concepto nace de un ejercicio de filiación marcado p
-      </dd>
-
-      <dt>
-          <img src="<?php bloginfo('template_url'); ?>/images/feed3.png" alt="Noticia 1" title="Noticia 1"/>
-      </dt>
-      <dd>
-          <h5>La RCP desarrolla Museo Virtual de la Memoria</h5>
-          net a través de una experiencia virtual única y diferente. 
-          Este concepto nace de un ejercicio de filiación marcado p
-      </dd>
 	
   </dl>
 
@@ -100,7 +103,7 @@ get_header(); ?>
     
       <div id="important">
         
-          <p><a href="#" class="send_news">m&aacute;ndanos tu noticia</a></p>
+          <p><a href="http://localhost:8888/shrekcms/ci" class="send_news">m&aacute;ndanos tu noticia</a></p>
         
       </div>
 
