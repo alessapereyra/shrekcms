@@ -39,7 +39,7 @@ class Usuarios extends Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
-			$data['url'] = set_value('url');
+			//$data['url'] = set_value('url');
 			$data['usuario'] = set_value('usuario');		
 			$data['email'] = set_value('email');
 
@@ -64,7 +64,7 @@ class Usuarios extends Controller {
 			$data['user_pass'] = $this->passwordhasher->HashPassword($this->input->post('password'));
 			$data['user_nicename'] = $data['user_login'];
 			$data['user_email'] = $this->input->post('email');
-			$data['user_url'] = $this->input->post('url');
+			//$data['user_url'] = $this->input->post('url');
 			$data['user_registered'] = date('Y-m-d G:i:s');
 			$data['user_activation_key'] = '';
 			$data['user_status'] = 0;
@@ -117,7 +117,7 @@ class Usuarios extends Controller {
 	{
 		$tmp['usuario'] = "trim|required|min_length[4]|max_length[20]";
 
-		$reglas[] = array('field'   => 'url', 'label'   => 'lang:field_url', 'rules'   => 'trim|required|min_length[4]|max_length[40]');
+		//$reglas[] = array('field'   => 'url', 'label'   => 'lang:field_url', 'rules'   => 'trim|required|min_length[4]|max_length[40]');
 		$reglas[] = array('field'   => 'email', 'label'   => 'lang:field_email', 'rules'   => 'trim|required|min_length[5]|valid_email');
 
 		if ($this->input->post('id') == NULL) {
