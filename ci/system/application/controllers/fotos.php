@@ -32,7 +32,7 @@ class Fotos extends DI_Controller {
 	}
 	
 	function formulario($id = NULL)
-	{
+	{			
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
@@ -101,6 +101,7 @@ class Fotos extends DI_Controller {
 		}
 		else
 		{
+			die('debo crear el post con toda la cosa');
 			$this->load->model('post');
 			$this->load->model('postmeta');
 			$this->load->model('terms');
@@ -109,7 +110,9 @@ class Fotos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = $this->input->post('texto');
+			
+			//Debo armar el texto con las img
+			//$data['post_content'] = $this->input->post('texto');
 			$data['tags'] = $this->input->post('tags');
 			
 			//consigue los id de las cata
@@ -184,6 +187,7 @@ class Fotos extends DI_Controller {
 		
 		$this->load->model('options');
 		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
+		$values['guid'] = $this->options->get_('upload_url') . date('/Y/m/');
 
 		$this->load->library('upload', $tmp);
 		
@@ -198,22 +202,51 @@ class Fotos extends DI_Controller {
 		}	
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-			
+			$photo = $this->upload->data();
+
 			//debe insertar en un post, la imagen, ver wp_post id=18
 			$this->load->model('post');
-			$name = ereg_replace($data['file_ext'], '' , $data['orig_name']);
-			$ext = ereg_replace('.', '' , $data['file_ext']);
-			$this->post->insert_attach($name, $ext);
+			$this->load->helper('inflector');
+			
+			$values['post_author'] = $this->input->post('id');
+			$values['post_name'] = score(ereg_replace($photo['file_ext'], '' , $photo['orig_name']));
+			$values['post_mime_type'] = 'image/' . ereg_replace($photo['file_ext'], '' , $photo['orig_name']);;
+			$values['guid'] = $values['guid'] . $photo['file_name'];
+			
+			$the_photo = $this->post->insert_attach($values);
 			
 			//debo manipular la imagen
+			if (function_exists('getimagesize'))
+			{
+				//Consigo la info de la img
+				if (FALSE !== ($D = @getimagesize($photo['full_path'])))
+				{
+					$image_info['w'] = $D['0'];
+					$image_info['h'] = $D['1'];
+				}
+				
+				$sizes_name = array('thumbnail_size', 'medium_size', 'large_size');
+				 
+				foreach($sizes_name as $tmp_size)
+				{
+					$h = $tmp_size . '_h';
+					$w = $tmp_size . '_w';
+					$tmp[$w] = $this->options->get_($w);
+					$tmp[$h] = $this->options->get_($h);
+					
+					if (($h > $image_info['h']) OR ($w > $image_info['w']) )
+					{
+						//redimensiono
+					}
+				}
+			}			
 			
 			//debo crear el texto para el  post (img + descripcion)
 			
 			//debo poner un post con el texto
 			
-			die(print_r($data));
-		}		
+			//die(print_r($photo));
+		}
 		
 	}
 		

@@ -37,8 +37,13 @@ class Users extends Model {
     }
     
     function insertar($values)
-    {	
+    {	  
         $this->db->insert($this->tabla, $values);
+        
+        $query = $this->seleccionar(array('user_login' => $values['user_login']));
+        $query = $query->row();
+        
+        return $query->ID;
     }
     
     function actualizar($values, $where)

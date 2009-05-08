@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php $this->load->helper('html'); ?>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->config->item('charset'); ?>" />
 <title><?php echo $seccion; ?></title>
@@ -25,7 +26,7 @@ tinyMCE.init({
 });
 </script>
 
-
+<?php if (isset($this->me_url)): ?>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
@@ -39,7 +40,7 @@ window.onload = function () {
 		// Backend settings
 		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
 		upload_url: "<?php echo $this->me_url; ?>ajax/upload",
-		post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
+		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
 		file_size_limit : "2 MB",
 		file_types : "*.jpg;*.jpeg;*.png;*.gif",
 		file_types_description : "Imagenes",
@@ -70,7 +71,7 @@ window.onload = function () {
 	});
 };
 </script>
-
+<?php endif; ?>
 <!--[if lte IE 6]>
 	<?php echo link_tag('css/ie6.css'); ?>
 

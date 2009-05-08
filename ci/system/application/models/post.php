@@ -11,17 +11,11 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
-    function insert_attach($name, $ext)
+    function insert_attach($values)
     {
-    	$this->load->library('session');
-    	$this->load->helper('inflector');
-    	
-    	$values['post_author'] = $this->session->userdata('id');
-    	$values['post_type'] = 'attachment';
-    	$values['post_name'] = score($name);
+    	$values['post_type'] = 'attachment';    	
 		$values['post_status'] = 'inherit';
-		$values['post_mime_type'] = 'image/' . $ext;
-
+		
 		$post_id = $this->_insertar($values);
     	
 		return $post_id;

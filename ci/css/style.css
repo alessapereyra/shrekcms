@@ -307,7 +307,7 @@ fieldset#localizar.ui-tabs.ui-widget.ui-corner-all,
 
 object#SWFUpload_0.swfupload {
 	padding: 10px;
-	width: auto;
+	/*width: auto;*/
 }
 
 fieldset#localizar div.ui-tabs-panel,
@@ -442,4 +442,3 @@ div#end_form {
 }
 
 /* @end */
-

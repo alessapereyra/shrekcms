@@ -73,9 +73,6 @@ class DI_Controller extends Controller {
 			
 			$this->is_ajax = FALSE;
 			$this->form = '';
-			
-			//$this->load->view('layout/' . $tmp['content']);
-			//$this->load->view('layout/' . $tmp['sidebar']);
 		}
 		
 	}

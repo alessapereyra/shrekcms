@@ -1,4 +1,4 @@
-
+<?php $this->load->helper('url'); ?>
 <div id="top_menu">
    <div>
      <span class="left">lamula</span>
