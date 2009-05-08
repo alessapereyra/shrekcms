@@ -26,25 +26,18 @@ tinyMCE.init({
 });
 </script>
 
-<<<<<<< HEAD:ci/system/application/views/layout/head.php
 <?php if (isset($this->me_url)): ?>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
-=======
-
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.queue.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/fileprogress.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/handlers.js"></script>
->>>>>>> fcf5f7f6dad2982c9f9c94239f7a552bec515a91:ci/system/application/views/layout/head.php
-
 
 <script type="text/javascript" language="javascript">
 var swfu;
 window.onload = function () {
 	swfu = new SWFUpload({
 		// Backend settings
-		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
+		flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
 		upload_url: "<?php echo $this->me_url; ?>ajax/upload",
 		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
 		file_size_limit : "2 MB",
@@ -58,7 +51,7 @@ window.onload = function () {
 		debug: true,
 
 		// Button settings
-		button_image_url: "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
+		button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
 		button_width: 61,
 		button_height: 22,
 		button_placeholder_id: "spanButtonPlaceholder",
@@ -72,10 +65,8 @@ window.onload = function () {
 		upload_error_handler : uploadError,
 		upload_success_handler : uploadSuccess,
 		upload_complete_handler : uploadComplete,
-<<<<<<< HEAD:ci/system/application/views/layout/head.php
 		queue_complete_handler : queueComplete	// Queue plugin event		
 				
-=======
 
 		// Button Settings
 		button_image_url : "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
@@ -98,7 +89,7 @@ window.onload = function () {
 		
 		// Debug Settings
 		debug: false
->>>>>>> fcf5f7f6dad2982c9f9c94239f7a552bec515a91:ci/system/application/views/layout/head.php
+    fcf5f7f6dad2982c9f9c94239f7a552bec515a91:ci/system/application/views/layout/head.php
 	});
 };
 </script>
