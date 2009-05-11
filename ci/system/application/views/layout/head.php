@@ -26,7 +26,23 @@ tinyMCE.init({
 });
 </script>
 
-<?php if (isset($this->me_url)): ?>
+<?php 
+$subidon = array('fotos', 'documentos');
+
+if (in_array($this->uri->segment(1), $subidon)):
+
+switch ($this->uri->segment(1))
+{
+	case 'fotos':
+		$name = 'Imagenes';
+		$ext = '*.jpg;*.jpeg;*.png;*.gif';
+	break;
+	case 'documentos':
+		$name = 'Documentos';
+		$ext = '*.doc;*.pdf';
+	break;
+}
+?>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
@@ -41,8 +57,8 @@ window.onload = function () {
 		upload_url: "<?php echo $this->me_url; ?>ajax/upload",
 		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
 		file_size_limit : "2 MB",
-		file_types : "*.jpg;*.jpeg;*.png;*.gif",
-		file_types_description : "Imagenes",
+		file_types : "<?php echo $ext; ?>",
+		file_types_description : "<?php echo $name?>",
 		file_upload_limit : 10,
 		file_queue_limit : 0,
 		custom_settings : {

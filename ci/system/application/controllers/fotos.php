@@ -170,12 +170,7 @@ class Fotos extends DI_Controller {
 				break;
 			}
 			$data['post_content'] = $data['post_content'] . 'descripcion';
-			//die($data['post_content']);
-			
-			
-			//echo print_r($data);
-			//Debo armar el texto con las img
-			//$data['post_content'] = $this->input->post('texto');
+
 			$data['tags'] = $this->input->post('tags');
 			
 			//consigue los id de las cata
@@ -276,6 +271,7 @@ class Fotos extends DI_Controller {
 			
 			$values['post_author'] = $this->input->post('id');
 			$values['post_title'] = score(ereg_replace($photo['file_ext'], '' , $photo['file_name']));
+			$values['post_name'] = $values['post_title'];
 			$values['post_mime_type'] = 'image/' . ereg_replace('\.', '' , $photo['file_ext']);
 			$values['guid'] = $values['guid'] . $photo['file_name'];
 			

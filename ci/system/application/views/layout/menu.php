@@ -22,6 +22,6 @@
 				<li class="video"><?php echo anchor('', 'video') ?></li>
 				<li class="articulo"><?php echo anchor('articulos/formulario', 'Articulo') ?></li>
 				<li class="audio"><?php echo anchor('', 'audio') ?></li>
-				<li class="documento"><?php echo anchor('', 'documento') ?></li>					
+				<li class="documento"><?php echo anchor('documentos/formulario', 'documento') ?></li>					
 			</ul> <!-- menu -->
 			
