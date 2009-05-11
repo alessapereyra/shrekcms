@@ -118,7 +118,6 @@ class Fotos extends DI_Controller {
 				//subir imagenes
 				case 'subir':
 					$images_id = split('-', $this->input->post('files'));
-					//$images_id = split('-', '-65');
 					unset($images_id[0]);
 					
 					foreach($images_id as $img)
@@ -131,7 +130,6 @@ class Fotos extends DI_Controller {
 						
 						$photo_name = $this->postmeta->seleccionar($search_metadata);
 						$photo_name = $photo_name->row_array();
-						//die(print_r($photo_name));
 						$photo_name = split('/', $photo_name['meta_value']);
 						$photo_name = $photo_name[count($photo_name)-1];
 
@@ -162,8 +160,13 @@ class Fotos extends DI_Controller {
 				break;
 				
 				//enlazar
-				case 'enlazar':
-					$data['post_content'] .= 'enlazar';
+				case 'enlazar': 
+					$tmp = '<a href="' . $this->input->post('photolink') . '">';
+					$tmp .= '<img class="alignnone" src="' . $this->input->post('photolink') . '" />';
+					$tmp .= '</a>';
+					$tmp .= '<br />';
+					$data['post_content'] .= $tmp;
+					
 				break;
 			}
 			$data['post_content'] = $data['post_content'] . 'descripcion';
