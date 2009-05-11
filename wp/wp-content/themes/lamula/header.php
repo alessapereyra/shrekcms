@@ -16,6 +16,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/site.js" type="text/javascript" charset="utf-8" ></script>
 
+  <?php wp_head(); ?>
 	
 </head>
 
@@ -36,7 +37,7 @@
       </div> <!-- top_ad -->
   
 
-      <h1>La Mula</h1> 
+      <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
   
   
       <div id="search_bar">

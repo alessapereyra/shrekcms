@@ -1,0 +1,284 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 0.9.9.6 RC4 / october 28 2008 ===
+  * new: now template elements for time restricted rating
+  * new: expiry date and countdown calculations
+  * edit: default time restriction templates updated
+  * fix: wordpress flash uploader disappearing
+  * fix: javascript related bugs
+  * fix: php4 preparing data for widget and shortcode
+  * fix: few more php4 related bugs
+
+=== Version: 0.9.9.3 RC3 / october 24 2008 ===
+  * new: expanded editor widget with additional post options
+  * new: default timer restriction options
+  * new: time restrictions data in articles table
+  * new: functions for getting php and mysql versions
+  * new: import from 'wp post rating' plugin data
+  * new: automatic rendering of stars on search results pages
+  * new: additional check to verify received vote
+  * edit: changes to admin pages names
+  * edit: various small changes
+  * fix: numerous visual bugs
+  * fix: trend rating calculation
+  * fix: mysql4 str_to_date sql function problems
+
+=== Version: 0.9.9.2 RC2 / october 22 2008 ===
+  * new: included jquery.ui.datepicker with translations
+  * edit: scandir function replaced with new one that works in php4/php5
+  * edit: removed user guide from the package
+  * edit: updated readme file
+  * fix: rating problem with first comment on page
+  * fix: limiting the length of post title for widget
+  * fix: rendering review stars
+
+=== Version: 0.9.9 RC / october 21 2008 ===
+  * new: redesigned starrating shortcode
+  * new: bayesian mean estimate rating calculation
+  * new: all icons sets with description files
+  * new: trends and stars sets classes and import
+  * new: darkness style stars
+  * new: export user voting data
+  * new: export data panel
+  * new: additional functions to use in themes
+  * new: import checks for available plugins
+  * new: additional location for stars and trends graphics sets
+  * new: expanded articles table for new expiry voting restrictions
+  * new: more template elements
+  * edit: trend images rendering
+  * edit: merged widget and starrater rendering code
+  * edit: few more wordpress 2.7 improvements
+  * edit: more widget improvements
+  * edit: updated translations
+  * edit: code updated to work with new graphics description format
+  * edit: added some missed strings for translation
+  * edit: changes to internal path and url variables
+  * edit: partialy removed uneeded code
+  * edit: improved translation and added new strings
+  * edit: improved tinymce3 plugin javascript code
+  * fix: tinymce plugin not working on some servers
+  * fix: rare widget rendering problems
+  * fix: minor widget calculation bug
+  * fix: invalid position for StarRater shortcode
+  * fix: xhtml valid problems
+  * fix: removed parts of unused and uneeded code
+  * fix: incorrect init of default templates settings
+  * fix: saving trend settings
+  * fix: invalid global constants
+  * fix: few typos
+
+=== Version: 0.9.8 Beta #4 / october 13 2008 ===
+  * new: trend icon sets
+  * new: import data from 'post star rating' plugin
+  * new: additional setup options
+  * edit: improved setup page
+  * fix: widget trend display
+  * fix: settings update problem
+
+=== Version: 0.9.7 Beta #3 / october 12 2008 ===
+  * new: famfamfam trend icons
+  * new: trend calculations
+  * new: widget trend display
+  * new: trend images preview
+  * edit: more widget redesign
+  * edit: partialy removed old and unused code
+  * edit: more changes to settings panel
+  * edit: old javascript replaced by jquery
+  * edit: rewriten ajax code and moved to document ready
+  * fix: missing overlay stars on ie browsers
+  * fix: unneeded loading of ajax code if ajax is disabled
+  * fix: few extra lines of debug code
+  * fix: various smaller bugs
+
+=== Version: 0.9.6 Beta #2 / october 2 2008 ===
+  * new: introducing templates
+  * new: ajax voting support
+  * new: templates for rating stars text
+  * new: widget supports grouping of votes
+  * new: updated styles to fit wp 2.7
+  * new: post review box for wp 2.7
+  * new: grouping options for widget
+  * new: enable/disable widgets options
+  * edit: small changes to rendering
+  * edit: changes to widget settings layout
+  * edit: main class numerous improvements
+  * edit: optimization of widget db code
+  * fix: various small bugs
+  * fix: multi byte langauge encoding problems
+  * fix: manual function for adding widget content
+
+=== Version: 0.9.5 Beta #1 / september 15 2008 ===
+  * new: fully redesigned widget
+  * new: advanced settings control
+  * new: function to render widget like output
+  * new: crystal hearts style stars
+  * new: pine hearts style stars
+  * edit: updated user guide
+  * edit: redesigned plugin menues
+  * edit: small code reorganization
+  * fix: rendering of rating header
+  * fix: stars border appearing is some rare cases
+  * fix: stars preview
+  * fix: vote rules combo
+  * fix: various database code errors
+
+=== Version: 0.9.4.1 / september 6 2008 ===
+  * new: rating text placement on left or right of the stars
+  * new: additional css custom classes for rating block and rating text
+  * new: control setting for the ie6 png fix
+  * new: using jQuery for javascript code
+  * new: reset and remove settings options
+  * new: recalculate functions (finally)
+  * new: tabed settings panel
+  * edit: all votes in database changed to decimal
+  * edit: improved ie6 png fix
+  * edit: css code cleanup
+  * edit: code cleanup in main class
+  * edit: more improvements to settings panel
+  * edit: various code improvements
+  * edit: updated POT translation file
+  * fix: database installation method
+  * fix: setup page problems
+  * fix: bunch of small bugs
+
+=== Version: 0.9.2 / september 3 2008 ===
+  * new: french translation
+  * new: ie6 png fix
+  * new: deleting comments ratings
+  * edit: improved comments page
+  * edit: code cleanup for translation optimization
+  * edit: removed all old db conversion code
+  * edit: improved serbian translation
+  * fix: article votes page navigation
+  * fix: unneeded debug code
+  * fix: error in deleting comments votes
+
+=== Version: 0.9.1 / august 30 2008 ===
+  * new: rewritten stars rendering
+  * new: spanish translation
+  * new: serbian translation
+  * edit: updated POT translation file
+  * fix: rating table invalid links
+
+=== Version: 0.9.0 / august 28 2008 ===
+  * new: separate display rating star for trackbacks comments (default is no)
+  * new: comments page in control panel
+  * new: moderation page in control panel
+  * new: review rating supports decimal value
+  * new: setting width for administration tables
+  * new: setting number of rows for administration tables
+  * new: counting number of views for posts and pages
+  * new: separate cookie settings for comments and articles
+  * new: preventing authors to vote for their posts and comments
+  * new: search on the article page
+  * new: POT translation file
+  * edit: expanded and modified database tables
+  * edit: cleanup of the database code
+  * edit: more improvements to control panel
+  * edit: saving comment methods
+  * edit: descending sorting by default
+  * fix: saving reviews rating through control panel articles page
+  * fix: potential problem with redirection after comment vote
+  * fix: displaying rating stars in admin mode
+
+=== Version: 0.8.8 / august 22 2008 ===
+  * new: soft style stars
+  * new: aeon style stars
+  * new: positioning of rating stars and text
+  * new: rating header text
+  * new: rating text for review rating
+  * new: database maintenance setup options
+  * edit: changes to control panel
+  * edit: updated user guide
+
+=== Version: 0.8.6 / august 21 2008 ===
+  * fix: small problems with extra debug code
+  * fix: small update problems
+
+=== Version: 0.8.5 / august 21 2008 ===
+  * new: fatty style stars
+  * new: voting for comments
+  * new: wait message after voting
+  * new: unified rendering stars code for both comments and articles
+  * new: comment rating shortcode
+  * new: optimization of loading post data for posts and comments
+  * edit: changes to control panel settings page
+  * edit: changes to voting rendering to avoid potential problems with some themes
+  * edit: updated rating block with separate styles for text for article and comment
+  * edit: database tables upgraded
+  * fix: invalid sql query for checking votes log
+  * fix: rendering article rating stars obsolete code
+  * fix: comment rendering bug
+
+=== Version: 0.8.0 / august 15 2008 ===
+  * new: ruby style stars
+  * new: milky style stars
+  * new: redesigned control panel
+  * new: rewritten large parts of the code
+  * new: review rating for posts and pages
+  * new: moderation of user and visitors votes
+  * new: vote and moderation rules
+  * new: first version of user guide
+  * new: calculation of voting trends
+  * new: upgrade from old database format
+  * edit: link to rating css file
+  * edit: cleanup of some parts of the code
+  * fix: detection error for user votes
+  * fix: few smaller bugs
+
+=== Version: 0.7.0 / august 1 2008 ===
+  * new: rating multi instance widget
+  * new: rendering stars in shortcode table
+  * new: different built in styles for shortcode table
+  * edit: rearanged vote calls to avoid potential cookie setting problems
+  * edit: aditional check for duplicated voting
+  * edit: updated trasnlation pot file
+  * fix: few smaller bugs
+
+=== Version: 0.6.0 / july 29 2008 ===
+  * new: starscape style stars
+  * new: starscape on white style stars in gif format
+  * new: tinymce3 editor button for adding shortcode
+  * new: shortcode 'starrating' for inserting voting data into posts
+  * new: stars images can be also gif or jpg
+  * edit: adding filters and actions moved to constructor
+  * fix: page refresh caused recording of duplicate votes
+
+=== Version: 0.5.0 / july 25 2008 ===
+  * new: nuvola style stars
+  * new: inspire style stars
+  * new: deleting votes data, deletes log votes also
+  * new: control panel log votes tab pages
+  * fix: not saving vote date
+
+=== Version: 0.4.0 / july 23 2008 ===
+  * new: aero style stars
+  * new: shiny style stars
+  * new: quiet style stars
+  * new: mini stars size
+  * new: multi background color stars preview
+  * new: different and better stars handling
+  * new: universal stars css file
+  * new: delete votes for a page or post
+  * new: translation support
+  * new: serbian translation
+  * edit: various improvements
+
+=== Version: 0.3.0 / july 23 2008 ===
+  * new: crystal style stars
+  * new: oxygen style stars
+  * new: post and page voting statistics
+  * edit: control panel open last active tab on save
+  * fix: small bugs
+  * fix: saving vote cookie problem
+
+=== Version: 0.2.0 / july 22 2008 ===
+  * new: using cookies to prevent duplicate votes
+  * new: spiderbot detection
+  * new: recalculate values if you change number of stars
+  * fix: vote url creating for different permalinks
+
+=== Version: 0.1.0 / july 21 2008 ===
+  * Initial Alpha Release

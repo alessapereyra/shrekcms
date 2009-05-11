@@ -31,6 +31,7 @@ get_header(); ?>
     
     <h3>La noticia del día: <br />la mula en 2 líneas</h3>
     <p>
+        <span class="author">Por <a href="#">Pepito</a> <em>05/05/2009</em></span>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Cras augue arcu, mattis et, interdum a, placerat sed, massa. Nullam pretium. 
         Vestibulum risus turpis, pellentesque non, ultricies ut, posuere sed, tortor. 
@@ -43,48 +44,58 @@ get_header(); ?>
   <div id="top_news_footer">
     
     <a href="#" id="leer_mas_footer">Leer m&aacute;s</a>
-    <p class="comments"><em>12</em> comentarios</p>
+    <p class="comments"><a href="#"><em>12</em> comentarios</a></p>
     <p class="rate"><em>estrellas</em></p>
     
   </div> <!-- top_news_footer -->
   
 </div> <!-- top_news -->
 
-<div id="content">
+<div id="content" class="inner">
   
-  <div id="content_feed">
+  <div id="content_feed">    
 
-    <ul>
-      <li><a href="#">lo bueno</a></li>
-      <li><a href="#">lo malo</a></li>
-      <li><a href="#">la roca</a></li>
-      <li><a href="#" class="active">lo todo</a></li>
-    </ul>
-    
-
-    <dl>
+    <ul id="post_list">
     
     <?php if (have_posts()) : ?>
-
-
+        
   		<?php while (have_posts()) : the_post(); ?>
 
+        <li>
 
-          <dt>
-              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-              <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
-              </a>
-          </dt>
-          <dd>
-              <h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
-              <?php the_content(); ?>
-          </dd>
+          <h5>
+            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+    				  <?php the_title(); ?>
+            </a>
+          </h5>
+          
+          <div class="post_content">
+              
+              <?php 
+                    //get_the_time('g:i a')
+                    
+              ?>
+
+              <h6 class="metadata">Por <?php the_author(); ?> publicado a las <?php the_time('g:i a'); ?> </h6>
+              
+              <?php echo get_the_content(); ?>
+              
+              <div class="news_footer">
+
+                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+              </div> <!-- news_footer -->              
+
+
+          </div>
+
+        </li>
 
   		<?php endwhile; ?>
 
   		<div class="navigation">
-  			<div class="alignleft"><?php next_posts_link('&laquo; anterior') ?></div>
-  			<div class="alignright"><?php previous_posts_link('siguiente &raquo;') ?></div>
+  			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
+  			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
   		</div>
 
   	<?php else : ?>
@@ -96,7 +107,7 @@ get_header(); ?>
   	<?php endif; ?>
   	
 	
-  </dl>
+  </ul>
 
 
   </div> <!-- content_feed -->

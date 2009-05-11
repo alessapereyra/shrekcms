@@ -1,10 +1,14 @@
-/* @override http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css */
+/* @override 
+	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
+	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
+*/
 
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #e8e9e9 url(images/background.png) repeat-x fixed center 99px;
+	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
+	color: #3b3330;
 }
 
 a {
@@ -26,9 +30,8 @@ div#wrapper {
 
 div#top_menu {
 	
-	background-color: black;
-	padding: 10px 0px;
-	color: white;
+	background-color: #093155;
+	color: #fff;
 	overflow: hidden;	
 	font-size: 0.8em;
 }
@@ -36,6 +39,8 @@ div#top_menu {
 div#top_menu p span.left {
 	float: left;
 	margin-left: 20px;
+	margin-top: 5px;
+	color: #fff;
 }
 
 div#top_menu p span.right {
@@ -43,6 +48,13 @@ div#top_menu p span.right {
 	margin-right: 20px;
 }
 
+#top_menu p span.right a {
+	text-decoration: none;
+	color: #fbfcff;
+	margin: 5px;
+	display: block;
+	
+}
 
 /* @end */
 
@@ -55,7 +67,7 @@ div#top_ad {
 
 div#top_ad img {
 	width: 800px;
-	background-color: black;
+	background-color: #3b3330;
 }
 
 
@@ -63,7 +75,7 @@ div#top_ad img {
 
 /* @group Logo Header */
 
-h1{
+h1 a{
 
 	font-size: 6em;
 	float: left;
@@ -72,6 +84,8 @@ h1{
 	text-indent: -9000em;
 	width: 310px;
 	height: 80px;
+	text-decoration: none;
+	border: none;
 }
 
 
@@ -96,7 +110,7 @@ h2#status {
 	margin-top: 1.7em;
 	margin-bottom: 1em;
 	margin-left: 1em;
-	color: #fe008a;
+	color: #000;
 	font-size: 1.3em;
 }
 
@@ -127,7 +141,7 @@ div#menu_bar {
 div#menu_bar p#tagline,
 div#menu_bar p#zonas {
 	padding: 5px 10px 5px 10px;
-	background-color: black;
+	background-color: #3b3330;
 	width: 80px;
 	color: #e0e0e0;
 	float: left;	
@@ -166,13 +180,13 @@ ul#menu > li {
 	float: left;
 	overflow: auto;
 	background-color: white;
-	color: black;
+	color: #3b3330;
 }
 
 ul#menu > li a,
 ul#menu ul li.current {
 	padding: 6px 10px;
-	color: black;
+	color: #3b3330;
 	text-decoration: none;
 	display: block;
 	float: left;
@@ -209,7 +223,7 @@ ul#menu li ul li ul li{
 ul#menu ul li.current {
 	background-color: #f2ff00;
 	display: none;
-	border-top: 2px solid #000;
+	border-top: 2px solid #3b3330;
 }	
 	
 ul#menu ul li a:hover {
@@ -230,7 +244,7 @@ div#top_news {
 	margin-top: 1em;
 	overflow: auto;
 	background-color: white;
-	padding: 20px;
+	padding: 20px 20px 20px;
 }
 
 div#top_news div#top_news_image {
@@ -242,25 +256,34 @@ div#top_news div#top_news_image {
 div#top_news div#top_news_image img {
 	
 	width: 400px;
-	border: 5px solid #000;
+	border: 5px solid #3b3330;
+	margin-top: 0em;
 }
 
 div#top_news div#top_news_text {
 	
 	float: left;
 	display: block;
-	width: 450px;
-	margin-left: 30px;
-	
+	width: 445px;
+	margin-left: 35px;
+	overflow: auto;
 }
 
 div#top_news div#top_news_text h3 {
-	line-height: 1.1em;
-	color: black;
+	line-height: 1.0em;
+	color: #3b3330;
 	text-transform: lowercase;
-	letter-spacing: -2px;
+	letter-spacing: -4px;
 	font-size: 3.2em;
+	margin-bottom: 0.3em;
+	word-spacing: 4px;
 }
+
+div#top_news div#top_news_text h3 a {
+	color: #3b3330;
+	text-decoration: none;
+}
+
 
 div#top_news div#top_news_text p {
 	line-height: 1.3em;
@@ -275,8 +298,9 @@ div#top_news div#top_news_text p {
 
 div#top_news_footer {
 	clear: both;
-	border-bottom: 5px solid #000;
+	border-bottom: 5px solid #3b3330;
 	overflow: hidden;
+	margin-top: 16em;
 }
 
 div#top_news_footer a#leer_mas_footer {
@@ -284,7 +308,7 @@ div#top_news_footer a#leer_mas_footer {
 	display: block;
 	margin: 0px;
 	padding: 6px 18px;
-	background-color: black;
+	background-color: #3b3330;
 	color: white;
 	text-decoration: none;
 	margin-left: 10px;
@@ -301,9 +325,13 @@ div#top_news_footer p.rate {
 	padding: 6px 18px;
 }
 
+div#top_news_footer p.rate{
+	padding: 0px;
+}
+
 div#top_news_footer p.comments a {
 	text-decoration: none;
-	color: black;
+	color: #3b3330;
 }
 
 div#top_news_footer p.comments a:hover {
@@ -320,10 +348,12 @@ div#top_news_footer p.comments a em {
 
 /* @group Main Content */
 
+
+
 div#content {
 	
 	clear: both;
-	margin-top: 1.5em;
+	margin-top: 1em;
 	overflow: auto;
 }
 
@@ -334,88 +364,197 @@ div#content_feed {
 	width: 470px;
 	float: left;
 	padding-bottom: 40px;
-	overflow: auto;
+
 }
 
 div#content_feed ul {
-	overflow: auto;
-	width: 470px;
-	margin: 0px auto;
+	clear: both;
+
+	margin: 0px auto 0px 0.5em;
 }
 
 div#content_feed ul li {
 	
 	float: left;
-	
 }
 
 div#content_feed ul li a {
 		
 	text-decoration: none;
 	display: block;
-	padding: 7px 30px;
-	border-style: solid;
-	border-width: 1px;
-	margin: 2px;
-}
-
-div#content_feed ul li a:hover,
-div#content_feed ul li a.active {
-	background-color: #ff7e00;
+	padding: 8px 30px;
+	margin: 0 4px 0px 0;
+	background-color: #3b3330;
 	color: white;
 }
 
+div#content_feed ul li a.active,
+div#content_feed ul li a.active:hover {
+	background-color: white;
+	color: #3b3330;
+}
 
-div#content_feed dl,
-div#sidebar_central dl {
-	
+div#content_feed ul li a:hover {
+	background-color: #3b3330;
+}
 
-	margin-top: 2em;
-	overflow: hidden
+
+div#content_feed ul#post_list li {
+	float: none;
+	overflow: hidden;
+	margin-bottom: 35px;
+	padding-bottom: 0px;
+}
+
+#post_list li.even div.post_content div.news_footer {
+	overflow: hidden;
+}
+
+.inner #post_list li div.post_content object,
+#top_news object {
+	margin: 20px 0px;
+	width: 430px;
+}
+
+ #post_list li div.post_content object {
+	margin: 20px 0px;
+	width: 360px;
+}
+
+
+#post_list li div.ratingblock div.ratingblock,
+#post_list li div.ratingblock {
+
+	padding-bottom: 0px !important;
+	margin: 0px;
+}
+
+#post_list li a.rate div.ratingblock {
+	margin-top:6px !important;
+}
+
+#post_list h4 {
+	font-size: 1.2em;
+	text-transform: lowercase;
+	letter-spacing: -2px;
+	padding-bottom: 0.2em;
+	margin-bottom: 1em;
+}
+
+#post_list li div.post_content {
+	float: left;
+	width: 350px;	
+}
+
+.inner #post_list li div.post_content {
+	float: none;
+	width: auto;
+	line-height: 1.5em;
+}
+
+.inner #post_list li h5 a small.date {
+	display: block;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 0.5em;
+}
+
+.inner #post_list li div.post_content h6.metadata {
+	font-size: 1.1em;
+	text-transform: lowercase;
+	margin-bottom: 1.1em;
+	color: #df0b7a;;
+}
+
+.inner #post_list li div.post_content h6.author {
+	margin-bottom: 0.4em;
+}
+
+.inner #post_list li div.post_content h6.date {
+	margin-bottom: 1.2em;
+}
+
+#post_list li div.post_content a,
+#post_list li h5 a{
+	margin: 0px;
+	padding: 0px;	
+	background: none;
+	color: #fe008a;
+}
+
+#post_list li h5 {
+	font-size: 1.1em;
+	margin-bottom: 0.5em;
+	letter-spacing: -1px;
+}
+
+#post_list li div.post_content a{
+	color: #fe008a;
+}
+
+#post_list li div.post_content a:hover{
+	background: none;
+	color: #cbcf00;
+}
+
+#post_list li div.post_image {
+	float: left;
+	width: 60px;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+
+#post_list li div.post_image a {
+	margin: 0px;
+	padding: 0px;	
+
+}
+
+#post_list li div.post_image a img{
+	width: 60px;
+
+}
+
+
+div#content_feed ul#post_list
+{
+	overflow: hidden;
+	background-color: white;
+	padding: 40px 20px 20px;
+	margin: 0px;
+}
+
+div#sidebar_central ul.bloggers_list {
 	
 }
 
-div#sidebar_central dl {
+#content_feed ul div.navigation {
+	clear: both;	
+}
+
+
+
+div#sidebar_central div.sidebar_foto {
+	width: 30px;
+	float: left;
+	margin-right: 10px;
+}
+
+div#sidebar_central div.sidebar_foto img {
+	width: 30px;
+}
+
+
+div#sidebar_central li {
 	margin-top: 1em;
 }
 
-div#content_feed dl dt,
-div#sidebar_central dl dt {
-	
-	float: left;
-	width: 80px;
-	margin-right: 10px;
-	clear: both;
-	overflow: auto;
-}
-
-div#content_feed dl dt {
-	margin-bottom: 15px;
-}
-
-div#sidebar_central dl dt {
-	width: 45px;
-}
-
-div#content_feed dl dt img {
-	width: 80px;
-}
-
-div#content_feed dl dd,
-div#sidebar_central dd {
-	
-	float: left;
-	width: 380px;
-	clear: right;
-	line-height: 1.5em;
-	margin-bottom: 2em;
-	font-size: 0.9em;
-}
-
-div#sidebar_central dl dd {
-	width: 135px;
+div#sidebar_central li div.sidebar_txt {
+	width: 110px;
 	line-height: 1.1em;	
 	margin-bottom: 1em;
+	float: left;
+	font-size: 0.8em;
 }
 
 div#sidebar_central dl dd h6 {
@@ -430,21 +569,34 @@ div#sidebar_central dl dd strong {
 	word-spacing: 9px;
 }
 
-div#sidebar_central dl dd p {
+div#sidebar_central ul li p {
 	font-size: 0.8em;	
 }
 
 
-div#content_feed dl dd h5 {
+div#content_feed h5 {
 	color: #ff7e00;
-	font-size: 1.2em;
+	font-size: 1.4em;
 }
 
-div#content_feed dl dd h5 a {
+div#content_feed ul li h5 a {
 	text-decoration: none;
+	padding: 0px;
+	background: none;
+	color: black;
 }
 
-#content_feed dl dd p span a {
+div#content_feed ul li h5 a:hover {
+	color: rgb(191, 136, 0);
+	background: none;
+}
+
+#post_list li div.post_content div.news_footer {
+	overflow: auto;
+	height: 30px;
+}
+
+#content_feed ul li p span a {
 	display: block;	
 }
 
@@ -454,9 +606,9 @@ div#content_feed dl dd h5 a {
 
 
 div#sidebars {
-	
-	width: 440px;
+	width: 435px;
 	float: right;
+	margin-left: 10px;
 }
 
 
@@ -466,22 +618,36 @@ div#sidebars p a {
 }
 
 div#sidebars div#sidebar_central {
-	width: 190px;
+	width: 210px;
 	float: left;
-	background-color: #f3f3f3;
-	padding: 20px 10px 40px;
-	overflow: auto;
-	border: 3px solid #d4d4d4;
+	background-color: #fcf270;
+	overflow: hidden;
 	margin-bottom: 2em;
-	margin-left: 5px;
 }
 
 div#sidebars div#sidebar_central h4	{
-	font-size: 1.3em;
-	color: #ff7e00;
+	font-size: 1.5em;
+	color: #3b3330;
 	text-transform: lowercase;
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-bottom: 1em;
 }
 
+#sidebar_central ul.bloggers_list li {
+	padding: 10px 8px 8px 25px;
+	overflow: auto;
+	margin: 0px;
+	font-size: 1.1em;
+}
+
+#sidebar_central ul.bloggers_list li:hover {
+		background-color: #ffe250;
+		cursor: pointer;
+		color: black;
+
+}
+	
 div#sidebars div#sidebar_recomendados h4 {
 	font-size: 1em;
 	color: #f6e9e9;
@@ -495,7 +661,7 @@ div#sidebars div#sidebar_recomendados ul {
 	margin-bottom: 1em;
 }
 
-div#sidebars div#sidebar_recomendados li a{
+div#sidebars div#sidebar_recomendados ul li a{
 	float: left;
 	text-decoration: none;
 	display: block;
@@ -504,6 +670,11 @@ div#sidebars div#sidebar_recomendados li a{
 	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #070708;
 	padding: 4px 10px;
+}
+
+#sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
+	text-decoration: none;
+	color: #000;
 }
 
 #sidebar_recomendados ul li {
@@ -515,34 +686,107 @@ div#sidebars div#sidebar_recomendados li a{
 
 #important p a.send_news {
 	display: block;
-	width: 300px;
-	margin: 0 auto 1em;
 	text-align: center;
-	padding: 15px 20px;
-	color: #d46a0e;
-	background-color: #ffda4c;
-	font-size: 1.5em;
-	border: 4px solid #000;
+	padding: 15px 60px;
+	color: #000;
+	background-color: #ffe250;
+	font-size: 2em;
+	letter-spacing: -2px;
+	word-spacing: 4px;
+	margin: 0 auto 0.5em;
 }
 
 #important p a.send_news:hover {
-	background-color: #ffe250;
+	background-color: #ffda29;
+}
+
+#important p a.send_news em {
+	display: block;
+	font-size: 0.7em;
+	margin-top: 0.5em;
+	color: #3b3330;
 }
 
 
 div#sidebars div#sidebar_recomendados li a:hover{
 	background-color: #ff7e00;
-	color: black;
+	color: #3b3330;
 }
+
+
 
 
 div#sidebars div#sidebar_recomendados {
-	width: 185px;
+	width: 210px;
 	float: right;
-	background-color: black;
+	background-color: #3b3330;
 	color: #f23e00;
-	padding: 20px 10px 40px;
 }
+
+#post_list li span small {
+	text-transform: lowercase;
+	font-size: 1em;
+	color: black;
+	font-weight: bold;
+}
+
+#post_list li small {
+	font-weight: bold;
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
+
+#post_list li div.post_content p {
+	font-size: 0.89em;
+	line-height: 1.5em;
+}
+
+#post_list li div.post_content div.news_footer a.leer_mas_footer,
+#post_list li div.post_content div.news_footer a.comments,
+#post_list li div.post_content div.news_footer div.ratingblock {
+	float: left;
+	margin-right: 15px;
+	font-size: 0.8em;
+	margin-top: 1em;
+}
+
+
+#post_list li div.post_content div.news_footer div.ratingblock div.ratingtext,
+#top_news  div.ratingblock div.ratingtext {
+	display: none !important;
+}
+
+#top_news  div.ratingblock {
+	float: right;
+	margin-bottom: 0px;
+	margin-top: 4px;
+}
+
+#post_list li div.post_content div.news_footer div.ratingblock {
+	margin-top: 6px;
+}
+
+div#content.inner ul#post_list li h5 a {
+	font-size: 1.5em;
+}
+
+div#content.inner ul#post_list div.post_content p span {
+	font-size: 1.1em;
+}
+
 
 /* @end */
 
+/* @group Footer */
+
+	div#footer{
+	
+	padding: 20px;
+	text-align: center;
+	font-size: 3em;
+	color: white;
+	background-color: #3b3330;
+}
+
+/* @end */

@@ -1,0 +1,12 @@
+CREATE TABLE `%sgdsr_votes_log` (
+  `record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) DEFAULT NULL,
+  `vote_type` varchar(10) DEFAULT 'article',
+  `multi_id` int(11) DEFAULT '0',
+  `user_id` int(11) DEFAULT '0',
+  `vote` int(11) DEFAULT '0',
+  `object` text NOT NULL,
+  `voted` datetime DEFAULT NULL,
+  `ip` varchar(32) DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`record_id`));

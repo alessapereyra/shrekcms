@@ -48,7 +48,8 @@ class Fotos extends DI_Controller {
 				
 		//Dientuki:  Esto no se debería resolver simplemente creando un array de la primera 
 		// y luego creando un array adicional que repita el key/value de éste? 
-		$data['departamentos'] = array('Amazonas' => 'Amazonas', 
+		$data['departamentos'] = array(	'Lima' => 'Lima', 			            
+		                                'Amazonas' => 'Amazonas', 
 		                                'Ancash' => 'Ancash', 
 		                                'Apurimac' => 'Apurimac', 
 		                                'Arequipa' => 'Arequipa', 
