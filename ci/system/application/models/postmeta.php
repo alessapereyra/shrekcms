@@ -27,5 +27,24 @@ class Postmeta extends Model {
     {
     	$this->db->insert($this->tabla, $values);
     }
+    
+    function seleccionar($values)
+    {
+    	$this->load->database();
+    	
+    	$fields = $this->db->list_fields($this->tabla);
+
+		foreach ($fields as $field)
+		{
+		   $this->db->select($field);
+		}
+
+    	$this->db->from($this->tabla);
+    	
+    	$this->db->where($values);
+    	
+        $query = $this->db->get();
+        return $query;   	
+    }
 
 }

@@ -29,11 +29,9 @@
   					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
   		</div>
   		<div id="enlazar">
-  			
             	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
             	<?php echo form_error('photolink'); ?>
             	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
-  			  
   		</div>		
   	</div>
 

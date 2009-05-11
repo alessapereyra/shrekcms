@@ -511,7 +511,7 @@ function get_posts($args = null) {
  */
 function add_post_meta($post_id, $meta_key, $meta_value, $unique = false) {
 	global $wpdb;
-
+	
 	// make sure meta is added to the post, not a revision
 	if ( $the_post = wp_is_post_revision($post_id) )
 		$post_id = $the_post;
@@ -521,9 +521,9 @@ function add_post_meta($post_id, $meta_key, $meta_value, $unique = false) {
 
 	if ( $unique && $wpdb->get_var( $wpdb->prepare( "SELECT meta_key FROM $wpdb->postmeta WHERE meta_key = %s AND post_id = %d", $meta_key, $post_id ) ) )
 		return false;
-
+	 
 	$meta_value = maybe_serialize( stripslashes_deep($meta_value) );
-
+	
 	$wpdb->insert( $wpdb->postmeta, compact( 'post_id', 'meta_key', 'meta_value' ) );
 
 	wp_cache_delete($post_id, 'post_meta');
@@ -629,7 +629,7 @@ function get_post_meta($post_id, $key, $single = false) {
  */
 function update_post_meta($post_id, $meta_key, $meta_value, $prev_value = '') {
 	global $wpdb;
-
+	
 	// make sure meta is added to the post, not a revision
 	if ( $the_post = wp_is_post_revision($post_id) )
 		$post_id = $the_post;
@@ -640,7 +640,7 @@ function update_post_meta($post_id, $meta_key, $meta_value, $prev_value = '') {
 	if ( ! $wpdb->get_var( $wpdb->prepare( "SELECT meta_key FROM $wpdb->postmeta WHERE meta_key = %s AND post_id = %d", $meta_key, $post_id ) ) ) {
 		return add_post_meta($post_id, $meta_key, $meta_value);
 	}
-
+	
 	$meta_value = maybe_serialize( stripslashes_deep($meta_value) );
 
 	$data  = compact( 'meta_value' );
@@ -650,7 +650,7 @@ function update_post_meta($post_id, $meta_key, $meta_value, $prev_value = '') {
 		$prev_value = maybe_serialize($prev_value);
 		$where['meta_value'] = $prev_value;
 	}
-
+	
 	$wpdb->update( $wpdb->postmeta, $data, $where );
 	wp_cache_delete($post_id, 'post_meta');
 	return true;

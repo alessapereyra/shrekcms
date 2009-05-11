@@ -169,7 +169,7 @@ function apply_filters($tag, $value) {
 	} while ( next($wp_filter[$tag]) !== false );
 
 	array_pop( $wp_current_filter );
-
+	
 	return $value;
 }
 

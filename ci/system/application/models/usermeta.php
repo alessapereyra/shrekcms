@@ -18,7 +18,12 @@ class Usermeta extends Model {
     	{
     		$tmp['meta_key'] = $value['meta_key'];
     		$tmp['meta_value'] = $value['meta_value'];
-    		$this->db->insert($this->tabla, $tmp);
+    		$this->_insertar($tmp);
     	}
     }
+    
+    function _insertar($values)
+    {
+    	$this->db->insert($this->tabla, $values);
+    }    
 }

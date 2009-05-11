@@ -112,6 +112,7 @@ class Post extends Model {
     	
     	$this->db->where(array('post_date' => $values['post_date']));
     	$this->db->limit(1, 0);
+
     	$query = $this->db->get();
     	$query = $query->row(); 
     	

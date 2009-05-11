@@ -220,10 +220,12 @@ function media_handle_upload($file_id, $post_id, $post_data = array()) {
 
 	// Save the data
 	$id = wp_insert_attachment($attachment, $file, $post_id);
+	
 	if ( !is_wp_error($id) ) {
+		//Este hace mi magia.
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $file ) );
 	}
-
+	
 	return $id;
 
 }
