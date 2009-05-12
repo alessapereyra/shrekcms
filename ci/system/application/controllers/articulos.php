@@ -1,47 +1,21 @@
 <?php
 class Articulos extends DI_Controller {
 	
-	function index($page = 1, $per_page = NULL)
-	{
-		if ($per_page == NULL)
-		{
-			$per_page = $this->config->item('per_page');
-		}
-		
-		$this->load->model('zones');
-		
-		//arma el paginador
-		$data['consulta'] = $this->zones->seleccionar();
-		$data['paginador'] = $this->_paginador($data['consulta']->num_rows(), $per_page);
-		$data['selector'] = $this->pagination->create_selector($per_page);
-		
-		//calcula cuantos mostrar
-		$limit['show'] = $per_page;
-		$limit['from'] = ($page - 1) * $per_page;
-		
-		//consulta
-		$data['consulta'] = $this->zones->seleccionar(NULL, $limit);
-		$data['consulta'] = $data['consulta']->result_array();
-		
-		$data['error'] = $this->error;
-		
-		$this->load->view('backend/zonas/index', $data);
-		
-		$this->__destruct();
-	}
-	
 	function formulario($id = NULL)
 	{
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
-		$data['categorias'] = $this->_categorias();	
+		$data['categorias_selected'] = NULL;	
 		
-		$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
-		$data['distritos'] = $data['provincias'];		
-		$data['departamentos'] = $data['provincias'];		
-		$data['paices'] = $data['provincias'];				
+		$this->load->library('combofiller');
+		
+		$data['categorias'] = $this->combofiller->categorias();
+		$data['provincias'] = $this->combofiller->providences();
+		$data['distritos'] = $this->combofiller->distrits();
+		$data['departamentos'] = $this->combofiller->departments();		
+		$data['paices'] = $this->combofiller->countries();		
 		
 		if ($id != NULL)
 		{
@@ -54,32 +28,12 @@ class Articulos extends DI_Controller {
 		$this->load->view('articulos/articulo', $data);
 		$this->__destruct();		
 	}
-
-	function _show($id, $data)
-	{
-		$this->load->model('zones');
-		$consulta = $this->zones->seleccionar(array('id' => $id));
-		if ($consulta->num_rows() > 0)
-		{
-		   $fila = $consulta->row();
-		
-		   $data['id'] = $fila->id;
-		   $data['zona'] = $fila->zona;
-		}
-		return $data;		
-	}
-
-	function _categorias()
-	{
-		$this->load->model('terms');
-		return $this->terms->get_categories();	
-	}
 		
 	function actualizar()
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
-
+		$this->load->library('combofiller');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules($this->_reglas());
@@ -91,19 +45,29 @@ class Articulos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
-			$data['categorias'] = $this->_categorias();	
 
-			$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
-			$data['provincias_selected'] = '';
+			$data['categorias'] = $this->combofiller->categorias();
 			
-			$data['distritos'] = $data['provincias'];
-			$data['distritos_selected'] = '';
+			foreach($data['categorias'] as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					$categorias_selected[] = $key;
+				}
+			}
+			$data['categorias_selected'] = $categorias_selected;
+			
+			$data['provincias'] = $this->combofiller->providences();
+			$data['provincias_selected'] = set_value('provincia');
+			
+			$data['distritos'] = $this->combofiller->distrits();
+			$data['distritos_selected'] = set_value('distrito');
 					
-			$data['departamentos'] = $data['provincias'];
-			$data['departamentos_selected'] = '';
+			$data['departamentos'] = $this->combofiller->departments();
+			$data['departamentos_selected'] = set_value('departamento');
 					
-			$data['paices'] = $data['provincias'];
-			$data['paices_selected'] = '';				
+			$data['paices'] = $this->combofiller->countries();
+			$data['paices_selected'] = set_value('pais');				
 			
 			$data['form'] = $this->form;			
 
@@ -125,7 +89,7 @@ class Articulos extends DI_Controller {
 			$data['tags'] = $this->input->post('tags');
 			
 			//consigue los id de las cata
-			$categorias = $this->_categorias();
+			$categorias = $this->combofiller->categorias();
 			
 			$terms_taxonomy_id = NULL;
 			

@@ -9,12 +9,15 @@ class Documentos extends DI_Controller {
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
 		$data['doclink'] = NULL;		
-		$data['categorias'] = $this->_categorias();	
+		$data['categorias_selected'] = NULL;	
 		
-		$data['provincias'] = array('lima' => 'lima', 'callao' => 'callao');
-		$data['distritos'] = $data['provincias'];		
-		$data['departamentos'] = $data['provincias'];		
-		$data['paices'] = $data['provincias'];				
+		$this->load->library('combofiller');
+		
+		$data['categorias'] = $this->combofiller->categorias();
+		$data['provincias'] = $this->combofiller->providences();
+		$data['distritos'] = $this->combofiller->distrits();
+		$data['departamentos'] = $this->combofiller->departments();		
+		$data['paices'] = $this->combofiller->countries();			
 		
 		if ($id != NULL)
 		{
@@ -27,32 +30,12 @@ class Documentos extends DI_Controller {
 		$this->load->view('documentos/documento', $data);
 		$this->__destruct();		
 	}
-
-	function _show($id, $data)
-	{
-		$this->load->model('zones');
-		$consulta = $this->zones->seleccionar(array('id' => $id));
-		if ($consulta->num_rows() > 0)
-		{
-		   $fila = $consulta->row();
-		
-		   $data['id'] = $fila->id;
-		   $data['zona'] = $fila->zona;
-		}
-		return $data;		
-	}
-
-	function _categorias()
-	{
-		$this->load->model('terms');
-		return $this->terms->get_categories();	
-	}
 		
 	function actualizar()
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
-
+		$this->load->library('combofiller');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules($this->_reglas());
@@ -64,8 +47,32 @@ class Documentos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
-			$data['categorias'] = $this->_categorias();					
 
+			$data['categorias'] = $this->combofiller->categorias();
+			
+			foreach($data['categorias'] as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					$categorias_selected[] = $key;
+				}
+			}
+			$data['categorias_selected'] = $categorias_selected;
+			
+			$data['provincias'] = $this->combofiller->providences();
+			$data['provincias_selected'] = set_value('provincia');
+			
+			$data['distritos'] = $this->combofiller->distrits();
+			$data['distritos_selected'] = set_value('distrito');
+					
+			$data['departamentos'] = $this->combofiller->departments();
+			$data['departamentos_selected'] = set_value('departamento');
+					
+			$data['paices'] = $this->combofiller->countries();
+			$data['paices_selected'] = set_value('pais');				
+			
+			$data['form'] = $this->form;			
+			
 			$this->load->view('documentos/documento', $data);
 			$this->__destruct();		
 
