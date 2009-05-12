@@ -33,7 +33,7 @@
   <div id="wrapper">
   
       <div id="top_ad">
-        <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/>
+        <!-- <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
       </div> <!-- top_ad -->
   
 
