@@ -3,8 +3,9 @@ $(document).ready(function() {
 	 BACK = "todas"
 	 BACK_STATES = "regresar"
 	
-		 $("div.class_content:not(:first)").hide("slow");
-	 //$("div.class_content:first").show("fast");
+		$("div.class_content:not(:first)").hide("slow");
+		$("div.tab_content:not(:first)").hide("slow");
+		$("div.sidebox_content:not(:last)").hide("slow");
 	 
 		 
 		$("ul#category_tabs li a").click(function(){
@@ -18,7 +19,31 @@ $(document).ready(function() {
 				$(".class_content:eq(" + index + ")").fadeIn("fast");
 				return false;
 		})
-	
+		
+		$("ul#corresponsales li a").click(function(){
+		
+				$(this).parent().siblings().find("a").removeClass("selected");
+				$(this).addClass("selected");
+				
+				var index = $("ul#corresponsales li a").index(this);
+				
+				$(".tab_content").hide("slow");
+				$(".tab_content:eq(" + index + ")").fadeIn("fast");
+				return false;
+		})
+
+		$("ul#articulos li a").click(function(){
+		
+				$(this).parent().siblings().find("a").removeClass("selected");
+				$(this).addClass("selected");
+				
+				var index = $("ul#articulos li a").index(this);
+				
+				$(".sidebox_content").hide("slow");
+				$(".sidebox_content:eq(" + index + ")").fadeIn("fast");
+				return false;
+		})	
+
 		$("ul#menu > li > a").click(function(){
 			
 			

@@ -489,20 +489,20 @@ get_header(); ?>
                <h4>Corresponsales más</h4>
                
                <div class="tab_content">
-                
+                	vistos
                   <!-- vistos -->
                 
                </div>
 
                <div class="tab_content">
-                
+                votados
                   <!-- votados -->
                 
                </div>
 
 
                <div class="tab_content">
-                
+                comentados
                 <!-- comentados -->
                 
                </div>
@@ -511,10 +511,10 @@ get_header(); ?>
    
         </div>
 
-        <ul class="sidebox_menu">
-          <li><a href="#" class="selected">vistos</a></li>
-          <li><a href="#">votados</a></li>
-          <li><a href="#">comentados</a></li>                
+        <ul id="corresponsales" class="sidebox_menu">
+          <li><a href="#vistos">vistos</a></li>
+          <li><a href="#votados">votados</a></li>
+          <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
    
         <div id="articulos" class="sidebox">
@@ -522,29 +522,29 @@ get_header(); ?>
           <h4>Art&iacute;culos más</h4>
           
           <div class="sidebox_content">
-            
+            plugin vistos
               <!-- VISTOS ACA VA EL PLUGIN-->
             
           </div>
                 
           <div class="sidebox_content">
-            
+            plugin votados
               <!-- VOTADOS -->
             
           </div>
           
           <div class="sidebox_content">
-            
+            mas popular
             <?php most_popular(1); ?>
             
           </div>                          
                     
         </div>     
         
-        <ul class="sidebox_menu">
-          <li><a href="#" class="selected">vistos</a></li>
-          <li><a href="#">votados</a></li>
-          <li><a href="#">comentados</a></li>                
+        <ul id="articulos" class="sidebox_menu">
+          <li><a href="#vistos" >vistos</a></li>
+          <li><a href="#votados">votados</a></li>
+          <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
    
       
