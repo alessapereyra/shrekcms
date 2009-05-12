@@ -273,6 +273,26 @@ get_header(); ?>
    
                <h4>Corresponsales más</h4>
                
+               <div class="tab_content">
+                
+                  <!-- vistos -->
+                
+               </div>
+
+               <div class="tab_content">
+                
+                  <!-- votados -->
+                
+               </div>
+
+
+               <div class="tab_content">
+                
+                <!-- comentados -->
+                
+               </div>
+
+
    
         </div>
 
@@ -288,9 +308,21 @@ get_header(); ?>
           
           <div class="sidebox_content">
             
-            <?php most_popular(1); ?>
+              <!-- VISTOS ACA VA EL PLUGIN-->
             
           </div>
+                
+          <div class="sidebox_content">
+            
+              <!-- VOTADOS -->
+            
+          </div>
+          
+          <div class="sidebox_content">
+            
+            <?php most_popular(1); ?>
+            
+          </div>                          
                     
         </div>     
         
