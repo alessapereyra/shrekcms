@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2009 a las 10:01:20
+-- Tiempo de generación: 11-05-2009 a las 20:29:22
 -- Versión del servidor: 5.0.67
 -- Versión de PHP: 5.2.6-2ubuntu4.2
 
@@ -25,6 +25,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Estructura de tabla para la tabla `wp_comments`
 --
 
+DROP TABLE IF EXISTS `wp_comments`;
 CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL auto_increment,
   `comment_post_ID` int(11) NOT NULL default '0',
@@ -58,9 +59,74 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `wp_countries`
+--
+
+DROP TABLE IF EXISTS `wp_countries`;
+CREATE TABLE IF NOT EXISTS `wp_countries` (
+  `country_id` int(11) NOT NULL auto_increment,
+  `country` varchar(50) NOT NULL,
+  `code` varchar(3) NOT NULL,
+  PRIMARY KEY  (`country_id`)
+) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `wp_countries`
+--
+
+INSERT INTO `wp_countries` (`country_id`, `country`, `code`) VALUES
+(1, 'Argentina', 'ARG'),
+(2, 'Perú', 'PER');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `wp_departments`
+--
+
+DROP TABLE IF EXISTS `wp_departments`;
+CREATE TABLE IF NOT EXISTS `wp_departments` (
+  `department_id` int(11) NOT NULL auto_increment,
+  `department` varchar(50) NOT NULL,
+  PRIMARY KEY  (`department_id`)
+) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `wp_departments`
+--
+
+INSERT INTO `wp_departments` (`department_id`, `department`) VALUES
+(1, 'departamento 1'),
+(2, 'departamento 2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `wp_distrits`
+--
+
+DROP TABLE IF EXISTS `wp_distrits`;
+CREATE TABLE IF NOT EXISTS `wp_distrits` (
+  `distrit_id` int(11) NOT NULL auto_increment,
+  `distrit` varchar(50) NOT NULL,
+  PRIMARY KEY  (`distrit_id`)
+) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `wp_distrits`
+--
+
+INSERT INTO `wp_distrits` (`distrit_id`, `distrit`) VALUES
+(1, 'distrito 1'),
+(2, 'distrito 2');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `wp_links`
 --
 
+DROP TABLE IF EXISTS `wp_links`;
 CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_id` bigint(20) NOT NULL auto_increment,
   `link_url` varchar(255) NOT NULL default '',
@@ -100,6 +166,7 @@ INSERT INTO `wp_links` (`link_id`, `link_url`, `link_name`, `link_image`, `link_
 -- Estructura de tabla para la tabla `wp_options`
 --
 
+DROP TABLE IF EXISTS `wp_options`;
 CREATE TABLE IF NOT EXISTS `wp_options` (
   `option_id` bigint(20) NOT NULL auto_increment,
   `blog_id` int(11) NOT NULL default '0',
@@ -108,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
   `autoload` varchar(20) NOT NULL default 'yes',
   PRIMARY KEY  (`option_id`,`blog_id`,`option_name`),
   KEY `option_name` (`option_name`)
-) TYPE=MyISAM  AUTO_INCREMENT=112 ;
+) TYPE=MyISAM  AUTO_INCREMENT=115 ;
 
 --
 -- Volcar la base de datos para la tabla `wp_options`
@@ -210,7 +277,7 @@ INSERT INTO `wp_options` (`option_id`, `blog_id`, `option_name`, `option_value`,
 (93, 0, 'widget_categories', 'a:0:{}', 'yes'),
 (94, 0, 'widget_text', 'a:0:{}', 'yes'),
 (95, 0, 'widget_rss', 'a:0:{}', 'yes'),
-(96, 0, 'update_core', 'O:8:"stdClass":1:{s:12:"last_checked";i:1242054047;}', 'yes'),
+(96, 0, 'update_core', 'O:8:"stdClass":1:{s:12:"last_checked";i:1242091395;}', 'yes'),
 (97, 0, 'dismissed_update_core', 'a:0:{}', 'yes'),
 (98, 0, 'wp_user_roles', 'a:5:{s:13:"administrator";a:2:{s:4:"name";s:23:"Administrator|User role";s:12:"capabilities";a:53:{s:13:"switch_themes";b:1;s:11:"edit_themes";b:1;s:16:"activate_plugins";b:1;s:12:"edit_plugins";b:1;s:10:"edit_users";b:1;s:10:"edit_files";b:1;s:14:"manage_options";b:1;s:17:"moderate_comments";b:1;s:17:"manage_categories";b:1;s:12:"manage_links";b:1;s:12:"upload_files";b:1;s:6:"import";b:1;s:15:"unfiltered_html";b:1;s:10:"edit_posts";b:1;s:17:"edit_others_posts";b:1;s:20:"edit_published_posts";b:1;s:13:"publish_posts";b:1;s:10:"edit_pages";b:1;s:4:"read";b:1;s:8:"level_10";b:1;s:7:"level_9";b:1;s:7:"level_8";b:1;s:7:"level_7";b:1;s:7:"level_6";b:1;s:7:"level_5";b:1;s:7:"level_4";b:1;s:7:"level_3";b:1;s:7:"level_2";b:1;s:7:"level_1";b:1;s:7:"level_0";b:1;s:17:"edit_others_pages";b:1;s:20:"edit_published_pages";b:1;s:13:"publish_pages";b:1;s:12:"delete_pages";b:1;s:19:"delete_others_pages";b:1;s:22:"delete_published_pages";b:1;s:12:"delete_posts";b:1;s:19:"delete_others_posts";b:1;s:22:"delete_published_posts";b:1;s:20:"delete_private_posts";b:1;s:18:"edit_private_posts";b:1;s:18:"read_private_posts";b:1;s:20:"delete_private_pages";b:1;s:18:"edit_private_pages";b:1;s:18:"read_private_pages";b:1;s:12:"delete_users";b:1;s:12:"create_users";b:1;s:17:"unfiltered_upload";b:1;s:14:"edit_dashboard";b:1;s:14:"update_plugins";b:1;s:14:"delete_plugins";b:1;s:15:"install_plugins";b:1;s:13:"update_themes";b:1;}}s:6:"editor";a:2:{s:4:"name";s:16:"Editor|User role";s:12:"capabilities";a:34:{s:17:"moderate_comments";b:1;s:17:"manage_categories";b:1;s:12:"manage_links";b:1;s:12:"upload_files";b:1;s:15:"unfiltered_html";b:1;s:10:"edit_posts";b:1;s:17:"edit_others_posts";b:1;s:20:"edit_published_posts";b:1;s:13:"publish_posts";b:1;s:10:"edit_pages";b:1;s:4:"read";b:1;s:7:"level_7";b:1;s:7:"level_6";b:1;s:7:"level_5";b:1;s:7:"level_4";b:1;s:7:"level_3";b:1;s:7:"level_2";b:1;s:7:"level_1";b:1;s:7:"level_0";b:1;s:17:"edit_others_pages";b:1;s:20:"edit_published_pages";b:1;s:13:"publish_pages";b:1;s:12:"delete_pages";b:1;s:19:"delete_others_pages";b:1;s:22:"delete_published_pages";b:1;s:12:"delete_posts";b:1;s:19:"delete_others_posts";b:1;s:22:"delete_published_posts";b:1;s:20:"delete_private_posts";b:1;s:18:"edit_private_posts";b:1;s:18:"read_private_posts";b:1;s:20:"delete_private_pages";b:1;s:18:"edit_private_pages";b:1;s:18:"read_private_pages";b:1;}}s:6:"author";a:2:{s:4:"name";s:16:"Author|User role";s:12:"capabilities";a:10:{s:12:"upload_files";b:1;s:10:"edit_posts";b:1;s:20:"edit_published_posts";b:1;s:13:"publish_posts";b:1;s:4:"read";b:1;s:7:"level_2";b:1;s:7:"level_1";b:1;s:7:"level_0";b:1;s:12:"delete_posts";b:1;s:22:"delete_published_posts";b:1;}}s:11:"contributor";a:2:{s:4:"name";s:21:"Contributor|User role";s:12:"capabilities";a:5:{s:10:"edit_posts";b:1;s:4:"read";b:1;s:7:"level_1";b:1;s:7:"level_0";b:1;s:12:"delete_posts";b:1;}}s:10:"subscriber";a:2:{s:4:"name";s:20:"Subscriber|User role";s:12:"capabilities";a:2:{s:4:"read";b:1;s:7:"level_0";b:1;}}}', 'yes'),
 (99, 0, 'cron', 'a:2:{i:1242093775;a:2:{s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}s:7:"version";i:2;}', 'yes'),
@@ -223,8 +290,8 @@ INSERT INTO `wp_options` (`option_id`, `blog_id`, `option_name`, `option_value`,
 (106, 0, 'nonce_salt', 'W@LD5(m5w6uW', 'yes'),
 (107, 0, 'current_theme', 'WordPress Default', 'yes'),
 (108, 0, 'sidebars_widgets', 'a:1:{s:13:"array_version";i:3;}', 'yes'),
-(110, 0, 'category_children', 'a:0:{}', 'yes'),
-(111, 0, 'upload_url', 'http://grimlock/shrekcms/wp/wp-content/upload', 'yes');
+(111, 0, 'upload_url', 'http://grimlock/shrekcms/wp/wp-content/upload', 'yes'),
+(114, 0, 'category_children', 'a:1:{i:6;a:3:{i:0;s:1:"1";i:1;s:1:"3";i:2;s:1:"4";}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -232,6 +299,7 @@ INSERT INTO `wp_options` (`option_id`, `blog_id`, `option_name`, `option_value`,
 -- Estructura de tabla para la tabla `wp_postmeta`
 --
 
+DROP TABLE IF EXISTS `wp_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `meta_id` bigint(20) NOT NULL auto_increment,
   `post_id` bigint(20) NOT NULL default '0',
@@ -253,6 +321,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
 -- Estructura de tabla para la tabla `wp_posts`
 --
 
+DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE IF NOT EXISTS `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL auto_increment,
   `post_author` bigint(20) NOT NULL default '0',
@@ -295,9 +364,31 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `wp_providences`
+--
+
+DROP TABLE IF EXISTS `wp_providences`;
+CREATE TABLE IF NOT EXISTS `wp_providences` (
+  `providence_id` int(11) NOT NULL auto_increment,
+  `providence` varchar(50) NOT NULL,
+  PRIMARY KEY  (`providence_id`)
+) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `wp_providences`
+--
+
+INSERT INTO `wp_providences` (`providence_id`, `providence`) VALUES
+(1, 'provincia 1'),
+(2, 'provincia 2');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `wp_terms`
 --
 
+DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE IF NOT EXISTS `wp_terms` (
   `term_id` bigint(20) NOT NULL auto_increment,
   `name` varchar(200) NOT NULL default '',
@@ -306,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `wp_terms` (
   PRIMARY KEY  (`term_id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `name` (`name`)
-) TYPE=MyISAM  AUTO_INCREMENT=5 ;
+) TYPE=MyISAM  AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `wp_terms`
@@ -316,7 +407,9 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 (1, 'Lo bueno', 'bueno', 0),
 (2, 'Blogroll', 'blogroll', 0),
 (3, 'Lo malo', 'malo', 0),
-(4, 'Lo roca', 'roca', 0);
+(4, 'Lo roca', 'roca', 0),
+(5, 'Internas', 'internas', 0),
+(6, 'Publicas', 'publicas', 0);
 
 -- --------------------------------------------------------
 
@@ -324,6 +417,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- Estructura de tabla para la tabla `wp_term_relationships`
 --
 
+DROP TABLE IF EXISTS `wp_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) NOT NULL default '0',
   `term_taxonomy_id` bigint(20) NOT NULL default '0',
@@ -352,6 +446,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Estructura de tabla para la tabla `wp_term_taxonomy`
 --
 
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) NOT NULL auto_increment,
   `term_id` bigint(20) NOT NULL default '0',
@@ -361,17 +456,19 @@ CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `count` bigint(20) NOT NULL default '0',
   PRIMARY KEY  (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`)
-) TYPE=MyISAM  AUTO_INCREMENT=5 ;
+) TYPE=MyISAM  AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `wp_term_taxonomy`
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1),
+(1, 1, 'category', '', 6, 1),
 (2, 2, 'link_category', '', 0, 7),
-(3, 3, 'category', '', 0, 0),
-(4, 4, 'category', '', 0, 0);
+(3, 3, 'category', '', 6, 0),
+(4, 4, 'category', '', 6, 0),
+(5, 5, 'category', '', 0, 0),
+(6, 6, 'category', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -379,6 +476,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Estructura de tabla para la tabla `wp_usermeta`
 --
 
+DROP TABLE IF EXISTS `wp_usermeta`;
 CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `umeta_id` bigint(20) NOT NULL auto_increment,
   `user_id` bigint(20) NOT NULL default '0',
@@ -400,8 +498,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (4, 1, 'admin_color', 'fresh'),
 (5, 1, 'wp_capabilities', 'a:1:{s:13:"administrator";b:1;}'),
 (6, 1, 'wp_user_level', '10'),
-(7, 1, 'wp_usersettings', 'm0=o&m1=o&m2=c&m3=c&m4=c&m5=c&m6=o&m7=c&m8=o&imgsize=thumbnail&urlbutton=urlfile'),
-(8, 1, 'wp_usersettingstime', '1241834622'),
+(7, 1, 'wp_usersettings', 'm0=o&m1=o&m2=c&m3=c&m4=c&m5=c&m6=o&m7=c&m8=o&imgsize=medium&urlbutton=urlfile&align=center&editor=html'),
+(8, 1, 'wp_usersettingstime', '1242091334'),
 (9, 2, 'nickname', 'yaraher'),
 (10, 2, 'rich_editing', 'true'),
 (11, 2, 'comment_shortcuts', 'false'),
@@ -415,6 +513,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Estructura de tabla para la tabla `wp_users`
 --
 
+DROP TABLE IF EXISTS `wp_users`;
 CREATE TABLE IF NOT EXISTS `wp_users` (
   `ID` bigint(20) unsigned NOT NULL auto_increment,
   `user_login` varchar(60) NOT NULL default '',

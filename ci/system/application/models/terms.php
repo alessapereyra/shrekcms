@@ -19,7 +19,7 @@ class Terms extends Model {
     	$this->db->from($this->tabla);
     	$this->db->join('wp_term_taxonomy', 'wp_terms.term_id = wp_term_taxonomy.term_id');
     	
-    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category'));
+    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
     	
     	$query = $this->db->get();
     	  
