@@ -3,12 +3,20 @@ $(document).ready(function() {
 	 BACK = "todas"
 	 BACK_STATES = "regresar"
 	
+		 $("div.class_content:not(:first)").hide("slow");
+	 //$("div.class_content:first").show("fast");
+	 
+		 
 		$("ul#category_tabs li a").click(function(){
 		
 				$(this).parent().siblings().find("a").removeClass("active");
 				$(this).addClass("active");
+				
+				var index = $("ul#category_tabs li a").index(this);
+				
+				$(".class_content").hide("slow");
+				$(".class_content:eq(" + index + ")").fadeIn("fast");
 				return false;
-			
 		})
 	
 		$("ul#menu > li > a").click(function(){
