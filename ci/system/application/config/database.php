@@ -54,8 +54,10 @@ $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
 
 
-$db['lamula']['password'] = "PjHuJGbJka";
-//$db['default']['password'] = "root";
+$db['lamula']['hostname'] = "localhost";
+$db['lamula']['username'] = "root";
+//$db['lamula']['password'] = "PjHuJGbJka";
+$db['lamula']['password'] = "takumi";
 $db['lamula']['database'] = "lamula";
 $db['lamula']['dbdriver'] = "mysql";
 $db['lamula']['dbprefix'] = "";
