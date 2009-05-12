@@ -157,7 +157,7 @@ get_header(); ?>
   </div>
 
   <div id="bueno" class="class_content">
-  		<?php query_posts('cat=1'); ?>
+  		<?php query_posts('cat=3'); ?>
 	    <ul id="post_list">
 	    
 	    <?php if (have_posts()) : ?>
@@ -229,7 +229,7 @@ get_header(); ?>
   </div>
   
   <div id="malo" class="class_content">
-  		<?php query_posts('cat=3'); ?>
+  		<?php query_posts('cat=1'); ?>
 	    <ul id="post_list">
 	    
 	    <?php if (have_posts()) : ?>

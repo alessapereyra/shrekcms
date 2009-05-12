@@ -15,7 +15,9 @@ $(document).ready(function() {
 				var index = $("ul#category_tabs li a").index(this);
 				
 				$(".class_content").hide("slow");
-				$(".class_content:eq(" + index + ")").fadeIn("fast");
+				
+				$(".class_content:eq(" + index + ")").show("fast");					
+					
 				return false;
 		})
 	
