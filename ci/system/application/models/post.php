@@ -101,7 +101,7 @@ class Post extends Model {
     	$values['post_modified'] = $values['post_date'];
     	$values['post_modified_gmt'] = $values['post_date'];
 
-    	$values['comment_status'] = 'closed';
+    	$values['comment_status'] = 'open';
     	$values['ping_status'] = 'closed';
     	
     	$this->db->insert($this->tabla, $values);
