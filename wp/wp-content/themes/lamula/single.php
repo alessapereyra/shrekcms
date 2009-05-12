@@ -23,31 +23,54 @@ get_header(); ?>
 
 <div id="top_news">
   
+  <?php
+  
+   // $featured_query = new WP_Query('category_name=featured&showposts=2');
+   $featured_query = new WP_Query('showposts=1');
+    while ($featured_query->have_posts()) : $featured_query->the_post();
+    $do_not_duplicate = $post->ID; ?>
+
+  
   <div id="top_news_image">
     <img src="<?php bloginfo('template_url'); ?>/images/top_news.png" alt="Top News" title="Top News"/>
   </div> <!-- top_news_image -->
   
   <div id="top_news_text">
     
-    <h3>La noticia del día: <br />la mula en 2 líneas</h3>
+    <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
     <p>
-        <span class="author">Por <a href="#">Pepito</a> <em>05/05/2009</em></span>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Cras augue arcu, mattis et, interdum a, placerat sed, massa. Nullam pretium. 
-        Vestibulum risus turpis, pellentesque non, ultricies ut, posuere sed, tortor. 
-        Suspendisse volutpat porttitor elit. Sed venenatis. Vestibulum vitae velit a tellus 
-        feugiat scelerisque. Pellentesque dolor.
+  
+      
+        <span class="author">Por <a href="#"><?php the_author() ?></a> <em><?php the_date('d/m/y'); ?></em></span>
+        
+        
+        <?php 
+              $content = get_the_content();
+              $content = apply_filters('the_content', $content);
+              $content = str_replace(']]>', ']]&gt;', $content);  
+              $content = snippet($content,235);
+              $content = strip_tags($content, '<p>');            
+              
+        ?>
+
+        <?php echo $content ?>
+        
     </p>
         
   </div> <!-- top_news_text -->
 
   <div id="top_news_footer">
     
-    <a href="#" id="leer_mas_footer">Leer m&aacute;s</a>
-    <p class="comments"><a href="#"><em>12</em> comentarios</a></p>
-    <p class="rate"><em>estrellas</em></p>
+    <a href="<?php the_permalink() ?>" id="leer_mas_footer">Leer m&aacute;s</a>
+    <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+    <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
     
   </div> <!-- top_news_footer -->
+
+
+
+  <?php endwhile; ?>
+ 
   
 </div> <!-- top_news -->
 
@@ -114,103 +137,155 @@ get_header(); ?>
 
   <div id="sidebars">
     
-      <div id="important">
-        
-          <p><a href="http://localhost:8888/shrekcms/ci" class="send_news">m&aacute;ndanos tu noticia</a></p>
-        
-      </div>
+        <div id="important">
 
-      <div id="sidebar_central">
-        
-          <h4>Muleros</h4>
-          
-          <dl>
+            <p>
 
-            <dt>
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-            </dt>
-            <dd>
-                <h6>norte chico</h6>
-                <strong>xOcram</strong>
-                <p>Este concepto nace de un concepto raro
-                <a href="#">leer mas</a></p>
-            </dd>
+              <a href="http://lamula.pe/mulapress/ci" class="send_news">
 
-            <dt>
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-            </dt>
-            <dd>
-                <h6>centro sur</h6>
-                <strong>xPedro Salinas</strong>                      
-                <p>Este concepto nace de un concepto raro
-                <a href="#">leer mas</a></p>
-            </dd>
+                  publica en lamula.pe
+                  <em>  
+                          envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
+                  </em>
+              </a>
 
-            <dt>
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-            </dt>
-            <dd>
-                <h6>oriente medio</h6>
-                <strong>xO brien</strong>                      
-                <p>Este concepto nace de un concepto raro
-                <a href="#">leer mas</a></p>
-            </dd>
+            </p>
 
-            <dt>
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-             </dt>
-             <dd>
-                 <h6>norte chico</h6>
-                 <strong>xOcram</strong>
-                 <p>Este concepto nace de un concepto raro
-                 <a href="#">leer mas</a></p>
-             </dd>
-
-             <dt>
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-             </dt>
-             <dd>
-                 <h6>centro sur</h6>
-                 <strong>xPedro Salinas</strong>                      
-                 <p>Este concepto nace de un concepto raro
-                 <a href="#">leer mas</a></p>
-             </dd>
-
-             <dt>
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-             </dt>
-             <dd>
-                 <h6>oriente medio</h6>
-                 <strong>xO brien</strong>                      
-                 <p>Este concepto nace de un concepto raro
-                 <a href="#">leer mas</a></p>
-             </dd>
-
-          </dl>                
-        
-      </div> <!-- sidebar_central -->
-      
-      <div id="sidebar_recomendados">
-        
-        <h4>Corresponsales más</h4>
-        
-        <ul>
-          <li><a href="#">vistos</a></li>
-          <li><a href="#">votados</a></li>
-          <li><a href="#">comentados</a></li>                
-        </ul>
-        
-        <h4>Art&iacute;culos más</h4>
-        <ul>
-          <li><a href="#">vistos</a></li>
-          <li><a href="#">votados</a></li>
-          <li><a href="#">comentados</a></li>                
-        </ul>
+        </div>
 
 
-        <h4>Video destacado</h4>
-        
-      </div> <!-- sidebar_recomendados -->
+        <div id="sidebar_central">
+
+            <h4>Muleros</h4>
+
+            <ul class="bloggers_list">
+
+              <li>
+
+                <div class="sidebar_foto">
+                    <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
+                </div>     
+                <div class="sidebar_txt">
+                    <h6><a href="http://lavozatidebida.lamula.pe">La Voz a ti Debida</a></h6>
+                    <strong>Pedro Salinas</strong>
+                    <p></p>
+                </div>
+
+              </li>
+
+              <li>
+
+              <div class="sidebar_foto">
+                  <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
+              </div>     
+              <div class="sidebar_txt">
+                  <h6><a href="http://2mil32.lamula.pe">2mil32</a></h6>
+                  <strong>Juan Infante</strong>                      
+                  <p></p>
+              </div>
+
+              </li>
+
+              <li>
+
+              <div class="sidebar_foto">
+                  <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
+              </div>
+              <div class="sidebar_txt">
+                  <h6><a href="http://zonacero.lamula.pe">Zona Cero</a></h6>
+                  <strong>C&eacute;sar Gutierrez</strong>                      
+                  <p></p>
+              </div>
+
+              </li>
+
+              <li>
+
+              <div class="sidebar_foto">
+                   <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
+              </div>
+               <div class="sidebar_txt">
+                   <h6><a href="http://datitinger.lamula.pe">Datitinger</a></h6>
+                   <strong>Daniel Titinger</strong>
+                   <p></p>
+               </div>
+
+              </li>
+
+               <li>
+
+               <div class="sidebar_foto">
+                   <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
+                 </div>
+               <div class="sidebar_txt">
+                   <h6><a href="http://elarriero.lamula.pe">El Arriero</a></h6>
+                   <strong>Javier Torres</strong>                      
+                   <p></p>
+                </div>
+
+              </li>
+
+              <li>
+
+               <div class="sidebar_foto">
+                   <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
+               </div>
+               <div class="sidebar_txt">
+                   <h6><a href=" http://carlostapia.lamula.pe ">Carlos Tapia</a></h6>
+                   <strong>Carlos Tapia</strong>                      
+                   <p></p>
+               </div>
+
+              </li>
+
+            </ul>                
+
+        </div> <!-- sidebar_central -->
+
+        <div id="sidebar_recomendados">
+
+
+          <div id="corresponsales" class="sidebox">
+
+                 <h4>Corresponsales más</h4>
+
+
+          </div>
+
+          <ul class="sidebox_menu">
+            <li><a href="#" class="selected">vistos</a></li>
+            <li><a href="#">votados</a></li>
+            <li><a href="#">comentados</a></li>                
+          </ul>
+
+          <div id="articulos" class="sidebox">
+
+            <h4>Art&iacute;culos más</h4>
+
+            <div class="sidebox_content">
+
+              <?php most_popular(1); ?>
+
+            </div>
+
+          </div>     
+
+          <ul class="sidebox_menu">
+            <li><a href="#" class="selected">vistos</a></li>
+            <li><a href="#">votados</a></li>
+            <li><a href="#">comentados</a></li>                
+          </ul>
+
+
+          <div id="videos" class="sidebox">
+
+            <h4>Video destacado</h4>          
+
+          </div>
+
+
+        </div> <!-- sidebar_recomendados -->
+ 
     
   </div> <!-- sidebars -->
 

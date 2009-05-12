@@ -272,26 +272,34 @@ get_header(); ?>
         <div id="corresponsales" class="sidebox">
    
                <h4>Corresponsales más</h4>
-
-                <ul>
-                  <li><a href="#">vistos</a></li>
-                  <li><a href="#">votados</a></li>
-                  <li><a href="#">comentados</a></li>                
-                </ul>
+               
    
-          
         </div>
+
+        <ul class="sidebox_menu">
+          <li><a href="#" class="selected">vistos</a></li>
+          <li><a href="#">votados</a></li>
+          <li><a href="#">comentados</a></li>                
+        </ul>
    
         <div id="articulos" class="sidebox">
 
           <h4>Art&iacute;culos más</h4>
-          <ul>
-            <li><a href="#">vistos</a></li>
-            <li><a href="#">votados</a></li>
-            <li><a href="#">comentados</a></li>                
-          </ul>
           
-        </div>
+          <div class="sidebox_content">
+            
+            <?php most_popular(1); ?>
+            
+          </div>
+                    
+        </div>     
+        
+        <ul class="sidebox_menu">
+          <li><a href="#" class="selected">vistos</a></li>
+          <li><a href="#">votados</a></li>
+          <li><a href="#">comentados</a></li>                
+        </ul>
+   
       
         <div id="videos" class="sidebox">
 

@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Most Popular Posts\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-06 11:02-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Wes Goodhoofd <wgoodhoofd@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: most-popular.php:91
+msgid "Title: "
+msgstr ""
+
+#: most-popular.php:96
+msgid "Number of posts to display: "
+msgstr ""
+
+#: most-popular.php:102
+msgid "Show comment count "
+msgstr ""
+

@@ -30,7 +30,7 @@ div#wrapper {
 
 div#top_menu {
 	
-	background-color: #093155;
+	background-color: #6b003a;
 	color: #fff;
 	overflow: hidden;	
 	font-size: 0.8em;
@@ -648,28 +648,61 @@ div#sidebars div#sidebar_central h4	{
 
 }
 	
-div#sidebars div#sidebar_recomendados h4 {
-	font-size: 1em;
-	color: #f6e9e9;
+div#sidebars div#sidebar_recomendados div.sidebox h4 {
+	font-size: 1.2em;
+	color: white;
 	text-transform: lowercase;	
 	margin-bottom: 1em;
 	clear: both;
+	margin-top: 1.5em;
+	margin-left: 1.3em;
 }
 
 div#sidebars div#sidebar_recomendados ul {
 	overflow: auto;
-	margin-bottom: 1em;
+	margin: 0px;
 }
+
+div#sidebars div#sidebar_recomendados ul#post_list {
+	
+}
+
+div#sidebars div#sidebar_recomendados ul#post_list li {
+	float: none;
+	padding: 0px;
+}
+
+div#sidebars div#sidebar_recomendados ul#post_list li a {
+	float: none;
+	padding: 7px 7px 7px 35px;
+	margin: 0px;
+	background-color: #3b3330;
+	color: #ffe250;
+	font-size: 0.9em;
+	text-transform: lowercase;
+}
+
+div#sidebars div#sidebar_recomendados ul#post_list li a:hover {
+	background-color: #000;
+}
+
 
 div#sidebars div#sidebar_recomendados ul li a{
 	float: left;
 	text-decoration: none;
 	display: block;
-	background-color: #deba77;
-	margin-left: 1px;
-	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background-color: #c8c968;
+	margin-right: 1px;
+	font: 0.75em Georgia, "Times New Roman", Times, serif;
 	color: #070708;
-	padding: 4px 10px;
+	padding: 8px 14px;
+	font-size: 0.8em;
+	border: none !important;
+}
+
+div#sidebars div#sidebar_recomendados ul li a.selected {
+	background-color: #3b3330;
+	color: white;
 }
 
 #sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
@@ -680,8 +713,7 @@ div#sidebars div#sidebar_recomendados ul li a{
 #sidebar_recomendados ul li {
 	overflow: auto;
 	float: left;
-	padding-bottom: 5px;
-	border-bottom: 1px solid #ff7e00;
+	border: none;
 }
 
 #important p a.send_news {
@@ -709,19 +741,33 @@ div#sidebars div#sidebar_recomendados ul li a{
 
 
 div#sidebars div#sidebar_recomendados li a:hover{
-	background-color: #ff7e00;
+	background-color: #ffe250;
 	color: #3b3330;
 }
-
-
-
 
 div#sidebars div#sidebar_recomendados {
 	width: 210px;
 	float: right;
-	background-color: #3b3330;
 	color: #f23e00;
 }
+
+div#sidebars div#sidebar_recomendados div.sidebox {
+	
+	background-color: #3b3330;
+	overflow: auto;
+	padding-bottom: 10px;
+}
+
+#sidebar_recomendados ul.sidebox_menu {
+		margin-bottom: 15px !important;
+		display: block;
+		float: none;
+}
+
+
+
+	
+	
 
 #post_list li span small {
 	text-transform: lowercase;
