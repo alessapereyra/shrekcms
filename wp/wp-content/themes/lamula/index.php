@@ -21,6 +21,9 @@ function snippet($text,$length=64,$tail="...") {
 
 get_header(); ?>
 
+<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php'; 
+
+$row = NULL; ?>
 <div id="top_news">
   
   
@@ -521,7 +524,8 @@ get_header(); ?>
           
           <div class="sidebox_content">
             plugin vistos
-              <!-- VISTOS ACA VA EL PLUGIN-->
+              <?php kf_get_posts_by_hits(7,10); ?>
+
             
           </div>
                 
