@@ -24,8 +24,8 @@ define('DB_USER', 'root');
 /** MySQL database password */
 
 // Para Dientuki
-//define('DB_PASSWORD', 'takumi');
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'takumi');
+//define('DB_PASSWORD', 'root');
 
 /** MySQL database password */
 define('DB_PORT', '3306');
@@ -38,9 +38,6 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-
-/** Eliminar esto si comete problemas  */
-define('WP_HOME', 'http://localhost:8888/shrekcms/wp'); 
 
 /**#@+
  * Authentication Unique Keys.

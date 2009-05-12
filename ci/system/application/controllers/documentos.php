@@ -222,7 +222,7 @@ class Documentos extends DI_Controller {
 		$this->load->model('options');
 		
 		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
-		$values['guid'] = $this->options->get_('upload_url') . date('/Y/m/');
+		$values['guid'] = $this->options->get_('upload_url_path') . date('/Y/m/');
 
 		$this->load->library('upload', $tmp);
 		
