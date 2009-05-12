@@ -64,8 +64,7 @@ class Post extends Model {
     	
     	$this->term_relationships->insertar($post_id, $terms_taxonomy_id);
     	
-    	
-
+    	return $post_id;
     }
     
     function seleccionar($search = NULL, $limit = NULL)

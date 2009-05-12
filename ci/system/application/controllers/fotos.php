@@ -152,7 +152,9 @@ class Fotos extends DI_Controller {
 			$data['tags'] = $this->input->post('tags');
 			
 			//consigue los id de las cata
-			$categorias = $this->_categorias();
+			$this->load->library('combofiller');
+			
+			$categorias = $this->combofiller->categorias();	
 			
 			$terms_taxonomy_id = NULL;
 			
@@ -164,7 +166,15 @@ class Fotos extends DI_Controller {
 				}
 			}
 			
-			$tmp = array('provincia', 'distrito', 'pais', 'departamento');
+			switch ($this->input->post('localizar'))
+			{
+				case 'mundo':
+					$tmp = array('pais');
+				break;
+				case 'peru':
+					$tmp = array('provincia', 'distrito', 'departamento');
+				break;
+			}
 			
 			foreach ($tmp as $custom)
 			{
@@ -179,7 +189,8 @@ class Fotos extends DI_Controller {
 			
 			if ($id == NULL)
 			{
-				$time = $this->post->insert_article($data, $customs);
+				$post_id = $this->post->insert_article($data, $customs);
+				$this->term_relationships->insertar($post_id, array(8));
 			}
 			else
 			{

@@ -47,27 +47,12 @@ class Term_relationships extends Model {
     		$tmp['term_taxonomy_id'] = $value; 	
     		$this->db->insert($this->tabla, $tmp);	
     	}
-    	
+
     }
     
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
-    }
-    
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
     }
     
 }
