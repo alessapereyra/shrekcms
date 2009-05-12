@@ -52,7 +52,7 @@ class DI_Controller extends Controller {
 			{
 				if ($this->session->userdata('usuario') == NULL)
 				{
-					$this->session->set_userdata('info', 'Logueate');
+					$this->session->set_userdata('info', '');
 					$this->session->set_userdata('url', $this->uri->uri_string());
 					redirect('/log');
 				}

@@ -8,16 +8,16 @@ class Articulos extends DI_Controller {
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
 		$data['photolink'] = NULL;
-		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
 		
 		$this->load->library('combofiller');
 		
 		$data['categorias'] = $this->combofiller->categorias();
+		$data['categorias_selected'] = NULL;
 		$data['provincias'] = $this->combofiller->providences();
 		$data['distritos'] = $this->combofiller->distrits();
-		$data['departamentos'] = $this->combofiller->departments();		
-		$data['paices'] = $this->combofiller->countries();		
+		$data['departamentos'] = $this->combofiller->departments();
+		$data['paices'] = $this->combofiller->countries();
 		
 		if ($id != NULL)
 		{
@@ -49,8 +49,7 @@ class Articulos extends DI_Controller {
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
 
-			$data['categorias'] = $this->combofiller->categorias();
-			
+			$data['categorias'] = $this->combofiller->categorias();			
 			foreach($data['categorias'] as $key => $value)
 			{
 				if ($this->input->post('' . $key . ''))
@@ -65,7 +64,7 @@ class Articulos extends DI_Controller {
 			
 			$data['distritos'] = $this->combofiller->distrits();
 			$data['distritos_selected'] = set_value('distrito');
-					
+
 			$data['departamentos'] = $this->combofiller->departments();
 			$data['departamentos_selected'] = set_value('departamento');
 					

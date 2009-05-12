@@ -1,7 +1,15 @@
 $(document).ready(function() {
 	
-	 BACK = "todos"
+	 BACK = "todas"
 	 BACK_STATES = "regresar"
+	
+		$("ul#category_tabs li a").click(function(){
+		
+				$(this).parent().siblings().find("a").removeClass("active");
+				$(this).addClass("active");
+				return false;
+			
+		})
 	
 		$("ul#menu > li > a").click(function(){
 			

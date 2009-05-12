@@ -90,10 +90,12 @@ window.onload = function () {
 		upload_error_handler : uploadError,
 		upload_success_handler : uploadSuccess,
 		upload_complete_handler : uploadComplete,
+
 	});
 };
 </script>
 <?php endif; ?>
+
 <!--[if lte IE 6]>
 	<?php echo link_tag('css/ie6.css'); ?>
 

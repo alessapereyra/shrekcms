@@ -1,0 +1,22 @@
+= GD Star Rating =
+
+== Change Log ==
+
+=== Version: 1.3.1 / may 10 2009 ===
+  * new: added two more stars sizes, 16px and 24px
+  * edit: extensive code cleanup eliminating editor warnings
+  * edit: optimization of rating css file
+  * edit: expanded some of the rendering functions
+  * edit: max number of elements in multi set increased to 20
+  * edit: removed more of the obsolete unused code
+  * fix: rare problem with external css file in firefox
+  * fix: invalid results in the rating widgets
+  * fix: charting control minor mysql query problem
+  * fix: small problem in widget results sql query with all categories selected
+  * fix: multi rating block shows button even if the button is disabled
+  * fix: widget data sorting problem with grouping active
+  * fix: t2 rendering for multi ratings invalid average rating value
+  * fix: multi ratings block doesn't contain template info
+  * fix: multi ratings vote doesn't receive template used for rendering
+  * fix: rare problem with invalid post type in comment rating
+  * fix: calculating remaining time parts

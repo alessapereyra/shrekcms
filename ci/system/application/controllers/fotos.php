@@ -12,8 +12,8 @@ class Fotos extends DI_Controller {
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
 		
-		$this->load->library('combofiller');
-		
+		$this->load->library('combofiller');		
+
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['provincias'] = $this->combofiller->providences();
 		$data['distritos'] = $this->combofiller->distrits();
