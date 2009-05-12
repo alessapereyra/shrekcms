@@ -17,11 +17,31 @@
 
     	<?php echo form_label('', 'texto');?>
     	<?php echo form_error('texto'); ?>
-  	  <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
+  	    <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
     	
+	  	<div id="upload-content">
+	  		<?php echo form_hidden('upload-content', 'subir'); ?>
+	  		<ul>
+	  			<li><a href="#subir">Subir</a></li>
+	  			<li><a href="#enlazar">Enlazar</a></li>
+	  		</ul>
+	  		<div id="subir">
+	  					<input type="hidden" id="files" name="files" value="" />
+	  					<p>Selecciona la foto que desees subir:</p>
+	  					<span id="spanButtonPlaceholder"></span>
+	  					<div class="fieldset flash" id="fsUploadProgress"></div>
+	  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+	  		</div>
+	  		<div id="enlazar">
+	            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
+	            	<?php echo form_error('photolink'); ?>
+	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
+	  		</div>		
+	  	</div>
+  	    	
     	<?php echo form_label('Etiquetas: (separadas por comas)', 'tags');?>
     	<?php echo form_error('tags'); ?>
-  	  <?php echo form_input(array('name' => 'tags', 'value' => $tags, 'id' => 'tags')); ?>
+  	    <?php echo form_input(array('name' => 'tags', 'value' => $tags, 'id' => 'tags')); ?>
     	<em>violencia, robos, denuncias, serenazgo, etc</em>
     	</fieldset>
 

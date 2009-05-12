@@ -9,7 +9,8 @@ class Documentos extends DI_Controller {
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
 		$data['doclink'] = NULL;		
-		$data['categorias_selected'] = NULL;	
+		$data['categorias_selected'] = NULL;
+		$data['files'] = NULL;
 		
 		$this->load->library('combofiller');
 		
@@ -47,6 +48,7 @@ class Documentos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
+			$data['files'] = set_value('files');
 
 			$data['categorias'] = $this->combofiller->categorias();
 			

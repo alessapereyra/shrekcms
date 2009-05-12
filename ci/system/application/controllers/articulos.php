@@ -7,7 +7,9 @@ class Articulos extends DI_Controller {
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
-		$data['categorias_selected'] = NULL;	
+		$data['photolink'] = NULL;
+		$data['categorias_selected'] = NULL;
+		$data['files'] = NULL;
 		
 		$this->load->library('combofiller');
 		
@@ -26,7 +28,7 @@ class Articulos extends DI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->view('articulos/articulo', $data);
-		$this->__destruct();		
+		$this->__destruct();
 	}
 		
 	function actualizar()
@@ -45,6 +47,7 @@ class Articulos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
+			$data['files'] = set_value('files');
 
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -88,6 +91,62 @@ class Articulos extends DI_Controller {
 			$data['post_content'] = $this->input->post('texto');
 			$data['tags'] = $this->input->post('tags');
 			
+			switch ($this->input->post('upload-content'))
+			{
+				//subir imagenes
+				case 'subir':
+					$images_id = split('-', $this->input->post('files'));
+					unset($images_id[0]);
+					
+					foreach($images_id as $img)
+					{
+						$photo_data = $this->post->seleccionar(array('ID' => $img));
+						$photo_data = $photo_data->row();
+						
+						$search_metadata['post_id'] = $img;
+						$search_metadata['meta_key'] = '_wp_attached_file';
+						
+						$photo_name = $this->postmeta->seleccionar($search_metadata);
+						$photo_name = $photo_name->row_array();
+						$photo_name = split('/', $photo_name['meta_value']);
+						$photo_name = $photo_name[count($photo_name)-1];
+
+						$search_metadata['meta_key'] = '_wp_attachment_metadata';	
+											
+						$metadata = $this->postmeta->seleccionar($search_metadata);
+						$metadata = $metadata->row_array();
+						$metadata = unserialize($metadata['meta_value']);
+						if ($metadata['sizes']['medium']['file'] != NULL)
+						{
+							$metadata = $metadata['sizes']['medium']['file'];
+						}
+						else
+						{
+							$metadata = $metadata['sizes']['thumbnail']['file'];
+						}
+						
+						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
+						
+						$tmp = '<br /><a href="' . $photo_data->guid . '">';
+						$tmp .= '<img class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
+						$tmp .= '</a>';
+						$tmp .= '<br />';
+						$data['post_content'] .= $tmp;
+					}	
+					
+				break;
+				
+				//enlazar
+				case 'enlazar': 
+					$tmp = '<br /><a href="' . $this->input->post('photolink') . '">';
+					$tmp .= '<img class="alignnone" src="' . $this->input->post('photolink') . '" />';
+					$tmp .= '</a>';
+					$tmp .= '<br />';
+					$data['post_content'] .= $tmp;
+					
+				break;
+			}
+						
 			//consigue los id de las cata
 			$categorias = $this->combofiller->categorias();
 			

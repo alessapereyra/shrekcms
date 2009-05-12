@@ -1,7 +1,7 @@
 <?php
 class Post extends Model {
 	
-	  var $campos = array();
+	var $campos = array();
     var $tabla = 'wp_posts';
 
     function __construct()

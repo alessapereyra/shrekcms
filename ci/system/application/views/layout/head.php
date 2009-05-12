@@ -27,17 +27,26 @@ tinyMCE.init({
 </script>
 
 <?php 
-$subidon = array('fotos', 'documentos');
+$subidon = array('fotos', 'documentos', 'articulos');
 
 if (in_array($this->uri->segment(1), $subidon)):
 
 switch ($this->uri->segment(1))
 {
+	case 'articulos':
+		$name = 'Imagenes';
+		$ext = '*.jpg;*.jpeg;*.png;*.gif';
+		$url = ereg_replace('articulos', 'fotos', $this->me_url);	
+	break;
+	
 	case 'fotos':
+		$url = $this->me_url;
 		$name = 'Imagenes';
 		$ext = '*.jpg;*.jpeg;*.png;*.gif';
 	break;
+	
 	case 'documentos':
+		$url = $this->me_url;
 		$name = 'Documentos';
 		$ext = '*.doc;*.pdf';
 	break;
@@ -54,7 +63,7 @@ window.onload = function () {
 	swfu = new SWFUpload({
 		// Backend settings
 		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
-		upload_url: "<?php echo $this->me_url; ?>ajax/upload",
+		upload_url: "<?php echo $url; ?>ajax/upload",
 		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
 		file_size_limit : "2 MB",
 		file_types : "<?php echo $ext; ?>",

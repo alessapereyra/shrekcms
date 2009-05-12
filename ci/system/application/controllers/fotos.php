@@ -9,7 +9,8 @@ class Fotos extends DI_Controller {
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
 		$data['photolink'] = NULL;		
-		$data['categorias_selected'] = NULL;	
+		$data['categorias_selected'] = NULL;
+		$data['files'] = NULL;
 		
 		$this->load->library('combofiller');
 		
@@ -47,6 +48,7 @@ class Fotos extends DI_Controller {
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
+			$data['files'] = set_value('files');
 
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -147,6 +149,7 @@ class Fotos extends DI_Controller {
 					
 				break;
 			}
+			
 			$data['post_content'] = $data['post_content'] . 'descripcion';
 
 			$data['tags'] = $this->input->post('tags');
