@@ -8,7 +8,7 @@ class Users extends Model {
     {
         // Call the Model constructor
         parent::Model();
-        $this->load->database('default');        
+        $this->load->database('lamula');        
     }
 
     function seleccionar($search = NULL, $limit = NULL)
