@@ -177,7 +177,7 @@ class Documentos extends DI_Controller {
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(10));
+				$this->term_relationships->insertar($post_id, array(33));
 			}
 			else
 			{

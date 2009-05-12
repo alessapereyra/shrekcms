@@ -193,7 +193,7 @@ class Fotos extends DI_Controller {
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(8));
+				$this->term_relationships->insertar($post_id, array(31));
 			}
 			else
 			{

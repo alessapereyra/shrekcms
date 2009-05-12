@@ -54,5 +54,21 @@ $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
 
 
+$db['lamula']['password'] = "PjHuJGbJka";
+//$db['default']['password'] = "root";
+$db['lamula']['database'] = "lamula";
+$db['lamula']['dbdriver'] = "mysql";
+$db['lamula']['dbprefix'] = "";
+$db['lamula']['pconnect'] = FALSE;
+$db['lamula']['db_debug'] = TRUE;
+$db['lamula']['cache_on'] = FALSE;
+$db['lamula']['cachedir'] = "";
+$db['lamula']['char_set'] = "utf8";
+$db['lamula']['dbcollat'] = "utf8_general_ci";
+
+
+
+
+
 /* End of file database.php */
 /* Location: ./system/application/config/database.php */

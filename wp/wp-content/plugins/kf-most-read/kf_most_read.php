@@ -38,6 +38,7 @@ Author URI: http://www.kifulab.net
 	
 	function kf_register_post_hits(&$the_content){
 		global $post, $wpdb;
+		$post_id = (int)$post->ID;
 		if(($post->post_status == 'publish') && (int)$post->ID){
 			if(!empty($_SESSION)){
 				if(is_single() && !in_array($post_id, $_SESSION['kf_session_manager']['kf_most_read']['posts'])){
