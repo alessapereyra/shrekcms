@@ -506,8 +506,6 @@ get_header(); ?>
                 <!-- comentados -->
                 
                </div>
-
-
    
         </div>
 
@@ -534,7 +532,7 @@ get_header(); ?>
           </div>
           
           <div class="sidebox_content">
-            mas popular
+
             <?php most_popular(1); ?>
             
           </div>                          
