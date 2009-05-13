@@ -1,4 +1,7 @@
-/* @override http://localhost:8888/shrekcms/ci/css/style.css */
+/* @override 
+	http://localhost:8888/shrekcms/ci/css/style.css
+	http://lamula.pe/mulapress/ci/css/style.css
+*/
 
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
@@ -241,7 +244,7 @@ div#content div#sidebar_content {
 }
 
 #content form.form {
-	overflow: auto;
+	overflow: auto
 }
 
 

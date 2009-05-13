@@ -118,6 +118,9 @@ class Fotos extends DI_Controller {
 						$metadata = $this->postmeta->seleccionar($search_metadata);
 						$metadata = $metadata->row_array();
 						$metadata = unserialize($metadata['meta_value']);
+						
+						$original_md = $metadata;
+						
 						if ($metadata['sizes']['medium']['file'] != NULL)
 						{
 							$metadata = $metadata['sizes']['medium']['file'];
@@ -129,10 +132,13 @@ class Fotos extends DI_Controller {
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
 						
+					
+						
 						$tmp = '<a href="' . $photo_data->guid . '">';
 						$tmp .= '<img class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
 						$tmp .= '</a>';
 						$tmp .= '<br />';
+												        
 						$data['post_content'] .= $tmp;
 
 					}	
@@ -150,7 +156,7 @@ class Fotos extends DI_Controller {
 				break;
 			}
 			
-			$data['post_content'] = $data['post_content'] . 'descripcion';
+			$data['post_content'] = $data['post_content'] . '';
 
 			$data['tags'] = $this->input->post('tags');
 			

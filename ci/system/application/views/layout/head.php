@@ -62,7 +62,7 @@ var swfu;
 window.onload = function () {
 	swfu = new SWFUpload({
 		// Backend settings
-		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
+		flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
 		upload_url: "<?php echo $url; ?>ajax/upload",
 		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
 					"PHPSESSID" : "<?php echo session_id(); ?>"},
@@ -77,7 +77,7 @@ window.onload = function () {
 		debug: true,
 
 		// Button settings
-		button_image_url: "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
+		button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
 		button_width: 61,
 		button_height: 22,
 		button_placeholder_id: "spanButtonPlaceholder",
@@ -96,7 +96,7 @@ window.onload = function () {
 </script>
 <?php endif; ?>
 
-<!--[if lte IE 6]>
+<!--[if lte IE 7]>
 	<?php echo link_tag('css/ie6.css'); ?>
 
 <![endif]-->
