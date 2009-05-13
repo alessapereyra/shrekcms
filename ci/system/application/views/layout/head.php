@@ -95,7 +95,7 @@ window.onload = function () {
 </script>
 <?php endif; ?>
 
-<!--[if lte IE 6]>
+<!--[if lte IE 7]>
 	<?php echo link_tag('css/ie6.css'); ?>
 
 <![endif]-->
