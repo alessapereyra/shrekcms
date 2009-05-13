@@ -346,7 +346,7 @@ class Fotos extends DI_Controller {
 			
 			$this->postmeta->insertar($meta, $the_photo);
 			
-			echo $the_photo;
+			echo $the_photo . '';
 		}
 		
 	}
