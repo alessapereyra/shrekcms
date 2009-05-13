@@ -73,7 +73,7 @@ window.onload = function () {
 		custom_settings : {
 			progressTarget : "fsUploadProgress"
 		},		
-		debug: false,
+		debug: true,
 
 		// Button settings
 		button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
