@@ -18,8 +18,7 @@ function snippet($text,$length=64,$tail="...") {
     return $text;
 }
 
-
-get_header(); ?> 
+get_header(); ?>
 <div id="top_news">
   
   
@@ -41,7 +40,7 @@ get_header(); ?>
     <p>
   
       
-        <span class="author">Por <a href="#"><?php the_author_posts_link() ?></a> <em><?php the_date('d/m/y'); ?></em></span>
+        <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
         
         
         <?php 

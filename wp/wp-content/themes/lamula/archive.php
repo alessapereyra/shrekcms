@@ -20,6 +20,7 @@ function snippet($text,$length=64,$tail="...") {
 
 $row = null; 
 //$author tiene el id del autor
+
 get_header(); ?>
 
 <?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
