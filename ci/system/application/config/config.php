@@ -14,7 +14,7 @@
 
 // Para dientuki:
 //$tmp = 'http://' . $_SERVER['SERVER_NAME'] . '/shrekcms/ci/' ;
-$tmp = 'http://' . $_SERVER['SERVER_NAME'] . '/mulapress/ci/' ;
+$tmp = 'http://' . $_SERVER['SERVER_NAME'] . '/shrekcms/ci/' ;
 
 $config['base_url']	= $tmp;
 

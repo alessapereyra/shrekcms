@@ -1,24 +1,6 @@
-<?php
-
-function active_controller($target) {
-
-	if (in_array($this->uri->segment(1), $subidon)):
-
-
-    if $this->uri->segment(1) == $target {
-      
-        return "class='selected'";
-      
-       }
-
-  ?>
-
-
-}
+<?php $this->load->helper('url');
+$this->load->library('layout');
 ?>
-
-
-<?php $this->load->helper('url'); ?>
 <div id="top_menu">
    <div>
      <span class="left">lamula</span>
@@ -38,10 +20,9 @@ function active_controller($target) {
 		  
 		  <h2>Publicar</h2>
 		  <ul id="menu">
-				<li class="foto <?php echo active_controller('fotos'); ?>" </li>		    
-				<li class="video <?php echo active_controller('videos'); ?> . <?php ac("fotos") ?>" <?php echo anchor('', 'video') ?> </li>
-	      <li class="audio <?php echo active_controller('audios'); ?>"><?php echo anchor('', 'audio') ?></li>
-				<li class="documento <?php echo active_controller('documentos'); ?>" ><?php echo anchor('documentos/formulario', 'documento') ?></li>					
+				<li class="foto <?php echo $this->layout->active_controller('fotos'); ?>" ><?php echo anchor('fotos/formulario', 'fotos') ?> </li>		    
+				<li class="video <?php echo $this->layout->active_controller('videos'); ?>" ><?php echo anchor('videos/formulario', 'video') ?> </li>
+				<li class="video <?php echo $this->layout->active_controller('articulo'); ?>" ><?php echo anchor('articulos/formulario', 'articulo') ?> </li>
+	      		<li class="audio <?php echo $this->layout->active_controller('audios'); ?>" ><?php echo anchor('', 'audio') ?></li>
+				<li class="documento <?php echo $this->layout->active_controller('documentos'); ?>" ><?php echo anchor('documentos/formulario', 'documento') ?></li>					
 			</ul> <!-- menu -->
-			
-		
