@@ -313,6 +313,7 @@ class Fotos extends DI_Controller {
 				{
 					$the_meta['sizes']['thumbnail'] = $tmp;
 				}						
+				//echo 'thum: ' . print_r($tmp);
 				
 				//medium_size
 				$tmp_size = 'medium_size';
@@ -324,7 +325,8 @@ class Fotos extends DI_Controller {
 				{
 					$the_meta['sizes']['medium'] = $tmp;
 				}
-
+				//echo 'm: ' . print_r($tmp);
+				
 				//large_size
 				$tmp_size = 'large_size';
 				$to['w'] = $this->options->get_($tmp_size . '_w');
@@ -335,6 +337,7 @@ class Fotos extends DI_Controller {
 				{
 					$the_meta['sizes']['large'] = $tmp;
 				}
+				//echo 'l: ' . print_r($tmp);
 								
 				$image_meta = array('aperture' => '0', 'credit' => '' , 'camera' => '',
 						      'caption' => '', 'created_timestamp' => '0',
@@ -344,6 +347,8 @@ class Fotos extends DI_Controller {
 				);
 				
 				$the_meta['image_meta'] = $image_meta;
+				
+				//die(print_r($image_meta));
 				
 				$this->load->library('wpshit');
 				

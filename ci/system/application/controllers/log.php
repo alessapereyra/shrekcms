@@ -150,14 +150,13 @@ class Log extends DI_Controller {
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;
 				$this->usuario['nombre'] = $fila->user_nicename;
-				
+
 				$this->session->set_userdata($this->usuario);
 				return TRUE;
 			}
 
 		}
 		
-		//$this->form_validation->set_message('password_check', 'Revise los datos');
 		return FALSE;			   			
 	}
 		
