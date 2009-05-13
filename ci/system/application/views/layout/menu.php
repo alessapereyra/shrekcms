@@ -1,5 +1,19 @@
-<?php $this->load->helper('url');
-$this->load->library('layout');
+<?php
+
+function active_controller($target) {
+
+	if (in_array($this->uri->segment(1), $subidon))
+	{
+	
+	    if ($this->uri->segment(1) != $target)
+	    {
+	      
+	        return "class='selected'";
+	      
+	    }
+	}
+}
+
 ?>
 <div id="top_menu">
    <div>
@@ -20,9 +34,9 @@ $this->load->library('layout');
 		  
 		  <h2>Publicar</h2>
 		  <ul id="menu">
-				<li class="foto <?php echo $this->layout->active_controller('fotos'); ?>" ><?php echo anchor('fotos/formulario', 'fotos') ?> </li>		    
-				<li class="video <?php echo $this->layout->active_controller('videos'); ?>" ><?php echo anchor('videos/formulario', 'video') ?> </li>
-				<li class="video <?php echo $this->layout->active_controller('articulo'); ?>" ><?php echo anchor('articulos/formulario', 'articulo') ?> </li>
-	      		<li class="audio <?php echo $this->layout->active_controller('audios'); ?>" ><?php echo anchor('', 'audio') ?></li>
-				<li class="documento <?php echo $this->layout->active_controller('documentos'); ?>" ><?php echo anchor('documentos/formulario', 'documento') ?></li>					
+				<li class="foto"><?php echo anchor('fotos/formulario', 'foto') ?></li>		    
+				<li class="video"><?php echo anchor('', 'video') ?></li>
+				<li class="articulo"><?php echo anchor('articulos/formulario', 'Articulo') ?></li>
+				<li class="audio"><?php echo anchor('', 'audio') ?></li>
+				<li class="documento"><?php echo anchor('documentos/formulario', 'documento') ?></li>					
 			</ul> <!-- menu -->
