@@ -11,6 +11,7 @@ class Documentos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');
 		
@@ -49,7 +50,8 @@ class Documentos extends DI_Controller {
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
-
+			$data['ie6'] = $this->_is_ie6();
+			
 			$data['categorias'] = $this->combofiller->categorias();
 			
 			foreach($data['categorias'] as $key => $value)
@@ -97,8 +99,18 @@ class Documentos extends DI_Controller {
 			{
 				//subir imagenes
 				case 'subir':
-					$docs_id = split('-', $this->input->post('files'));
-					unset($docs_id[0]);
+					if ($this->_is_ie6() == TRUE)
+					{
+						if ($_FILES['Filedata']['error'] == 0)
+						{
+							$docs_id[] = $this->_upload();
+						}
+					}
+					else
+					{
+						$docs_id = split('-', $this->input->post('files'));
+						unset($docs_id[0]);						
+					}					
 					
 					foreach($docs_id as $doc)
 					{

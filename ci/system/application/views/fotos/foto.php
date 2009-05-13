@@ -1,7 +1,16 @@
 <div id="content" class="foto">
 
-	<?php echo form_open('fotos/actualizar', array('class' => 'form'));
+	<?php 
 	
+		if ($ie6 == TRUE)
+		{
+			echo form_open_multipart('fotos/actualizar', array('class' => 'form'));
+		}
+		else
+		{
+			echo form_open('fotos/actualizar', array('class' => 'form'));
+		}
+
 		if ($id != NULL)
 		{
 			echo form_hidden('id', $id);					
@@ -24,7 +33,12 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona la foto que desees subir:</p>
-  					<span id="spanButtonPlaceholder"></span>
+  					<span id="spanButtonPlaceholder">
+  					<?php if ($ie6 == TRUE): ?>
+						<?php echo form_error('Filedata'); ?>
+						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
+  					<?php endif; ?>
+  					</span>
   					<div class="fieldset flash" id="fsUploadProgress"></div>
   					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
   		</div>

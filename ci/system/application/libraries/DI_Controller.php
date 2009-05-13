@@ -65,11 +65,12 @@ class DI_Controller extends Controller {
 			
 			$data['seccion'] = humanize($this->uri->segment(2));
 			$data['log'] = $this->_is_log();
+			$data['ie6'] = $this->_is_ie6();
 			
 			$this->load->view('layout/' . $tmp['head'], $data);
 			
 			//$data['seccion'] =  underscore($data['seccion']);
-			$this->load->view('layout/' . $tmp['menu']);
+			$this->load->view('layout/' . $tmp['menu'], $data);
 			
 			$this->is_ajax = FALSE;
 			$this->form = '';
@@ -84,6 +85,21 @@ class DI_Controller extends Controller {
 			
 			$this->load->view('layout/' . $tmp['footer'], $this->_is_log());
 		}
+	}
+	
+	function _is_ie6()
+	{
+		$this->load->library('user_agent');
+		
+		if ($this->agent->is_browser())
+		{
+			if ( ($this->agent->browser() == 'Internet Explorer') AND ($this->agent->version() == 6) )
+			{
+				return TRUE;
+			}
+		}
+		
+		return FALSE;
 	}
 	
 	function _paginador($total, $per_page)

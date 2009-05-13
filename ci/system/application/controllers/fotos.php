@@ -11,6 +11,7 @@ class Fotos extends DI_Controller {
 		$data['photolink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');		
 
@@ -49,6 +50,7 @@ class Fotos extends DI_Controller {
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
+			$data['ie6'] = $this->_is_ie6();
 
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -97,8 +99,18 @@ class Fotos extends DI_Controller {
 			{
 				//subir imagenes
 				case 'subir':
-					$images_id = split('-', $this->input->post('files'));
-					unset($images_id[0]);
+					if ($this->_is_ie6() == TRUE)
+					{
+						if ($_FILES['Filedata']['error'] == 0)
+						{
+							$images_id[] = $this->_upload();
+						}
+					}
+					else
+					{
+						$images_id = split('-', $this->input->post('files'));
+						unset($images_id[0]);						
+					}
 					
 					foreach($images_id as $img)
 					{
@@ -131,9 +143,7 @@ class Fotos extends DI_Controller {
 						}
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
-						
-					
-						
+
 						$tmp = '<a href="' . $photo_data->guid . '">';
 						$tmp .= '<img class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
 						$tmp .= '</a>';
@@ -254,7 +264,6 @@ class Fotos extends DI_Controller {
 							'upload_data' => $this->upload->data());
 			
 			//$this->load->view('upload_form', $error);
-			echo 'error';
 			die(print_r($error));
 			
 		}	
@@ -357,7 +366,14 @@ class Fotos extends DI_Controller {
 			
 			$this->postmeta->insertar($meta, $the_photo);
 			
-			echo $the_photo . '';
+			if ($this->_is_ie6() == TRUE)
+			{
+				return $the_photo;
+			}
+			else
+			{
+				echo $the_photo . '';				
+			}
 		}
 		
 	}
@@ -467,14 +483,6 @@ class Fotos extends DI_Controller {
 		}
 
 		return FALSE;
-	}
-		
-	function borrar($id)
-	{
-		$this->load->model('zones');
-		$this->session->set_userdata('info', $this->zones->borrar(array('id' => $id)));
-				
-		redirect('backend/zonas/index/');
 	}
 
 }
