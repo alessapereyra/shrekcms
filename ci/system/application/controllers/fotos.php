@@ -59,7 +59,7 @@ class Fotos extends DI_Controller {
 					$categorias_selected[] = $key;
 				}
 			}
-			$data['categorias_selected'] = $categorias_selected;
+			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected; 
 			
 			$data['provincias'] = $this->combofiller->providences();
 			$data['provincias_selected'] = set_value('provincia');

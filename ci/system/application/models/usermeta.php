@@ -22,6 +22,17 @@ class Usermeta extends Model {
     	}
     }
     
+    function select_all($id)
+    {
+    	$this->db->select('meta_key');
+    	$this->db->select('meta_value');
+    	$this->db->from($this->tabla);
+    	$this->db->where(array('user_id' => $id));
+    	
+    	$query = $this->db->get();
+    	return $query;
+    }
+    
     function _insertar($values)
     {
     	$this->db->insert($this->tabla, $values);

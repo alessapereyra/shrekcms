@@ -18,5 +18,10 @@ class CIdip extends Controller {
             $_REQUEST[$key] = $this->input->xss_clean($val);
         }
     }
+    
+    function test()
+    {
+    	echo 'test'; 
+    }
 }
 ?> 

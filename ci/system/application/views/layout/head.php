@@ -64,7 +64,8 @@ window.onload = function () {
 		// Backend settings
 		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
 		upload_url: "<?php echo $url; ?>ajax/upload",
-		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
+		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
+					"PHPSESSID" : "<?php echo session_id(); ?>"},
 		file_size_limit : "2 MB",
 		file_types : "<?php echo $ext; ?>",
 		file_types_description : "<?php echo $name?>",

@@ -19,11 +19,7 @@ function snippet($text,$length=64,$tail="...") {
 }
 
 
-get_header(); ?>
-
-<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php'; 
-
-$row = NULL; ?>
+get_header(); ?> 
 <div id="top_news">
   
   
@@ -45,7 +41,7 @@ $row = NULL; ?>
     <p>
   
       
-        <span class="author">Por <a href="#"><?php the_author() ?></a> <em><?php the_date('d/m/y'); ?></em></span>
+        <span class="author">Por <a href="#"><?php the_author_posts_link() ?></a> <em><?php the_date('d/m/y'); ?></em></span>
         
         
         <?php 
@@ -54,7 +50,7 @@ $row = NULL; ?>
               $content = str_replace(']]>', ']]&gt;', $content);  
               $content = snippet($content,235);
               $content = strip_tags($content, '<p>');            
-              
+              $row = NULL;
         ?>
 
         <?php echo $content ?>
