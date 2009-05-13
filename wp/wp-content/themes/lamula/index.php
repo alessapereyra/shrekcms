@@ -520,13 +520,20 @@ get_header(); ?>
           <h4>Art&iacute;culos más</h4>
           
           <div class="sidebox_content">
-            plugin vistos
+            
+              plugin vistos
               <!-- VISTOS ACA VA EL PLUGIN-->
             
           </div>
                 
           <div class="sidebox_content">
-            plugin votados
+
+            <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
+
+                llala
+
+            <?php endif; ?>
+            
               <!-- VOTADOS -->
             
           </div>

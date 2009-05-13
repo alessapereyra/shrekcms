@@ -62,7 +62,7 @@ var swfu;
 window.onload = function () {
 	swfu = new SWFUpload({
 		// Backend settings
-		flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
+		flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
 		upload_url: "<?php echo $url; ?>ajax/upload",
 		post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>"},
 		file_size_limit : "2 MB",
@@ -76,7 +76,7 @@ window.onload = function () {
 		debug: false,
 
 		// Button settings
-		button_image_url: "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
+		button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
 		button_width: 61,
 		button_height: 22,
 		button_placeholder_id: "spanButtonPlaceholder",
