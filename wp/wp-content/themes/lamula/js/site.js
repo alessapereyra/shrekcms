@@ -2,6 +2,16 @@ $(document).ready(function() {
 	
 	 BACK = "todas"
 	 BACK_STATES = "regresar"
+		 
+		 //fancybox
+		 $('div.post_content a').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : false,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+		 
 	
 		$("div.class_content:not(:first)").hide("slow");
 		$("div.tab_content:not(:first)").hide("slow");

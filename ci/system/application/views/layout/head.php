@@ -27,6 +27,7 @@ tinyMCE.init({
 </script>
 
 <?php 
+
 $subidon = array('fotos', 'documentos', 'articulos');
 
 if (in_array($this->uri->segment(1), $subidon)):
