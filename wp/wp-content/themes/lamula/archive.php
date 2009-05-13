@@ -4,6 +4,10 @@
  * @subpackage LaMula
  */
 
+/*
+Template Name: Archive
+*/
+
 function snippet($text,$length=64,$tail="...") {
     $text = trim($text);
     $txtl = strlen($text);
