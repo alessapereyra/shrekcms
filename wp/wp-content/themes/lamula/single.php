@@ -41,7 +41,7 @@ get_header(); ?>
     <p>
   
       
-        <span class="author">Por <a href="#"><?php the_author() ?></a> <em><?php the_date('d/m/y'); ?></em></span>
+        <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
         
         
         <?php 

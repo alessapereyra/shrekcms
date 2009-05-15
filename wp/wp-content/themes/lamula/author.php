@@ -28,7 +28,7 @@ get_header(); ?>
 
 <?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
 
-<div id="content">
+<div id="content" class="inner">
   
 	<div id="content_feed">
 	  

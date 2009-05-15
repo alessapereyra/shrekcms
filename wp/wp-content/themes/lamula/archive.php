@@ -23,7 +23,6 @@ function snippet($text,$length=64,$tail="...") {
 }
 
 $row = null; 
-$author = 1;
 get_header(); ?>
 
 <?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>

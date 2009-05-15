@@ -110,8 +110,8 @@ function uploadSuccess(file, serverData, receivedResponse) {
 		if (receivedResponse) 
 		{
 			var tmp = typeof(serverData) === "undefined" ? "" : serverData;
-			var input = document.getElementById('files');
-			input.value = input.value + '-' + tmp;
+			var miinput = document.getElementById('files');
+			miinput.value = miinput.value + '-' + tmp;
 		}
 
 	} catch (ex) {
@@ -173,7 +173,7 @@ function uploadError(file, errorCode, message) {
 
 function uploadComplete(file) {
 	if (this.getStats().files_queued === 0) {
-		document.getElementById(this.customSettings.cancelButtonId).disabled = true;
+		//document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}
 }
 
