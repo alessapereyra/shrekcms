@@ -516,7 +516,8 @@ div#content_feed ul#post_list li {
 }
 
 
-div#content_feed ul#post_list
+div#content_feed ul#post_list,
+div#content_feed div#user_profile
 {
 	overflow: hidden;
 	background-color: white;
@@ -823,6 +824,35 @@ div#content.inner ul#post_list div.post_content p span {
 
 
 /* @end */
+
+/* @group Perfil */
+
+#user_profile h2 {
+	font-size: 2.5em;
+}
+
+#user_profile h3 {
+	font-size: 2.0em;
+	margin-bottom: 1em;
+	color: #3b3330;
+}
+
+#user_profile p {
+	font-size: 0.9em;
+	line-height: 1.3em;
+	margin-bottom: 1em;
+	color: #806f68;
+}
+
+#user_profile h4 {
+	margin-bottom: 1em;
+}
+
+
+
+/* @end */
+
+
 
 /* @group Footer */
 
