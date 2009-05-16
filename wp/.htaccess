@@ -1,11 +1,10 @@
+# BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /rosariopenya/
+RewriteBase /shrekcms/wp/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /rosariopenya/index.php [L]
+RewriteRule . /shrekcms/wp/index.php [L]
 </IfModule>
-
-# BEGIN WordPress
 
 # END WordPress

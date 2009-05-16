@@ -28,7 +28,18 @@ get_header(); ?>
 <?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 <div id="content" class="inner">
   
-  <div id="content_feed">    
+  <div id="content_feed">
+  
+	<?php
+	$ci =& get_instance();
+	$ci->load->model('users');
+	$ci->load->model('usermeta');
+	
+	$perfil = $ci->usermeta->select_all($author);
+	$perfil = $perfil->result_array();
+	$data['perfil'] = $perfil;
+	echo $ci->load->view('usuarios/perfil', $data, true);
+	 ?>       
 
     <ul id="post_list">
     

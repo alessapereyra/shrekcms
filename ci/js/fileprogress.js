@@ -26,8 +26,9 @@ function FileProgress(file, targetID) {
 
 		var progressCancel = document.createElement("a");
 		progressCancel.className = "progressCancel";
+		progressCancel.innerHTML = "";
 		progressCancel.href = "#";
-		progressCancel.style.visibility = "hidden";
+		//progressCancel.style.visibility = "hidden";
 		progressCancel.appendChild(document.createTextNode(" "));
 
 		var progressText = document.createElement("div");
@@ -90,12 +91,8 @@ FileProgress.prototype.setComplete = function () {
 	this.fileProgressElement.className = "progressContainer blue";
 	this.fileProgressElement.childNodes[3].className = "progressBarComplete";
 	this.fileProgressElement.childNodes[3].style.width = "";
-
-	var oSelf = this;
-	this.setTimer(setTimeout(function () {
-		oSelf.disappear();
-	}, 10000));
 };
+
 FileProgress.prototype.setError = function () {
 	this.fileProgressElement.className = "progressContainer red";
 	this.fileProgressElement.childNodes[3].className = "progressBarError";
@@ -118,6 +115,10 @@ FileProgress.prototype.setCancelled = function () {
 };
 FileProgress.prototype.setStatus = function (status) {
 	this.fileProgressElement.childNodes[2].innerHTML = status;
+};
+
+FileProgress.prototype.setMiniatura = function (status) {
+	this.fileProgressElement.childNodes[0].innerHTML = status;
 };
 
 // Show/Hide the cancel button

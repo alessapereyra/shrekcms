@@ -321,8 +321,8 @@ class Fotos extends DI_Controller {
 				if ($tmp != FALSE)
 				{
 					$the_meta['sizes']['thumbnail'] = $tmp;
-				}						
-				//echo 'thum: ' . print_r($tmp);
+				}
+				$values['guid'] = ereg_replace($photo['file_name'], $tmp['file'], $values['guid']);
 				
 				//medium_size
 				$tmp_size = 'medium_size';
@@ -334,7 +334,6 @@ class Fotos extends DI_Controller {
 				{
 					$the_meta['sizes']['medium'] = $tmp;
 				}
-				//echo 'm: ' . print_r($tmp);
 				
 				//large_size
 				$tmp_size = 'large_size';
@@ -372,7 +371,8 @@ class Fotos extends DI_Controller {
 			}
 			else
 			{
-				echo $the_photo . '';				
+				$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
+				echo $the_photo . '#' . $tmp;				
 			}
 		}
 		

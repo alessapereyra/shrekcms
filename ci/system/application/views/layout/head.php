@@ -59,6 +59,7 @@ if ($ie6 == FALSE)
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.queue.js"></script>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/fileprogress.js"></script>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/handlers.js"></script>
+	<?php echo link_tag('css/swfupload.css'); ?>
 	
 	<script type="text/javascript" language="javascript">
 	var swfu;

@@ -106,13 +106,19 @@ function uploadSuccess(file, serverData, receivedResponse) {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setComplete();
 		progress.setStatus("Complete.");
-		progress.toggleCancel(false);
+		//progress.toggleCancel(false);
 		if (receivedResponse) 
 		{
 			var tmp = typeof(serverData) === "undefined" ? "" : serverData;
 			var miinput = document.getElementById('files');
-			miinput.value = miinput.value + '-' + tmp;
+			
+			tmp = tmp.split("#");
+			
+			progress.setMiniatura(tmp[1]);			
+			
+			miinput.value = miinput.value + '-' + tmp[0];
 		}
+		
 
 	} catch (ex) {
 		this.debug(ex);
