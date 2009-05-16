@@ -135,8 +135,7 @@ class Documentos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			
-			$data['post_content'] = '';	
+			$data['post_content'] = $this->input->post('textos');
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -205,7 +204,7 @@ class Documentos extends DI_Controller {
 				break;
 			}
 			
-			$data['post_content'] = $data['post_content'] . 'descripcion';
+			//$data['post_content'] = $data['post_content'];
 			
 			//Debo armar el texto con las img
 			$data['tags'] = $this->input->post('tags');
