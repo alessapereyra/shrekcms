@@ -135,7 +135,7 @@ class Documentos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = $this->input->post('textos');
+			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -184,7 +184,8 @@ class Documentos extends DI_Controller {
 						$doc_name = split('/', $doc_name['meta_value']);
 						$doc_name = $doc_name[count($doc_name)-1];
 						
-						$tmp = '<a href="' . $doc_data->guid . '">';
+						$tmp = '<br />';						
+						$tmp .= '<a href="' . $doc_data->guid . '" title="'. $doc_name .'">';
 						$tmp .= $this->input->post('titulo');
 						$tmp .= '</a>';
 						$tmp .= '<br />';
