@@ -140,7 +140,7 @@ class Documentos extends DI_Controller {
 	
 			switch ($this->input->post('upload-content'))
 			{
-				//subir imagenes
+				//subir documentos
 				case 'subir':
 					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{

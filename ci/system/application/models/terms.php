@@ -2,7 +2,7 @@
 class Terms extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_terms';
+    var $tabla = 'mulapress_terms';
 
     function __construct()
     {
@@ -17,9 +17,9 @@ class Terms extends Model {
     	$this->db->select($this->tabla . '.name');
     	
     	$this->db->from($this->tabla);
-    	$this->db->join('wp_term_taxonomy', 'wp_terms.term_id = wp_term_taxonomy.term_id');
+    	$this->db->join('mulapress_term_taxonomy', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');
     	
-    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
+    	$this->db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
 //    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 29));    	
     	
     	$query = $this->db->get();
