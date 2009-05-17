@@ -1,6 +1,14 @@
 <div id="content" class="foto">
 
-	<?php echo form_open('documentos/actualizar', array('class' => 'form'));
+	<?php 
+		if ($ie6 == TRUE)
+		{
+			echo form_open_multipart('documentos/actualizar', array('class' => 'form'));
+		}
+		else
+		{
+			echo form_open('documentos/actualizar', array('class' => 'form'));
+		}	
 	
 		if ($id != NULL)
 		{
@@ -24,9 +32,18 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona el documento que desees subir:</p>
-  					<span id="spanButtonPlaceholder"></span>
+  					<span id="spanButtonPlaceholder">
+  					<?php if ($ie6 == TRUE): ?>
+						<?php echo form_error('Filedata'); ?>
+						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
+  					<?php endif; ?>
+  					</span>
   					<div class="fieldset flash" id="fsUploadProgress"></div>
   					<em>máximo 2mb. formatos soportados: doc, pdf</em>
+  					<?php 
+						$this->load->library('session');
+						echo $this->session->flashdata('fileupload');  					  					
+  					?>
   		</div>
   		<div id="enlazar">
             	<?php echo form_label('Ingresa la dirección del documento que desees enviar:', 'doclink');?> 

@@ -1,5 +1,4 @@
 <?php
-
 class Documentos extends DI_Controller {
 	
 	function formulario($id = NULL)
@@ -103,7 +102,24 @@ class Documentos extends DI_Controller {
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$docs_id[] = $this->_upload();
+							$aceptados = array('application/pdf','application/msword');
+							if (in_array($_FILES['Filedata']['type'], $aceptados))
+							{
+								$docs_id[] = $this->_upload();
+								if (is_null($docs_id[0]))
+								{
+									//error y debo redireccionar
+									$this->load->library('session');
+									$this->session->set_flashdata('fileupload', 'Error en la carga');
+									redirect('documentos/formulario');
+								}
+							}						
+							else
+							{
+								$this->load->library('session');
+								$this->session->set_flashdata('fileupload', 'Error en la carga');
+								redirect('documentos/formulario');
+							}
 						}
 					}
 					else
@@ -197,15 +213,8 @@ class Documentos extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
-			if ($this->is_ajax != TRUE)
-			{
-				redirect('documentos/formulario');
-			}
-			else
-			{
-				$data['accion'] = 'ok';
-				$this->load->view('', $data);
-			}
+			redirect('documentos/formulario');			
+			
 		}			
 	}
 	
@@ -242,7 +251,7 @@ class Documentos extends DI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
-			
+			return NULL;	
 		}	
 		else
 		{			
@@ -266,7 +275,14 @@ class Documentos extends DI_Controller {
 						
 			$this->postmeta->insertar($meta, $the_doc);
 			
-			echo $the_doc;
+			if ($this->_is_ie6() == TRUE)
+			{
+				return $the_doc;
+			}
+			else
+			{
+				echo $the_doc;				
+			}			
 		}
 		
 	}

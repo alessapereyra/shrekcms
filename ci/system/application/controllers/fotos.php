@@ -103,7 +103,24 @@ class Fotos extends DI_Controller {
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$images_id[] = $this->_upload();
+							$aceptados = array('image/jpeg','image/png','image/gif');
+							if (in_array($_FILES['Filedata']['type'], $aceptados))
+							{
+								$images_id[] = $this->_upload();
+								if (is_null($images_id[0]))
+								{
+									//error y debo redireccionar
+									$this->load->library('session');
+									$this->session->set_flashdata('fileupload', 'Error en la carga');
+									redirect('fotos/formulario');
+								}
+							}						
+							else
+							{
+								$this->load->library('session');
+								$this->session->set_flashdata('fileupload', 'Error en la carga');
+								redirect('fotos/formulario');
+							}
 						}
 					}
 					else
@@ -263,9 +280,7 @@ class Fotos extends DI_Controller {
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
 			
-			//$this->load->view('upload_form', $error);
-			die(print_r($error));
-			
+			return NULL;
 		}	
 		else
 		{			
