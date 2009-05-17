@@ -88,7 +88,7 @@ class Usuarios extends Controller {
 			}
 			else
 			{
-				//modificacion, no implementado todabia
+				//modificacion, no implementado todavia
 				//$where['id'] = $id;
 				//$this->users->actualizar($data, $where);
 				//arma los meta

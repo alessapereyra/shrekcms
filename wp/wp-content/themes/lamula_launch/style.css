@@ -1,0 +1,99 @@
+/* @override http://lamula.pe/wp-content/themes/lamula_launch/style.css */
+
+h1 {
+	text-indent:  -9000em;
+	margin: 0px;
+	display: none;
+}
+
+div#wrapper {
+	
+	width: 960px;
+	margin: 0px auto !important;
+	overflow: auto;
+}
+
+div#wrapper img {
+	width: 500px;
+	display: block;
+	margin: 20px auto !important;
+	margin-bottom: 0px !important;
+}
+
+div#wrapper h2 a {
+	
+	text-decoration: none;
+	font: 2em Georgia, "Times New Roman", Times, serif;
+	color: #2c1414;
+	text-transform: lowercase;
+	text-align: center !important;
+	display: block;
+	letter-spacing: -4px;
+}
+
+div.entry {
+	
+	overflow: hidden;
+	padding-left: 110px;
+	margin-top: 0px;
+}
+
+
+div#wrapper div.entry object {
+	
+	clear: none;
+	width: 500px;
+}
+
+span.vvqbox.vvqyoutube {
+	width: 350px !important;
+	margin: 0px !important;
+	float: left;
+	margin-right: 40px !important;
+}
+
+object#vvq-420-youtube-1 {
+	float: left !important;
+	width: 350px !important;
+	margin-right: 0px !important;
+	display: block !important;
+	margin-top: 20px;
+}
+
+object#vvq-420-youtube-2 {
+	float: right !important;
+	width: 350px !important;
+	display: block !important;
+	margin-left: 200px !important;
+}
+
+#wrapper div.entry p {
+	overflow: hidden;
+}
+
+
+#wrapper div.entry a.crea{
+	color: black;
+	display: block;
+	padding: 20px;
+	margin-left: 240px;
+	font-size: 2em;
+	text-transform: lowercase;
+	letter-spacing: -1px;
+	word-spacing: 6px;
+}
+
+div#content.widecolumn {
+	
+	width: 960px;
+	margin: 0px auto;
+	font-size: 1.5em;
+	line-height: 1.5em;
+}
+
+div#content.widecolumn input{
+	
+	padding: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
