@@ -97,12 +97,12 @@
   			<li><a href="#mundo">El mundo</a></li>
   		</ul>
   		<div id="peru">
-  			<?php echo form_label('Provincia: ', 'provincia');?>
-  			<?php echo form_dropdown('provincia', $provincias, NULL,'id="provincia"'); ?>
-  			<?php echo form_label('Departamento: ', 'departamento');?>
-  			<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
-  			<?php echo form_label('Distrito: ', 'distrito');?>
-  			<?php echo form_dropdown('distrito', $distritos, NULL,'id="distrito"'); ?>
+    			<?php echo form_label('Departamento: ', 'departamento');?>
+    			<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
+    			<?php echo form_label('Provincia: ', 'provincia');?>
+    			<select id="provincia" disabled="disabled"></select>
+    			<?php echo form_label('Distrito: ', 'distrito');?>
+    			<select id="distrito" disabled="distrito"></select>
   		</div>
   		<div id="mundo">
   			<?php echo form_label('País: ', 'pais');?>

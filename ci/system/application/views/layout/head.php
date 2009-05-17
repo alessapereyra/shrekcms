@@ -106,6 +106,13 @@ if ($ie6 == FALSE)
 
 <![endif]-->
 
+<!--  form -->
+<script type="text/javascript" language="javascript">
+	var base_url = "<?php echo $this->config->item('base_url'); ?>";
+	var site_url = "<?php echo $this->config->item('base_url') . $this->config->item('index_page'); ?>";
+</script>
+<script src="<?php echo $this->config->item('base_url'); ?>js/jquery.form.js" type="text/javascript" language="javascript"></script>
+
 <!--  theMagic -->
 <script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
 

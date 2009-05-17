@@ -15,9 +15,8 @@ class Articulos extends DI_Controller {
 		
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['categorias_selected'] = NULL;
-		$data['provincias'] = $this->combofiller->providences();
-		$data['distritos'] = $this->combofiller->distrits();
-		$data['departamentos'] = $this->combofiller->departments();
+
+		$data['departamentos'] = $this->combofiller->departments(TRUE);		
 		$data['paices'] = $this->combofiller->countries();
 		
 		if ($id != NULL)
@@ -38,7 +37,7 @@ class Articulos extends DI_Controller {
 		$this->load->helper('form');
 		$this->load->library('combofiller');
 		$this->load->library('form_validation');
-die(print_r($_FILES));
+
 		$this->form_validation->set_rules($this->_reglas());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		 
@@ -101,7 +100,24 @@ die(print_r($_FILES));
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$images_id[] = $this->_upload();
+							$aceptados = array('image/jpeg','image/png','image/gif','image/pjpeg','image/x-png');
+							if (in_array($_FILES['Filedata']['type'], $aceptados))
+							{
+								$images_id[] = $this->_upload();
+								if (is_null($images_id[0]))
+								{
+									//error y debo redireccionar
+									$this->load->library('session');
+									$this->session->set_flashdata('fileupload', 'Error en la carga');
+									redirect('articulos/formulario');
+								}
+							}						
+							else
+							{
+								$this->load->library('session');
+								$this->session->set_flashdata('fileupload', 'Error en la carga');
+								redirect('articulos/formulario');
+							}
 						}
 					}
 					else
@@ -240,8 +256,7 @@ die(print_r($_FILES));
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
 			
-			//$this->load->view('upload_form', $error);
-			die(print_r($error));
+			return NULL;
 			
 		}	
 		else
@@ -349,7 +364,8 @@ die(print_r($_FILES));
 			}
 			else
 			{
-				echo $the_photo . '';				
+				$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
+				echo $the_photo . '#' . $tmp;				
 			}
 		}
 		

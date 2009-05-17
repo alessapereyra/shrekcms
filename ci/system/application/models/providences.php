@@ -11,12 +11,13 @@ class Providences extends Model {
         $this->load->database('default');        
     }
     
-    function get_fkcombo($empty_row = FALSE)
+    function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
     	$this->db->select('providence_id');
     	$this->db->select('providence');
     	$this->db->from($this->tabla);
+    	$this->db->where(array('fk_department' => $id));
     	$query = $this->db->get();
     	
     	$tmp = '';

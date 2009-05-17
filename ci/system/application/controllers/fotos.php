@@ -16,9 +16,9 @@ class Fotos extends DI_Controller {
 		$this->load->library('combofiller');		
 
 		$data['categorias'] = $this->combofiller->categorias();
-		$data['provincias'] = $this->combofiller->providences();
-		$data['distritos'] = $this->combofiller->distrits();
-		$data['departamentos'] = $this->combofiller->departments();		
+		$data['categorias_selected'] = NULL;
+		
+		$data['departamentos'] = $this->combofiller->departments(TRUE);		
 		$data['paices'] = $this->combofiller->countries();				
 		
 		if ($id != NULL)
@@ -61,16 +61,32 @@ class Fotos extends DI_Controller {
 					$categorias_selected[] = $key;
 				}
 			}
-			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected; 
+			if (isset($categorias_selected))
+			{
+				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+			}
+			else
+			{
+				$data['categorias_selected'] = NULL; 
+			}
 			
-			$data['provincias'] = $this->combofiller->providences();
-			$data['provincias_selected'] = set_value('provincia');
+			if( $this->input->post('provincia') )
+			{
+				$data['provincias'] = $this->combofiller->providences();
+				$data['provincias_selected'] = $this->input->post('provincia');
+			}
 			
-			$data['distritos'] = $this->combofiller->distrits();
-			$data['distritos_selected'] = set_value('distrito');
+			if( $this->input->post('distrito') )
+			{
+				$data['distritos'] = $this->combofiller->distrits();
+				$data['distritos_selected'] = $this->input->post('distrito');
+			}
 					
-			$data['departamentos'] = $this->combofiller->departments();
-			$data['departamentos_selected'] = set_value('departamento');
+			if( $this->input->post('departamento') )
+			{
+				$data['departamentos'] = $this->combofiller->departments(TRUE);
+				$data['departamentos_selected'] = $this->input->post('departamento');
+			}
 					
 			$data['paices'] = $this->combofiller->countries();
 			$data['paices_selected'] = set_value('pais');				
@@ -103,7 +119,7 @@ class Fotos extends DI_Controller {
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$aceptados = array('image/jpeg','image/png','image/gif');
+							$aceptados = array('image/jpeg','image/png','image/gif','image/pjpeg','image/x-png');
 							if (in_array($_FILES['Filedata']['type'], $aceptados))
 							{
 								$images_id[] = $this->_upload();

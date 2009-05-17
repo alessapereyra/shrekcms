@@ -15,10 +15,10 @@ class Documentos extends DI_Controller {
 		$this->load->library('combofiller');
 		
 		$data['categorias'] = $this->combofiller->categorias();
-		$data['provincias'] = $this->combofiller->providences();
-		$data['distritos'] = $this->combofiller->distrits();
-		$data['departamentos'] = $this->combofiller->departments();		
-		$data['paices'] = $this->combofiller->countries();			
+		$data['categorias_selected'] = NULL;
+		
+		$data['departamentos'] = $this->combofiller->departments(TRUE);		
+		$data['paices'] = $this->combofiller->countries();		
 		
 		if ($id != NULL)
 		{

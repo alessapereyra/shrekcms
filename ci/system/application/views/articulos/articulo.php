@@ -45,6 +45,10 @@
 	  					</span>
 	  					<div class="fieldset flash" id="fsUploadProgress"></div>
 	  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+	  					<?php 
+							$this->load->library('session');
+							echo $this->session->flashdata('fileupload');  					  					
+	  					?>	  					
 	  		</div>
 	  		<div id="enlazar">
 	            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
@@ -91,12 +95,12 @@
     			<li><a href="#mundo">El mundo</a></li>
     		</ul>
     		<div id="peru">
-    			<?php echo form_label('Provincia: ', 'provincia');?>
-    			<?php echo form_dropdown('provincia', $provincias, NULL,'id="provincia"'); ?>
     			<?php echo form_label('Departamento: ', 'departamento');?>
     			<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
+    			<?php echo form_label('Provincia: ', 'provincia');?>
+    			<select id="provincia" disabled="disabled"></select>
     			<?php echo form_label('Distrito: ', 'distrito');?>
-    			<?php echo form_dropdown('distrito', $distritos, NULL,'id="distrito"'); ?>
+    			<select id="distrito" disabled="distrito"></select>
     		</div>
     		<div id="mundo">
     			<?php echo form_label('País: ', 'pais');?>

@@ -21,16 +21,16 @@ class Combofiller {
 		return $this->CI->departments->get_fkcombo($empty_row);		
 	}
 
-	function distrits($empty_row = FALSE)
+	function distrits($distrit, $empty_row = FALSE)
 	{
 		$this->CI->load->model('distrits');
-		return $this->CI->distrits->get_fkcombo($empty_row);		
+		return $this->CI->distrits->get_fkcombo($distrit, $empty_row);		
 	}	
 	
-	function providences($empty_row = FALSE)
+	function providences($providence, $empty_row = FALSE)
 	{
 		$this->CI->load->model('providences');
-		return $this->CI->providences->get_fkcombo($empty_row);		
+		return $this->CI->providences->get_fkcombo($providence, $empty_row);		
 	}
 
 	function categorias()

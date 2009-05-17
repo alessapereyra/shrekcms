@@ -11,12 +11,13 @@ class Distrits extends Model {
         $this->load->database('default');        
     }
     
-    function get_fkcombo($empty_row = FALSE)
+    function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
     	$this->db->select('distrit_id');
     	$this->db->select('distrit');
     	$this->db->from($this->tabla);
+    	$this->db->where(array('fk_providence' => $id));
     	$query = $this->db->get();
     	
     	$tmp = '';
