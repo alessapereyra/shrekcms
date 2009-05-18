@@ -3,7 +3,7 @@
 	<?php 
 		if ($ie6 == TRUE)
 		{
-			echo form_open_multipart('documentos/actualizar', array('class' => 'form'));
+			echo form_open_multipart('documentos/actualizar/1', array('class' => 'form'));
 		}
 		else
 		{
@@ -32,7 +32,7 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona el documento que desees subir:</p>
-  					<span id="spanButtonPlaceholder">
+  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
   					<?php if ($ie6 == TRUE): ?>
 						<?php echo form_error('Filedata'); ?>
 						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
@@ -40,6 +40,9 @@
   					</span>
   					<div class="fieldset flash" id="fsUploadProgress"></div>
   					<em>máximo 2mb. formatos soportados: doc, pdf</em>
+  					<?php if ($ie6 != TRUE): ?>
+  						Si tiene problemas para subir archivos, use la <?php echo anchor('documentos/formulario/0/1', 'version tradicional') ?>
+  					<?php endif; ?>
   					<?php 
 						$this->load->library('session');
 						echo $this->session->flashdata('fileupload');  					  					

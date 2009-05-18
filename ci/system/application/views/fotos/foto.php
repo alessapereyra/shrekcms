@@ -4,7 +4,7 @@
 	
 		if ($ie6 == TRUE)
 		{
-			echo form_open_multipart('fotos/actualizar', array('class' => 'form'));
+			echo form_open_multipart('fotos/actualizar/1', array('class' => 'form'));
 		}
 		else
 		{
@@ -33,7 +33,7 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona la foto que desees subir:</p>
-  					<span id="spanButtonPlaceholder">
+  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
   					<?php if ($ie6 == TRUE): ?>
 						<?php echo form_error('Filedata'); ?>
 						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
@@ -41,6 +41,9 @@
   					</span>
   					<div class="fieldset flash" id="fsUploadProgress"></div>
   					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+  					<?php if ($ie6 != TRUE): ?>
+  						Si tiene problemas para subir archivos, use la <?php echo anchor('fotos/formulario/0/1', 'version tradicional') ?>
+  					<?php endif; ?>  					
   					<?php 
 						$this->load->library('session');
 						echo $this->session->flashdata('fileupload');  					  					

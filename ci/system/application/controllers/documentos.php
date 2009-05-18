@@ -1,8 +1,13 @@
 <?php
 class Documentos extends DI_Controller {
 	
-	function formulario($id = NULL)
+	function formulario($id = NULL, $ie = NULL)
 	{			
+		if ($id == 0)
+		{
+			$id = NULL;
+		}
+		
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
@@ -10,7 +15,8 @@ class Documentos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
-		$data['ie6'] = $this->_is_ie6();
+		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');
 		
@@ -31,8 +37,13 @@ class Documentos extends DI_Controller {
 		$this->load->view('documentos/documento', $data);
 		$this->__destruct();		
 	}
-		
-	function actualizar()
+	
+	function _show($id, $data)
+	{
+		return $data;
+	}
+			
+	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -98,14 +109,14 @@ class Documentos extends DI_Controller {
 			{
 				//subir imagenes
 				case 'subir':
-					if ($this->_is_ie6() == TRUE)
+					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
 							$aceptados = array('application/pdf','application/msword');
 							if (in_array($_FILES['Filedata']['type'], $aceptados))
 							{
-								$docs_id[] = $this->_upload();
+								$docs_id[] = $this->_upload($ie);
 								if (is_null($docs_id[0]))
 								{
 									//error y debo redireccionar
@@ -235,7 +246,7 @@ class Documentos extends DI_Controller {
 		}
 	}
 	
-	function _upload()
+	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'doc|pdf';
 		$tmp['encrypt_name'] = TRUE;
@@ -275,7 +286,7 @@ class Documentos extends DI_Controller {
 						
 			$this->postmeta->insertar($meta, $the_doc);
 			
-			if ($this->_is_ie6() == TRUE)
+			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
 			{
 				return $the_doc;
 			}

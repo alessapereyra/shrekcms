@@ -1,9 +1,13 @@
 <?php
-
 class Fotos extends DI_Controller {
 	
-	function formulario($id = NULL)
+	function formulario($id = NULL, $ie = NULL)
 	{			
+		if ($id == 0)
+		{
+			$id = NULL;
+		}
+					
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
@@ -11,7 +15,8 @@ class Fotos extends DI_Controller {
 		$data['photolink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
-		$data['ie6'] = $this->_is_ie6();
+		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');		
 
@@ -33,7 +38,7 @@ class Fotos extends DI_Controller {
 		$this->__destruct();		
 	}
 		
-	function actualizar()
+	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -115,14 +120,14 @@ class Fotos extends DI_Controller {
 			{
 				//subir imagenes
 				case 'subir':
-					if ($this->_is_ie6() == TRUE)
+					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
 							$aceptados = array('image/jpeg','image/png','image/gif','image/pjpeg','image/x-png');
 							if (in_array($_FILES['Filedata']['type'], $aceptados))
 							{
-								$images_id[] = $this->_upload();
+								$images_id[] = $this->_upload($ie);
 								if (is_null($images_id[0]))
 								{
 									//error y debo redireccionar
@@ -279,7 +284,7 @@ class Fotos extends DI_Controller {
 		}
 	}
 	
-	function _upload()
+	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'jpg|jpeg|gif|png';
 		$tmp['encrypt_name'] = TRUE;
@@ -396,7 +401,7 @@ class Fotos extends DI_Controller {
 			
 			$this->postmeta->insertar($meta, $the_photo);
 			
-			if ($this->_is_ie6() == TRUE)
+			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
 			{
 				return $the_photo;
 			}
