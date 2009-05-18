@@ -13,7 +13,7 @@ class Combo extends Controller {
 		}
 		echo $tmp;
 	}
-	
+		
 	function distrito($distrito = NULL)
 	{
 		$this->load->library('combofiller');
@@ -26,6 +26,7 @@ class Combo extends Controller {
 			$tmp .= '<option value="' . $key . '">' . $value . '</option>';
 		}
 		echo $tmp;
-	}	
+	}
+
 }
 ?>

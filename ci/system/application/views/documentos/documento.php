@@ -101,11 +101,22 @@
   		</ul>
   		<div id="peru">
     			<?php echo form_label('Departamento: ', 'departamento');?>
-    			<?php echo form_dropdown('departamento', $departamentos, NULL,'id="departamento"'); ?>
+    			<?php echo form_dropdown('departamento', $departamentos, $departamentos_selected,'id="departamento"'); ?>
+    			
     			<?php echo form_label('Provincia: ', 'provincia');?>
-    			<select id="provincia" disabled="disabled"></select>
+    			<?php if (isset($provincias)): ?>
+    				<?php echo form_dropdown('provincia', $provincias, $provincias_selected,'id="provincia"'); ?>
+    			<?php else: ?>
+    				<select id="provincia" name="provincia" <?php if ($departamentos_selected == NULL): ?>disabled="disabled"<?php endif; ?>></select>
+    			<?php endif; ?>
+    			
     			<?php echo form_label('Distrito: ', 'distrito');?>
-    			<select id="distrito" disabled="distrito"></select>
+    			<?php if (isset($distritos)): ?>
+    				<?php // die('asdf'); ?>
+    				<?php echo form_dropdown('distrito', $distritos, $distritos_selected,'id="distrito"'); ?>
+    			<?php else: ?>
+    				<select id="distrito" name="distrito" <?php if ( ($provincias_selected == NULL) ): ?> disabled="disabled" <?php endif; ?>></select>
+    			<?php endif; ?>
   		</div>
   		<div id="mundo">
   			<?php echo form_label('País: ', 'pais');?>

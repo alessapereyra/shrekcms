@@ -23,8 +23,13 @@ class Fotos extends DI_Controller {
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['categorias_selected'] = NULL;
 		
-		$data['departamentos'] = $this->combofiller->departments(TRUE);		
-		$data['paices'] = $this->combofiller->countries();				
+		$data['departamentos'] = $this->combofiller->departments(TRUE);	
+		$data['departamentos_selected'] = NULL;
+		$data['provincias_selected'] = NULL;
+		$data['distritos_selected'] = NULL;
+			
+		$data['paices'] = $this->combofiller->countries();
+		$data['paices_selected'] = NULL;			
 		
 		if ($id != NULL)
 		{
@@ -55,7 +60,7 @@ class Fotos extends DI_Controller {
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
-			$data['ie6'] = $this->_is_ie6();
+			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -66,6 +71,7 @@ class Fotos extends DI_Controller {
 					$categorias_selected[] = $key;
 				}
 			}
+			
 			if (isset($categorias_selected))
 			{
 				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
@@ -75,22 +81,33 @@ class Fotos extends DI_Controller {
 				$data['categorias_selected'] = NULL; 
 			}
 			
-			if( $this->input->post('provincia') )
+			$data['departamentos'] = $this->combofiller->departments(TRUE);
+			$data['departamentos_selected'] = NULL;
+			$data['provincias_selected'] = NULL;
+			$data['distritos_selected'] = NULL;
+			
+			if( $this->input->post('departamento') != 'null')
 			{
-				$data['provincias'] = $this->combofiller->providences();
-				$data['provincias_selected'] = $this->input->post('provincia');
+				$data['departamentos_selected'] = $this->input->post('departamento');
+			}
+						
+			if( $this->input->post('provincia') != NULL )
+			{
+			
+				$data['provincias'] = $this->combofiller->providences($this->input->post('departamento'), TRUE);
+				if ($this->input->post('provincia') != 'null')
+				{
+					$data['provincias_selected'] = $this->input->post('provincia');
+				}
 			}
 			
-			if( $this->input->post('distrito') )
+			if( $this->input->post('distrito') != NULL )
 			{
-				$data['distritos'] = $this->combofiller->distrits();
-				$data['distritos_selected'] = $this->input->post('distrito');
-			}
-					
-			if( $this->input->post('departamento') )
-			{
-				$data['departamentos'] = $this->combofiller->departments(TRUE);
-				$data['departamentos_selected'] = $this->input->post('departamento');
+				$data['distritos'] = $this->combofiller->distrits($this->input->post('provincia'), TRUE);
+				if( $this->input->post('distrito') != 'null' )
+				{
+					$data['distritos_selected'] = $this->input->post('distrito');
+				}
 			}
 					
 			$data['paices'] = $this->combofiller->countries();
