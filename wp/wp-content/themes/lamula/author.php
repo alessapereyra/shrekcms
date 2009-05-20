@@ -94,88 +94,17 @@ $id = $author; ?>
       <div id="sidebar_central">
         
           <h4>Muleros</h4>
-          
-          <ul class="bloggers_list">
 
-            <li>
-
-              <div class="sidebar_foto">
-                  <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>     
-              <div class="sidebar_txt">
-                  <h6><a href="http://lavozatidebida.lamula.pe">La Voz a ti Debida</a></h6>
-                  <strong>Pedro Salinas</strong>
-                  <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>     
-            <div class="sidebar_txt">
-                <h6><a href="http://2mil32.lamula.pe">2mil32</a></h6>
-                <strong>Juan Infante</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-            
-            <li>
-              
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-            <div class="sidebar_txt">
-                <h6><a href="http://zonacero.lamula.pe">Zona Cero</a></h6>
-                <strong>C&eacute;sar Gutierrez</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://datitinger.lamula.pe">Datitinger</a></h6>
-                 <strong>Daniel Titinger</strong>
-                 <p></p>
-             </div>
-
-            </li>
-            
-             <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-               </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://elarriero.lamula.pe">El Arriero</a></h6>
-                 <strong>Javier Torres</strong>                      
-                 <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-             </div>
-             <div class="sidebar_txt">
-                 <h6><a href=" http://carlostapia.lamula.pe ">Carlos Tapia</a></h6>
-                 <strong>Carlos Tapia</strong>                      
-                 <p></p>
-             </div>
-
-            </li>
-              
-          </ul>                
+	    	<?php 
+	    	
+			$ci->load->model('comments');
+			
+			//consigue los ultimos comentarios a los post de ese autor
+			$data['comments'] = $ci->comments->get_lastcomments($id, 5);
+	
+			echo $ci->load->view('usuarios/bloggercomments', $data, true);
+	  		unset($data);
+	    	?> 	   
         
       </div> <!-- sidebar_central -->
       
