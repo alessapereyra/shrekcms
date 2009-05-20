@@ -70,7 +70,10 @@ class DI_Controller extends Controller {
 			$this->load->view('layout/' . $tmp['head'], $data);
 			
 			//$data['seccion'] =  underscore($data['seccion']);
-			$this->load->view('layout/' . $tmp['menu'], $data);
+			if ($this->uri->segment(1) != 'usuario')
+			{
+				$this->load->view('layout/' . $tmp['menu'], $data);
+			}
 			
 			$this->is_ajax = FALSE;
 			$this->form = '';

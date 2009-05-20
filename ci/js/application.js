@@ -8,6 +8,8 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#lasts-posts").tabs();			
+	
 	$("#upload-content").tabs(
 	{
 		select: function(event, ui)

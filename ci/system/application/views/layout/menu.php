@@ -21,7 +21,7 @@ function active_controller($target) {
      	<?php if ($log) : ?>
 				<ul>
 					<li>Publicar</li>
-					<li>Ver Perfil</li>
+					<li><?php echo anchor('usuario/perfil', 'Ver Perfil'); ?></li>
 					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
 				</ul>
 			<?php endif; ?>		

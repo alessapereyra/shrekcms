@@ -32,6 +32,28 @@ class Terms extends Model {
 		return $tmp;       	
     }
     
+    function get_categories_perfil($db)
+    {
+    
+    	$db->select($this->tabla . '.term_id');
+    	$db->select($this->tabla . '.name');
+    	
+    	$db->from($this->tabla);
+    	$db->join('wp_term_taxonomy', 'wp_terms.term_id = wp_term_taxonomy.term_id');
+    	
+    	$db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
+//    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 29));    	
+    	
+    	$query = $db->get();
+    	  
+    	foreach ($query->result() as $row)
+		{
+			$tmp[$row->term_id] = $row->name;
+		}
+		
+		return $tmp;       	
+    }    
+    
     function insert_tags($values)
     {
     	$values = split(',', $values);

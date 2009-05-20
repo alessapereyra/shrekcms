@@ -24,9 +24,12 @@ function snippet($text,$length=64,$tail="...") {
 
 $row = null; 
 //$author = 1;
-get_header(); ?>
+get_header();
 
-<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+$id = $author; ?>
+
+<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 
 <div id="content" class="inner">
   
@@ -42,15 +45,36 @@ get_header(); ?>
     	$perfil = $ci->usermeta->select_all($author);
     	$perfil = $perfil->result_array();
     	
+    	//Mi ciclo es mas c00l b'cause i know php and i'm a TRUE man
+    	foreach($perfil as $miperfil)
+    	{
+    		$data[$miperfil['meta_key']] = $miperfil['meta_value']; 
+    	}
     	
+    	/*
     	$data['perfil'] = $perfil;
     	$data['nickname'] = $perfil[0]["meta_value"] ;
     	$data['nombre'] = $perfil[10]["meta_value"] . ' ' . $perfil[11]["meta_value"] ;
     	$data['descripcion'] = $perfil[12]["meta_value"];
-    	$data['blogs'] = $perfil[4]["meta_value"];    	
-    	echo $ci->load->view('usuarios/perfil', $data, true)  ?> 
-	   
-	   
+    	$data['blogs'] = $perfil[4]["meta_value"];
+    	*/    	
+    	echo $ci->load->view('usuarios/bloggerinfo', $data, true);
+    	unset($data);  ?> 
+	      
+	  </div>
+	  
+	  <div>
+    	<?php 
+    	
+		$ci->load->model('terms');
+		$ci->load->model('post');
+		
+		//consigue los ultimos post
+		$data['posts'] = $ci->post->get_lastpost($id, 5);
+
+		echo $ci->load->view('usuarios/bloggerposts', $data, true);
+  		unset($data);
+    	?> 	  
 	  </div>
 	
 	</div> <!-- content_feed -->

@@ -16,8 +16,22 @@ $(document).ready(function() {
 		$("div.class_content:not(:first)").hide("slow");
 		$("div.tab_content:not(:first)").hide("slow");
 		$("div.sidebox_content:not(:last)").hide("slow");
+		$("div.posts_last_content:not(:first)").hide("slow");
 	 
-		 
+		$("ul#lasts_posts li a").click(function(){
+			
+			$(this).parent().siblings().find("a").removeClass("active");
+			$(this).addClass("active");
+			
+			var index = $("ul#lasts_posts li a").index(this);
+			
+			$(".posts_last_content").hide("slow");
+			
+			$(".posts_last_content:eq(" + index + ")").show("fast");					
+				
+			return false;
+		})
+	
 		$("ul#category_tabs li a").click(function(){
 		
 				$(this).parent().siblings().find("a").removeClass("active");

@@ -11,6 +11,65 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
+    function get_lastpost($id, $posts)
+    {
+        $db = $this->load->database('default', TRUE); 
+    	
+    	$fields = $db->list_fields($this->tabla);
+
+    	/*
+		foreach ($fields as $field)
+		{
+		   $db->select($this->tabla . '.' . $field);
+		}
+		*/
+    	$db->select('post_title');
+		$db->from($this->tabla);
+
+		$db->where('post_type', 'post');
+		$db->where('post_author', $id);
+		//$this->db->where('post_status', 'published');
+		
+		$db->limit($posts, 0);
+		
+		$db->order_by($this->tabla . '.post_date', 'DESC');
+		
+		$todo = $db->get();
+		$post[] = $todo->result_array();
+		
+		//$categorias = $this->terms->get_categories();
+		$categorias = $this->terms->get_categories_perfil($db);
+		
+		foreach($categorias as $key => $values)
+		{
+			
+	    	$fields = $db->list_fields($this->tabla);
+			/*
+			foreach ($fields as $field)
+			{
+			   $db->select($this->tabla . '.' . $field);
+			}
+			*/
+	    	$db->select('post_title');
+			$db->from($this->tabla);
+			$db->join('wp_term_relationships', 'wp_posts.ID = wp_term_relationships.object_id');
+			
+			$db->where('post_type', 'post');
+			$db->where('post_author', $id);
+			$db->where('wp_term_relationships.term_taxonomy_id', $key);
+			
+			$db->order_by($this->tabla . '.post_date', 'DESC');
+			
+			$db->limit($posts, 0);
+			$query = $db->get();
+			$post[] = $query->result_array();
+
+		}
+
+		return $post;
+		
+    }
+    
     function insert_attach($values)
     {
     	$values['post_type'] = 'attachment';    	
