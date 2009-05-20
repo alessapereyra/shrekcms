@@ -17,13 +17,11 @@ class Post extends Model {
     	
     	$fields = $db->list_fields($this->tabla);
 
-    	/*
 		foreach ($fields as $field)
 		{
 		   $db->select($this->tabla . '.' . $field);
 		}
-		*/
-    	$db->select('post_title');
+
 		$db->from($this->tabla);
 
 		$db->where('post_type', 'post');
@@ -44,19 +42,18 @@ class Post extends Model {
 		{
 			
 	    	$fields = $db->list_fields($this->tabla);
-			/*
+
 			foreach ($fields as $field)
 			{
 			   $db->select($this->tabla . '.' . $field);
 			}
-			*/
-	    	$db->select('post_title');
+			
 			$db->from($this->tabla);
-			$db->join('wp_term_relationships', 'wp_posts.ID = wp_term_relationships.object_id');
+			$db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
 			
 			$db->where('post_type', 'post');
 			$db->where('post_author', $id);
-			$db->where('wp_term_relationships.term_taxonomy_id', $key);
+			$db->where('mulapress_term_relationships.term_taxonomy_id', $key);
 			
 			$db->order_by($this->tabla . '.post_date', 'DESC');
 			

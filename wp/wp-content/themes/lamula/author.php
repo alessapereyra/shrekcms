@@ -51,13 +51,6 @@ $id = $author; ?>
     		$data[$miperfil['meta_key']] = $miperfil['meta_value']; 
     	}
     	
-    	/*
-    	$data['perfil'] = $perfil;
-    	$data['nickname'] = $perfil[0]["meta_value"] ;
-    	$data['nombre'] = $perfil[10]["meta_value"] . ' ' . $perfil[11]["meta_value"] ;
-    	$data['descripcion'] = $perfil[12]["meta_value"];
-    	$data['blogs'] = $perfil[4]["meta_value"];
-    	*/    	
     	echo $ci->load->view('usuarios/bloggerinfo', $data, true);
     	unset($data);  ?> 
 	      

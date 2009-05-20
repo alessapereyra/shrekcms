@@ -8,9 +8,8 @@
 	  		<?php foreach($posts as $cat): ?>
 	  		<div class="posts_last_content">
 				<?php foreach($cat as $post): ?>
-					<?php echo $post['post_title']; ?>
+					<?php //con esto lo debes estar imprimiendo > echo $post['post_title']; ?>
 				<?php endforeach; ?>
 	  		</div>
 	  		<?php endforeach; ?>
-	  		<?php //print_r($posts); ?>
 	  	</div>
