@@ -8,25 +8,12 @@
 Template Name: Archive
 */
 
-function snippet($text,$length=64,$tail="...") {
-    $text = trim($text);
-    $txtl = strlen($text);
-    if($txtl > $length) {
-        for($i=1;$text[$length-$i]!=" ";$i++) {
-            if($i == $length) {
-                return substr($text,0,$length) . $tail;
-            }
-        }
-        $text = substr($text,0,$length-$i+1) . $tail;
-    }
-    return $text;
-}
-
 $row = null; 
 //$author = 1;
 get_header();
 
-$id = $author; ?>
+$id = $author; 
+?>
 
 <?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
 <?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
@@ -104,81 +91,26 @@ $id = $author; ?>
 	
 			echo $ci->load->view('usuarios/bloggercomments', $data, true);
 	  		unset($data);
+	  		
+	  		$ci->load->model('sessionmanager');
+	  		$ci->sessionmanager->get_lastviews($id, 5);
 	    	?> 	   
         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
-        
+       
+       	  <h4>no se ps</h4> 
 
-        <div id="corresponsales" class="sidebox">
-   
-               <h4>Corresponsales más</h4>
-               
-               <div class="tab_content">
-                	vistos
-                  <!-- vistos -->
-                
-               </div>
-
-               <div class="tab_content">
-                votados
-                  <!-- votados -->
-                
-               </div>
-
-
-               <div class="tab_content">
-                comentados
-                <!-- comentados -->
-                
-               </div>
-   
-        </div>
-
-        <ul id="corresponsales" class="sidebox_menu">
-          <li><a href="#vistos">vistos</a></li>
-          <li><a href="#votados">votados</a></li>
-          <li><a href="#comentados" class="selected">comentados</a></li>                
-        </ul>
-   
-        <div id="articulos" class="sidebox">
-
-          <h4>Art&iacute;culos más</h4>
-          
-          <div class="sidebox_content">
-            plugin vistos
-              <?php kf_get_posts_by_hits(7,10); ?>
-
-            
-          </div>
-                
-          <div class="sidebox_content">
-            plugin votados
-              <!-- VOTADOS -->
-            
-          </div>
-          
-          <div class="sidebox_content">
-
-            <?php most_popular(1); ?>
-            
-          </div>                          
-                    
-        </div>     
-        
-        <ul id="articulos" class="sidebox_menu">
-          <li><a href="#vistos" >vistos</a></li>
-          <li><a href="#votados">votados</a></li>
-          <li><a href="#comentados" class="selected">comentados</a></li>                
-        </ul>
-   
-      
-        <div id="videos" class="sidebox">
-
-          <h4>Video destacado</h4>          
-
-        </div>
+	    	<?php 
+	    	
+	  		$ci->load->model('sessionmanager');
+	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 5);
+	    		
+			echo $ci->load->view('usuarios/bloggerviews', $data, true);
+	  		unset($data);
+	  		
+	    	?> 	   
 
         
       </div> <!-- sidebar_recomendados -->

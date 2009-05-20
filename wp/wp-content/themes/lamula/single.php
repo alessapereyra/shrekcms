@@ -3,28 +3,12 @@
  * @package WordPress
  * @subpackage LaMula
  */
-
-function snippet($text,$length=64,$tail="...") {
-    $text = trim($text);
-    $txtl = strlen($text);
-    if($txtl > $length) {
-        for($i=1;$text[$length-$i]!=" ";$i++) {
-            if($i == $length) {
-                return substr($text,0,$length) . $tail;
-            }
-        }
-        $text = substr($text,0,$length-$i+1) . $tail;
-    }
-    return $text;
-}
-
-
 get_header(); ?>
 
 <div id="top_news">
   
   <?php
-  
+
    // $featured_query = new WP_Query('category_name=featured&showposts=2');
    $featured_query = new WP_Query('showposts=1');
     while ($featured_query->have_posts()) : $featured_query->the_post();
@@ -83,7 +67,7 @@ get_header(); ?>
     <?php if (have_posts()) : ?>
         
   		<?php while (have_posts()) : the_post(); ?>
-
+				<?php sm_store_session_data(get_the_ID()); ?>
         <li>
 
           <h5>
@@ -98,7 +82,6 @@ get_header(); ?>
                     //get_the_time('g:i a')
                     
               ?>
-
               <h6 class="metadata">Por <?php the_author(); ?> publicado a las <?php the_time('g:i a'); ?> </h6>
               
               <?php echo get_the_content(); ?>
