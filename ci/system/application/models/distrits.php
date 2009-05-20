@@ -2,7 +2,7 @@
 class Distrits extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_distrits';
+    var $tabla = 'mulapress_distrits';
 
     function __construct()
     {

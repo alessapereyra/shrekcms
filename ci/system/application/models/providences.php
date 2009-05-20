@@ -2,7 +2,7 @@
 class Providences extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_providences';
+    var $tabla = 'mulapress_providences';
 
     function __construct()
     {

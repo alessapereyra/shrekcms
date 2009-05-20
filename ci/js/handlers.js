@@ -26,7 +26,7 @@ function fileQueued(file) {
 function fileQueueError(file, errorCode, message) {
 	try {
 		if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
-			alert("You have attempted to queue too many files.\n" + (message === 0 ? "You have reached the upload limit." : "You may select " + (message > 1 ? "up to " + message + " files." : "one file.")));
+			alert("Demasiados archivos.\n" + (message === 0 ? "You have reached the upload limit." : "You may select " + (message > 1 ? "up to " + message + " files." : "one file.")));
 			return;
 		}
 
@@ -36,15 +36,15 @@ function fileQueueError(file, errorCode, message) {
 
 		switch (errorCode) {
 		case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-			progress.setStatus("File is too big.");
+			progress.setStatus("Archivo demasiado grande.");
 			this.debug("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-			progress.setStatus("Cannot upload Zero Byte files.");
+			progress.setStatus("El archivo esta vacio.");
 			this.debug("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-			progress.setStatus("Invalid File Type.");
+			progress.setStatus("Tipo de archivo invalido");
 			this.debug("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		default:
@@ -81,7 +81,7 @@ function uploadStart(file) {
 		we can do is say we are uploading.
 		 */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Uploading...");
+		progress.setStatus("Enviando...");
 		progress.toggleCancel(true, this);
 	}
 	catch (ex) {}
@@ -95,7 +95,7 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setProgress(percent);
-		progress.setStatus("Uploading...");
+		progress.setStatus("Enviando...");
 	} catch (ex) {
 		this.debug(ex);
 	}
@@ -105,16 +105,17 @@ function uploadSuccess(file, serverData, receivedResponse) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setComplete();
-		progress.setStatus("Complete.");
+		progress.setStatus("Terminado!.");
 		//progress.toggleCancel(false);
 		if (receivedResponse) 
 		{
+			
 			var tmp = typeof(serverData) === "undefined" ? "" : serverData;
 			var miinput = document.getElementById('files');
 			
 			tmp = tmp.split("#");
 			
-			progress.setMiniatura(tmp[1]);			
+			if (tmp[1] != undefined){ progress.setMiniatura(tmp[1]); }	
 			
 			miinput.value = miinput.value + '-' + tmp[0];
 		}
@@ -133,27 +134,27 @@ function uploadError(file, errorCode, message) {
 
 		switch (errorCode) {
 		case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
-			progress.setStatus("Upload Error: " + message);
+			progress.setStatus("Error de envio: " + message);
 			this.debug("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:
-			progress.setStatus("Upload Failed.");
+			progress.setStatus("El envio fallo");
 			this.debug("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.IO_ERROR:
-			progress.setStatus("Server (IO) Error");
+			progress.setStatus("Error del Servidor");
 			this.debug("Error Code: IO Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.SECURITY_ERROR:
-			progress.setStatus("Security Error");
+			progress.setStatus("Error de seguridad");
 			this.debug("Error Code: Security Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
-			progress.setStatus("Upload limit exceeded.");
+			progress.setStatus("Maximo de envio excedido");
 			this.debug("Error Code: Upload Limit Exceeded, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED:
-			progress.setStatus("Failed Validation.  Upload skipped.");
+			progress.setStatus("Error de validacion");
 			this.debug("Error Code: File Validation Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
@@ -161,14 +162,14 @@ function uploadError(file, errorCode, message) {
 			if (this.getStats().files_queued === 0) {
 				document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 			}
-			progress.setStatus("Cancelled");
+			progress.setStatus("Cancelado");
 			progress.setCancelled();
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
-			progress.setStatus("Stopped");
+			progress.setStatus("Detenido");
 			break;
 		default:
-			progress.setStatus("Unhandled Error: " + errorCode);
+			progress.setStatus("Error inesperado: " + errorCode);
 			this.debug("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		}
@@ -186,5 +187,5 @@ function uploadComplete(file) {
 // This event comes from the Queue Plugin
 function queueComplete(numFilesUploaded) {
 	var status = document.getElementById("divStatus");
-	status.innerHTML = numFilesUploaded + " file" + (numFilesUploaded === 1 ? "" : "s") + " uploaded.";
+	status.innerHTML = numFilesUploaded + " archivos" + (numFilesUploaded === 1 ? "" : "s") + " enviados.";
 }

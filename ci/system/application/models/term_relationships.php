@@ -3,7 +3,7 @@
 class Term_relationships extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_term_relationships';
+    var $tabla = 'mulapress_term_relationships';
 
     function __construct()
     {

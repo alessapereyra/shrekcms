@@ -2,7 +2,7 @@
 class Post extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_posts';
+    var $tabla = 'mulapress_posts';
 
     function __construct()
     {

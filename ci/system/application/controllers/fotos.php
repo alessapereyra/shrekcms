@@ -131,7 +131,7 @@ class Fotos extends DI_Controller {
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			
-			$data['post_content'] = '';	
+			$data['post_content'] = $this->input->post('textos');	
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -204,7 +204,7 @@ class Fotos extends DI_Controller {
 						$tmp .= '</a>';
 						$tmp .= '<br />';
 												        
-						$data['post_content'] .= $tmp;
+						$data['post_content'] = $tmp . "<p>"  . $data['post_content'] . "</p>";
 
 					}	
 					
@@ -216,7 +216,7 @@ class Fotos extends DI_Controller {
 					$tmp .= '<img class="alignnone" src="' . $this->input->post('photolink') . '" />';
 					$tmp .= '</a>';
 					$tmp .= '<br />';
-					$data['post_content'] .= $tmp;
+					$data['post_content'] = $tmp . "<p>" . $data['post_content'] . "</p>";
 					
 				break;
 			}
