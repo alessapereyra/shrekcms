@@ -2,7 +2,7 @@
 class Users extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_users';
+    var $tabla = 'mulapress_users';
 
     function __construct()
     {
