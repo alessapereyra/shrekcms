@@ -2,7 +2,7 @@
 
 	<?php foreach($views as $view): ?>
 	<li>
-		<?php echo '#lalala~ 2'; ?>
+		<?php echo $view . '#lalala~ 2'; ?>
 	</li>
 	<?php endforeach; ?>
 

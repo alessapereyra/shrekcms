@@ -1,8 +1,4 @@
-<<<<<<< HEAD:.gitignore
-shrekcms.sql
-=======
 ci/system/application/config/config.php
 ci/system/application/config/database.php
 wp/wp-config.php
-
->>>>>>> 218ca9359c49b54967fcd2b9a5b245feaa2497a1:.gitignore
+MockupsLaMula/*
