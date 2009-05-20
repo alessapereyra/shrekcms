@@ -39,7 +39,8 @@ $id = $author;
     	}
     	
     	echo $ci->load->view('usuarios/bloggerinfo', $data, true);
-    	unset($data);  ?> 
+    	//unset($data);  
+    	?> 
 	      
 	  </div>
 	  

@@ -1,6 +1,8 @@
 <ul class="bloggers_list">
 
-	<?php foreach($comments as $comment): ?>
+  
+  <h3> &Uacute;ltimos Comentarios Recibidos</h3>
+  <?php foreach($comments as $comment): ?>
 	<li>
 		<?php echo '#lalala~'; ?>
 	</li>

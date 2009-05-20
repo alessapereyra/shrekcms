@@ -137,7 +137,7 @@ get_header(); ?>
 	  	<?php endif; ?>
 	  	
 	  </ul>
-  </div>
+  </div> <!-- todo -->
 
   <div id="bueno" class="class_content">
   		<?php query_posts('cat=3'); ?>

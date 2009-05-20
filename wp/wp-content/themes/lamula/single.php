@@ -117,6 +117,11 @@ get_header(); ?>
 
 
   </div> <!-- content_feed -->
+  
+  
+  <?php comments_template(); ?>
+	
+  
 
   <div id="sidebars">
     
