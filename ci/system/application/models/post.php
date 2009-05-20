@@ -23,9 +23,9 @@ class Post extends Model {
 		}
 
 		$db->from($this->tabla);
-
 		$db->where('post_type', 'post');
 		$db->where('post_author', $id);
+		$db->where('(post_status like "publish" or post_status like "inherit")');
 		//$this->db->where('post_status', 'published');
 		
 		$db->limit($posts, 0);

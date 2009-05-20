@@ -1,7 +1,7 @@
 <h2><?php 
 		$tmp = ''; 
-		if (isset($first_name)) echo $tmp .= $first_name;
-		if (isset($last_name)) echo $tmp .= $last_name;
+		if (isset($first_name)) $tmp .= $first_name;
+		if (isset($last_name)) $tmp .= " " . $last_name;
 		echo $tmp;
 ?></h2>
 
@@ -11,4 +11,4 @@
 				<?php endif; ?>
 </h4> 
   
-<p><?php if (isset($descripcion)) echo $descripcion; ?></p>
+<p><?php if (isset($description)) echo $description; ?></p>

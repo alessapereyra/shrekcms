@@ -120,7 +120,7 @@ get_header(); ?>
   
   
   <?php comments_template(); ?>
-	
+	 
   
 
   <div id="sidebars">

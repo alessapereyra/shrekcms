@@ -51,7 +51,7 @@ $id = $author;
 		$ci->load->model('post');
 		
 		//consigue los ultimos post
-		$data['posts'] = $ci->post->get_lastpost($id, 5);
+		$data['posts'] = $ci->post->get_lastpost($id, 8);
 
 		echo $ci->load->view('usuarios/bloggerposts', $data, true);
   		unset($data);
@@ -81,32 +81,30 @@ $id = $author;
 
       <div id="sidebar_central">
         
-          <h4>Muleros</h4>
+          <h4>Comentarios recibidos</h4>
 
 	    	<?php 
 	    	
 			$ci->load->model('comments');
 			
 			//consigue los ultimos comentarios a los post de ese autor
-			$data['comments'] = $ci->comments->get_lastcomments($id, 5);
+			$data['comments'] = $ci->comments->get_lastcomments($id, 10);
 	
 			echo $ci->load->view('usuarios/bloggercomments', $data, true);
 	  		unset($data);
 	  		
-	  		$ci->load->model('sessionmanager');
-	  		$ci->sessionmanager->get_lastviews($id, 5);
 	    	?> 	   
         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
        
-       	  <h4>ultimas vistas</h4> 
+       	  <h4>articulos vistos</h4> 
 
 	    	<?php 
-	    	
+	      	
 	  		$ci->load->model('sessionmanager');
-	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 5);
+	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
 	    		
 			echo $ci->load->view('usuarios/bloggerviews', $data, true);
 	  		unset($data);
