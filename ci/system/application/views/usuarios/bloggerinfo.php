@@ -2,10 +2,21 @@
 		$tmp = ''; 
 		if (isset($first_name)) $tmp .= $first_name;
 		if (isset($last_name)) $tmp .= " " . $last_name;
+    if ($tmp == "admin") {  $tmp = "lamula";}
+
 		echo $tmp;
 ?></h2>
 
-<h3><?php if (isset($nickname)) echo $nickname; ?></h3>
+<h3>
+  <?php if (isset($nickname)) 
+        {   
+          if ($tmp == "admin") { echo "lamula" }  
+          else { echo $nickname; }
+          
+        }
+          
+  ?>
+</h3>
 <h4>Blogger de:<?php if (isset($blogs)): ?> 
 				<a href="http://<?php echo $blogs; ?>"><?php echo $blogs; ?></a>
 				<?php endif; ?>

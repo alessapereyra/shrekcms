@@ -1,9 +1,13 @@
 <ul class="bloggers_list">
 
-  <h3>Noticias vistas</h3>
 	<?php foreach($views as $view): ?>
 	<li>
-		<?php echo $view . '#lalala~ 2'; ?>
+
+	  <a href="<?php echo $view['guid'] ?>">
+	  <?php echo $view['post_title'] ?>
+	  </a>
+		
+
 	</li>
 	<?php endforeach; ?>
 

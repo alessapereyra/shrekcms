@@ -11,28 +11,59 @@ class Comments extends Model {
         $this->load->database('default');        
     }
     
-    function get_lastcomments($id, $posts)
+    function get_lastowncomments($id, $posts)
     {
-        $db = $this->load->database('default', TRUE); 
+      
+      $db = $this->load->database('default', TRUE); 
     	
     	$fields = $db->list_fields($this->tabla);
 
-		foreach ($fields as $field)
-		{
-		   $db->select($this->tabla . '.' . $field);
-		}
-    	
-		$db->from($this->tabla);
-		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
+		  foreach ($fields as $field)
+		  {
+		    $db->select($this->tabla . '.' . $field);
+		  }
 
-		$db->where('mulapress_posts.post_author', $id);
+      $db->select('mulapress_posts.guid, mulapress_posts.post_title');
+  		$db->from($this->tabla);    
+  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		    
+  		$db->where('user_id', $id);
 		
-		$db->limit($posts, 0);
+  		$db->limit($posts, 0);
 		
-		$db->order_by($this->tabla . '.comment_date', 'DESC');
+  		$db->order_by($this->tabla . '.comment_date', 'DESC');
 		
-		$query = $db->get();
-		return $query->result_array();
+  		$query = $db->get();
+  		return $query->result_array();      
+      
+    }
+    
+    
+    
+    function get_lastcomments($id, $posts)
+    {
+      
+      $db = $this->load->database('default', TRUE); 
+    	
+    	$fields = $db->list_fields($this->tabla);
+
+		  foreach ($fields as $field)
+		  {
+		    $db->select($this->tabla . '.' . $field);
+		  }
+    
+      $db->select('mulapress_posts.guid');
+  		$db->from($this->tabla);
+  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
+    
+  		$db->where('mulapress_posts.post_author', $id);
+		
+  		$db->limit($posts, 0);
+		
+  		$db->order_by($this->tabla . '.comment_date', 'DESC');
+		
+  		$query = $db->get();
+  		return $query->result_array();
+  		
     }
        
 }

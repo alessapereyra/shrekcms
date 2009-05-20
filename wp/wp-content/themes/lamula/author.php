@@ -81,35 +81,67 @@ $id = $author;
 
       <div id="sidebar_central">
         
-          <h4>Comentarios recibidos</h4>
+        <h4>lo que te han comentado</h4>
 
 	    	<?php 
 	    	
-			$ci->load->model('comments');
+			  $ci->load->model('comments');
 			
-			//consigue los ultimos comentarios a los post de ese autor
-			$data['comments'] = $ci->comments->get_lastcomments($id, 10);
+			  //consigue los ultimos comentarios a los post de ese autor
+			  $data['comments'] = $ci->comments->get_lastcomments($id, 10);
 	
-			echo $ci->load->view('usuarios/bloggercomments', $data, true);
+			  echo $ci->load->view('usuarios/bloggercomments', $data, true);
 	  		unset($data);
 	  		
 	    	?> 	   
+
+        <h4>lo que has comentado</h4>
+
+  	    <?php 
+
+  			//consigue los ultimos comentarios a los post de ese autor
+  			$data['comments'] = $ci->comments->get_lastowncomments($id, 10);
+
+  			echo $ci->load->view('usuarios/bloggerowncomments', $data, true);
+	  		unset($data);
+
+	    	?> 	   
+
+
         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
+
+
+
        
-       	  <h4>articulos vistos</h4> 
+       	<h4>tus noticias m&aacute;s le&iacute;das</h4> 
 
 	    	<?php 
 	      	
 	  		$ci->load->model('sessionmanager');
 	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
 	    		
-			echo $ci->load->view('usuarios/bloggerviews', $data, true);
+			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
 	  		unset($data);
 	  		
 	    	?> 	   
+
+
+        <h4>las que ya leiste</h4> 
+
+ 	    	<?php 
+
+ 	  		$data['views'] = $ci->sessionmanager->get_lastread($id, 10);
+
+ 			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
+ 	  		unset($data);
+
+ 	    	?> 	   
+
+
+
 
         
       </div> <!-- sidebar_recomendados -->
