@@ -6,7 +6,7 @@ $(document).ready(function() {
 		 //fancybox
 		 $('div.post_content a').fancybox({
 			 'zoomOpacity' : true,
-			 'overlayShow' : false,
+			 'overlayShow' : true,
 			 'zoomSpeedIn' : 500,
 			 'zoomSpeedOut' : 500			 
 			 
@@ -125,7 +125,7 @@ $(document).ready(function() {
 						}
 						else {
 
-							$(this)[0].textContent = childs.children()[0].innerHTML;
+							$(this)[0].textContent = childs.children()[0].children()[1].innerHTML;
 
 						}
 					

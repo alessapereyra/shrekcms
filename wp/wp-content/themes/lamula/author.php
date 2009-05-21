@@ -10,8 +10,8 @@ Template Name: Archive
 
 $row = null; 
 //$author = 1;
-get_header();
 
+include 'perfil_header.php';
 $id = $author; 
 ?>
 

@@ -21,6 +21,52 @@ function snippet($text,$length=64,$tail="...") {
     return $text;
 }
 
+function mula_comments($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+     <div id="comment-<?php comment_ID(); ?>">
+      <div class="comment-author vcard">        
+         <?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
+      </div>
+      <div class="comment-content">
+            
+            <div class="coment-top-metadata">
+                <?php printf(__('<cite class="fn">%s</cite> <span class="says">dice:</span>'), get_comment_author_link()) ?>
+            </div> <!-- coment-top-metadata -->
+
+            <div class="comment-content">
+
+              <?php comment_text() ?>            
+
+            </div>
+
+            <?php if ($comment->comment_approved == '0') : ?>
+               <em><?php _e('Tu comentario requiere revisi&oacute;n.') ?></em>
+               <br />
+            <?php endif; ?>
+
+          <div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('publicado el %1$s a las %2$s'), get_comment_date('j/n/y'),  get_comment_time('g:i a') ) ?></a><?php edit_comment_link(__('(Editar)'),'  ','') ?></div>
+
+      </div> <!-- comment-content -->
+      
+
+     </div>
+<?php
+        }
+
+
+function the_category_unlinked($separator = ' ') {
+    $categories = (array) get_the_category();
+
+    $thelist = '';
+    foreach($categories as $category) {    // concate
+        $thelist .= $separator . $category->category_nicename;
+    }
+
+    echo $thelist;
+}
+
+
 function timeAgo($timestamp, $granularity=2, $format='Y-m-d H:i:s'){
 
         $difference = time() - $timestamp;

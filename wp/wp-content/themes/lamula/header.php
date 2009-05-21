@@ -29,7 +29,10 @@
   <div id="top_menu">
     <p>
       <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
-      <span class="right"><a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a></span>
+      <span class="right">
+        <a href="http://lamula.pe/crear-blog/">crea tu blog</a> |
+        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+      </span>
     </p>
   </div> <!-- top_menu -->
   
@@ -40,23 +43,27 @@
         <!-- <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
       </div> <!-- top_ad -->
   
+      <div id="logo_bar">
 
-      <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
+        <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
+    
+        <div id="search_bar">
+            <form action="#">
+              <input type="text" name="busqueda" value="" id="busqueda" />
+              <input type="submit" value="buscar" />
+            </form>
+        </div> <!-- search_bar -->
+      
+      </div> <!-- logo_bar -->
   
-  
-      <div id="search_bar">
-          <h2 id="status">...desaznadamente en linea</h2>        
-          <form action="#">
-            <input type="text" name="busqueda" value="" id="busqueda" />
-            <input type="submit" value="buscar" />
-          </form>
-      </div> <!-- search_bar -->
+      <div id="status_bar">
+          <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
+          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
+      </div> <!-- status_bar -->
   
       <div id="menu_bar">
 
         <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
-        <p id="zonas">zonas</p>  <!-- zonas -->
-
         <ul id="menu">
           <li><a href="#">Lima y Callao</a>
             <ul>

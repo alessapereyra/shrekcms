@@ -144,14 +144,14 @@
           <h4>Art&iacute;culos más</h4>
           
           <div class="sidebox_content">
-            plugin vistos
-              <?php kf_get_posts_by_hits(7,10); ?>
 
+              <ul id="post_most_seen">
+                <?php echo kf_get_posts_by_hits(7,10); ?>
+              </ul>
             
           </div>
                 
           <div class="sidebox_content">
-            plugin votados
               <!-- VOTADOS -->
             
           </div>
