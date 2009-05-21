@@ -21,6 +21,7 @@ class Comments extends Model {
 		{
 		   $db->select($this->tabla . '.' . $field);
 		}
+		$db->select('mulapress_posts.guid');
     	
 		$db->from($this->tabla);
 		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
