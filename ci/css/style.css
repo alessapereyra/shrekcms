@@ -3,11 +3,14 @@
 	http://lamula.pe/mulapress/ci/css/style.css
 */
 
+
+
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #fff url(images/backend-background.png) repeat-x 0 bottom;
+	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
+	color: #3b3330;
 }
 
 a {
@@ -36,7 +39,7 @@ div#footer_menu {
 }
 
 div#top_menu {
-	background: #282828 url(images/top-background.png) repeat-x 0 bottom;
+	background: #282828;
 }
 
 div#top_menu div ul {

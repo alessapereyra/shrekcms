@@ -14,34 +14,39 @@ get_header(); ?>
     while ($featured_query->have_posts()) : $featured_query->the_post();
     $do_not_duplicate = $post->ID; ?>
 
-  
-  <div id="top_news_image">
-    <img src="<?php bloginfo('template_url'); ?>/images/top_news.png" alt="Top News" title="Top News"/>
-  </div> <!-- top_news_image -->
-  
-  <div id="top_news_text">
-    
-    <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-    <p>
-  
-      
-        <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
-        
-        
-        <?php 
-              $content = get_the_content();
-              $content = apply_filters('the_content', $content);
-              $content = str_replace(']]>', ']]&gt;', $content);  
-              $content = snippet($content,235);
-              $content = strip_tags($content, '<p>');            
-              $row = NULL;
-        ?>
 
-        <?php echo $content ?>
-        
-    </p>
-        
-  </div> <!-- top_news_text -->
+  <div id="top_news_content">
+
+        <div id="top_news_image">
+          <img src="<?php bloginfo('template_url'); ?>/images/top_news.png" alt="Top News" title="Top News"/>
+        </div> <!-- top_news_image -->
+
+        <div id="top_news_text">
+
+          <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+          <p>
+
+
+              <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
+
+
+              <?php 
+                    $content = get_the_content();
+                    $content = apply_filters('the_content', $content);
+                    $content = str_replace(']]>', ']]&gt;', $content);  
+                    $content = snippet($content,235);
+                    $content = strip_tags($content, '<p>');            
+                    $row = NULL;
+              ?>
+
+              <?php echo $content ?>
+
+          </p>
+
+        </div> <!-- top_news_text -->
+    
+  </div> <!-- top_news_content -->
+  
 
   <div id="top_news_footer">
     
@@ -88,11 +93,13 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
-	          <div class="post_image">
+	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	              <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
+	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
+	          
 	          <div class="post_content">
 	              
 	              <?php 
@@ -159,9 +166,10 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
-	          <div class="post_image">
+	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	              <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
+	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          <div class="post_content">
@@ -231,9 +239,10 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
-	          <div class="post_image">
+	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	              <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
+	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+	                <span><?php the_category_unlinked(' '); ?></span>	                
 	              </a>
 	          </div>
 	          <div class="post_content">
@@ -303,9 +312,10 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
-	          <div class="post_image">
+	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	              <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/>
+	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          <div class="post_content">

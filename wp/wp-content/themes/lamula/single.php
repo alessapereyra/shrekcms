@@ -5,59 +5,6 @@
  */
 get_header(); ?>
 
-<div id="top_news">
-  
-  <?php
-
-   // $featured_query = new WP_Query('category_name=featured&showposts=2');
-   $featured_query = new WP_Query('showposts=1');
-    while ($featured_query->have_posts()) : $featured_query->the_post();
-    $do_not_duplicate = $post->ID; ?>
-
-  
-  <div id="top_news_image">
-    <img src="<?php bloginfo('template_url'); ?>/images/top_news.png" alt="Top News" title="Top News"/>
-  </div> <!-- top_news_image -->
-  
-  <div id="top_news_text">
-    
-    <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-    <p>
-  
-      
-        <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
-        
-        
-        <?php 
-              $content = get_the_content();
-              $content = apply_filters('the_content', $content);
-              $content = str_replace(']]>', ']]&gt;', $content);  
-              $content = snippet($content,235);
-              $content = strip_tags($content, '<p>');            
-              
-        ?>
-
-        <?php echo $content ?>
-        
-    </p>
-        
-  </div> <!-- top_news_text -->
-
-  <div id="top_news_footer">
-    
-    <a href="<?php the_permalink() ?>" id="leer_mas_footer">Leer m&aacute;s</a>
-    <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
-    <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
-    
-  </div> <!-- top_news_footer -->
-
-
-
-  <?php endwhile; ?>
- 
-  
-</div> <!-- top_news -->
-
 <div id="content" class="inner">
   
   <div id="content_feed">    
@@ -70,8 +17,7 @@ get_header(); ?>
 				<?php sm_store_session_data(get_the_ID()); ?>
         <li>
 
-          <h5>
-            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+          <h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
     				  <?php the_title(); ?>
             </a>
           </h5>
@@ -82,14 +28,14 @@ get_header(); ?>
                     //get_the_time('g:i a')
                     
               ?>
-              <h6 class="metadata">Por <?php the_author(); ?> publicado a las <?php the_time('g:i a'); ?> </h6>
+              <h6 class="metadata">enviado por <?php the_author_posts_link() ?> publicado a las <?php the_time('g:i a'); ?> </h6>
               
               <?php echo get_the_content(); ?>
               
               <div class="news_footer">
 
-                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
-
+                <p class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></p>
+                <p class="tags">Etiquetas: <?php the_tags(); ?></p>
               </div> <!-- news_footer -->              
 
 
@@ -116,10 +62,12 @@ get_header(); ?>
   </ul>
 
 
+  <?php comments_template(); ?>
+  
+
   </div> <!-- content_feed -->
   
-  
-  <?php comments_template(); ?>
+
 	 
   
 
