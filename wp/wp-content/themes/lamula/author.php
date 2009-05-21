@@ -15,10 +15,10 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
-<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php //include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 
-<div id="content" class="inner">
+<div id="content" class="inner author">
   
 	<div id="content_feed">
 	  
@@ -37,17 +37,17 @@ $id = $author;
 		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
   
 		$data['user'] = $ci->users->seleccionar(array('id' => $id));
-      $data['user'] = $data['user']->result_array();
-      $data['user'] = current($data['user']);
+    $data['user'] = $data['user']->result_array();
+    $data['user'] = current($data['user']);
 
-      $data['total_comments'] = $ci->comments->total_comments($id);
-      $data['received_comments'] = $ci->comments->total_received_comments($id);
+    $data['total_comments'] = $ci->comments->total_comments($id);
+    $data['received_comments'] = $ci->comments->total_received_comments($id);
 
-      $data['published_posts'] = $ci->post->published_posts($id);
-      $data['total_posts'] = $ci->post->total_posts($id);                
-      
-      $mularanking = 0;
-      
+    $data['published_posts'] = $ci->post->published_posts($id);
+    $data['total_posts'] = $ci->post->total_posts($id);                
+  
+    $mularanking = 0;
+  
       if ( $data['total_posts'] > 0)
       { 
           $mularanking = $data['published_posts'] / $data['total_posts'];
@@ -106,31 +106,39 @@ $id = $author;
 
       <div id="sidebar_central">
         
-        <h4>lo que te han comentado</h4>
+        <div class="sidebar_box">
+          
 
-	    	<?php 
+          <h4>lo que te han comentado</h4>
+
+  	    	<?php 
 			
-			  //consigue los ultimos comentarios a los post de ese autor
-			  $data['comments'] = $ci->comments->get_lastcomments($id, 10);
+  			  //consigue los ultimos comentarios a los post de ese autor
+  			  $data['comments'] = $ci->comments->get_lastcomments($id, 10);
 	
-			  echo $ci->load->view('usuarios/bloggercomments', $data, true);
-	  		unset($data);
+  			  echo $ci->load->view('usuarios/bloggercomments', $data, true);
+  	  		unset($data);
 	  		
-	    	?> 	   
+  	    	?> 	   
 
-        <h4>lo que has comentado</h4>
+        </div>
 
-  	    <?php 
+        <div class="sidebar_box">
+        
 
-  			//consigue los ultimos comentarios a los post de ese autor
-  			$data['comments'] = $ci->comments->get_lastowncomments($id, 10);
+          <h4>lo que has comentado</h4>
 
-  			echo $ci->load->view('usuarios/bloggerowncomments', $data, true);
-	  		unset($data);
+    	    <?php 
 
-	    	?> 	   
+    			//consigue los ultimos comentarios a los post de ese autor
+    			$data['comments'] = $ci->comments->get_lastowncomments($id, 10);
 
+    			echo $ci->load->view('usuarios/bloggerowncomments', $data, true);
+  	  		unset($data);
 
+  	    	?> 	   
+
+        </div>
         
       </div> <!-- sidebar_central -->
       
@@ -138,31 +146,36 @@ $id = $author;
 
 
 
-       
-       	<h4>tus noticias m&aacute;s le&iacute;das</h4> 
+        <div class="sidebar_box">        
 
-	    	<?php 
+         	  <h4>tus noticias m&aacute;s le&iacute;das</h4> 
+
+    	    	<?php 
 	      	
-	  		$ci->load->model('sessionmanager');
-	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
+    	  		$ci->load->model('sessionmanager');
+    	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
 	    		
-			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
-	  		unset($data);
+    			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
+    	  		unset($data);
 	  		
-	    	?> 	   
+    	    	?> 	  
+	    	 
+        </div>
 
+        <div class="sidebar_box">
+      
+          <h4>las que ya leiste</h4> 
 
-        <h4>las que ya leiste</h4> 
+   	    	<?php 
 
- 	    	<?php 
+   	  		$data['views'] = $ci->sessionmanager->get_lastread($id, 10);
 
- 	  		$data['views'] = $ci->sessionmanager->get_lastread($id, 10);
+   			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
+   	  		unset($data);
 
- 			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
- 	  		unset($data);
+   	    	?> 	   
 
- 	    	?> 	   
-
+        </div>
 
 
 

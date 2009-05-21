@@ -22,7 +22,7 @@
 				<?php endif; ?>
 </h4> 
   
-<p><?php if (isset($description)) echo $description; ?></p>
+<p><?php if (isset($description)) echo "Sobre el mulero: " . $description; ?></p>
 
 <div id="blogger_data">
 

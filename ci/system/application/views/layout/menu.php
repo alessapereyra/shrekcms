@@ -28,7 +28,7 @@ function active_controller($target) {
 <div id="wrapper">
 
     <div id="top_ad">
-      <!-- <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
+      <!-- <img src="/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
     </div> <!-- top_ad -->
 
     <div id="logo_bar">
@@ -39,8 +39,7 @@ function active_controller($target) {
 
        	<?php if ($log) : ?>
   				<ul>
-  					<li>Publicar</li>
-  					<li><?php echo anchor('usuario/perfil', 'Ver Perfil'); ?></li>
+  					<li><a href="http://lamula.pe/mulapress/author/">Ver Perfil</a></li>
   					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
   				</ul>
   			<?php endif; ?>		
@@ -54,7 +53,7 @@ function active_controller($target) {
         <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
     </div> <!-- status_bar -->
 
-		  <h2>Publicar</h2>
+		  <h2>Env&iacute;a a la mula... </h2>
 		  <ul id="menu">
 				<li class="foto" ><?php echo anchor('fotos/formulario', 'foto') ?></li>		    
 				<li class="video"><?php echo anchor('', 'video') ?></li>
