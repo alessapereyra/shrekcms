@@ -20,7 +20,8 @@ class Users extends Model {
 		   $this->db->select($field);
 		}
 
-    	$this->db->from($this->tabla);
+  	$this->db->from($this->tabla);
+		
     	
     	if ($search != NULL)
     	{
@@ -35,6 +36,7 @@ class Users extends Model {
         $query = $this->db->get();
         return $query;
     }
+    
     
     function insertar($values)
     {	  

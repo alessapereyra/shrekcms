@@ -3,9 +3,9 @@
   <?php foreach($comments as $comment): ?>
 	<li>
 	  
-		<a href="mailto:<?php echo $comment['comment_author_email']; ?>">
-		  <?php echo $comment['comment_author']; ?>
-		</a> dijo 
+		En <a href="<?php echo $comment['guid']; ?>">
+		  <?php echo $comment['post_title']; ?>
+		</a> dijiste:  
 		
 		  <a href="<?php echo $comment['guid'] . "#comment-"  . $comment['comment_ID']; ?>">
 		    <?php echo $comment['comment_content']; ?>
