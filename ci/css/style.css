@@ -9,7 +9,7 @@ body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
+	background: #e8e9e9 url(../images/background.png) repeat-x  center 99px;
 	color: #3b3330;
 }
 
