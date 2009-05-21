@@ -33,8 +33,6 @@ $id = $author;
 		  $ci->load->model('post');		  
 			  
   		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
-      $data['views'] = $data['views']->result_array();
-      $data['views'] = current($data['views']);
   		
     	$data['user'] = $ci->users->seleccionar(array('id' => $id));
       $data['user'] = $data['user']->result_array();
