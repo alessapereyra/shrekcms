@@ -195,7 +195,7 @@ class Post extends Model {
     	}
     }
     
-    function total_posts($id){
+    function published_posts($id){
       
       $this->db->select("*");
       $this->db->from($this->tabla);
@@ -203,6 +203,16 @@ class Post extends Model {
 		  $this->db->where('(post_status like "publish" or post_status like "inherit")');
       return $this->db->count_all_results();
     }
+ 
+    function total_posts($id){
+
+       $this->db->select("*");
+       $this->db->from($this->tabla);
+       $this->db->where('post_author',$id);
+       return $this->db->count_all_results();
+     }
+ 
+ 
     
     function _check($tabla, $id)
     {

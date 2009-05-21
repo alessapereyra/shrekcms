@@ -37,6 +37,14 @@ class Users extends Model {
         return $query;
     }
     
+    function mularanking($id)
+    {
+
+      
+      
+      
+    }
+
     
     function insertar($values)
     {	  

@@ -24,11 +24,18 @@
   
 <p><?php if (isset($description)) echo $description; ?></p>
 
-<p>Mulero por convicci&oacute;n desde <?php echo $user['user_registered']; ?></p>
+<div id="blogger_data">
 
-<?php foreach($views as $view): ?>
-  <p>Estuvo por aqu&iacute; <?php echo timeAgo($view['unixtime']); ?>
-<?php endforeach; ?>
+  <p id="since">Mulero por convicci&oacute;n desde <?php echo $user['user_registered']; ?></p>
 
-<p>Notas publicadas: <?php echo $total_posts ?></p>
-<p>Comentarios Realizados: <?php echo $total_comments ?></p>
+  <?php foreach($views as $view): ?>
+    <p>Estuvo por aqu&iacute; <?php echo timeAgo($view['unixtime']); ?>
+  <?php endforeach; ?>
+  
+  <p id="published">Notas publicadas: <?php echo $published_posts ?></p>
+  <p id="comments_done">Comentarios Realizados: <?php echo $total_comments ?></p>
+
+  <p id="mularanking">Ranking: <?php echo $mula_ranking ?></p>
+
+  
+</div>
