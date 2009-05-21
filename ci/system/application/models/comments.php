@@ -11,6 +11,15 @@ class Comments extends Model {
         $this->load->database('default');        
     }
     
+    function total_comments($id){
+      
+      $this->db->select("*");
+      $this->db->from($this->tabla);
+      $this->db->where('user_id',$id);
+      return $this->db->count_all_results();
+    }
+        
+    
     function get_lastowncomments($id, $posts)
     {
       

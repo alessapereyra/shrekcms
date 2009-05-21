@@ -10,7 +10,7 @@
 <h3>
   <?php if (isset($nickname)) 
         {   
-          if ($tmp == "admin") { echo "lamula" }  
+          if ($tmp == "admin") { echo "lamula"; }  
           else { echo $nickname; }
           
         }
@@ -23,3 +23,12 @@
 </h4> 
   
 <p><?php if (isset($description)) echo $description; ?></p>
+
+<p>Mulero por convicci&oacute;n desde <?php echo $user['user_registered']; ?></p>
+
+<?php foreach($views as $view): ?>
+  <p>Estuvo por aqu&iacute; <?php echo timeAgo($view['unixtime']); ?>
+<?php endforeach; ?>
+
+<p>Notas publicadas: <?php echo $total_posts ?></p>
+<p>Comentarios Realizados: <?php echo $total_comments ?></p>

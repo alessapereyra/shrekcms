@@ -23,6 +23,7 @@ class Sessionmanager extends Model {
   		   $db->select('mulapress_posts.' . $field);
   		}
 
+ 	    $db->select('mulapress_session_manager.unixtime');
   		$db->from('mulapress_posts');
   		$db->join('mulapress_session_manager', 'mulapress_posts.ID = mulapress_session_manager.url');		
 

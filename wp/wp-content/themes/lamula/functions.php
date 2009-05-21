@@ -21,6 +21,36 @@ function snippet($text,$length=64,$tail="...") {
     return $text;
 }
 
+function timeAgo($timestamp, $granularity=2, $format='Y-m-d H:i:s'){
+
+        $difference = time() - $timestamp;
+        
+        if($difference < 0) return 'hace 0 segundos';             // if difference is lower than zero check server offset
+        elseif($difference < 864000){                                   // if difference is over 10 days show normal time form
+        
+                $periods = array('semanas' => 604800,'dias' => 86400,'horas' => 3600,'minutos' => 60,'segundos' => 1);
+                $output = '';
+                foreach($periods as $key => $value){
+                
+                        if($difference >= $value){
+                        
+                                $time = round($difference / $value);
+                                $difference %= $value;
+                                
+                                $output .= ($output ? ' ' : '').$time.' ';
+                                $output .= (($time > 1 && $key == 'dia') ? $key.'s' : $key);
+                                
+                                $granularity--;
+                        }
+                        if($granularity == 0) break;
+                }
+                return 'hace ' . ($output ? $output : '0 segundos');
+        }
+        else return date($format, $timestamp);
+}
+
+
+
 function sm_store_session_data($mypost) {
 	get_currentuserinfo();
 

@@ -28,7 +28,17 @@ $id = $author;
     	$ci =& get_instance();
     	$ci->load->model('users');
     	$ci->load->model('usermeta');
-
+  		$ci->load->model('sessionmanager');
+		  $ci->load->model('comments');
+		  $ci->load->model('post');		  
+			  
+  		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
+    	$data['user'] = $ci->users->seleccionar(array('id' => $id));
+      $data['user'] = $data['user']->result_array();
+      $data['user'] = current($data['user']);
+      $data['total_comments'] = $ci->comments->total_comments($id);
+      $data['total_posts'] = $ci->post->total_posts($id);
+                      
     	$perfil = $ci->usermeta->select_all($author);
     	$perfil = $perfil->result_array();
     	
@@ -39,7 +49,7 @@ $id = $author;
     	}
     	
     	echo $ci->load->view('usuarios/bloggerinfo', $data, true);
-    	//unset($data);  
+    	unset($data);  
     	?> 
 	      
 	  </div>
@@ -47,15 +57,13 @@ $id = $author;
 	  <div>
     	<?php 
     	
-		$ci->load->model('terms');
-		$ci->load->model('post');
-		
-		//consigue los ultimos post
-		$data['posts'] = $ci->post->get_lastpost($id, 8);
+		  $ci->load->model('terms');
 
-		echo $ci->load->view('usuarios/bloggerposts', $data, true);
-  		unset($data);
-    	?> 	  
+		  //consigue los ultimos post
+		  $data['posts'] = $ci->post->get_lastpost($id, 8);
+
+		  echo $ci->load->view('usuarios/bloggerposts', $data, true);
+  		unset($data); ?> 	  
 	  </div>
 	
 	</div> <!-- content_feed -->
@@ -84,8 +92,6 @@ $id = $author;
         <h4>lo que te han comentado</h4>
 
 	    	<?php 
-	    	
-			  $ci->load->model('comments');
 			
 			  //consigue los ultimos comentarios a los post de ese autor
 			  $data['comments'] = $ci->comments->get_lastcomments($id, 10);

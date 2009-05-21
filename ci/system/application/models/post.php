@@ -2,7 +2,7 @@
 class Post extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_posts';
+  var $tabla = 'mulapress_posts';
 
     function __construct()
     {
@@ -10,6 +10,7 @@ class Post extends Model {
         parent::Model();
         $this->load->database('default');        
     }
+    
     
     function get_lastpost($id, $posts)
     {
@@ -192,6 +193,15 @@ class Post extends Model {
 	    	$this->db->delete($this->tabla);
 	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
     	}
+    }
+    
+    function total_posts($id){
+      
+      $this->db->select("*");
+      $this->db->from($this->tabla);
+      $this->db->where('post_author',$id);
+		  $this->db->where('(post_status like "publish" or post_status like "inherit")');
+      return $this->db->count_all_results();
     }
     
     function _check($tabla, $id)
