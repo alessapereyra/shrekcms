@@ -33,11 +33,31 @@ $id = $author;
 		  $ci->load->model('post');		  
 			  
   		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
+      $data['views'] = $data['views']->result_array();
+      $data['views'] = current($data['views']);
+  		
     	$data['user'] = $ci->users->seleccionar(array('id' => $id));
       $data['user'] = $data['user']->result_array();
       $data['user'] = current($data['user']);
+
       $data['total_comments'] = $ci->comments->total_comments($id);
-      $data['total_posts'] = $ci->post->total_posts($id);
+      $data['received_comments'] = $ci->comments->total_received_comments($id);
+
+      $data['published_posts'] = $ci->post->published_posts($id);
+      $data['total_posts'] = $ci->post->total_posts($id);                
+      
+      $mularanking = 0;
+      
+      if ( $data['total_posts'] > 0)
+      { 
+          $mularanking = $data['published_posts'] / $data['total_posts'];
+      }
+      
+      $mularanking = $mularanking * 10;
+      
+      $mularanking = $mularanking + $data['total_comments'] + $data['received_comments'] * 1.2;
+          
+      $data['mula_ranking'] = $mularanking;
                       
     	$perfil = $ci->usermeta->select_all($author);
     	$perfil = $perfil->result_array();

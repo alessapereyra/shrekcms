@@ -18,7 +18,18 @@ class Comments extends Model {
       $this->db->where('user_id',$id);
       return $this->db->count_all_results();
     }
-        
+
+    function total_received_comments($id){
+      
+      $this->db->select('*');
+  		$this->db->from($this->tabla);
+  		$this->db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
+    	$this->db->where('mulapress_posts.post_author', $id);
+    
+      return $this->db->count_all_results();
+      
+    }
+            
     
     function get_lastowncomments($id, $posts)
     {
