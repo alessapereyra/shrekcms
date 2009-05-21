@@ -2,7 +2,7 @@
 class Usermeta extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_usermeta';
+    var $tabla = 'mulapress_usermeta';
 
     function __construct()
     {

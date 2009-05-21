@@ -36,14 +36,16 @@ class Comments extends Model {
       
       $db = $this->load->database('default', TRUE); 
     	
-    	$fields = $db->list_fields($this->tabla);
-
+	    $fields = $db->list_fields($this->tabla);
+	
 		  foreach ($fields as $field)
 		  {
 		    $db->select($this->tabla . '.' . $field);
 		  }
 
-      $db->select('mulapress_posts.guid, mulapress_posts.post_title');
+	      $db->select('mulapress_posts.guid');
+	      $db->select('mulapress_posts.post_title');
+
   		$db->from($this->tabla);    
   		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		    
   		$db->where('user_id', $id);

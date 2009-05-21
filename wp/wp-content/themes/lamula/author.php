@@ -15,8 +15,8 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
-<?php //include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
+<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 
 <div id="content" class="inner">
   
@@ -25,16 +25,18 @@ $id = $author;
 	  <div id="user_profile">
 	   
     	<?php
-    	$ci =& get_instance();
-    	$ci->load->model('users');
-    	$ci->load->model('usermeta');
-  		$ci->load->model('sessionmanager');
-		  $ci->load->model('comments');
-		  $ci->load->model('post');		  
-			  
-  		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
-  		
-    	$data['user'] = $ci->users->seleccionar(array('id' => $id));
+		$ci =& get_instance();
+		$ci->load->model('users');
+		$ci->load->model('usermeta');
+		    
+		$ci->load->model('terms');
+		$ci->load->model('sessionmanager');
+		$ci->load->model('comments');
+		$ci->load->model('post');		  
+	  
+		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
+  
+		$data['user'] = $ci->users->seleccionar(array('id' => $id));
       $data['user'] = $data['user']->result_array();
       $data['user'] = current($data['user']);
 
@@ -74,9 +76,6 @@ $id = $author;
 	  
 	  <div>
     	<?php 
-    	
-		  $ci->load->model('terms');
-
 		  //consigue los ultimos post
 		  $data['posts'] = $ci->post->get_lastpost($id, 8);
 
@@ -169,6 +168,8 @@ $id = $author;
 
         
       </div> <!-- sidebar_recomendados -->
+      
+      <div>lalala, aca va toda la caja ps</div>
     
   </div> <!-- sidebars -->
 
