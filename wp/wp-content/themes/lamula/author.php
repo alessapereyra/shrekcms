@@ -28,13 +28,15 @@ $id = $author;
     	$ci =& get_instance();
     	$ci->load->model('users');
     	$ci->load->model('usermeta');
+    	
+    	$ci->load->model('terms');
   		$ci->load->model('sessionmanager');
 		  $ci->load->model('comments');
 		  $ci->load->model('post');		  
 			  
   		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
   		
-    	$data['user'] = $ci->users->seleccionar(array('id' => $id));
+   		$data['user'] = $ci->users->seleccionar(array('id' => $id));
       $data['user'] = $data['user']->result_array();
       $data['user'] = current($data['user']);
 
@@ -75,7 +77,7 @@ $id = $author;
 	  <div>
     	<?php 
     	
-		  $ci->load->model('terms');
+		  
 
 		  //consigue los ultimos post
 		  $data['posts'] = $ci->post->get_lastpost($id, 8);
