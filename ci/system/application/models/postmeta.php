@@ -11,6 +11,23 @@ class Postmeta extends Model {
         $this->load->database('default');        
     }
     
+    function get_metas($id)
+    {
+    	$this->db->select('meta_key');
+    	$this->db->select('meta_value');
+    	$this->db->from($this->tabla);
+    	$this->db->where('post_id', $id);
+    	$query = $this->db->get();
+    	
+        foreach ($query->result() as $row)
+		{
+			$tmp[$row->meta_key] = $row->meta_value;
+		}
+		
+		return $tmp;
+    	
+    }
+    
     function insertar($values, $id)
     {
     	$tmp['post_id'] = $id;

@@ -35,7 +35,7 @@ class Post extends Model {
 		
 		$todo = $db->get();
 		$post[] = $todo->result_array();
-		
+
 		//$categorias = $this->terms->get_categories();
 		$categorias = $this->terms->get_categories_perfil($db);
 		
@@ -96,7 +96,7 @@ class Post extends Model {
 		
 		$db->limit($limit['show'], $limit['from']);
 		$query = $db->get();
-
+		//die($db->last_query());
 		return $query;
     }
     

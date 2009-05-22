@@ -15,8 +15,8 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
-<?php //include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
+<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 
 <div id="content" class="inner author">
   
@@ -56,7 +56,7 @@ $id = $author;
       $mularanking = $mularanking * 10;
       
       $mularanking = $mularanking + $data['total_comments'] + $data['received_comments'] * 1.2;
-          
+   
       $data['mula_ranking'] = $mularanking;
                       
     	$perfil = $ci->usermeta->select_all($author);
@@ -69,7 +69,8 @@ $id = $author;
     	}
     	
     	echo $ci->load->view('usuarios/bloggerinfo', $data, true);
-    	unset($data);  
+    	unset($data);
+    	  
     	?> 
 	      
 	  </div>

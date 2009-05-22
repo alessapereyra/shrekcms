@@ -85,7 +85,7 @@ class Terms extends Model {
     	$db->join('wp_term_taxonomy', 'wp_terms.term_id = wp_term_taxonomy.term_id');
     	
     	//$db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
-	    $db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
+	    $db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
     	
     	$query = $db->get();
     	  
