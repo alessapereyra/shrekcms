@@ -20,7 +20,7 @@ class Terms extends Model {
     	$this->db->join('wp_term_taxonomy', 'wp_terms.term_id = wp_term_taxonomy.term_id');
     	
     	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
-//    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 29));    	
+//    	$this->db->where(array('wp_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
     	
     	$query = $this->db->get();
     	  
@@ -30,6 +30,49 @@ class Terms extends Model {
 		}
 		
 		return $tmp;       	
+    }
+    
+    function get_postcategories($id)
+    {
+    	$this->db->select($this->tabla . '.term_id');
+    	$this->db->select($this->tabla . '.name');
+    	
+    	$this->db->from($this->tabla);
+
+    	$this->db->join('wp_term_relationships', 'wp_terms.term_id = wp_term_relationships.term_taxonomy_id');
+    	$this->db->join('wp_term_taxonomy', 'wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id');
+    	
+    	$this->db->where('taxonomy', 'category');
+    	$this->db->where('parent', '6');
+    	$this->db->where('object_id', $id);
+    	
+    	$query = $this->db->get();
+    	
+        foreach ($query->result() as $row)
+		{
+			$tmp[$row->term_id] = $row->name;
+		}    	
+    	
+    	
+    	//die($this->db->last_query());
+    	return $tmp;
+    }
+    
+    function get_tags($id)
+    {
+    	$this->db->select($this->tabla . '.name');
+    	
+    	$this->db->from($this->tabla);
+
+    	$this->db->join('wp_term_relationships', 'wp_terms.term_id = wp_term_relationships.term_taxonomy_id');
+    	$this->db->join('wp_term_taxonomy', 'wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id');
+    	
+    	$this->db->where('taxonomy', 'post_tag');
+    	$this->db->where('object_id', $id);
+    	
+    	$query = $this->db->get(); 	
+    	
+    	return $query;
     }
     
     function get_categories_perfil($db)

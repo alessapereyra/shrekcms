@@ -43,6 +43,40 @@ class Articulos extends DI_Controller {
 	
 	function _show($id, $data)
 	{
+		$this->load->model('post');
+		$this->load->model('terms');
+		
+		//Consigu los datos basico
+		$post = $this->post->seleccionar(array('ID' => $id));
+		$post = $post->result_array();
+		$post = current($post);
+	
+		$data['id'] = $post['ID'];
+		$data['titulo'] = $post['post_title'];
+		$data['texto'] = $post['post_content'];
+		
+		//Consig los tags
+		$tags = $this->terms->get_tags($id);
+		$tags = $tags->result_array();
+		foreach($tags as $tag)
+		{
+			$tmp[] = $tag['name'];	
+		}
+		
+		$data['tags'] = implode(', ', $tmp);
+		
+		$cats = $this->terms->get_postcategories($id);
+
+		foreach($cats as $key => $value)
+		{
+			$categorias_selected[] = $key;
+		}
+			
+		if (isset($categorias_selected))
+		{
+			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+		}
+		
 		return $data;
 	}
 		
