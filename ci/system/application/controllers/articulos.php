@@ -40,6 +40,11 @@ class Articulos extends DI_Controller {
 		$this->load->view('articulos/articulo', $data);
 		$this->__destruct();
 	}
+	
+	function _show($id, $data)
+	{
+		return $data;
+	}
 		
 	function actualizar($ie = NULL)
 	{

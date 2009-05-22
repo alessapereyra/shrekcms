@@ -2,7 +2,7 @@
 class Comments extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_comments';
+    var $tabla = 'wp_comments';
 
     function __construct()
     {
@@ -13,20 +13,24 @@ class Comments extends Model {
     
     function total_comments($id){
       
-      $this->db->select("*");
-      $this->db->from($this->tabla);
-      $this->db->where('user_id',$id);
-      return $this->db->count_all_results();
+    	$db = $this->load->database('default', TRUE); 
+    	
+      $db->select('user_id');
+      $db->from($this->tabla);
+      $db->where('user_id',$id);
+      return $db->count_all_results();
     }
 
-    function total_received_comments($id){
+    function total_received_comments($id)
+    {
       
-      $this->db->select('*');
-  		$this->db->from($this->tabla);
-  		$this->db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
-    	$this->db->where('mulapress_posts.post_author', $id);
+    	$db = $this->load->database('default', TRUE);
+      $db->select('post_author');
+  		$db->from($this->tabla);
+  		$db->join('wp_posts', 'wp_posts.ID = wp_comments.comment_post_ID');		
+    	$db->where('wp_posts.post_author', $id);
     
-      return $this->db->count_all_results();
+      return $db->count_all_results();
       
     }
             
@@ -43,11 +47,11 @@ class Comments extends Model {
 		    $db->select($this->tabla . '.' . $field);
 		  }
 
-	      $db->select('mulapress_posts.guid');
-	      $db->select('mulapress_posts.post_title');
+	      $db->select('wp_posts.guid');
+	      $db->select('wp_posts.post_title');
 
   		$db->from($this->tabla);    
-  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		    
+  		$db->join('wp_posts', 'wp_posts.ID = wp_comments.comment_post_ID');		    
   		$db->where('user_id', $id);
 		
   		$db->limit($posts, 0);
@@ -73,11 +77,11 @@ class Comments extends Model {
 		    $db->select($this->tabla . '.' . $field);
 		  }
     
-      $db->select('mulapress_posts.guid');
+      $db->select('wp_posts.guid');
   		$db->from($this->tabla);
-  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
+  		$db->join('wp_posts', 'wp_posts.ID = wp_comments.comment_post_ID');		
     
-  		$db->where('mulapress_posts.post_author', $id);
+  		$db->where('wp_posts.post_author', $id);
 		
   		$db->limit($posts, 0);
 		

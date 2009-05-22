@@ -151,7 +151,6 @@ $id = $author;
 	  		
 	    	?> 	   
 
-
         <h4>las que ya leiste</h4> 
 
  	    	<?php 
@@ -162,14 +161,22 @@ $id = $author;
  	  		unset($data);
 
  	    	?> 	   
-
-
-
-
-        
+ 
       </div> <!-- sidebar_recomendados -->
       
-      <div>lalala, aca va toda la caja ps</div>
+      <div>
+ 	    	<?php
+ 	    	$ci->load->helper('url');
+ 	    	$limit['from'] = 0;
+ 	    	$limit['show'] = 5;
+ 	    	
+ 	  		$data['myposts'] = $ci->post->get_mypost($id, $limit);
+ 	  		$data['myposts'] = $data['myposts']->result_array();
+
+ 			echo $ci->load->view('usuarios/bloggermypost', $data, true);
+ 	  		unset($data);
+ 	    	?> 	      
+      </div>
     
   </div> <!-- sidebars -->
 

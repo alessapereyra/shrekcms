@@ -2,7 +2,7 @@
 class Departments extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_departments';
+    var $tabla = 'wp_departments';
 
     function __construct()
     {

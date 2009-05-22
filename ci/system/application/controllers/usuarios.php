@@ -15,11 +15,12 @@ class Usuarios extends Controller {
 		}
 		
 		$this->load->helper('form');
+		$this->load->helper('url');
 		$this->load->library('form_validation');
 		$tmp = $this->config->item('post_content');
 		
-		$this->load->view('layout/' . $tmp['head'], array('seccion' => 'Registrate'));
-		$this->load->view('layout/' . $tmp['menu'], array('log' => FALSE));
+		$this->load->view('layout/' . $tmp['head'], array('seccion' => 'Registrate', 'ie6' => $this->_is_ie6()));
+		$this->load->view('layout/' . $tmp['menu'], array('log' => FALSE, 'ie6' => $this->_is_ie6() ));
 		
 		$this->load->view('usuarios/formulario', $data);
 		
@@ -157,6 +158,21 @@ class Usuarios extends Controller {
 			return true;
 		}			
 	}
+	
+	function _is_ie6()
+	{
+		$this->load->library('user_agent');
+		
+		if ($this->agent->is_browser())
+		{
+			if ( ($this->agent->browser() == 'Internet Explorer') AND ($this->agent->version() == 6) )
+			{
+				return TRUE;
+			}
+		}
+		
+		return FALSE;
+	}	
 }
 
 /* End of file usuarios.php */
