@@ -17,6 +17,7 @@ a {
 
 #content_feed dl dd a {
 	display: block;
+	color: #fe008a;;
 }
 
 div#wrapper {
@@ -456,6 +457,10 @@ div#content_feed ul li a {
 
 }
 
+.inner div#content_feed ul li a {
+	padding: 8px 25px;
+}
+
 div#content_feed ul li a.active,
 div#content_feed ul li a.active:hover {
 	background-color: white;
@@ -760,7 +765,44 @@ div#sidebars div#sidebar_central {
 	margin-bottom: 2em;
 }
 
-div#sidebars div#sidebar_central h4	{
+div#content.inner.author div#sidebars div#sidebar_central{
+
+	background-color: none;
+	background: none;
+	
+}
+
+#sidebar_central div.sidebar_box {
+		background-color: #fcf270;
+		overflow: auto;
+		margin-bottom: 1em;
+		padding-bottom: 1em;
+}
+
+#sidebar_central div.sidebar_box li {
+	font-size: 0.9em !important;
+}
+
+div#blogger_data {
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;	
+	background-color: #fff351;
+
+}
+
+div#blogger_data p {
+		color: black !important;
+		font-size: 1.1em;
+}
+
+.inner.author div#content_feed div#user_profile div#blogger_data p#mularanking {
+	font-size: 1.5em !important;
+	color: #ff4692 !important;
+}
+
+div#sidebars div#sidebar_central h4,
+div#sidebars div#sidebar_recomendados h4	{
 	font-size: 1.5em;
 	color: #3b3330;
 	text-transform: lowercase;
@@ -799,19 +841,22 @@ div#sidebars div#sidebar_recomendados ul {
 }
 
 div#sidebars div#sidebar_recomendados ul#post_list,
-div#sidebars div#sidebar_recomendados ul#post_most_seen {
+div#sidebars div#sidebar_recomendados ul#post_most_seen,
+div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
 div#sidebars div#sidebar_recomendados ul#post_list li,
-div#sidebars div#sidebar_recomendados ul#post_most_seen li {
+div#sidebars div#sidebar_recomendados ul#post_most_seen li,
+div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	float: none;
 	padding: 0px;
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
 div#sidebars div#sidebar_recomendados ul#post_list li a,
-div#sidebars div#sidebar_recomendados ul#post_most_seen li a {
+div#sidebars div#sidebar_recomendados ul#post_most_seen li,
+div#sidebars div#sidebar_recomendados ul.bloggers_list li a {
 	float: none;
 	margin: 0px;
 	background-color: #3b3330;
@@ -821,10 +866,26 @@ div#sidebars div#sidebar_recomendados ul#post_most_seen li a {
 }
 
 div#sidebars div#sidebar_recomendados ul#post_list li a:hover,
-div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover {
+div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover,
+div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	background-color: #000;
 }
 
+#sidebar_recomendados div.sidebar_box ul.bloggers_list {
+	padding-left: 20px !important;
+	font-size: .9em !important;
+}
+
+#sidebar_recomendados div.sidebar_box ul.bloggers_list li {
+	float: none;
+	background-color: none !important;
+}
+
+#sidebar_recomendados div.sidebar_box ul.bloggers_list li a{
+	background: none !important;
+	color: #ff005f !important;
+	text-decoration: underline !important;
+}
 
 div#sidebars div#sidebar_recomendados ul li a{
 	float: left;
@@ -1115,14 +1176,21 @@ textarea#comment {
 }
 
 #user_profile p {
-	font-size: 0.9em;
+	font-size: 1em;
 	line-height: 1.3em;
 	margin-bottom: 1em;
 	color: #806f68;
 }
 
+#sidebar_recomendados div.sidebar_box {
+	padding: 10px;	
+	background-color: #fff351;
+	margin-bottom: 1em;
+}
+
 #user_profile h4 {
 	margin-bottom: 1em;
+	font-size: 1.2em;
 }
 
 

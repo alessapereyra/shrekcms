@@ -3,19 +3,16 @@
 	http://lamula.pe/mulapress/ci/css/style.css
 */
 
-
-
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
+	background: #e8e9e9 url(../images/background.png) repeat-x  center 99px;
 	color: #3b3330;
 }
 
 a {
-	color: #000;
-	font-style: italic;
+	color: #fe008a;;
 	text-transform: lowercase;
 }
 
@@ -25,89 +22,153 @@ div#wrapper {
 	margin: 0px auto;
 }
 
+
+
 /* @group Top Menu */
 
 
-div#top_menu,
-div#footer_menu {
-	background-color: #282828;
-	padding: 20px 0px;
-	color: white;
-	overflow: hidden;	
-	height: 40px;
-	clear: both;
-}
-
 div#top_menu {
-	background: #282828;
+	
+	background-color: #000;
+	color: #040707;
+	overflow: hidden;	
+	font-size: 0.8em;
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	height: 30px;
+	padding-top: 5px;
 }
 
-div#top_menu div ul {
-	float: right;
-	margin-top: 0.4em;
-}
 
-div#top_menu div ul li {
-	font-size: 0.5em;
+div#top_menu p span.left {
 	float: left;
-	margin-right:1em ;
-	text-transform: lowercase;
+	margin-left: 20px;
+	margin-top: 5px;
+	color: #fff;
 }
 
-div#footer_menu {
-	padding-top: 2em;
-	padding-bottom: 5em;
-	margin-top: 2em;
-}
-
-div#top_menu div {
-	overflow: auto;
-	width: 720px;
-	height: 40px;
-	margin: 0px auto;
-	font-size: 2em;
-}
-
-div#top_menu div a {
-	color: #f7fe6f;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
-}
-
-div#top_menu div span.left,
-div#footer_menu div span.left {
-	float: left;
-
-}
-
-div#top_menu div span.right {
+div#top_menu p span.right {
 	float: right;
 	margin-right: 20px;
+	margin-top: 5px;
 }
 
 
+#top_menu p span.right a {
+	text-decoration: underline;
+	color: #fff9a5;
+}
+
+#top_menu p span.right a:hover {
+	color: #fff;
+}
+
 /* @end */
+
+
 
 /* @group Logo Header */
 
-h1{
-
-	font-size: 6em;
-	float: left;
-	text-transform: lowercase;
+div#logo_bar {
+	overflow: auto;	
+	margin-top: 2em;
 }
+
+hi {
+	overflow: auto;
+	float: none;
+}
+
+h1 a{
+
+	float: left;
+	background-image: url(../images/logo-transparent.png);
+	text-indent: -9000em;
+	width: 310px;
+	height: 70px;
+}
+
 
 /* @end */
 
-/* @group Setting up inline-menu */
-
 div#wrapper h2 {
 	
+	font-size: 2.5em;
 	margin-top: 1em;
-	font-size: 2em;
-	margin-bottom: 10px;
 }
+
+/* @group Search Bar */
+
+div#status_bar {
+	clear: both;
+	margin:  1em 0px;
+	margin-top: 1em;
+	background-color: #fff351;
+	padding: 5px 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	overflow: auto;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	
+}
+
+
+h2#status {	
+	margin: 0.4em 1em !important;
+	float: left;
+	font-size: 1em !important;
+}
+
+
+#status strong {
+	color: #f7002d;
+}
+
+
+p#site_stats {
+	margin: 0.4em 1em;
+	float: right;
+}
+
+
+#search_bar {
+	background-color: #fff9a5;
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	color: white;
+	width: 200px;
+	display: block;
+	margin-top: 60px;	
+}
+
+#search_bar ul li {
+	float: left;
+	margin-right: 20px;
+}
+
+input#busqueda {
+	border: 0px solid #aeaeae;
+	padding: 5px 10px;
+}
+
+div#search_bar {
+	
+	float: right;
+	margin-top: 00.2em;
+}
+
+
+
+
+div#search_bar label {
+	
+	margin-right: 15px;
+	
+}
+
+
+
+/* @end */
 
 ul#menu {
 		
@@ -217,7 +278,7 @@ div#content input#titulo,
 #texto_container table.mceLayout,
 div#content input#tags,
 div#content textarea#textos {
-	width: 490px !important;
+	width: 430px !important;
 	border-style: solid !important;
 	border-width: 1px !important;
 	padding: 5px;
@@ -232,13 +293,15 @@ div#content input#tags:focus {
 
 
 #texto_container table.mceLayout {
-	width: 500px !important;
+	width: 440px !important;
 }
 
 div#content div#text_content {
 	float: left;
-	width: 500px;
+	width: 450px;
 	margin-right: 10px;
+	background-color: white;
+	padding: 20px;
 }
 
 div#content div#sidebar_content {
@@ -255,13 +318,12 @@ div#content fieldset#categories span {
 	clear: both;
 	display: block;
 	margin-bottom: 0.3em;
-	background-color: #d8dbb7;
+	background-color: #fff351;
 	padding: 15px;
 }
 
 div#content fieldset#categories span:hover {
-	background-color: #a8aa90;
-}
+	background-color: #fff9a5;}
 
 div.error {
 	margin: 10px 0px;
@@ -322,14 +384,17 @@ object#SWFUpload_0.swfupload {
 fieldset#localizar div.ui-tabs-panel,
 #upload-content div.ui-tabs-panel {
 	padding: 10px;
-	background-color: #d8dbb7;
-	border: 0px;
+	background-color: #fff351;	border: 0px;
 	-webkit-border-radius: 0px;
 	-mozilla-border-radius: 0px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	margin-bottom: 1em;
+	width: 390px;
 }
 
+fieldset#localizar div.ui-tabs-panel {
+	width: auto;
+}
 
 #upload-content div.ui-tabs-panel {
 	padding-bottom: 2em;
@@ -349,7 +414,7 @@ fieldset#localizar div.ui-tabs-panel select,
 	padding: 0px 5px;
 	border: none; 
 	margin: 0px;
-	background: #a8aa90; 
+	background: #fff9a5;
 	font-weight: normal; 
 	color: red; 
 	outline: none;
@@ -359,7 +424,7 @@ fieldset#localizar div.ui-tabs-panel select,
 #localizar .ui-state-active, .ui-widget-content .ui-state-active,
 #upload-content .ui-state-active, .ui-widget-content .ui-state-active  {
 	padding: 0px 5px;
-	background: #d8dbb7;
+	background: #fff351;
 	border: 0px;	
 	margin: 0px;
 	font-family: Georgia, "Times New Roman", Times, serif;
@@ -412,7 +477,7 @@ div#upload-content #enlazar label {
 
 div#upload-content #enlazar input {
 
-	width: 400px !important;
+	width: 360px !important;
 	margin-top: 1em;
 	margin-bottom: 1.5em;
 	font-size: 0.7em;
@@ -446,7 +511,7 @@ div#end_form {
 }
 
 #end_form input.boton:hover {
-	background-color: #a8aa90;
+	background-color: #fff9a5;
 	border: none;
 }
 
