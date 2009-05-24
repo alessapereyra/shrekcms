@@ -39,7 +39,11 @@ class Videos extends DI_Controller {
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->view('documentos/documento', $data);
+		$this->load->view('videos/video', $data);
+		
+		$this->load->library('zend');
+    $this->zend->load('Zend/Gdata/YouTube');
+		
 		$this->__destruct();		
 	}
 	
@@ -120,7 +124,7 @@ class Videos extends DI_Controller {
 			
 			$data['form'] = $this->form;			
 			
-			$this->load->view('documentos/documento', $data);
+			$this->load->view('videos/video', $data);
 			$this->__destruct();		
 
 		}
@@ -154,14 +158,14 @@ class Videos extends DI_Controller {
 									//error y debo redireccionar
 									$this->load->library('session');
 									$this->session->set_flashdata('fileupload', 'Error en la carga');
-									redirect('documentos/formulario');
+									redirect('videos/formulario');
 								}
 							}						
 							else
 							{
 								$this->load->library('session');
 								$this->session->set_flashdata('fileupload', 'Error en la carga');
-								redirect('documentos/formulario');
+								redirect('videos/formulario');
 							}
 						}
 					}
@@ -257,7 +261,7 @@ class Videos extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
-			redirect('documentos/formulario');			
+			redirect('videos/formulario');			
 			
 		}			
 	}

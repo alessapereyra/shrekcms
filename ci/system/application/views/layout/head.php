@@ -68,6 +68,11 @@ if ($ie6 == FALSE)
 			$ext = '*.mp3';
 		break;
 
+		case 'videos':
+			$url = $this->me_url;
+			$name = 'Videos';
+			$ext = '*.mov';
+		break;
 		
 		case 'documentos':
 			$url = $this->me_url;

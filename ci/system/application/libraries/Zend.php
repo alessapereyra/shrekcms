@@ -28,7 +28,7 @@ class CI_Zend
 		// include path for Zend Framework
 		// alter it accordingly if you have put the 'Zend' folder elsewhere
 		ini_set('include_path',
-		ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'libraries');
+		ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'libraries/Zend/library/');
 
 		if ($class)
 		{
