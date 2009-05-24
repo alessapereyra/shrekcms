@@ -23,6 +23,7 @@
 	<div id="text_content">	 
 	
     	<fieldset id="articulo_content">
+    	<h3>Creando un Art&iacute;culo</h3>
     	<?php echo form_label('Titulo:', 'titulo');?> 
     	<?php echo form_error('titulo'); ?>
     	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
@@ -36,7 +37,7 @@
     	adjunte o enlace imágenes y fotos complementarias a su artículo 
     	</p>
     	
-	  	<div id="upload-content">
+	  	<div id="upload-content" class="articulo-upload">
 	  		<?php echo form_hidden('upload-content', 'subir'); ?>
 	  		<ul>
 	  			<li><a href="#subir">Subir</a></li>

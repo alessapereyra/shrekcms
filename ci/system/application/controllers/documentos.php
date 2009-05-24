@@ -185,7 +185,7 @@ class Documentos extends DI_Controller {
 						$doc_name = $doc_name[count($doc_name)-1];
 						
 						$tmp = '<br />';						
-						$tmp .= '<a href="' . $doc_data->guid . '" title="'. $doc_name .'">';
+						$tmp .= '<a rel="uploaded_doc" href="' . $doc_data->guid . '" title="'. $doc_name .'">';
 						$tmp .= $this->input->post('titulo');
 						$tmp .= '</a>';
 						$tmp .= '<br />';
@@ -196,7 +196,7 @@ class Documentos extends DI_Controller {
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<a href="' . $this->input->post('doclink') . '">';
+					$tmp = '<a rel="uploaded_doc" href="' . $this->input->post('doclink') . '">';
 					$tmp .= $this->input->post('titulo');
 					$tmp .= '</a>';
 					$tmp .= '<br />';

@@ -8,7 +8,7 @@ class Layout {
 	function __construct()
 	{
 		$this->CI =& get_instance();
-		$this->subidon = array('fotos', 'documentos', 'articulos');
+		$this->subidon = array('fotos', 'documentos', 'articulos','videos','audios');
 	}
 	
 	function active_controller($target)

@@ -45,11 +45,10 @@ tinyMCE.init({
 if ($ie6 == FALSE)
 {
 
-	$subidon = array('fotos', 'documentos', 'articulos');
-	
+	$subidon = array('fotos', 'documentos', 'articulos','videos','audios');
+	$current_controller = $this->uri->segment(1);	
 	if (in_array($this->uri->segment(1), $subidon)):
-	
-	switch ($this->uri->segment(1))
+	switch ($current_controller)
 	{
 		case 'articulos':
 			$name = 'Imagenes';
@@ -62,6 +61,13 @@ if ($ie6 == FALSE)
 			$name = 'Imagenes';
 			$ext = '*.jpg;*.jpeg;*.png;*.gif';
 		break;
+
+		case 'audios':
+			$url = $this->me_url;
+			$name = 'Audios';
+			$ext = '*.mp3';
+		break;
+
 		
 		case 'documentos':
 			$url = $this->me_url;
@@ -69,6 +75,10 @@ if ($ie6 == FALSE)
 			$ext = '*.doc;*.pdf';
 		break;
 	}
+	
+	
+
+	
 	?>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.queue.js"></script>

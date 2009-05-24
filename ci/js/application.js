@@ -61,7 +61,7 @@ $(document).ready(function(){
 	
 	
 	$("div#preview_content").hide();
-	$("div#upload-content").hide();
+	$("div#upload-content.articulo-upload").hide();
 	
 	$('form#formulario_mula :text').magicpreview('pv_');
 	$('form#formulario_mula :checkbox').magicpreview('pv_');

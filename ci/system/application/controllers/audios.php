@@ -7,11 +7,13 @@ class Audios extends DI_Controller {
 		{
 			$id = NULL;
 		}
+		
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
 		$data['texto'] = NULL;
 		$data['tags'] = NULL;
-		$data['photolink'] = NULL;
+		$data['doclink'] = NULL;		
+		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 		//$data['ie6'] = $this->_is_ie6();
@@ -27,7 +29,7 @@ class Audios extends DI_Controller {
 		$data['distritos_selected'] = NULL;
 			
 		$data['paices'] = $this->combofiller->countries();
-		$data['paices_selected'] = NULL;
+		$data['paices_selected'] = NULL;	
 		
 		if ($id != NULL)
 		{
@@ -37,78 +39,15 @@ class Audios extends DI_Controller {
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->view('articulos/articulo', $data);
-		$this->__destruct();
+		$this->load->view('audios/audio', $data);
+		$this->__destruct();		
 	}
 	
 	function _show($id, $data)
 	{
-		$this->load->model('post');
-		$this->load->model('postmeta');
-		$this->load->model('terms');
-		
-		//Consigu los datos basico
-		$post = $this->post->seleccionar(array('ID' => $id));
-		$post = $post->result_array();
-		$post = current($post);
-	
-		$data['id'] = $post['ID'];
-		$data['titulo'] = $post['post_title'];
-		$data['texto'] = $post['post_content'];
-		
-		//Consig los tags
-		$tags = $this->terms->get_tags($id);
-		$tags = $tags->result_array();
-		$tmp = NULL;
-		foreach($tags as $tag)
-		{
-			$tmp[] = $tag['name'];	
-		}
-		if ($tmp != NULL)
-		{
-			$data['tags'] = implode(', ', $tmp);
-		}
-		
-		$cats = $this->terms->get_postcategories($id);
-
-		foreach($cats as $key => $value)
-		{
-			$categorias_selected[] = $key;
-		}
-			
-		if (isset($categorias_selected))
-		{
-			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
-		}
-		
-		$customs = $this->postmeta->get_metas($id);
-		
-		if (array_key_exists('pais', $customs))
-		{
-			$data['paices_selected'] = $customs['pais'];
-		}
-		
-		if (array_key_exists('departamento', $customs))
-		{	
-			$data['departamentos_selected'] = $customs['departamento'];
-			$data['provincias'] = $this->combofiller->providences($customs['departamento'], TRUE);
-		}
-
-		
-		if (array_key_exists('provincia', $customs))
-		{
-			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->distrits($customs['provincia'], TRUE);
-		}
-		
-		if (array_key_exists('distrito', $customs))
-		{
-			$data['distritos_selected'] = $customs['distrito'];
-		}
-		
 		return $data;
 	}
-		
+			
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -127,8 +66,9 @@ class Audios extends DI_Controller {
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
-
-			$data['categorias'] = $this->combofiller->categorias();			
+			
+			$data['categorias'] = $this->combofiller->categorias();
+			
 			foreach($data['categorias'] as $key => $value)
 			{
 				if ($this->input->post('' . $key . ''))
@@ -136,7 +76,7 @@ class Audios extends DI_Controller {
 					$categorias_selected[] = $key;
 				}
 			}
-			
+
 			if (isset($categorias_selected))
 			{
 				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
@@ -174,15 +114,19 @@ class Audios extends DI_Controller {
 					$data['distritos_selected'] = $this->input->post('distrito');
 				}
 			}			
+					
+			$data['paices'] = $this->combofiller->countries();
+			$data['paices_selected'] = set_value('pais');				
 			
 			$data['form'] = $this->form;			
-
-			$this->load->view('articulos/articulo', $data);
+			
+			$this->load->view('audios/audio', $data);
 			$this->__destruct();		
 
 		}
 		else
 		{
+			
 			$this->load->model('post');
 			$this->load->model('postmeta');
 			$this->load->model('terms');
@@ -191,95 +135,85 @@ class Audios extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = $this->input->post('texto');
-			$data['tags'] = $this->input->post('tags');
-			
+			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+	
 			switch ($this->input->post('upload-content'))
 			{
-				//subir imagenes
+				//subir documentos
 				case 'subir':
-					
 					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$aceptados = array('image/jpeg','image/png','image/gif','image/pjpeg','image/x-png');
+							$aceptados = array('audio/mpeg', 'audio/mpg');
 							if (in_array($_FILES['Filedata']['type'], $aceptados))
 							{
-								$images_id[] = $this->_upload($ie);
-								if (is_null($images_id[0]))
+								$docs_id[] = $this->_upload($ie);
+								if (is_null($docs_id[0]))
 								{
 									//error y debo redireccionar
 									$this->load->library('session');
 									$this->session->set_flashdata('fileupload', 'Error en la carga');
-									redirect('articulos/formulario');
+									redirect('audios/formulario');
 								}
 							}						
 							else
 							{
 								$this->load->library('session');
 								$this->session->set_flashdata('fileupload', 'Error en la carga');
-								redirect('articulos/formulario');
+								redirect('audios/formulario');
 							}
 						}
 					}
 					else
 					{
-						$images_id = split('-', $this->input->post('files'));
-						unset($images_id[0]);						
-					}
+						$docs_id = split('-', $this->input->post('files'));
+						unset($docs_id[0]);						
+					}					
 					
-					foreach($images_id as $img)
+					foreach($docs_id as $doc)
 					{
-						$photo_data = $this->post->seleccionar(array('ID' => $img));
-						$photo_data = $photo_data->row();
+						$doc_data = $this->post->seleccionar(array('ID' => $doc));
+						$doc_data = $doc_data->row();
 						
-						$search_metadata['post_id'] = $img;
+						$search_metadata['post_id'] = $doc;
 						$search_metadata['meta_key'] = '_wp_attached_file';
 						
-						$photo_name = $this->postmeta->seleccionar($search_metadata);
-						$photo_name = $photo_name->row_array();
-						$photo_name = split('/', $photo_name['meta_value']);
-						$photo_name = $photo_name[count($photo_name)-1];
-
-						$search_metadata['meta_key'] = '_wp_attachment_metadata';	
-											
-						$metadata = $this->postmeta->seleccionar($search_metadata);
-						$metadata = $metadata->row_array();
-						$metadata = unserialize($metadata['meta_value']);
-						if ($metadata['sizes']['medium']['file'] != NULL)
-						{
-							$metadata = $metadata['sizes']['medium']['file'];
-						}
-						else
-						{
-							$metadata = $metadata['sizes']['thumbnail']['file'];
-						}
+						$doc_name = $this->postmeta->seleccionar($search_metadata);
+						$doc_name = $doc_name->row_array();
+						$doc_name = split('/', $doc_name['meta_value']);
+						$doc_name = $doc_name[count($doc_name)-1];
 						
-						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
-						
-						$tmp = '<br /><a href="' . $photo_data->guid . '">';
-						$tmp .= '<img class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
+						$tmp = '<br />';						
+						$tmp .= '<a rel="uploaded_audio" href="' . $doc_data->guid . '" title="'. $doc_name .'">';
+						$tmp .= $this->input->post('titulo');
 						$tmp .= '</a>';
 						$tmp .= '<br />';
 						$data['post_content'] .= $tmp;
 					}	
-										
+					
 				break;
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<br /><a href="' . $this->input->post('photolink') . '">';
-					$tmp .= '<img class="alignnone" src="' . $this->input->post('photolink') . '" />';
+					$tmp = '<a rel="uploaded_audio" href="' . $this->input->post('doclink') . '">';
+					$tmp .= $this->input->post('titulo');
 					$tmp .= '</a>';
 					$tmp .= '<br />';
 					$data['post_content'] .= $tmp;
 					
 				break;
 			}
-						
+			
+			//$data['post_content'] = $data['post_content'];
+			
+			//Debo armar el texto con las img
+			$data['tags'] = $this->input->post('tags');
+			
 			//consigue los id de las cata
-			$categorias = $this->combofiller->categorias();
+			$this->load->library('combofiller');
+			
+			$categorias = $this->combofiller->categorias();			
 			
 			$terms_taxonomy_id = NULL;
 			
@@ -309,13 +243,13 @@ class Audios extends DI_Controller {
 					$customs[$custom] = $this->input->post($custom);
 				}	
 			}
-			
+
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(30));
+				$this->term_relationships->insertar($post_id, array(33));
 			}
 			else
 			{
@@ -323,18 +257,8 @@ class Audios extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
-			if ($this->is_ajax != TRUE)
-			{
-
-        $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
-				redirect('articulos/formulario');
-
-			}
-			else
-			{
-				$data['accion'] = 'ok';
-				$this->load->view('', $data);
-			}
+			redirect('audios/formulario');			
+			
 		}			
 	}
 	
@@ -344,10 +268,20 @@ class Audios extends DI_Controller {
 		
 		return $reglas;
 	}
+
+	function ajax($accion)
+	{
+		switch ($accion)
+		{
+			case 'upload':
+				$this->_upload();
+			break;
+		}
+	}
 	
 	function _upload($ie = NULL)
 	{
-		$tmp['allowed_types'] = 'jpg|jpeg|gif|png';
+		$tmp['allowed_types'] = 'doc|pdf';
 		$tmp['encrypt_name'] = TRUE;
 		
 		$this->load->model('options');
@@ -361,13 +295,11 @@ class Audios extends DI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
-			
-			return NULL;
-			
+			return NULL;	
 		}	
 		else
 		{			
-			$photo = $this->upload->data();
+			$doc = $this->upload->data();
 
 			//debe insertar en un post, la imagen, ver wp_post id=18
 			$this->load->model('post');
@@ -375,215 +307,30 @@ class Audios extends DI_Controller {
 			$this->load->helper('inflector');
 			
 			$values['post_author'] = $this->input->post('id');
-			$values['post_title'] = score(ereg_replace($photo['file_ext'], '' , $photo['file_name']));
-			$values['post_name'] = $values['post_title'];
-			$values['post_mime_type'] = 'image/' . ereg_replace('\.', '' , $photo['file_ext']);
-			$values['guid'] = $values['guid'] . $photo['file_name'];
+			$values['post_title'] = score(ereg_replace($doc['file_ext'], '' , $doc['file_name']));
+			$values['post_name'] = $values['post_title']; 
+			$values['post_mime_type'] = 'application/' . ereg_replace('\.', '' , $doc['file_ext']);
+			$values['guid'] = $values['guid'] . $doc['file_name'];
 			
-			$the_photo = $this->post->insert_attach($values);
+			$the_doc = $this->post->insert_attach($values);
 			
-			$meta['_wp_attached_file'] = date('Y/m/') . $photo['file_name'];;
-			
-			//debo manipular la imagen
-			if (function_exists('getimagesize'))
-			{
-				//Configuraciones general
-				$config['image_library'] = 'gd2';
-				$config['maintain_ratio'] = TRUE;
-				$config['master_dim'] = 'auto';
-				$config['source_image'] = $photo['full_path'];
-				$config['new_image'] = 'thumb_' . $photo['file_name'];
-				
-				$this->load->library('image_lib');
-				
-				//Consigo la info de la img
-				if (FALSE !== ($D = @getimagesize($photo['full_path'])))
-				{
-					$from['w'] = $D['0'];
-					$from['h'] = $D['1'];
-				}
-	
-				
-				$the_meta['width'] = strval($from['w']);
-				$the_meta['height'] = strval($from['h']);
-				$the_meta['hwstring_small'] = "height='96' width='96'" ;
-				$the_meta['file'] = $meta['_wp_attached_file'];				
-								
-				//thumbnail
-				$tmp_size = 'thumbnail_size';
-				
-				$to['w'] = $this->options->get_($tmp_size . '_w');
-				$to['h'] = $this->options->get_($tmp_size . '_h');			
-				
-				$tmp = $this->_crop($from, $to, $photo, $config);
-				if ($tmp != FALSE)
-				{
-					$the_meta['sizes']['thumbnail'] = $tmp;
-				}						
-				//echo 'thum: ' . print_r($tmp);
-				
-				//medium_size
-				$tmp_size = 'medium_size';
-				$to['w'] = $this->options->get_($tmp_size . '_w');
-				$to['h'] = $this->options->get_($tmp_size . '_h');			
-				
-				$tmp = $this->_resize($from, $to, $photo, $config);
-				if ($tmp != FALSE)
-				{
-					$the_meta['sizes']['medium'] = $tmp;
-				}
-				//echo 'm: ' . print_r($tmp);
-				
-				//large_size
-				$tmp_size = 'large_size';
-				$to['w'] = $this->options->get_($tmp_size . '_w');
-				$to['h'] = $this->options->get_($tmp_size . '_h');			
-				
-				$tmp = $this->_resize($from, $to, $photo, $config);
-				if ($tmp != FALSE)
-				{
-					$the_meta['sizes']['large'] = $tmp;
-				}
-				//echo 'l: ' . print_r($tmp);
-								
-				$image_meta = array('aperture' => '0', 'credit' => '' , 'camera' => '',
-						      'caption' => '', 'created_timestamp' => '0',
-						      'copyright' => '', 'focal_length' => '0',
-						      'iso' => '0', 'shutter_speed' => '0',
-						      'title' => ''
-				);
-				
-				$the_meta['image_meta'] = $image_meta;
-				
-				//die(print_r($image_meta));
-				
-				$this->load->library('wpshit');
-				
-				$meta['_wp_attachment_metadata'] = $this->wpshit->maybe_serialize($the_meta);				
-			}
-			
-			$this->postmeta->insertar($meta, $the_photo);
+			$meta['_wp_attached_file'] = date('Y/m/') . $doc['file_name'];
+			$meta['_wp_attachment_metadata'] = 'a:0{}';
+						
+			$this->postmeta->insertar($meta, $the_doc);
 			
 			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
 			{
-				return $the_photo;
+				return $the_doc;
 			}
 			else
 			{
-				$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
-				echo $the_photo . '#' . $tmp;				
-			}
+				echo $the_doc;				
+			}			
 		}
 		
 	}
 	
-	function _crop($from, $to, $photo, $config)
-	{
-		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
-		{
-			//cargo los valores al config
-			$config['width'] = $to['w'];
-			$config['height'] = $to['h'];
-			
-			if($from['w'] < $from['h'])
-			{
-				$config['master_dim'] = 'width';				
-			}
-			else
-			{
-				$config['master_dim'] = 'height';
-			}
-			
-			$this->image_lib->initialize($config); 
-			
-			$this->image_lib->resize();
-			
-			$thumb['name'] = $photo['file_path'] . 'thumb_' . $photo['file_name'];
-			
-			//leo el archivo para saber el nuevo tamaño
-			if (FALSE !== ($e = @getimagesize( $thumb['name'] )))
-			{				
-				$thumb['w'] = $e['0'];
-				$thumb['h'] = $e['1'];
-				$thumb['from'] = $thumb['name'];
-				$thumb['to'] = $photo['file_path'];
-				$thumb['to'] .= ereg_replace($photo['file_ext'], '' , $photo['file_name']);
-				$thumb['to'] .= '-150x150';
-				$thumb['to'] .= $photo['file_ext'];
-							
-				//cropeo
-				//$this->image_lib->clear();
-				switch ($config['master_dim'])
-				{
-					case 'width':
-						$config['x_axis'] = 0;
-						$config['y_axis'] = ($thumb['h'] - $to['h']) / 2; 
-						break;
-					case 'height':
-						$config['y_axis'] = 0;
-						$config['x_axis'] = ($thumb['w'] - $to['w']) / 2; 
-						break;
-				}
-				$config['source_image'] = $thumb['name'];
-				$config['maintain_ratio'] = FALSE;
-				
-				$this->image_lib->initialize($config);
-				$this->image_lib->crop();
-				
-				rename($thumb['from'], $thumb['to']);
-
-				$tmp = split('/', $thumb['to']);
-				$thumb['to'] = $tmp[count($tmp)-1];					
-			}
-			else
-			{
-				//dejo asi como esta, pero hago el thumb
-			}													
-
-			//cambio el nombre
-			return array('file' => $thumb['to'], 'width' => strval($thumb['w']), 'height' => strval($thumb['h']));
-		}
-
-		return FALSE;		
-	}
-	
-	function _resize($from, $to, $photo, $config)
-	{
-		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
-		{
-			//redimensiono
-			$config['width'] = $to['w'];
-			$config['height'] = $to['h'];
-			
-			$this->image_lib->initialize($config); 
-			
-			$this->image_lib->resize();
-			
-			$thumb['name'] = $photo['file_path'] . 'thumb_' . $photo['file_name'];
-			
-			//leo el archivo para saber el nuevo tamaño
-			if (FALSE !== ($e = @getimagesize( $thumb['name'] )))
-			{				
-				$thumb['w'] = $e['0'];
-				$thumb['h'] = $e['1'];
-				$thumb['from'] = $thumb['name'];
-				$thumb['to'] = $photo['file_path'];
-				$thumb['to'] .= ereg_replace($photo['file_ext'], '' , $photo['file_name']);
-				$thumb['to'] .= '-' . $thumb['w'] .  'x' . $thumb['h'];
-				$thumb['to'] .= $photo['file_ext'];
-				
-				rename($thumb['from'], $thumb['to']);
-			}													
-
-			$thumb['to'] = split('/', $thumb['to']);
-			$thumb['to'] = $thumb['to'][count($thumb['to'])-1];		
-			//cambio el nombre
-			return array('file' => $thumb['to'], 'width' => strval($thumb['w']), 'height' => strval($thumb['h']));
-		}
-
-		return FALSE;
-	}	
-
 }
 
 /* End of file monedas.php */

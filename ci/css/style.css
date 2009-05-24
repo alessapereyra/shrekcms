@@ -204,10 +204,13 @@ ul#menu ul li.current {
 
 ul#menu > li a:hover {
 	background-color: #f6ec00;
-	height: 33px;
-	border-bottom: 10px solid #000;
+
 }
 
+ul#menu > li.selected a {
+	background-color: #dbd247;
+	color: #fff9f2;
+}
 
 /* @end */
 

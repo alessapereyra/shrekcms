@@ -4,7 +4,7 @@ $(document).ready(function() {
 	 BACK_STATES = "regresar"
 		 
 		 //fancybox
-		 $('div.post_content a').fancybox({
+		 $('div.post_content a[rel="fancybox"]').fancybox({
 			 'zoomOpacity' : true,
 			 'overlayShow' : true,
 			 'zoomSpeedIn' : 500,

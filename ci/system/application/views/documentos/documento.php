@@ -18,7 +18,7 @@
 	
 	<div id="text_content">
   	<fieldset>
-
+    <h3>Adjuntando un Documento</h3>
   	<?php echo form_label('Titulo:', 'titulo');?>
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
@@ -32,6 +32,7 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona el documento que desees subir:</p>
+  					<input type="text" id="search_field" name="examinar" value="" />  					
   					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
   					<?php if ($ie6 == TRUE): ?>
 						<?php echo form_error('Filedata'); ?>
@@ -41,7 +42,9 @@
   					<div class="fieldset flash" id="fsUploadProgress"></div>
   					<em>máximo 2mb. formatos soportados: doc, pdf</em>
   					<?php if ($ie6 != TRUE): ?>
-  						Si tiene problemas para subir archivos, use la <?php echo anchor('documentos/formulario/0/1', 'version tradicional') ?>
+  					<p id="traditional">
+	  					Si tiene problemas para subir archivos, use la <?php echo anchor('documentos/formulario/0/1', 'version tradicional') ?>
+	  				</p>
   					<?php endif; ?>
   					<?php 
 						$this->load->library('session');
