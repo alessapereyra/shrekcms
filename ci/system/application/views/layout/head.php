@@ -17,13 +17,28 @@
 <!--  jQuery UI CSS-->
 <?php echo link_tag('css/jquery-ui.css'); ?>
 
+<!--  magicpreview -->
+<script src="<?php echo $this->config->item('base_url'); ?>/js/magicpreview.js" type="text/javascript" language="javascript"></script>
+
+
 <!--  tiny editor -->
 <script src="<?php echo $this->config->item('base_url'); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" language="javascript">
+
 tinyMCE.init({
+	theme_advanced_toolbar_location : "top",
+	theme : "advanced",
 	mode : "exact",
-	elements : "texto"
+	elements : "texto, textos",
+	extended_valid_elements:"a[name|href|target|title|onclick]",
+  theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
+	theme_advanced_buttons2 : "",
+	theme_advanced_buttons3 : "",
+	height : "280"
 });
+
+
+
 </script>
 
 <?php
@@ -78,7 +93,7 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
-			debug: true,
+			debug: false,
 	
 			// Button settings
 			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",

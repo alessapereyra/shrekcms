@@ -84,6 +84,24 @@ get_header(); ?>
 	        <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
 	
 	        <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
+
+                     <?php 
+      	                    $content = get_the_content();
+      	                    $html = str_get_html($content);
+      	                    $img_link = $html->find('img',0)->src;
+                            // foreach($html->find('img') as $element)
+                            //         $img_link = $element->src;
+
+
+                            $html->clear(); 
+                            unset($html);
+      	                    $content = apply_filters('the_content', $content);
+      	                    $content = str_replace(']]>', ']]&gt;', $content);
+      	                    $content = snippet($content,235);
+      	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
+      	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+      	                    $content =  $content; 
+      	              ?>
 	
 	        <li class=<?php echo $row; ?>>
 	
@@ -95,22 +113,15 @@ get_header(); ?>
 	          
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+                  <?php if ($img_link != "") { ?>
+	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
+                  <?php } ?>
 	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          
 	          <div class="post_content">
 	              
-	              <?php 
-	                    $content = get_the_content();
-	                    $content = apply_filters('the_content', $content);
-	                    $content = str_replace(']]>', ']]&gt;', $content);
-	                    $content = snippet($content,235);
-	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
-	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-	                    $content =  $content; 
-	              ?>
 	
 	              <?php echo strip_tags($content, '<p>'); ?>
 	              <?php //echo $author . $date ?>
@@ -160,30 +171,45 @@ get_header(); ?>
 	
 	        <li class=<?php echo $row; ?>>
 	
+	          <?php 
+                  $content = get_the_content();
+                  $html = str_get_html($content);
+                  $img_link = $html->find('img',0)->src;
+                  // foreach($html->find('img') as $element)
+                  //         $img_link = $element->src;
+
+
+                  $html->clear(); 
+                  unset($html);
+
+
+                  
+                  $content = apply_filters('the_content', $content);
+                  $content = str_replace(']]>', ']]&gt;', $content);
+                  $content = snippet($content,235);
+                  $author = "por <small class='author'> ". get_the_author() . "</small>";
+                  $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+                  $content =  $content; 
+            ?>
+  
+	
 	          <h5>
 	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
 	    				  <?php the_title(); ?>
 	            </a>
 	          </h5>
+
 	          
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+                  <?php if ($img_link != "") { ?>
+	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
+                  <?php } ?>
 	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          <div class="post_content">
-	              
-	              <?php 
-	                    $content = get_the_content();
-	                    $content = apply_filters('the_content', $content);
-	                    $content = str_replace(']]>', ']]&gt;', $content);
-	                    $content = snippet($content,235);
-	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
-	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-	                    $content =  $content; 
-	              ?>
-	
+	              	
 	              <?php echo strip_tags($content, '<p>'); ?>
 	              <?php //echo $author . $date ?>
 	              
@@ -233,6 +259,26 @@ get_header(); ?>
 	
 	        <li class=<?php echo $row; ?>>
 	
+            <?php 
+                  $content = get_the_content();
+                  $html = str_get_html($content);
+                  $img_link = $html->find('img',0)->src;
+                  // foreach($html->find('img') as $element)
+                  //         $img_link = $element->src;
+
+
+                  $html->clear(); 
+                  unset($html);
+                  
+                  $content = apply_filters('the_content', $content);
+                  $content = str_replace(']]>', ']]&gt;', $content);
+                  $content = snippet($content,235);
+                  $author = "por <small class='author'> ". get_the_author() . "</small>";
+                  $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+                  $content =  $content; 
+            ?>
+
+	
 	          <h5>
 	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
 	    				  <?php the_title(); ?>
@@ -241,22 +287,14 @@ get_header(); ?>
 	          
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
-	                <span><?php the_category_unlinked(' '); ?></span>	                
+                  <?php if ($img_link != "") { ?>
+	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
+                  <?php } ?>
+	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          <div class="post_content">
-	              
-	              <?php 
-	                    $content = get_the_content();
-	                    $content = apply_filters('the_content', $content);
-	                    $content = str_replace(']]>', ']]&gt;', $content);
-	                    $content = snippet($content,235);
-	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
-	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-	                    $content =  $content; 
-	              ?>
-	
+	              	
 	              <?php echo strip_tags($content, '<p>'); ?>
 	              <?php //echo $author . $date ?>
 	              
@@ -306,6 +344,25 @@ get_header(); ?>
 	
 	        <li class=<?php echo $row; ?>>
 	
+	                      <?php 
+                              $content = get_the_content();
+                              $html = str_get_html($content);
+                              $img_link = $html->find('img',0)->src;
+                              // foreach($html->find('img') as $element)
+                              //         $img_link = $element->src;
+
+
+                              $html->clear(); 
+                              unset($html);
+
+                              $content = apply_filters('the_content', $content);
+                              $content = str_replace(']]>', ']]&gt;', $content);
+                              $content = snippet($content,235);
+                              $author = "por <small class='author'> ". get_the_author() . "</small>";
+                              $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+                              $content =  $content; 
+                        ?>
+  
 	          <h5>
 	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
 	    				  <?php the_title(); ?>
@@ -314,21 +371,14 @@ get_header(); ?>
 	          
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	                <!-- <img src="<?php bloginfo('template_url'); ?>/images/feed<?php echo rand(1,5) ?>.png" alt="Noticia 1" title="Noticia 1"/> -->
+                  <?php if ($img_link != "") { ?>
+	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
+                  <?php } ?>
 	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          <div class="post_content">
 	              
-	              <?php 
-	                    $content = get_the_content();
-	                    $content = apply_filters('the_content', $content);
-	                    $content = str_replace(']]>', ']]&gt;', $content);
-	                    $content = snippet($content,235);
-	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
-	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-	                    $content =  $content; 
-	              ?>
 	
 	              <?php echo strip_tags($content, '<p>'); ?>
 	              <?php //echo $author . $date ?>

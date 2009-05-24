@@ -11,6 +11,7 @@ body {
 	color: #3b3330;
 }
 
+
 a {
 	color: #fe008a;;
 	text-transform: lowercase;
@@ -20,6 +21,7 @@ div#wrapper {
 	
 	width: 720px;
 	margin: 0px auto;
+	margin-bottom: 1em;
 }
 
 
@@ -278,12 +280,70 @@ div#content input#titulo,
 #texto_container table.mceLayout,
 div#content input#tags,
 div#content textarea#textos {
-	width: 430px !important;
-	border-style: solid !important;
-	border-width: 1px !important;
+	width: 433px !important;
 	padding: 5px;
 	margin-bottom: 1.5em;
+	border: 1px solid #000;
 }
+
+span#texto_parent.mceEditor.defaultSkin {
+	width: 430px !important;	
+}
+
+table#texto_tbl.mceLayout {
+	width: 445px !important;	
+}
+
+#pv_texto p img {
+	max-height: 340px;
+}
+
+#pv_texto p {
+	line-height: 1.4em;
+}
+
+p#file_info {
+	margin: 20px 0px;
+}
+
+p#pv_titulo.title_preview {
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 40.3167px;
+	font-weight: 400;
+	color:	#000000;
+	letter-spacing:	-4px;
+	word-spacing:4px;
+	line-height:31.3667px;
+}
+
+#file_info {
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background-color: #f6eff6;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+input#search_field {
+	padding: px;	
+	height: 20px;
+	border: 0px;
+	margin-top: 5px;
+	display: inline;
+	width: 200px;
+}
+
+div#text_content fieldset#articulo_content p#traditional {
+	margin-top: 2em;
+	font: 0.7em "Lucida Grande", Lucida, Verdana, sans-serif;
+	color: #9a354d;
+}
+
+#file_info a {
+	display: block;
+}
+
+
 
 div#content input#titulo:focus,
 #texto_container table.mceLayout:focus,
@@ -377,7 +437,9 @@ fieldset#localizar.ui-tabs.ui-widget.ui-corner-all,
 }
 
 object#SWFUpload_0.swfupload {
-	padding: 10px;
+	padding: 0px;
+	padding-top: 5px;
+
 	/*width: auto;*/
 }
 
@@ -486,11 +548,36 @@ div#upload-content #enlazar input {
 	border: 1px solid #626262;
 }
 
-#subir em {
-	font-size: 0.8em;	
+#subir em {	
 	display: block;
 	color: #515151;
+	font: 0.7em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#preview_content p.published {
+	font-size: 1.0em;
+	text-transform: lowercase;
+	margin-bottom: 1.4em;
+	color: #df0b7a;
+	padding-bottom: 1em;
+}
+
+div#pv_tags.tags_preview {
+	display: inline;
+	margin-left: 10px;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	color: #df0b7a;
+
+}
+
+#preview_content span.tags_preview {
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+
 	
+}
+
+div#pv_texto.content_preview {
+	margin-bottom: 1em;	
 }
 
 

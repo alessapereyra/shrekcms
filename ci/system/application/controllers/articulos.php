@@ -325,7 +325,10 @@ class Articulos extends DI_Controller {
 
 			if ($this->is_ajax != TRUE)
 			{
+
+        $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
 				redirect('articulos/formulario');
+
 			}
 			else
 			{

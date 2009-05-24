@@ -1,4 +1,7 @@
 <?php
+
+include('simple_html_dom.php');
+
 if ( function_exists('register_sidebar') )
 register_sidebar(array(
 'before_widget' => '1',

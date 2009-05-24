@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
 	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
+
 */
 
 body {
@@ -458,7 +459,7 @@ div#content_feed ul li a {
 }
 
 .inner div#content_feed ul li a {
-	padding: 8px 25px;
+	padding: 0px 0px;
 }
 
 div#content_feed ul li a.active,
@@ -612,6 +613,13 @@ div#content_feed ul#post_list li {
 	background: url(images/photo.png) no-repeat;
 }
 
+#post_list li div.post_image.documentos,
+#post_list li div.post_image.audios {
+	
+	display: none;
+}
+
+
 #post_list li div.post_image.documentos a {
 	height: 60px;
 	width: 60px;
@@ -640,7 +648,7 @@ div#content_feed ul#post_list li {
 
 #post_list li div.post_image a img{
 	width: 60px;
-
+	height: 60px;
 }
 
 

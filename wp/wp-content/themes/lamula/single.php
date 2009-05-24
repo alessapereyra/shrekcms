@@ -30,7 +30,7 @@ get_header(); ?>
               ?>
               <h6 class="metadata">enviado por <?php the_author_posts_link() ?> publicado a las <?php the_time('g:i a'); ?> </h6>
               
-              <?php echo get_the_content(); ?>
+              <?php the_content(); ?>
               
               <div class="news_footer">
 

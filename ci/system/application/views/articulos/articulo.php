@@ -4,22 +4,25 @@
 	
 		if ($ie6 == TRUE)
 		{
-			echo form_open_multipart('articulos/actualizar/1', array('class' => 'form'));
+			echo form_open_multipart('articulos/actualizar/1', array('class' => 'form', 'id'=>'formulario_mula'));
 		}
 		else
 		{
-			echo form_open('articulos/actualizar', array('class' => 'form'));
+			echo form_open('articulos/actualizar', array('class' => 'form', 'id'=>'formulario_mula'));
 		}	
 	
 		if ($id != NULL)
 		{
 			echo form_hidden('id', $id);					
 		}
+
+		echo $this->session->flashdata('notice');
+		
 	?>
 	
 	<div id="text_content">	 
 	
-    	<fieldset>
+    	<fieldset id="articulo_content">
     	<?php echo form_label('Titulo:', 'titulo');?> 
     	<?php echo form_error('titulo'); ?>
     	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
@@ -27,6 +30,11 @@
     	<?php echo form_label('', 'texto');?>
     	<?php echo form_error('texto'); ?>
   	    <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
+    	
+    	<p id="file_info">
+    	<?php echo anchor('articulos/formulario/0/1', 'Quiero agregar fotos') ?>
+    	adjunte o enlace imágenes y fotos complementarias a su artículo 
+    	</p>
     	
 	  	<div id="upload-content">
 	  		<?php echo form_hidden('upload-content', 'subir'); ?>
@@ -37,6 +45,7 @@
 	  		<div id="subir">
 	  					<input type="hidden" id="files" name="files" value="" />
 	  					<p>Selecciona la foto que desees subir:</p>
+	  					<input type="text" id="search_field" name="examinar" value="" />
 	  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
 		  					<?php if ($ie6 == TRUE): ?>
 								<?php echo form_error('Filedata'); ?>
@@ -45,16 +54,20 @@
 	  					</span>
 	  					<div class="fieldset flash" id="fsUploadProgress"></div>
 	  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+
 		  				<?php if ($ie6 != TRUE): ?>
-		  					Si tiene problemas para subir archivos, use la <?php echo anchor('articulos/formulario/0/1', 'version tradicional') ?>
+		  				  <p id="traditional">
+		  				    Si tiene problemas para subir archivos, use la <?php echo anchor('articulos/formulario/0/1', 'version tradicional') ?>
+		  				  </p>
 		  				<?php endif; ?>	  					
+
 	  					<?php 
 							$this->load->library('session');
 							echo $this->session->flashdata('fileupload');  					  					
 	  					?>	  					
 	  		</div>
 	  		<div id="enlazar">
-	            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
+	            	<?php echo form_label('Coloca la dirección de la imagen que desees enlazar:', 'photolink');?> 
 	            	<?php echo form_error('photolink'); ?>
 	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
 	  		</div>		
@@ -66,7 +79,18 @@
     	<em>violencia, robos, denuncias, serenazgo, etc</em>
     	</fieldset>
 
+      <div id="preview_content">
+
+          <p class="title_preview" id="pv_titulo" >Titulo de la nota</p>
+          <p class="published">enviado por ti, a&uacute;n sin publicar</p> 
+          <div class="content_preview" id="pv_texto"/>Contenido</div>
+          <span class="tags_preview">Etiquetas:</span><div class="tags_preview" id="pv_tags"></div>
+
+      </div> <!-- preview_content -->
+
+
       <div id="end_form">
+        <a href="#preview_content" id="link_to_preview" >vista previa</a>
     	  <?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'Enviar' )); ?>        
       </div>
     	
@@ -124,4 +148,8 @@
 	
   </div> <!-- sidebar_content -->
 	<?php echo form_close(); ?>
+</div>
+
+
+  
 </div>

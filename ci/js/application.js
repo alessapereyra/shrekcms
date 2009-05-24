@@ -1,5 +1,11 @@
 $(document).ready(function(){
 	
+     jQuery.fn.toggleText = function(a, b) {
+     return this.each(function() {
+     jQuery(this).text(jQuery(this).text() == a ? b : a);
+     });
+     };
+	
 	$("#localizar").tabs(
 	{
 		select: function(event, ui)
@@ -52,6 +58,35 @@ $(document).ready(function(){
 		
 		llenarcombo($('#distrito'), $(this).val());
 	});
+	
+	
+	$("div#preview_content").hide();
+	$("div#upload-content").hide();
+	
+	$('form#formulario_mula :text').magicpreview('pv_');
+	$('form#formulario_mula :checkbox').magicpreview('pv_');
+	$('form#formulario_mula :select').magicpreview('pv_');
 
+	$("p#file_info a").click( function(){
+		
+		$("div#upload-content").toggle("fast");
+		$(this).toggleText("Realmente no quería","Quiero agregar fotos")
+		return false;
+		
+	})
+
+ 	$("a#link_to_preview").click( function(){
+	
+	$(this).toggleText("vista previa","continuar editando");
+	$("div#preview_content").toggle("slow");
+	$("fieldset#articulo_content").toggle("slow")
+		
+	$("#pv_texto").html("");
+	content = tinyMCE.activeEditor.getContent({format : 'raw'});
+	$("#pv_texto").html(content);
+		
+		return false;
+	
+});	
 	
 });
