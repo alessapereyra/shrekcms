@@ -13,6 +13,7 @@ class Articulos extends DI_Controller {
 		$data['tags'] = NULL;
 		$data['photolink'] = NULL;
 		$data['files'] = NULL;
+		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 		//$data['ie6'] = $this->_is_ie6();
 		
