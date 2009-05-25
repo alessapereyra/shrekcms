@@ -46,6 +46,8 @@ class Articulos extends DI_Controller {
 		$this->load->model('post');
 		$this->load->model('postmeta');
 		$this->load->model('terms');
+		include('system/application/libraries/Simplehtml.php');
+		
 		
 		//Consigu los datos basico
 		$post = $this->post->seleccionar(array('ID' => $id));
@@ -55,6 +57,17 @@ class Articulos extends DI_Controller {
 		$data['id'] = $post['ID'];
 		$data['titulo'] = $post['post_title'];
 		$data['texto'] = $post['post_content'];
+		
+		$html = str_get_html($post['post_content']);
+		$ret = $html->find('img',0);
+		if ($ret == NULL)
+		{
+			$data['ret'] = TRUE;	
+		}
+		else
+		{
+			$data['ret'] = FALSE;	
+		}
 		
 		//Consig los tags
 		$tags = $this->terms->get_tags($id);
@@ -104,8 +117,7 @@ class Articulos extends DI_Controller {
 		if (array_key_exists('distrito', $customs))
 		{
 			$data['distritos_selected'] = $customs['distrito'];
-		}
-		
+		}		
 		return $data;
 	}
 		
@@ -191,6 +203,7 @@ class Articulos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
+			//die($this->input->post('texto'));
 			$data['post_content'] = $this->input->post('texto');
 			$data['tags'] = $this->input->post('tags');
 			
