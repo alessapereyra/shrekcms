@@ -129,6 +129,7 @@ class DI_Controller extends Controller {
 		
 		return FALSE;
 	}
+	
 
 }
 // END _Controller class

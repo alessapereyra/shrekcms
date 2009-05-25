@@ -100,7 +100,7 @@ if ($ie6 == FALSE)
 			upload_url: "<?php echo $url; ?>ajax/upload",
 			post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
 						"PHPSESSID" : "<?php echo session_id(); ?>"},
-			file_size_limit : "2 MB",
+			file_size_limit : "10 MB",
 			file_types : "<?php echo $ext; ?>",
 			file_types_description : "<?php echo $name?>",
 			file_upload_limit : 10,
@@ -108,7 +108,7 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
-			debug: false,
+			debug: true,
 	
 			// Button settings
 			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",

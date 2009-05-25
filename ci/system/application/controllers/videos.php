@@ -1,5 +1,7 @@
 <?php
 class Videos extends DI_Controller {
+
+	
 	
 	function formulario($id = NULL, $ie = NULL)
 	{			
@@ -37,12 +39,13 @@ class Videos extends DI_Controller {
 		}
 		$data['form'] = $this->form;
 		
+		
+		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->view('videos/video', $data);
 		
-		$this->load->library('zend');
-    $this->zend->load('Zend/Gdata/YouTube');
+			  
 		
 		$this->__destruct();		
 	}
@@ -140,16 +143,22 @@ class Videos extends DI_Controller {
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			$data['tags'] = $this->input->post('tags');
 	
 			switch ($this->input->post('upload-content'))
 			{
+			  
+			          
+			
 				//subir documentos
 				case 'subir':
+				
+				
 					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{
 						if ($_FILES['Filedata']['error'] == 0)
 						{
-							$aceptados = array('application/pdf','application/msword');
+							$aceptados = array('video/quicktime','video/mpeg');
 							if (in_array($_FILES['Filedata']['type'], $aceptados))
 							{
 								$docs_id[] = $this->_upload($ie);
@@ -177,23 +186,15 @@ class Videos extends DI_Controller {
 					
 					foreach($docs_id as $doc)
 					{
-						$doc_data = $this->post->seleccionar(array('ID' => $doc));
-						$doc_data = $doc_data->row();
-						
-						$search_metadata['post_id'] = $doc;
-						$search_metadata['meta_key'] = '_wp_attached_file';
-						
-						$doc_name = $this->postmeta->seleccionar($search_metadata);
-						$doc_name = $doc_name->row_array();
-						$doc_name = split('/', $doc_name['meta_value']);
-						$doc_name = $doc_name[count($doc_name)-1];
-						
-						$tmp = '<br />';						
-						$tmp .= '<a href="' . $doc_data->guid . '" title="'. $doc_name .'">';
-						$tmp .= $this->input->post('titulo');
-						$tmp .= '</a>';
-						$tmp .= '<br />';
-						$data['post_content'] .= $tmp;
+
+            $tmp = '<br />';
+            $tmp .= '<object width="425" height="350">';
+            $tmp .= '<param name="movie" value="' . $doc . '&autoplay=1"></param>';
+            $tmp .= '<param name="wmode" value="transparent"></param>';
+            $tmp .= '<embed src="'. $doc .'&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"';
+            $tmp .= 'width="425" height="350"></embed>';
+                      
+						$data['post_content'] = $tmp . $data['post_content']; 
 					}	
 					
 				break;
@@ -210,10 +211,7 @@ class Videos extends DI_Controller {
 			}
 			
 			//$data['post_content'] = $data['post_content'];
-			
-			//Debo armar el texto con las img
-			$data['tags'] = $this->input->post('tags');
-			
+						
 			//consigue los id de las cata
 			$this->load->library('combofiller');
 			
@@ -253,7 +251,7 @@ class Videos extends DI_Controller {
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(33));
+				$this->term_relationships->insertar($post_id, array(32));
 			}
 			else
 			{
@@ -261,6 +259,7 @@ class Videos extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
+      $this->session->set_flashdata('notice', 'Video enviado exitosamente');			  
 			redirect('videos/formulario');			
 			
 		}			
@@ -283,57 +282,106 @@ class Videos extends DI_Controller {
 		}
 	}
 	
+	function findFlashUrl( $entry )
+  {
+      foreach ($entry->mediaGroup->content as $content) {
+          if ($content->type === 'application/x-shockwave-flash') {
+              return $content->url;
+          }
+      }
+      return null;
+  }	
+	
+	
 	function _upload($ie = NULL)
 	{
-		$tmp['allowed_types'] = 'doc|pdf';
-		$tmp['encrypt_name'] = TRUE;
 		
-		$this->load->model('options');
-		
-		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
-		$values['guid'] = $this->options->get_('upload_url_path') . date('/Y/m/');
+		 $this->load->library('zend');
+     $this->zend->load('Zend/Gdata/YouTube');		
+     $this->zend->load('Zend/Gdata/ClientLogin');	
+     
+     $authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
+     $httpClient = Zend_Gdata_ClientLogin::getHttpClient(
+                                               $username = 'alvaropereyra.storage1@gmail.com',
+                                               $password = 'vossosalvarox',
+                                               $service = 'youtube',
+                                               $client = null,
+                                               $source = 'LaMula', // a short string identifying your application
+                                               $loginToken = null,
+                                               $loginCaptcha = null,
+                                               $authenticationURL);     
 
-		$this->load->library('upload', $tmp);
-		
-		if ( ! $this->upload->do_upload('Filedata'))
-		{
-			$error = array('error' => $this->upload->display_errors(),
-							'upload_data' => $this->upload->data());
-			return NULL;	
-		}	
-		else
-		{			
-			$doc = $this->upload->data();
 
-			//debe insertar en un post, la imagen, ver wp_post id=18
-			$this->load->model('post');
-			$this->load->model('postmeta');
-			$this->load->helper('inflector');
-			
-			$values['post_author'] = $this->input->post('id');
-			$values['post_title'] = score(ereg_replace($doc['file_ext'], '' , $doc['file_name']));
-			$values['post_name'] = $values['post_title']; 
-			$values['post_mime_type'] = 'application/' . ereg_replace('\.', '' , $doc['file_ext']);
-			$values['guid'] = $values['guid'] . $doc['file_name'];
-			
-			$the_doc = $this->post->insert_attach($values);
-			
-			$meta['_wp_attached_file'] = date('Y/m/') . $doc['file_name'];
-			$meta['_wp_attachment_metadata'] = 'a:0{}';
-						
-			$this->postmeta->insertar($meta, $the_doc);
-			
-			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
-			{
-				return $the_doc;
-			}
-			else
-			{
-				echo $the_doc;				
-			}			
-		}
+  	 $clientId = "ytapi-AlvaroPereyraRab-WebPublishing-afg0bc0f-0";
+
+     $developerKey = "AI39si77SKdfoJ3spb7HZHe_tUVcOKX_TAn7Fne7BU8ux6ixJ6E8ZdNmZ7UeJs7y3ZGOfVyNAzSe4nYJqIX3Lu7RNryf-dOn9A";
+     $httpClient->setHeaders('X-GData-Key', "key=${developerKey}");
+
+     $applicationId = "SRD-LaMula-1.0";
+
+     $yt = new Zend_Gdata_YouTube($httpClient);
+
+     $filesource = $yt->newMediaFileSource($_FILES["Filedata"]['tmp_name']);
+     $filesource->setContentType('video/quicktime');
+     // set slug header
+     $filesource->setSlug($_FILES["Filedata"]['tmp_name']);
+
+     $myVideoEntry = new Zend_Gdata_YouTube_VideoEntry();
+     // add the filesource to the video entry
+     $myVideoEntry->setMediaSource($filesource);
+
+
+     // create a new Zend_Gdata_YouTube_MediaGroup object
+     $mediaGroup = $yt->newMediaGroup();
+     $mediaGroup->title = $yt->newMediaTitle()->setText('LaMula');
+     $mediaGroup->description = $yt->newMediaDescription()->setText('Subido desde LaMula');
+
+     $mediaGroup->keywords = $yt->newMediaKeywords()->setText('lamula');
+
+     // the category must be a valid YouTube category
+     // optionally set some developer tags (see Searching by Developer Tags for more details)
+     $mediaGroup->category = array(
+     $yt->newMediaCategory()->setText('Autos')->setScheme('http://gdata.youtube.com/schemas/2007/categories.cat'),
+     );
+
+     // set keywords
+//     $mediaGroup->keywords = $service->newMediaKeywords()->setText('cars, funny');
+     $myVideoEntry->mediaGroup = $mediaGroup;
+
+     // upload URL for the currently authenticated user
+     $uploadUrl = 'http://uploads.gdata.youtube.com/feeds/users/default/uploads';
+
+     try {
+       
+       $newEntry = $yt->insertEntry($myVideoEntry, $uploadUrl, 'Zend_Gdata_YouTube_VideoEntry');
+     
+        if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
+        {
+            return htmlspecialchars($this->findFlashUrl($newEntry));
+            
+        }
+        else
+        {
+          echo htmlspecialchars($this->findFlashUrl($newEntry));
+        }     
+   
+
+
+     
+
+     } catch (Zend_Gdata_App_Exception $e) {
+   
+        return $e->getMessage();
+        
+     }
+  
+  
+  
 		
 	}
+	
+  
+	
 	
 }
 

@@ -3,11 +3,11 @@
 	<?php 
 		if ($ie6 == TRUE)
 		{
-			echo form_open_multipart('documentos/actualizar/1', array('class' => 'form'));
+			echo form_open_multipart('videos/actualizar/1', array('class' => 'form'));
 		}
 		else
 		{
-			echo form_open('documentos/actualizar', array('class' => 'form'));
+			echo form_open('videos/actualizar', array('class' => 'form'));
 		}	
 	
 		if ($id != NULL)
@@ -19,6 +19,7 @@
 	<div id="text_content">
   	<fieldset>
     <h3>Enviando un video</h3>
+    
   	<?php echo form_label('Titulo:', 'titulo');?>
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
@@ -43,7 +44,7 @@
   					<em>formatos soportados: mov, mpg</em>
   					<?php if ($ie6 != TRUE): ?>
   				  <p id="traditional">
-	  					Si tiene problemas para subir archivos, use la <?php echo anchor('documentos/formulario/0/1', 'version tradicional') ?>
+	  					Si tiene problemas para subir archivos, use la <?php echo anchor('videos/formulario/0/1', 'version tradicional') ?>
   				  </p>
   					<?php endif; ?>
   					<?php 

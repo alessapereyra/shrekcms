@@ -249,7 +249,7 @@ class Audios extends DI_Controller {
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(33));
+				$this->term_relationships->insertar($post_id, array(34));
 			}
 			else
 			{
