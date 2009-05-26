@@ -24,4 +24,3 @@ class CIdip extends Controller {
     	echo 'test'; 
     }
 }
-?> 

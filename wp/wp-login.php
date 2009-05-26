@@ -427,7 +427,7 @@ default:
 
 	if ( !$secure_cookie && is_ssl() && force_ssl_login() && !force_ssl_admin() && ( 0 !== strpos($redirect_to, 'https') ) && ( 0 === strpos($redirect_to, 'http') ) )
 		$secure_cookie = false;
-
+	
 	$user = wp_signon('', $secure_cookie);
 
 	$redirect_to = apply_filters('login_redirect', $redirect_to, isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '', $user);
@@ -436,7 +436,23 @@ default:
 		// If the user can't edit posts, send them to their profile.
 		if ( !$user->has_cap('edit_posts') && ( empty( $redirect_to ) || $redirect_to == 'wp-admin/' ) )
 			$redirect_to = admin_url('profile.php');
-		wp_safe_redirect($redirect_to);
+			//login a ci
+		$redirect_too = $redirect_to;
+		include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
+		$ci =& get_instance();
+		$ci->load->model('users');
+		$ci->load->library('session');
+		
+		$consulta = $ci->users->seleccionar(array('user_login' => $_POST['log'] ));
+		$fila = $consulta->row();
+		
+		$usuario['id'] = $fila->ID;
+		$usuario['usuario'] = $fila->user_login;
+		$usuario['nombre'] = $fila->user_nicename;		
+		
+		$ci->session->set_userdata($usuario);
+
+		wp_safe_redirect($redirect_too);
 		exit();
 	}
 
