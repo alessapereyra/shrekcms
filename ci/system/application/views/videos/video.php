@@ -32,7 +32,7 @@
   		</ul>
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
-  					<p>Selecciona el documento que desees subir:</p>
+  					<p>Selecciona el archivo que desees subir a Youtube:</p>
   					<input type="text" id="search_field" name="examinar" value="" />  					
   					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
   					<?php if ($ie6 == TRUE): ?>
@@ -53,7 +53,7 @@
   					?>
   		</div>
   		<div id="enlazar">
-            	<?php echo form_label('Ingresa la dirección del documento que desees enviar:', 'doclink');?> 
+            	<?php echo form_label('Ingresa la dirección del video que desees enlazar:', 'doclink');?> 
             	<?php echo form_error('doclink'); ?>
             	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
   		</div>		

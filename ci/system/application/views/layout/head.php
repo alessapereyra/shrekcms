@@ -108,7 +108,7 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
-			debug: true,
+			debug: false,
 	
 			// Button settings
 			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
@@ -143,9 +143,63 @@ if ($ie6 == FALSE)
 </script>
 <script src="<?php echo $this->config->item('base_url'); ?>js/jquery.form.js" type="text/javascript" language="javascript"></script>
 
-<!--  theMagic -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
+<!--[if !IE]><!-->
+
+  <!--  theMagic -->
+  <script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
+
+<!-- <![endif]-->
+
+
+<!--[if IE]><!-- >
+
+  <!--  theMagic -->
+  <script src="<?php echo $this->config->item('base_url'); ?>/js/applicationie.js" type="text/javascript" language="javascript"></script>
+	
+	
+<!-- <![endif]-->
+
+
+
 
 
 </head>
 <body>
+  
+  <div id="top_menu">
+    <p>
+      <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
+      <span class="right">
+        <a href="http://lamula.pe/crear-blog/">crea tu blog</a> |
+        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+      </span>
+    </p>
+  </div> <!-- top_menu -->
+
+  <div id="wrapper">
+
+      <div id="top_ad">
+        <!-- <img src="/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
+      </div> <!-- top_ad -->
+
+      <div id="logo_bar">
+
+        <h1><a href="http://lamula.pe/mulapress">La Mula</a></h1> 
+
+        <div id="search_bar">
+ 
+         	<?php if ($log) : ?>
+    				<ul>
+    					<li><a href="<?php echo "http://lamula.pe/mulapress/author/" . $user_name ?>" >Ver Perfil</a></li>
+    					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
+    				</ul>
+    			<?php endif; ?>		
+
+      </div> <!-- search_bar -->
+
+      </div> <!-- logo_bar -->
+
+      <div id="status_bar">
+          <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
+          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
+      </div> <!-- status_bar -->

@@ -35,3 +35,10 @@ div#content.foto {
 #content form.form {
 	overflow: visible;
 }
+
+div#status_bar {
+	
+	overflow: visible;
+	height : 100%;
+	
+}

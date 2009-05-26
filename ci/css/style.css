@@ -11,6 +11,14 @@ body {
 	color: #3b3330;
 }
 
+div#notice {
+	margin: 1em 0px;	
+	padding: 15px;
+	background-color: #fff351;
+	text-align: center;
+	font: 0.9em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
 
 a {
 	color: #fe008a;;
@@ -246,7 +254,9 @@ div#content.login_form input#usuario,
 div#content.login_form input#password,
 div#content.login_form input#email,
 div#content.login_form input#url,
-div#content.login_form input#password_check {
+div#content.login_form input#password_check,
+div#content.login_form input#dni,
+div#content.login_form input#telefono {
 	border: 0;
 	padding: 5px;
 	margin-bottom: 10px;
@@ -260,7 +270,7 @@ div#content.login_form div.error {
 
 
 div#content.login_form div#pie {
-	margin-top:  5px;
+	margin-top:  25px;
 }
 
 /* @end */

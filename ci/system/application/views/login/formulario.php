@@ -2,6 +2,12 @@
 	<div id="content" class="login_form">
 	  
 		  <h3>Iniciando sesi&oacute;n</h3>
+		  
+		  <div id="notice">
+		    Si ya has creado un blog en LaMula, puedes iniciar sesión usando los mismos datos.
+		    Si no, <?php echo anchor('/usuarios/formulario', 'crea tu cuenta ahora') ?>. &iexcl;Es r&aacute;pido!
+		  </div>
+		  
   		<div class="info">
   			<?php if (isset($info)) { echo $info; } ?>
   			<?php echo form_open('log/login', array('class' => 'log'));
@@ -20,7 +26,8 @@
   			</fieldset>
   			<?php echo form_submit(array('class' => 'boton', 'name' => 'mysubmit', 'value' => 'iniciar' )); ?>
   			<?php echo form_close(); ?>
-  		</div>
+  		</div> <!-- info -->
+  		
   		<div id="pie">
   		  <?php echo anchor('log/olvido', 'Olvid&eacute; mi contraseña >>') ?> <br />
   		  <?php echo anchor('/usuarios/formulario', 'Crear una cuenta >>') ?>

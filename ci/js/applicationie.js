@@ -78,20 +78,13 @@ $(document).ready(function(){
  	$("a#link_to_preview").click( function(){
 	
 	$(this).toggleText("vista previa","continuar editando");
-	alert("test");
 	$("div#preview_content").toggle("slow");
 	$("fieldset#articulo_content").toggle("slow")
-	alert("test");
-		
 	$("#pv_texto").html("");
 	
-	
-		content = tinyMCE.activeEditor.getContent({format : "raw"});
-	
-	
-	alert("test");
-	alert(content);
-	$("#pv_texto").html(content);
+		prueba = tinyMCE.activeEditor.getContent({format : "raw"});	
+		//content = tinyMCE.activeEditor.getContent();
+	$("#pv_texto").html(prueba);
 		
 		return false;
 	

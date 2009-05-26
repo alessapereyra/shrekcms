@@ -15,8 +15,8 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
-<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php //include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
 
 <div id="content" class="inner author">
   
@@ -34,6 +34,11 @@ $id = $author;
 		$ci->load->model('comments');
 		$ci->load->model('post');		  
 	  
+	  $ci->load->library('session');
+    $data['logged_id'] = $ci->session->userdata('usuario');
+    
+	  
+	  $data['id'] = $id;
 		$data['views'] = $ci->sessionmanager->get_lastread($id, 1);
   
 		$data['user'] = $ci->users->seleccionar(array('id' => $id));
@@ -180,7 +185,7 @@ $id = $author;
         
       </div> <!-- sidebar_recomendados -->
       
-      <div>
+      <div id="articles_edit">
  	    	<?php
  	    	$ci->load->helper('url');
  	    	$limit['from'] = 0;
@@ -192,7 +197,7 @@ $id = $author;
  			echo $ci->load->view('usuarios/bloggermypost', $data, true);
  	  		unset($data);
  	    	?> 	      
-      </div>
+      </div> <!-- articles_edit -->
     
   </div> <!-- sidebars -->
 

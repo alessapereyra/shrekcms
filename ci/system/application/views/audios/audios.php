@@ -32,7 +32,10 @@
   		<div id="subir">
   					<input type="hidden" id="files" name="files" value="" />
   					<p>Selecciona el audio que desees subir:</p>
-	  				<input type="text" id="search_field" name="examinar" value="" />  					
+  					<?php if ($ie6 != TRUE) {?>
+  					<input type="text" id="search_field" name="examinar" value="" />
+  					<?php }?>
+
   					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
   					<?php if ($ie6 == TRUE): ?>
 						<?php echo form_error('Filedata'); ?>

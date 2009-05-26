@@ -16,10 +16,35 @@
   
   
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
+  <!--[if lte IE 8]>
+
+  <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE.css" type="text/css" media="screen" />
+
+  <![endif]-->
+
+  <!--[if lte IE 7]>
+
+  <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE6.css" type="text/css" media="screen" />
+
+  <![endif]-->
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.fancybox-1.2.1.pack.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jyoutube.js" type="text/javascript" charset="utf-8" ></script>
-  <script src="<?php bloginfo('template_url'); ?>/js/site.js" type="text/javascript" charset="utf-8" ></script>
+
+  <!--[if !IE]><!-->
+
+    <script src="<?php bloginfo('template_url'); ?>/js/site.js" type="text/javascript" charset="utf-8" ></script>
+
+  <!-- <![endif]-->
+
+
+  <!--[if lte IE 8]>
+
+    <script src="<?php bloginfo('template_url'); ?>/js/siteie.js" type="text/javascript" charset="utf-8" ></script>
+
+  <![endif]-->
+
 
   <?php wp_head(); ?>
 	
@@ -66,21 +91,21 @@
 
         <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
         <ul id="menu">
-          <li><a href="#">Lima y Callao</a>
+          <li class="f"><a href="#">Lima y Callao</a>
             <ul>
-                <li class="current">Lima y Callao</li>
-                <li><a href="#">Callao</a></li>         
-                <li><a href="#">Lima Centro</a></li>           
-                <li><a href="#">Lima Este</a></li>       
-                <li><a href="#">Lima Norte</a>
+                <li class="current s">Lima y Callao</li>
+                <li class="s"><a href="#">Callao</a></li>         
+                <li class="s"><a href="#">Lima Centro</a></li>           
+                <li class="s"><a href="#">Lima Este</a></li>       
+                <li class="s"><a href="#">Lima Norte</a>
           
                   <ul>
-                    <li><a href="#">Los Olivos</a></li>         
-                    <li><a href="#">Carabayllo</a></li>           
-                    <li><a href="#">Comas</a></li>         
-                    <li><a href="#">Independencia</a></li>           
-                    <li><a href="#">Puente Piedra</a></li>         
-                    <li><a href="#">San Mart&iacute;n de Porres</a></li>           
+                    <li class="t"><a href="#">Los Olivos</a></li>         
+                    <li class="t"><a href="#">Carabayllo</a></li>           
+                    <li class="t"><a href="#">Comas</a></li>         
+                    <li class="t"><a href="#">Independencia</a></li>           
+                    <li class="t"><a href="#">Puente Piedra</a></li>         
+                    <li class="t"><a href="#">San Mart&iacute;n de Porres</a></li>           
                   </ul>
             
                 </li>          
@@ -90,52 +115,52 @@
             </ul>
           </li>  <!-- lima y callao -->
     
-          <li><a href="#">Centro</a>
+          <li class="f"><a href="#">Centro</a>
             <ul>
-                  <li class="current">Centro</li>
+                  <li class="current s">Centro</li>
             
-                  <li><a href="#">Apurimac</a></li>
-                  <li><a href="#">Huancavelica</a></li>       
-                  <li><a href="#">Huánuco</a></li>       
-                  <li><a href="#">Jun&iacute;n</a></li>                 
-                  <li><a href="#">Pasco</a></li>                                       
+                  <li class="s"><a href="#">Apurimac</a></li>
+                  <li class="s"><a href="#">Huancavelica</a></li>       
+                  <li class="s"><a href="#">Huánuco</a></li>       
+                  <li class="s"><a href="#">Jun&iacute;n</a></li>                 
+                  <li class="s"><a href="#">Pasco</a></li>                                       
             </ul>
           </li> <!-- centro -->
 
-          <li><a href="#">Norte</a>
+          <li class="f"><a href="#">Norte</a>
             <ul>
-                  <li class="current">Norte</li>
-                  <li><a href="#">Ancash</a></li>            
-                  <li><a href="#">Cajamarca</a></li>
-                  <li><a href="#">La Libertad</a></li>         
-                  <li><a href="#">Lambayeque</a></li>                               
-                  <li><a href="#">Piura</a></li>                                                        
-                  <li><a href="#">Tumbes</a></li>                                                                   
+                  <li class="current s">Norte</li>
+                  <li class="s"><a href="#">Ancash</a></li>            
+                  <li class="s"><a href="#">Cajamarca</a></li>
+                  <li class="s"><a href="#">La Libertad</a></li>         
+                  <li class="s"><a href="#">Lambayeque</a></li>                               
+                  <li class="s"><a href="#">Piura</a></li>                                                        
+                  <li class="s"><a href="#">Tumbes</a></li>                                                                   
             </ul>
           </li>  <!-- norte -->
 
-            <li><a href="#">Oriente</a>
+            <li class="f"><a href="#">Oriente</a>
               <ul>
-                    <li class="current">Oriente</li>  
-                    <li><a href="#">Amazonas</a></li>                     
-                    <li><a href="#">Loreto</a></li>                      
-                    <li><a href="#">Madre de Dios</a></li>          
-                    <li><a href="#">San Martin</a></li>                    
-                    <li><a href="#">Ucayali</a></li>                                                                
+                    <li class="current s">Oriente</li>  
+                    <li class="s"><a href="#">Amazonas</a></li>                     
+                    <li class="s"><a href="#">Loreto</a></li>                      
+                    <li class="s"><a href="#">Madre de Dios</a></li>          
+                    <li class="s"><a href="#">San Martin</a></li>                    
+                    <li class="s"><a href="#">Ucayali</a></li>                                                                
               </ul>
             </li>  <!-- oriente -->
         
-          <li><a href="#">Sur</a>
+          <li class="f"><a href="#">Sur</a>
             <ul>
-                  <li class="current">Sur</li>  
+                  <li class="current s">Sur</li>  
 
-                  <li><a href="#">Arequipa</a></li>
-                  <li><a href="#">Ayacucho</a></li>     
-                  <li><a href="#">Cusco</a></li>         
-                  <li><a href="#">Ica</a></li>          
-                  <li><a href="#">Moquegua</a></li>     
-                  <li><a href="#">Puno</a></li>                        
-                  <li><a href="#">Tacna</a></li>                                                                                                                         
+                  <li class="s"><a href="#">Arequipa</a></li>
+                  <li class="s"><a href="#">Ayacucho</a></li>     
+                  <li class="s"><a href="#">Cusco</a></li>         
+                  <li class="s"><a href="#">Ica</a></li>          
+                  <li class="s"><a href="#">Moquegua</a></li>     
+                  <li class="s"><a href="#">Puno</a></li>                        
+                  <li class="s"><a href="#">Tacna</a></li>                                                                                                                         
             </ul>
           </li>  <!-- sur -->
       

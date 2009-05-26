@@ -66,12 +66,13 @@ class DI_Controller extends Controller {
 			$data['seccion'] = humanize($this->uri->segment(2));
 			$data['log'] = $this->_is_log();
 			$data['ie6'] = $this->_is_ie6();
+			$data['user_name'] = $this->session->userdata('usuario');
 			$data['current_controller'] = $this->uri->segment(1);
 			
 			$this->load->view('layout/' . $tmp['head'], $data);
 			
 			//$data['seccion'] =  underscore($data['seccion']);
-			if ($this->uri->segment(1) != 'usuario')
+			if (($this->uri->segment(1) != 'usuarios') && ($this->uri->segment(1) != 'log') && ($this->uri->segment(1) != 'usuarios/formulario'))
 			{
 				$this->load->view('layout/' . $tmp['menu'], $data);
 			}

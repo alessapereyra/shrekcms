@@ -614,7 +614,8 @@ div#content_feed ul#post_list li {
 }
 
 #post_list li div.post_image.documentos,
-#post_list li div.post_image.audios {
+#post_list li div.post_image.audios,
+#post_list li div.post_image.videos {
 	
 	display: none;
 }
@@ -895,7 +896,7 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	text-decoration: underline !important;
 }
 
-div#sidebars div#sidebar_recomendados ul li a{
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
 	float: left;
 	text-decoration: none;
 	display: block;
@@ -905,6 +906,22 @@ div#sidebars div#sidebar_recomendados ul li a{
 	color: #070708;
 	padding: 5px 10px;
 	border: none !important;
+}
+
+div#sidebars div#sidebar_recomendados ul li a 
+{
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	display: block;
+	padding: 5px 10px;
+	text-decoration: none;
+	float: none;
+	margin: 0px;
+	background-color: #3b3330;
+	color: #ffe250;
+	text-transform: lowercase;
+	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
+
+	
 }
 
 div#sidebars div#sidebar_recomendados ul li a.selected {
@@ -959,7 +976,7 @@ div.sidebox_content {
 
 div#sidebars div#sidebar_recomendados li a:hover{
 	background-color: #ffe250;
-	color: #3b3330;
+
 }
 
 div#sidebars div#sidebar_recomendados {
