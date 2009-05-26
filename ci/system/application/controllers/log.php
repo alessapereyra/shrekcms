@@ -45,6 +45,7 @@ class Log extends DI_Controller {
 		else
 		{
 			$this->session->set_userdata('url', '');
+			
 			redirect($this->input->post('destino'));		
 		}					
 	}
@@ -150,6 +151,9 @@ class Log extends DI_Controller {
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;
 				$this->usuario['nombre'] = $fila->user_nicename;
+				
+				$this->load->library('wpcookies');
+				$this->wpcookies->set($fila->user_login);				
 
 				$this->session->set_userdata($this->usuario);
 				return TRUE;
@@ -164,6 +168,10 @@ class Log extends DI_Controller {
 	{
 		$this->session->set_userdata($this->usuario);
 		$this->session->set_userdata('info', 'Salio OK!');
+
+		$this->load->library('wpcookies');
+		$this->wpcookies->un_set();		
+		
 		redirect('/log');
 	}
 }
