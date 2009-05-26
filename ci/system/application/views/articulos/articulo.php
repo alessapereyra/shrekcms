@@ -19,7 +19,7 @@
 		echo $this->session->flashdata('notice');
 		
 	?>
-	
+
 	<div id="text_content">	 
 	
     	<fieldset id="articulo_content">
@@ -32,52 +32,50 @@
     	<?php echo form_error('texto'); ?>
   	    <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
     	
-    	<p id="file_info">
-    	<?php echo anchor('articulos/formulario/0/1', 'Quiero agregar fotos') ?>
-    	adjunte o enlace imágenes y fotos complementarias a su artículo 
-    	</p>
-    	
-	  	<div id="upload-content" class="articulo-upload">
-	  		<?php echo form_hidden('upload-content', 'subir'); ?>
-	  		<ul>
-	  			<li><a href="#subir">Subir</a></li>
-	  			<li><a href="#enlazar">Enlazar</a></li>
-	  		</ul>
-	  		<div id="subir">
-	  					<input type="hidden" id="files" name="files" value="" />
-	  					<p>Selecciona la foto que desees subir:</p>
-	  					
-	  					<?php if ($ie6 != TRUE) {?>
-	  					<input type="text" id="search_field" name="examinar" value="" />
-	  					<?php }?>
-	  					
-	  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
-		  					<?php if ($ie6 == TRUE): ?>
-								<?php echo form_error('Filedata'); ?>
-								<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
-		  					<?php endif; ?>
-	  					</span>
-	  					<div class="fieldset flash" id="fsUploadProgress"></div>
-	  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
-
-		  				<?php if ($ie6 != TRUE): ?>
-		  				  <p id="traditional">
-		  				    Si tiene problemas para subir archivos, use la <?php echo anchor('articulos/formulario/0/1', 'version tradicional') ?>
-		  				  </p>
-		  				<?php endif; ?>	  					
-
-	  					<?php 
-							$this->load->library('session');
-							echo $this->session->flashdata('fileupload');  					  					
-	  					?>	  					
-	  		</div>
-	  		<div id="enlazar">
-	            	<?php echo form_label('Coloca la dirección de la imagen que desees enlazar:', 'photolink');?> 
-	            	<?php echo form_error('photolink'); ?>
-	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
-	  		</div>		
-	  	</div>
-  	    	
+    	<?php if ($ret == TRUE): ?>
+	    	<p id="file_info">
+	    	<?php echo anchor('articulos/formulario/0/1', 'Quiero agregar fotos') ?>
+	    	adjunte o enlace imágenes y fotos complementarias a su artículo 
+	    	</p>
+	    	
+		  	<div id="upload-content" class="articulo-upload">
+		  		<?php echo form_hidden('upload-content', 'subir'); ?>
+		  		<ul>
+		  			<li><a href="#subir">Subir</a></li>
+		  			<li><a href="#enlazar">Enlazar</a></li>
+		  		</ul>
+		  		<div id="subir">
+		  					<input type="hidden" id="files" name="files" value="" />
+		  					<p>Selecciona la foto que desees subir:</p>
+		  					<input type="text" id="search_field" name="examinar" value="" />
+		  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
+			  					<?php if ($ie6 == TRUE): ?>
+									<?php echo form_error('Filedata'); ?>
+									<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
+			  					<?php endif; ?>
+		  					</span>
+		  					<div class="fieldset flash" id="fsUploadProgress"></div>
+		  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+	
+			  				<?php if ($ie6 != TRUE): ?>
+			  				  <p id="traditional">
+			  				    Si tiene problemas para subir archivos, use la <?php echo anchor('articulos/formulario/0/1', 'version tradicional') ?>
+			  				  </p>
+			  				<?php endif; ?>	  					
+	
+		  					<?php 
+								$this->load->library('session');
+								echo $this->session->flashdata('fileupload');  					  					
+		  					?>	  					
+		  		</div>
+		  		<div id="enlazar">
+		            	<?php echo form_label('Coloca la dirección de la imagen que desees enlazar:', 'photolink');?> 
+		            	<?php echo form_error('photolink'); ?>
+		            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
+		  		</div>		
+		  	</div>
+		<?php endif; ?>
+		  	    	
     	<?php echo form_label('Etiquetas: (separadas por comas)', 'tags');?>
     	<?php echo form_error('tags'); ?>
   	    <?php echo form_input(array('name' => 'tags', 'value' => $tags, 'id' => 'tags')); ?>
