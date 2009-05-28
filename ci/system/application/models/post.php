@@ -87,7 +87,7 @@ class Post extends Model {
 		
 		$db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
 		$db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
-		$db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
+		$db->join('mulapress_terms', 'mulapress_terms.term_id = wp_term_taxonomy.term_id');		
 		
 		$db->where('mulapress_posts.post_type', 'post');
                    //$db->where('wp_term_taxonomy.parent', '5');

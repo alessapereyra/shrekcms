@@ -2,7 +2,7 @@
 class Postmeta extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_postmeta';
+    var $tabla = 'wp_postmeta';
 
     function __construct()
     {

@@ -252,7 +252,10 @@ require_wp_db();
 if ( !empty($wpdb->error) )
 	dead_db();
 
-$prefix = $wpdb->set_prefix($table_prefix);
+if (isset($wpdb)) 
+{
+	$prefix = $wpdb->set_prefix($table_prefix);
+}
 
 if ( is_wp_error($prefix) )
 	wp_die(/*WP_I18N_BAD_PREFIX*/'<strong>ERROR</strong>: <code>$table_prefix</code> in <code>wp-config.php</code> can only contain numbers, letters, and underscores.'/*/WP_I18N_BAD_PREFIX*/);
@@ -273,7 +276,7 @@ require (ABSPATH . WPINC . '/default-filters.php');
 include_once(ABSPATH . WPINC . '/streams.php');
 include_once(ABSPATH . WPINC . '/gettext.php');
 require_once (ABSPATH . WPINC . '/l10n.php');
-
+/*
 if ( !is_blog_installed() && (strpos($_SERVER['PHP_SELF'], 'install.php') === false && !defined('WP_INSTALLING')) ) {
 	if ( defined('WP_SITEURL') )
 		$link = WP_SITEURL . '/wp-admin/install.php';
@@ -286,7 +289,7 @@ if ( !is_blog_installed() && (strpos($_SERVER['PHP_SELF'], 'install.php') === fa
 	wp_redirect($link);
 	die(); // have to die here ~ Mark
 }
-
+*/
 require (ABSPATH . WPINC . '/formatting.php');
 require (ABSPATH . WPINC . '/capabilities.php');
 require (ABSPATH . WPINC . '/query.php');
@@ -317,121 +320,7 @@ require (ABSPATH . WPINC . '/shortcodes.php');
 require (ABSPATH . WPINC . '/media.php');
 require (ABSPATH . WPINC . '/http.php');
 
-if ( !defined('WP_CONTENT_URL') )
-	define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content'); // full url - WP_CONTENT_DIR is defined further up
-
-/**
- * Allows for the plugins directory to be moved from the default location.
- *
- * @since 2.6.0
- */
-if ( !defined('WP_PLUGIN_DIR') )
-	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' ); // full path, no trailing slash
-
-/**
- * Allows for the plugins directory to be moved from the default location.
- *
- * @since 2.6.0
- */
-if ( !defined('WP_PLUGIN_URL') )
-	define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' ); // full url, no trailing slash
-
-/**
- * Allows for the plugins directory to be moved from the default location.
- *
- * @since 2.1.0
- */
-if ( !defined('PLUGINDIR') )
-	define( 'PLUGINDIR', 'wp-content/plugins' ); // Relative to ABSPATH.  For back compat.
-
-/**
- * Used to guarantee unique hash cookies
- * @since 1.5
- */
-define('COOKIEHASH', md5(get_option('siteurl')));
-
-/**
- * Should be exactly the same as the default value of SECRET_KEY in wp-config-sample.php
- * @since 2.5.0
- */
-$wp_default_secret_key = 'put your unique phrase here';
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.0.0
- */
-if ( !defined('USER_COOKIE') )
-	define('USER_COOKIE', 'wordpressuser_' . COOKIEHASH);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.0.0
- */
-if ( !defined('PASS_COOKIE') )
-	define('PASS_COOKIE', 'wordpresspass_' . COOKIEHASH);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.5.0
- */
-if ( !defined('AUTH_COOKIE') )
-	define('AUTH_COOKIE', 'wordpress_' . COOKIEHASH);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.6.0
- */
-if ( !defined('SECURE_AUTH_COOKIE') )
-	define('SECURE_AUTH_COOKIE', 'wordpress_sec_' . COOKIEHASH);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.6.0
- */
-if ( !defined('LOGGED_IN_COOKIE') )
-	define('LOGGED_IN_COOKIE', 'wordpress_logged_in_' . COOKIEHASH);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.3.0
- */
-if ( !defined('TEST_COOKIE') )
-	define('TEST_COOKIE', 'wordpress_test_cookie');
-
-/**
- * It is possible to define this in wp-config.php
- * @since 1.2.0
- */
-if ( !defined('COOKIEPATH') )
-	define('COOKIEPATH', preg_replace('|https?://[^/]+|i', '', get_option('home') . '/' ) );
-
-/**
- * It is possible to define this in wp-config.php
- * @since 1.5.0
- */
-if ( !defined('SITECOOKIEPATH') )
-	define('SITECOOKIEPATH', preg_replace('|https?://[^/]+|i', '', get_option('siteurl') . '/' ) );
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.6.0
- */
-if ( !defined('ADMIN_COOKIE_PATH') )
-	define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH . 'wp-admin' );
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.6.0
- */
-if ( !defined('PLUGINS_COOKIE_PATH') )
-	define( 'PLUGINS_COOKIE_PATH', preg_replace('|https?://[^/]+|i', '', WP_PLUGIN_URL)  );
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.0.0
- */
-if ( !defined('COOKIE_DOMAIN') )
-	define('COOKIE_DOMAIN', false);
+include ('wp-defines.php');
 
 /**
  * It is possible to define this in wp-config.php
@@ -448,14 +337,6 @@ force_ssl_admin(FORCE_SSL_ADMIN);
 if ( !defined('FORCE_SSL_LOGIN') )
 	define('FORCE_SSL_LOGIN', false);
 force_ssl_login(FORCE_SSL_LOGIN);
-
-/**
- * It is possible to define this in wp-config.php
- * @since 2.5.0
- */
-if ( !defined( 'AUTOSAVE_INTERVAL' ) )
-	define( 'AUTOSAVE_INTERVAL', 60 );
-
 
 require (ABSPATH . WPINC . '/vars.php');
 

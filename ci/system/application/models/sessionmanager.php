@@ -2,7 +2,7 @@
 class Sessionmanager extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_session_manager';
+    var $tabla = 'wp_session_manager';
 
     function __construct()
     {
@@ -16,18 +16,18 @@ class Sessionmanager extends Model {
 
       $db = $this->load->database('default', TRUE); 
       $db->distinct();      	
-      $fields = $db->list_fields('mulapress_posts');
+      $fields = $db->list_fields('wp_posts');
 
   		foreach ($fields as $field)
   		{
-  		   $db->select('mulapress_posts.' . $field);
+  		   $db->select('wp_posts.' . $field);
   		}
 
- 	    $db->select('mulapress_session_manager.unixtime');
-  		$db->from('mulapress_posts');
-  		$db->join('mulapress_session_manager', 'mulapress_posts.ID = mulapress_session_manager.url');		
+ 	    $db->select('wp_session_manager.unixtime');
+  		$db->from('wp_posts');
+  		$db->join('wp_session_manager', 'wp_posts.ID = wp_session_manager.url');		
 
-  		$db->where('mulapress_session_manager.user_id', $id);
+  		$db->where('wp_session_manager.user_id', $id);
 
   		$db->limit($posts, 0);
 
@@ -47,17 +47,17 @@ class Sessionmanager extends Model {
         $db = $this->load->database('default', TRUE); 
     	
         $db->distinct();
-    	$fields = $db->list_fields('mulapress_posts');
+    	$fields = $db->list_fields('wp_posts');
 
 		foreach ($fields as $field)
 		{
-		   $db->select('mulapress_posts.' . $field);
+		   $db->select('wp_posts.' . $field);
 		}
     	
-		$db->from('mulapress_posts');
-		$db->join('mulapress_session_manager', 'mulapress_posts.ID = mulapress_session_manager.url');		
+		$db->from('wp_posts');
+		$db->join('wp_session_manager', 'wp_posts.ID = wp_session_manager.url');		
 
-		$db->where('mulapress_posts.post_author', $id);
+		$db->where('wp_posts.post_author', $id);
 		
 		$db->limit($posts, 0);
 		

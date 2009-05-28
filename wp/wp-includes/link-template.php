@@ -1417,6 +1417,8 @@ function get_shortcut_link() {
  * @param string $scheme Optional. Scheme to give the site url context. Currently 'http','https', 'login', 'login_post', or 'admin'.
  * @return string Site url link with optional path appended.
 */
+if ( !function_exists('site_url') ) :
+
 function site_url($path = '', $scheme = null) {
 	// should the list of allowed schemes be maintained elsewhere?
 	$orig_scheme = $scheme;
@@ -1439,6 +1441,7 @@ function site_url($path = '', $scheme = null) {
 	return apply_filters('site_url', $url, $path, $orig_scheme);
 }
 
+endif;
 /**
  * Retrieve the url to the admin area.
  *
