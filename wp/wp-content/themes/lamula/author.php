@@ -80,6 +80,22 @@ $id = $author;
 	      
 	  </div>
 	  
+	    
+    <div id="articles_edit">
+	    	<?php
+	    	$ci->load->helper('url');
+	    	$limit['from'] = 0;
+	    	$limit['show'] = 5;
+	    	
+	  		$data['myposts'] = $ci->post->get_mypost($id, $limit);
+	  		$data['myposts'] = $data['myposts']->result_array();
+
+			  echo $ci->load->view('usuarios/bloggermypost', $data, true);
+	  		unset($data);
+	    	?> 	      
+    </div> <!-- articles_edit -->
+  
+	  
 	  <div>
     	<?php 
 		  //consigue los ultimos post
@@ -127,7 +143,7 @@ $id = $author;
 	  		
   	    	?> 	   
 
-        </div>
+        </div> <!-- sidebar_box -->
 
         <div class="sidebar_box">
         
@@ -144,13 +160,11 @@ $id = $author;
 
   	    	?> 	   
 
-        </div>
+        </div> <!-- sidebar_box -->
         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
-
-
 
         <div class="sidebar_box">        
 
@@ -166,8 +180,9 @@ $id = $author;
 	  		
     	    	?> 	  
 	    	 
-        </div>
+        </div> <!-- sidebar_box -->
 
+        <div class="sidebar_box">
 
         <h4>las que ya leiste</h4> 
 
@@ -180,25 +195,13 @@ $id = $author;
 
    	    	?> 	   
 
-        </div>
+        </div> <!-- sidebar_box -->
+        
+        
         
         
       </div> <!-- sidebar_recomendados -->
-      
-      <div id="articles_edit">
- 	    	<?php
- 	    	$ci->load->helper('url');
- 	    	$limit['from'] = 0;
- 	    	$limit['show'] = 5;
- 	    	
- 	  		$data['myposts'] = $ci->post->get_mypost($id, $limit);
- 	  		$data['myposts'] = $data['myposts']->result_array();
-
- 			echo $ci->load->view('usuarios/bloggermypost', $data, true);
- 	  		unset($data);
- 	    	?> 	      
-      </div> <!-- articles_edit -->
-    
+          
   </div> <!-- sidebars -->
 
 <?php get_footer(); ?>

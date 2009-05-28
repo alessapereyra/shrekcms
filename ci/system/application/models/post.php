@@ -90,8 +90,9 @@ class Post extends Model {
 		$db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
 		
 		$db->where('mulapress_posts.post_type', 'post');
-		$db->where('mulapress_term_taxonomy.parent', '5');
-		
+                   //$db->where('wp_term_taxonomy.parent', '5');
+     $db->where('mulapress_term_taxonomy.parent', '28');
+     $db->where($this->tabla . '.post_author', $user);		
 		$db->order_by($this->tabla . '.post_date', 'DESC');
 		
 		$db->limit($limit['show'], $limit['from']);

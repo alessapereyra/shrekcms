@@ -15,12 +15,12 @@
   			?>
   			<fieldset>
   			  
-  			<?php echo form_label('Nick:', 'usuario');?> 
+  			<?php echo form_label('Usuario:', 'usuario');?> 
   			<?php echo form_error('usuario'); ?>  			
   			<?php echo form_input(array('id' => 'usuario', 'name' => 'usuario', 'value' => set_value('usuario'))); ?>
   			</fieldset>
   			<fieldset>
-  			<?php echo form_label('Password:', 'password');?> 
+  			<?php echo form_label('Contraseña:', 'password');?> 
   			<?php echo form_error('password'); ?>  			
   			<?php echo form_password(array('id' => 'password', 'name' => 'password')); ?>
   			</fieldset>

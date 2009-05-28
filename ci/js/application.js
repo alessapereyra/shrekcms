@@ -75,22 +75,14 @@ $(document).ready(function(){
 		
 	})
 
- 	$("a#link_to_preview").click( function(){
+ 	$("a#link_to_preview").click(function(){
 	
 	$(this).toggleText("vista previa","continuar editando");
-	alert("test");
 	$("div#preview_content").toggle("slow");
 	$("fieldset#articulo_content").toggle("slow")
-	alert("test");
 		
 	$("#pv_texto").html("");
-	
-	
-		content = tinyMCE.activeEditor.getContent({format : "raw"});
-	
-	
-	alert("test");
-	alert(content);
+	content = tinyMCE.activeEditor.getContent({format : "raw"});	
 	$("#pv_texto").html(content);
 		
 		return false;

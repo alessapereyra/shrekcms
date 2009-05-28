@@ -1,7 +1,6 @@
 /* @override 
 	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
 	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
-
 */
 
 body {
@@ -462,6 +461,10 @@ div#content_feed ul li a {
 	padding: 0px 0px;
 }
 
+.inner div#content_feed ul#category_tabs li a {
+	padding: 10px 18px;
+}
+
 div#content_feed ul li a.active,
 div#content_feed ul li a.active:hover {
 	background-color: white;
@@ -890,11 +893,6 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	background-color: none !important;
 }
 
-#sidebar_recomendados div.sidebar_box ul.bloggers_list li a{
-	background: none !important;
-	color: #ff005f !important;
-	text-decoration: underline !important;
-}
 
 div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
 	float: left;
@@ -907,6 +905,8 @@ div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
 	padding: 5px 10px;
 	border: none !important;
 }
+
+
 
 div#sidebars div#sidebar_recomendados ul li a 
 {
@@ -922,6 +922,33 @@ div#sidebars div#sidebar_recomendados ul li a
 	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
 
 	
+}
+
+div.inner div#sidebars div#sidebar_recomendados ul li a {
+	background: none;
+	color: inherit;
+	color: #ff005f !important;
+	text-decoration: underline !important;
+	font-size: 0.9em !important;
+	display: block;
+}
+
+
+#sidebar_recomendados div.sidebar_box ul.bloggers_list li a{
+	background: none !important;
+	color: #ff005f !important;
+	text-decoration: underline !important;
+	display: block !important;
+	
+
+}
+
+div#articles_edit {
+
+	padding: 20px;
+	background-color: white;
+	margin-top: 1em;
+
 }
 
 div#sidebars div#sidebar_recomendados ul li a.selected {
@@ -1207,10 +1234,21 @@ textarea#comment {
 	color: #806f68;
 }
 
-#sidebar_recomendados div.sidebar_box {
+#sidebar_recomendados div.sidebar_box
+ {
 	padding: 10px;	
 	background-color: #fff351;
 	margin-bottom: 1em;
+}
+
+#articles_edit table tbody tr td {
+	padding: 10px;
+}
+
+#articles_edit table thead tr th {
+	padding: 10px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
 }
 
 #user_profile h4 {

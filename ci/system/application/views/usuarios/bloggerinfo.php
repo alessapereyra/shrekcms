@@ -30,7 +30,7 @@
 				<?php endif; ?>
 </h4> 
   
-<p><?php if (isset($description)) echo "Sobre el mulero: " . $description; ?></p>
+<p><?php if (isset($descripcion)) echo "Sobre el mulero: " . $descripcion; ?></p>
 
 <div id="blogger_data">
 
@@ -41,7 +41,7 @@
   <?php endforeach; ?>
   
   <p id="published">Notas publicadas: <?php echo $published_posts ?></p>
-  <p id="url">Sitio web: <?php if (isset($url)) echo anchor($url,$url);  ?></p>
+  <p id="url">Sitio web: <?php if (isset($url)) { ?>  <a href="<?php echo $url; ?>"><?php echo $url; ?></a>  <?php }?></p>
   
 
   <p id="comments_done">Comentarios Realizados: <?php echo $total_comments ?></p>

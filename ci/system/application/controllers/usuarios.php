@@ -121,21 +121,21 @@ class Usuarios extends Controller {
 
 				//aqui se irian agregando mas datos
 				$this->usermeta->insertar($meta, $id);	
-  			}
-  			else
-  			{
-  				//modificacion, no implementado todavia
-  				//$where['id'] = $id;
-  				//$this->users->actualizar($data, $where);
-  				//arma los meta
-  				//$this->usermeta->actualizar($meta, $id);
-
-  			}
+        // }
+        // else
+        // {
+        //  //modificacion, no implementado todavia
+        //  //$where['id'] = $id;
+        //  //$this->users->actualizar($data, $where);
+        //  //arma los meta
+        //  //$this->usermeta->actualizar($meta, $id);
+        // 
+        // }
 
       	$this->load->library('session');
         $usuario = $this->session->userdata('usuario');
 
-  			redirect("http://lamula.pe/mulapress/author/" . $usuario;);		
+  			redirect("http://lamula.pe/mulapress/author/" . $usuario);		
 
   		}	  
 	  

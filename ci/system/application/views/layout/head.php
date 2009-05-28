@@ -151,16 +151,9 @@ if ($ie6 == FALSE)
 <!-- <![endif]-->
 
 
-<!--[if IE]><!-- >
-
-  <!--  theMagic -->
-  <script src="<?php echo $this->config->item('base_url'); ?>/js/applicationie.js" type="text/javascript" language="javascript"></script>
-	
-	
-<!-- <![endif]-->
-
-
-
+<!--[if IE]>
+  <script src="<?php echo $this->config->item('base_url'); ?>/js/applicationie.js" type="text/javascript" language="javascript"></script>  
+<![endif]-->
 
 
 </head>
