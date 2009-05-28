@@ -24,43 +24,47 @@
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 
+	<?php if ($ret === TRUE) { ?>	
   	<div id="upload-content">
   		<?php echo form_hidden('upload-content', 'subir'); ?>
   		<ul>
   			<li><a href="#subir">Subir</a></li>
   			<li><a href="#enlazar">Enlazar</a></li>
   		</ul>
-  		<div id="subir">
-  					<input type="hidden" id="files" name="files" value="" />
-  					<p>Selecciona la foto que desees subir:</p>
-  					<?php if ($ie6 != TRUE) {?>
-  					<input type="text" id="search_field" name="examinar" value="" />
-  					<?php }?>
-
-  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
-  					<?php if ($ie6 == TRUE): ?>
-						<?php echo form_error('Filedata'); ?>
-						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
-  					<?php endif; ?>
-  					</span>
-  					<div class="fieldset flash" id="fsUploadProgress"></div>
-  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
-  					<?php if ($ie6 != TRUE): ?>
-  					<p id="traditional">
-	  					Si tiene problemas para subir archivos, use la <?php echo anchor('fotos/formulario/0/1', 'version tradicional') ?>
-  					</p>
-  					<?php endif; ?>  					
-  					<?php 
-						$this->load->library('session');
-						echo $this->session->flashdata('fileupload');  					  					
-  					?>  					
-  		</div>
-  		<div id="enlazar">
-            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
-            	<?php echo form_error('photolink'); ?>
-            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
-  		</div>		
+	  		<div id="subir">
+	  					<input type="hidden" id="files" name="files" value="" />
+	  					<p>Selecciona la foto que desees subir:</p>
+	  					<?php if ($ie6 != TRUE) {?>
+	  					<input type="text" id="search_field" name="examinar" value="" />
+	  					<?php }?>
+	
+	  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
+	  					<?php if ($ie6 == TRUE): ?>
+							<?php echo form_error('Filedata'); ?>
+							<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
+	  					<?php endif; ?>
+	  					</span>
+	  					<div class="fieldset flash" id="fsUploadProgress"></div>
+	  					<em>máximo 2mb. formatos soportados: jpg, png, gif</em>
+	  					<?php if ($ie6 != TRUE): ?>
+	  					<p id="traditional">
+		  					Si tiene problemas para subir archivos, use la <?php echo anchor('fotos/formulario/0/1', 'version tradicional') ?>
+	  					</p>
+	  					<?php endif; ?>  					
+	  					<?php 
+							$this->load->library('session');
+							echo $this->session->flashdata('fileupload');  					  					
+	  					?>  					
+	  		</div>
+	  		<div id="enlazar">
+	            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
+	            	<?php echo form_error('photolink'); ?>
+	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
+	  		</div>
   	</div>
+  	<?php } else { ?>
+		<?php echo form_hidden('ret', $ret); ?>
+	<?php } ?>	  	
 
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>

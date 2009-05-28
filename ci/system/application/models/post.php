@@ -90,8 +90,8 @@ class Post extends Model {
 		$db->join('wp_terms', 'wp_terms.term_id = wp_term_taxonomy.term_id');		
 		
 		$db->where('wp_posts.post_type', 'post');
-		//$db->where('wp_term_taxonomy.parent', '5');
-		$db->where('wp_term_taxonomy.parent', '28');
+		$db->where('wp_term_taxonomy.parent', '5');
+		//$db->where('wp_term_taxonomy.parent', '28');
 		$db->where($this->tabla . '.post_author', $user);
 		
 		$db->order_by($this->tabla . '.post_date', 'DESC');
@@ -211,7 +211,38 @@ class Post extends Model {
     
     function actualizar($values, $where)
     {
+    	//die(print_r($values));
+    	//TODO: aca deberia limpiar esto T_T
+    	
+    	//inserta los tags
+    	$tags_id = $this->terms->insert_tags($values['tags']);
+    	
+    	//limpia los tags
+    	unset($values['tags']);
+
+    	if (is_array($tags_id))
+    	{
+    		foreach ($tags_id as $value)
+    		{
+    			$tmp[] = $value;
+    		}
+    	}
+    	
+    	if (is_array($values['terms_taxonomy_id']))
+    	{
+    		foreach ($values['terms_taxonomy_id'] as $value)
+    		{
+    			$tmp[] = $value;
+    		}
+    	}
+    	
+    	$terms_taxonomy_id = $tmp; //array_merge($tags_id, $values['terms_taxonomy_id']);
+
+    	unset($values['terms_taxonomy_id']);
+    	
+    	
         $this->db->update($this->tabla, $values, $where);
+        
     }
     
     function borrar($values)

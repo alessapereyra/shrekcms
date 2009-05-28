@@ -48,6 +48,7 @@ class Terms extends Model {
     	
     	$query = $this->db->get();
     	
+    	$tmp = NULL;
         foreach ($query->result() as $row)
 		{
 			$tmp[$row->term_id] = $row->name;

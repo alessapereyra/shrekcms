@@ -74,6 +74,8 @@
 		            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
 		  		</div>		
 		  	</div>
+		<?php else: ?>
+			<?php //echo form_hidden('upload-content', 'subir');?>		
 		<?php endif; ?>
 		  	    	
     	<?php echo form_label('Etiquetas: (separadas por comas)', 'tags');?>
