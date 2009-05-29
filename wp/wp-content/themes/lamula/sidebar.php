@@ -1,4 +1,4 @@
-<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';  ?>
 
 <?php
 
