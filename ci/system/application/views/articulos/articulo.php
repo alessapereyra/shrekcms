@@ -28,11 +28,11 @@
     	<?php echo form_error('titulo'); ?>
     	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 
-    	<?php echo form_label('', 'texto');?>
-    	<?php echo form_error('texto'); ?>
-  	    <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
+    	<?php echo form_label('', 'textos');?>
+    	<?php echo form_error('textos'); ?>
+  	    <?php echo form_textarea(array('name' => 'textos', 'value' => $textos, 'id' => 'textos')); ?>
     	
-    	<?php if ($ret == TRUE): ?>
+    	<?php if ($ret === TRUE) { ?>	
 	    	<p id="file_info">
 	    	<?php echo anchor('articulos/formulario/0/1', 'Quiero agregar fotos') ?>
 	    	adjunte o enlace imágenes y fotos complementarias a su artículo 
@@ -74,9 +74,8 @@
 		            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
 		  		</div>		
 		  	</div>
-		<?php else: ?>
-			<?php //echo form_hidden('upload-content', 'subir');?>		
-		<?php endif; ?>
+	  	<?php }?>
+		<?php echo form_hidden('ret', $ret); ?>
 		  	    	
     	<?php echo form_label('Etiquetas: (separadas por comas)', 'tags');?>
     	<?php echo form_error('tags'); ?>

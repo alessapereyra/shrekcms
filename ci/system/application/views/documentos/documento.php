@@ -14,6 +14,8 @@
 		{
 			echo form_hidden('id', $id);					
 		}
+		
+		echo $this->session->flashdata('notice');
 	?>
 	
 	<div id="text_content">
@@ -23,6 +25,7 @@
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 
+	<?php if ($ret === TRUE) { ?>	
   	<div id="upload-content">
   		<?php echo form_hidden('upload-content', 'subir'); ?>
   		<ul>
@@ -59,7 +62,9 @@
             	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
   		</div>		
   	</div>
-
+  	<?php }?>
+	<?php echo form_hidden('ret', $ret); ?>
+	
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>
   	<?php echo form_textarea(array('name' => 'textos', 'value' => $texto, 'id' => 'textos')); ?>

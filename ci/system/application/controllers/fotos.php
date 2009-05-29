@@ -369,11 +369,13 @@ class Fotos extends DI_Controller {
 				$where['id'] = $id;
 				//@_@
 				$this->post->actualizar($data, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
 				redirect('fotos/formulario/' . $id);
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
+				$this->session->set_flashdata('notice', 'Nota enviada exitosamente');	
 				redirect('fotos/formulario');
 			}
 			else

@@ -15,6 +15,8 @@
 		{
 			echo form_hidden('id', $id);					
 		}
+		
+		echo $this->session->flashdata('notice');
 	?>
 	
 	<div id="text_content">

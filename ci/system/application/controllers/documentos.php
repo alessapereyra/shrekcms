@@ -142,10 +142,13 @@ class Documentos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
+			$data['ret'] = $this->input->post('ret');
+			
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
+			$data['texto'] = $this->input->post('textos');
+
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 			
 			$data['categorias'] = $this->combofiller->categorias();
@@ -197,7 +200,7 @@ class Documentos extends DI_Controller {
 			}			
 					
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = set_value('pais');				
+			$data['paices_selected'] = $this->input->post('pais');				
 			
 			$data['form'] = $this->form;			
 			
@@ -216,7 +219,17 @@ class Documentos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			
+			if ($this->input->post('id') == NULL)
+			{
+				$data['post_content'] = $this->input->post('textos');
+			}
+			else
+			{
+				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
+				
+				//$data['post_content'] = $this->input->post('textos');
+			}
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -286,7 +299,7 @@ class Documentos extends DI_Controller {
 				break;
 			}
 			
-			//$data['post_content'] = $data['post_content'];
+			$data['post_content'] = $data['post_content'] . '';
 			
 			//Debo armar el texto con las img
 			$data['tags'] = $this->input->post('tags');
@@ -335,9 +348,13 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
+				//@_@
 				$this->post->actualizar($data, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				redirect('documentos/formulario/' . $id);
 			}
 
+			$this->session->set_flashdata('notice', 'Nota enviada exitosamente');	
 			redirect('documentos/formulario');			
 			
 		}			
