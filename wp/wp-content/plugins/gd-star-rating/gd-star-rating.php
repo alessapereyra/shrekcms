@@ -2149,7 +2149,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             return $rating_block;
         }
 
-        function render_article($post, $user, $override = array("tpl" => 0)) {
+        function render_article($post_gd, $user_gd, $override = array("tpl" => 0)) {
             if ($this->is_bot) return "";
 
             $dbg_allow = "F";
@@ -2165,9 +2165,9 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             $rd_unit_width = $this->o["size"];
             $rd_unit_count = $this->o["stars"];
             $rd_unit_style = $this->is_ie6 ? $this->o["style_ie6"] : $this->o["style"];
-            $rd_post_id = intval($post->ID);
-            $rd_user_id = intval($user->ID);
-            $rd_is_page = $post->post_type == "page" ? "1" : "0";
+            $rd_post_id = intval($post_gd->ID);
+            $rd_user_id = intval($user_gd->ID);
+            $rd_is_page = $post_gd->post_type == "page" ? "1" : "0";
 
             if ($this->p)
                 $post_data = $this->p;
@@ -2182,7 +2182,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             if ($post_data->rules_articles == "H") return "";
 
             if ($allow_vote) {
-                if ($this->o["author_vote"] == 1 && $rd_user_id == $post->post_author) {
+                if ($this->o["author_vote"] == 1 && $rd_user_id == $post_gd->post_author) {
                     $allow_vote = false;
                     $dbg_allow = "A";
                 }
@@ -2210,7 +2210,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
                         $deadline = $post_data->expiry_value;
                         break;
                     case "T":
-                        $remaining = GDSRHelper::expiration_countdown($post->post_date, $post_data->expiry_value);
+                        $remaining = GDSRHelper::expiration_countdown($post_gd->post_date, $post_data->expiry_value);
                         $deadline = GDSRHelper::calculate_deadline($remaining);
                         break;
                 }
@@ -2248,7 +2248,7 @@ wp_gdsr_dump("VOTE_CMM", "[CMM: ".$id."] --".$votes."-- [".$user."]");
             }
 
             $debug = $rd_user_id == 0 ? "V" : "U";
-            $debug.= $rd_user_id == $post->post_author ? "A" : "N";
+            $debug.= $rd_user_id == $post_gd->post_author ? "A" : "N";
             $debug.= ":".$dbg_allow." [".STARRATING_VERSION."]";
 
             $tags_css = array();

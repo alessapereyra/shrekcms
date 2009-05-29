@@ -64,17 +64,31 @@ $(document).ready(function() {
 				return false;
 		})
 
-		$("ul#articulos li a").click(function(){
+
+		$("ul#articulos_menu li a").click(function(){
 		
 				$(this).parent().siblings().find("a").removeClass("selected");
 				$(this).addClass("selected");
 				
 				var index = $("ul#articulos li a").index(this);
 				
-				$(".sidebox_content").hide("slow");
-				$(".sidebox_content:eq(" + index + ")").fadeIn("fast");
+				$("articulos .sidebox_content").hide("slow");
+				$("articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
 				return false;
 		})	
+
+		$("ul#ranking_menu li a").click(function(){
+		
+				$(this).parent().siblings().find("a").removeClass("selected");
+				$(this).addClass("selected");
+				
+				var index = $("ul#articulos li a").index(this);
+				
+				$("ranking .sidebox_content").hide("slow");
+				$("ranking .sidebox_content:eq(" + index + ")").fadeIn("fast");
+				return false;
+		})	
+
 
 		$("ul#menu > li > a").click(function(){
 			

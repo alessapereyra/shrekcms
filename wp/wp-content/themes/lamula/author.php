@@ -15,8 +15,8 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php //include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
-<?php include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';  ?>
+<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php //include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';  ?>
 
 <div id="content" class="inner author">
   
@@ -165,37 +165,48 @@ $id = $author;
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
+        
+            <div class="sidebox">
+                      
+                <div class="sidebox_wrapper">
 
-        <div class="sidebar_box">        
+                 	  <h4>tus noticias m&aacute;s le&iacute;das</h4> 
 
-         	  <h4>tus noticias m&aacute;s le&iacute;das</h4> 
+                   <div class="tab_content">
+             	    	<?php 
 
-    	    	<?php 
-	      	
-    	  		$ci->load->model('sessionmanager');
-    	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
-	    		
-    			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
-    	  		unset($data);
-	  		
-    	    	?> 	  
-	    	 
-        </div> <!-- sidebar_box -->
+             	  		$ci->load->model('sessionmanager');
+             	  		$data['views'] = $ci->sessionmanager->get_lastviews($id, 10);
 
-        <div class="sidebar_box">
+             			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
+             	  		unset($data);
 
-        <h4>las que ya leiste</h4> 
+             	    	?>
+             	
+             	      </div> <!-- sidebox_wrapper -->
 
- 	    	<?php 
+                </div> <!-- sidebox_wrapper -->
+        
+            </div>        
 
-   	  		$data['views'] = $ci->sessionmanager->get_lastread($id, 10);
+            <div class="sidebar">
 
-   			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
-   	  		unset($data);
+               <div class="sidebox_wrapper">
 
-   	    	?> 	   
+              <h4>las que ya leiste</h4> 
 
-        </div> <!-- sidebar_box -->
+       	    	<?php 
+
+         	  		$data['views'] = $ci->sessionmanager->get_lastread($id, 10);
+
+         			  echo $ci->load->view('usuarios/bloggerviews', $data, true);
+         	  		unset($data);
+
+         	    	?> 	   
+         	    	
+       	    	  </div>
+
+              </div> <!-- sidebar -->
         
         
         

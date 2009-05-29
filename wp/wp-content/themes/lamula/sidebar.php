@@ -1,21 +1,29 @@
+<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+
+<?php
+
+ // $ci =& get_instance();
+
+?>
+
   <div id="sidebars">
     
-      <div id="important">
-        
-          <p>
+  <!--       <div id="important">
           
-            <a href="http://lamula.pe/mulapress/ci" class="send_news">
-              
-                publica en lamula.pe
-                <em>  
-                        envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
-                </em>
-            </a>
+            <p>
             
-          </p>
-        
-      </div>
-      
+              <a href="http://lamula.pe/mulapress/ci" class="send_news">
+                
+                  publica en lamula.pe
+                  <em>  
+                          envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
+                  </em>
+              </a>
+              
+            </p>
+          
+        </div>
+         -->
 
       <div id="sidebar_central">
         
@@ -110,6 +118,8 @@
 
         <div id="corresponsales" class="sidebox">
    
+            <div class="sidebox_wrapper">
+    
                <h4>Corresponsales más</h4>
                
                <div class="tab_content">
@@ -130,6 +140,8 @@
                 <!-- comentados -->
                 
                </div>
+
+             </div>
    
         </div>
 
@@ -138,33 +150,79 @@
           <li><a href="#votados">votados</a></li>
           <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
+        
+        <div id="ranking_usuarios" class="sidebox">
+
+          <h4>r&aacute;nking de usuarios</h4>
+          
+          <div class="sidebox_wrapper">
+          
+            <div class="sidebox_content">
+
+                <ul id="mulakids">
+                  Mulakids
+                </ul>
+            
+            </div>
+                
+            <div class="sidebox_content">
+
+              <ul id="mulitas">
+                  Mulitas              
+              </ul>
+            
+            </div>
+          
+            <div class="sidebox_content">
+
+              <ul id="mulos">
+                  Mulos
+              </ul>
+
+            </div>                          
+
+          </div>                    
+                    
+        </div>     
+        
+        <ul id="ranking_menu" class="sidebox_menu">
+          <li><a href="#mulakids" class="selected">mulakids</a></li>
+          <li><a href="#mulitas">mulitas</a></li>
+          <li><a href="#mulas">mulas</a></li>                
+        </ul>
+        
+        
    
         <div id="articulos" class="sidebox">
 
           <h4>Art&iacute;culos más</h4>
-          
-          <div class="sidebox_content">
-
-              <ul id="post_most_seen">
-                <?php echo kf_get_posts_by_hits(7,10); ?>
-              </ul>
+         
+          <div class="sidebox_wrapper">
             
-          </div>
+                <div class="sidebox_content">
+
+                    <ul id="post_most_seen">
+                      <?php echo kf_get_posts_by_hits(7,10); ?>
+                    </ul>
+            
+                </div> <!-- sidebox_content -->
                 
-          <div class="sidebox_content">
-              <!-- VOTADOS -->
+                <div class="sidebox_content">
+                    <!-- VOTADOS -->
             
-          </div>
+                </div> <!-- sidebox_content -->
           
-          <div class="sidebox_content">
+                <div class="sidebox_content">
 
-            <?php most_popular(1); ?>
+                  <?php most_popular(1); ?>
             
-          </div>                          
+                </div>  <!-- sidebox_content -->
+          
+            </div>  <!-- sidebox_wrapper -->                 
                     
-        </div>     
+        </div>  <!-- sidebox -->
         
-        <ul id="articulos" class="sidebox_menu">
+        <ul id="articulos_menu" class="sidebox_menu">
           <li><a href="#vistos" >vistos</a></li>
           <li><a href="#votados">votados</a></li>
           <li><a href="#comentados" class="selected">comentados</a></li>                
@@ -173,10 +231,25 @@
       
         <div id="videos" class="sidebox">
 
-          <h4>Video destacado</h4>          
+          <div class="sidebox_wrapper">
 
-        </div>
+            <h4>Video destacado</h4>          
+            
+          </div> <!-- sidebox_wrapper -->
 
+        </div> <!-- sidebox -->
+        
+
+        <div id="comentarios" class="sidebox">
+
+          <div class="sidebox_wrapper">
+            
+            <h4>&Uacute;ltimos Comentarios</h4>          
+            
+          </div> <!-- sidebox_wrapper -->
+  
+        </div> <!-- sidebox -->
+      
         
       </div> <!-- sidebar_recomendados -->
     

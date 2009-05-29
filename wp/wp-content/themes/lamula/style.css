@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
 	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
+	http://lamula.pe/wp-content/bp-themes/bpskeletonmember/style.css
 */
 
 body {
@@ -30,38 +31,52 @@ div#wrapper {
 
 
 div#top_menu {
-	
-	background-color: #000;
 	color: #040707;
 	overflow: hidden;	
 	font-size: 0.8em;
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 	height: 30px;
-	padding-top: 5px;
+	padding-top: 10px;
+	background: #202020 url(images/background-top.gif) repeat-x;
 }
 
+#top_menu p {
+
+}
+
+#top_menu p span.right {
+	float: right;
+	margin-right:20px ;
+}
+
+#top_menu p span.right a {
+	display: block;
+	float: left;
+	background-color: #5a5a5a;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff9a5;
+	height: 20px;
+	margin-right: 10px;
+	border-top: 1px solid #757575;
+
+}
 
 div#top_menu p span.left {
 	float: left;
 	margin-left: 20px;
-	margin-top: 5px;
 	color: #fff;
+	margin-top: 3px;
+	display: block;
+	height: 30px;
 }
 
-div#top_menu p span.right {
-	float: right;
-	margin-right: 20px;
-	margin-top: 5px;
-}
-
-
-#top_menu p span.right a {
-	text-decoration: underline;
-	color: #fff9a5;
-}
 
 #top_menu p span.right a:hover {
 	color: #fff;
+	background-color: #0085cf;
+	border-top: 1px solid #277dff;
 }
 
 /* @end */
@@ -139,12 +154,12 @@ p#site_stats {
 
 
 #search_bar form {
-	background-color: #fff9a5;
 	padding: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	color: white;
 	margin-top: 20px;
+	background: #fff9a5 url(images/background-yellow.png) 0 top;
 }
 
 
@@ -180,11 +195,14 @@ div#menu_bar {
 	
 	clear: both;
 	overflow: auto;
-	background-color: white;	
+	background-color: #fff9a5;	
 	margin-top: 1em;	
 	display: block;	
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	-moz-border-top-left-radius: 10px;
+	-moz-border-top-right-radius: 10px;	
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;	
+	
 	overflow: auto;
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 	border: 0px;
@@ -194,10 +212,9 @@ div#menu_bar {
 
 div#menu_bar p#tagline,
 div#menu_bar p#zonas {
+
 	-moz-border-top-left-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
-	-moz-border-bottom-left-radius: 10px;
-	-webkit-border-bottom-left-radius: 10px;
 
 	padding: 5px 10px 5px 10px;
 	background-color: #2e290f;
@@ -240,7 +257,7 @@ ul#menu li {
 ul#menu > li {
 	float: left;
 	overflow: auto;
-	background-color: white;
+	background-color: #fff9a5;
 	color: #3b3330;
 }
 
@@ -251,6 +268,7 @@ ul#menu ul li.current {
 	text-decoration: none;
 	display: block;
 	float: left;
+	background-color: #fff9a5;
 }
 
 ul#menu > li a:hover {
@@ -267,7 +285,7 @@ ul#menu ul > ul {
 
 ul#menu li ul li,
 ul#menu li ul li ul {
-	background-color: white;
+	background-color: #fff9a5;
 	float: left;
 	display: inline;
 	display: none;	
@@ -298,87 +316,127 @@ ul#menu ul li a:hover {
 
 /* @group Top News */
 
-div#top_news {
-	
-	margin-top: 1em;
-	overflow: auto;
-	background-color: white;
-	padding: 20px 20px 20px;
-}
 
-div#top_news div#top_news_image {
-	
+div#top_news div#top_news_featured {
 	float: left;
-	width: 400px;
+	width: 500px;
 }
 
-div#top_news div#top_news_image img {
+div#top_news div#top_news_featured img {
 	
-	width: 400px;
 	border: 5px solid #3b3330;
 	margin-top: 0em;
 }
 
-div#top_news div#top_news_text {
+div#top_news div#top_news {
 	
 	float: left;
 	display: block;
-	width: 445px;
-	margin-left: 35px;
+	width: 370px;
+	margin-left:0px;
 	overflow: auto;
+	background-color: white;
+	margin-top: 1.4em;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
-div#top_news div#top_news_text h3 {
+#top_news div.top_news_item {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	border-bottom: 1px solid #e0e0e0;
+	background: #edeeee url(images/background-white.png) repeat-x 0 bottom;
+
+}
+
+#top_news div.top_news_item h4 {
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	word-spacing: 0;
+	margin-top: 5px;
+}
+
+a.news_item_title {
+	text-transform: lowercase;
+	font: 0.8em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#top_news div.top_news_item:hover {
+	background: #e6f7fd url(images/background-lightblue.png) repeat-x 0 bottom;
+}
+
+div#top_news div#top_news_featured h3 {
 	line-height: 1em;
 	color: #3b3330;
 	text-transform: lowercase;
-	letter-spacing: -4px;
-	font-size: 3.2em;
+	letter-spacing: -3px;
+	font-size: 2.4em;
 	margin-bottom: 0.3em;
 	word-spacing: 4px;
 	overflow: hidden;
 }
 
-div#top_news_content {
+div#top_news_featured {
 	overflow: auto;
+	background: white;
+	padding: 20px 0 0 20px;
+	margin-right: 15px;
 }
 
-div#top_news div#top_news_text h3 a {
+div#top_news div#top_news_featured h3 a {
 	color: #3b3330;
 	text-decoration: none;
 	display: block;
 }
 
 
-div#top_news div#top_news_text p {
+div#top_news div#top_news_featured p {
 	line-height: 1.3em;
 	margin-top: 0.5em;
 }
 
 
-#top_news_text p span.author {
-	font-weight: bold;
+#top_news_featured p span.author {
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-transform: lowercase;
+	display: inline;
+}
+
+div.top_news_featured_footer {
+	overflow: auto;	
+	clear: both;
+	margin-top: 10px;
+}
+
+div#top_news {
+	background-color: white;
+	padding-bottom: 1em;
 }
 
 
 div#top_news_footer {
 	clear: both;
-	border-bottom: 5px solid #3b3330;
 	overflow: hidden;
 }
 
-div#top_news_footer a#leer_mas_footer {
-	float: right;
+a#leer_mas_footer,
+#top_news_featured div.top_news_featured_footer p.comments a {
+	float: left;
+}
+
+
+div#top_news_featured a#leer_mas_footer {
 	display: block;
 	margin: 0px;
 	padding: 6px 18px;
 	background-color: #3b3330;
 	color: white;
 	text-decoration: none;
-	margin-left: 10px;
+	margin-right: 40px;
 }
 
-div#top_news_footer a#leer_mas_footer:hover {
+div#top_news_featured a#leer_mas_footer:hover {
 	color: yellow;
 }
 
@@ -406,6 +464,11 @@ div#top_news_footer p.comments a em {
 	color: #fe008a;
 }
 
+#top_news h2 {
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	text-transform: lowercase;
+}
 
 /* @end */
 
@@ -417,11 +480,47 @@ div#top_news_footer p.comments a em {
 div#content {
 	
 	clear: both;
-	margin-top: 1em;
+	margin-top: 1.5em;
 	overflow: auto;
 }
 
 /* @group Content Feed */
+
+#post_list div.navigation div.alignleft a {
+	width: 100px;
+	float: left;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	background: none;
+	display: block;
+	padding: 10px;
+}
+
+#post_list div.navigation div.alignleft a:hover {
+	color: black;
+}
+
+#post_list li div.news_footer span {
+
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	word-spacing: 0;
+	display: block;
+	margin-bottom: 10px;
+	color: #df0b7a;	
+}
+
+#post_list li div.news_footer span a,
+#post_list li div.news_footer span strong,
+#post_list li div.news_footer span small {
+	color: #df0b7a !important;	
+	padding: 0px;
+	display: inline;
+	background: none;
+}
+
+#post_list li div.news_footer span a:hover {
+	background: none;
+	color: black !important;
+}
 
 div#content_feed {
 	
@@ -440,6 +539,10 @@ div#content_feed ul {
 div#content_feed ul li {
 	
 	float: left;
+}
+
+div.gdsr_rating_as a {
+	padding: 0px !important;
 }
 
 div#content_feed ul li a {
@@ -511,7 +614,7 @@ div#content_feed ul#post_list li {
 }
 
 #post_list li a.rate div.ratingblock {
-	margin-top:6px !important;
+	margin-top:4px !important;
 }
 
 #post_list h4 {
@@ -524,7 +627,7 @@ div#content_feed ul#post_list li {
 
 #post_list li div.post_content {
 	float: left;
-	width: 350px;	
+	width: 270px;	
 }
 
 .inner #post_list li div.post_content {
@@ -596,7 +699,7 @@ div#content_feed ul#post_list li {
 
 #post_list li div.post_image {
 	float: left;
-	width: 60px;
+	width: 150px;
 	margin-right: 10px;
 	margin-top: 3px;
 }
@@ -610,8 +713,8 @@ div#content_feed ul#post_list li {
 }
 
 #post_list li div.post_image.fotos a {
-	height: 60px;
-	width: 60px;
+	width: 150px;
+	height: 100px;
 	border: none;
 	background: url(images/photo.png) no-repeat;
 }
@@ -651,8 +754,8 @@ div#content_feed ul#post_list li {
 }
 
 #post_list li div.post_image a img{
-	width: 60px;
-	height: 60px;
+	width: 150px;
+
 }
 
 
@@ -726,6 +829,9 @@ div#content_feed ul li h5 a {
 	padding: 0px;
 	background: none;
 	color: black;
+	font-size: 1.3em;
+	letter-spacing: -2px;
+	word-spacing: 2px;
 }
 
 div#content_feed ul li h5 a:hover {
@@ -752,6 +858,8 @@ div#content.inner ul#post_list li {
 	display: block;	
 }
 
+
+
 /* @end */
 
 
@@ -760,9 +868,13 @@ div#content.inner ul#post_list li {
 div#sidebars {
 	width: 435px;
 	float: right;
-	margin-left: 10px;
+	margin-top: 2em;
+
 }
 
+.inner div#sidebars {
+	margin: 0px;
+}
 
 
 div#sidebars p a {
@@ -775,11 +887,11 @@ div#sidebars div#sidebar_central {
 	background-color: #fcf270;
 	overflow: hidden;
 	margin-bottom: 2em;
+	background-image: url(images/background-yellow.png);
 }
 
 div#content.inner.author div#sidebars div#sidebar_central{
 
-	background-color: none;
 	background: none;
 	
 }
@@ -821,6 +933,11 @@ div#sidebars div#sidebar_recomendados h4	{
 	margin-top: 1em;
 	margin-left: 1em;
 	margin-bottom: 1em;
+
+}
+
+#sidebar_recomendados div.sidebar_box h4 {
+	margin: 0px !important;	
 }
 
 #sidebar_central ul.bloggers_list li {
@@ -838,13 +955,15 @@ div#sidebars div#sidebar_recomendados h4	{
 }
 	
 div#sidebars div#sidebar_recomendados div.sidebox h4 {
-	font-size: 1.2em;
-	color: white;
+	color: black;
 	text-transform: lowercase;	
-	margin-bottom: 1em;
-	clear: both;
-	margin-top: 1.5em;
-	margin-left: 1.3em;
+	margin: 0px;
+	background: #fff repeat-x scroll left center;
+	padding: 20px 20px 10px;
+	position:relative;
+	border-bottom-width: 2px;
+	font-size: 1.2em;
+	
 }
 
 div#sidebars div#sidebar_recomendados ul {
@@ -871,16 +990,21 @@ div#sidebars div#sidebar_recomendados ul#post_most_seen li,
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a {
 	float: none;
 	margin: 0px;
-	background-color: #3b3330;
-	color: #ffe250;
+	color: #3b3330 !important;
+	text-decoration: none !important;
 	text-transform: lowercase;
 	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
+	border-bottom: 1px solid #e9e9e9;
+	padding-bottom: 10px;
+	display: block;
+	background: white url(images/background-white.png) repeat-x 0 -7px;
 }
 
 div#sidebars div#sidebar_recomendados ul#post_list li a:hover,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover,
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	background-color: #000;
+	color: #fe008a !important;
 }
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list {
@@ -890,20 +1014,34 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list li {
 	float: none;
-	background-color: none !important;
+	background: none !important;
 }
 
 
 div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
 	float: left;
-	text-decoration: none;
+	text-decoration: none !important;
 	display: block;
-	background-color: #c8c968;
+	background-color: #99cefc;
 	margin-right: 1px;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
-	color: #070708;
-	padding: 5px 10px;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif !important;
+	color: #070708 !important;
+	padding: 5px 8px !important;
 	border: none !important;
+	background-image: url(images/background-blue.png) !important;
+}
+
+div#sidebar_recomendados ul.sidebox_menu li a {
+	color: black !important;
+}
+
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a:hover {
+	background: url(images/background-yellow.png) center top !important;
+}
+
+div.sidebox_wrapper {
+	overflow: auto;
+	background: white;
 }
 
 
@@ -916,20 +1054,13 @@ div#sidebars div#sidebar_recomendados ul li a
 	text-decoration: none;
 	float: none;
 	margin: 0px;
-	background-color: #3b3330;
+	background-color: #fff576;
 	color: #ffe250;
 	text-transform: lowercase;
 	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
-
-	
 }
 
 div.inner div#sidebars div#sidebar_recomendados ul li a {
-	background: none;
-	color: inherit;
-	color: #ff005f !important;
-	text-decoration: underline !important;
-	font-size: 0.9em !important;
 	display: block;
 }
 
@@ -952,8 +1083,8 @@ div#articles_edit {
 }
 
 div#sidebars div#sidebar_recomendados ul li a.selected {
-	background-color: #3b3330;
-	color: white;
+	background: white !important;
+	color: black;
 }
 
 #sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
@@ -969,15 +1100,40 @@ div#sidebars div#sidebar_recomendados ul li a.selected {
 
 div.tab_content,
 div.sidebox_content {
-	padding: 4px 10px;	
-	padding-left: 25px;
+	padding: 8px 10px;	
 	color: #f3e250;
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+
+	color:#777777;
+	background: white repeat-x scroll 0 top;
 }
 
-
-
 #important p a.send_news {
+		display: block;
+	text-align: center;
+	padding: 15px 80px;
+	color: #000;
+	font-size: 2em;
+	letter-spacing: -2px;
+	word-spacing: 4px;
+	margin: 0 auto 0.5em;
+	background: #d2e7f7 url(images/background-blue.png) repeat-x 0 1px;
+	text-decoration: none;
+	border-top: 5px solid #3b3330;
+}
+
+#important p a.send_news:hover {
+	background: #bffcf3 none;
+}
+
+#important p a.send_news em {
+	display: block;
+	text-decoration: none;
+	color: #3b3330;
+	font-size: 0.7em;
+}
+
+#sidebars #important p a.send_news {
 	display: block;
 	text-align: center;
 	padding: 15px 60px;
@@ -987,13 +1143,14 @@ div.sidebox_content {
 	letter-spacing: -2px;
 	word-spacing: 4px;
 	margin: 0 auto 0.5em;
+	background-image: none;
 }
 
-#important p a.send_news:hover {
+#sidebars #important p a.send_news:hover {
 	background-color: #ffda29;
 }
 
-#important p a.send_news em {
+#sidebars #important p a.send_news em {
 	display: block;
 	font-size: 0.7em;
 	margin-top: 0.5em;
@@ -1007,16 +1164,17 @@ div#sidebars div#sidebar_recomendados li a:hover{
 }
 
 div#sidebars div#sidebar_recomendados {
-	width: 210px;
+	width: 200px;
 	float: right;
 	color: #f23e00;
+	background-color: #d7eafa;
+	padding: 5px 5px;
 }
 
 div#sidebars div#sidebar_recomendados div.sidebox {
-	
-	background-color: #3b3330;
-	overflow: auto;
-	padding-bottom: 10px;
+		overflow: auto;
+	margin:0 0 0px;
+
 }
 
 #sidebar_recomendados ul.sidebox_menu {
@@ -1048,16 +1206,44 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 	line-height: 1.5em;
 }
 
-#post_list li div.post_content div.news_footer a.leer_mas_footer,
-#post_list li div.post_content div.news_footer a.comments,
-#post_list li div.post_content div.news_footer div.ratingblock {
-	float: left;
-	margin-right: 15px;
-	font-size: 0.8em;
-	margin-top: 1em;
+#post_list li div.news_footer a.leer_mas_footer:hover,
+#post_list li div.news_footer a.comments:hover{
+	color: #fbfa3b;
 }
 
-.inner #post_list li div.post_content div.news_footer div.ratingblock {
+#post_list li div.news_footer a.leer_mas_footer,
+#post_list li div.news_footer a.comments,
+#post_list li div.news_footer div.ratingblock {
+	float: left;
+	margin-right: 15px;
+	margin-top: 1em;
+	display: block;
+	margin: 0px;
+	padding: 6px 18px;
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;	
+	-webkit-border-radius :5px;
+	-moz-border-radius :5px;
+
+	background: #3b3330 url(images/background-top.gif) repeat-x 0 -5px;
+	text-transform: lowercase;
+	font: 0.75em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#post_list li.even div.news_footer {
+	clear: both;
+	float: none;
+}
+
+#post_list li div.news_footer div.ratingblock  {
+	padding: 0px;
+	display: inline;
+	margin: 0px;
+	background: none;
+}
+
+.inner #post_list li div.news_footer div.ratingblock {
 	float: none;
 	display: inline;
 }
@@ -1067,33 +1253,35 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 	display: block;
 }
 
-#post_list li div.post_content div.news_footer p.rate {
+#post_list li div.news_footer p.rate {
 	overflow: auto;
-	margin-bottom: ;
+	margin-bottom:1px ;
 }
 
-#post_list li div.post_content div.news_footer p.tags,
-#post_list li div.post_content div.news_footer p.rate {
+#post_list li div.news_footer p.tags,
+#post_list li div.news_footer p.rate {
 	font-size: 0.8em;
 }
 
-#post_list li div.post_content div.news_footer p.tags {
+#post_list li div.news_footer p.tags {
 	margin-top: 10px;	
 }
 
-#post_list li div.post_content div.news_footer div.ratingblock div.ratingtext,
+#post_list li div.news_footer div.ratingblock div.ratingtext,
 #top_news  div.ratingblock div.ratingtext {
 	display: none !important;
 }
 
 #top_news  div.ratingblock {
-	float: right;
+	float:left;
 	margin-bottom: 0px;
-	margin-top: 4px;
+	margin-top: 2px;
+	margin-left: 20px;
+	padding: 0px;
 }
 
-#post_list li div.post_content div.news_footer div.ratingblock {
-	margin-top: 6px;
+#post_list li div.news_footer div.ratingblock {
+	margin-top: 4px;
 }
 
 div#content.inner ul#post_list li h5 a {
@@ -1103,6 +1291,17 @@ div#content.inner ul#post_list li h5 a {
 
 div#content.inner ul#post_list div.post_content p span {
 	font-size: 1.1em;
+}
+
+#post_list li div.post_item {
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+#post_list li div.news_footer a.rate {
+	padding: 0px;
+
 }
 
 
@@ -1152,7 +1351,9 @@ li.comment {
 	overflow: hidden;
 	clear: both;
 	height: auto;
-	margin-bottom: 2em;
+	margin-top: 1em;
+	background: url(images/background-lightblue.png) repeat-x 0 bottom;
+	padding-bottom: 2em;
 }
 
 li cite.fn, span.says {
@@ -1173,13 +1374,14 @@ div.ratingtext {
 
 ol.commentlist {
 	background-color: white;	
-	padding: 20px;
+	padding: 0px 0px;
+	overflow: auto;
 }
 
 div#respond {
 	margin-top: 1em;
-	background-color: #fff9a5;
 	padding: 20px;
+	background: #fff9a5 url(images/background-yellow.png) repeat-x 0 bottom;
 }
 
 #commentform p label {
@@ -1237,7 +1439,7 @@ textarea#comment {
 #sidebar_recomendados div.sidebar_box
  {
 	padding: 10px;	
-	background-color: #fff351;
+
 	margin-bottom: 1em;
 }
 
@@ -1267,10 +1469,14 @@ textarea#comment {
 	div#footer{
 	
 	padding: 20px;
+	padding-top: 0.5em;
+	padding-bottom: 1.5em;
 	text-align: center;
 	font-size: 3em;
 	color: white;
-	background-color: #3b3330;
+	background: #3e3e3e url(images/background-footer.gif) repeat-x;
 }
+
+
 
 /* @end */

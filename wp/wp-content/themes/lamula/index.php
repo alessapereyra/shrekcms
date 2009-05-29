@@ -5,30 +5,22 @@
  */
 
 get_header(); ?>
+
 <div id="top_news">
   
-  
-  <?php  
-   // $featured_query = new WP_Query('category_name=featured&showposts=2');
-   $featured_query = new WP_Query('showposts=1');
-    while ($featured_query->have_posts()) : $featured_query->the_post();
-    $do_not_duplicate = $post->ID; ?>
-
-
   <div id="top_news_content">
 
-        <div id="top_news_image">
-          <img src="<?php bloginfo('template_url'); ?>/images/top_news.png" alt="Top News" title="Top News"/>
-        </div> <!-- top_news_image -->
+        <div id="top_news_featured">
 
-        <div id="top_news_text">
+          <?php  
+           // $featured_query = new WP_Query('category_name=featured&showposts=2');
+           $featured_query = new WP_Query('showposts=1');
+           while ($featured_query->have_posts()) : $featured_query->the_post();
+           $do_not_duplicate = $post->ID;
+           ?>
 
           <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
           <p>
-
-
-              <span class="author">Por <?php the_author_posts_link() ?> <em><?php the_date('d/m/y'); ?></em></span>
-
 
               <?php 
                     $content = get_the_content();
@@ -41,7 +33,45 @@ get_header(); ?>
 
               <?php echo $content ?>
 
+              <span class="author">Por <?php the_author_posts_link() ?> <em> el <?php the_date('d/m/y'); ?></em></span>
+
           </p>
+
+          <div class="top_news_featured_footer">
+
+            <a href="<?php the_permalink() ?>" id="leer_mas_footer">Leer m&aacute;s</a>
+            <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+            
+          </div>
+
+        <?php endwhile; ?>
+
+        </div> <!-- top_news_featured -->
+
+        <div id="top_news">
+
+            <h2>Otras noticias destacadas</h2>
+            <div class="top_news_item">
+              <h3><a href="#" class="news_item_title">Dr. Computer olvidó el teléfono</a></h3>
+              <h4>enviado hace 7 horas por <a href="#">yaraher</a></h4>
+            </div>
+
+            <div class="top_news_item">
+              <h3><a href="#" class="news_item_title">Rendicion De Cuentas de Comite Expoferia Pacasmayo ¿ Un Cuentazo?</a></h3>
+              <h4>publicado hace 7 horas por <a href="#">dientuki</a></h4>
+            </div>
+
+            <div class="top_news_item">
+              <h3><a href="#" class="news_item_title">Una noticia aleatoria</a></h3>
+              <h4>publicado hace 7 horas por <a href="#">coby</a></h4>
+            </div>
+
+
+            <div class="top_news_item">
+              <h3><a href="#" class="news_item_title">Los niños de Avelino</a></h3>
+              <h4>publicado en <a href="#">DeveloperAtWork</a> por <a href="#">yaraher</a></h4>
+            </div>
 
         </div> <!-- top_news_text -->
     
@@ -50,18 +80,29 @@ get_header(); ?>
 
   <div id="top_news_footer">
     
-    <a href="<?php the_permalink() ?>" id="leer_mas_footer">Leer m&aacute;s</a>
-    <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
-    <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
     
-  </div> <!-- top_news_footer -->
-
-
-
-  <?php endwhile; ?>
-  
+  </div> <!-- top_news_footer -->  
     
 </div> <!-- top_news -->
+
+    
+      <div id="important">
+        
+          <p>
+          
+            <a href="http://lamula.pe/mulapress/ci" class="send_news">
+              
+                publica en lamula.pe
+                <em>  
+                        envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
+                </em>
+            </a>
+            
+          </p>
+        
+      </div>
+
+
 
 <div id="content">
   
@@ -89,16 +130,14 @@ get_header(); ?>
       	                    $content = get_the_content();
       	                    $html = str_get_html($content);
       	                    $img_link = $html->find('img',0)->src;
-                            // foreach($html->find('img') as $element)
-                            //         $img_link = $element->src;
-
 
                             $html->clear(); 
                             unset($html);
-      	                    $content = apply_filters('the_content', $content);
-      	                    $content = str_replace(']]>', ']]&gt;', $content);
-      	                    $content = snippet($content,235);
-      	                    $author = "por <small class='author'> ". get_the_author() . "</small>";
+
+      	       //             $content = apply_filters('the_content', $content);
+      	       //            $content = str_replace(']]>', ']]&gt;', $content);
+      	         //           $content = snippet($content,235);
+      	  //                  $author = "por <small class='author'> ". get_the_author_posts_link() . "</small>";
       	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
       	                    $content =  $content; 
       	              ?>
@@ -111,6 +150,8 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
+	        <div class="post_item">
+	        
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
                   <?php if ($img_link != "") { ?>
@@ -122,20 +163,19 @@ get_header(); ?>
 	          
 	          <div class="post_content">
 	              
-	
 	              <?php echo strip_tags($content, '<p>'); ?>
-	              <?php //echo $author . $date ?>
-	              
-	              <div class="news_footer">
-	
-	                <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-	                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-	                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
-	
-	              </div> <!-- news_footer -->              
-	
 	
 	          </div>
+	        
+	        </div>
+	        	          
+            <div class="news_footer">
+	            <span>por <?php the_author_posts_link(); ?> <?php echo $date ?></span>
+              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+            </div> <!-- news_footer -->	          
 	
 	        </li>
 	
@@ -199,7 +239,8 @@ get_header(); ?>
 	            </a>
 	          </h5>
 
-	          
+	          <div class="post_item">
+	           
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
                   <?php if ($img_link != "") { ?>
@@ -211,18 +252,19 @@ get_header(); ?>
 	          <div class="post_content">
 	              	
 	              <?php echo strip_tags($content, '<p>'); ?>
-	              <?php //echo $author . $date ?>
-	              
-	              <div class="news_footer">
-	
-	                <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-	                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-	                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
-	
-	              </div> <!-- news_footer -->              
-	
+	              <?php //echo $author . $date ?>	              	
 	
 	          </div>
+
+	          </div>
+	          
+            <div class="news_footer">
+	            <span><?php echo $author . $date ?></span>
+              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+            </div> <!-- news_footer -->              
 	
 	        </li>
 	
@@ -285,6 +327,8 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
+	          <div class="post_item">
+	          
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
                   <?php if ($img_link != "") { ?>
@@ -297,17 +341,18 @@ get_header(); ?>
 	              	
 	              <?php echo strip_tags($content, '<p>'); ?>
 	              <?php //echo $author . $date ?>
-	              
-	              <div class="news_footer">
-	
-	                <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-	                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-	                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
-	
-	              </div> <!-- news_footer -->              
-	
-	
+	              	
 	          </div>
+
+	          </div>	          
+
+            <div class="news_footer">
+	            <span><?php echo $author . $date ?></span>
+              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+            </div> <!-- news_footer -->
 	
 	        </li>
 	
@@ -369,31 +414,34 @@ get_header(); ?>
 	            </a>
 	          </h5>
 	          
-	          <div class="post_image <?php the_category_unlinked(' '); ?>">
-	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-                  <?php if ($img_link != "") { ?>
-	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                  <?php } ?>
-	                <span><?php the_category_unlinked(' '); ?></span>
-	              </a>
-	          </div>
-	          <div class="post_content">
-	              
-	
-	              <?php echo strip_tags($content, '<p>'); ?>
-	              <?php //echo $author . $date ?>
-	              
-	              <div class="news_footer">
-	
-	                <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-	                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-	                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
-	
-	              </div> <!-- news_footer -->              
-	
-	
-	          </div>
-	
+	          <div class="post_item">
+	         
+    	          <div class="post_image <?php the_category_unlinked(' '); ?>">
+    	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+                      <?php if ($img_link != "") { ?>
+    	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
+                      <?php } ?>
+    	                <span><?php the_category_unlinked(' '); ?></span>
+    	              </a>
+    	          </div>
+    	          
+    	          <div class="post_content">
+              
+    	              <?php echo strip_tags($content, '<p>'); ?>
+    	              <?php //echo $author . $date ?>
+              	
+    	          </div> <!-- post_content -->
+
+	          </div> <!-- post_item -->
+	          
+            <div class="news_footer">
+	            <span><?php echo $author . $date ?></span>
+              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+            </div> <!-- news_footer -->
+            	
 	        </li>
 	
 	  		<?php endwhile; ?>

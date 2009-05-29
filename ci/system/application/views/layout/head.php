@@ -163,7 +163,7 @@ if ($ie6 == FALSE)
     <p>
       <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
       <span class="right">
-        <a href="http://lamula.pe/crear-blog/">crea tu blog</a> |
+        <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
         <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
       </span>
     </p>

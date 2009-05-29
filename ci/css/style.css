@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:8888/shrekcms/ci/css/style.css
 	http://lamula.pe/mulapress/ci/css/style.css
+	http://lamula.pe/wp-content/bp-themes/bpskeletonmember/style.css
 */
 
 body {
@@ -17,12 +18,21 @@ div#notice {
 	background-color: #fff351;
 	text-align: center;
 	font: 0.9em "Lucida Grande", Lucida, Verdana, sans-serif;
+	border: 1px solid #b1a931;
 }
 
+.create_user div#notice {
+	margin-top: 0px;
+	margin-bottom: 11px;
+}
 
 a {
 	color: #fe008a;;
 	text-transform: lowercase;
+}
+
+a:hover {
+	color: black;
 }
 
 div#wrapper {
@@ -38,43 +48,55 @@ div#wrapper {
 
 
 div#top_menu {
-	
-	background-color: #000;
 	color: #040707;
 	overflow: hidden;	
 	font-size: 0.8em;
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 	height: 30px;
-	padding-top: 5px;
+	padding-top: 10px;
+	background: #202020 url(images/background-top.gif) repeat-x;
 }
 
+#top_menu p {
+
+}
+
+#top_menu p span.right {
+	float: right;
+	margin-right:20px ;
+}
+
+#top_menu p span.right a {
+	display: block;
+	float: left;
+	background-color: #5a5a5a;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff9a5;
+	height: 20px;
+	margin-right: 10px;
+	border-top: 1px solid #757575;
+
+}
 
 div#top_menu p span.left {
 	float: left;
 	margin-left: 20px;
-	margin-top: 5px;
 	color: #fff;
+	margin-top: 3px;
+	display: block;
+	height: 30px;
 }
 
-div#top_menu p span.right {
-	float: right;
-	margin-right: 20px;
-	margin-top: 5px;
-}
-
-
-#top_menu p span.right a {
-	text-decoration: underline;
-	color: #fff9a5;
-}
 
 #top_menu p span.right a:hover {
 	color: #fff;
+	background-color: #0085cf;
+	border-top: 1px solid #277dff;
 }
 
 /* @end */
-
-
 
 /* @group Logo Header */
 
@@ -103,7 +125,8 @@ h1 a{
 div#wrapper h2 {
 	
 	font-size: 2.5em;
-	margin-top: 0.5em;
+	margin-top: 0.2em;
+	margin-bottom: 0.5em;
 }
 
 /* @group Search Bar */
@@ -148,7 +171,8 @@ p#site_stats {
 	color: white;
 	width: 200px;
 	display: block;
-	margin-top: 60px;	
+	margin-top: 60px;
+	background-image: url(images/background-yellow.png);
 }
 
 #search_bar ul li {
@@ -186,8 +210,9 @@ ul#menu {
 	width: 720px;
 	text-transform: lowercase;
 	font-size: 1.4em;
-	margin: 1em auto;
-
+	margin: 0em auto;
+	-moz-border-radius:5px;
+	-webkit-radius-border:5px;
 }
 
 ul#menu > li {
@@ -203,22 +228,30 @@ ul#menu ul li.current {
 	height: 40px;
 	color: #000;
 	text-decoration: none;
-	background-color: #f6f75d;
 	padding-top: 0.8em;
 	padding-right: 8px;
 	display: block;
-
+	background: #f6f75d url(images/background-yellow.png) 0 -34px;
 }
 
-ul#menu > li a:hover {
-	background-color: #f6ec00;
+div#menu_container {
 
+	background: white;
+	padding: 10px;
+	margin-bottom: 1em;	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;	
+}
+
+
+ul#menu > li a:hover {
+	background: #f6ec00 0 -34px;
 }
 
 ul#menu > li.selected a {
 
 	color: #5b0332;
-	background-color: #f3f200;
+	background: white url(images/background-white.png) repeat-x 0 -15px;
 }
 
 /* @end */
@@ -231,9 +264,38 @@ div#content.login_form {
 
 	width: 250px;
 	margin: 0px auto;
-	background-color: #f6ec00;
 	padding: 15px;
 	border: 5px solid #000;
+	background: #f6ec00 url(images/background-yellow.png) repeat-x 0 bottom;
+}
+
+div#content.login_form.create_user {
+	width: 520px;
+}
+
+div#main_data_fields {
+	float: left;
+	width: 250px;
+}
+
+#content div.info form.log fieldset {
+	overflow: auto;
+}
+
+div#secondary_data_fields {
+	float: left;	
+	width: 230px;
+	margin-left: 30px;
+}
+
+div#secondary_data_fields input {
+	width: 220px !important;
+	border: 1px solid #000;
+}
+
+input:focus {
+	background-color: #faff5e;
+
 }
 
 div#content.login_form h3 {
@@ -258,10 +320,14 @@ div#content.login_form input#url,
 div#content.login_form input#password_check,
 div#content.login_form input#dni,
 div#content.login_form input#telefono {
-	border: 0;
 	padding: 5px;
 	margin-bottom: 10px;
 	width: 240px;
+	border: 1px solid #000;
+}
+
+#content div.info form.log a {
+	margin: 10px;
 }
 
 div#content.login_form div.error {
@@ -377,11 +443,21 @@ div#content div#text_content {
 	margin-right: 10px;
 	background-color: white;
 	padding: 20px;
+	-webkit-border-radius: 5px;
+	-mozilla-border-radius: 5px;	
+}
+
+div#text_content h3 {
+	font-size: 2em;
+	letter-spacing: -3px;
+	word-spacing: 5px;
 }
 
 div#content div#sidebar_content {
 	float: right;
 	width: 200px;
+	background: white repeat-x 0 bottom;
+	padding: 5px;
 }
 
 #content form.form {
@@ -393,13 +469,13 @@ div#content fieldset#categories span {
 	clear: both;
 	display: block;
 	margin-bottom: 0.3em;
-	background-color: #fff351;
 	padding: 15px;
+	background: url(images/background-yellow.png) repeat-x 0;
 }
 
 div#content fieldset#categories span:hover {
-	background-color: #fff9a5;}
-
+	background: url(images/background-yellow.png) repeat-x 0 bottom;
+}
 div.error {
 	margin: 10px 0px;
 	color: red;
@@ -460,13 +536,13 @@ object#SWFUpload_0.swfupload {
 
 fieldset#localizar div.ui-tabs-panel,
 #upload-content div.ui-tabs-panel {
-	padding: 10px;
-	background-color: #fff351;	border: 0px;
+	padding: 10px;	border: 0px;
 	-webkit-border-radius: 0px;
 	-mozilla-border-radius: 0px;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	margin-bottom: 1em;
 	width: 390px;
+	background: #fff351 url(images/background-yellow.png) 0 bottom;
 }
 
 fieldset#localizar div.ui-tabs-panel {
@@ -491,11 +567,16 @@ fieldset#localizar div.ui-tabs-panel select,
 	padding: 0px 5px;
 	border: none; 
 	margin: 0px;
-	background: #fff9a5;
 	font-weight: normal; 
 	color: red; 
 	outline: none;
 	font-family: Georgia, "Times New Roman", Times, serif;
+	background: url(images/background-yellow.png) 0 -16px;
+}
+
+#localizar .ui-state-default:hover, #localizar .ui-widget-content .ui-state-default:hover,
+#upload-content .ui-state-default:hover, #upload-content .ui-widget-content .ui-state-default:hover {
+	background: url(images/background-lightblue.png) 0 bottom;
 }
 
 #localizar .ui-state-active, .ui-widget-content .ui-state-active,
