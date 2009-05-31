@@ -142,10 +142,13 @@ class Fotos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
+			$data['ret'] = $this->input->post('ret');
+			
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
+			$data['texto'] = $this->input->post('textos');
+
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 
 			$data['categorias'] = $this->combofiller->categorias();
@@ -197,7 +200,7 @@ class Fotos extends DI_Controller {
 			}
 					
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = set_value('pais');				
+			$data['paices_selected'] = $this->input->post('pais');				
 			
 			$data['form'] = $this->form;			
 
@@ -366,11 +369,13 @@ class Fotos extends DI_Controller {
 				$where['id'] = $id;
 				//@_@
 				$this->post->actualizar($data, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
 				redirect('fotos/formulario/' . $id);
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
+				$this->session->set_flashdata('notice', 'Nota enviada exitosamente');	
 				redirect('fotos/formulario');
 			}
 			else

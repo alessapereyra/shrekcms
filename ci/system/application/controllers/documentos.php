@@ -15,6 +15,7 @@ class Documentos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 		//$data['ie6'] = $this->_is_ie6();
 		
@@ -45,7 +46,87 @@ class Documentos extends DI_Controller {
 	
 	function _show($id, $data)
 	{
-		return $data;
+		$this->load->model('post');
+		$this->load->model('postmeta');
+		$this->load->model('terms');
+		include('system/application/libraries/Simplehtml.php');
+		
+		
+		//Consigo los datos basico
+		$post = $this->post->seleccionar(array('ID' => $id));
+		$post = $post->result_array();
+		$post = current($post);
+	
+		$data['id'] = $post['ID'];
+		$data['titulo'] = $post['post_title'];
+		
+		$html = str_get_html($post['post_content']);
+		//die($post['post_content']);
+		$ret = $html->find('img',0);
+		
+		if ($ret == NULL)
+		{
+			$data['ret'] = TRUE;
+			$data['texto'] = $post['post_content'];
+		}
+		else
+		{
+			$data['ret'] = $ret->outertext;	
+			$data['texto'] = $html->plaintext;
+		}
+		
+		//Consig los tags
+		$tags = $this->terms->get_tags($id);
+		$tags = $tags->result_array();
+		$tmp = NULL;
+		foreach($tags as $tag)
+		{
+			$tmp[] = $tag['name'];	
+		}
+		if ($tmp != NULL)
+		{
+			$data['tags'] = implode(', ', $tmp);
+		}
+		
+		$cats = $this->terms->get_postcategories($id);
+		if ($cats != NULL)
+		{
+			foreach($cats as $key => $value)
+			{
+				$categorias_selected[] = $key;
+			}
+		}
+					
+		if (isset($categorias_selected))
+		{
+			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+		}
+		
+		$customs = $this->postmeta->get_metas($id);
+		
+		if (array_key_exists('pais', $customs))
+		{
+			$data['paices_selected'] = $customs['pais'];
+		}
+		
+		if (array_key_exists('departamento', $customs))
+		{	
+			$data['departamentos_selected'] = $customs['departamento'];
+			$data['provincias'] = $this->combofiller->providences($customs['departamento'], TRUE);
+		}
+
+		
+		if (array_key_exists('provincia', $customs))
+		{
+			$data['provincias_selected'] = $customs['provincia'];
+			$data['distritos'] = $this->combofiller->distrits($customs['provincia'], TRUE);
+		}
+		
+		if (array_key_exists('distrito', $customs))
+		{
+			$data['distritos_selected'] = $customs['distrito'];
+		}		
+		return $data;		
 	}
 			
 	function actualizar($ie = NULL)
@@ -61,10 +142,13 @@ class Documentos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
+			$data['ret'] = $this->input->post('ret');
+			
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
+			$data['texto'] = $this->input->post('textos');
+
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 			
 			$data['categorias'] = $this->combofiller->categorias();
@@ -116,7 +200,7 @@ class Documentos extends DI_Controller {
 			}			
 					
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = set_value('pais');				
+			$data['paices_selected'] = $this->input->post('pais');				
 			
 			$data['form'] = $this->form;			
 			
@@ -135,7 +219,17 @@ class Documentos extends DI_Controller {
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			
+			if ($this->input->post('id') == NULL)
+			{
+				$data['post_content'] = $this->input->post('textos');
+			}
+			else
+			{
+				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
+				
+				//$data['post_content'] = $this->input->post('textos');
+			}
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -205,7 +299,7 @@ class Documentos extends DI_Controller {
 				break;
 			}
 			
-			//$data['post_content'] = $data['post_content'];
+			$data['post_content'] = $data['post_content'] . '';
 			
 			//Debo armar el texto con las img
 			$data['tags'] = $this->input->post('tags');
@@ -254,9 +348,13 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
+				//@_@
 				$this->post->actualizar($data, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				redirect('documentos/formulario/' . $id);
 			}
 
+			$this->session->set_flashdata('notice', 'Nota enviada exitosamente');	
 			redirect('documentos/formulario');			
 			
 		}			

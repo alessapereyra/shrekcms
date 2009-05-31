@@ -7,9 +7,10 @@ class Articulos extends DI_Controller {
 		{
 			$id = NULL;
 		}
+		
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
-		$data['texto'] = NULL;
+		$data['textos'] = NULL;
 		$data['tags'] = NULL;
 		$data['photolink'] = NULL;
 		$data['files'] = NULL;
@@ -57,17 +58,20 @@ class Articulos extends DI_Controller {
 	
 		$data['id'] = $post['ID'];
 		$data['titulo'] = $post['post_title'];
-		$data['texto'] = $post['post_content'];
+		$data['textos'] = $post['post_content'];
 		
 		$html = str_get_html($post['post_content']);
 		$ret = $html->find('img',0);
+		
 		if ($ret == NULL)
 		{
-			$data['ret'] = TRUE;	
+			$data['ret'] = TRUE;
+			$data['textos'] = $post['post_content'];
 		}
 		else
 		{
-			$data['ret'] = FALSE;	
+			$data['ret'] = $ret->outertext;	
+			$data['textos'] = $html->plaintext;
 		}
 		
 		//Consig los tags
@@ -135,10 +139,13 @@ class Articulos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
+			$data['ret'] = $this->input->post('ret');
+			
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
+			$data['textos'] = $this->input->post('textos');
+			
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 
 			$data['categorias'] = $this->combofiller->categorias();			
@@ -196,16 +203,28 @@ class Articulos extends DI_Controller {
 		}
 		else
 		{
+			$this->load->model('term_taxonomy');
+			$this->load->model('terms');
 			$this->load->model('post');
 			$this->load->model('postmeta');
-			$this->load->model('terms');
 			$this->load->model('term_relationships');
-			$this->load->model('term_taxonomy');
+			
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
+			
 			//die($this->input->post('texto'));
-			$data['post_content'] = $this->input->post('texto');
+			if ($this->input->post('id') == NULL)
+			{
+				$data['post_content'] = $this->input->post('textos');
+			}
+			else
+			{
+				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
+				
+				//$data['post_content'] = $this->input->post('textos');
+			}
+
 			$data['tags'] = $this->input->post('tags');
 			
 			switch ($this->input->post('upload-content'))
@@ -291,6 +310,8 @@ class Articulos extends DI_Controller {
 					
 				break;
 			}
+			
+			$data['post_content'] = $data['post_content'] . '';
 						
 			//consigue los id de las cata
 			$categorias = $this->combofiller->categorias();
@@ -335,12 +356,14 @@ class Articulos extends DI_Controller {
 			{
 				$where['id'] = $id;
 				$this->post->actualizar($data, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				redirect('articulos/formulario/' . $id);
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
 
-        $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
+       		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
 				redirect('articulos/formulario');
 
 			}

@@ -15,6 +15,8 @@
 		{
 			echo form_hidden('id', $id);					
 		}
+		
+		echo $this->session->flashdata('notice');
 	?>
 	
 	<div id="text_content">
@@ -62,9 +64,8 @@
 	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
 	  		</div>
   	</div>
-  	<?php } else { ?>
-		<?php echo form_hidden('ret', $ret); ?>
-	<?php } ?>	  	
+  	<?php }?>
+	<?php echo form_hidden('ret', $ret); ?>
 
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>
