@@ -8,8 +8,8 @@ body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
 	color: #3b3330;
+	background-color: #cddaff;
 }
 
 a {
@@ -557,7 +557,7 @@ div#content_feed ul li a {
 	-moz-border-top-right-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-top-right-radius: 10px;
-
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
 .inner div#content_feed ul li a {
@@ -627,7 +627,7 @@ div#content_feed ul#post_list li {
 
 #post_list li div.post_content {
 	float: left;
-	width: 270px;	
+	width: 400px;	
 }
 
 .inner #post_list li div.post_content {
@@ -702,6 +702,7 @@ div#content_feed ul#post_list li {
 	width: 150px;
 	margin-right: 10px;
 	margin-top: 3px;
+	display: none;
 }
 
 #post_list li div.post_image a {
@@ -750,7 +751,7 @@ div#content_feed ul#post_list li {
 
 #post_list li div.post_image a span {
 	text-indent:  -9000em;
-	display: block;
+	display: none;
 }
 
 #post_list li div.post_image a img{
@@ -884,10 +885,9 @@ div#sidebars p a {
 div#sidebars div#sidebar_central {
 	width: 210px;
 	float: left;
-	background-color: #fcf270;
+	background-color: #feff3a;
 	overflow: hidden;
 	margin-bottom: 2em;
-	background-image: url(images/background-yellow.png);
 }
 
 div#content.inner.author div#sidebars div#sidebar_central{
@@ -948,7 +948,7 @@ div#sidebars div#sidebar_recomendados h4	{
 }
 
 #sidebar_central ul.bloggers_list li:hover {
-		background-color: #ffe250;
+		background-color: rgba(255,252,0,0.69);
 		cursor: pointer;
 		color: black;
 
@@ -1167,7 +1167,6 @@ div#sidebars div#sidebar_recomendados {
 	width: 200px;
 	float: right;
 	color: #f23e00;
-	background-color: #d7eafa;
 	padding: 5px 5px;
 }
 

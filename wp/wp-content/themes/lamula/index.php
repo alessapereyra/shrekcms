@@ -24,8 +24,8 @@ get_header(); ?>
 
               <?php 
                     $content = get_the_content();
-                    $content = apply_filters('the_content', $content);
-                    $content = str_replace(']]>', ']]&gt;', $content);  
+            //        $content = apply_filters('the_content', $content);
+            //        $content = str_replace(']]>', ']]&gt;', $content);  
                     $content = snippet($content,235);
                     $content = strip_tags($content, '<p>');            
                     $row = NULL;

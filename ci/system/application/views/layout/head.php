@@ -183,7 +183,7 @@ if ($ie6 == FALSE)
  
          	<?php if ($log) : ?>
     				<ul>
-    					<li><a href="<?php echo "http://lamula.pe/mulapress/author/" . $user_name ?>" >Ver Perfil</a></li>
+    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >Ver Perfil</a></li>
     					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
     				</ul>
     			<?php endif; ?>		
