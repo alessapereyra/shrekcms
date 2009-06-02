@@ -246,7 +246,6 @@ class Videos extends DI_Controller {
 		     
   			 	$tmp = '<img rel="from_video" class="alignnone fromvideo" src="' . $photo_url . '" />';
   				$tmp .= '[youtube]' . $url . '[/youtube]';
-  				$tmp .= 'Ver video de ' . $this->input->post('titulo');
   				$tmp .= '<br />'; 
   				$data['post_content'] .= $tmp;
 					

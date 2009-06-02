@@ -13,7 +13,7 @@ body {
 }
 
 a {
-	color: #fe008a;
+	color: #1258b9;
 }
 
 #content_feed dl dd a {
@@ -348,8 +348,14 @@ div#top_news div#top_news_featured {
 div#top_news div#top_news_featured img {
 	
 	margin-top: 0em;
-	
+	width: 200px;
 	float: left;
+}
+
+div#top_news_featured_companion_text {
+	float: left;
+	width: 270px;
+	font-size: 1.2em;
 }
 
 div#top_news div#top_news {
@@ -428,7 +434,7 @@ div#top_news_media {
 	overflow: hidden;
 	float: left;
 	width: 200px;
-	height: 180px;
+	height: 160px;
 	margin-right: 10px;
 }
 
@@ -474,6 +480,10 @@ a#leer_mas_footer,
 	float: left;
 }
 
+div.top_news_featured_footer p.comments a  {
+	font-size: 1.2em;
+	margin-top: 0.7em;
+}
 
 div#top_news_featured a#leer_mas_footer {
 	display: block;
@@ -556,13 +566,13 @@ div#content {
 	word-spacing: 0;
 	display: block;
 	margin-bottom: 10px;
-	color: #df0b7a;	
+	color: #1258b9;	
 }
 
 #post_list li div.news_footer span a,
 #post_list li div.news_footer span strong,
 #post_list li div.news_footer span small {
-	color: #df0b7a !important;	
+	color: #1258b9;	
 	padding: 0px;
 	display: inline;
 	background: none;
@@ -689,15 +699,11 @@ div#content_feed ul#post_list li {
 
 	font: 0.9em/1.3px "Lucida Grande", Lucida, Verdana, sans-serif;
 	line-height: 1.5em;
-	margin-top: 1em;
 	clear: right;
-	float: left;
-	width: 250px;
 }
 
 #post_list li div.post_content p {
 	margin-bottom: 1em;
-	margin-top: 1em;
 	font-size: 0.9em;
 }
 
@@ -772,9 +778,11 @@ div#content_feed ul#post_list li {
 #post_list li div.post_image {
 	float: left;
 	width: 150px;
+	height: 100px;
 	margin-right: 10px;
 	margin-top: 3px;
 	clear: both;
+	overflow: hidden;
 }
 
 #post_list li div.post_image a {
@@ -830,6 +838,17 @@ div#content_feed ul#post_list li {
 #post_list li div.post_image a img{
 	width: 150px;
 	overflow: hidden;
+}
+
+#post_list li div.post_item div.post_companion_content {
+	float: left;
+	width: 260px;
+	height: 100px;
+	overflow: hidden;
+}
+
+#post_list li div.news_footer {
+	margin-top: 0.5em;
 }
 
 
@@ -906,6 +925,7 @@ div#content_feed ul li h5 a {
 	letter-spacing: -2px;
 	word-spacing: 2px;
 	font: 1.0em Georgia, "Times New Roman", Times, serif;
+	margin-bottom: 0.3em;
 }
 
 div#content_feed ul li h5 a:hover {
@@ -1300,6 +1320,8 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 	clear: both;
 	display: block;
 	margin-top: 10px;
+	background-color: #eee;
+	padding: 2px 8px;
 }
 
 #post_list li div.news_footer a.leer_mas_footer,
@@ -1366,7 +1388,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 #top_news  div.ratingblock {
 	float:left;
 	margin-bottom: 0px;
-	margin-top: 2px;
+	margin-top: 5px;
 	margin-left: 0px;
 	padding: 0px;
 	clear: none;
@@ -1383,6 +1405,11 @@ div#content.inner ul#post_list li h5 a {
 
 div#content.inner ul#post_list div.post_content p span {
 	font-size: 1.1em;
+}
+
+div#content.inner ul#post_list div.post_content p span.vvqbox.vvqyoutube {
+	display: block;
+	margin-bottom: 2em;
 }
 
 #post_list li div.post_item {
@@ -1574,3 +1601,7 @@ textarea#comment {
 
 
 /* @end */
+
+div#top_news_featured_content {
+	overflow: auto;
+}
