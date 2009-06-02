@@ -28,12 +28,33 @@ get_header(); ?>
                     //get_the_time('g:i a')
                     
               ?>
-              <h6 class="metadata">enviado por <?php the_author_posts_link() ?> publicado a las <?php the_time('g:i a'); ?> </h6>
+              <h6 class="metadata">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> publicado a las <?php the_time('g:i a'); ?> </h6>
               
               <?php the_content(); ?>
               
               <div class="news_footer">
-
+                <p class="tags"><!-- Include the Google Friend Connect javascript library. -->
+                <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+                <!-- Define the div tag where the gadget will be inserted. -->
+                <div id="div-8568675974817128026" style="width:100%;"></div>
+                <!-- Render the gadget into a div. -->
+                <script type="text/javascript">
+                var skin = {};
+                skin['HEIGHT'] = '21';
+                skin['BUTTON_STYLE'] = 'compact';
+                skin['BUTTON_TEXT'] = 'Me gusta';
+                skin['BUTTON_ICON'] = 'default';
+                google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+                google.friendconnect.container.renderOpenSocialGadget(
+                 { id: 'div-8568675974817128026',
+                   url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
+                   height: 21,
+                   site: '18025864853307811361',
+                   'view-params':{"pageUrl":location.href,"pageTitle":(document.title ? document.title : location.href),"docId":"recommendedPages"}
+                 },
+                  skin);
+                </script>
+                </p>
                 <p class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></p>
                 <p class="tags">Etiquetas: <?php the_tags(); ?></p>
               </div> <!-- news_footer -->              

@@ -3,8 +3,10 @@
  * @package WordPress
  * @subpackage LaMula
  */
-
 get_header(); ?>
+<?php include 'geomula.php' ?>
+
+
 
 <div id="top_news">
   
@@ -24,16 +26,40 @@ get_header(); ?>
 
               <?php 
                     $content = get_the_content();
-                    $content = apply_filters('the_content', $content);
-                    $content = str_replace(']]>', ']]&gt;', $content);  
-                    $content = snippet($content,235);
-                    $content = strip_tags($content, '<p>');            
+                    $html = str_get_html($content);
+                    $img_link = $html->find('img',0)->src;
+
+                    $html->clear(); 
+                    unset($html);
+                    
+            //        $content = apply_filters('the_content', $content);
+            //        $content = str_replace(']]>', ']]&gt;', $content);  
+            //        $content = snippet($content,235);
+            //        $content = strip_tags($content, '<p>');            
                     $row = NULL;
               ?>
+              <div id="top_news_featured_content">
+                
+              <?php if ($img_link != "") { ?>
+                <div id="top_news_media">
+                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+                </div>
 
-              <?php echo $content ?>
+                  <div id="top_news_featured_companion_text">
+                <?php the_excerpt(235); ?>	                  
+                  </div>
+                
+              <?php } 
+              else 
+                  {  ?>
+                    <div id="top_news_featured_text">
+                      <?php the_excerpt(235); ?>	                                       
+                    </div>   
+                <?php  }?>
 
-              <span class="author">Por <?php the_author_posts_link() ?> <em> el <?php the_date('d/m/y'); ?></em></span>
+              </div>
+                              
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em></span>
 
           </p>
 
@@ -50,8 +76,7 @@ get_header(); ?>
         </div> <!-- top_news_featured -->
 
         <div id="top_news">
-
-            <h2>Otras noticias destacadas</h2>
+          
             <div class="top_news_item">
               <h3><a href="#" class="news_item_title">Dr. Computer olvidó el teléfono</a></h3>
               <h4>enviado hace 7 horas por <a href="#">yaraher</a></h4>
@@ -85,24 +110,9 @@ get_header(); ?>
     
 </div> <!-- top_news -->
 
-    
-      <div id="important">
-        
-          <p>
-          
-            <a href="http://lamula.pe/mulapress/ci" class="send_news">
-              
-                publica en lamula.pe
-                <em>  
-                        envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
-                </em>
-            </a>
-            
-          </p>
-        
-      </div>
 
 
+  
 
 <div id="content">
   
@@ -134,12 +144,10 @@ get_header(); ?>
                             $html->clear(); 
                             unset($html);
 
-      	       //             $content = apply_filters('the_content', $content);
-      	       //            $content = str_replace(']]>', ']]&gt;', $content);
-      	         //           $content = snippet($content,235);
-      	  //                  $author = "por <small class='author'> ". get_the_author_posts_link() . "</small>";
+      	                    $content = apply_filters('the_content', $content);
+      	                    $content = str_replace(']]>', ']]&gt;', $content);
+      	                    $content = snippet($content,235);
       	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-      	                    $content =  $content; 
       	              ?>
 	
 	        <li class=<?php echo $row; ?>>
@@ -152,25 +160,31 @@ get_header(); ?>
 	          
 	        <div class="post_item">
 	        
+          <?php if ($img_link != "") { ?>
+
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
+
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-                  <?php if ($img_link != "") { ?>
-	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                  <?php } ?>
+                  <img src="<?php echo $img_link; ?>" alt="" title=""/>
 	                <span><?php the_category_unlinked(' '); ?></span>
 	              </a>
 	          </div>
 	          
-	          <div class="post_content">
-	              
-	              <?php echo strip_tags($content, '<p>'); ?>
-	
+	          <div class="post_companion_content">
+	              <?php the_excerpt(100); ?>		              
 	          </div>
+            <?php } else { ?>
+
+	          <div class="post_content">
+	              <?php the_excerpt(100); ?>	
+	          </div>
+                          
+            <?php } ?>
 	        
-	        </div>
+	        </div> <!-- post_item -->
 	        	          
             <div class="news_footer">
-	            <span>por <?php the_author_posts_link(); ?> <?php echo $date ?></span>
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
@@ -198,109 +212,115 @@ get_header(); ?>
   </div> <!-- todo -->
 
   <div id="bueno" class="class_content">
-  		<?php query_posts('cat=3'); ?>
-	    <ul id="post_list">
-	    
-	    <?php if (have_posts()) : ?>
-	        
-	  		<?php while (have_posts()) : the_post(); ?>
-	
-	        <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
-	
-	        <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
-	
-	        <li class=<?php echo $row; ?>>
-	
-	          <?php 
-                  $content = get_the_content();
-                  $html = str_get_html($content);
-                  $img_link = $html->find('img',0)->src;
-                  // foreach($html->find('img') as $element)
-                  //         $img_link = $element->src;
+   		<?php query_posts('cat=3'); ?>
+  	    <ul id="post_list">
+
+  	    <?php if (have_posts()) : ?>
+
+  	  		<?php while (have_posts()) : the_post(); ?>
+
+  	        <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
+
+  	        <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
+
+  	        <li class=<?php echo $row; ?>>
+
+  	          <?php 
+                   $content = get_the_content();
+                   $html = str_get_html($content);
+                   $img_link = $html->find('img',0)->src;
+                   // foreach($html->find('img') as $element)
+                   //         $img_link = $element->src;
 
 
-                  $html->clear(); 
-                  unset($html);
+                   $html->clear(); 
+                   unset($html);
 
 
-                  
-                  $content = apply_filters('the_content', $content);
-                  $content = str_replace(']]>', ']]&gt;', $content);
-                  $content = snippet($content,235);
-                  $author = "por <small class='author'> ". get_the_author() . "</small>";
-                  $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-                  $content =  $content; 
-            ?>
-  
-	
-	          <h5>
-	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	    				  <?php the_title(); ?>
-	            </a>
-	          </h5>
 
-	          <div class="post_item">
-	           
-	          <div class="post_image <?php the_category_unlinked(' '); ?>">
-	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-                  <?php if ($img_link != "") { ?>
-	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                  <?php } ?>
-	                <span><?php the_category_unlinked(' '); ?></span>
-	              </a>
-	          </div>
-	          <div class="post_content">
-	              	
-	              <?php echo strip_tags($content, '<p>'); ?>
-	              <?php //echo $author . $date ?>	              	
-	
-	          </div>
+                   $content = apply_filters('the_content', $content);
+                   $content = str_replace(']]>', ']]&gt;', $content);
+                   $content = snippet($content,235);
+                   $author = "por <small class='author'> ". get_the_author() . "</small>";
+                   $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+             ?>
 
-	          </div>
-	          
-            <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
-              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
-            </div> <!-- news_footer -->              
-	
-	        </li>
-	
-	  		<?php endwhile; ?>
-	
-	  		<div class="navigation">
-	  			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
-	  			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
-	  		</div>
-	
-	  	<?php else : ?>
-	
-	  		<h2 class="center">No hay noticias</h2>
-	  		<p class="center">Pero puedes buscar algo que te interese</p>
-	  		<?php get_search_form(); ?>
-	
-	  	<?php endif; ?>
-	  	
-	  </ul>
+  	          <h5>
+  	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+  	    				  <?php the_title(); ?>
+  	            </a>
+  	          </h5>
 
-  </div>
-  
+   	        <div class="post_item">
+
+                      <?php if ($img_link != "") { ?>
+
+            	          <div class="post_image <?php the_category_unlinked(' '); ?>">
+
+            	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+                              <img src="<?php echo $img_link; ?>" alt="" title=""/>
+            	                <span><?php the_category_unlinked(' '); ?></span>
+            	              </a>
+            	          </div>
+
+            	          <div class="post_companion_content">
+            	              <?php the_excerpt(100); ?>		              
+            	          </div>
+                        <?php } else { ?>
+
+            	          <div class="post_content">
+            	              <?php the_excerpt(100); ?>	
+            	          </div>
+
+                        <?php } ?>
+
+   	        </div> <!-- post_item -->
+
+
+             <div class="news_footer">
+ 	             <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
+               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+             </div> <!-- news_footer -->              
+
+  	        </li>
+
+  	  		<?php endwhile; ?>
+
+  	  		<div class="navigation">
+  	  			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
+  	  			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
+  	  		</div>
+
+  	  	<?php else : ?>
+
+  	  		<h2 class="center">No hay noticias</h2>
+  	  		<p class="center">Pero puedes buscar algo que te interese</p>
+  	  		<?php get_search_form(); ?>
+
+  	  	<?php endif; ?>
+
+  	  </ul>
+
+   </div>
+
   <div id="malo" class="class_content">
   		<?php query_posts('cat=1'); ?>
-	    <ul id="post_list">
-	    
-	    <?php if (have_posts()) : ?>
-	        
-	  		<?php while (have_posts()) : the_post(); ?>
-	
-	        <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
-	
-	        <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
-	
-	        <li class=<?php echo $row; ?>>
-	
+      <ul id="post_list">
+
+      <?php if (have_posts()) : ?>
+
+    		<?php while (have_posts()) : the_post(); ?>
+
+          <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
+
+          <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
+
+          <li class=<?php echo $row; ?>>
+
             <?php 
                   $content = get_the_content();
                   $html = str_get_html($content);
@@ -311,7 +331,7 @@ get_header(); ?>
 
                   $html->clear(); 
                   unset($html);
-                  
+
                   $content = apply_filters('the_content', $content);
                   $content = str_replace(']]>', ']]&gt;', $content);
                   $content = snippet($content,235);
@@ -320,76 +340,83 @@ get_header(); ?>
                   $content =  $content; 
             ?>
 
-	
-	          <h5>
-	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	    				  <?php the_title(); ?>
-	            </a>
-	          </h5>
-	          
-	          <div class="post_item">
-	          
-	          <div class="post_image <?php the_category_unlinked(' '); ?>">
-	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-                  <?php if ($img_link != "") { ?>
-	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                  <?php } ?>
-	                <span><?php the_category_unlinked(' '); ?></span>
-	              </a>
-	          </div>
-	          <div class="post_content">
-	              	
-	              <?php echo strip_tags($content, '<p>'); ?>
-	              <?php //echo $author . $date ?>
-	              	
-	          </div>
 
-	          </div>	          
+            <h5>
+              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+      				  <?php the_title(); ?>
+              </a>
+            </h5>
+
+  	        <div class="post_item">
+
+                      <?php if ($img_link != "") { ?>
+
+            	          <div class="post_image <?php the_category_unlinked(' '); ?>">
+
+            	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+                              <img src="<?php echo $img_link; ?>" alt="" title=""/>
+            	                <span><?php the_category_unlinked(' '); ?></span>
+            	              </a>
+            	          </div>
+
+            	          <div class="post_companion_content">
+            	              <?php the_excerpt(100); ?>		              
+            	          </div>
+                        <?php } else { ?>
+
+            	          <div class="post_content">
+            	              <?php the_excerpt(100); ?>	
+            	          </div>
+
+                        <?php } ?>
+
+  	        </div> <!-- post_item -->
+
 
             <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
             </div> <!-- news_footer -->
-	
-	        </li>
-	
-	  		<?php endwhile; ?>
-	
-	  		<div class="navigation">
-	  			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
-	  			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
-	  		</div>
-	
-	  	<?php else : ?>
-	
-	  		<h2 class="center">No hay noticias</h2>
-	  		<p class="center">Pero puedes buscar algo que te interese</p>
-	  		<?php get_search_form(); ?>
-	
-	  	<?php endif; ?>
-	  	
-	  </ul>
+
+          </li>
+
+    		<?php endwhile; ?>
+
+    		<div class="navigation">
+    			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
+    			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
+    		</div>
+
+    	<?php else : ?>
+
+    		<h2 class="center">No hay noticias</h2>
+    		<p class="center">Pero puedes buscar algo que te interese</p>
+    		<?php get_search_form(); ?>
+
+    	<?php endif; ?>
+
+    </ul>
 
   </div>
 
   <div id="roca" class="class_content">
   		<?php query_posts('cat=4'); ?>
-	    <ul id="post_list">
-	    
-	    <?php if (have_posts()) : ?>
-	        
-	  		<?php while (have_posts()) : the_post(); ?>
-	
-	        <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
-	
-	        <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
-	
-	        <li class=<?php echo $row; ?>>
-	
-	                      <?php 
+      <ul id="post_list">
+
+      <?php if (have_posts()) : ?>
+
+    		<?php while (have_posts()) : the_post(); ?>
+
+          <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
+
+          <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
+
+          <li class=<?php echo $row; ?>>
+
+                        <?php 
                               $content = get_the_content();
                               $html = str_get_html($content);
                               $img_link = $html->find('img',0)->src;
@@ -407,61 +434,70 @@ get_header(); ?>
                               $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
                               $content =  $content; 
                         ?>
-  
-	          <h5>
-	            <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-	    				  <?php the_title(); ?>
-	            </a>
-	          </h5>
-	          
-	          <div class="post_item">
-	         
-    	          <div class="post_image <?php the_category_unlinked(' '); ?>">
-    	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
-                      <?php if ($img_link != "") { ?>
-    	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                      <?php } ?>
-    	                <span><?php the_category_unlinked(' '); ?></span>
-    	              </a>
-    	          </div>
-    	          
-    	          <div class="post_content">
-              
-    	              <?php echo strip_tags($content, '<p>'); ?>
-    	              <?php //echo $author . $date ?>
-              	
-    	          </div> <!-- post_content -->
 
-	          </div> <!-- post_item -->
-	          
+            <h5>
+              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+      				  <?php the_title(); ?>
+              </a>
+            </h5>
+
+  	        <div class="post_item">
+
+                      <?php if ($img_link != "") { ?>
+
+            	          <div class="post_image <?php the_category_unlinked(' '); ?>">
+
+            	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+                              <img src="<?php echo $img_link; ?>" alt="" title=""/>
+            	                <span><?php the_category_unlinked(' '); ?></span>
+            	              </a>
+            	          </div>
+
+            	          <div class="post_companion_content">
+            	              <?php the_excerpt(100); ?>		              
+            	          </div>
+                        <?php } else { ?>
+
+            	          <div class="post_content">
+            	              <?php the_excerpt(100); ?>	
+            	          </div>
+
+                        <?php } ?>
+
+  	        </div> <!-- post_item -->
+
+
             <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
             </div> <!-- news_footer -->
-            	
-	        </li>
-	
-	  		<?php endwhile; ?>
-	
-	  		<div class="navigation">
-	  			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
-	  			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
-	  		</div>
-	
-	  	<?php else : ?>
-	
-	  		<h2 class="center">No hay noticias</h2>
-	  		<p class="center">Pero puedes buscar algo que te interese</p>
-	  		<?php get_search_form(); ?>
-	
-	  	<?php endif; ?>
-	  	
-	  </ul>
+
+          </li>
+
+    		<?php endwhile; ?>
+
+    		<div class="navigation">
+    			<div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
+    			<div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
+    		</div>
+
+    	<?php else : ?>
+
+    		<h2 class="center">No hay noticias</h2>
+    		<p class="center">Pero puedes buscar algo que te interese</p>
+    		<?php get_search_form(); ?>
+
+    	<?php endif; ?>
+
+    </ul>
 
   </div>
+ 
+  
+  
 
 </div> <!-- content_feed -->
 

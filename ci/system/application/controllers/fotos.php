@@ -297,7 +297,7 @@ class Fotos extends DI_Controller {
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
 
-						$tmp = '<a rel="fancybox" href="' . $photo_data->guid . '">';
+						$tmp = '<a rel="fancybox uploaded_photo" href="' . $photo_data->guid . '">';
 						$tmp .= '<img rel="uploaded_photo" class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
 						$tmp .= '</a>';
 						$tmp .= '<br />';
@@ -310,7 +310,7 @@ class Fotos extends DI_Controller {
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<a rel="fancybox"  href="' . $this->input->post('photolink') . '">';
+					$tmp = '<a rel="fancybox uploaded_photo"  href="' . $this->input->post('photolink') . '">';
 					$tmp .= '<img rel="uploaded_photo" class="alignnone" src="' . $this->input->post('photolink') . '" />';
 					$tmp .= '</a>';
 					$tmp .= '<br />';

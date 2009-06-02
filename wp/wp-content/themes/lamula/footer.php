@@ -7,11 +7,11 @@
     lamula.pe
   </div>
   <!-- Include the Google Friend Connect javascript library. -->
-  <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+  <!-- <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script> -->
   <!-- Define the div tag where the gadget will be inserted. -->
   <div id="div-1974448229986408181"></div>
   <!-- Render the gadget into a div. -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
   var skin = {};
   skin['BORDER_COLOR'] = '#cccccc';
   skin['ENDCAP_BG_COLOR'] = '#e0ecff';
@@ -34,7 +34,7 @@
      'view-params':{"scope":"SITE","allowAnonymousPost":"true","features":"video,comment","showWall":"true"}
    },
     skin);
-  </script>
+  </script> -->
 
 </body>
 </html>

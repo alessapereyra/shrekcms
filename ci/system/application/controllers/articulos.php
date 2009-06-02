@@ -291,7 +291,7 @@ class Articulos extends DI_Controller {
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
 						
-						$tmp = '<br /><a href="' . $photo_data->guid . '">';
+						$tmp = '<br /><a rel="uploaded_image" href="' . $photo_data->guid . '">';
 						$tmp .= '<img rel="uploaded_image" class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
 						$tmp .= '</a>';
 						$tmp .= '<br />';
@@ -302,7 +302,7 @@ class Articulos extends DI_Controller {
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<br /><a href="' . $this->input->post('photolink') . '">';
+					$tmp = '<br /><a rel="uploaded_image" href="' . $this->input->post('photolink') . '">';
 					$tmp .= '<img rel="uploaded_image" class="alignnone" src="' . $this->input->post('photolink') . '" />';
 					$tmp .= '</a>';
 					$tmp .= '<br />';

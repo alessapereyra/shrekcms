@@ -1,4 +1,4 @@
-<?php include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';  ?>
+<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';   ?>
 
 <?php
 
@@ -8,7 +8,7 @@
 
   <div id="sidebars">
     
-  <!--       <div id="important">
+        <div id="important">
           
             <p>
             
@@ -23,7 +23,7 @@
             </p>
           
         </div>
-         -->
+        
 
       <div id="sidebar_central">
         
@@ -210,6 +210,38 @@
                 <div class="sidebox_content">
                     <!-- VOTADOS -->
             
+                    <!-- Include the Google Friend Connect javascript library. -->
+                    <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+                    <!-- Define the div tag where the gadget will be inserted. -->
+                    <div id="div-6886351088514799323" style="width:200px;"></div>
+                    <!-- Render the gadget into a div. -->
+                    <script type="text/javascript">
+                    var skin = {};
+                    skin['BORDER_COLOR'] = 'transparent';
+                    skin['ENDCAP_BG_COLOR'] = 'transparent';
+                    skin['ENDCAP_TEXT_COLOR'] = '#333333';
+                    skin['ENDCAP_LINK_COLOR'] = '#0000cc';
+                    skin['ALTERNATE_BG_COLOR'] = 'transparent';
+                    skin['CONTENT_BG_COLOR'] = 'transparent';
+                    skin['CONTENT_LINK_COLOR'] = '#0000cc';
+                    skin['CONTENT_TEXT_COLOR'] = '#333333';
+                    skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+                    skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+                    skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+                    skin['HEADER_TEXT'] = 'Historias recomendadas';
+                    skin['RECOMMENDATIONS_PER_PAGE'] = '5';
+                    google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+                    google.friendconnect.container.renderOpenSocialGadget(
+                     { id: 'div-6886351088514799323',
+                       url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
+                       site: '18025864853307811361',
+                       'view-params':{"docId":"recommendedPages"}
+                     },
+                      skin);
+                    </script>
+            
+            
+            
                 </div> <!-- sidebox_content -->
           
                 <div class="sidebox_content">
@@ -249,6 +281,36 @@
           </div> <!-- sidebox_wrapper -->
   
         </div> <!-- sidebox -->
+      
+        <div id="friend_connect" class="sidebox">
+          
+          <!-- Include the Google Friend Connect javascript library. -->
+          <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+          <!-- Define the div tag where the gadget will be inserted. -->
+          <div id="div-9068912511230268267" style="width:276px;border:1px solid #cccccc;"></div>
+          <!-- Render the gadget into a div. -->
+          <script type="text/javascript">
+          var skin = {};
+          skin['BORDER_COLOR'] = '#cccccc';
+          skin['ENDCAP_BG_COLOR'] = '#ffffff';
+          skin['ENDCAP_TEXT_COLOR'] = '#333333';
+          skin['ENDCAP_LINK_COLOR'] = '#fe008a';
+          skin['ALTERNATE_BG_COLOR'] = '#ffffff';
+          skin['CONTENT_BG_COLOR'] = '#ffffff';
+          skin['CONTENT_LINK_COLOR'] = '#0000cc';
+          skin['CONTENT_TEXT_COLOR'] = '#333333';
+          skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+          skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+          skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+          skin['NUMBER_ROWS'] = '6';
+          google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+          google.friendconnect.container.renderMembersGadget(
+           { id: 'div-9068912511230268267',
+             site: '18025864853307811361' },
+            skin);
+          </script>
+          
+        </div>
       
         
       </div> <!-- sidebar_recomendados -->
