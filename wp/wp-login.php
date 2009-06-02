@@ -437,6 +437,12 @@ default:
 		if ( !$user->has_cap('edit_posts') && ( empty( $redirect_to ) || $redirect_to == 'wp-admin/' ) )
 			$redirect_to = admin_url('profile.php');
 			//login a ci
+		
+		if ($user->roles[0] != 'administrator')
+		{
+			wp_logout();
+		}		
+		
 		$redirect_too = $redirect_to;
 		include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
 		$ci =& get_instance();
