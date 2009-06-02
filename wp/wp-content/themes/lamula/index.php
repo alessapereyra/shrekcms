@@ -5,6 +5,7 @@
  */
 
 get_header(); ?>
+<?php include 'geomula.php' ?>
 
 <div id="top_news">
   
@@ -24,16 +25,32 @@ get_header(); ?>
 
               <?php 
                     $content = get_the_content();
+                    $html = str_get_html($content);
+                    $img_link = $html->find('img',0)->src;
+
+                    $html->clear(); 
+                    unset($html);
+                    
             //        $content = apply_filters('the_content', $content);
             //        $content = str_replace(']]>', ']]&gt;', $content);  
-                    $content = snippet($content,235);
-                    $content = strip_tags($content, '<p>');            
+            //        $content = snippet($content,235);
+            //        $content = strip_tags($content, '<p>');            
                     $row = NULL;
               ?>
+              <div id="top_news_featured_content">
+                
+              <?php if ($img_link != "") { ?>
+                <div id="top_news_media">
+                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+                </div>
+              <?php } ?>
+                <div id="top_news_featured_text">
+              <?php the_excerpt(235); ?>	                  
+                </div>
 
-              <?php echo $content ?>
-
-              <span class="author">Por <?php the_author_posts_link() ?> <em> el <?php the_date('d/m/y'); ?></em></span>
+              </div>
+                              
+              <span class="author">por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em></span>
 
           </p>
 
@@ -50,8 +67,7 @@ get_header(); ?>
         </div> <!-- top_news_featured -->
 
         <div id="top_news">
-
-            <h2>Otras noticias destacadas</h2>
+          
             <div class="top_news_item">
               <h3><a href="#" class="news_item_title">Dr. Computer olvidó el teléfono</a></h3>
               <h4>enviado hace 7 horas por <a href="#">yaraher</a></h4>
@@ -85,24 +101,7 @@ get_header(); ?>
     
 </div> <!-- top_news -->
 
-    
-      <div id="important">
-        
-          <p>
-          
-            <a href="http://lamula.pe/mulapress/ci" class="send_news">
-              
-                publica en lamula.pe
-                <em>  
-                        envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
-                </em>
-            </a>
-            
-          </p>
-        
-      </div>
-
-
+  
 
 <div id="content">
   
@@ -134,9 +133,9 @@ get_header(); ?>
                             $html->clear(); 
                             unset($html);
 
-      	       //             $content = apply_filters('the_content', $content);
-      	       //            $content = str_replace(']]>', ']]&gt;', $content);
-      	         //           $content = snippet($content,235);
+      	                    $content = apply_filters('the_content', $content);
+      	                    $content = str_replace(']]>', ']]&gt;', $content);
+      	                    $content = snippet($content,235);
       	  //                  $author = "por <small class='author'> ". get_the_author_posts_link() . "</small>";
       	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
       	                    $content =  $content; 
@@ -154,6 +153,7 @@ get_header(); ?>
 	        
 	          <div class="post_image <?php the_category_unlinked(' '); ?>">
 	              <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+
                   <?php if ($img_link != "") { ?>
 	                <img src="<?php echo $img_link; ?>" alt="" title=""/>
                   <?php } ?>
@@ -162,15 +162,14 @@ get_header(); ?>
 	          </div>
 	          
 	          <div class="post_content">
+	              <?php the_excerpt(100); ?>	
 	              
-	              <?php echo strip_tags($content, '<p>'); ?>
-	
 	          </div>
 	        
 	        </div>
 	        	          
             <div class="news_footer">
-	            <span>por <?php the_author_posts_link(); ?> <?php echo $date ?></span>
+	            <span>por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
@@ -259,7 +258,7 @@ get_header(); ?>
 	          </div>
 	          
             <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
+	            <span>por http://lamula.pe/members/<?php the_author(); ?> <?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
@@ -347,7 +346,7 @@ get_header(); ?>
 	          </div>	          
 
             <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
+	            <span>por http://lamula.pe/members/<?php the_author(); ?><?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
@@ -435,7 +434,7 @@ get_header(); ?>
 	          </div> <!-- post_item -->
 	          
             <div class="news_footer">
-	            <span><?php echo $author . $date ?></span>
+	            <span>por http://lamula.pe/members/<?php the_author(); ?><?php echo $date ?></span>
               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
               <a class="rate"><?php wp_gdsr_render_article(); ?></a>

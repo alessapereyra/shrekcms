@@ -144,6 +144,36 @@ class Videos extends DI_Controller {
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
 			$data['tags'] = $this->input->post('tags');
+			
+			
+          $this->load->library('zend');				  
+		      $this->zend->load('Zend/Gdata/YouTube');		
+          $this->zend->load('Zend/Gdata/ClientLogin');	
+
+          $authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
+          $httpClient = Zend_Gdata_ClientLogin::getHttpClient(
+                                                   $username = 'alvaropereyra.storage1@gmail.com',
+                                                   $password = 'vossosalvarox',
+                                                   $service = 'youtube',
+                                                   $client = null,
+                                                   $source = 'LaMulaSRD', // a short string identifying your application
+                                                   $loginToken = null,
+                                                   $loginCaptcha = null,
+                                                   $authenticationURL);     
+
+
+      	 $clientId = "ytapi-AlvaroPereyraRab-WebPublishing-afg0bc0f-0";
+
+         $developerKey = "AI39si77SKdfoJ3spb7HZHe_tUVcOKX_TAn7Fne7BU8ux6ixJ6E8ZdNmZ7UeJs7y3ZGOfVyNAzSe4nYJqIX3Lu7RNryf-dOn9A";
+         $httpClient->setHeaders('X-GData-Key', "key=${developerKey}");
+
+         $applicationId = "SRD-LaMula-1.0";
+
+         $yt = new Zend_Gdata_YouTube($httpClient);
+				  
+		
+
+			
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -187,12 +217,17 @@ class Videos extends DI_Controller {
 					foreach($docs_id as $doc)
 					{
 
-            $tmp = '<br />';
-            $tmp .= '<object width="425" height="350">';
-            $tmp .= '<param name="movie" value="' . $doc . '&autoplay=1"></param>';
-            $tmp .= '<param name="wmode" value="transparent"></param>';
-            $tmp .= '<embed src="'. $doc .'&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"';
-            $tmp .= 'width="425" height="350"></embed>';
+  				  $youtube = substr($doc,31);
+        	  $videoEntry = $yt->getVideoEntry($youtube);
+  	 			  $videoThumbnails = $videoEntry->getVideoThumbnails();
+
+            $photo_url = $videoThumbnails[0]["url"];		    
+
+      		 	$tmp = '<img rel="from_video" class="alignnone fromvideo" src="' . $photo_url . '" />';
+            $tmp .= '<br />';
+            $tmp .= "[youtube]";
+            $tmp .= $doc;
+            $tmp .= '[/youtube]';
                       
 						$data['post_content'] = $tmp . $data['post_content']; 
 					}	
@@ -201,11 +236,19 @@ class Videos extends DI_Controller {
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<a href="' . $this->input->post('doclink') . '">';
-					$tmp .= $this->input->post('titulo');
-					$tmp .= '</a>';
-					$tmp .= '<br />';
-					$data['post_content'] .= $tmp;
+				
+				  $url = $this->input->post('doclink');
+				  $youtube = substr($url,31);
+      	  $videoEntry = $yt->getVideoEntry($youtube);
+	 			  $videoThumbnails = $videoEntry->getVideoThumbnails();
+
+               $photo_url = $videoThumbnails[0]["url"];		    
+		     
+  			 	$tmp = '<img rel="from_video" class="alignnone fromvideo" src="' . $photo_url . '" />';
+  				$tmp .= '[youtube]' . $url . '[/youtube]';
+  				$tmp .= 'Ver video de ' . $this->input->post('titulo');
+  				$tmp .= '<br />'; 
+  				$data['post_content'] .= $tmp;
 					
 				break;
 			}
@@ -306,7 +349,7 @@ class Videos extends DI_Controller {
                                                $password = 'vossosalvarox',
                                                $service = 'youtube',
                                                $client = null,
-                                               $source = 'LaMula', // a short string identifying your application
+                                               $source = 'LaMulaSRD', // a short string identifying your application
                                                $loginToken = null,
                                                $loginCaptcha = null,
                                                $authenticationURL);     
@@ -333,7 +376,7 @@ class Videos extends DI_Controller {
 
      // create a new Zend_Gdata_YouTube_MediaGroup object
      $mediaGroup = $yt->newMediaGroup();
-     $mediaGroup->title = $yt->newMediaTitle()->setText('LaMula');
+     $mediaGroup->title = $yt->newMediaTitle()->setText('LaMula ');
      $mediaGroup->description = $yt->newMediaDescription()->setText('Subido desde LaMula');
 
      $mediaGroup->keywords = $yt->newMediaKeywords()->setText('lamula');
@@ -341,7 +384,7 @@ class Videos extends DI_Controller {
      // the category must be a valid YouTube category
      // optionally set some developer tags (see Searching by Developer Tags for more details)
      $mediaGroup->category = array(
-     $yt->newMediaCategory()->setText('Autos')->setScheme('http://gdata.youtube.com/schemas/2007/categories.cat'),
+     $yt->newMediaCategory()->setText('Entertainment')->setScheme('http://gdata.youtube.com/schemas/2007/categories.cat'),
      );
 
      // set keywords
@@ -355,14 +398,18 @@ class Videos extends DI_Controller {
        
        $newEntry = $yt->insertEntry($myVideoEntry, $uploadUrl, 'Zend_Gdata_YouTube_VideoEntry');
      
+        //returns the video URL and the thumbnail URB
+        getVideoThumbnails();
+     
         if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
         {
-            return htmlspecialchars($this->findFlashUrl($newEntry));
+            //return htmlspecialchars($this->findFlashUrl($newEntry));
+            return htmlspecialchars($newEntry->getVideoWatchPageUrl());
             
         }
         else
         {
-          echo htmlspecialchars($this->findFlashUrl($newEntry));
+          echo htmlspecialchars($newEntry->getVideoWatchPageUrl());
         }     
    
 

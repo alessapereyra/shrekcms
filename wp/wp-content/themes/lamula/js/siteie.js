@@ -4,14 +4,39 @@ $(document).ready(function() {
 	 BACK_STATES = "regresar"
 		 
 		 //fancybox
-		 $('div.post_content a[rel="fancybox"]').fancybox({
+		 //fancybox
+		 $('div.post_content a[rel="uploaded_photo"]').fancybox({
 			 'zoomOpacity' : true,
 			 'overlayShow' : true,
 			 'zoomSpeedIn' : 500,
 			 'zoomSpeedOut' : 500			 
 			 
 		 });
+
+		 $('div.post_content a[rel="uploaded_image"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+
 		 
+		 $('div.post_content a[rel="uploaded_audio"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+
+		 $('div.post_content a[rel="uploaded_doc"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
 	
 		$("div.class_content").hide();
 		$("div.class_content:first").show();
@@ -107,12 +132,13 @@ $(document).ready(function() {
 						if ($(this)[0].textContent != BACK){
 				
 							$(this)[0].textContent = BACK;
+							$(this)[0].addClass("current_option");
 				
 						}
 						else {
 				
 							$(this)[0].textContent = childs[0].innerHTML;
-				
+							$(this)[0].removeClass("current_option");				
 						}
 		
 			
@@ -140,13 +166,14 @@ $(document).ready(function() {
 						//TODO: I hate how this works
 						if ($(this)[0].textContent != BACK_STATES ){
 
-							$(this)[0].textContent = BACK_STATES;
+						//	$(this)[0].textContent = BACK_STATES;
+							$(this)[0].addClass("current_option");							
 
 						}
 						else {
 
-							$(this)[0].textContent = childs.children()[0].children()[1].innerHTML;
-
+						//	$(this)[0].textContent = childs.children()[0].innerHTML;
+							$(this)[0].removeClass("current_option");
 						}
 					
 					}

@@ -1,17 +1,45 @@
 $(document).ready(function() {
 	
-	 BACK = "todas"
-	 BACK_STATES = "regresar"
-		 
+	 BACK = "todas";
+	 BACK_STATES = "regresar";
+   from_outside = true;
+	 LAST_STATE = "";
+	
+		//TODO agregarle los nombres de los enlazados.. ahora mismo :D
 		 //fancybox
-		 $('div.post_content a[rel="fancybox"]').fancybox({
+		 $('div.post_content a[rel="uploaded_photo"]').fancybox({
 			 'zoomOpacity' : true,
 			 'overlayShow' : true,
 			 'zoomSpeedIn' : 500,
 			 'zoomSpeedOut' : 500			 
 			 
 		 });
+
+		 $('div.post_content a[rel="uploaded_image"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+
 		 
+		 $('div.post_content a[rel="uploaded_audio"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+
+		 $('div.post_content a[rel="uploaded_doc"]').fancybox({
+			 'zoomOpacity' : true,
+			 'overlayShow' : true,
+			 'zoomSpeedIn' : 500,
+			 'zoomSpeedOut' : 500			 
+			 
+		 });
+
 	
 		$("div.class_content:not(:first)").hide("slow");
 		$("div.tab_content:not(:first)").hide("slow");
@@ -90,6 +118,8 @@ $(document).ready(function() {
 
 						//Hides all the siblings
 						father.siblings().toggle("fast");
+						father.siblings().removeClass("current");
+						$(this).addClass("current");
 			
 						//Shows all the childs "li"
 						childs = father.find("li");
@@ -100,12 +130,13 @@ $(document).ready(function() {
 						if ($(this)[0].textContent != BACK){
 				
 							$(this)[0].textContent = BACK;
-				
+							$(this).addClass("current_option");
+											
 						}
 						else {
 				
 							$(this)[0].textContent = childs[0].innerHTML;
-				
+							$(this).removeClass("current_option");				
 						}
 		
 			
@@ -126,21 +157,26 @@ $(document).ready(function() {
 						if (childs.children().length > 1 ) { 
 
 						father.siblings().toggle("fast");
+						father.siblings().removeClass("current");
+						$("li.s a").removeClass("current_option");
+						$(father.siblings()[0]).addClass("current");
 
 						childs.toggle("fast");
 
 						//Setups get back content
 						//TODO: I hate how this works
-						if ($(this)[0].textContent != BACK_STATES ){
 
-							$(this)[0].textContent = BACK_STATES;
-
+			//				$(this)[0].textContent = BACK_STATES;
+						if (from_outside)
+						{
+								from_outside = false;
+								$(this).addClass("current_option");							
 						}
-						else {
+						else 
+							{
+								from_outside = true;
+							}
 
-							$(this)[0].textContent = childs.children()[0].children()[1].innerHTML;
-
-						}
 					
 					}
 
