@@ -420,7 +420,7 @@ class Fotos extends DI_Controller {
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
 			
-			return NULL;
+			return $error;
 		}	
 		else
 		{			
@@ -484,10 +484,12 @@ class Fotos extends DI_Controller {
 				$to['w'] = $this->options->get_($tmp_size . '_w');
 				$to['h'] = $this->options->get_($tmp_size . '_h');			
 				
+				$filename_medium = NULL;
 				$tmp = $this->_resize($from, $to, $photo, $config);
 				if ($tmp != FALSE)
 				{
 					$the_meta['sizes']['medium'] = $tmp;
+					$filename_medium = $tmp['file'];
 				}
 				
 				//large_size
@@ -499,6 +501,7 @@ class Fotos extends DI_Controller {
 				if ($tmp != FALSE)
 				{
 					$the_meta['sizes']['large'] = $tmp;
+					
 				}
 				//echo 'l: ' . print_r($tmp);
 								
@@ -526,8 +529,9 @@ class Fotos extends DI_Controller {
 			}
 			else
 			{
-				$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
-				echo $the_photo . '#' . $tmp;				
+			  	
+  			$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
+				echo $the_photo . '#' . $tmp . '#' . $this->options->get_('upload_url_path') . $values['guid'] . '#' . $this->options->get_('upload_url_path') . $filename_medium;				
 			}
 		}
 		

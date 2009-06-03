@@ -121,6 +121,19 @@ FileProgress.prototype.setMiniatura = function (status) {
 	this.fileProgressElement.childNodes[0].innerHTML = status;
 };
 
+FileProgress.prototype.insertImage = function (filename, thumb) {
+
+	tmp = '<br /><a rel="uploaded_image" href="' + thumb + '">';
+	tmp += '<img rel="uploaded_image" class="alignnone size-medium wp-image-1" src="' + filename + '" />';
+	tmp += '</a>';
+	tmp += '<br />';
+
+	tinyMCE.activeEditor.setContent(tmp);	
+
+};
+
+
+
 // Show/Hide the cancel button
 FileProgress.prototype.toggleCancel = function (show, swfUploadInstance) {
 	this.fileProgressElement.childNodes[0].style.visibility = show ? "visible" : "hidden";

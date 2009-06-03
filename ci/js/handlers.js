@@ -11,6 +11,7 @@ The FileProgress class is not part of SWFUpload.
    package.  They are part of my application.  Without these none
    of the actions SWFUpload makes will show up in my application.
    ********************** */
+
 function fileQueued(file) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
@@ -115,9 +116,21 @@ function uploadSuccess(file, serverData, receivedResponse) {
 			
 			tmp = tmp.split("#");
 			
-			if (tmp[1] != undefined){ progress.setMiniatura(tmp[1]); }	
-			
+			if (tmp[1] != undefined){ 
+				
+				progress.setMiniatura(tmp[1]); 
+				progress.insertImage(tmp[2],tmp[3]); 
+				
+			}	
+			// else {
+			// 	
+			// 	progress.insertMedia(tmp[0]);
+			// 	
+			// }
 			miinput.value = miinput.value + '-' + tmp[0];
+			
+			
+			
 		}
 		
 
@@ -179,9 +192,11 @@ function uploadError(file, errorCode, message) {
 }
 
 function uploadComplete(file) {
+
 	if (this.getStats().files_queued === 0) {
 		//document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}
+
 }
 
 // This event comes from the Queue Plugin

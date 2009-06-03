@@ -54,7 +54,10 @@
   
   <div id="top_menu">
     <p>
-      <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
+      <span class="left">
+        <a href="#">&iquest;qui&eacute;nes somos?</a>
+        <a href="#">&iquest;qu&eacute; es &eacute;sto?</a>
+      </span>
       <span class="right">
         <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>
         <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
@@ -72,7 +75,10 @@
   
       <div id="logo_bar">
 
-        <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
+        <div id="logo">
+          <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
+          <strong><?php twitter_messages('mulastatus', 1, false, false, false , true, false, false); ?></strong>
+        </div>
     
         <div id="search_bar">
             <form action="#">
@@ -82,9 +88,3 @@
         </div> <!-- search_bar -->
       
       </div> <!-- logo_bar -->
-  
-      <div id="status_bar">
-          <h2 id="status">lamula est&aacute;... <strong><?php twitter_messages('mulastatus', 1, false, false, '#', true, false, false); ?></strong></h2>        
-          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
-      </div> <!-- status_bar -->
-  
