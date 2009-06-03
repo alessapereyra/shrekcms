@@ -194,6 +194,69 @@ function get_most_voted()
 	return $wpdb->get_results(implode(' ', $sql));
 }
 
+function get_blogs()
+{
+	global $wpdb;
+	$sql['select'] = 'SELECT wp_blogs.blog_id, wp_bp_user_blogs.user_id';
+	$sql['from'] = 'FROM wp_blogs join wp_bp_user_blogs 
+                  ON wp_blogs.blog_id = wp_bp_user_blogs.blog_id';
+  $sql['where'] = "WHERE public = '1' AND archived = '0' AND mature = '0' AND 
+                         spam = '0' AND deleted = '0' AND
+                         last_updated >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 DAY)";
+	$sql['order_by'] = 'ORDER BY last_updated DESC';
 
+  $blogs = $wpdb->get_results(implode(' ', $sql));
+
+  	  	
+  	if ($blogs) {
+  		foreach ($blogs as $blog) {
+
+        $author = $wpdb->get_row("SELECT wp_users.nicename 
+                                  FROM $wpdb->users 
+                                  WHERE wp_users.user_id = $blog->user_id");
+
+  			$blogOptionsTable = "wp_".$blog->blog_id."_options";
+  		  $blogPostsTable = "wp_".$blog->blog_id."_posts";
+  		  
+  			$options = $wpdb->get_results("SELECT option_value 
+  			                               FROM $blogOptionsTable 
+  			                               WHERE option_name IN ('siteurl','blogname') 
+  				                             ORDER BY option_name DESC");
+
+  			$thispost = $wpdb->get_results("SELECT id, post_title, guid
+  				                              FROM $blogPostsTable 
+  				                              WHERE post_status = 'publish' 
+  				                                    AND post_type = 'post'  				                              ORDER BY id DESC 
+  				                              LIMIT 0,1");
+
+  			if($thispost) {		  			
+  			  
+  			  $current_post = current($thispost);
+  			  
+  			  // die(print_r($thispost));
+
+          echo "<li>";
+          echo "<h4>en " . $options[1]->option_value . ", " . $author->user_login . "  escribe</h4>";
+          echo "<div class='blogger_avatar'></div>";
+          echo "<div class='blogger_last_post_content'>";
+          echo "<h5><a href='". $current_post->guid . "' title='Enlace al articulo'> " . $current_post->post_title . " </a></h5>";
+
+          $content = $current_post->post_content;
+
+          $content = apply_filters('the_content', $content);
+          $content = str_replace(']]>', ']]&gt;', $content);
+          $content = snippet($content,235);
+                
+          echo $content;
+          echo "</div>";
+          echo "</li>";
+            	
+  					
+  			}
+ 
+  		}
+  	
+  	}
+}
 
 ?>

@@ -500,27 +500,24 @@ get_header(); ?>
 
   </div>
  
-  <div id="bloggers_box">
-    
-    <ul>
+  <!-- navigator --> 
+  <div class="navi"></div> 
 
-      <li>
-        <h4>en el Utero de Marita, ocram escribe </h4>
-        <div class="blogger_avatar">  
-          <img src=""></img>
-        </div>
-        <div class="blogger_last_post_content">
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-             Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        </div>
-      </li>
+  <!-- prev link --> 
+  <a class="prev"></a>
+ 
+  <div id="bloggers_box" class="scrollable">
+        
+    <ul class="items">
+
+      <?php get_blogs(); ?>
       
     </ul>
     
   </div>
   
+  <!-- next link --> 
+  <a class="next"></a>
 
 </div> <!-- content_feed -->
 
