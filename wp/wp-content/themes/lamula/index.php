@@ -81,12 +81,14 @@ get_header(); ?>
             	<?php $post = get_most_voted();
             	$links = current($post); ?>
 	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
-	              <h4>publicado el <?php echo $links->post_date; ?> por <?php echo $links->user_nicename; ?></h4>					
+	              <h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>" ><?php echo $links->user_nicename; ?></a></h4>					
             </div>
 
             <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Rendicion De Cuentas de Comite Expoferia Pacasmayo ¿ Un Cuentazo?</a></h3>
-              <h4>publicado hace 7 horas por <a href="#">dientuki</a></h4>
+            	<?php $post = kf_get_posts_by_hits(7,1,false);
+            	$links = current($post); ?>
+	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
+					<h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>"><?php echo $links->user_nicename; ?><a></h4>            	
             </div>
 
             <div class="top_news_item">
