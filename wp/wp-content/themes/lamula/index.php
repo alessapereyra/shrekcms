@@ -6,21 +6,25 @@
 get_header(); ?>
 <?php include 'geomula.php' ?>
 
-
-
 <div id="top_news">
   
   <div id="top_news_content">
 
-        <div id="top_news_featured">
+             	<?php
+            	$post = kf_get_posts_by_hits(7,1,false);
+            	$most_viewed = current($post);
+            	$post = get_blog_special();
+            	$blog_special = current($post);
+            	$post = get_blog_random();
+            	$blog_random = current($post); ?>            	          	      
 
           <?php  
            // $featured_query = new WP_Query('category_name=featured&showposts=2');
-           $featured_query = new WP_Query('showposts=1&category_name=featured');
+           $featured_query = new WP_Query('showposts=1');
            while ($featured_query->have_posts()) : $featured_query->the_post();
            $do_not_duplicate = $post->ID;
            ?>
-
+		<div id="featured" class="top_news_featured">
           <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
           <p>
 
@@ -30,29 +34,24 @@ get_header(); ?>
                     $img_link = $html->find('img',0)->src;
 
                     $html->clear(); 
-                    unset($html);
-                    
-            //        $content = apply_filters('the_content', $content);
-            //        $content = str_replace(']]>', ']]&gt;', $content);  
-            //        $content = snippet($content,235);
-            //        $content = strip_tags($content, '<p>');            
+                    unset($html);          
                     $row = NULL;
               ?>
-              <div id="top_news_featured_content">
+              <div class="top_news_featured_content">
                 
               <?php if ($img_link != "") { ?>
-                <div id="top_news_media">
+                <div class="top_news_media">
                   <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
                 </div>
 
-                  <div id="top_news_featured_companion_text">
+                  <div class="top_news_featured_companion_text">
                 <?php the_excerpt(235); ?>	                  
                   </div>
                 
               <?php } 
               else 
                   {  ?>
-                    <div id="top_news_featured_text">
+                    <div class="top_news_featured_text">
                       <?php the_excerpt(235); ?>	                                       
                     </div>   
                 <?php  }?>
@@ -74,32 +73,94 @@ get_header(); ?>
         <?php endwhile; ?>
 
         </div> <!-- top_news_featured -->
+       <?php
+       		$post = get_most_voted();
+            $most_voted = current($post);
+           ?> 
+        <div id="most_voted" class="top_news_featured">
+        	<h3><a href="<?php echo $most_voted->guid ?>"><?php echo $most_voted->post_title; ?></a></h3>
+	          <p>
+	
+	              <?php 
+	                    $content = $most_voted->post_content;
+	                    $html = str_get_html($content);
+	                    $img_link = $html->find('img',0)->src;
+	
+	                    $html->clear(); 
+	                    unset($html);          
+	                    $row = NULL;
+	              ?> 
+		          <div class="top_news_featured_content">
+	                
+	              <?php if ($img_link != "") { ?>
+	                <div class="top_news_media">
+	                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+	                </div>
+	
+	                  <div class="top_news_featured_companion_text">
+	                	<?php echo snippet($most_voted->post_content, 235) ?>                 
+	                  </div>
+	                
+	              <?php } 
+	              else 
+	                  {  ?>
+	                    <div class="top_news_featured_text">
+	                     <?php echo snippet($most_voted->post_content, 235) ?>                                            
+	                    </div>   
+	                <?php  }?>
+	
+	              </div>
+	                              
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php  $most_voted->post_date; ?></em></span>
+	
+	          </p>
+
+	          <div class="top_news_featured_footer">
+	
+	            <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+	            <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            
+	          </div>	          
+        </div>
+        
+        <div id="most_viewed" class="top_news_featured">
+        viewew
+        </div>
+        
+        <div id="blog_special" class="top_news_featured">
+        speciail
+        </div>
+        
+        <div id="blog_random" class="top_news_featured">
+        random
+        </div>                        
 
         <div id="top_news">
-          
+
+            <div class="top_news_item portada-active">
+	              <h3><a href="#featured" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
+	              <h4>1 publicado el <?php echo $most_voted->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a></h4>					
+            </div>
+            
             <div class="top_news_item">
-            	<?php $post = get_most_voted();
-            	$links = current($post); ?>
-	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
-	              <h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>" ><?php echo $links->user_nicename; ?></a></h4>					
+	              <h3><a href="#most_voted" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
+	              <h4>2 publicado el <?php echo $most_voted->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a></h4>					
+            </div>          
+
+            <div class="top_news_item">
+	              <h3><a href="#most_viewed" class="news_item_title"><?php echo $most_viewed->post_title; ?></a></h3>
+					<h4>3 publicado el <?php echo $most_viewed->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>"><?php echo $most_viewed->user_nicename; ?></a></h4>            	
             </div>
 
             <div class="top_news_item">
-            	<?php $post = kf_get_posts_by_hits(7,1,false);
-            	$links = current($post); ?>
-	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
-					<h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>"><?php echo $links->user_nicename; ?><a></h4>            	
+	              <h3><a href="#blog_special" class="news_item_title"><?php echo $blog_special->post_title; ?></a></h3>
+	              <h4>4 publicado el <?php echo $blog_special->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a></h4>					
             </div>
 
             <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Una noticia aleatoria</a></h3>
-              <h4>publicado hace 7 horas por <a href="#">coby</a></h4>
-            </div>
-
-
-            <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Los niños de Avelino</a></h3>
-              <h4>publicado en <a href="#">DeveloperAtWork</a> por <a href="#">yaraher</a></h4>
+	              <h3><a href="#blog_random" class="news_item_title"><?php echo $blog_random->post_title; ?></a></h3>
+	              <h4>5 publicado el <?php echo $blog_random->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a></h4>					
             </div>
 
         </div> <!-- top_news_text -->
@@ -500,24 +561,31 @@ get_header(); ?>
 
   </div>
  
-  <!-- navigator --> 
-  <div class="navi"></div> 
-
-  <!-- prev link --> 
-  <a class="prev"></a>
  
-  <div id="bloggers_box" class="scrollable">
-        
-    <ul class="items">
-
-      <?php get_blogs(); ?>
-      
-    </ul>
+  <div id="bloggers_navigation">
     
-  </div>
+      <h3>nuestros bloggers</h3>
+      <!-- navigator --> 
+      <div class="navi"></div> 
+
+      <!-- prev link --> 
+      <a class="prev"></a>
+ 
+      <div id="bloggers_box" class="scrollable">
+        
+        <ul class="items">
+
+          <?php get_blogs(); ?>
+      
+        </ul>
+    
+      </div>
   
-  <!-- next link --> 
-  <a class="next"></a>
+      <!-- next link --> 
+      <a class="next"></a>
+
+    </div>
+
 
 </div> <!-- content_feed -->
 

@@ -211,8 +211,8 @@ function get_blogs()
   	if ($blogs) {
   		foreach ($blogs as $blog) {
 
-        $author = $wpdb->get_row("SELECT wp_users.nicename 
-                                  FROM $wpdb->users 
+        $author = $wpdb->get_results("SELECT wp_users.user_nicename
+                                  FROM wp_users 
                                   WHERE wp_users.user_id = $blog->user_id");
 
   			$blogOptionsTable = "wp_".$blog->blog_id."_options";
@@ -232,11 +232,10 @@ function get_blogs()
   			if($thispost) {		  			
   			  
   			  $current_post = current($thispost);
+  			  $current_author = current($author);
   			  
-  			  // die(print_r($thispost));
-
           echo "<li>";
-          echo "<h4>en " . $options[1]->option_value . ", " . $author->user_login . "  escribe</h4>";
+          echo "<h4>" . $current_author->user_nicename . " en ". $options[1]->option_value . "</h4>";
           echo "<div class='blogger_avatar'></div>";
           echo "<div class='blogger_last_post_content'>";
           echo "<h5><a href='". $current_post->guid . "' title='Enlace al articulo'> " . $current_post->post_title . " </a></h5>";
@@ -245,7 +244,7 @@ function get_blogs()
 
           $content = apply_filters('the_content', $content);
           $content = str_replace(']]>', ']]&gt;', $content);
-          $content = snippet($content,235);
+          //$content = snippet($content,235);
                 
           echo $content;
           echo "</div>";
@@ -257,6 +256,59 @@ function get_blogs()
   		}
   	
   	}
+}
+
+function get_blog_random()
+{
+	global $wpdb;
+	$sql['select'] = 'SELECT blog_id';
+	$sql['from'] = 'FROM wp_blogs';
+	$sql['where'] = 'WHERE public =1';
+	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['limit'] = 'LIMIT 0,1';
+	
+	$blog_id = $wpdb->get_results(implode(' ', $sql));
+	$blog_id = current($blog_id);
+	$blog_id = $blog_id->blog_id;
+	//$blog_id = 1;
+	$blog = 'wp_' . $blog_id . '_posts';
+	unset($sql);
+	
+	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['from'] = 'FROM ' . $blog . '
+					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+	$sql['where'] = 'where post_status = \'publish\'';	
+	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['limit'] = 'LIMIT 0,1';	
+	//die(implode(' ',$sql));
+	return $wpdb->get_results(implode(' ', $sql));
+}
+
+function get_blog_special()
+{
+	global $wpdb;
+	$blogs = array(1);
+	
+	$sql['select'] = 'SELECT blog_id';
+	$sql['from'] = 'FROM wp_blogs';
+	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
+	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['limit'] = 'LIMIT 0,1';
+	//die(implode(' ',$sql));
+	$blog_id = $wpdb->get_results(implode(' ', $sql));
+	$blog_id = current($blog_id);
+	$blog_id = $blog_id->blog_id;
+	$blog = 'wp_' . $blog_id . '_posts';
+	unset($sql);
+	
+	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['from'] = 'FROM ' . $blog . '
+					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+	$sql['where'] = 'where post_status = \'publish\'';	
+	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['limit'] = 'LIMIT 0,1';	
+	//die(implode(' ',$sql));
+	return $wpdb->get_results(implode(' ', $sql));
 }
 
 ?>

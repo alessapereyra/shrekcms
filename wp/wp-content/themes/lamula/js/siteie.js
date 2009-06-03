@@ -6,8 +6,11 @@ $(document).ready(function() {
 	 LAST_STATE = "";
 	
 	    // initialize scrollable  
-	    $("div.scrollable").scrollable();     
+	   $("div.scrollable").scrollable({
 
+				 size: 3
+
+			});
 		 
 		 //fancybox
 		 //fancybox

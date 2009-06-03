@@ -9,6 +9,7 @@ body {
 	word-spacing: 4px;
 	color: #3b3330;
 	background: #b4ddff url(images/background-degrade.png) repeat-x;
+	font-weight: bold;
 }
 
 a {
@@ -361,7 +362,7 @@ ul#menu ul li a:hover {
 
 div#top_news div.top_news_featured {
 	float: left;
-	width: 500px;
+	width: 480px;
 	font: 0.9em/1.6em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
@@ -380,10 +381,10 @@ div.top_news_featured_companion_text {
 
 div#top_news div#top_news {
 	
-	float: right;
+	float: left;
 	display: block;
-	width: 360px;
-	margin-right:20px;
+	width: 380px;
+	margin-left:0px;
 	overflow: auto;
 	background-color: white;
 	margin-top: 1.4em;
@@ -865,9 +866,8 @@ div#content_feed ul#post_list li {
 #post_list li div.post_item div.post_companion_content {
 	float: left;
 	width: 260px;
-	height: 95px;
+	height: 100px;
 	overflow: hidden;
-	font: 0.9em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
 #post_list li div.news_footer {
@@ -1460,38 +1460,15 @@ div.scrollable {
 	/* required settings */
 	position:relative;
 	overflow:hidden;	 	
-	width: 340px;	
-	height:180px;	
+	width: 470px;	
+	height:150px;
+	margin-top: 1em;	
 	padding: 10px;
 	
 	/* custom decorations */
-	padding:10px 20px;	
+	padding:10px 0;	
+	border:1px outset #ccc;
 	background-color:#efefef;	
-}
-
-#bloggers_navigation h3 {
-	font-size: 1.2em;
-	margin-top: 0.4em;
-	margin-left: 0.4em;
-	margin-bottom: 0.9em;
-	
-}
-
-#bloggers_box ul.items li h4 {
-	text-transform: lowercase;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
-}
-
-#bloggers_box ul.items li div.blogger_last_post_content h5 a {
-	text-transform: lowercase;
-}
-
-div#bloggers_navigation {
-	overflow: auto;
-	margin-top: 1em;
-	background-color: white;
-	padding: 10px 5px;
-	padding-bottom: 1.2em;
 } 	
  
 /*  
@@ -1517,19 +1494,20 @@ div.scrollable ul.items {
     the most. 
 */ 
 div.scrollable ul.items li { 
-
-
-	float:left;	
+float:left;
+	
 	/* custom decoration */
 	text-align:center;
 	width:100px;
-	margin-right: 40px;	
-	display: block;
-	padding: 5px;
+	padding:5px 0px;
+	margin-right: 20px;	
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;	
 } 
  
 /* you may want to setup some decorations to active item */ 
-ul.items li.active { 	
+ul.items li.active { 
+	border:1px inset #ccc;		
 	background-color:#fff;
  
 }
@@ -1545,7 +1523,7 @@ a.prev, a.next, a.prevPage, a.nextPage {
 	display:block;
 	width:18px;
 	height:18px;
-	background:url(images/left.png) no-repeat;
+	background:url(../img/arrow/left.png) no-repeat;
 	float:left;
 	margin:43px 10px;
 	cursor:pointer;
@@ -1563,7 +1541,7 @@ a.disabled {
 
 /* next button uses another background image */
 a.next, a.nextPage {
-	background-image:url(images/right.png);
+	background-image:url(../img/arrow/right.png);
 	clear:right;	
 }
 
@@ -1574,10 +1552,9 @@ a.next, a.nextPage {
 
 /* position and dimensions of the navigator */
 div.navi {
+	margin-left:328px;
 	width:200px;
 	height:20px;
-	margin: 0px auto;
-	text-align: center;
 }
 
 
@@ -1587,7 +1564,7 @@ div.navi a {
 	height:8px;
 	float:left;
 	margin:3px;
-	background:url(images/navigator.png) 0 0 no-repeat;     
+	background:url(../img/navigator.png) 0 0 no-repeat;     
 	cursor:pointer;	
 }
 
