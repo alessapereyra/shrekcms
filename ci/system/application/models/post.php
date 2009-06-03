@@ -2,7 +2,7 @@
 class Post extends Model {
 	
 	var $campos = array();
-  var $tabla = 'mulapress_posts';
+	var $tabla = 'mulapress_posts';
 
     function __construct()
     {
@@ -11,29 +11,50 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
-    
-    function get_lastpost($id, $posts)
+    function get_geomula($values, $limit)
     {
-        $db = $this->load->database('default', TRUE); 
-    	
-    	$fields = $db->list_fields($this->tabla);
+        $fields = $this->db->list_fields($this->tabla);
 
 		foreach ($fields as $field)
 		{
-		   $db->select($this->tabla . '.' . $field);
+		   $this->db->select($this->tabla . '.' . $field);
+		}   	
+		
+		$this->db->from($this->tabla);
+		$this->db->join('mulapress_postmeta', 'mulapress_posts.ID = mulapress_postmeta.post_id');
+			
+		$this->db->where('post_type', 'post');
+		$this->db->where('post_status', 'publish');
+		$this->db->where($values);
+		
+		$this->db->limit($limit['show'], $limit['from']);
+		
+		$query = $this->db->get();
+		//die($this->db->last_query());
+		return $query;
+    }
+    
+    function get_lastpost($id, $posts)
+    { 
+    	
+    	$fields = $this->db->list_fields($this->tabla);
+
+		foreach ($fields as $field)
+		{
+		   $this->db->select($this->tabla . '.' . $field);
 		}
 
-		$db->from($this->tabla);
-		$db->where('post_type', 'post');
-		$db->where('post_author', $id);
-		$db->where('(post_status like "publish" or post_status like "inherit")');
-		//$this->db->where('post_status', 'published');
+		$this->db->from($this->tabla);
+		$this->db->where('post_type', 'post');
+		$this->db->where('post_author', $id);
+		$this->db->where('(post_status like "publish" or post_status like "inherit")');
+		//$this->db->where('post_status', 'publish');
 		
-		$db->limit($posts, 0);
+		$this->db->limit($posts, 0);
 		
-		$db->order_by($this->tabla . '.post_date', 'DESC');
+		$this->db->order_by($this->tabla . '.post_date', 'DESC');
 		
-		$todo = $db->get();
+		$todo = $this->db->get();
 		$post[] = $todo->result_array();
 
 		//$categorias = $this->terms->get_categories();
@@ -42,24 +63,24 @@ class Post extends Model {
 		foreach($categorias as $key => $values)
 		{
 			
-	    	$fields = $db->list_fields($this->tabla);
+	    	$fields = $this->db->list_fields($this->tabla);
 
 			foreach ($fields as $field)
 			{
-			   $db->select($this->tabla . '.' . $field);
+			   $this->db->select($this->tabla . '.' . $field);
 			}
 			
-			$db->from($this->tabla);
-			$db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
+			$this->db->from($this->tabla);
+			$this->db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
 			
-			$db->where('post_type', 'post');
-			$db->where('post_author', $id);
-			$db->where('mulapress_term_relationships.term_taxonomy_id', $key);
+			$this->db->where('post_type', 'post');
+			$this->db->where('post_author', $id);
+			$this->db->where('mulapress_term_relationships.term_taxonomy_id', $key);
 			
-			$db->order_by($this->tabla . '.post_date', 'DESC');
+			$this->db->order_by($this->tabla . '.post_date', 'DESC');
 			
-			$db->limit($posts, 0);
-			$query = $db->get();
+			$this->db->limit($posts, 0);
+			$query = $this->db->get();
 			$post[] = $query->result_array();
 
 		}
@@ -69,35 +90,32 @@ class Post extends Model {
     }
     
     function get_mypost($user, $limit = NULL)
-    {
-    	
-        $db = $this->load->database('default', TRUE); 
-    	
-    	$fields = $db->list_fields($this->tabla);
+    {   	
+    	$fields = $this->db->list_fields($this->tabla);
 
 		foreach ($fields as $field)
 		{
-		   $db->select($this->tabla . '.' . $field);
+		   $this->db->select($this->tabla . '.' . $field);
 		}
-		$db->select('mulapress_terms.name');
-		$db->select('mulapress_terms.slug');
+		$this->db->select('mulapress_terms.name');
+		$this->db->select('mulapress_terms.slug');
 		
 		
-		$db->from($this->tabla);
+		$this->db->from($this->tabla);
 		
-		$db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
-		$db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
-		$db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
+		$this->db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
+		$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
+		$this->db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
 		
-		$db->where('mulapress_posts.post_type', 'post');
-     //              $db->where('wp_term_taxonomy.parent', '5');
-     $db->where('mulapress_term_taxonomy.parent', '28');
-     $db->where($this->tabla . '.post_author', $user);		
-		$db->order_by($this->tabla . '.post_date', 'DESC');
+		$this->db->where('mulapress_posts.post_type', 'post');
+     //              $this->db->where('wp_term_taxonomy.parent', '5');
+     $this->db->where('mulapress_term_taxonomy.parent', '28');
+     $this->db->where($this->tabla . '.post_author', $user);		
+		$this->db->order_by($this->tabla . '.post_date', 'DESC');
 		
-		$db->limit($limit['show'], $limit['from']);
-		$query = $db->get();
-		//die($db->last_query());
+		$this->db->limit($limit['show'], $limit['from']);
+		$query = $this->db->get();
+		//die($this->db->last_query());
 		return $query;
     }
     
@@ -262,20 +280,18 @@ class Post extends Model {
     function published_posts($id)
     {
       
-    	$db = $this->load->database('default', TRUE);
-      $db->select('post_author');
-      $db->from($this->tabla);
-      $db->where('post_author',$id);
-		  $db->where('(post_status like "publish" or post_status like "inherit")');
-      return $db->count_all_results();
+      $this->db->select('post_author');
+      $this->db->from($this->tabla);
+      $this->db->where('post_author',$id);
+		  $this->db->where('(post_status like "publish" or post_status like "inherit")');
+      return $this->db->count_all_results();
     }
  
     function total_posts($id){
-		$db = $this->load->database('default', TRUE);
-       $db->select('post_author');
-       $db->from($this->tabla);
-       $db->where('post_author',$id);
-       return $db->count_all_results();
+       $this->db->select('post_author');
+       $this->db->from($this->tabla);
+       $this->db->where('post_author',$id);
+       return $this->db->count_all_results();
      }
  
  

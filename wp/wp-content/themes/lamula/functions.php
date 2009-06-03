@@ -181,4 +181,19 @@ function sm_store_session_data($mypost) {
 	}
 }
 
+function get_most_voted()
+{
+	global $wpdb;
+	$sql['select'] = 'SELECT wp_users.user_nicename, `mulapress_posts`.`ID`, `mulapress_posts`.`post_author`, DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `mulapress_posts`.`post_date_gmt`, `mulapress_posts`.`post_content`, `mulapress_posts`.`post_title`, `mulapress_posts`.`post_category`, `mulapress_posts`.`post_excerpt`, `mulapress_posts`.`post_status`, `mulapress_posts`.`comment_status`, `mulapress_posts`.`ping_status`, `mulapress_posts`.`post_password`, `mulapress_posts`.`post_name`, `mulapress_posts`.`to_ping`, `mulapress_posts`.`pinged`, `mulapress_posts`.`post_modified`, `mulapress_posts`.`post_modified_gmt`, `mulapress_posts`.`post_content_filtered`, `mulapress_posts`.`post_parent`, `mulapress_posts`.`guid`, `mulapress_posts`.`menu_order`, `mulapress_posts`.`post_type`, `mulapress_posts`.`post_mime_type`, `mulapress_posts`.`comment_count`';
+	$sql['from'] = 'FROM mulapress_posts
+					inner join mulapress_gdsr_votes_log on mulapress_posts.ID = mulapress_gdsr_votes_log.id
+					inner join wp_users on mulapress_posts.post_author = wp_users.ID';
+	$sql['order_by'] = 'ORDER BY vote DESC';
+	$sql['limit'] = 'LIMIT 0,1';
+	
+	return $wpdb->get_results(implode(' ', $sql));
+}
+
+
+
 ?>

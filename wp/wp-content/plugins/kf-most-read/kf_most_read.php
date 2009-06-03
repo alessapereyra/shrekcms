@@ -66,7 +66,14 @@ Author URI: http://www.kifulab.net
 		global $wpdb;
 		$period = (int)$period > 0 ? $period : 7;
 		$limit = (int)$limit > 0 ? $limit : 5;
-		$sql = "SELECT count(mr.post_ID) as totHits, p.ID, p.post_title from $wpdb->posts p JOIN {$wpdb->prefix}kf_most_read mr on mr.post_ID = p.ID  where mr.hit_ts >= '".(time() - ( 86400 * $period))."' GROUP BY mr.post_ID order by totHits desc, ID ASC LIMIT $limit";
+		$sql = "SELECT wp_users.user_nicename, count(mr.post_ID) as totHits, p.ID, DATE_FORMAT(p.post_date, '%d-%m-%Y') as post_date, p.post_title 
+				from $wpdb->posts p 
+					JOIN {$wpdb->prefix}kf_most_read mr on mr.post_ID = p.ID
+					JOIN wp_users ON p.post_author = wp_users.ID
+				where mr.hit_ts >= '".(time() - ( 86400 * $period))."'
+				GROUP BY mr.post_ID order by totHits desc, ID ASC 
+				LIMIT $limit";
+		
 		if(KF_MR_DEBUG_MODE){
 			var_dump($sql);
 		}

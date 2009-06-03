@@ -2,7 +2,7 @@
 class Options extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_options';
+    var $tabla = 'mulapress_options';
 
     function __construct()
     {
