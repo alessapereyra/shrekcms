@@ -2,18 +2,20 @@
 
       <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
       <ul id="menu">
-        <li class="f"><a href="#">Lima y Callao</a>
+        <li class="f"><a href="<?php echo '/shrekcms/mimula/ws/geomula/0/0/' ?>">Lima y Callao</a>
           <ul>
               <li class="current s">Lima y Callao</li>
-              <li class="s"><a href="#">Callao</a>
+              <li class="s"><a href="<?php echo '/shrekcms/mimula/ws/geomula/0/callao/callao/' ?>">Callao</a>
 
               <ul>
-                <li class="t"><a href="#">Cercado Callao</a></li>           
-                <li class="t"><a href="#">Bellavista</a></li>         
-                <li class="t"><a href="#">Carmen de la Legua</a></li>           
-                <li class="t"><a href="#">La Perla</a></li>         
-                <li class="t"><a href="#">La Punta</a></li>         
-                <li class="t"><a href="#">Ventanilla</a></li>           
+              	<?php
+              	$distritos = array('Bellavista', 'Carmen de la Legua',  'Cercado Callao', 'La Perla', 'La Punta', 'Ventanilla' ); 
+              	foreach($distritos as $distrito)
+              	{
+              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/callao/callao/'. $distrito_url . '">' . $distrito . '</a></li>';
+              	}
+              	?>           
               </ul>                
 
               </li> 
@@ -21,17 +23,14 @@
               <li class="s"><a href="#">Lima Centro</a> 
 
               <ul>
-                <li class="t"><a href="#">Barranco</a></li>                  
-                <li class="t"><a href="#">Breña</a></li>
-                <li class="t"><a href="#">Jesús María</a></li>
-                <li class="t"><a href="#">La Victoria</a></li>
-                <li class="t"><a href="#">Lince</a></li>
-                <li class="t"><a href="#">Miraflores</a></li>
-                <li class="t"><a href="#">San Isidro</a></li>
-                <li class="t"><a href="#">San Luis</a></li>
-                <li class="t"><a href="#">Santiago de Surco</a></li>
-                <li class="t"><a href="#">Surquillo</a></li>
-                <li class="t"><a href="#">San Borja</a></li>
+              	<?php
+              	$distritos = array('Barranco', 'Breña',  'Jesús María', 'La Victoria', 'Lince', 'Miraflores','San Isidro', 'San Luis',  'Santiago de Surco', 'Surquillo', 'San Borja' ); 
+              	foreach($distritos as $distrito)
+              	{
+              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
+              	}
+              	?>              
               </ul>
 
               </li>
@@ -40,11 +39,14 @@
               <li class="s"><a href="#">Lima Oeste</a>
         
                 <ul>
-             
-                  <li class="t"><a href="#">Cercado de Lima</a></li>
-                  <li class="t"><a href="#">Magdalena del Mar</a></li>
-                  <li class="t"><a href="#">Pueblo Libre</a></li>                    
-                  <li class="t"><a href="#">San Miguel</a></li>
+	              	<?php
+	              	$distritos = array('Cercado de Lima', 'Magdalena del Mar',  'Pueblo Libre', 'San Miguel'); 
+	              	foreach($distritos as $distrito)
+	              	{
+	              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+	              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima7'. $distrito_url . '">' . $distrito . '</a></li>';
+	              	}
+	              	?>             
                 </ul>
           
               </li>                          
@@ -54,14 +56,14 @@
               <li class="s"><a href="#">Lima Este</a>
               
               <ul>
-           
-                <li class="t"><a href="#">Chaclacayo</a></li>           
-                <li class="t"><a href="#">Cieneguilla</a></li>           
-                <li class="t"><a href="#">El Agustino</a></li>         
-                <li class="t"><a href="#">La Molina</a></li>           
-                <li class="t"><a href="#">Lurigancho</a></li>         
-                <li class="t"><a href="#">San Juan de Lurigancho</a></li>         
-                <li class="t"><a href="#">Santa Anita</a></li>           
+              	<?php
+              	$distritos = array('Chaclacayo', 'Cieneguilla',  'El Agustino', 'La Molina', 'Lurigancho', 'San Juan de Lurigancho','Santa Anita' ); 
+              	foreach($distritos as $distrito)
+              	{
+              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
+              	}
+              	?>           
               </ul>
 
               </li>                   
@@ -69,14 +71,14 @@
               <li class="s"><a href="#">Lima Norte</a>
         
                 <ul>
-           
-                  <li class="t"><a href="#">Carabayllo</a></li>           
-                  <li class="t"><a href="#">Comas</a></li>         
-                  <li class="t"><a href="#">Independencia</a></li>           
-                  <li class="t"><a href="#">Los Olivos</a></li>         
-                  <li class="t"><a href="#">Puente Piedra</a></li>      
-                  <li class="t"><a href="#">Rimac</a></li>                       
-                  <li class="t"><a href="#">San Mart&iacute;n de Porres</a></li>           
+	              	<?php
+	              	$distritos = array('Carabayllo', 'Comas',  'Independencia', 'Los Olivos', 'Puente Piedra', 'Rimac','San Martin de Porres' ); 
+	              	foreach($distritos as $distrito)
+	              	{
+	              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+	              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
+	              	}
+	              	?>                   
                 </ul>
           
               </li>                          
@@ -85,16 +87,14 @@
               <li class="s"><a href="#">Lima Sur</a>    
 
               <ul>
-                <li class="t"><a href="#">Chorrillos</a></li>           
-                <li class="t"><a href="#">Lur&iacute;n</a></li>         
-                <li class="t"><a href="#">Pachacamac</a></li>         
-                <li class="t"><a href="#">Pucusana</a></li>           
-                <li class="t"><a href="#">San Bartolo</a></li>                             
-                <li class="t"><a href="#">San Juan de Miraflores</a></li>           
-                <li class="t"><a href="#">Sta. Mar&iacute;a del Mar</a></li>                             
-                <li class="t"><a href="#">Villa El Salvador</a></li>           
-                <li class="t"><a href="#">Villa Mar&iacute;a del Triunfo</a></li>         
-
+	              	<?php
+	              	$distritos = array('Chorrillos', 'Lurian',  'Pachacamac', 'Pucusana', 'San Bartolo', 'San Juan de Miraflores','Sta. Maria del Mar','Villa El Salvador','Villa Maria del Triunfo' ); 
+	              	foreach($distritos as $distrito)
+	              	{
+	              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
+	              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
+	              	}
+	              	?>                  
               </ul>
                     
               </li>
@@ -105,35 +105,44 @@
         <li class="f"><a href="#">Centro</a>
           <ul>
                 <li class="current s">Centro</li>
-          
-                <li class="s"><a href="#">Apurimac</a></li>
-                <li class="s"><a href="#">Huancavelica</a></li>       
-                <li class="s"><a href="#">Huánuco</a></li>       
-                <li class="s"><a href="#">Jun&iacute;n</a></li>                 
-                <li class="s"><a href="#">Pasco</a></li>                                       
+              	<?php
+              	$departamentos = array('Apurimac', 'Huancavelica',  'Huanuco', 'Junin', 'Pasco'); 
+              	foreach($departamentos as $departamento)
+              	{
+              		$departamento_url = strtolower(eregi_replace(' ', '-', $departamento));
+              		echo '<li class="s"><a href="/shrekcms/mimula/ws/geomula/0/'. $departamento_url . '">' . $departamento . '</a></li>';
+              	}
+              	?>                     
           </ul>
         </li> <!-- centro -->
 
         <li class="f"><a href="#">Norte</a>
           <ul>
                 <li class="current s">Norte</li>
-                <li class="s"><a href="#">Ancash</a></li>            
-                <li class="s"><a href="#">Cajamarca</a></li>
-                <li class="s"><a href="#">La Libertad</a></li>         
-                <li class="s"><a href="#">Lambayeque</a></li>                               
-                <li class="s"><a href="#">Piura</a></li>                                                        
-                <li class="s"><a href="#">Tumbes</a></li>                                                                   
+              	
+              	<?php
+              	$departamentos = array('Ancash', 'Cajamarca',  'La Libertad', 'Lambayeque', 'Piura','Tumbes'); 
+              	foreach($departamentos as $departamento)
+              	{
+              		$departamento_url = strtolower(eregi_replace(' ', '-', $departamento));
+              		echo '<li class="s"><a href="/shrekcms/mimula/ws/geomula/0/'. $departamento_url . '">' . $departamento . '</a></li>';
+              	}
+              	?>                                                                                  
           </ul>
         </li>  <!-- norte -->
 
           <li class="f"><a href="#">Oriente</a>
             <ul>
-                  <li class="current s">Oriente</li>  
-                  <li class="s"><a href="#">Amazonas</a></li>                     
-                  <li class="s"><a href="#">Loreto</a></li>                      
-                  <li class="s"><a href="#">Madre de Dios</a></li>          
-                  <li class="s"><a href="#">San Martin</a></li>                    
-                  <li class="s"><a href="#">Ucayali</a></li>                                                                
+                  <li class="current s">Oriente</li>
+                    
+	              	<?php
+	              	$departamentos = array('Amazonas', 'Loreto',  'Madre de Dios', 'San Martin', 'Ucayali'); 
+	              	foreach($departamentos as $departamento)
+	              	{
+	              		$departamento_url = strtolower(eregi_replace(' ', '-', $departamento));
+	              		echo '<li class="s"><a href="/shrekcms/mimula/ws/geomula/0/'. $departamento_url . '">' . $departamento . '</a></li>';
+	              	}
+	              	?>                  
             </ul>
           </li>  <!-- oriente -->
       
@@ -141,13 +150,14 @@
           <ul>
                 <li class="current s">Sur</li>  
 
-                <li class="s"><a href="#">Arequipa</a></li>
-                <li class="s"><a href="#">Ayacucho</a></li>     
-                <li class="s"><a href="#">Cusco</a></li>         
-                <li class="s"><a href="#">Ica</a></li>          
-                <li class="s"><a href="#">Moquegua</a></li>     
-                <li class="s"><a href="#">Puno</a></li>                        
-                <li class="s"><a href="#">Tacna</a></li>                                                                                                                         
+              	<?php
+              	$departamentos = array('Arequipa', 'Ayacucho',  'Cusco', 'Ica', 'Moquegua','Puno','Tacna'); 
+              	foreach($departamentos as $departamento)
+              	{
+              		$departamento_url = strtolower(eregi_replace(' ', '-', $departamento));
+              		echo '<li class="s"><a href="/shrekcms/mimula/ws/geomula/0/'. $departamento_url . '">' . $departamento . '</a></li>';
+              	}
+              	?>                                                                                                                    
           </ul>
         </li>  <!-- sur -->
     

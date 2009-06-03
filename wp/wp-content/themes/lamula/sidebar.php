@@ -1,4 +1,4 @@
-<?php include '/var/www/shrekcms/mimula/system/cidip/cidip_index.php';   ?>
+<?php include 'C:\xampp\htdocs\shrekcms\mimula\system\cidip\cidip_index.php';   ?>
 
 <?php
 
