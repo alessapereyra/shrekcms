@@ -8,11 +8,11 @@ body {
 	letter-spacing: -1px;
 	word-spacing: 4px;
 	color: #3b3330;
-	background: #b4ddff url(images/background-degrade.png) repeat-x;
+	background: #e1ebed url(images/background-lightish-blue.jpg) repeat-x;
 }
 
 a {
-	color: #1258b9;
+	color: #1192cf;
 }
 
 #content_feed dl dd a {
@@ -173,9 +173,9 @@ p#site_stats {
 	padding: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	color: white;
+	color: #fff;
 	margin-top: 20px;
-	background: #fff9a5 url(images/background-yellow.png) 0 center;
+	background: #e9e9e9 0 center;
 }
 
 
@@ -439,6 +439,7 @@ div#top_news div.top_news_featured h3 a {
 	color: #3b3330;
 	text-decoration: none;
 	display: block;
+	margin-bottom: 10px;
 }
 
 
@@ -460,7 +461,7 @@ div.top_news_media {
 
 .top_news_featured_text {
 	overflow: auto;
-	font-size: 1.2em;
+	font-size: 0.8em;
 }
 
 div#top_news div.top_news_featured div.top_news_featured_footer p {
@@ -494,6 +495,8 @@ div#top_news_footer {
 }
 
 a.leer_mas_footer,
+.top_news_featured div.top_news_featured_footer p.comments a ,
+a#leer_mas_footer,
 .top_news_featured div.top_news_featured_footer p.comments a {
 	float: left;
 }
@@ -503,7 +506,8 @@ div.top_news_featured_footer p.comments a  {
 	margin-top: 0.7em;
 }
 
-div.top_news_featured a.leer_mas_footer {
+div.top_news_featured a.leer_mas_footer,
+div.top_news_featured a#leer_mas_footer {
 	display: block;
 	margin: 0px;
 	padding: 6px 18px;
@@ -587,14 +591,21 @@ div#content {
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 	word-spacing: 0;
 	display: block;
-	margin-bottom: 10px;
-	color: #1258b9;	
+	color: #1192cf;
+	background-color: #eee;
+	clear: both;
+	margin-top: 1em;
+	padding: 5px;
+}
+
+#post_list li div.news_footer div.footer_links {
+	overflow: auto;	
 }
 
 #post_list li div.news_footer span a,
 #post_list li div.news_footer span strong,
 #post_list li div.news_footer span small {
-	color: #1258b9;	
+	color: #1192cf;	
 	padding: 0px;
 	display: inline;
 	background: none;
@@ -672,13 +683,14 @@ div#content_feed ul li a.active:hover {
 
 div#content_feed ul li a:hover {
 	background-color: #9d3917;
+	color: grey;
 }
 
 
 div#content_feed ul#post_list li {
 	float: none;
 	overflow: hidden;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	padding-bottom: 0px;
 }
 
@@ -952,7 +964,7 @@ div#content_feed ul li h5 a {
 }
 
 div#content_feed ul li h5 a:hover {
-	color: rgb(191, 136, 0);
+	color: #777;
 	background: none;
 }
 
@@ -1327,7 +1339,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 
 #post_list li div.news_footer a.leer_mas_footer:hover,
 #post_list li div.news_footer a.comments:hover{
-	color: #fbfa3b;
+	color: grey;
 }
 
 .top_news_featured p span.vvqbox.vvqyoutube object,
@@ -1362,7 +1374,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 	-webkit-border-radius :5px;
 	-moz-border-radius :5px;
 
-	background: #38312e url(images/background-degrade.png) repeat-x 0 bottom;
+	background: #feff66 repeat-x 0 bottom;
 	text-transform: lowercase;
 	font: 0.75em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
@@ -1470,9 +1482,9 @@ div.scrollable {
 }
 
 #bloggers_navigation h3 {
-	font-size: 1.2em;
-	margin-top: 0.4em;
-	margin-left: 0.4em;
+	font-size: 1.3em;
+	margin-top: 0.8em;
+	margin-left: 0.8em;
 	margin-bottom: 0.9em;
 	
 }
@@ -1523,7 +1535,7 @@ div.scrollable ul.items li {
 	/* custom decoration */
 	text-align:center;
 	width:100px;
-	margin-right: 40px;	
+	margin-right: 20px;	
 	display: block;
 	padding: 5px;
 } 
@@ -1574,10 +1586,12 @@ a.next, a.nextPage {
 
 /* position and dimensions of the navigator */
 div.navi {
-	width:200px;
+	width:230px;
 	height:20px;
 	margin: 0px auto;
 	text-align: center;
+	 clear: both;
+	 overflow: hidden;
 }
 
 
