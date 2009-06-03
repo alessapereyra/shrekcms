@@ -40,12 +40,26 @@ $(document).ready(function() {
 			 
 		 });
 
-	
+		 $("div.top_news_featured:not(:first)").hide("slow");
 		$("div.class_content:not(:first)").hide("slow");
 		$("div.tab_content:not(:first)").hide("slow");
 		$("div.sidebox_content:not(:last)").hide("slow");
 		$("div.posts_last_content:not(:first)").hide("slow");
-	 
+
+		$("div.top_news_item h3 a").click(function(){
+			
+			$(this).parent().parent().siblings().removeClass("portada-active");
+			$(this).parent().parent().addClass("portada-active");
+			
+			var index = $("div.top_news_item h3 a").index(this);
+			
+			$(".top_news_featured").hide("slow");
+			
+			$(".top_news_featured:eq(" + index + ")").show("fast");					
+				
+			return false;
+		})
+		
 		$("ul#lasts_posts li a").click(function(){
 			
 			$(this).parent().siblings().find("a").removeClass("active");
