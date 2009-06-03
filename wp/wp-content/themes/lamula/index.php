@@ -115,7 +115,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $most_voted->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $most_voted->guid; ?>#comments" class="comments"><?php echo $most_voted->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -164,7 +164,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $most_viewed->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $most_viewed->guid; ?>#comments" class="comments"><?php echo $most_viewed->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -213,7 +213,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $blog_special->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $blog_special->guid; ?>#comments" class="comments"><?php echo $blog_special->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -263,7 +263,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $blog_random->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $blog_random->guid; ?>#comments" class="comments"><?php echo $blog_random->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>                       

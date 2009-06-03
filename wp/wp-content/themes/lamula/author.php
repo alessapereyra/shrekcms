@@ -15,7 +15,7 @@ include 'perfil_header.php';
 $id = $author; 
 ?>
 
-<?php include '/var/www/shrekcms/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/var/www/shrekcms/mimula/system/cidip/cidip_index.php';  ?>
 <?php //include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';  ?>
 
 <div id="content" class="inner author">
