@@ -16,7 +16,7 @@ get_header(); ?>
 
           <?php  
            // $featured_query = new WP_Query('category_name=featured&showposts=2');
-           $featured_query = new WP_Query('showposts=1');
+           $featured_query = new WP_Query('showposts=1&category_name=featured');
            while ($featured_query->have_posts()) : $featured_query->the_post();
            $do_not_duplicate = $post->ID;
            ?>

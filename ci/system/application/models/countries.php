@@ -2,7 +2,7 @@
 class Countries extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_countries';
+    var $tabla = 'mulapress_countries';
 
     function __construct()
     {

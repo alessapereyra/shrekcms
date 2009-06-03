@@ -3,7 +3,7 @@
 class Term_taxonomy extends Model {
 	
 	var $campos = array();
-    var $tabla = 'wp_term_taxonomy';
+    var $tabla = 'mulapress_term_taxonomy';
 
     function __construct()
     {

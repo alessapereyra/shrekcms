@@ -43,7 +43,7 @@ $db['default']['username'] = "root";
 // Para Dientuki
 $db['default']['password'] = "takumi";
 //$db['default']['password'] = "root";
-$db['default']['database'] = "shrek";
+$db['default']['database'] = "lamula";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = FALSE;
