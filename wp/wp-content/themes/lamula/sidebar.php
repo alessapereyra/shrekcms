@@ -18,6 +18,10 @@
                   <em>  
                           envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
                   </em>
+                  <em>
+                          ya tenemos 78 noticias enviadas, &iquest;qu&eacute; est&aacute;s esperando?
+                  </em>
+                  
               </a>
               
             </p>

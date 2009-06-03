@@ -49,6 +49,18 @@ div#top_menu {
 	margin-right:20px ;
 }
 
+#top_menu p span.left a {
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+	font-size: 0.9em;
+}
+
+
+#top_menu p span.left a:hover {
+	color: lightgrey;
+}
+
 #top_menu p span.right a {
 	display: block;
 	float: left;
@@ -113,6 +125,15 @@ h1 a{
 	height: 70px;
 }
 
+
+#logo strong {
+	display: block;
+	float: left;
+	margin-top: 4em;	
+	margin-left: 1em;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	color: #1192cf;
+}
 
 /* @end */
 
@@ -440,9 +461,7 @@ div#top_news_media {
 
 #top_news_featured_text {
 	overflow: auto;
-	float: left;
 	font-size: 1.2em;
-	width: 270px;
 }
 
 div#top_news div#top_news_featured div.top_news_featured_footer p {
@@ -527,6 +546,10 @@ div#top_news_footer p.comments a em {
 	font-size: 1.1em;
 	margin-bottom: 10px;
 	text-transform: lowercase;
+}
+
+div#top_news_featured_content {
+	overflow: auto;
 }
 
 /* @end */
@@ -1602,6 +1625,3 @@ textarea#comment {
 
 /* @end */
 
-div#top_news_featured_content {
-	overflow: auto;
-}

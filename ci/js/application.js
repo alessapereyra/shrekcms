@@ -82,8 +82,8 @@ $(document).ready(function(){
 	$("fieldset#articulo_content").toggle("slow")
 		
 	$("#pv_texto").html("");
-	content = tinyMCE.activeEditor.getContent({format : "raw"});	
-	$("#pv_texto").html(content);
+	prueba = tinyMCE.activeEditor.getContent({format : "raw"});	
+	$("#pv_texto").html(prueba);
 		
 		return false;
 	
