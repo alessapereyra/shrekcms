@@ -66,7 +66,7 @@ Author URI: http://www.kifulab.net
 		global $wpdb;
 		$period = (int)$period > 0 ? $period : 7;
 		$limit = (int)$limit > 0 ? $limit : 5;
-		$sql = "SELECT wp_users.user_nicename, count(mr.post_ID) as totHits, p.ID, DATE_FORMAT(p.post_date, '%d-%m-%Y') as post_date, p.post_title 
+		$sql = "SELECT wp_users.user_nicename, count(mr.post_ID) as totHits, p.post_content, p.comment_count, p.ID, p.guid, DATE_FORMAT(p.post_date, '%d-%m-%Y') as post_date, p.post_title 
 				from $wpdb->posts p 
 					JOIN {$wpdb->prefix}kf_most_read mr on mr.post_ID = p.ID
 					JOIN wp_users ON p.post_author = wp_users.ID
