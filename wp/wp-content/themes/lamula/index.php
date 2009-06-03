@@ -81,7 +81,7 @@ get_header(); ?>
             	<?php $post = get_most_voted();
             	$links = current($post); ?>
 	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
-	              <h4>lala</h4>					
+	              <h4>publicado el <?php echo $links->post_date; ?> por <?php echo $links->user_nicename; ?></h4>					
             </div>
 
             <div class="top_news_item">
