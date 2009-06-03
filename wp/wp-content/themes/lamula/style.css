@@ -451,7 +451,7 @@ div#top_news div.top_news_featured p {
 	margin-bottom: 1em;
 }
 
-div#top_news_media {
+div.top_news_media {
 	overflow: hidden;
 	float: left;
 	width: 200px;
@@ -494,7 +494,7 @@ div#top_news_footer {
 	overflow: hidden;
 }
 
-a#leer_mas_footer,
+a.leer_mas_footer,
 .top_news_featured div.top_news_featured_footer p.comments a {
 	float: left;
 }
@@ -504,7 +504,7 @@ div.top_news_featured_footer p.comments a  {
 	margin-top: 0.7em;
 }
 
-div.top_news_featured a#leer_mas_footer {
+div.top_news_featured a.leer_mas_footer {
 	display: block;
 	margin: 0px;
 	padding: 6px 18px;
@@ -514,7 +514,7 @@ div.top_news_featured a#leer_mas_footer {
 	margin-right: 40px;
 }
 
-div.top_news_featured a#leer_mas_footer:hover {
+div.top_news_featured a.leer_mas_footer:hover {
 	color: yellow;
 }
 

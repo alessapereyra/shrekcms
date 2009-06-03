@@ -11,8 +11,6 @@ get_header(); ?>
   <div id="top_news_content">
 
              	<?php
-             	$post = get_most_voted();
-            	$most_voted = current($post);
             	$post = kf_get_posts_by_hits(7,1,false);
             	$most_viewed = current($post);
             	$post = get_blog_special();
@@ -39,21 +37,21 @@ get_header(); ?>
                     unset($html);          
                     $row = NULL;
               ?>
-              <div id="top_news_featured_content">
+              <div class="top_news_featured_content">
                 
               <?php if ($img_link != "") { ?>
-                <div id="top_news_media">
+                <div class="top_news_media">
                   <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
                 </div>
 
-                  <div id="top_news_featured_companion_text">
+                  <div class="top_news_featured_companion_text">
                 <?php the_excerpt(235); ?>	                  
                   </div>
                 
               <?php } 
               else 
                   {  ?>
-                    <div id="top_news_featured_text">
+                    <div class="top_news_featured_text">
                       <?php the_excerpt(235); ?>	                                       
                     </div>   
                 <?php  }?>
@@ -75,9 +73,55 @@ get_header(); ?>
         <?php endwhile; ?>
 
         </div> <!-- top_news_featured -->
-        
+       <?php
+       		$post = get_most_voted();
+            $most_voted = current($post);
+           ?> 
         <div id="most_voted" class="top_news_featured">
-        voted
+        	<h3><a href="<?php echo $most_voted->guid ?>"><?php echo $most_voted->post_title; ?></a></h3>
+	          <p>
+	
+	              <?php 
+	                    $content = $most_voted->post_content;
+	                    $html = str_get_html($content);
+	                    $img_link = $html->find('img',0)->src;
+	
+	                    $html->clear(); 
+	                    unset($html);          
+	                    $row = NULL;
+	              ?> 
+		          <div class="top_news_featured_content">
+	                
+	              <?php if ($img_link != "") { ?>
+	                <div class="top_news_media">
+	                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+	                </div>
+	
+	                  <div class="top_news_featured_companion_text">
+	                	<?php echo snippet($most_voted->post_content, 235) ?>                 
+	                  </div>
+	                
+	              <?php } 
+	              else 
+	                  {  ?>
+	                    <div class="top_news_featured_text">
+	                     <?php echo snippet($most_voted->post_content, 235) ?>                                            
+	                    </div>   
+	                <?php  }?>
+	
+	              </div>
+	                              
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php  $most_voted->post_date; ?></em></span>
+	
+	          </p>
+
+	          <div class="top_news_featured_footer">
+	
+	            <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+	            <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+	            
+	          </div>	          
         </div>
         
         <div id="most_viewed" class="top_news_featured">
