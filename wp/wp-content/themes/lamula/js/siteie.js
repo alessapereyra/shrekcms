@@ -58,6 +58,21 @@ $(document).ready(function() {
 		$("div.posts_last_content").hide();
 		$("div.posts_last_content:first").show();
 	 
+	
+			$("div.top_news_item h3 a").click(function(){
+
+				$(this).parent().parent().siblings().removeClass("portada-active");
+				$(this).parent().parent().addClass("portada-active");
+
+				var index = $("div.top_news_item h3 a").index(this);
+
+				$(".top_news_featured").fadeOut("slow");
+
+				$(".top_news_featured:eq(" + index + ")").fadeIn("fast");					
+
+				return false;
+			})
+	
 		$("ul#lasts_posts li a").click(function(){
 			
 			$(this).parent().siblings().find("a").removeClass("active");

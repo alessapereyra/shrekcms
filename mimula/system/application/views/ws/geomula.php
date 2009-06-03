@@ -1,13 +1,13 @@
 <?php 
-$consulta = $consulta->result_array();
-$post = current($consulta);
-//die(print_r( $post ));
+//$consulta = $consulta->result_array();
+//$post = current($consulta);
+
 ?>
-          <h3><a href="<?php echo $post['guid']; ?>"><?php echo $post['post_title']; ?></a></h3>
+          <h3><a href="<?php echo //$post['guid']; ?>">Por ahora no hay noticias en esta localidad<?php //echo $post['post_title']; ?></a></h3>
           <p>
 
               <?php 
-             
+             /*
                     $content = $post['post_content'];
                     include('system/application/libraries/Simplehtml.php');
                     
@@ -18,27 +18,27 @@ $post = current($consulta);
                     unset($html);          
                     
                     //pasa las variables para usar luego
-                    /*$featured = $post;
+                    $featured = $post;
                     */
               ?>
               <div class="top_news_featured_content">
                 
-              <?php if ($img_link != "") { ?>
+ <!--              <?php //if ($img_link != "") { ?>
                 <div class="top_news_media">
-                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+                  <img src="<?php //echo $img_link; ?>" alt="" title=""/>                  
                 </div>
 
                   <div class="top_news_featured_companion_text">
                 <?php //the_excerpt(235); ?>	                  
                   </div>
-                
-              <?php  } 
-              else 
-                  {  ?>
+                -->
+              <?php // } 
+             // else 
+               //   {  ?>
                     <div class="top_news_featured_text">
-                      sdf<?php //the_excerpt(235); ?>	                                       
+                      <?php //the_excerpt(235); ?>	¿A qué estás esperando?                                       
                     </div>   
-                <?php   }?>
+                <?php //  }?>
 
               </div>
                               

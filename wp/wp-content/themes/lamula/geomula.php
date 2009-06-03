@@ -2,6 +2,7 @@
 
       <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
       <ul id="menu">
+
         <li class="f"><a href="<?php echo '/shrekcms/mimula/ws/geomula/0/0/' ?>">Lima y Callao</a>
           <ul>
               <li class="current s">Lima y Callao</li>
@@ -23,6 +24,7 @@
               <li class="s"><a href="#">Lima Centro</a> 
 
               <ul>
+
               	<?php
               	$distritos = array('Barranco', 'Breña',  'Jesús María', 'La Victoria', 'Lince', 'Miraflores','San Isidro', 'San Luis',  'Santiago de Surco', 'Surquillo', 'San Borja' ); 
               	foreach($distritos as $distrito)
@@ -56,6 +58,7 @@
               <li class="s"><a href="#">Lima Este</a>
               
               <ul>
+
               	<?php
               	$distritos = array('Chaclacayo', 'Cieneguilla',  'El Agustino', 'La Molina', 'Lurigancho', 'San Juan de Lurigancho','Santa Anita' ); 
               	foreach($distritos as $distrito)
@@ -64,6 +67,7 @@
               		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
               	}
               	?>           
+
               </ul>
 
               </li>                   
@@ -71,6 +75,7 @@
               <li class="s"><a href="#">Lima Norte</a>
         
                 <ul>
+
 	              	<?php
 	              	$distritos = array('Carabayllo', 'Comas',  'Independencia', 'Los Olivos', 'Puente Piedra', 'Rimac','San Martin de Porres' ); 
 	              	foreach($distritos as $distrito)
@@ -78,7 +83,7 @@
 	              		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
 	              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
 	              	}
-	              	?>                   
+	              	?>
                 </ul>
           
               </li>                          
@@ -87,6 +92,7 @@
               <li class="s"><a href="#">Lima Sur</a>    
 
               <ul>
+
 	              	<?php
 	              	$distritos = array('Chorrillos', 'Lurian',  'Pachacamac', 'Pucusana', 'San Bartolo', 'San Juan de Miraflores','Sta. Maria del Mar','Villa El Salvador','Villa Maria del Triunfo' ); 
 	              	foreach($distritos as $distrito)
@@ -95,6 +101,7 @@
 	              		echo '<li class="t"><a href="/shrekcms/mimula/ws/geomula/0/lima/lima/'. $distrito_url . '">' . $distrito . '</a></li>';
 	              	}
 	              	?>                  
+
               </ul>
                     
               </li>
@@ -105,6 +112,7 @@
         <li class="f"><a href="#">Centro</a>
           <ul>
                 <li class="current s">Centro</li>
+
               	<?php
               	$departamentos = array('Apurimac', 'Huancavelica',  'Huanuco', 'Junin', 'Pasco'); 
               	foreach($departamentos as $departamento)
@@ -119,6 +127,7 @@
         <li class="f"><a href="#">Norte</a>
           <ul>
                 <li class="current s">Norte</li>
+
               	
               	<?php
               	$departamentos = array('Ancash', 'Cajamarca',  'La Libertad', 'Lambayeque', 'Piura','Tumbes'); 
