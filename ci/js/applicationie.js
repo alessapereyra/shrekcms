@@ -83,9 +83,12 @@ $(document).ready(function(){
 		image += '<img rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' + $image_url + '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
 		image += "</a>";
 		
-		added_image = image;
-		tinyMCE.activeEditor.setContent(added_image);	
+		actual = tinyMCE.activeEditor.getContent();	
+		actual += image;
+		tinyMCE.activeEditor.setContent(actual);
+			
 		$("input#photolink")[0].value = "";
+
 	
 		
 	});
