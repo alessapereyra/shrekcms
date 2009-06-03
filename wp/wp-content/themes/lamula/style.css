@@ -464,6 +464,10 @@ div.top_news_media {
 	font-size: 0.8em;
 }
 
+.top_news_featured_text p {
+	font-size: 1em !important;	
+}
+
 div#top_news div.top_news_featured div.top_news_featured_footer p {
 	overflow: hidden;
 	float: left;

@@ -34,6 +34,7 @@ tinyMCE.init({
   theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
+  relative_urls : false, 	
 	height : "280"
 });
 

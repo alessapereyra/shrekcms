@@ -57,8 +57,9 @@
   <div id="top_menu">
     <p>
       <span class="left">
-        <a href="#">&iquest;qui&eacute;nes somos?</a>
-        <a href="#">&iquest;qu&eacute; es &eacute;sto?</a>
+        <a href="#">nosotros</a>
+        <a href="#">el concepto</a>
+        <a href="#">te recomendamos</a>        
       </span>
       <span class="right">
         <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>

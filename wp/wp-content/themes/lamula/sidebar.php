@@ -35,83 +35,7 @@
           
           <ul class="bloggers_list">
 
-            <li>
-
-              <div class="sidebar_foto">
-                  <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>     
-              <div class="sidebar_txt">
-                  <h6><a href="http://lavozatidebida.lamula.pe">La Voz a ti Debida</a></h6>
-                  <strong>Pedro Salinas</strong>
-                  <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>     
-            <div class="sidebar_txt">
-                <h6><a href="http://2mil32.lamula.pe">2mil32</a></h6>
-                <strong>Juan Infante</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-            
-            <li>
-              
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-            <div class="sidebar_txt">
-                <h6><a href="http://zonacero.lamula.pe">Zona Cero</a></h6>
-                <strong>C&eacute;sar Gutierrez</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://datitinger.lamula.pe">Datitinger</a></h6>
-                 <strong>Daniel Titinger</strong>
-                 <p></p>
-             </div>
-
-            </li>
-            
-             <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-               </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://elarriero.lamula.pe">El Arriero</a></h6>
-                 <strong>Javier Torres</strong>                      
-                 <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-             </div>
-             <div class="sidebar_txt">
-                 <h6><a href=" http://carlostapia.lamula.pe ">Carlos Tapia</a></h6>
-                 <strong>Carlos Tapia</strong>                      
-                 <p></p>
-             </div>
-
-            </li>
+            <?php show_sidebar_bloggers(); ?>
               
           </ul>                
         
@@ -182,7 +106,7 @@
                     <!-- Include the Google Friend Connect javascript library. -->
                     <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
                     <!-- Define the div tag where the gadget will be inserted. -->
-                    <div id="div-6886351088514799323" style="width:200px;"></div>
+                    <div id="div-6886351088514799323" style="width:100px;"></div>
                     <!-- Render the gadget into a div. -->
                     <script type="text/javascript">
                     var skin = {};
@@ -247,40 +171,21 @@
             
             <h4>&Uacute;ltimos Comentarios</h4>          
             
+            <ul>
+              <?php mostrar_ultimos_comentarios(); ?>
+            </ul>
+            
           </div> <!-- sidebox_wrapper -->
   
         </div> <!-- sidebox -->
       
-        <div id="friend_connect" class="sidebox">
-          
-          <!-- Include the Google Friend Connect javascript library. -->
-          <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
-          <!-- Define the div tag where the gadget will be inserted. -->
-          <div id="div-9068912511230268267" style="width:276px;border:1px solid #cccccc;"></div>
-          <!-- Render the gadget into a div. -->
-          <script type="text/javascript">
-          var skin = {};
-          skin['BORDER_COLOR'] = '#cccccc';
-          skin['ENDCAP_BG_COLOR'] = '#ffffff';
-          skin['ENDCAP_TEXT_COLOR'] = '#333333';
-          skin['ENDCAP_LINK_COLOR'] = '#fe008a';
-          skin['ALTERNATE_BG_COLOR'] = '#ffffff';
-          skin['CONTENT_BG_COLOR'] = '#ffffff';
-          skin['CONTENT_LINK_COLOR'] = '#0000cc';
-          skin['CONTENT_TEXT_COLOR'] = '#333333';
-          skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
-          skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
-          skin['CONTENT_HEADLINE_COLOR'] = '#333333';
-          skin['NUMBER_ROWS'] = '6';
-          google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
-          google.friendconnect.container.renderMembersGadget(
-           { id: 'div-9068912511230268267',
-             site: '18025864853307811361' },
-            skin);
-          </script>
-          
-        </div>
       
+        <div class="sidebox">
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
+              <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.5/pe/88x31.png" />
+            </a><br />
+            <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dc:title" rel="dc:type">La Mula</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.rcp.pe" property="cc:attributionName" rel="cc:attributionURL">RCP</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">Creative Commons Reconocimiento-Compartir bajo la misma licencia 2.5 Per&#250; License</a>.<br />Based on a work at <a xmlns:dc="http://purl.org/dc/elements/1.1/" href="www.lamula.pe" rel="dc:source">www.lamula.pe</a>.
+        </div>
         
       </div> <!-- sidebar_recomendados -->
     

@@ -213,7 +213,7 @@ function get_blogs()
 
         $author = $wpdb->get_results("SELECT wp_users.user_nicename
                                   FROM wp_users 
-                                  WHERE wp_users.user_id = $blog->user_id");
+                                  WHERE wp_users.ID = $blog->user_id");
 
   			$blogOptionsTable = "wp_".$blog->blog_id."_options";
   		  $blogPostsTable = "wp_".$blog->blog_id."_posts";
@@ -284,10 +284,185 @@ function get_blog_random()
 	return $wpdb->get_results(implode(' ', $sql));
 }
 
+function mostrar_ultimos_comentarios($limit = 5){
+  
+  global $wpdb;
+  
+  $sql['select'] = 'SELECT mulapress_comments.comment_ID, mulapress_comments.comment_content,  wp_users.user_nicename, `mulapress_posts`.`ID`, `mulapress_posts`.`post_author`, DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `mulapress_posts`.`post_title`,`mulapress_posts`.`guid` as post_url, `mulapress_posts`.`post_type`, `mulapress_posts`.`post_mime_type`';
+  $sql['from'] = 'FROM mulapress_comments
+                 join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
+                 join wp_users on mulapress_comments.user_id = wp_users.ID';
+  $sql['order_by'] = 'ORDER BY post_date DESC';
+  $sql['limit'] = 'LIMIT 0,' . $limit;
+  $comments = $wpdb->get_results(implode(' ', $sql));
+  
+  
+  //muestra los ultimos comentarios 
+  
+  if ($comments) {
+		foreach ($comments as $comment) {
+		  
+          echo "<li>";
+          echo "<a href='http://lamula.pe/members/" . $comment->user_nicename . "'>" . $comment->user_nicename . "</a> dijo ";
+          echo "<a href='" .  $comment->post_url . "#comments-" . $comment->comment_ID ."'>" . $comment->comment_content . "</a>";
+          echo "en <a href='" .  $comment->post_url . "'>" . $comment->post_title . "</a>";
+          echo "</li>";
+          
+        		  
+    }
+  }
+      
+        
+  
+}
+
+function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
+{
+  global $wpdb;
+  
+  //Obtenemos los blogs de los usuarios
+	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+	$sql['select'] = 'SELECT blog_id';
+	$sql['from'] = 'FROM wp_blogs';
+	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
+	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['limit'] = 'LIMIT 0,' . $insiders ;
+	$insiders_blogs = $wpdb->get_results(implode(' ', $sql));
+	unset($sql);
+
+  //Obtenemos cualquier otros
+	$sql['select'] = 'SELECT blog_id';
+	$sql['from'] = 'FROM wp_blogs';
+	$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
+	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
+	$outsiders_blogs = $wpdb->get_results(implode(' ', $sql));
+	unset($sql);
+
+
+  //se crean los <li> de insiders
+  if ($insiders_blogs) {
+		foreach ($insiders_blogs as $blog) {
+  
+      $blog_id = $blog->blog_id;
+      $blog_table = 'wp_' .$blog_id . '_posts';
+      $blog_options_table = 'wp_' . $blog_id . '_options';
+      
+			$options = $wpdb->get_results("SELECT option_value 
+			                               FROM $blog_options_table 
+			                               WHERE option_name IN ('siteurl','blogname') 
+				                             ORDER BY option_name DESC");
+				                             
+    	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog_table . '.ID, wp_users.ID as user_id';
+    	$sql['from'] = 'FROM ' . $blog_table . '
+    					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
+    	$sql['where'] = 'where post_status = \'publish\'';	
+    	$sql['order_by'] = 'ORDER BY post_date ASC';
+    	$sql['limit'] = 'LIMIT 0,1';
+      $blog_results = $wpdb->get_results(implode(' ', $sql));
+	    unset($sql);    		
+      $blog_results = current($blog_results);
+
+    	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
+    	$sql['from'] = 'FROM wp_usermeta ';
+    	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
+    	$sql['order_by'] = 'ORDER BY post_date ASC';
+    	$sql['limit'] = 'LIMIT 0,1';
+      $avatar_results = $wpdb->get_results(implode(' ', $sql));
+	    unset($sql);    		
+      $avatar_results = current($avatar_results);
+
+
+//      bp_core_avatar_v1
+
+      echo "<li>";
+      echo "<div class='sidebar_foto'>";
+        if ($avatar_results->avatar == "") {
+          echo "<img src='http://www.google.com/friendconnect/static/images/NoPictureDark.png' title='Avatar autor' /> ";          
+        }
+        else
+        {
+          echo "<img src='".  $avatar_results->avatar . "' title='Avatar autor' /> ";          
+        }
+
+      echo "</div>";
+      echo "<div class='sidebar_txt'>";
+      echo "<h6><a href='" .  $options[0]->option_value . "'>" . $options[1]->option_value . "</a></h6>";
+      echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_nicename . "</a></strong>";
+      echo "<p></p>";
+      echo "</div>";
+      echo "</li>";
+  
+    }
+    
+  }
+  
+  // se crean <li> de los outsiders
+  if ($outsiders_blogs) {
+		foreach ($outsiders_blogs as $blog) {
+  
+          $blog_id = $blog->blog_id;
+          $blog_table = 'wp_' .$blog_id . '_posts';
+          $blog_options_table = 'wp_' . $blog_id . '_options';
+
+    			$options = $wpdb->get_results("SELECT option_value 
+    			                               FROM $blog_options_table 
+    			                               WHERE option_name IN ('siteurl','blogname') 
+    				                             ORDER BY option_name DESC");
+
+        	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login ' . $blog_table . '.ID, wp_users.ID as user_id';
+        	$sql['from'] = 'FROM ' . $blog_table . '
+        					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
+        	$sql['where'] = 'where post_status = \'publish\'';	
+        	$sql['order_by'] = 'ORDER BY post_date ASC';
+        	$sql['limit'] = 'LIMIT 0,1';
+          $blog_results = $wpdb->get_results(implode(' ', $sql));
+    	    unset($sql);    		
+          $blog_results = current($blog_results);
+
+        	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
+        	$sql['from'] = 'FROM wp_usermeta ';
+        	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
+        	$sql['order_by'] = 'ORDER BY post_date ASC';
+        	$sql['limit'] = 'LIMIT 0,1';
+          $avatar_results = $wpdb->get_results(implode(' ', $sql));
+    	    unset($sql);    		
+          $avatar_results = current($avatar_results);
+
+
+    //      bp_core_avatar_v1
+
+          echo "<li>";
+          echo "<div class='sidebar_foto'>";
+            if ($avatar_results->avatar == "") {
+              echo "<img src='http://www.google.com/friendconnect/static/images/NoPictureDark.png' title='Avatar autor' /> ";          
+            }
+            else
+            {
+              echo "<img src='".  $avatar_results->avatar . "' title='Avatar autor' /> ";          
+            }
+
+          echo "</div>";
+          echo "<div class='sidebar_txt'>";
+          echo "<h6><a href='" .  $options[0]->option_value . "'>" . $options[1]->option_value . "</a></h6>";
+          echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_nicename . "</a></strong>";
+          echo "<p></p>";
+          echo "</div>";
+          echo "</li>";
+  
+    }
+    
+  }  
+  
+  // $sql['join'] = 'JOIN wp_bp_user_blog ON wp_blogs.blog_id = wp_bp_user_blog.blog_id ';
+  // $sql['join2'] = 'JOIN wp_users ON wp_bp_user_blog.user_id = wp_users.user_id ';    
+
+}
+
 function get_blog_special()
 {
 	global $wpdb;
-	$blogs = array(1);
+	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
 	
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
