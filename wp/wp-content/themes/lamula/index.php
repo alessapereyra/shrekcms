@@ -26,7 +26,7 @@ get_header(); ?>
            while ($featured_query->have_posts()) : $featured_query->the_post();
            $do_not_duplicate = $post->ID;
            ?>
-		<div id="top_news_featured">
+		<div id="featured" class="top_news_featured">
           <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
           <p>
 
@@ -36,12 +36,7 @@ get_header(); ?>
                     $img_link = $html->find('img',0)->src;
 
                     $html->clear(); 
-                    unset($html);
-                    
-            //        $content = apply_filters('the_content', $content);
-            //        $content = str_replace(']]>', ']]&gt;', $content);  
-            //        $content = snippet($content,235);
-            //        $content = strip_tags($content, '<p>');            
+                    unset($html);          
                     $row = NULL;
               ?>
               <div id="top_news_featured_content">
@@ -80,26 +75,32 @@ get_header(); ?>
         <?php endwhile; ?>
 
         </div> <!-- top_news_featured -->
+        
 
         <div id="top_news">
 
+            <div class="top_news_item portada-active">
+	              <h3><a href="#featured" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
+	              <h4>publicado el <?php echo $most_voted->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a></h4>					
+            </div>
+            
             <div class="top_news_item">
-	              <h3><a href="#" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
+	              <h3><a href="#most_voted" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
 	              <h4>publicado el <?php echo $most_voted->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a></h4>					
             </div>          
 
             <div class="top_news_item">
-	              <h3><a href="#" class="news_item_title"><?php echo $most_viewed->post_title; ?></a></h3>
+	              <h3><a href="#most_viewed" class="news_item_title"><?php echo $most_viewed->post_title; ?></a></h3>
 					<h4>publicado el <?php echo $most_viewed->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>"><?php echo $most_viewed->user_nicename; ?></a></h4>            	
             </div>
 
             <div class="top_news_item">
-	              <h3><a href="#" class="news_item_title"><?php echo $blog_special->post_title; ?></a></h3>
+	              <h3><a href="#blog_special" class="news_item_title"><?php echo $blog_special->post_title; ?></a></h3>
 	              <h4>publicado el <?php echo $blog_special->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a></h4>					
             </div>
 
             <div class="top_news_item">
-	              <h3><a href="#" class="news_item_title"><?php echo $blog_random->post_title; ?></a></h3>
+	              <h3><a href="#blog_random" class="news_item_title"><?php echo $blog_random->post_title; ?></a></h3>
 	              <h4>publicado el <?php echo $blog_random->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a></h4>					
             </div>
 
