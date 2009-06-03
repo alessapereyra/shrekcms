@@ -54,7 +54,7 @@ get_header(); ?>
 
               </div>
                               
-              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em></span>
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> en noticia destacada</span>
 
           </p>
 
@@ -107,7 +107,7 @@ get_header(); ?>
 	              </div>
 	                    <?php $html->clear(); 
 	                    unset($html); ?> 
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php echo $most_voted->post_date; ?></em></span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php echo $most_voted->post_date; ?></em> en noticia mas votada</span>
 	
 	          </p>
 
@@ -115,7 +115,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $most_voted->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $most_voted->guid; ?>#comments" class="comments"><?php echo $most_voted->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -156,7 +156,7 @@ get_header(); ?>
 	              </div>
 	                 <?php 	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>" ><?php echo $most_viewed->user_nicename; ?></a> <em>el <?php echo $most_viewed->post_date; ?></em></span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>" ><?php echo $most_viewed->user_nicename; ?></a> <em>el <?php echo $most_viewed->post_date; ?></em> es noticia mas vista</span>
 	
 	          </p>
 
@@ -164,7 +164,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $most_viewed->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $most_viewed->guid; ?>#comments" class="comments"><?php echo $most_viewed->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -205,7 +205,7 @@ get_header(); ?>
 	              </div>
 	                 <?php 	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a> <em>el <?php echo $blog_special->post_date; ?></em></span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a> <em>el <?php echo $blog_special->post_date; ?></em> en blog especial</span>
 	
 	          </p>
 
@@ -213,7 +213,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $blog_special->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $blog_special->guid; ?>#comments" class="comments"><?php echo $blog_special->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>
@@ -255,7 +255,7 @@ get_header(); ?>
 	              </div>
 	                 <?php 	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a> <em>el <?php echo $blog_random->post_date; ?></em></span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a> <em>el <?php echo $blog_random->post_date; ?></em> en blog random</span>
 	
 	          </p>
 
@@ -263,7 +263,7 @@ get_header(); ?>
 	
 	            <a href="<?php echo $blog_random->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 	            <p class="comments"><a href="<?php echo $blog_random->guid; ?>#comments" class="comments"><?php echo $blog_random->comment_count; ?> comentarios</a></p>
-	            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+	            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
 	            
 	          </div>	          
         </div>                       
