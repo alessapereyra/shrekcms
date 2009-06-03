@@ -297,25 +297,14 @@ class Fotos extends DI_Controller {
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
 
-						$tmp = '<a rel="fancybox uploaded_photo" href="' . $photo_data->guid . '">';
-						$tmp .= '<img rel="uploaded_photo" class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
-						$tmp .= '</a>';
-						$tmp .= '<br />';
-												        
-						$data['post_content'] = $tmp . "<p>"  . $data['post_content'] . "</p>";
-
+				  
 					}	
 					
 				break;
 				
 				//enlazar
 				case 'enlazar': 
-					$tmp = '<a rel="fancybox uploaded_photo"  href="' . $this->input->post('photolink') . '">';
-					$tmp .= '<img rel="uploaded_photo" class="alignnone" src="' . $this->input->post('photolink') . '" />';
-					$tmp .= '</a>';
-					$tmp .= '<br />';
-					$data['post_content'] = $tmp . "<p>" . $data['post_content'] . "</p>";
-					
+						
 				break;
 			}
 			
@@ -439,7 +428,7 @@ class Fotos extends DI_Controller {
 			
 			$the_photo = $this->post->insert_attach($values);
 			
-			$meta['_wp_attached_file'] = date('Y/m/') . $photo['file_name'];;
+			$meta['_wp_attached_file'] = date('Y/m/') . $photo['file_name'];
 			
 			//debo manipular la imagen
 			if (function_exists('getimagesize'))
@@ -485,11 +474,16 @@ class Fotos extends DI_Controller {
 				$to['h'] = $this->options->get_($tmp_size . '_h');			
 				
 				$filename_medium = NULL;
+				$filename_width = NULL;
+				$filename_height = NULL;
+				
 				$tmp = $this->_resize($from, $to, $photo, $config);
 				if ($tmp != FALSE)
 				{
 					$the_meta['sizes']['medium'] = $tmp;
 					$filename_medium = $tmp['file'];
+					$filename_width = $tmp['width'];
+					$filename_height = $tmp['height'];
 				}
 				
 				//large_size
@@ -531,7 +525,15 @@ class Fotos extends DI_Controller {
 			{
 			  	
   			$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
-				echo $the_photo . '#' . $tmp . '#' . $this->options->get_('upload_url_path') . $values['guid'] . '#' . $this->options->get_('upload_url_path') . $filename_medium;				
+  			$image_src = $this->options->get_('upload_url_path') . date('/Y/m/') ."/" . $filename_medium;
+  			$image_width = $filename_width;
+  			$image_height = $filename_height;
+  			
+  			$image = '<a rel="fancybox uploaded_photo" href="'. $this->options->get_('upload_url_path') . "/" . $photo['file_name'] .'" alt="Foto Original">';
+  			$image .= '<img id=photo-"'. $the_photo . '" rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' . $image_src  . '" width = "' . $image_width . '" height="' .$image_height  . '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
+				$image .= "</a>";
+				
+				echo $the_photo . '#' . $tmp . '#' . $image;
 			}
 		}
 		

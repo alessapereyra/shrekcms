@@ -121,14 +121,13 @@ FileProgress.prototype.setMiniatura = function (status) {
 	this.fileProgressElement.childNodes[0].innerHTML = status;
 };
 
-FileProgress.prototype.insertImage = function (filename, thumb) {
+FileProgress.prototype.insertImage = function (filename) {
 
-	tmp = '<br /><a rel="uploaded_image" href="' + thumb + '">';
-	tmp += '<img rel="uploaded_image" class="alignnone size-medium wp-image-1" src="' + filename + '" />';
-	tmp += '</a>';
-	tmp += '<br />';
-
-	tinyMCE.activeEditor.setContent(tmp);	
+	tmp = '<br />';
+	tmp += filename;
+	current_content = tinyMCE.activeEditor.getContent();	
+	current_content += tmp;
+	tinyMCE.activeEditor.setContent(current_content);	
 
 };
 

@@ -29,7 +29,7 @@ $(document).ready(function(){
 		combo.attr("disabled","disabled");
 		combo.html('');
 	}
-	
+							
 	function llenarcombo(combo, id)
 	{
 		limpiarcombo(combo);
@@ -74,6 +74,23 @@ $(document).ready(function(){
 		return false;
 		
 	})
+
+	$("a.add_to_note").click(function(){
+		
+		$image_url = $("input#photolink").val();
+		image = '<a rel="fancybox uploaded_photo" href="'+ $image_url +'" alt="Foto Original">';
+		image += '<img rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' + $image_url + '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
+		image += "</a>";
+		
+		actual = tinyMCE.activeEditor.getContent();	
+		actual += image;
+		tinyMCE.activeEditor.setContent(actual);
+			
+		$("input#photolink")[0].value = "";
+		
+		
+		
+	});
 
  	$("a#link_to_preview").click(function(){
 	

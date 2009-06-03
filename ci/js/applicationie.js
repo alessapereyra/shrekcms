@@ -75,6 +75,21 @@ $(document).ready(function(){
 		
 	})
 
+	$("a.add_to_note").click(function(){
+		
+		
+		$image_url = $("input#photolink").val();
+		image = '<a rel="fancybox uploaded_photo" href="'+ $image_url +'" alt="Foto Original">';
+		image += '<img rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' + $image_url + '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
+		image += "</a>";
+		
+		added_image = image;
+		tinyMCE.activeEditor.setContent(added_image);	
+		$("input#photolink")[0].value = "";
+	
+		
+	});
+
  	$("a#link_to_preview").click( function(){
 	
 	$(this).toggleText("vista previa","continuar editando");

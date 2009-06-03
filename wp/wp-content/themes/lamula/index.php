@@ -496,7 +496,26 @@ get_header(); ?>
 
   </div>
  
-  
+  <div id="bloggers_box">
+    
+    <ul>
+
+      <li>
+        <h4>en el Utero de Marita, ocram escribe </h4>
+        <div class="blogger_avatar">  
+          <img src=""></img>
+        </div>
+        <div class="blogger_last_post_content">
+            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+             Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+        </div>
+      </li>
+      
+    </ul>
+    
+  </div>
   
 
 </div> <!-- content_feed -->

@@ -119,7 +119,7 @@ function uploadSuccess(file, serverData, receivedResponse) {
 			if (tmp[1] != undefined){ 
 				
 				progress.setMiniatura(tmp[1]); 
-				progress.insertImage(tmp[2],tmp[3]); 
+				progress.insertImage(tmp[2]); 
 				
 			}	
 			// else {

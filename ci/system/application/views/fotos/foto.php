@@ -62,6 +62,8 @@
 	            	<?php echo form_label('Ingresa la dirección de la imagen que desees enviar:', 'photolink');?> 
 	            	<?php echo form_error('photolink'); ?>
 	            	<?php echo form_input(array('name' => 'photolink', 'value' => $photolink, 'id' => 'photolink')); ?>
+	            	<a href="#" class="add_to_note">A&ntilde;adir a la nota</a>
+
 	  		</div>
   	</div>
   	<?php }?>
