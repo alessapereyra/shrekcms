@@ -120,41 +120,6 @@
       <div id="sidebar_recomendados">
         
 
-        <div id="corresponsales" class="sidebox">
-   
-            <div class="sidebox_wrapper">
-    
-               <h4>Corresponsales más</h4>
-               
-               <div class="tab_content">
-                	vistos
-                  <!-- vistos -->
-                
-               </div>
-
-               <div class="tab_content">
-                votados
-                  <!-- votados -->
-                
-               </div>
-
-
-               <div class="tab_content">
-                comentados
-                <!-- comentados -->
-                
-               </div>
-
-             </div>
-   
-        </div>
-
-        <ul id="corresponsales" class="sidebox_menu">
-          <li><a href="#vistos">vistos</a></li>
-          <li><a href="#votados">votados</a></li>
-          <li><a href="#comentados" class="selected">comentados</a></li>                
-        </ul>
-        
         <div id="ranking_usuarios" class="sidebox">
 
           <h4>r&aacute;nking de usuarios</h4>

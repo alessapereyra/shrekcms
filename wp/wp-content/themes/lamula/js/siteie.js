@@ -1,7 +1,16 @@
 $(document).ready(function() {
 	
-	 BACK = "todas"
-	 BACK_STATES = "regresar"
+	 BACK = "todas";
+	 BACK_STATES = "regresar";
+  from_outside = true;
+	 LAST_STATE = "";
+	
+	    // initialize scrollable  
+	   $("div.scrollable").scrollable({
+
+				 size: 3
+
+			});
 		 
 		 //fancybox
 		 //fancybox
@@ -159,22 +168,26 @@ $(document).ready(function() {
 						if (childs.children().length > 1 ) { 
 
 						father.siblings().toggle("fast");
+						father.siblings().removeClass("current");
+						$("li.s a").removeClass("current_option");
+						$(father.siblings()[0]).addClass("current");
 
 						childs.toggle("fast");
 
 						//Setups get back content
 						//TODO: I hate how this works
-						if ($(this)[0].textContent != BACK_STATES ){
 
-						//	$(this)[0].textContent = BACK_STATES;
-							$(this)[0].addClass("current_option");							
-
+			//				$(this)[0].textContent = BACK_STATES;
+						if (from_outside)
+						{
+								from_outside = false;
+								$(this).addClass("current_option");							
 						}
-						else {
+						else 
+							{
+								from_outside = true;
+							}
 
-						//	$(this)[0].textContent = childs.children()[0].innerHTML;
-							$(this)[0].removeClass("current_option");
-						}
 					
 					}
 

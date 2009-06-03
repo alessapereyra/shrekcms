@@ -5,6 +5,12 @@ $(document).ready(function() {
    from_outside = true;
 	 LAST_STATE = "";
 	
+   $("div.scrollable").scrollable({
+	
+			 size: 3
+	
+		});     
+	
 		//TODO agregarle los nombres de los enlazados.. ahora mismo :D
 		 //fancybox
 		 $('div.post_content a[rel="uploaded_photo"]').fancybox({

@@ -344,7 +344,7 @@ get_header(); ?>
       	                    $content = apply_filters('the_content', $content);
       	                    $content = str_replace(']]>', ']]&gt;', $content);
       	                    $content = snippet($content,235);
-      	                    $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+      	                    $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
       	              ?>
 	
 	        <li class=<?php echo $row; ?>>
@@ -381,11 +381,16 @@ get_header(); ?>
 	        </div> <!-- post_item -->
 	        	          
             <div class="news_footer">
-	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
-              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+              
+              <div class="footer_links">
 
+                <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+                
+              </div>
+
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>	          
             </div> <!-- news_footer -->	          
 	
 	        </li>
@@ -439,7 +444,7 @@ get_header(); ?>
                    $content = str_replace(']]>', ']]&gt;', $content);
                    $content = snippet($content,235);
                    $author = "por <small class='author'> ". get_the_author() . "</small>";
-                   $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+                   $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
              ?>
 
 
@@ -476,11 +481,14 @@ get_header(); ?>
 
 
              <div class="news_footer">
- 	             <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
-               <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-               <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-               <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+               <div class="footer_links">
 
+                  <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+                  <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                  <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+                </div>
+ 	             <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
              </div> <!-- news_footer -->              
 
   	        </li>
@@ -533,8 +541,7 @@ get_header(); ?>
                   $content = str_replace(']]>', ']]&gt;', $content);
                   $content = snippet($content,235);
                   $author = "por <small class='author'> ". get_the_author() . "</small>";
-                  $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
-                  $content =  $content; 
+                  $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
             ?>
 
 
@@ -571,11 +578,14 @@ get_header(); ?>
 
 
             <div class="news_footer">
-	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
-              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+              <div class="footer_links">
 
+                 <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+                 <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                 <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+               </div>
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
             </div> <!-- news_footer -->
 
           </li>
@@ -628,7 +638,7 @@ get_header(); ?>
                               $content = str_replace(']]>', ']]&gt;', $content);
                               $content = snippet($content,235);
                               $author = "por <small class='author'> ". get_the_author() . "</small>";
-                              $date = " a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
+        	                    $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
                               $content =  $content; 
                         ?>
 
@@ -665,11 +675,14 @@ get_header(); ?>
 
 
             <div class="news_footer">
-	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
-              <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-              <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-              <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+              <div class="footer_links">
 
+                 <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+                 <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                 <a class="rate"><?php wp_gdsr_render_article(); ?></a>
+
+               </div>
+	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
             </div> <!-- news_footer -->
 
           </li>
@@ -693,8 +706,31 @@ get_header(); ?>
 
   </div>
  
+ 
+  <div id="bloggers_navigation">
+    
+      <h3>nuestros bloggers</h3>
+      <!-- navigator --> 
+      <div class="navi"></div> 
+
+      <!-- prev link --> 
+      <a class="prev"></a>
+ 
+      <div id="bloggers_box" class="scrollable">
+        
+        <ul class="items">
+
+          <?php get_blogs(); ?>
+      
+        </ul>
+    
+      </div>
   
-  
+      <!-- next link --> 
+      <a class="next"></a>
+
+    </div>
+
 
 </div> <!-- content_feed -->
 
