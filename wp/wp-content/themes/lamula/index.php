@@ -88,18 +88,22 @@ get_header(); ?>
             	<?php $post = kf_get_posts_by_hits(7,1,false);
             	$links = current($post); ?>
 	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
-					<h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>"><?php echo $links->user_nicename; ?><a></h4>            	
+					<h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>"><?php echo $links->user_nicename; ?></a></h4>            	
             </div>
 
             <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Una noticia aleatoria</a></h3>
-              <h4>publicado hace 7 horas por <a href="#">coby</a></h4>
+            	<?php $post = get_blog_special();
+            	$links = current($post); ?>
+	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
+	              <h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>" ><?php echo $links->user_nicename; ?></a></h4>					
             </div>
 
 
             <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Los niños de Avelino</a></h3>
-              <h4>publicado en <a href="#">DeveloperAtWork</a> por <a href="#">yaraher</a></h4>
+            	<?php $post = get_blog_random();
+            	$links = current($post); ?>
+	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
+	              <h4>publicado el <?php echo $links->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $links->user_nicename; ?>" ><?php echo $links->user_nicename; ?></a></h4>					
             </div>
 
         </div> <!-- top_news_text -->
