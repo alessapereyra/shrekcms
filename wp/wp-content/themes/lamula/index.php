@@ -78,8 +78,10 @@ get_header(); ?>
         <div id="top_news">
           
             <div class="top_news_item">
-              <h3><a href="#" class="news_item_title">Dr. Computer olvidó el teléfono</a></h3>
-              <h4>enviado hace 7 horas por <a href="#">yaraher</a></h4>
+            	<?php $post = get_most_voted();
+            	$links = current($post); ?>
+	              <h3><a href="#" class="news_item_title"><?php echo $links->post_title; ?></a></h3>
+	              <h4>lala</h4>					
             </div>
 
             <div class="top_news_item">
