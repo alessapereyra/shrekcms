@@ -24,6 +24,28 @@ function snippet($text,$length=64,$tail="...") {
     return $text;
 }
 
+
+function mulapress_trim_excerpt($text, $length = 55) {
+	if ( '' == $text ) {
+		$text = get_the_content('');
+  }   
+	
+		$text = strip_shortcodes( $text );
+
+		$text = apply_filters('the_content', $text);
+		$text = str_replace(']]>', ']]&gt;', $text);
+		$text = strip_tags($text);
+		$excerpt_length = apply_filters('excerpt_length', $length);
+		$words = explode(' ', $text, $excerpt_length + 1);
+		if (count($words) > $excerpt_length) {
+			array_pop($words);
+			array_push($words, '...');
+			$text = implode(' ', $words);
+		}
+		
+	return $text;
+}
+
 function mula_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
@@ -284,6 +306,20 @@ function get_blog_random()
 	return $wpdb->get_results(implode(' ', $sql));
 }
 
+function calcular_ranking($user_quantity = 20){
+  
+  global $wpdb; 
+  
+  $sql['select'] = 'SELECT wp_users.id';
+	$sql['from'] = 'FROM wp_users';
+	$sql['where'] = 'WHERE public =1';
+	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['limit'] = 'LIMIT 0,1';
+	
+	$blog_id = $wpdb->get_results(implode(' ', $sql));
+  
+}
+
 function mostrar_ultimos_comentarios($limit = 5){
   
   global $wpdb;
@@ -305,7 +341,7 @@ function mostrar_ultimos_comentarios($limit = 5){
           echo "<li>";
           echo "<a href='http://lamula.pe/members/" . $comment->user_nicename . "'>" . $comment->user_nicename . "</a> dijo ";
           echo "<a href='" .  $comment->post_url . "#comments-" . $comment->comment_ID ."'>" . $comment->comment_content . "</a>";
-          echo "en <a href='" .  $comment->post_url . "'>" . $comment->post_title . "</a>";
+          echo " en <a href='" .  $comment->post_url . "'>" . $comment->post_title . "</a>";
           echo "</li>";
           
         		  

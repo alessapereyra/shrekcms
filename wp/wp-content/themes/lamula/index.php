@@ -12,7 +12,7 @@ get_header(); ?>
 
           <?php  
            // $featured_query = new WP_Query('category_name=featured&showposts=2');
-           $featured_query = new WP_Query('showposts=1');
+           $featured_query = new WP_Query('showposts=1&category_name=featured');
            while ($featured_query->have_posts()) : $featured_query->the_post();
            $do_not_duplicate = $post->ID;
            ?>
@@ -54,7 +54,7 @@ get_header(); ?>
 
               </div>
                               
-              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> en noticia destacada</span>
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
 
           </p>
 
@@ -94,20 +94,20 @@ get_header(); ?>
 	
 	                  <div class="top_news_featured_companion_text">
 	                  	<?php $most_voted->post_content = eregi_replace($img->outertext, ' ', $most_voted->post_content); ?>
-	                	<?php echo wp_trim_excerpt($most_voted->post_content, 235) ?>                 
+	                	<?php echo mulapress_trim_excerpt($most_voted->post_content, 235) ?>                 
 	                  </div>
 	              <?php } 
 	              else 
 	                  {  ?>
 	                    <div class="top_news_featured_text">
-	                     <?php echo wp_trim_excerpt($most_voted->post_content, 235) ?>                                            
+	                     <?php echo mulapress_trim_excerpt($most_voted->post_content, 235) ?>                                            
 	                    </div>   
 	                <?php  }?>
 	
 	              </div>
 	                    <?php $html->clear(); 
 	                    unset($html); ?> 
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php echo $most_voted->post_date; ?></em> en noticia mas votada</span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a> <em>el <?php echo $most_voted->post_date; ?></em> desde las noticias m&aacute;s votadas</span>
 	
 	          </p>
 
@@ -142,21 +142,21 @@ get_header(); ?>
 	
 	                  <div class="top_news_featured_companion_text">
 	                    <?php $most_viewed->post_content = eregi_replace($img->outertext, ' ', $most_viewed->post_content); ?>
-	                	<?php echo wp_trim_excerpt($most_viewed->post_content, 235) ?>                 
+	                	<?php echo mulapress_trim_excerpt($most_viewed->post_content, 235) ?>                 
 	                  </div>
 	                
 	              <?php } 
 	              else 
 	                  {  ?>
 	                    <div class="top_news_featured_text">
-	                     <?php echo wp_trim_excerpt($most_viewed->post_content, 235) ?>                                            
+	                     <?php echo mulapress_trim_excerpt($most_viewed->post_content, 235) ?>                                            
 	                    </div>   
 	                <?php  }?>
 	
 	              </div>
 	                 <?php 	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>" ><?php echo $most_viewed->user_nicename; ?></a> <em>el <?php echo $most_viewed->post_date; ?></em> es noticia mas vista</span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>" ><?php echo $most_viewed->user_nicename; ?></a> <em>el <?php echo $most_viewed->post_date; ?></em> desde las noticias m&aacute;s comentadas</span>
 	
 	          </p>
 
@@ -168,8 +168,13 @@ get_header(); ?>
 	            
 	          </div>	          
         </div>
-        <?php             	$post = get_blog_special();
-            	$blog_special = current($post);?>
+        <?php 
+        
+              $post = get_blog_special();
+            	$blog_special = current($post);
+            	
+         ?>
+         
         <div id="blog_special" class="top_news_featured">
         	<h3><a href="<?php echo $blog_special->guid ?>"><?php echo $blog_special->post_title; ?></a></h3>
 	          <p>
@@ -191,21 +196,23 @@ get_header(); ?>
 	
 	                  <div class="top_news_featured_companion_text">
 	                    <?php $blog_special->post_content = eregi_replace($img->outertext, ' ', $blog_special->post_content); ?>
-	                	<?php echo wp_trim_excerpt($blog_special->post_content, 235) ?>                 
+	                	<?php echo mulapress_trim_excerpt($blog_special->post_content, 200) ?>                 
 	                  </div>
 	                
 	              <?php } 
 	              else 
 	                  {  ?>
 	                    <div class="top_news_featured_text">
-	                     <?php echo wp_trim_excerpt($blog_special->post_content, 235) ?>                                            
+	                     <?php echo mulapress_trim_excerpt($blog_special->post_content, 200) ?>                                            
 	                    </div>   
 	                <?php  }?>
 	
 	              </div>
-	                 <?php 	                    $html->clear(); 
+	                 <?php 	
+	                 
+	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a> <em>el <?php echo $blog_special->post_date; ?></em> en blog especial</span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a> <em>el <?php echo $blog_special->post_date; ?></em> desde nuestros corresponsales</span>
 	
 	          </p>
 
@@ -241,21 +248,21 @@ get_header(); ?>
 	
 	                  <div class="top_news_featured_companion_text">
 	                    <?php $blog_random->post_content = eregi_replace($img->outertext, ' ', $blog_random->post_content); ?>
-	                	<?php echo wp_trim_excerpt($blog_random->post_content, 235) ?>                 
+	                	<?php echo mulapress_trim_excerpt($blog_random->post_content, 235) ?>                 
 	                  </div>
 	                
 	              <?php } 
 	              else 
 	                  {  ?>
 	                    <div class="top_news_featured_text">
-	                     <?php echo wp_trim_excerpt($blog_random->post_content, 235) ?>                                            
+	                     <?php echo mulapress_trim_excerpt($blog_random->post_content, 235) ?>                                            
 	                    </div>   
 	                <?php  }?>
 	
 	              </div>
 	                 <?php 	                    $html->clear(); 
 	                    unset($html);  ?>            
-	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a> <em>el <?php echo $blog_random->post_date; ?></em> en blog random</span>
+	              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a> <em>el <?php echo $blog_random->post_date; ?></em> desde nuestros blogs</span>
 	
 	          </p>
 

@@ -57,8 +57,8 @@
   <div id="top_menu">
     <p>
       <span class="left">
-        <a href="#">nosotros</a>
-        <a href="#">el concepto</a>
+        <a href="http://lamula.pe/mulapress/nosotros">nosotros</a>
+        <a href="http://lamula.pe/mulapress/el-concepto">el concepto</a>
         <a href="#">te recomendamos</a>        
       </span>
       <span class="right">
@@ -82,10 +82,10 @@
           <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
           <strong><?php twitter_messages('mulastatus', 1, false, false, false , true, false, false); ?></strong>
         </div>
-    
+        
         <div id="search_bar">
-            <form action="#">
-              <input type="text" name="busqueda" value="" id="busqueda" />
+            <form action="<?php bloginfo('home'); ?>/" method="get" id="searchform">
+              <input type="text" name="s" value="" id="busqueda" />
               <input type="submit" value="buscar" />
             </form>
         </div> <!-- search_bar -->

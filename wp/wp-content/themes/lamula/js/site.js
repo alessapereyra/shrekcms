@@ -59,9 +59,9 @@ $(document).ready(function() {
 			
 			var index = $("div.top_news_item h3 a").index(this);
 			
-			$(".top_news_featured").hide("slow");
+			$(".top_news_featured").hide();
 			
-			$(".top_news_featured:eq(" + index + ")").show("fast");					
+			$(".top_news_featured:eq(" + index + ")").show();					
 				
 			return false;
 		})
@@ -131,7 +131,7 @@ $(document).ready(function() {
 		})	
 
 
-		$("ul#menu > li > a").click(function(){
+		$("ul#menu > li.f > a").click(function(){
 			
 			
 						father = $(this).parent();
@@ -154,7 +154,8 @@ $(document).ready(function() {
 											
 						}
 						else {
-				
+							$("ul#menu li ul > li.s a").hide("fast");
+							$("ul#menu li ul > li.s ").hide("fast");
 							$(this)[0].textContent = childs[0].innerHTML;
 							$(this).removeClass("current_option");				
 						}
@@ -163,7 +164,7 @@ $(document).ready(function() {
 		});
 		
 		
-			$("ul#menu li ul > li a").click(function(){
+			$("ul#menu li ul > li.s a").click(function(){
 
 				//alert();
 
@@ -182,6 +183,10 @@ $(document).ready(function() {
 						$(father.siblings()[0]).addClass("current");
 
 						childs.toggle("fast");
+							
+						//cargar contenido
+						
+						
 
 						//Setups get back content
 						//TODO: I hate how this works
@@ -202,5 +207,76 @@ $(document).ready(function() {
 
 			});
 	
+	
+			// $("ul#menu > li > a").click(function(){
+			// 
+			// 
+			// 					father = $(this).parent();
+			// 
+			// 					//Hides all the siblings
+			// 					father.siblings().toggle("fast");
+			// 					father.siblings().removeClass("current");
+			// 					$(this).addClass("current");
+			// 
+			// 					//Shows all the childs "li"
+			// 					childs = father.find("li");
+			// 					childs.toggle("fast");
+			// 
+			// 					//Setups get back content
+			// 					//TODO: I hate how this works
+			// 					if ($(this)[0].textContent != BACK){
+			// 
+			// 						$(this)[0].textContent = BACK;
+			// 						$(this).addClass("current_option");
+			// 
+			// 					}
+			// 					else {
+			// 
+			// 						$(this)[0].textContent = childs[0].innerHTML;
+			// 						$(this).removeClass("current_option");				
+			// 					}
+			// 
+			// 
+			// 	});
+			// 
+			// 
+			// 		$("ul#menu li ul > li a").click(function(){
+			// 
+			// 			//alert();
+			// 
+			// 				father = $(this).parent();
+			// 
+			// 				//Hides all the siblings
+			// 				//Shows all the childs "li"
+			// 				childs = father.find("ul");
+			// 		//		alert ( childs.children().length );
+			// 
+			// 					if (childs.children().length > 1 ) { 
+			// 
+			// 					father.siblings().toggle("fast");
+			// 					father.siblings().removeClass("current");
+			// 					$("li.s a").removeClass("current_option");
+			// 					$(father.siblings()[0]).addClass("current");
+			// 
+			// 					childs.toggle("fast");
+			// 
+			// 					//Setups get back content
+			// 					//TODO: I hate how this works
+			// 
+			// 		//				$(this)[0].textContent = BACK_STATES;
+			// 					if (from_outside)
+			// 					{
+			// 							from_outside = false;
+			// 							$(this).addClass("current_option");							
+			// 					}
+			// 					else 
+			// 						{
+			// 							from_outside = true;
+			// 						}
+			// 
+			// 
+			// 				}
+			// 
+			// 		});
 	
 });
