@@ -151,7 +151,7 @@ $(document).ready(function() {
 							
 							$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
 							
-									location.hash = "#" + $(this.text());
+								location.hash = "#" + $(this).text();
 		//					$("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
 
 							$("#featured.top_news_featured h3").show("fast");		
@@ -206,8 +206,8 @@ $(document).ready(function() {
 								
 									$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
 								
-									location.hash = "#" + $(this.text()); 								
-									// $("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
+									location.hash = "#" + $(this).text();
+								// $("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
 								
 									$("#featured.top_news_featured h3").show("fast");		
 									$("#featured.top_news_featured .top_news_featured_content").show("fast");		
