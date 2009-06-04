@@ -375,7 +375,7 @@ div#top_news div.top_news_featured img {
 div.top_news_featured_companion_text {
 	float: left;
 	width: 270px;
-	font-size: 1.2em;
+	font-size: 0.8em;
 }
 
 div#top_news div#top_news {
@@ -440,6 +440,7 @@ div#top_news div.top_news_featured h3 a {
 	text-decoration: none;
 	display: block;
 	margin-bottom: 10px;
+	text-transform: capitalize;
 }
 
 
@@ -462,6 +463,10 @@ div.top_news_media {
 .top_news_featured_text {
 	overflow: auto;
 	font-size: 0.8em;
+}
+
+.top_news_featured_text p {
+	font-size: 1em !important;	
 }
 
 div#top_news div.top_news_featured div.top_news_featured_footer p {
@@ -552,7 +557,13 @@ div#top_news_footer p.comments a em {
 }
 
 div.top_news_featured_content {
-	overflow: auto;
+	overflow: hidden;
+	height: 127px;
+}
+
+div.top_news_featured_content.special {
+	overflow: hidden;
+	height: 100px;
 }
 
 /* @end */
@@ -1119,7 +1130,8 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list {
 
 div#sidebars div#sidebar_recomendados ul#post_list li a,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li,
-div#sidebars div#sidebar_recomendados ul.bloggers_list li a {
+div#sidebars div#sidebar_recomendados ul.bloggers_list li a,
+div#sidebars div#comentarios ul li a {
 	float: none;
 	margin: 0px;
 	color: #3b3330 !important;
@@ -1186,8 +1198,7 @@ div#sidebars div#sidebar_recomendados ul li a
 	text-decoration: none;
 	float: none;
 	margin: 0px;
-	background-color: #fff576;
-	color: #ffe250;
+		color: black;
 	text-transform: lowercase;
 	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
@@ -1241,17 +1252,9 @@ div.sidebox_content {
 }
 
 #important p a.send_news {
-		display: block;
 	text-align: center;
-	padding: 15px 80px;
-	color: #000;
-	font-size: 2em;
-	letter-spacing: -2px;
-	word-spacing: 4px;
-	margin: 0 auto 0.5em;
-	background: #d2e7f7 url(images/background-blue.png) repeat-x 0 1px;
+	background:  url(images/background-blue.png) repeat-x 0 1px;
 	text-decoration: none;
-	border-top: 5px solid #3b3330;
 }
 
 #important p a.send_news:hover {
@@ -1263,6 +1266,7 @@ div.sidebox_content {
 	text-decoration: none;
 	color: #3b3330;
 	font-size: 0.7em;
+	display: none !important;
 }
 
 #sidebars #important p a.send_news {
@@ -1270,16 +1274,24 @@ div.sidebox_content {
 	text-align: center;
 	padding: 15px 60px;
 	color: #000;
-	background-color: #ffe250;
 	font-size: 2em;
 	letter-spacing: -2px;
 	word-spacing: 4px;
 	margin: 0 auto 0.5em;
-	background-image: none;
+	background: url(images/boton_publicar.png) no-repeat;
+	text-indent: -2000em;
+	height: 120px;
+	
+}
+
+#sidebars #important p a.send_news em {
+	display: block !important;
+	display: none !important;
+	text-indent: -3000em !important;
 }
 
 #sidebars #important p a.send_news:hover {
-	background-color: #ffda29;
+
 }
 
 #sidebars #important p a.send_news em {
@@ -1291,7 +1303,6 @@ div.sidebox_content {
 
 
 div#sidebars div#sidebar_recomendados li a:hover{
-	background-color: #ffe250;
 
 }
 
@@ -1303,7 +1314,7 @@ div#sidebars div#sidebar_recomendados {
 }
 
 div#sidebars div#sidebar_recomendados div.sidebox {
-		overflow: auto;
+		overflow: hidden;
 	margin:0 0 0px;
 
 }
@@ -1315,7 +1326,56 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 }
 
 
+#comentarios div.sidebox_wrapper ul {
+	padding: 10px;
+	display: block ;
+	
+}
 
+div#comentarios.sidebox {
+	display: block;
+	overflow: auto;	
+	margin-bottom: 1em !important;	
+}
+
+#sidebar_recomendados div.sidebox.cc {
+	text-align: center;
+	color: black;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	margin-bottom: 1em;
+}
+
+#comentarios div.sidebox_wrapper ul li {
+
+	overflow: hidden;
+	font-size: 0.8em;
+	background: white url(images/background-white.png) repeat-x 0 bottom;
+	border-bottom: 1px solid #e9e9e9;
+	padding-bottom: 10px !important;
+	display: block;
+	text-decoration: none !important;
+	text-transform: lowercase;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+
+div#comentarios div.sidebox_wrapper ul li a {
+	padding: 0px !important;
+	background: none !important;
+	display: inline !important;
+	color: black !important;
+	color: #3b3330 !important;
+	border: none !important;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	
+}
+
+div#comentarios div.sidebox_wrapper ul li a:hover{
+	 color: #1192cf !important;
+	 text-decoration: underline !important;
+}
 	
 	
 
@@ -1492,6 +1552,7 @@ div.scrollable {
 #bloggers_box ul.items li h4 {
 	text-transform: lowercase;
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	color: #878787;
 }
 
 #bloggers_box ul.items li div.blogger_last_post_content h5 a {
@@ -1501,9 +1562,15 @@ div.scrollable {
 div#bloggers_navigation {
 	overflow: auto;
 	margin-top: 1em;
-	background-color: white;
+	background-color: #d5d5d5;
 	padding: 10px 5px;
 	padding-bottom: 1.2em;
+	color: #fff;
+}
+
+img#campana_banner.sidebox_image,
+img#comentarios_banner.sidebox_image {
+	margin: 1em 0px;
 } 	
  
 /*  
@@ -1586,9 +1653,10 @@ a.next, a.nextPage {
 
 /* position and dimensions of the navigator */
 div.navi {
-	width:230px;
-	height:20px;
+	width:260px;
+	height:13px;
 	margin: 0px auto;
+	margin-bottom: 10px;
 	text-align: center;
 	 clear: both;
 	 overflow: hidden;

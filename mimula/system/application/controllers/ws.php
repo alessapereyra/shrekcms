@@ -28,8 +28,16 @@ class ws extends Controller {
 				{
 					if ($departamento != NULL)
 					{
-						$where['meta_key'] = 'departamento';
-						$where['meta_value'] = score($departamento);			
+						if ($departamento == 0)
+						{
+							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
+							$where = $where . ' OR (meta_key = \'departamento\' AND meta_value = \'callao\')';
+						}
+						else
+						{						
+							$where['meta_key'] = 'departamento';
+							$where['meta_value'] = score($departamento);
+						}			
 					}				
 				}
 			}
@@ -38,7 +46,7 @@ class ws extends Controller {
 		$this->load->model('post');
 		
 		$limit['from'] = 0;
-		$limit['show'] = 5;
+		$limit['show'] = 1;
 		
 		$data['consulta'] = $this->post->get_geomula($where, $limit);
 

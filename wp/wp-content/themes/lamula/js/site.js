@@ -5,6 +5,17 @@ $(document).ready(function() {
    from_outside = true;
 	 LAST_STATE = "";
 	
+	 $('div#menu_bar a').click(function () { 
+	      
+	      $.get(this.href, function(data){
+	    	  //alert("Data Loaded: " + data);
+	    	  $('div#featured').html(data);
+	    	  //$('div#featured').innerHtml(data);
+	    	});
+	      return false;
+	    });
+
+	 
    $("div.scrollable").scrollable({
 	
 			 size: 3
@@ -59,9 +70,9 @@ $(document).ready(function() {
 			
 			var index = $("div.top_news_item h3 a").index(this);
 			
-			$(".top_news_featured").hide("slow");
+			$(".top_news_featured").hide();
 			
-			$(".top_news_featured:eq(" + index + ")").show("fast");					
+			$(".top_news_featured:eq(" + index + ")").show();					
 				
 			return false;
 		})
@@ -131,7 +142,7 @@ $(document).ready(function() {
 		})	
 
 
-		$("ul#menu > li > a").click(function(){
+		$("ul#menu > li.f > a").click(function(){
 			
 			
 						father = $(this).parent();
@@ -145,6 +156,20 @@ $(document).ready(function() {
 						childs = father.find("li");
 						childs.toggle("fast");
 		
+					// load stuff 
+							$(".top_news_item").hide("slow");
+							$("#featured.top_news_featured h3").hide("fast");		
+							
+							$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
+							
+								location.hash = "#" + $(this).text();
+		//					$("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
+
+							$("#featured.top_news_featured h3").show("fast");		
+							$("#featured.top_news_featured .top_news_featured_content").show("fast");		
+
+							$(".top_news_item").show("slow");						
+					
 						//Setups get back content
 						//TODO: I hate how this works
 						if ($(this)[0].textContent != BACK){
@@ -154,7 +179,7 @@ $(document).ready(function() {
 											
 						}
 						else {
-				
+
 							$(this)[0].textContent = childs[0].innerHTML;
 							$(this).removeClass("current_option");				
 						}
@@ -163,7 +188,7 @@ $(document).ready(function() {
 		});
 		
 		
-			$("ul#menu li ul > li a").click(function(){
+			$("ul#menu li ul > li.s a").click(function(){
 
 				//alert();
 
@@ -185,7 +210,21 @@ $(document).ready(function() {
 
 						//Setups get back content
 						//TODO: I hate how this works
-
+						
+						// load stuff 
+						$(".top_news_item").hide("slow");
+									$("#featured.top_news_featured h3").hide("fast");		
+								
+									$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
+								
+									location.hash = "#" + $(this).text();
+								// $("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
+								
+									$("#featured.top_news_featured h3").show("fast");		
+									$("#featured.top_news_featured .top_news_featured_content").show("fast");		
+								
+									$(".top_news_item").show("slow");						
+	
 			//				$(this)[0].textContent = BACK_STATES;
 						if (from_outside)
 						{
@@ -202,5 +241,76 @@ $(document).ready(function() {
 
 			});
 	
+	
+			// $("ul#menu > li > a").click(function(){
+			// 
+			// 
+			// 					father = $(this).parent();
+			// 
+			// 					//Hides all the siblings
+			// 					father.siblings().toggle("fast");
+			// 					father.siblings().removeClass("current");
+			// 					$(this).addClass("current");
+			// 
+			// 					//Shows all the childs "li"
+			// 					childs = father.find("li");
+			// 					childs.toggle("fast");
+			// 
+			// 					//Setups get back content
+			// 					//TODO: I hate how this works
+			// 					if ($(this)[0].textContent != BACK){
+			// 
+			// 						$(this)[0].textContent = BACK;
+			// 						$(this).addClass("current_option");
+			// 
+			// 					}
+			// 					else {
+			// 
+			// 						$(this)[0].textContent = childs[0].innerHTML;
+			// 						$(this).removeClass("current_option");				
+			// 					}
+			// 
+			// 
+			// 	});
+			// 
+			// 
+			// 		$("ul#menu li ul > li a").click(function(){
+			// 
+			// 			//alert();
+			// 
+			// 				father = $(this).parent();
+			// 
+			// 				//Hides all the siblings
+			// 				//Shows all the childs "li"
+			// 				childs = father.find("ul");
+			// 		//		alert ( childs.children().length );
+			// 
+			// 					if (childs.children().length > 1 ) { 
+			// 
+			// 					father.siblings().toggle("fast");
+			// 					father.siblings().removeClass("current");
+			// 					$("li.s a").removeClass("current_option");
+			// 					$(father.siblings()[0]).addClass("current");
+			// 
+			// 					childs.toggle("fast");
+			// 
+			// 					//Setups get back content
+			// 					//TODO: I hate how this works
+			// 
+			// 		//				$(this)[0].textContent = BACK_STATES;
+			// 					if (from_outside)
+			// 					{
+			// 							from_outside = false;
+			// 							$(this).addClass("current_option");							
+			// 					}
+			// 					else 
+			// 						{
+			// 							from_outside = true;
+			// 						}
+			// 
+			// 
+			// 				}
+			// 
+			// 		});
 	
 });
