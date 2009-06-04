@@ -137,7 +137,7 @@ class Post extends Model {
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
-    	$values['post_name'] = score($values['post_title']);
+    	$values['post_name'] = preg_replace('/[^a-zA-Z0-9 -]/','',score($values['post_title']));
 		  $values['post_status'] = 'publish';    	
     	
     	//inserta los tags

@@ -108,7 +108,7 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
-			debug: true,
+			debug: false,
 	
 			// Button settings
 			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
