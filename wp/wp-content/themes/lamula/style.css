@@ -375,7 +375,7 @@ div#top_news div.top_news_featured img {
 div.top_news_featured_companion_text {
 	float: left;
 	width: 270px;
-	font-size: 1.2em;
+	font-size: 0.8em;
 }
 
 div#top_news div#top_news {
@@ -440,6 +440,7 @@ div#top_news div.top_news_featured h3 a {
 	text-decoration: none;
 	display: block;
 	margin-bottom: 10px;
+	text-transform: capitalize;
 }
 
 
@@ -557,10 +558,13 @@ div#top_news_footer p.comments a em {
 
 div.top_news_featured_content {
 	overflow: hidden;
-	height: 145px;
+	height: 127px;
 }
 
-
+div.top_news_featured_content.special {
+	overflow: hidden;
+	height: 300px;
+}
 
 /* @end */
 

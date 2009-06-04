@@ -280,6 +280,47 @@ function get_blogs()
   	}
 }
 
+
+function get_a_post($post_id)
+{
+	global $wpdb;
+
+	//$blog_id = 1;
+	$blog = 'mulapress_posts';
+	unset($sql);
+	
+	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['from'] = 'FROM ' . $blog . '
+					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+	$sql['where'] = 'where post_status = \'publish\'
+	                 and mulapress_posts.ID = ' . $post_id;	
+	
+	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['limit'] = 'LIMIT 0,1';	
+	//die(implode(' ',$sql));
+	return $wpdb->get_results(implode(' ', $sql));
+}
+
+
+function get_a_blog($blog_id)
+{
+	global $wpdb;
+
+	//$blog_id = 1;
+	$blog = 'wp_' . $blog_id . '_posts';
+	unset($sql);
+	
+	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['from'] = 'FROM ' . $blog . '
+					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+	$sql['where'] = 'where post_status = \'publish\'';	
+	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['limit'] = 'LIMIT 0,1';	
+	//die(implode(' ',$sql));
+	return $wpdb->get_results(implode(' ', $sql));
+}
+
+
 function get_blog_random()
 {
 	global $wpdb;
