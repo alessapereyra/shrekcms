@@ -380,7 +380,6 @@ div#top_news div.top_news_featured img {
 div.top_news_featured_companion_text {
 	float: left;
 	width: 270px;
-	font-size: 0.8em;
 }
 
 div#top_news div#top_news {
@@ -397,14 +396,21 @@ div#top_news div#top_news {
 	padding-bottom: 0;
 }
 
+/* featurerd */
+div.portada-active
+{
+
+	background: #e6f7fd url(images/background-lightblue.png) repeat-x 0 bottom !important;
+
+}
+
 #top_news div.top_news_item {
 	margin-bottom: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
 	border-bottom: 1px solid #e0e0e0;
-	background: #edeeee url(images/background-white.png) repeat-x 0 bottom;
-
+	background: white;	
 }
 
 #top_news div.top_news_item h4 {
@@ -413,19 +419,21 @@ div#top_news div#top_news {
 	margin-top: 5px;
 }
 
+#top_news div.top_news_item:hover {
+	background: #edeeee url(images/background-white.png) repeat-x 0 bottom;
+
+}
+
 a.news_item_title {
-	text-transform: lowercase;
+
 	font: 0.8em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
 	color: #001027;
 }
 
-#top_news div.top_news_item:hover {
-	background: #e6f7fd url(images/background-lightblue.png) repeat-x 0 bottom;
-}
+
 
 div#top_news div.top_news_featured h3 {
 	color: #3b3330;
-	text-transform: lowercase;
 	letter-spacing: -3px;
 	margin-bottom: 0.3em;
 	word-spacing: 4px;
@@ -445,13 +453,12 @@ div#top_news div.top_news_featured h3 a {
 	text-decoration: none;
 	display: block;
 	margin-bottom: 10px;
-	text-transform: capitalize;
+
 }
 
 
 div#top_news div.top_news_featured p {
 
-	font: 0.7em/1.6em "Lucida Grande", Lucida, Verdana, sans-serif;
 	overflow: inherit;
 	float: left;
 	margin-bottom: 1em;
@@ -467,7 +474,6 @@ div.top_news_media {
 
 .top_news_featured_text {
 	overflow: auto;
-	font-size: 0.8em;
 }
 
 .top_news_featured_text p {
@@ -564,6 +570,8 @@ div#top_news_footer p.comments a em {
 div.top_news_featured_content {
 	overflow: hidden;
 	height: 127px;
+	font-size: 0.8em;
+	line-height: 1.5em;
 }
 
 div.top_news_featured_content.special {
@@ -1008,8 +1016,6 @@ div#content.inner ul#post_list li {
 /* @end */
 
 
-
-
 div#sidebars {
 	width: 435px;
 	float: right;
@@ -1085,7 +1091,7 @@ div#sidebars div#sidebar_recomendados h4	{
 }
 
 #sidebar_central ul.bloggers_list li {
-	padding: 10px 8px 8px 25px;
+	padding: 10px 20px 8px 15px;
 	overflow: auto;
 	margin: 0px;
 	font-size: 1.1em;
@@ -1153,8 +1159,7 @@ div#sidebars div#sidebar_recomendados ul#post_list li a:hover,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover,
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	background-color: #000;
-	color: #fe008a !important;
-}
+	color: #1192cf !important;}
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list {
 	padding-left: 20px !important;
@@ -1353,7 +1358,6 @@ div#comentarios.sidebox {
 #comentarios div.sidebox_wrapper ul li {
 
 	overflow: hidden;
-	font-size: 0.8em;
 	background: white url(images/background-white.png) repeat-x 0 bottom;
 	border-bottom: 1px solid #e9e9e9;
 	padding-bottom: 10px !important;
@@ -1363,25 +1367,10 @@ div#comentarios.sidebox {
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-bottom: 10px;
+	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-div#comentarios div.sidebox_wrapper ul li a {
-	padding: 0px !important;
-	background: none !important;
-	display: inline !important;
-	color: black !important;
-	color: #3b3330 !important;
-	border: none !important;
-	margin-bottom: 0px !important;
-	padding-bottom: 0px !important;
-	
-}
 
-div#comentarios div.sidebox_wrapper ul li a:hover{
-	 color: #1192cf !important;
-	 text-decoration: underline !important;
-}
-	
 	
 
 #post_list li span small {
@@ -1537,13 +1526,18 @@ div.scrollable {
 	/* required settings */
 	position:relative;
 	overflow:hidden;	 	
-	width: 340px;	
-	height:180px;	
+	width: 360px;	
+	height:140px;	
 	padding: 10px;
 	
 	/* custom decorations */
 	padding:10px 20px;	
-	background-color:#efefef;	
+	background-color: #ebf2f4;	
+}
+
+#bloggers_box ul.items li div.blogger_last_post_content h5 a {
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-size: 0.65em;
 }
 
 #bloggers_navigation h3 {
@@ -1555,8 +1549,8 @@ div.scrollable {
 }
 
 #bloggers_box ul.items li h4 {
-	text-transform: lowercase;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-transform: uppercase;
+	font: 0.7em "Lucida Grande", Lucida, Verdana, sans-serif;
 	color: #878787;
 }
 
@@ -1567,7 +1561,7 @@ div.scrollable {
 div#bloggers_navigation {
 	overflow: auto;
 	margin-top: 1em;
-	background-color: #d5d5d5;
+	background-color: #bde5ed;
 	padding: 10px 5px;
 	padding-bottom: 1.2em;
 	color: #fff;
@@ -1592,7 +1586,7 @@ div.scrollable ul.items {
 	clear:both;		
 	
 	/* decoration */
-	margin-left:20px;
+	margin-left:10px;
 } 
  
 /*  
@@ -1606,10 +1600,10 @@ div.scrollable ul.items li {
 	float:left;	
 	/* custom decoration */
 	text-align:center;
-	width:100px;
-	margin-right: 20px;	
+	width:120px;
 	display: block;
-	padding: 5px;
+	margin-right: 5px;
+	padding: 3px;
 } 
  
 /* you may want to setup some decorations to active item */ 
@@ -1631,7 +1625,7 @@ a.prev, a.next, a.prevPage, a.nextPage {
 	height:18px;
 	background:url(images/left.png) no-repeat;
 	float:left;
-	margin:43px 10px;
+	margin:43px 5px;
 	cursor:pointer;
 }
 
@@ -1663,8 +1657,8 @@ div.navi {
 	margin: 0px auto;
 	margin-bottom: 10px;
 	text-align: center;
-	 clear: both;
-	 overflow: hidden;
+	clear: both;
+	overflow: hidden;
 }
 
 
@@ -1850,6 +1844,28 @@ textarea#comment {
 /* @end */
 
 
+/* @group comentarios */
+
+div#comentarios div.sidebox_wrapper ul li a {
+	padding: 0px !important;
+	background: none !important;
+	display: inline !important;
+	color: black !important;
+	color: #3b3330 !important;
+	border: none !important;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	
+}
+
+div#comentarios li a:hover {
+	 /*color: #1192cf !important;*/
+	 color: #1192cf !important;	 
+	 text-decoration: underline !important;
+}
+	
+
+/* @end */
 
 /* @group Footer */
 
@@ -1868,8 +1884,3 @@ textarea#comment {
 
 /* @end */
 
-/* featurerd */
-div.portada-active
-{
-	display: none;
-}

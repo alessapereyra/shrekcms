@@ -203,6 +203,17 @@ function sm_store_session_data($mypost) {
 	}
 }
 
+function get_gravatar($email="") {
+   if ($email) {
+      $email=trim($email);
+      $email=md5($email);
+      
+      return '<img src=http://www.gravatar.com/avatar/'.$email.'?s=40&d=http%3A%2F%2Fgoogle.com%2Ffriendconnect%2Fstatic%2Fimages2%FNoPictureDark.png title="Avatar autor" />';
+   } else {
+      return '<img src="http://www.google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" />';
+   }
+}
+
 function get_most_voted()
 {
 	global $wpdb;
@@ -224,7 +235,7 @@ function get_blogs()
                   ON wp_blogs.blog_id = wp_bp_user_blogs.blog_id';
   $sql['where'] = "WHERE public = '1' AND archived = '0' AND mature = '0' AND 
                          spam = '0' AND deleted = '0' AND
-                         last_updated >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 DAY)";
+                         last_updated >= DATE_SUB(CURRENT_DATE(), INTERVAL 2 DAY)";
 	$sql['order_by'] = 'ORDER BY last_updated DESC';
 
   $blogs = $wpdb->get_results(implode(' ', $sql));
@@ -257,7 +268,8 @@ function get_blogs()
   			  $current_author = current($author);
   			  
           echo "<li>";
-          echo "<h4>" . $current_author->user_nicename . " en ". $options[1]->option_value . "</h4>";
+          // echo "<h4>" . $current_author->user_nicename . " en ". $options[1]->option_value . "</h4>";
+          echo "<h4>" . $options[1]->option_value . "</h4>";          
           echo "<div class='blogger_avatar'></div>";
           echo "<div class='blogger_last_post_content'>";
           echo "<h5><a href='". $current_post->guid . "' title='Enlace al articulo'> " . $current_post->post_title . " </a></h5>";
@@ -289,7 +301,7 @@ function get_a_post($post_id)
 	$blog = 'mulapress_posts';
 	unset($sql);
 	
-	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'
@@ -310,7 +322,7 @@ function get_a_blog($blog_id)
 	$blog = 'wp_' . $blog_id . '_posts';
 	unset($sql);
 	
-	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'';	
@@ -337,7 +349,7 @@ function get_blog_random()
 	$blog = 'wp_' . $blog_id . '_posts';
 	unset($sql);
 	
-	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'';	
@@ -361,15 +373,38 @@ function calcular_ranking($user_quantity = 20){
   
 }
 
+function place_name($person){
+  
+    if (ISSET($person->user_nicename)){
+      
+        if ($person->user_nicename != ""){ return $person->user_nicename; }        
+        else { return "anonimo"; }
+      
+    }
+    
+    
+  
+}
+
 function mostrar_ultimos_comentarios($limit = 5){
   
   global $wpdb;
   
-  $sql['select'] = 'SELECT mulapress_comments.comment_ID, mulapress_comments.comment_content,  wp_users.user_nicename, `mulapress_posts`.`ID`, `mulapress_posts`.`post_author`, DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `mulapress_posts`.`post_title`,`mulapress_posts`.`guid` as post_url, `mulapress_posts`.`post_type`, `mulapress_posts`.`post_mime_type`';
+  $sql['select'] = 'SELECT mulapress_comments.comment_ID, 
+                           mulapress_comments.comment_author, 
+                           mulapress_comments.comment_content,  
+                           wp_users.user_nicename, 
+                           wp_users.user_nicename, 
+                           `mulapress_posts`.`ID`, 
+                           `mulapress_posts`.`post_author`, 
+                           DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, 
+                           `mulapress_posts`.`post_title`,`mulapress_posts`.`guid` as post_url';
+                           
   $sql['from'] = 'FROM mulapress_comments
+                 left join wp_users on mulapress_comments.user_id = wp_users.ID 
                  join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
-                 join wp_users on mulapress_comments.user_id = wp_users.ID';
-  $sql['order_by'] = 'ORDER BY post_date DESC';
+                 ';
+  $sql['order_by'] = 'ORDER BY post_date ASC';
   $sql['limit'] = 'LIMIT 0,' . $limit;
   $comments = $wpdb->get_results(implode(' ', $sql));
   
@@ -380,7 +415,15 @@ function mostrar_ultimos_comentarios($limit = 5){
 		foreach ($comments as $comment) {
 		  
           echo "<li>";
-          echo "<a href='http://lamula.pe/members/" . $comment->user_nicename . "'>" . $comment->user_nicename . "</a> dijo ";
+          
+          if ($comment->user_nicename != ""){
+            echo "<a href='http://lamula.pe/members/" . $comment->user_nicename . "'>" . $comment->user_nicename . "</a> dijo ";            
+          }
+          else
+          {
+            echo $comment->comment_author . " dijo ";            
+          }
+
           echo "<a href='" .  $comment->post_url . "#comments-" . $comment->comment_ID ."'>" . $comment->comment_content . "</a>";
           echo " en <a href='" .  $comment->post_url . "'>" . $comment->post_title . "</a>";
           echo "</li>";
@@ -430,7 +473,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 			                               WHERE option_name IN ('siteurl','blogname') 
 				                             ORDER BY option_name DESC");
 				                             
-    	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog_table . '.ID, wp_users.ID as user_id';
+    	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_email, ' . $blog_table . '.ID, wp_users.ID as user_id';
     	$sql['from'] = 'FROM ' . $blog_table . '
     					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
     	$sql['where'] = 'where post_status = \'publish\'';	
@@ -455,7 +498,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
       echo "<li>";
       echo "<div class='sidebar_foto'>";
         if ($avatar_results->avatar == "") {
-          echo "<img src='http://www.google.com/friendconnect/static/images/NoPictureDark.png' title='Avatar autor' /> ";          
+          echo get_gravatar($blog_results->user_email);          
         }
         else
         {
@@ -465,7 +508,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
       echo "</div>";
       echo "<div class='sidebar_txt'>";
       echo "<h6><a href='" .  $options[0]->option_value . "'>" . $options[1]->option_value . "</a></h6>";
-      echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_nicename . "</a></strong>";
+//      echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_nicename . "</a></strong>";
+      echo "<strong>de <a href='" .  $options[0]->option_value . "'>" . $blog_results->user_nicename . "</a></strong>";
       echo "<p></p>";
       echo "</div>";
       echo "</li>";
@@ -487,7 +531,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
     			                               WHERE option_name IN ('siteurl','blogname') 
     				                             ORDER BY option_name DESC");
 
-        	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login ' . $blog_table . '.ID, wp_users.ID as user_id';
+        	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, wp_users.user_email, ' . $blog_table . '.ID, wp_users.ID as user_id';
         	$sql['from'] = 'FROM ' . $blog_table . '
         					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
         	$sql['where'] = 'where post_status = \'publish\'';	
@@ -522,7 +566,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
           echo "</div>";
           echo "<div class='sidebar_txt'>";
           echo "<h6><a href='" .  $options[0]->option_value . "'>" . $options[1]->option_value . "</a></h6>";
-          echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_nicename . "</a></strong>";
+          echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_login . "</a></strong>";
           echo "<p></p>";
           echo "</div>";
           echo "</li>";

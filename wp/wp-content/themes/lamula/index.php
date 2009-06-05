@@ -70,12 +70,7 @@ get_header(); ?>
 
         </div> <!-- top_news_featured -->
        <?php
-<<<<<<< HEAD:wp/wp-content/themes/lamula/index.php
-       
-            $post = get_a_blog(9);
-=======
        		$post = get_most_voted();
->>>>>>> 1d78076fc668a1ba824c5f9a7af6d2fb9dc32859:wp/wp-content/themes/lamula/index.php
             $most_voted = current($post);
            ?> 
         <div id="most_voted" class="top_news_featured">
@@ -230,11 +225,7 @@ get_header(); ?>
 	          </div>	          
         </div>
              	<?php
-<<<<<<< HEAD:wp/wp-content/themes/lamula/index.php
-             	$post = get_a_post(661);
-=======
             	$post = get_blog_random();
->>>>>>> 1d78076fc668a1ba824c5f9a7af6d2fb9dc32859:wp/wp-content/themes/lamula/index.php
             	$blog_random = current($post); ?>          
         <div id="blog_random" class="top_news_featured">
         	<h3><a href="<?php echo $blog_random->guid ?>"><?php echo $blog_random->post_title; ?></a></h3>
@@ -402,7 +393,6 @@ get_header(); ?>
 
                 <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
                 <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-                <a class="rate"><?php wp_gdsr_render_article(); ?></a>
                 
               </div>
 
@@ -501,7 +491,6 @@ get_header(); ?>
 
                   <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
                   <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-                  <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
                 </div>
  	             <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
@@ -598,7 +587,6 @@ get_header(); ?>
 
                  <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
                  <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-                 <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
                </div>
 	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
@@ -695,7 +683,6 @@ get_header(); ?>
 
                  <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
                  <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
-                 <a class="rate"><?php wp_gdsr_render_article(); ?></a>
 
                </div>
 	            <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>

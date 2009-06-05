@@ -49,7 +49,7 @@
 		 enableLinks: true,
 		 ignoreReplies: true,
 		 clearContents: true,
-		 template: '"%text%"</a>'
+		 template: '%text%'
 		 });
 
 </script>
