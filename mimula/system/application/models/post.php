@@ -137,9 +137,15 @@ class Post extends Model {
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
-    	$values['post_name'] = score($values['post_title']);
-		  $values['post_status'] = 'publish';    	
+    	$values['post_name'] = preg_replace('/[^a-zA-Z0-9 -]/','',score($values['post_title']));
+		$values['post_status'] = 'publish';    	
     	
+		$this->load->library('HTMLPurifier');
+        $config = HTMLPurifier_Config::createDefault();
+        $values['post_content'] = $this->htmlpurifier->purify( $values['post_content'] , $config );
+		    
+		  
+		  
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);
     	

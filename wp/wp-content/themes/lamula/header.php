@@ -27,13 +27,13 @@
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE6.css" type="text/css" media="screen" />
 
   <![endif]-->
+  
+  <?php wp_head(); ?>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.fancybox-1.2.1.pack.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.scrollable-1.0.2.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8" ></script>
-  <script src="<?php bloginfo('template_url'); ?>/js/jyoutube.js" type="text/javascript" charset="utf-8" ></script>
-
   <!--[if !IE]><!-->
 
     <script src="<?php bloginfo('template_url'); ?>/js/site.js" type="text/javascript" charset="utf-8" ></script>
@@ -47,8 +47,6 @@
 
   <![endif]-->
 
-
-  <?php wp_head(); ?>
 	
 </head>
 
@@ -57,8 +55,8 @@
   <div id="top_menu">
     <p>
       <span class="left">
-        <a href="http://lamula.pe/mulapress/nosotros">nosotros</a>
-        <a href="http://lamula.pe/mulapress/el-concepto">el concepto</a>
+        <a href="<?php bloginfo('siteurl'); ?>/nosotros">nosotros</a>
+        <a href="<?php bloginfo('siteurl'); ?>/el-concepto">el concepto</a>
         <a href="#">te recomendamos</a>        
       </span>
       <span class="right">
@@ -80,7 +78,7 @@
 
         <div id="logo">
           <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
-          <strong><?php twitter_messages('mulastatus', 1, false, false, false , true, false, false); ?></strong>
+          <strong id="twitter_status">desaznadamente en linea</strong>
         </div>
         
         <div id="search_bar">

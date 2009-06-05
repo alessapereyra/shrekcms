@@ -5,6 +5,17 @@ $(document).ready(function() {
    from_outside = true;
 	 LAST_STATE = "";
 	
+	 $('div#menu_bar a').click(function () { 
+	      
+	      $.get(this.href, function(data){
+	    	  //alert("Data Loaded: " + data);
+	    	  $('div#featured').html(data);
+	    	  //$('div#featured').innerHtml(data);
+	    	});
+	      return false;
+	    });
+
+	 
    $("div.scrollable").scrollable({
 	
 			 size: 3
@@ -231,75 +242,27 @@ $(document).ready(function() {
 			});
 	
 	
-			// $("ul#menu > li > a").click(function(){
-			// 
-			// 
-			// 					father = $(this).parent();
-			// 
-			// 					//Hides all the siblings
-			// 					father.siblings().toggle("fast");
-			// 					father.siblings().removeClass("current");
-			// 					$(this).addClass("current");
-			// 
-			// 					//Shows all the childs "li"
-			// 					childs = father.find("li");
-			// 					childs.toggle("fast");
-			// 
-			// 					//Setups get back content
-			// 					//TODO: I hate how this works
-			// 					if ($(this)[0].textContent != BACK){
-			// 
-			// 						$(this)[0].textContent = BACK;
-			// 						$(this).addClass("current_option");
-			// 
-			// 					}
-			// 					else {
-			// 
-			// 						$(this)[0].textContent = childs[0].innerHTML;
-			// 						$(this).removeClass("current_option");				
-			// 					}
-			// 
-			// 
-			// 	});
-			// 
-			// 
-			// 		$("ul#menu li ul > li a").click(function(){
-			// 
-			// 			//alert();
-			// 
-			// 				father = $(this).parent();
-			// 
-			// 				//Hides all the siblings
-			// 				//Shows all the childs "li"
-			// 				childs = father.find("ul");
-			// 		//		alert ( childs.children().length );
-			// 
-			// 					if (childs.children().length > 1 ) { 
-			// 
-			// 					father.siblings().toggle("fast");
-			// 					father.siblings().removeClass("current");
-			// 					$("li.s a").removeClass("current_option");
-			// 					$(father.siblings()[0]).addClass("current");
-			// 
-			// 					childs.toggle("fast");
-			// 
-			// 					//Setups get back content
-			// 					//TODO: I hate how this works
-			// 
-			// 		//				$(this)[0].textContent = BACK_STATES;
-			// 					if (from_outside)
-			// 					{
-			// 							from_outside = false;
-			// 							$(this).addClass("current_option");							
-			// 					}
-			// 					else 
-			// 						{
-			// 							from_outside = true;
-			// 						}
-			// 
-			// 
-			// 				}
-			// 
-			// 		});
-	
+		       var skin = {};
+               skin['BORDER_COLOR'] = 'transparent';
+               skin['ENDCAP_BG_COLOR'] = 'transparent';
+               skin['ENDCAP_TEXT_COLOR'] = '#333333';
+               skin['ENDCAP_LINK_COLOR'] = '#0000cc';
+               skin['ALTERNATE_BG_COLOR'] = 'transparent';
+               skin['CONTENT_BG_COLOR'] = 'transparent';
+               skin['CONTENT_LINK_COLOR'] = '#0000cc';
+               skin['CONTENT_TEXT_COLOR'] = '#333333';
+               skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+               skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+               skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+               skin['HEADER_TEXT'] = 'Historias recomendadas';
+               skin['RECOMMENDATIONS_PER_PAGE'] = '5';
+               google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+               google.friendconnect.container.renderOpenSocialGadget(
+                { id: 'div-6886351088514799323',
+                  url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
+                  site: '18025864853307811361',
+                  'view-params':{"docId":"recommendedPages"}
+                },
+                 skin);
+			
 });
