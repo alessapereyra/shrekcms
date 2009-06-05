@@ -35,6 +35,23 @@
    },
     skin);
   </script> -->
+    
+    
+   <script src="<?php bloginfo('template_url'); ?>/js/twitter.js" type="text/javascript" charset="utf-8" ></script>
+   <!-- Include the Google Friend Connect javascript library. -->
+   <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+    
+	<script charset="utf-8" type="text/javascript">
 
+		 getTwitters('twitter_status', {
+		 id: 'mulastatus',
+		 count: 1,
+		 enableLinks: true,
+		 ignoreReplies: true,
+		 clearContents: true,
+		 template: '"%text%"</a>'
+		 });
+
+</script>
 </body>
 </html>

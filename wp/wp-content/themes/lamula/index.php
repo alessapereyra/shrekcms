@@ -17,39 +17,52 @@ get_header(); ?>
            $do_not_duplicate = $post->ID;
            ?>
 		<div id="featured" class="top_news_featured">
-          <h3><a href="">La mula en Vivo</a></h3>
+          <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
           <p>
 
-     
-              <div class="top_news_featured_content.special">
-                
-                    <div class="top_news_featured_text">
+              <?php 
+                    $content = get_the_content();
+                    $html = str_get_html($content);
+                    $img_link = $html->find('img',0)->src;
 
-                      <object id="utv_o_699958" height="326" width="400"
-                      classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param
-                      value="http://www.ustream.tv/flash/live/699958" name="movie" /><param
-                      value="true" name="allowFullScreen" /><param value="always"
-                      name="allowScriptAccess" /><param value="transparent" name="wmode"
-                      /><param value="viewcount=true&amp;autoplay=false" name="flashvars"
-                      /><embed name="utv_e_699958" id="utv_e_699958"
-                      flashvars="viewcount=true&amp;autoplay=false" height="326" width="400"
-                      allowfullscreen="true" allowscriptaccess="always" wmode="transparent"
-                      src="http://www.ustream.tv/flash/live/699958"
-                      type="application/x-shockwave-flash" /></object>
-                      
+                    $html->clear(); 
+                    unset($html);          
+                    $row = NULL;
+                    
+                    //pasa las variables para usar luego
+                    $featured = $post;
+                    
+              ?>
+              <div class="top_news_featured_content">
+                
+              <?php if ($img_link != "") { ?>
+                <div class="top_news_media">
+                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+                </div>
+
+                  <div class="top_news_featured_companion_text">
+                <?php the_excerpt(235); ?>	                  
+                  </div>
+                
+              <?php } 
+              else 
+                  {  ?>
+                    <div class="top_news_featured_text">
+                      <?php the_excerpt(235); ?>	                                       
                     </div>   
-     
+                <?php  }?>
+
               </div>
                               
-              <span class="author">enviado por <a href="http://lamula.pe/members/lamula">lamula</a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
 
           </p>
 
           <div class="top_news_featured_footer">
 
-            <a href="#" class="leer_mas_footer"></a>
-            <p class="comments"></p>
-            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+            <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+            <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+            <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
             
           </div>
 
@@ -57,7 +70,7 @@ get_header(); ?>
 
         </div> <!-- top_news_featured -->
        <?php
-       		$post = get_a_post(661);
+       		$post = get_most_voted();
             $most_voted = current($post);
            ?> 
         <div id="most_voted" class="top_news_featured">
@@ -106,7 +119,7 @@ get_header(); ?>
 	            
 	          </div>	          
         </div>
-        <?php   $post = get_a_blog(41);
+        <?php   $post = kf_get_posts_by_hits(7,1,false);
             	$most_viewed = current($post);
 ?>        <div id="most_viewed" class="top_news_featured">
         	<h3><a href="<?php echo $most_viewed->guid ?>"><?php echo $most_viewed->post_title; ?></a></h3>
@@ -157,7 +170,7 @@ get_header(); ?>
         </div>
         <?php 
         
-              $post = get_a_blog(26);
+              $post = get_blog_special();
             	$blog_special = current($post);
             	
          ?>
@@ -212,7 +225,7 @@ get_header(); ?>
 	          </div>	          
         </div>
              	<?php
-            	$post = get_a_post(330);
+            	$post = get_blog_random();
             	$blog_random = current($post); ?>          
         <div id="blog_random" class="top_news_featured">
         	<h3><a href="<?php echo $blog_random->guid ?>"><?php echo $blog_random->post_title; ?></a></h3>
@@ -265,8 +278,8 @@ get_header(); ?>
         <div id="top_news">
 
             <div class="top_news_item portada-active">
-		            <h3><a href="#featured" class="news_item_title">La Mula en Vivo</a></h3>
-	              <h4>publicado ahora mismo por <a href="http://lamula.pe/members/lamula" >La Mula</a></h4>					
+		            <h3><a href="#featured" class="news_item_title"><?php echo $featured->post_title; ?></a></h3>
+	              <h4>publicado el <?php echo $featured->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $featured->user_nicename; ?>" ><?php echo $featured->user_nicename; ?></a></h4>					
             </div>
             
             <div class="top_news_item">
@@ -399,7 +412,7 @@ get_header(); ?>
 	  	<?php else : ?>
 	
 	  		<h2 class="center">No hay noticias</h2>
-	  		<p class="center">Pero puedes buscar algo que te interese</p>
+	  		<span class="center">Pero puedes buscar algo que te interese</p>
 	  		<?php get_search_form(); ?>
 	
 	  	<?php endif; ?>
