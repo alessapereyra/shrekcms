@@ -30,7 +30,7 @@
         
 
       <div id="sidebar_central">
-        
+
           <h4>Muleros</h4>
           
           <ul class="bloggers_list">
@@ -44,50 +44,56 @@
       
       <div id="sidebar_recomendados">
         
+              <a href="http://lamula.lamula.pe/?p=53#respond">
+                <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" />
+              </a>
 
-        <div id="ranking_usuarios" class="sidebox">
 
-          <h4>r&aacute;nking de usuarios</h4>
-          
-          <div class="sidebox_wrapper">
-          
-            <div class="sidebox_content">
+        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" />
 
-                <ul id="mulakids">
-                  Mulakids
-                </ul>
-            
-            </div>
+
+
+        <!-- <div id="ranking_usuarios" class="sidebox">
+
+              <h4>r&aacute;nking de usuarios</h4>
+              
+              <div class="sidebox_wrapper">
+              
+                <div class="sidebox_content">
+
+                    <ul id="mulakids">
+                      Mulakids
+                    </ul>
                 
-            <div class="sidebox_content">
-
-              <ul id="mulitas">
-                  Mulitas              
-              </ul>
-            
-            </div>
-          
-            <div class="sidebox_content">
-
-              <ul id="mulos">
-                  Mulos
-              </ul>
-
-            </div>                          
-
-          </div>                    
+                </div>
                     
-        </div>     
+                <div class="sidebox_content">
+
+                  <ul id="mulitas">
+                      Mulitas              
+                  </ul>
+                
+                </div>
+              
+                <div class="sidebox_content">
+
+                  <ul id="mulos">
+                      Mulos
+                  </ul>
+
+                </div>                          
+
+              </div>                    
+                        
+            </div>     
+             -->
         
-        
-        <ul id="ranking_menu" class="sidebox_menu">
+        <!-- <ul id="ranking_menu" class="sidebox_menu">
           <li><a href="#mulakids" class="selected">mulakids</a></li>
           <li><a href="#mulitas">mulitas</a></li>
           <li><a href="#mulas">mulas</a></li>                
-        </ul>
+        </ul> -->
         
-        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" />
-   
         <div id="articulos" class="sidebox">
 
           <h4>Art&iacute;culos más</h4>
@@ -162,9 +168,9 @@
 
                  <h4>Video destacado</h4>          
                  
-               </div> <!-- sidebox_wrapper -->
+               </div> <sidebox_wrapper
 
-             </div> <!-- sidebox -->
+             </div> <sidebox 
               -->
 
         <div id="comentarios" class="sidebox">
@@ -181,9 +187,7 @@
   
         </div> <!-- sidebox -->
       
-      
-        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" />
-                      
+                            
         <div class="sidebox cc">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
               <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.5/pe/88x31.png" />

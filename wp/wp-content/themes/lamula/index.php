@@ -57,7 +57,8 @@ get_header(); ?>
 
         </div> <!-- top_news_featured -->
        <?php
-       		$post = get_a_post(661);
+       
+            $post = get_a_blog(9);
             $most_voted = current($post);
            ?> 
         <div id="most_voted" class="top_news_featured">
@@ -212,7 +213,7 @@ get_header(); ?>
 	          </div>	          
         </div>
              	<?php
-            	$post = get_a_post(330);
+             	$post = get_a_post(661);
             	$blog_random = current($post); ?>          
         <div id="blog_random" class="top_news_featured">
         	<h3><a href="<?php echo $blog_random->guid ?>"><?php echo $blog_random->post_title; ?></a></h3>

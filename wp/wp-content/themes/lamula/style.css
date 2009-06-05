@@ -15,6 +15,11 @@ a {
 	color: #1192cf;
 }
 
+object#utv_o_699958 {
+	width: 300px !important;
+	height: 200px;
+}
+
 #content_feed dl dd a {
 	display: block;
 	color: #fe008a;
@@ -563,7 +568,7 @@ div.top_news_featured_content {
 
 div.top_news_featured_content.special {
 	overflow: hidden;
-	height: 100px;
+	height: 200px; 
 }
 
 /* @end */
