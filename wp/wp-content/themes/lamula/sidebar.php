@@ -49,7 +49,9 @@
               </a>
 
 
+      <a href="<?php bloginfo('siteurl'); ?>/?s=friaje">
         <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" />
+      </a>
 
 
 

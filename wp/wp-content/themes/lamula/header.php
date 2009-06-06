@@ -57,7 +57,7 @@
       <span class="left">
         <a href="<?php bloginfo('siteurl'); ?>/nosotros">nosotros</a>
         <a href="<?php bloginfo('siteurl'); ?>/el-concepto">el concepto</a>
-        <a href="#">te recomendamos</a>        
+        <a href="<?php bloginfo('siteurl'); ?>/te-recomendamos">te recomendamos</a>        
       </span>
       <span class="right">
         <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>

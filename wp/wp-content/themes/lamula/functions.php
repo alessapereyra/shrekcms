@@ -208,7 +208,7 @@ function get_gravatar($email="") {
       $email=trim($email);
       $email=md5($email);
       
-      return '<img src=http://www.gravatar.com/avatar/'.$email.'?s=40&d=http%3A%2F%2Fgoogle.com%2Ffriendconnect%2Fstatic%2Fimages2%FNoPictureDark.png title="Avatar autor" />';
+      return '<img src=http://www.gravatar.com/avatar/'.$email.'?s=40&d=http://google.com/friendconnect/static/images/NoPictureDark.png title="Avatar autor" />';
    } else {
       return '<img src="http://www.google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" />';
    }
@@ -555,8 +555,9 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 
           echo "<li>";
           echo "<div class='sidebar_foto'>";
+
             if ($avatar_results->avatar == "") {
-              echo "<img src='http://www.google.com/friendconnect/static/images/NoPictureDark.png' title='Avatar autor' /> ";          
+              echo get_gravatar($blog_results->user_email);          
             }
             else
             {
@@ -566,7 +567,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
           echo "</div>";
           echo "<div class='sidebar_txt'>";
           echo "<h6><a href='" .  $options[0]->option_value . "'>" . $options[1]->option_value . "</a></h6>";
-          echo "<strong>de <a href='http://lamula.pe/members/" . $blog_results->user_nicename . "'>" . $blog_results->user_login . "</a></strong>";
+          echo "<strong>de <a href='" .  $options[0]->option_value . "'>" . $blog_results->user_nicename . "</a></strong>";
           echo "<p></p>";
           echo "</div>";
           echo "</li>";

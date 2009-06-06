@@ -38,7 +38,7 @@ div#top_menu {
 	color: #040707;
 	overflow: hidden;	
 	font-size: 0.8em;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	height: 30px;
 	padding-top: 10px;
 	background: #202020 url(images/background-top.gif) repeat-x;
@@ -135,7 +135,7 @@ h1 a{
 	float: left;
 	margin-top: 4em;	
 	margin-left: 1em;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #1192cf;
 }
 
@@ -152,7 +152,7 @@ div#status_bar {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	overflow: auto;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	
 }
 
@@ -225,7 +225,7 @@ div#menu_bar {
 	-webkit-border-top-right-radius: 10px;	
 	
 	overflow: auto;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	border: 0px;
 	padding: 0px;
 	
@@ -268,7 +268,7 @@ ul#menu {
 	float: left;
 	width: auto;
 	text-transform: lowercase;
-	font: 0.87em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.89em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 ul#menu li {
@@ -367,7 +367,7 @@ ul#menu ul li a:hover {
 div#top_news div.top_news_featured {
 	float: left;
 	width: 500px;
-	font: 0.9em/1.6em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.9em/1.6em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 div#top_news div.top_news_featured img {
@@ -414,9 +414,10 @@ div.portada-active
 }
 
 #top_news div.top_news_item h4 {
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	word-spacing: 0;
 	margin-top: 5px;
+	letter-spacing: 0;
 }
 
 #top_news div.top_news_item:hover {
@@ -426,8 +427,9 @@ div.portada-active
 
 a.news_item_title {
 
-	font: 0.8em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em/1.4em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	color: #001027;
+	letter-spacing: 0;
 }
 
 
@@ -487,7 +489,7 @@ div#top_news div.top_news_featured div.top_news_featured_footer p {
 }
 
 .top_news_featured p span.author {
-	font: bold 0.9em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: bold 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	text-transform: lowercase;
 	display: block;
 	margin-top: 1em;
@@ -572,6 +574,7 @@ div.top_news_featured_content {
 	height: 127px;
 	font-size: 0.8em;
 	line-height: 1.5em;
+	letter-spacing: 0;
 }
 
 div.top_news_featured_content.special {
@@ -921,7 +924,8 @@ div#content_feed div#user_profile
 }
 
 div#sidebar_central ul.bloggers_list {
-	
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
 }
 
 #content_feed ul div.navigation {
@@ -947,11 +951,16 @@ div#sidebar_central li {
 }
 
 div#sidebar_central li div.sidebar_txt {
-	width: 110px;
+	width: 130px;
 	line-height: 1.1em;	
 	margin-bottom: 1em;
 	float: left;
-	font-size: 0.8em;
+	font-size: 0.75em;
+}
+
+#sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
+	font-weight: bold;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 div#sidebar_central dl dd h6 {
@@ -1430,7 +1439,7 @@ div#comentarios.sidebox {
 
 	background: #feff66 repeat-x 0 bottom;
 	text-transform: lowercase;
-	font: 0.75em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 #post_list li.even div.news_footer {
@@ -1536,8 +1545,9 @@ div.scrollable {
 }
 
 #bloggers_box ul.items li div.blogger_last_post_content h5 a {
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	font-size: 0.65em;
+	letter-spacing: 0;
 }
 
 #bloggers_navigation h3 {
