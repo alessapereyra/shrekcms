@@ -3,35 +3,37 @@ class Ws extends Controller {
 
 	function geomula($pais = 0, $departamento = NULL, $provincia = NULL, $distrito = NULL)
 	{
+		
 		$final = NULL;
 		$this->load->helper('inflector');
 		
 		if ($pais != '0')
 		{
-			$where['meta_key'] = 'pais';
-			$where['meta_value'] = score($pais);
 			$final = $pais;
+			$where['meta_key'] = 'pais';
+			$where['meta_value'] = sanitize2url($pais);
 		}
 		else
 		{
 			if ($distrito != NULL)
 			{
+				$final = $distrito;	
 				$where['meta_key'] = 'distrito';
-				$where['meta_value'] = score($distrito);	
-				$final = $distrito;		
+				$where['meta_value'] = sanitize2url($distrito);	
 			}
 			else
 			{
 				if ($provincia != NULL)
 				{
+					$final = $distrito;	
 					$where['meta_key'] = 'provincia';
-					$where['meta_value'] = score($provincia);	
-					$final = $provincia;			
+					$where['meta_value'] = sanitize2url($provincia);			
 				}
 				else
 				{
 					if ($departamento != NULL)
 					{
+						$final = $departamento;	
 						if ($departamento == '0')
 						{
 							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
@@ -40,9 +42,8 @@ class Ws extends Controller {
 						else
 						{						
 							$where['meta_key'] = 'departamento';
-							$where['meta_value'] = score($departamento);
-						}
-						$final = $departamento;				
+							$where['meta_value'] = sanitize2url($departamento);
+						}		
 					}				
 				}
 			}

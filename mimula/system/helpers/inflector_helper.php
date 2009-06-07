@@ -131,6 +131,36 @@ if ( ! function_exists('camelize'))
 // --------------------------------------------------------------------
 
 /**
+ * Sanitize to url
+ *
+ * #lala
+ *
+ * @access	public
+ * @param	string
+ * @return	str
+ */	
+if ( ! function_exists('sanitize2url'))
+{
+	function sanitize2url($str, $extras = NULL)
+	{
+		$pattern = array('/ñ/','/á/', '/é/', '/í/', '/ó/', '/ú/');
+		if ($extras != NULL)
+		{
+			foreach($extras as $extra)
+			{
+				$pattern[] = '/' . $extra . '/';
+			}
+		}
+		$str = preg_replace($pattern, '', strtolower(trim($str)));
+		return score($str);
+	}
+}
+
+// --------------------------------------------------------------------
+
+// --------------------------------------------------------------------
+
+/**
  * Underscore
  *
  * Takes multiple words separated by spaces and underscores them

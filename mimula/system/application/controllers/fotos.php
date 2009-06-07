@@ -133,6 +133,7 @@ class Fotos extends DI_Controller {
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->helper('inflector');	
 		$this->load->library('combofiller');
 		$this->load->library('form_validation');
 
@@ -342,7 +343,7 @@ class Fotos extends DI_Controller {
 				
 				if ($this->input->post($custom) != NULL)
 				{
-					$customs[$custom] = $this->input->post($custom);
+					$customs[$custom] = sanitize2url($this->input->post($custom));
 				}	
 			}
 

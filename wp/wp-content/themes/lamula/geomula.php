@@ -25,7 +25,7 @@
               <ul>
               	<li class="t"><a rel="lima/barranco" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/barranco">Barranco</a></li> 
 				<li class="t"><a rel="lima/breña" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/breña">Breña</a></li> 
-				<li class="t"><a rel="lima/jesús-maría" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/jesús-maría">Jesús María</a></li> 
+				<li class="t"><a rel="lima/jesús-maría" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/jess-mara">Jesús María</a></li> 
 				<li class="t"><a rel="lima/la-victoria" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/la-victoria">La Victoria</a></li> 
 				<li class="t"><a rel="lima/lince" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/lince">Lince</a></li> 
 				<li class="t"><a rel="lima/miraflores" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/miraflores">Miraflores</a></li> 
@@ -42,11 +42,11 @@
               <li class="s"><a href="#">Lima Oeste</a>
         
                 <ul>
-	              	<li class="t"><a rel="lima/cercado-de-lima" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima7cercado-de-lima">Cercado de Lima</a></li> 
-					<li class="t"><a rel="lima/magdalena-del-mar" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima7magdalena-del-mar">Magdalena del Mar</a></li> 
-					<li class="t"><a rel="lima/pueblo-libre" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima7pueblo-libre">Pueblo Libre</a></li> 
+	              	<li class="t"><a rel="lima/cercado-de-lima" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/cercado-de-lima">Cercado de Lima</a></li> 
+					<li class="t"><a rel="lima/magdalena-del-mar" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/magdalena-del-mar">Magdalena del Mar</a></li> 
+					<li class="t"><a rel="lima/pueblo-libre" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/pueblo-libre">Pueblo Libre</a></li> 
 					
-					<li class="t"><a rel="lima/san-miguel" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima7san-miguel">San Miguel</a></li> 
+					<li class="t"><a rel="lima/san-miguel" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/san-miguel">San Miguel</a></li> 
                 </ul>
           
               </li>                          
@@ -98,7 +98,7 @@
 				<li class="t"><a rel="lima/pucusana" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/pucusana">Pucusana</a></li> 
 				<li class="t"><a rel="lima/san-bartolo" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/san-bartolo">San Bartolo</a></li> 
 				<li class="t"><a rel="lima/san-juan-de-miraflores" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/san-juan-de-miraflores">San Juan de Miraflores</a></li> 
-				<li class="t"><a rel="lima/sta.-maria-del-mar" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/sta.-maria-del-mar">Sta. Maria del Mar</a></li> 
+				<li class="t"><a rel="lima/sta.-maria-del-mar" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/sta-maria-del-mar">Sta. Maria del Mar</a></li> 
 				<li class="t"><a rel="lima/villa-el-salvador" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/villa-el-salvador">Villa El Salvador</a></li> 
 				
 				<li class="t"><a rel="lima/villa-maria-del-triunfo" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/villa-maria-del-triunfo">Villa Maria del Triunfo</a></li> 
