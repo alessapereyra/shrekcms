@@ -353,10 +353,12 @@ function get_blog_random()
 	$sql['order_by'] = 'ORDER BY RAND()';
 	$sql['limit'] = 'LIMIT 0,1';
 	
+	
+	
 	$blog_id = $wpdb->get_results(implode(' ', $sql));
 	$blog_id = current($blog_id);
 	$blog_id = $blog_id->blog_id;
-	//$blog_id = 1;
+	$blog_id = 1;
 	$blog = 'wp_' . $blog_id . '_posts';
 	unset($sql);
 	
@@ -381,6 +383,8 @@ function setup_featured_news($post){
     
   ?>
   
+    <div>
+        <div>
         <?php if ($img_link != "") { ?>
           <div class="top_news_media">
             <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
@@ -396,7 +400,7 @@ function setup_featured_news($post){
           <div class="top_news_featured_text">
             <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                                            
           </div>   
-          <?php  }?>
+        <?php  }?>
 
         </div>
       <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post->user_nicename; ?>" ><?php echo $post->user_nicename; ?></a> <em>el <?php echo $post->post_date; ?></em> desde <?php echo $type; ?></span>
@@ -494,7 +498,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   global $wpdb;
   
   //Obtenemos los blogs de los usuarios
-	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+	//$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+	$blogs = array(1);
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
 	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
@@ -506,7 +511,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   //Obtenemos cualquier otros
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
-	$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
+  // $sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
+	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
 	$sql['order_by'] = 'ORDER BY RAND()';
 	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
 	$outsiders_blogs = $wpdb->get_results(implode(' ', $sql));
@@ -539,7 +545,6 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
     	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
     	$sql['from'] = 'FROM wp_usermeta ';
     	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
-    	$sql['order_by'] = 'ORDER BY post_date DESC';
     	$sql['limit'] = 'LIMIT 0,1';
       $avatar_results = $wpdb->get_results(implode(' ', $sql));
 	    unset($sql);    		
@@ -597,7 +602,6 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
         	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
         	$sql['from'] = 'FROM wp_usermeta ';
         	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
-        	$sql['order_by'] = 'ORDER BY post_date DESC';
         	$sql['limit'] = 'LIMIT 0,1';
           $avatar_results = $wpdb->get_results(implode(' ', $sql));
     	    unset($sql);    		
@@ -637,8 +641,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 function get_blog_special()
 {
 	global $wpdb;
-	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
-	
+	//$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+	$blogs = array(1);
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
 	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';

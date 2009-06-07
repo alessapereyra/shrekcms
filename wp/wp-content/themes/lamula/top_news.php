@@ -1,13 +1,13 @@
 
-  <div id="top_news_wrapper">
+  <div id="top_news">
 
     <div id="top_news_content">          	          	      
 
       <div id="featured" class="top_news_featured">
 
         <?php  
-           $featured_query = new WP_Query('showposts=1&category_name=featured');
-           
+           // $featured_query = new WP_Query('showposts=1&category_name=featured');
+           $featured_query = new WP_Query('showposts=1');
            while ($featured_query->have_posts()) : $featured_query->the_post();
            
            $do_not_duplicate = $post->ID; 
@@ -15,7 +15,6 @@
            $featured = $post;
 
           ?>
-<?php ?>
 
         <div class="top_news_content">
         <h3>
@@ -23,7 +22,9 @@
         </h3>
    
         <?php 
-                  setup_text(get_the_content(),$img_link,$img);
+                  //the_content();
+                setup_text(get_the_content(),$img_link,$img);
+
         ?>
         <div class="top_news_featured_content">
 
@@ -69,44 +70,43 @@
 
       </div> <!-- top_news_featured -->
 
-      <div class="top_news_featured_content">
+      <div id="most_voted" class="top_news_featured">
       <?php
             $post = get_most_voted();
             $most_voted = $post;
-            setup_featured_news($post,"las noticias m&aacute;s votadas") 
+            //setup_featured_news($post,"las noticias m&aacute;s votadas") 
       ?>
-    </div> <!-- top_news_featured_content -->
+    </div> <!-- top_news_featured -->
 
-    <div class="top_news_featured_content">
+    <div id="most_viewed" class="top_news_featured">
       <?php
             $post = kf_get_posts_by_hits(7,1,false);
             $most_viewed = $post;
             //setup_featured_news($post,"las noticias m&aacute;s comentadas") 
         ?>
-      </div> <!-- top_news_featured_content -->
+    </div> <!-- top_news_featured -->
 
 
-      <div class="top_news_featured_content">
-      <?php 
+    <div id="blog_special" class="top_news_featured">
+    <?php 
 
-            $post = get_blog_special();
-            $blog_special = $post;
-            //setup_featured_news($post,"nuestra red") 
-       ?>
-     </div> <!-- top_news_featured_content -->
-
-
-       <div class="top_news_featured_content">
-      <?php
-            $post = get_blog_random();
-            $blog_random = $post; 
-            //setup_featured_news($post,"nuestros bloggers") 
-      ?>          
-      </div> <!-- top_news_featured_content -->
-      
+          $post = get_blog_special();
+          $blog_special = $post;
+          //setup_featured_news($post,"nuestra red") 
+     ?>
+    </div> <!-- top_news_featured -->
 
 
-<div id="top_news">
+    <div id="blog_random" class="top_news_featured">
+    <?php
+          $post = get_blog_random();
+          $blog_random = $post; 
+          //setup_featured_news($post,"nuestros bloggers") 
+    ?>          
+    </div> <!-- top_news_featured -->
+    
+
+<div id="top_news_list">
 
   <div class="top_news_item portada-active">
     <h3><a href="#featured" class="news_item_title"><?php echo $featured->post_title; ?></a></h3>
