@@ -1,4 +1,3 @@
-  <?php die("llega aca"); ?>
 
   <div id="top_news_wrapper">
 
@@ -8,12 +7,15 @@
 
         <?php  
            $featured_query = new WP_Query('showposts=1&category_name=featured');
+           
            while ($featured_query->have_posts()) : $featured_query->the_post();
+           
            $do_not_duplicate = $post->ID; 
+           
            $featured = $post;
 
           ?>
-
+<?php ?>
 
         <div class="top_news_content">
         <h3>
@@ -22,7 +24,6 @@
    
         <?php 
                   setup_text(get_the_content(),$img_link,$img);
-                  $row = NULL;  
         ?>
         <div class="top_news_featured_content">
 
@@ -80,7 +81,7 @@
       <?php
             $post = kf_get_posts_by_hits(7,1,false);
             $most_viewed = $post;
-            setup_featured_news($post,"las noticias m&aacute;s comentadas") 
+            //setup_featured_news($post,"las noticias m&aacute;s comentadas") 
         ?>
       </div> <!-- top_news_featured_content -->
 
@@ -90,16 +91,16 @@
 
             $post = get_blog_special();
             $blog_special = $post;
-            setup_featured_news($post,"nuestra red") 
+            //setup_featured_news($post,"nuestra red") 
        ?>
      </div> <!-- top_news_featured_content -->
 
 
        <div class="top_news_featured_content">
-     <?php
+      <?php
             $post = get_blog_random();
             $blog_random = $post; 
-            setup_featured_news($post,"nuestros bloggers") 
+            //setup_featured_news($post,"nuestros bloggers") 
       ?>          
       </div> <!-- top_news_featured_content -->
       
