@@ -30,10 +30,12 @@ function comments_number($zero,$one,$more,$comments)
 }
 
 $consulta = $consulta->result_array();
+if (count($consulta) != 0){
 $post = current($consulta);
 
 ?>
-          <h3><a href="<?php echo $post['guid']; ?>">Por ahora no hay noticias en esta localidad<?php echo $post['post_title']; ?></a></h3>
+
+          <h3><a href="<?php echo $post['guid']; ?>"><?php echo $post['post_title']; ?></a></h3>
           <p>
 
               <?php 
@@ -79,3 +81,8 @@ $post = current($consulta);
             <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
             
           </div>
+          <?php }
+          else
+          {
+           echo 'no hay';
+		} ?>
