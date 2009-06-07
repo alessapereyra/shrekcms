@@ -82,7 +82,7 @@
       <?php
             $post = kf_get_posts_by_hits(7,1,false);
             $most_viewed = $post;
-            //setup_featured_news($post,"las noticias m&aacute;s comentadas") 
+            setup_featured_news($post,"las noticias m&aacute;s comentadas") 
         ?>
     </div> <!-- top_news_featured -->
 
@@ -92,7 +92,7 @@
 
           $post = get_blog_special();
           $blog_special = $post;
-          //setup_featured_news($post,"nuestra red") 
+          setup_featured_news($post,"nuestra red") 
      ?>
     </div> <!-- top_news_featured -->
 
@@ -101,7 +101,7 @@
     <?php
           $post = get_blog_random();
           $blog_random = $post; 
-          //setup_featured_news($post,"nuestros bloggers") 
+          setup_featured_news($post,"nuestros bloggers") 
     ?>          
     </div> <!-- top_news_featured -->
     

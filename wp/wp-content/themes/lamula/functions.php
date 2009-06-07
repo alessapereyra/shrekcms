@@ -375,12 +375,10 @@ function get_blog_random()
 
 
 function setup_featured_news($post){ 
-  
+    
     $img_link = NULL;
     $img = NULL;
-    
-    setup_text($post->post_content,$img_link,$img)
-    
+    setup_text($post->post_content,$img_link,$img);
   ?>
   
     <div>
@@ -392,6 +390,7 @@ function setup_featured_news($post){
 
           <div class="top_news_featured_companion_text">
             <?php $post->post_content = eregi_replace($img->outertext, ' ', $post->post_content); ?>
+            <?php die("lala");          ?>
             <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                 
           </div>
           <?php } 
