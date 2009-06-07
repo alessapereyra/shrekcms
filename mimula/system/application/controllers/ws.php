@@ -5,7 +5,7 @@ class Ws extends Controller {
 	{
 		$this->load->helper('inflector');
 		
-		if ($pais != 0)
+		if ($pais != '0')
 		{
 			$where['meta_key'] = 'pais';
 			$where['meta_value'] = score($pais);
@@ -28,7 +28,7 @@ class Ws extends Controller {
 				{
 					if ($departamento != NULL)
 					{
-						if ($departamento == 0)
+						if ($departamento == '0')
 						{
 							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
 							$where = $where . ' OR (meta_key = \'departamento\' AND meta_value = \'callao\')';

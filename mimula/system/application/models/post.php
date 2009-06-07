@@ -13,15 +13,25 @@ class Post extends Model {
     
     function get_geomula($values, $limit)
     {
-        $fields = $this->db->list_fields($this->tabla);
+        $fields = array($this->tabla . '.ID',
+        				$this->tabla . '.guid',
+        				$this->tabla . '.post_title',
+        				'DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date',
+        				$this->tabla . '.comment_count',
+        				$this->tabla . '.post_content');
 
 		foreach ($fields as $field)
 		{
-		   $this->db->select($this->tabla . '.' . $field);
-		}   	
+		   $this->db->select($field, FALSE);
+		}
+		
+    	
+		$this->db->select('mulapress_users.user_login');
+		$this->db->select('mulapress_users.user_nicename');
 		
 		$this->db->from($this->tabla);
 		$this->db->join('mulapress_postmeta', 'mulapress_posts.ID = mulapress_postmeta.post_id');
+		$this->db->join('mulapress_users', 'mulapress_posts.post_author = mulapress_users.ID');
 			
 		$this->db->where('post_type', 'post');
 		$this->db->where('post_status', 'publish');
