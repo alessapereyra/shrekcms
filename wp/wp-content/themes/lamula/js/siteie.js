@@ -1,4 +1,6 @@
-$(document).ready(function() {
+jQuery.noConflict();
+
+jQuery(document).ready(function($) {
 	
 	 BACK = "todas";
 	 BACK_STATES = "regresar";

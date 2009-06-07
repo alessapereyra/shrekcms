@@ -27,8 +27,6 @@
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE6.css" type="text/css" media="screen" />
 
   <![endif]-->
-  
-  <?php wp_head(); ?>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.fancybox-1.2.1.pack.js" type="text/javascript" charset="utf-8" ></script>
@@ -47,7 +45,9 @@
 
   <![endif]-->
 
-	
+
+  <?php wp_head(); ?>
+  	
 </head>
 
 <body>

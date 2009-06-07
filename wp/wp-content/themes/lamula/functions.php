@@ -394,17 +394,15 @@ function mostrar_ultimos_comentarios($limit = 5){
                            mulapress_comments.comment_author, 
                            mulapress_comments.comment_content,  
                            wp_users.user_nicename, 
-                           wp_users.user_nicename, 
-                           `mulapress_posts`.`ID`, 
                            `mulapress_posts`.`post_author`, 
-                           DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, 
-                           `mulapress_posts`.`post_title`,`mulapress_posts`.`guid` as post_url';
+                           `mulapress_posts`.`post_title`,
+                           `mulapress_posts`.`guid` as post_url';
                            
   $sql['from'] = 'FROM mulapress_comments
                  left join wp_users on mulapress_comments.user_id = wp_users.ID 
                  join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
                  ';
-  $sql['order_by'] = 'ORDER BY post_date ASC';
+  $sql['order_by'] = 'ORDER BY post_date DESC';
   $sql['limit'] = 'LIMIT 0,' . $limit;
   $comments = $wpdb->get_results(implode(' ', $sql));
   
@@ -477,7 +475,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
     	$sql['from'] = 'FROM ' . $blog_table . '
     					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
     	$sql['where'] = 'where post_status = \'publish\'';	
-    	$sql['order_by'] = 'ORDER BY post_date ASC';
+    	$sql['order_by'] = 'ORDER BY post_date DESC';
     	$sql['limit'] = 'LIMIT 0,1';
       $blog_results = $wpdb->get_results(implode(' ', $sql));
 	    unset($sql);    		
@@ -486,7 +484,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
     	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
     	$sql['from'] = 'FROM wp_usermeta ';
     	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
-    	$sql['order_by'] = 'ORDER BY post_date ASC';
+    	$sql['order_by'] = 'ORDER BY post_date DESC';
     	$sql['limit'] = 'LIMIT 0,1';
       $avatar_results = $wpdb->get_results(implode(' ', $sql));
 	    unset($sql);    		
@@ -535,7 +533,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
         	$sql['from'] = 'FROM ' . $blog_table . '
         					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
         	$sql['where'] = 'where post_status = \'publish\'';	
-        	$sql['order_by'] = 'ORDER BY post_date ASC';
+        	$sql['order_by'] = 'ORDER BY post_date DESC';
         	$sql['limit'] = 'LIMIT 0,1';
           $blog_results = $wpdb->get_results(implode(' ', $sql));
     	    unset($sql);    		
@@ -544,7 +542,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
         	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
         	$sql['from'] = 'FROM wp_usermeta ';
         	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $blog_results->user_id ;	
-        	$sql['order_by'] = 'ORDER BY post_date ASC';
+        	$sql['order_by'] = 'ORDER BY post_date DESC';
         	$sql['limit'] = 'LIMIT 0,1';
           $avatar_results = $wpdb->get_results(implode(' ', $sql));
     	    unset($sql);    		
