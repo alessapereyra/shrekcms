@@ -1,13 +1,13 @@
-<?php $ci_url= "/shrekcms/mimula/"; ?>
+<?php $ci_url= "/shrekcms/mimula/index.php/"; ?>
 	<div id="menu_bar">
 
       <p id="tagline"><span class="geomule"><em>geo</em>mula</span></p>  <!-- tagline -->
       <ul id="menu">
 
-        <li class="f"><a rel="limaycallao" href="<?php echo '/shrekcms/mimula/ws/geomula/0/0/' ?>">Lima y Callao</a>
+        <li class="f"><a rel="limaycallao" href="<?php echo  $ci_url . 'ws/geomula/0/0/' ?>">Lima y Callao</a>
           <ul>
               <li class="current s">Lima y Callao</li>
-              <li class="s"><a rel="callao" href="<?php echo '/shrekcms/mimula/ws/geomula/0/callao/callao/' ?>">Callao</a>
+              <li class="s"><a rel="callao" href="<?php echo  $ci_url . 'ws/geomula/0/callao/callao/' ?>">Callao</a>
 
               <ul>
               	<li class="t"><a rel="callao/bellavista" href="<?php echo $ci_url; ?>ws/geomula/0/callao/callao/bellavista">Bellavista</a></li> 
@@ -133,7 +133,7 @@
 				<li class="s"><a rel="lambayeque" href="<?php echo $ci_url; ?>ws/geomula/0/lambayeque">Lambayeque</a></li> 
 				<li class="s"><a rel="piura" href="<?php echo $ci_url; ?>ws/geomula/0/piura">Piura</a></li> 
 				
-				<li class="s"><a rel="tumbes" href="<?php echo $ci_url; ?>ws/geomula/0/tumbes">Tumbes</a></li>\
+				<li class="s"><a rel="tumbes" href="<?php echo $ci_url; ?>ws/geomula/0/tumbes">Tumbes</a></li>
            </ul>
         </li>  <!-- norte -->
 

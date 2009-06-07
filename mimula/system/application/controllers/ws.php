@@ -1,5 +1,5 @@
 <?php
-class ws extends Controller {
+class Ws extends Controller {
 
 	function geomula($pais = 0, $departamento = NULL, $provincia = NULL, $distrito = NULL)
 	{

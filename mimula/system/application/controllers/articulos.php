@@ -1,4 +1,4 @@
-   <?php
+<?php
 class Articulos extends DI_Controller {
 	
 	function formulario($id = NULL, $ie = NULL)

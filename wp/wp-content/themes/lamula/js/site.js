@@ -8,15 +8,15 @@ jQuery(document).ready(function($) {
    from_outside = true;
 	 LAST_STATE = "";
 	
-	 // $('div#menu_bar a').click(function () { 
-	 //      
-	 //      $.get(this.href, function(data){
-	 //    	  //alert("Data Loaded: " + data);
-	 //    	  $('div#featured').html(data);
-	 //    	  //$('div#featured').innerHtml(data);
-	 //    	});
-	 //      return false;
-	 //    });
+	  $('div#menu_bar a').click(function () { 
+	       
+	      $.get(this.href, function(data){
+	     	  //alert("Data Loaded: " + data);
+	     	  $('div#featured').html(data);
+	     	  $('div#featured').innerHtml(data);
+	     	});
+	       return false;
+	     });
 
 	 
    $("div.scrollable").scrollable({
