@@ -141,27 +141,27 @@
             <ul>
                   <li class="current s">Oriente</li>
                     
-	              	<li class="s"><a rel="amazonas" href="<?php echo $ci_url; ?>ws/geomula/0/amazonas">Amazonas</a></li> 
-
+	        <li class="s"><a rel="amazonas" href="<?php echo $ci_url; ?>ws/geomula/0/amazonas">Amazonas</a></li> 
 					<li class="s"><a rel="loreto" href="<?php echo $ci_url; ?>ws/geomula/0/loreto">Loreto</a></li> 
 					<li class="s"><a rel="madre-de-dios" href="<?php echo $ci_url; ?>ws/geomula/0/madre-de-dios">Madre de Dios</a></li> 
 					<li class="s"><a rel="san-martin" href="<?php echo $ci_url; ?>ws/geomula/0/san-martin">San Martin</a></li> 
-					<li class="s"><a rel="ucayali" href="<?php echo $ci_url; ?>ws/geomula/0/ucayali">Ucayali</a></li> 
+          <li class="s"><a rel="ucayali" href="<?php echo $ci_url; ?>ws/geomula/0/ucayali">Ucayali</a></li> 
                
             </ul>
           </li>  <!-- oriente -->
       
         <li class="f"><a href="#">Sur</a>
           <ul>
-                <li class="current s">Sur</li>  
+        
+              <li class="current s">Sur</li>  
 
-              	<li class="s"><a rel="arequipa" href="<?php echo $ci_url; ?>ws/geomula/0/arequipa">Arequipa</a></li> 
-				<li class="s"><a rel="ayacucho" href="<?php echo $ci_url; ?>ws/geomula/0/ayacucho">Ayacucho</a></li> 
-				<li class="s"><a rel="cusco" href="<?php echo $ci_url; ?>ws/geomula/0/cusco">Cusco</a></li> 
-				<li class="s"><a rel="ica" href="<?php echo $ci_url; ?>ws/geomula/0/ica">Ica</a></li> 
-				<li class="s"><a rel="moquegua" href="<?php echo $ci_url; ?>ws/geomula/0/moquegua">Moquegua</a></li> 
-				<li class="s"><a rel="puno" href="<?php echo $ci_url; ?>ws/geomula/0/puno">Puno</a></li> 
-				<li class="s"><a rel="tacna" href="<?php echo $ci_url; ?>ws/geomula/0/tacna">Tacna</a></li> 
+              <li class="s"><a rel="arequipa" href="<?php echo $ci_url; ?>ws/geomula/0/arequipa">Arequipa</a></li> 
+      				<li class="s"><a rel="ayacucho" href="<?php echo $ci_url; ?>ws/geomula/0/ayacucho">Ayacucho</a></li> 
+      				<li class="s"><a rel="cusco" href="<?php echo $ci_url; ?>ws/geomula/0/cusco">Cusco</a></li> 
+      				<li class="s"><a rel="ica" href="<?php echo $ci_url; ?>ws/geomula/0/ica">Ica</a></li> 
+      				<li class="s"><a rel="moquegua" href="<?php echo $ci_url; ?>ws/geomula/0/moquegua">Moquegua</a></li> 
+      				<li class="s"><a rel="puno" href="<?php echo $ci_url; ?>ws/geomula/0/puno">Puno</a></li> 
+      				<li class="s"><a rel="tacna" href="<?php echo $ci_url; ?>ws/geomula/0/tacna">Tacna</a></li> 
                                                                                                                                                                                                            
           </ul>
         </li>  <!-- sur -->

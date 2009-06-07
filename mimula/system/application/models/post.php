@@ -150,7 +150,7 @@ class Post extends Model {
     	$values['post_name'] = preg_replace('/[^a-zA-Z0-9 -]/','',score($values['post_title']));
 		$values['post_status'] = 'publish';    	
     	
-		$this->load->library('HTMLPurifier');
+		  $this->load->library('HTMLPurifier');
         $config = HTMLPurifier_Config::createDefault();
         $values['post_content'] = $this->htmlpurifier->purify( $values['post_content'] , $config );
 		    
