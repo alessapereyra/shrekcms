@@ -1,55 +1,81 @@
 <?php 
-//$consulta = $consulta->result_array();
-//$post = current($consulta);
+function snippet($text,$length=64,$tail="...") {
+    $text = trim($text);
+    $txtl = strlen($text);
+    if($txtl > $length) {
+        for($i=1;$text[$length-$i]!=" ";$i++) {
+            if($i == $length) {
+                return substr($text,0,$length) . $tail;
+            }
+        }
+        $text = substr($text,0,$length-$i+1) . $tail;
+    }
+    return $text;
+}
+
+function comments_number($zero,$one,$more,$comments)
+{
+	switch ($comments)
+	{
+		case 0:
+			return $zero;
+		break;
+		case 1:
+			return $one;
+		break;
+		default:
+			return $more;
+		break;		
+	}
+}
+
+$consulta = $consulta->result_array();
+$post = current($consulta);
 
 ?>
-          <h3><a href="<?php echo //$post['guid']; ?>">Por ahora no hay noticias en esta localidad<?php //echo $post['post_title']; ?></a></h3>
+          <h3><a href="<?php echo $post['guid']; ?>">Por ahora no hay noticias en esta localidad<?php echo $post['post_title']; ?></a></h3>
           <p>
 
               <?php 
-             /*
                     $content = $post['post_content'];
                     include('system/application/libraries/Simplehtml.php');
                     
                     $html = str_get_html($content . ' ');
-                    $img_link = $html->find('img',0);
+                    $img_link = @$html->find('img',0)->src;
 
                     $html->clear(); 
                     unset($html);          
                     
-                    //pasa las variables para usar luego
-                    $featured = $post;
-                    */
               ?>
               <div class="top_news_featured_content">
                 
- <!--              <?php //if ($img_link != "") { ?>
+               <?php if ($img_link != "") { ?>
                 <div class="top_news_media">
-                  <img src="<?php //echo $img_link; ?>" alt="" title=""/>                  
+                  <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
                 </div>
 
                   <div class="top_news_featured_companion_text">
-                <?php //the_excerpt(235); ?>	                  
+                <?php echo snippet($content,235); ?>	                  
                   </div>
-                -->
-              <?php // } 
-             // else 
-               //   {  ?>
+            
+              <?php } 
+              else 
+                 {  ?>
                     <div class="top_news_featured_text">
-                      <?php //the_excerpt(235); ?>	¿A qué estás esperando?                                       
+                      <?php echo snippet($content,235); ?>                                       
                     </div>   
-                <?php //  }?>
+                <?php   }?>
 
               </div>
                               
-              <span class="author">enviado por <a href="http://lamula.pe/members/<?php //the_author_login(); ?>"><?php //$featured->user_nicename = the_author(); ?></a> <em> el <?php //the_date('d/m/y'); ?></em> en noticia destacada</span>
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date'] ?></em> en noticia destacada</span>
 
           </p>
 
           <div class="top_news_featured_footer">
 
-            <a href="<?php //the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-            <p class="comments"><a href="<?php //comments_link(); ?>" class="comments"><?php //comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
+            <a href="<?php echo $post['guid']; ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+            <p class="comments"><a href="<?php echo $post['guid']; ?>#comments" class="comments"><?php echo comments_number('cero', 'uno', 'm&aacute;s', $post['comment_count']); ?> comentarios</a></p>
             <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
             
           </div>
