@@ -235,7 +235,7 @@ function get_most_voted()
 	$sql['limit'] = 'LIMIT 0,1';
 	
 	$post = $wpdb->get_results(implode(' ', $sql));
-	retur current($post);
+	return current($post);
 }
 
 function get_blogs()
