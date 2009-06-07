@@ -25,6 +25,16 @@ function snippet($text,$length=64,$tail="...") {
 }
 
 
+function setup_text($content, &$img_link = NULL,&$img = NULL){
+  
+  $html = str_get_html($content);
+  $img_link = $html->find('img',0)->src;
+  $img = $html->find('img',0);
+  $html->clear(); 
+  unset($html);          
+  
+}
+
 function mulapress_trim_excerpt($text, $length = 55) {
 	if ( '' == $text ) {
 		$text = get_the_content('');
@@ -224,7 +234,8 @@ function get_most_voted()
 	$sql['order_by'] = 'ORDER BY vote DESC';
 	$sql['limit'] = 'LIMIT 0,1';
 	
-	return $wpdb->get_results(implode(' ', $sql));
+	$post = $wpdb->get_results(implode(' ', $sql));
+	retur current($post);
 }
 
 function get_blogs()
@@ -356,8 +367,52 @@ function get_blog_random()
 	$sql['order_by'] = 'ORDER BY post_date ASC';
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
-	return $wpdb->get_results(implode(' ', $sql));
+	$post = $wpdb->get_results(implode(' ', $sql));
+	return current($post);
 }
+
+
+function setup_featured_news($post){ 
+  
+    $img_link = NULL;
+    $img = NULL;
+    
+    setup_text($post->post_content,$img_link,$img)
+    
+  ?>
+  
+        <?php if ($img_link != "") { ?>
+          <div class="top_news_media">
+            <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+          </div>
+
+          <div class="top_news_featured_companion_text">
+            <?php $post->post_content = eregi_replace($img->outertext, ' ', $post->post_content); ?>
+            <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                 
+          </div>
+          <?php } 
+        else 
+        {  ?>
+          <div class="top_news_featured_text">
+            <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                                            
+          </div>   
+          <?php  }?>
+
+        </div>
+      <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post->user_nicename; ?>" ><?php echo $post->user_nicename; ?></a> <em>el <?php echo $post->post_date; ?></em> desde <?php echo $type; ?></span>
+
+    </div>
+
+    <div class="top_news_featured_footer">
+
+      <a href="<?php echo $post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+      <p class="comments"><a href="<?php echo $post->guid; ?>#comments" class="comments"><?php echo $post->comment_count; ?> comentarios</a></p>
+      <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+
+    </div>	          
+  
+<?php }
+
 
 function calcular_ranking($user_quantity = 20){
   
@@ -603,7 +658,8 @@ function get_blog_special()
 	$sql['order_by'] = 'ORDER BY post_date ASC';
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
-	return $wpdb->get_results(implode(' ', $sql));
+	$post = $wpdb->get_results(implode(' ', $sql));
+	return current($post);
 }
 
 ?>

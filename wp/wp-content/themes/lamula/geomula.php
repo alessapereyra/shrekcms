@@ -26,7 +26,7 @@
               <ul>
 
               	<?php
-              	$distritos = array('Barranco', 'Breña',  'Jesús María', 'La Victoria', 'Lince', 'Miraflores','San Isidro', 'San Luis',  'Santiago de Surco', 'Surquillo', 'San Borja' ); 
+              	$distritos = array('Barranco', 'Brena',  'Jesus Maria', 'La Victoria', 'Lince', 'Miraflores','San Isidro', 'San Luis',  'Santiago de Surco', 'Surquillo', 'San Borja' ); 
               	foreach($distritos as $distrito)
               	{
               		$distrito_url = strtolower(eregi_replace(' ', '-', $distrito));
