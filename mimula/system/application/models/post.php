@@ -40,7 +40,7 @@ class Post extends Model {
 		$this->db->limit($limit['show'], $limit['from']);
 		
 		$query = $this->db->get();
-		die($this->db->last_query());
+		//die($this->db->last_query());
 		return $query;
     }
     
