@@ -62,7 +62,7 @@
 
           <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
           <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
-          <p class="rate"><em><?php wp_gdsr_render_article(); ?></em></p>
+          <div class="rate"><?php wp_gdsr_render_article(); ?></div>
 
         </div>
 
