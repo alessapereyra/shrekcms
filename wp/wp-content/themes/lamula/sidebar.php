@@ -162,7 +162,35 @@
           </div> <!-- sidebox_wrapper -->
   
         </div> <!-- sidebox -->
-      
+
+        <div id="comentarios" class="sidebox">
+
+          <div class="sidebox_wrapper">
+            
+            <h4>&Uacute;ltimos Comentarioss</h4>          
+            
+            <ul>
+              <?php 
+
+				global $wpdb;
+				
+				$current_profile_id =  69;
+				
+					$sql['select'] = 'SELECT puntaje, mularango';
+					$sql['from'] = 'FROM wp_users';
+					$sql['where'] = 'WHERE ID = ' . $current_profile_id; 
+				
+					$ranking = $wpdb->get_results(implode(' ', $sql));
+					$ranking = current($ranking);
+				 ?>
+				 <div id="ranking_<?php echo preg_replace('/ /', '', $ranking->mularango); ?>">
+  <p><?php echo $ranking->mularango; ?> con <?php echo number_format($ranking->puntaje, 0); ?></p>
+</div>    
+            </ul>
+            
+          </div> <!-- sidebox_wrapper -->
+  
+        </div> <!-- sidebox -->      
                             
         <div class="sidebox cc">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
