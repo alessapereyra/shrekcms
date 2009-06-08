@@ -2,7 +2,7 @@
 class Users extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_users';
+    var $tabla = 'wp_users';
 
     function __construct()
     {
@@ -36,15 +36,6 @@ class Users extends Model {
         $query = $this->db->get();
         return $query;
     }
-    
-    function mularanking($id)
-    {
-
-      
-      
-      
-    }
-
     
     function insertar($values)
     {	  
