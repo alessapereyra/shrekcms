@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
 	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
+	http://localhost/shrekcms/wp/wp-content/themes/lamula/style.css
 */
 
 body {
@@ -520,7 +521,7 @@ a#leer_mas_footer,
 }
 
 div.top_news_featured_footer p.comments a  {
-	font-size: 1.2em;
+	font-size: 1em;
 	margin-top: 0.7em;
 }
 
@@ -547,7 +548,8 @@ div#top_news_footer div.rate {
 }
 
 div#top_news_footer div.rate{
-	padding: 0px;
+	margin-top: 10px;
+	display: block;
 }
 
 div#top_news_footer p.comments a {
@@ -640,7 +642,7 @@ div#content {
 }
 
 .post_list li div.news_footer span a {
-	font-weight: bold;
+	font-weight: bold !important;
 }
 
 .post_list li div.news_footer span a:hover {
@@ -684,6 +686,15 @@ div#content_feed ul li a {
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-top-right-radius: 10px;
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+div#content_feed div ul.post_list div.post_item a {
+	padding: 0px ;	
+	font-size: 1em;
+	background: none;
+	color: #4fb2d9;
+	display: inline;
+	font-weight: bold;
 }
 
 .inner ul.post_list li div.post_content p a {
@@ -756,17 +767,6 @@ div#content_feed ul.post_list li {
 	margin-bottom: 1em;
 }
 
-.post_list li div.post_content {
-
-	font: 0.9em/1.3px "Lucida Grande", Lucida, Verdana, sans-serif;
-	line-height: 1.5em;
-	clear: right;
-}
-
-.post_list li div.post_content p {
-	margin-bottom: 1em;
-	font-size: 0.9em;
-}
 
 .inner .post_list li div.post_content {
 	float: none;
@@ -808,10 +808,15 @@ div#content_feed ul.post_list li {
 
 .post_list li div.post_content a,
 .post_list li h5 a{
-	margin: 0px;
-	padding: 0px;	
-	background: none;
-	color: #fe008a;
+	margin: 0px !important;
+	padding: 0px !important;	
+	background: none !important;
+	
+}
+
+.post_list li div.post_content a {
+	color: #3fabd8 !important;
+	display: inline !important;
 }
 
 .post_list li h5 {
@@ -826,9 +831,6 @@ div#content_feed ul.post_list li {
 	margin-bottom: 0px;
 }
 
-.post_list li div.post_content a{
-	color: #fe008a;
-}
 
 .post_list li div.post_content a:hover{
 	background: none;
@@ -903,13 +905,13 @@ div#content_feed ul.post_list li {
 .post_list li div.post_item div.post_companion_content {
 	float: left;
 	width: 260px;
-	height: 95px;
+	height: 90px;
 	overflow: hidden;
-	font: 0.9em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
+
 }
 
 .post_list li div.news_footer {
-	margin-top: 0.5em;
+
 }
 
 
@@ -1411,10 +1413,6 @@ div.navigation a:hover {
 }
 
 
-.post_list li div.post_content p {
-	line-height: 1.5em;
-}
-
 .post_list li div.news_footer a.leer_mas_footer:hover,
 .post_list li div.news_footer a.comments:hover{
 	color: #d4d4d4 !important;
@@ -1501,7 +1499,7 @@ div.navigation a:hover {
 #top_news  div.ratingblock {
 	float:left;
 	margin-bottom: 0px;
-	margin-top: 5px;
+	margin-top: 7px;
 	margin-left: 0px;
 	padding: 0px;
 	clear: none;
@@ -1528,9 +1526,8 @@ div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
 .post_list li div.post_item {
 	clear: both;
 	overflow: hidden;
-
-	font-size: 0.9em;
-	line-height: 1.4em;
+	font: 0.75em/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;	
+	letter-spacing: 0;
 }
 
 .post_list li div.news_footer a.rate {

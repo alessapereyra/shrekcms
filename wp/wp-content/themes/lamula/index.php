@@ -38,13 +38,11 @@
             $content = get_the_content();
             $html = str_get_html($content);
             $img_link = $html->find('img',0)->src;
-
             $html->clear(); 
             unset($html);
 
             $content = apply_filters('the_content', $content);
             $content = str_replace(']]>', ']]&gt;', $content);
-            $content = snippet($content,235);
             $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
             ?>
 
@@ -69,12 +67,12 @@
                   </div>
 
                   <div class="post_companion_content">
-                    <?php the_excerpt(100); ?>		              
+                    <?php echo the_excerpt(); ?>		              
                   </div>
                   <?php } else { ?>
 
                     <div class="post_content">
-                      <?php the_excerpt(100); ?>	
+                    <?php echo the_excerpt(); ?>		              
                     </div>
 
                     <?php } ?>
@@ -168,12 +166,12 @@
                         </div>
 
                         <div class="post_companion_content">
-                          <?php the_excerpt(100); ?>		              
+                          <?php the_excerpt(); ?>		                        
                         </div>
                         <?php } else { ?>
 
                           <div class="post_content">
-                            <?php the_excerpt(100); ?>	
+                          <?php the_excerpt(); ?>		                        
                           </div>
 
                           <?php } ?>
@@ -241,7 +239,7 @@
 
                         $content = apply_filters('the_content', $content);
                         $content = str_replace(']]>', ']]&gt;', $content);
-                        $content = snippet($content,235);
+                        $content = snippet($content,135);
                         $author = "por <small class='author'> ". get_the_author() . "</small>";
                         $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
                         ?>
@@ -266,12 +264,12 @@
                             </div>
 
                             <div class="post_companion_content">
-                              <?php the_excerpt(100); ?>		              
+                                <?php the_excerpt(); ?>		                               
                             </div>
                             <?php } else { ?>
 
                               <div class="post_content">
-                                <?php the_excerpt(100); ?>	
+                                <?php the_excerpt(); ?>		                        
                               </div>
 
                               <?php } ?>
@@ -339,7 +337,7 @@
 
                             $content = apply_filters('the_content', $content);
                             $content = str_replace(']]>', ']]&gt;', $content);
-                            $content = snippet($content,235);
+                            $content = snippet($content,135);
                             $author = "por <small class='author'> ". get_the_author() . "</small>";
                             $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
                             $content =  $content; 
@@ -364,12 +362,12 @@
                                 </div>
 
                                 <div class="post_companion_content">
-                                  <?php the_excerpt(100); ?>		              
+                                    <?php the_excerpt(); ?>		                             
                                 </div>
                                 <?php } else { ?>
 
                                   <div class="post_content">
-                                    <?php the_excerpt(100); ?>	
+                                      <?php the_excerpt(); ?>		                        
                                   </div>
 
                                   <?php } ?>
