@@ -26,7 +26,6 @@ class Home extends DI_Controller {
 
 		$this->load->view('home/myposts', $data);
 					
-		//$this->load->view('home');
 		$this->__destruct();
 	}
 }
