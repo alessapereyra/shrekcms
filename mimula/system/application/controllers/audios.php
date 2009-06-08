@@ -258,7 +258,7 @@ class Audios extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
-			redirect('audios/formulario');			
+			redirect('home/dashboard');			
 			
 		}			
 	}

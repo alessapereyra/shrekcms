@@ -352,11 +352,11 @@ class Documentos extends DI_Controller {
 				//@_@
 				$this->post->actualizar($data, $where);
 				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
-				redirect('documentos/formulario/' . $id);
+				redirect('home/dashboard');
 			}
 
-			$this->session->set_flashdata('notice', 'Nota enviada exitosamente');	
-			redirect('documentos/formulario');			
+       		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
+				redirect('home/dashboard');		
 			
 		}			
 	}

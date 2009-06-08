@@ -358,14 +358,14 @@ class Articulos extends DI_Controller {
 				$where['id'] = $id;
 				$this->post->actualizar($data, $where);
 				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
-				redirect('articulos/formulario/' . $id);
+				redirect('home/dashboard');
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
 
        		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
-				redirect('articulos/formulario');
+				redirect('home/dashboard');
 
 			}
 			else

@@ -1,5 +1,6 @@
 <?php //$categorias = array(7 => 'articulos',8 => 'fotos', 9 => 'videos', 10 => 'documentos', 11 => 'audio')?>
 <div id="content"  class="dashboard">
+	<span id="flashdata"><?php echo $this->session->flashdata('notice'); ?></span>
 	<table width="100%">
 		<thead>
 			<th>Titulo</th>
