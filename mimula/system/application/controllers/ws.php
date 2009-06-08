@@ -59,4 +59,54 @@ class Ws extends Controller {
 		
 		$this->load->view('ws/geomula', $data);
 	}
+	
+	function mularanking()
+	{
+		$this->load->model('users');
+		$this->load->model('post');
+		$this->load->model('comments');
+		$this->load->model('mularangos');
+		
+		$users = $this->users->seleccionar();
+		$mularangos = $this->mularangos->seleccionar();
+		$mularangos = $mularangos->result_array();
+		reset($mularangos);
+		
+		foreach ($users->result() as $user)
+		{
+		   $userid = $user->ID;
+		   $published_posts = $this->post->published_posts($userid) * 1.2;
+		   $comments = $this->comments->total_comments($userid);
+		   $comments_received = $this->comments->total_received_comments($userid) * 1.05;
+		   $promedios = $this->post->promedio($userid);
+		   $promedios = $promedios->result_array();
+		   $promedios = current($promedios);
+		   
+		   $user_prom = @($promedios['user_votes']/$promedios['user_voters']) * 1.05;
+		   $visitor_prom = @($promedios['visitor_votes']/$promedios['visitor_voters']);
+		   
+		   $promedio = ($user_prom + $visitor_prom)/2;
+		   
+		   $tmp = (1) + @($comments_received/($comments*100));
+		   
+		   $promedio = $promedio * $tmp;
+		   
+		   $total = $published_posts + $comments + $comments_received + $promedio;
+		   //echo $published_posts . ' ' . $comments . ' ' . $comments_received . ' ' . $promedio . ' ' . $tmp;
+		   //die($total);
+		   foreach($mularangos as $rango)
+		   {
+			   	if ($total >= $rango['minimo'])
+			   	{
+			   		$where['ID'] = $userid;
+			   		$values['mularango'] = $rango['ranking'];
+			   		$values['puntaje'] = $total;
+			   		//echo 'final = ' . $total . ' ' . ($rango['ranking']) . '<br />';
+			   		$this->users->actualizar($values, $where);
+			   		break;
+			   	}  
+		   }
+		}
+		$this->load->view('ws/mularanking');
+	}
 }

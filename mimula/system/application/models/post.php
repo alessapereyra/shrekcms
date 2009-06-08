@@ -299,7 +299,8 @@ class Post extends Model {
       $this->db->select('post_author');
       $this->db->from($this->tabla);
       $this->db->where('post_author',$id);
-		  $this->db->where('(post_status like "publish" or post_status like "inherit")');
+		//$this->db->where('(post_status like "publish" or post_status like "inherit")');
+		$this->db->where('post_status like "publish"');
       return $this->db->count_all_results();
     }
  
@@ -308,6 +309,20 @@ class Post extends Model {
        $this->db->from($this->tabla);
        $this->db->where('post_author',$id);
        return $this->db->count_all_results();
+     }
+     
+     function promedio($userid)
+     {
+     	return $this->db->query('SELECT sum(user_votes) as user_votes, sum(user_voters) as user_voters,
+     							sum(visitor_votes) as visitor_votes, sum(visitor_voters) as visitor_voters
+     		FROM mulapress_gdsr_data_article 
+     		WHERE (user_voters > 0 or visitor_voters > 0)  and post_id IN
+     		(
+				SELECT ID
+				FROM mulapress_posts
+				WHERE post_author = \'' . $userid . '\'
+				AND post_status = \'publish\'
+			)');
      }
  
  
