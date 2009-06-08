@@ -64,26 +64,26 @@
               
                 <div class="sidebox_content">
 
-                    <ul id="mulakids">
-                      Mulakids
+                    <ul id="mula_wawa">
+                      <?php echo mostrar_ranking("mula wawa",5); ?>
                     </ul>
-                
+                    <div id="mula_wawa_logo">Mula Wawa</div>
                 </div>
                     
                 <div class="sidebox_content">
 
-                  <ul id="mulitas">
-                      Mulitas              
+                  <ul id="mula_churre">
+                      <?php echo mostrar_ranking("mula churre",5); ?>
                   </ul>
-                
+                    <div id="mula_churre_logo">Mula Churre</div>                
                 </div>
               
                 <div class="sidebox_content">
 
-                  <ul id="mulos">
-                      Mulos
+                  <ul id="mula">
+                      <?php echo mostrar_ranking("mula",5); ?>
                   </ul>
-
+                    <div id="mula_logo">Mula</div>
                 </div>                          
 
               </div>                    
@@ -92,8 +92,8 @@
              
         
         <ul id="ranking_menu" class="sidebox_menu">
-          <li><a href="#mulakids" class="selected">mulakids</a></li>
-          <li><a href="#mulitas">mulitas</a></li>
+          <li><a href="#mulakids" class="selected">wawa</a></li>
+          <li><a href="#mulitas">churre</a></li>
           <li><a href="#mulas">mulas</a></li>                
         </ul>
         
@@ -113,12 +113,10 @@
                 
                 <div class="sidebox_content">
                     <!-- VOTADOS -->
-            
-                      <!-- Define the div tag where the gadget will be inserted. -->
-                    <div id="div-6886351088514799323" style="width:100px;"></div>
-                    <!-- Render the gadget into a div. -->
-    
-            
+                    <ul id="post_most_voted">
+                      <?php echo mostrar_mas_votados(); ?>
+                    </ul>
+                
                 </div> <!-- sidebox_content -->
           
                 <div class="sidebox_content">
@@ -170,22 +168,8 @@
             <h4>&Uacute;ltimos Comentarioss</h4>          
             
             <ul>
-              <?php 
 
-				global $wpdb;
-				
-				$current_profile_id =  69;
-				
-					$sql['select'] = 'SELECT puntaje, mularango';
-					$sql['from'] = 'FROM wp_users';
-					$sql['where'] = 'WHERE ID = ' . $current_profile_id; 
-				
-					$ranking = $wpdb->get_results(implode(' ', $sql));
-					$ranking = current($ranking);
-				 ?>
-				 <div id="ranking_<?php echo preg_replace('/ /', '', $ranking->mularango); ?>">
-  <p><?php echo $ranking->mularango; ?> con <?php echo number_format($ranking->puntaje, 0); ?></p>
-</div>    
+		
             </ul>
             
           </div> <!-- sidebox_wrapper -->
