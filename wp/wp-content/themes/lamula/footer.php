@@ -3,6 +3,8 @@
     
   </div>  <!-- wrapper -->
 
+  <div id="city">desaznadamente en linea</div>
+
   <div id="footer">
     lamula.pe
   </div>

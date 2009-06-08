@@ -10,7 +10,7 @@ register_sidebar(array(
 'after_title' => '4',
 ));
 
-function snippet($text,$length=64,$tail="...") {
+function snippet($text,$length=64,$tail="[...]") {
   
     $text = trim($text);
     $txtl = strlen($text);
@@ -481,7 +481,7 @@ function mostrar_ultimos_comentarios($limit = 5){
             echo $comment->comment_author . " dijo ";            
           }
 
-          echo "<a href='" .  $comment->post_url . "#comments-" . $comment->comment_ID ."'>" . $comment->comment_content . "</a>";
+          echo "<a href='" .  $comment->post_url . "#comments-" . $comment->comment_ID ."'>" . snippet($comment->comment_content,80) . "</a>";
           echo " en <a href='" .  $comment->post_url . "'>" . $comment->post_title . "</a>";
           echo "</li>";
           

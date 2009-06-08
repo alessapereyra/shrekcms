@@ -84,7 +84,7 @@
                     <div class="footer_links">
 
                       <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-                      <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                      <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentario'); ?></a>
 
                     </div>
 
@@ -183,7 +183,7 @@
                           <div class="footer_links">
 
                             <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-                            <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                            <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentario'); ?></a>
 
                           </div>
                           <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
@@ -281,7 +281,7 @@
                               <div class="footer_links">
 
                                 <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-                                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                                <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentario'); ?> </a>
 
                               </div>
                               <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>
@@ -379,7 +379,7 @@
                                   <div class="footer_links">
 
                                     <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-                                    <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n', 'uno', 'm&aacute;s'); ?> comentario</a>
+                                    <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentario'); ?></a>
 
                                   </div>
                                   <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>

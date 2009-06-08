@@ -9,7 +9,7 @@ get_header(); ?>
   
   <div id="content_feed">    
 
-    <ul id="post_list">
+    <ul class="post_list">
     
     <?php if (have_posts()) : ?>
         

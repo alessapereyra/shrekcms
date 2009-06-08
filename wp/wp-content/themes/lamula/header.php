@@ -75,6 +75,10 @@
         <!-- <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
       </div> <!-- top_ad -->
   
+      <div id="flag">
+        <a href="#logo_bar">Arriba</a>
+      </div>
+  
       <div id="logo_bar">
 
         <div id="logo">

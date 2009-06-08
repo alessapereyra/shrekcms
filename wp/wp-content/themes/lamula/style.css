@@ -59,6 +59,7 @@ div#top_menu {
 	text-decoration: none;
 	margin-right: 10px;
 	font-size: 0.9em;
+	letter-spacing: 0;
 }
 
 
@@ -126,8 +127,22 @@ h1 a{
 	float: left;
 	background-image: url(images/logo-transparent.png);
 	text-indent: -9000em;
-	width: 310px;
+	width: 240px;
 	height: 70px;
+}
+
+div#flag {
+	position: fixed;
+	left: 0px;
+	
+}
+
+div#flag a {
+	display: block;
+	width: 72px;
+	height: 65px;
+	text-indent: -4000em;
+	background: url(images/flag-transparent.png) no-repeat;
 }
 
 
@@ -658,9 +673,9 @@ div#content_feed {
 
 }
 
+
 div#content_feed ul {
 	clear: both;
-
 	margin: 0px auto 0px 0.5em;
 }
 
@@ -688,6 +703,10 @@ div#content_feed ul li a {
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
+ul.post_list li div.news_footer div.footer_links a {
+	margin-top: 0px !important;
+}
+
 div#content_feed div ul.post_list div.post_item a {
 	padding: 0px ;	
 	font-size: 1em;
@@ -703,6 +722,7 @@ div#content_feed div ul.post_list div.post_item a {
 }
 .inner div#content_feed ul li a {
 	padding: 0px 0px;
+	font-size: 1em !important;
 }
 
 .inner div#content_feed ul#category_tabs li a {
@@ -782,11 +802,13 @@ div#content_feed ul.post_list li {
 }
 
 .inner .post_list li div.post_content h6.metadata {
-	font-size: 1.0em;
 	text-transform: lowercase;
 	margin-bottom: 1.4em;
 	color: #df0b7a;
 	padding-bottom: 1em;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
 .post_list li div.post_content div.news_footer p.tags a {
@@ -796,6 +818,10 @@ div#content_feed ul.post_list li {
 .post_list li div.post_content h6.metadata a {
 	display: inline;
 	font-size: 1em;
+}
+
+.inner .post_list li div.post_content h6.metadata a {
+	font-size: 0.8em !important;
 }
 
 .inner .post_list li div.post_content h6.author {
@@ -840,9 +866,9 @@ div#content_feed ul.post_list li {
 
 .post_list li div.post_image {
 	float: left;
-	width: 150px;
-	height: 100px;
-	margin-right: 10px;
+	width: 85px;
+	height: 60px;
+	margin-right: 15px;
 	margin-top: 3px;
 	clear: both;
 	overflow: hidden;
@@ -858,7 +884,7 @@ div#content_feed ul.post_list li {
 
 .post_list li div.post_image.fotos a,
 .post_list li div.post_image.videos a {
-	width: 150px;
+	width: 100px;
 	height: 100px;
 	border: none;
 	background: url(images/photo.png) no-repeat;
@@ -898,21 +924,18 @@ div#content_feed ul.post_list li {
 }
 
 .post_list li div.post_image a img{
-	width: 230px;
+	width: 110px;
 	overflow: hidden;
 }
 
 .post_list li div.post_item div.post_companion_content {
 	float: left;
-	width: 260px;
-	height: 90px;
+	width: 330px;
+	height: 60px;
 	overflow: hidden;
-
+	margin-top: 2px;
 }
 
-.post_list li div.news_footer {
-
-}
 
 
 div#content_feed ul.post_list,
@@ -922,6 +945,10 @@ div#content_feed div#user_profile
 	background-color: white;
 	padding: 40px 20px 20px;
 	margin: 0px;
+}
+
+div.inner ul.post_list {
+	padding: 20px !important;
 }
 
 div#sidebar_central ul.bloggers_list {
@@ -984,6 +1011,7 @@ div#sidebar_central ul li p {
 div#content_feed h5 {
 	color: #ff7e00;
 	font-size: 1.4em;
+	margin-bottom: 0.5em;
 }
 
 div#content_feed ul li h5 a {
@@ -991,10 +1019,8 @@ div#content_feed ul li h5 a {
 	padding: 0px;
 	background: none;
 	color: black;
-	letter-spacing: -2px;
-	word-spacing: 2px;
 	font: 1.0em Georgia, "Times New Roman", Times, serif;
-	margin-bottom: 0.3em;
+	margin-bottom: 0.5em;
 }
 
 div#content_feed ul li h5 a:hover {
@@ -1009,8 +1035,9 @@ div#content_feed ul li h5 a:hover {
 }
 
 .inner .post_list li div.post_content div.news_footer {
-	height: auto;
+	overflow: hidden;
 	margin-top: 1em;
+	height: auto;
 }
 
 div#content.inner ul.post_list li {
@@ -1470,6 +1497,9 @@ div.navigation a:hover {
 .inner .post_list li div.news_footer div.ratingblock {
 	float: none;
 	display: inline;
+	padding: 0px !important;
+	background: none !important;
+	float: none !important
 }
 
 .inner .post_list li a.rate {
@@ -1485,6 +1515,7 @@ div.navigation a:hover {
 .post_list li div.news_footer p.tags,
 .post_list li div.news_footer div.rate {
 	font-size: 0.8em;
+	margin-top: 1em;
 }
 
 .post_list li div.news_footer p.tags {
@@ -1510,7 +1541,7 @@ div.navigation a:hover {
 }
 
 div#content.inner ul.post_list li h5 a {
-	font-size: 1.8em;
+	font-size: 1.5em !important;
 	letter-spacing: -4px;
 }
 
@@ -1528,6 +1559,11 @@ div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
 	overflow: hidden;
 	font: 0.75em/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;	
 	letter-spacing: 0;
+	margin-bottom: 1.2em;
+}
+
+#todo ul.post_list li div.post_item div.post_companion_content p {
+	margin-bottom: 0px;
 }
 
 .post_list li div.news_footer a.rate {
@@ -1784,7 +1820,7 @@ ol.commentlist {
 div#respond {
 	margin-top: 1em;
 	padding: 20px;
-	background: #fff9a5 url(images/background-yellow.png) repeat-x 0 bottom;
+	background: #bae4ea;
 }
 
 #commentform p label {
@@ -1890,6 +1926,15 @@ div#comentarios li a:hover {
 /* @end */
 
 /* @group Footer */
+
+div#city {
+	position: fixed;
+	bottom: 0px;
+	height: 180px;
+	width: 100%;
+	text-indent: -9000em;
+	background: url(images/lima-transparent.png) center;
+}
 
 	div#footer{
 	

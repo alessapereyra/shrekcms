@@ -9,7 +9,7 @@ get_header(); ?>
   
   <div id="content_feed">    
 
-    <ul id="post_list">
+    <ul class="post_list">
     
     <?php if (have_posts()) : ?>
         
@@ -55,8 +55,8 @@ get_header(); ?>
                   skin);
                 </script>
                 </p>
-                <p class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></p>
-                <p class="tags">Etiquetas: <?php the_tags(); ?></p>
+                <div class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></div>
+                <p class="tags"><?php the_tags(); ?></p>
               </div> <!-- news_footer -->              
 
 
