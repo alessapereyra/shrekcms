@@ -638,6 +638,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
       echo "<strong>de <a href='" .  $options[0]->option_value . "'>" . $blog_results->user_nicename . "</a></strong>";
       echo "<p></p>";
       echo "</div>";
+      echo '<div style="clear:both;">';
       echo "</li>";
   
     }
@@ -695,6 +696,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
           echo "<strong>de <a href='" .  $options[0]->option_value . "'>" . $blog_results->user_nicename . "</a></strong>";
           echo "<p></p>";
           echo "</div>";
+          echo '<div style="clear:both;">';
           echo "</li>";
   
     }

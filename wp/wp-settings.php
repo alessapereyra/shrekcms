@@ -480,5 +480,3 @@ $wp->init();  // Sets up current user.
 
 // Everything is loaded and initialized.
 do_action('init');
-
-?>

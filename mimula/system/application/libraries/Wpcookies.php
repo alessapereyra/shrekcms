@@ -3,7 +3,7 @@ class Wpcookies
 {
 	function __construct()
 	{		
-		include('../wp/wp-config.php');
+		//include('../wp/wp-config.php');
 		//include('../wp/wp-defines.php');
 		
 		/*
@@ -12,17 +12,17 @@ class Wpcookies
 		include('../wp/wp-includes/plugin.php');
 		include('../wp/wp-includes/functions.php');
 		*/
-		include('../wp/wp-includes/pluggable.php');		
+		//include('../wp/wp-includes/pluggable.php');		
 	}
 	
 	function set($user)
 	{
-		wp_setcookie($user);
+		//wp_setcookie($user);
 	}
 	
 	function un_set()
 	{
-		wp_clearcookie();
+		//wp_clearcookie();
 	}
 }
 ?>

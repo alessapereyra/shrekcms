@@ -10,13 +10,12 @@ jQuery(document).ready(function($) {
 	
 	  $('div#menu_bar a').click(function () { 
 	       
-	      $.get(this.href, function(data){
-	     	  //alert("Data Loaded: " + data);
-	     	  $('div#featured').html(data);
+		  jQuery.get(this.href, function(data){
 	     	  $('div#featured').innerHtml(data);
 	     	});
-	       return false;
-	     });
+	      return false;
+	  });
+	  
 
 	 
    $("div.scrollable").scrollable({

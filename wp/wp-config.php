@@ -24,7 +24,7 @@ define('DB_USER', 'root');
 /** MySQL database password */
 
 // Para Dientuki
- define('DB_PASSWORD', 'root');
+ define('DB_PASSWORD', 'takumi');
 //define('DB_PASSWORD', 'JuhO&87$');
 
 /** MySQL hostname */
@@ -92,4 +92,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-?>
