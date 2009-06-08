@@ -173,58 +173,6 @@ class simple_html_dom_node {
         return $ret;
     }
 
-    // get dom node's outer text (with tag)
-    function outertext() {
-        if ($this->tag==='root') return $this->innertext();
-
-        // trigger callback
-        if ($this->dom->callback!==null)
-            call_user_func_array($this->dom->callback, array($this));
-
-        if (isset($this->_[HDOM_INFO_OUTER])) return $this->_[HDOM_INFO_OUTER];
-        if (isset($this->_[HDOM_INFO_TEXT])) return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
-
-        // render begin tag
-        $ret = $this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]->makeup();
-
-        // render inner text
-        if (isset($this->_[HDOM_INFO_INNER]))
-            $ret .= $this->_[HDOM_INFO_INNER];
-        else {
-            foreach($this->nodes as $n)
-                $ret .= $n->outertext();
-        }
-
-        // render end tag
-        if(isset($this->_[HDOM_INFO_END]) && $this->_[HDOM_INFO_END]!=0)
-            $ret .= '</'.$this->tag.'>';
-        return $ret;
-    }
-
-    // get dom node's plain text
-    function text() {
-        if (isset($this->_[HDOM_INFO_INNER])) return $this->_[HDOM_INFO_INNER];
-        switch ($this->nodetype) {
-            case HDOM_TYPE_TEXT: return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
-            case HDOM_TYPE_COMMENT: return '';
-            case HDOM_TYPE_UNKNOWN: return '';
-        }
-        if (strcasecmp($this->tag, 'script')===0) return '';
-        if (strcasecmp($this->tag, 'style')===0) return '';
-
-        $ret = '';
-        foreach($this->nodes as $n)
-            $ret .= $n->text();
-        return $ret;
-    }
-    
-    function xmltext() {
-        $ret = $this->innertext();
-        $ret = str_ireplace('<![CDATA[', '', $ret);
-        $ret = str_replace(']]>', '', $ret);
-        return $ret;
-    }
-
     // build node's text with tag
     function makeup() {
         // text, comment, unknown
@@ -255,6 +203,85 @@ class simple_html_dom_node {
         }
         $ret = $this->dom->restore_noise($ret);
         return $ret . $this->_[HDOM_INFO_ENDSPACE] . '>';
+    }
+        
+    // get dom node's outer text (with tag)
+    function outertext() {
+        if ($this->tag==='root') return $this->innertext();
+
+        // trigger callback
+        if ($this->dom->callback!==null)
+            call_user_func_array($this->dom->callback, array($this));
+
+        if (isset($this->_[HDOM_INFO_OUTER])) return $this->_[HDOM_INFO_OUTER];
+        if (isset($this->_[HDOM_INFO_TEXT])) return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
+
+        $makeup = FALSE;
+        if (isset($this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]))
+        {
+        	$makeup = TRUE;
+        }
+        /*
+		$my_object = $this->dom->nodes[0];
+		
+		$class_methods = get_class_methods(get_class($my_object));
+		
+		$makeup = FALSE;
+		foreach ($class_methods as $method_name) {
+		   if ($method_name == 'makeup')
+		   {
+		   		$makeup = TRUE;
+		   		break;
+		   }
+		}
+		*/
+        
+		if ($makeup == TRUE)
+		{
+	        // render begin tag
+	        $ret = $this->dom->nodes[$this->_[HDOM_INFO_BEGIN]]->makeup();
+	
+	        // render inner text
+	        if (isset($this->_[HDOM_INFO_INNER]))
+	            $ret .= $this->_[HDOM_INFO_INNER];
+	        else {
+	            foreach($this->nodes as $n)
+	                $ret .= $n->outertext();
+	        }
+	
+	        // render end tag
+	        if(isset($this->_[HDOM_INFO_END]) && $this->_[HDOM_INFO_END]!=0)
+	            $ret .= '</'.$this->tag.'>';
+	        return $ret;
+		}
+		else
+		{
+			return FALSE;
+		}
+    }
+
+    // get dom node's plain text
+    function text() {
+        if (isset($this->_[HDOM_INFO_INNER])) return $this->_[HDOM_INFO_INNER];
+        switch ($this->nodetype) {
+            case HDOM_TYPE_TEXT: return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
+            case HDOM_TYPE_COMMENT: return '';
+            case HDOM_TYPE_UNKNOWN: return '';
+        }
+        if (strcasecmp($this->tag, 'script')===0) return '';
+        if (strcasecmp($this->tag, 'style')===0) return '';
+
+        $ret = '';
+        foreach($this->nodes as $n)
+            $ret .= $n->text();
+        return $ret;
+    }
+    
+    function xmltext() {
+        $ret = $this->innertext();
+        $ret = str_ireplace('<![CDATA[', '', $ret);
+        $ret = str_replace(']]>', '', $ret);
+        return $ret;
     }
 
     // find elements by css selector
