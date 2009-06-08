@@ -74,7 +74,7 @@
       <?php
             $post = get_most_voted();
             $most_voted = $post;
-            //setup_featured_news($post,"las noticias m&aacute;s votadas") 
+            setup_featured_news($post,"las noticias m&aacute;s votadas") 
       ?>
     </div> <!-- top_news_featured -->
 
