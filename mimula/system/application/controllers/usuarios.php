@@ -161,7 +161,7 @@ class Usuarios extends Controller {
 
 			$tmp = $this->config->item('post_content');
 			
-			$this->load->view('layout/' . $tmp['head'], array('seccion' => 'Registrate'));
+			$this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Registrate', 'ie6' => $this->_is_ie6()));
 			$this->load->view('layout/' . $tmp['menu'], array('log' => FALSE, 'ie6' => $this->_is_ie6(), 'current_controller' => $this->uri->segment(1)));			
 			$this->load->view('usuarios/formulario', $data);
 			$this->load->view('layout/' . $tmp['footer']);			

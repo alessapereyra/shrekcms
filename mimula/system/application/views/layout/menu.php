@@ -27,4 +27,4 @@ function active_controller($current,$target)
 
     </div>
 			
-		<?php echo $this->session->flashdata('fileupload'); ?>			
+		<?php //echo $this->session->flashdata('fileupload'); ?>			

@@ -91,9 +91,9 @@ class HTMLPurifier
      */
     public function __construct($config = null) {
 
-        $this->config = HTMLPurifier_Config::create($config);
+        //$this->config = HTMLPurifier_Config::create($config);
 
-        $this->strategy     = new HTMLPurifier_Strategy_Core();
+        //$this->strategy     = new HTMLPurifier_Strategy_Core();
 
     }
 
