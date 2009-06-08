@@ -28,20 +28,18 @@
 
 <?php  
 global $bp;
-  $current_profile_id =  $bp->displayed_user->id
+global $wpdb;
 
-  if ($current_profile_id == 1){ ?>
+$current_profile_id =  $bp->displayed_user->id;
 
-<div id="ranking_mulo">
-  <p>Gran Mulo</p>
+	$sql['select'] = 'SELECT puntaje, mularango';
+	$sql['from'] = 'FROM wp_users';
+	$sql['where'] = 'ID = \'' . $current_profile_id . '\''; 
+
+	$ranking = $wpdb->get_results(implode(' ', $sql));
+ ?>
+<div id="ranking_<?php echo preg_replace('/ /', '', $ranking->mularango); ?>">
+  <p><?php echo $ranking->mularango; ?> con <?php echo $ranking->puntaje; ?></p>
 </div>
-
-<?php } else { ?>
-
-<div id="ranking">
-  <p>Mula Wawa</p>
-</div>
-
-<?php } ?>
 
 <?php bp_custom_profile_sidebar_boxes() ?>
