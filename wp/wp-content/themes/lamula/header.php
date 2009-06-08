@@ -33,18 +33,19 @@
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.fancybox-1.2.1.pack.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.scrollable-1.0.2.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8" ></script>
+  
   <!--[if !IE]><!-->
 
     <script src="<?php bloginfo('template_url'); ?>/js/site.js" type="text/javascript" charset="utf-8" ></script>
 
-  <!-- <![endif]-->
+    <!--<![endif]-->
 
 
-  <!--[if lte IE 8]><!-->
+  <!--[if lte IE 8]>
 
     <script src="<?php bloginfo('template_url'); ?>/js/siteie.js" type="text/javascript" charset="utf-8" ></script>
 
-  <!-- <![endif]-->
+  <![endif]-->
 
 
   <?php wp_head(); ?>
@@ -62,7 +63,7 @@
       </span>
       <span class="right">
         <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>
-        <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
+        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
         <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
       </span>
     </p>

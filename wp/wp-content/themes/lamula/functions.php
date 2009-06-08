@@ -381,7 +381,13 @@ function setup_featured_news($post,$type){
     
     $img_link = NULL;
     $img = NULL;
-    setup_text($post->post_content,$img_link,$img);
+    // setup_text($post->post_content,$img_link,$img);
+    $html = str_get_html($post->post_content);
+    $img_link = $html->find('img',0)->src;
+    $img = $html->find('img',0);
+    $html->clear(); 
+    unset($html);          
+    
   ?>
   
     <div>
@@ -392,7 +398,7 @@ function setup_featured_news($post,$type){
           </div>
 
           <div class="top_news_featured_companion_text">
-            <?php $post->post_content = eregi_replace($img->outertext, ' ', $post->post_content); ?>
+            <?php $post->post_content = @eregi_replace($img->outertext, ' ', $post->post_content); ?>
             <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                 
           </div>
           <?php } 

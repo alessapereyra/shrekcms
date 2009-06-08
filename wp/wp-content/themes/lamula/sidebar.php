@@ -161,20 +161,7 @@
   
         </div> <!-- sidebox -->
 
-        <div id="comentarios" class="sidebox">
 
-          <div class="sidebox_wrapper">
-            
-            <h4>&Uacute;ltimos Comentarios</h4>          
-            
-            <ul>
-
-		
-            </ul>
-            
-          </div> <!-- sidebox_wrapper -->
-  
-        </div> <!-- sidebox -->      
                             
         <div class="sidebox cc">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
