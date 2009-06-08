@@ -2,7 +2,7 @@
 
 class Home extends DI_Controller {
 	
-	function index()
+	function dashboard()
 	{
 		$this->load->view('home');
 		$this->__destruct();

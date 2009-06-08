@@ -79,7 +79,7 @@ $autoload['plugin'] = array();
 |
 */
 
-$autoload['config'] = array('backend');
+$autoload['config'] = array('backend', 'routes');
 
 
 /*

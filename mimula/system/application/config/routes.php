@@ -39,10 +39,10 @@
 | routes must come before any wildcard or regular expression routes.
 |
 */
-
-$route['default_controller'] = "articulos/formulario";
+$route['default_controller'] = "home/dashboard";
 $route['scaffolding_trigger'] = "";
 
+$config['default_controller'] = $route['default_controller'];
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */
