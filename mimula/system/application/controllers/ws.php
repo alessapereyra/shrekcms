@@ -25,7 +25,7 @@ class Ws extends Controller {
 			{
 				if ($provincia != NULL)
 				{
-					$final = $distrito;	
+					$final = $provincia;	
 					$where['meta_key'] = 'provincia';
 					$where['meta_value'] = sanitize2url($provincia);			
 				}

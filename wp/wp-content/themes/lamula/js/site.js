@@ -63,10 +63,22 @@ jQuery(document).ready(function($) {
 		$("div.top_news_featured:not(:first)").hide();
 		$("div.class_content:not(:first)").hide();
 		$("div.tab_content:not(:first)").hide();
-		$("div.sidebox_content:not(:last)").hide();
+		$("#ranking_usuarios .sidebox_content:not(:last)").hide();
+		$("#articulos .sidebox_content:not(:last)").hide();
 		$("div.posts_last_content:not(:first)").hide();
 				
-
+		$("ul#ranking_menu li a").click(function(){
+		
+				$(this).parent().siblings().find("a").removeClass("selected");
+				$(this).addClass("selected");
+				
+				var index = $("ul#ranking_menu li a").index(this);
+				
+				$("#ranking_usuarios .sidebox_content").hide("slow");
+				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn("fast");
+				return false;
+		});
+		
 		$("div.top_news_item h3 a").click(function(){
 			
 			$(this).parent().parent().siblings().removeClass("portada-active");
@@ -79,7 +91,19 @@ jQuery(document).ready(function($) {
 			$(".top_news_featured:eq(" + index + ")").show();					
 				
 			return false;
-		})
+		});
+		
+		$("ul#articulos_menu li a").click(function(){
+			
+			$(this).parent().siblings().find("a").removeClass("selected");
+			$(this).addClass("selected");
+			
+			var index = $("ul#articulos_menu li a").index(this);
+			
+			$("#articulos .sidebox_content").hide("slow");
+			$("#articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
+			return false;
+		});		
 		
 		$("ul#lasts_posts li a").click(function(){
 			
@@ -119,31 +143,7 @@ jQuery(document).ready(function($) {
 				$(".tab_content").hide("slow");
 				$(".tab_content:eq(" + index + ")").fadeIn("fast");
 				return false;
-		})
-
-		$("ul#articulos_menu li a").click(function(){
-		
-				$(this).parent().siblings().find("a").removeClass("selected");
-				$(this).addClass("selected");
-				
-				var index = $("ul#articulos li a").index(this);
-				
-				$("articulos .sidebox_content").hide("slow");
-				$("articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
-				return false;
-		})	
-
-		$("ul#ranking_menu li a").click(function(){
-		
-				$(this).parent().siblings().find("a").removeClass("selected");
-				$(this).addClass("selected");
-				
-				var index = $("ul#articulos li a").index(this);
-				
-				$("ranking .sidebox_content").hide("slow");
-				$("ranking .sidebox_content:eq(" + index + ")").fadeIn("fast");
-				return false;
-		})	
+		});
 
 
 		$("ul#menu > li.f > a").click(function(){
