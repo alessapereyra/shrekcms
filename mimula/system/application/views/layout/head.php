@@ -183,6 +183,7 @@ if ($ie6 == FALSE)
  
          	<?php if ($log) : ?>
     				<ul>
+    					<li><?php echo anchor('home/dashboard', 'Dashboard'); ?></li>
     					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >Ver Perfil</a></li>
     					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
     				</ul>
