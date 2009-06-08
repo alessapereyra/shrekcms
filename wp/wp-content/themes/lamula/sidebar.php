@@ -56,7 +56,7 @@
 
 
 
-        <!-- <div id="ranking_usuarios" class="sidebox">
+         <div id="ranking_usuarios" class="sidebox">
 
               <h4>r&aacute;nking de usuarios</h4>
               
@@ -89,13 +89,13 @@
               </div>                    
                         
             </div>     
-             -->
+             
         
-        <!-- <ul id="ranking_menu" class="sidebox_menu">
+        <ul id="ranking_menu" class="sidebox_menu">
           <li><a href="#mulakids" class="selected">mulakids</a></li>
           <li><a href="#mulitas">mulitas</a></li>
           <li><a href="#mulas">mulas</a></li>                
-        </ul> -->
+        </ul>
         
         <div id="articulos" class="sidebox">
 
