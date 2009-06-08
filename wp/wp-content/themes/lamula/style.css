@@ -9,7 +9,7 @@ body {
 	letter-spacing: -1px;
 	word-spacing: 4px;
 	color: #3b3330;
-	background: #e1ebed url(images/background-lightish-blue.jpg) repeat-x;
+	background: #f3f1f5 repeat-x;
 }
 
 a {
@@ -42,7 +42,7 @@ div#top_menu {
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	height: 30px;
 	padding-top: 10px;
-	background: #202020 url(images/background-top.gif) repeat-x;
+	background: #202020;
 }
 
 #top_menu p {
@@ -703,6 +703,10 @@ div#content_feed ul li a {
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
+div#content_feed ul#category_tabs li a:hover {
+	color: white;	
+}
+
 ul.post_list li div.news_footer div.footer_links a {
 	margin-top: 0px !important;
 }
@@ -727,6 +731,7 @@ div#content_feed div ul.post_list div.post_item a {
 
 .inner div#content_feed ul#category_tabs li a {
 	padding: 10px 18px;
+	color: white;
 }
 
 div#content_feed ul li a.active,
@@ -1934,6 +1939,8 @@ div#city {
 	width: 100%;
 	text-indent: -9000em;
 	background: url(images/lima-transparent.png) center;
+	display: inline;
+	z-index: 0;
 }
 
 	div#footer{
