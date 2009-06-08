@@ -6,6 +6,16 @@ jQuery(document).ready(function($) {
 	 BACK_STATES = "regresar";
   from_outside = true;
 	 LAST_STATE = "";
+	 
+	  $('div#menu_bar a').click(function () { 
+	       
+	      $.get(this.href, function(data){
+	     	  //alert("Data Loaded: " + data);
+	     	  $('div#featured').html(data);
+	     	  $('div#featured').innerHtml(data);
+	     	});
+	       return false;
+	     });	 
 	
 	    // initialize scrollable  
 	   $("div.scrollable").scrollable({

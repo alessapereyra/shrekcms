@@ -167,7 +167,7 @@
 
           <div class="sidebox_wrapper">
             
-            <h4>&Uacute;ltimos Comentarioss</h4>          
+            <h4>&Uacute;ltimos Comentarios</h4>          
             
             <ul>
               <?php 

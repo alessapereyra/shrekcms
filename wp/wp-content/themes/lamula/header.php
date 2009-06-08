@@ -40,11 +40,11 @@
   <!-- <![endif]-->
 
 
-  <!--[if lte IE 8]>
+  <!--[if lte IE 8]><!-->
 
     <script src="<?php bloginfo('template_url'); ?>/js/siteie.js" type="text/javascript" charset="utf-8" ></script>
 
-  <![endif]-->
+  <!-- <![endif]-->
 
 
   <?php wp_head(); ?>

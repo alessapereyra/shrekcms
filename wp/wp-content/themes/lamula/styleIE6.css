@@ -22,8 +22,6 @@ ul#menu ul,
 ul#menu ul ul {
 	overflow: auto;
 	float: left;
-	
-	
 }
 
 ul#menu li ul li,
@@ -32,7 +30,6 @@ ul#menu li ul li ul {
 	float: left;
 	display: inline;
 	display: none;	
-	
 	}
 	
 
@@ -52,8 +49,33 @@ ul#menu ul li a:hover {
 	padding: 6px 10px;
 }
 
-div#menu_bar {
-	
+div#menu_bar {	
 	overflow:visible;
-	
+}
+
+div#sidebars div#sidebar_recomendados ul {
+	padding: 0px;
+}
+
+div#top_news {
+	clear: both;
+}
+
+div#sidebar_recomendados {
+	width: 215px !important;
+}
+
+div.navi {
+	height:11px;
+}
+
+div#bloggers_navigation {
+	height: 239px;
+	overflow: hidden;
+}
+
+a.next {
+	margin:0px !important;
+	margin-top:43px;
+	margin-left:5px;
 }
