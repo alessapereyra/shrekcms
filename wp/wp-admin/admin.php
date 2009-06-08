@@ -31,14 +31,6 @@ nocache_headers();
 
 update_category_cache();
 
-global $current_user;
-get_currentuserinfo();
-if ($current_user->user_level != 10)
-{
-	header('Location: ' . get_bloginfo('url'));
-	exit();
-}
-
 $posts_per_page = get_option('posts_per_page');
 $what_to_show = get_option('what_to_show');
 $date_format = get_option('date_format');

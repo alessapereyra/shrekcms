@@ -11,6 +11,7 @@ register_sidebar(array(
 ));
 
 function snippet($text,$length=64,$tail="...") {
+  
     $text = trim($text);
     $txtl = strlen($text);
     if($txtl > $length) {

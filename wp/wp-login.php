@@ -438,28 +438,28 @@ default:
 			$redirect_to = admin_url('profile.php');
 			//login a ci
 		
-		if ($user->roles[0] != 'administrator')
-		{
-			wp_logout();
-		}		
-		
 		$redirect_too = $redirect_to;
-		include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
+    // include '/var/www/wordpress-mu2/ci/system/cidip/cidip_index.php';    
+    include '/Users/alvaropereyrarabanal/Development/shrekcms/mimula/system/cidip/cidip_index.php';    
+    // include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
+
 		$ci =& get_instance();
 		$ci->load->model('users');
 		$ci->load->library('session');
 		
 		$consulta = $ci->users->seleccionar(array('user_login' => $_POST['log'] ));
+
 		$fila = $consulta->row();
+
 		
 		$usuario['id'] = $fila->ID;
 		$usuario['usuario'] = $fila->user_login;
 		$usuario['nombre'] = $fila->user_nicename;		
 		
 		$ci->session->set_userdata($usuario);
-
 		wp_safe_redirect($redirect_too);
 		exit();
+
 	}
 
 	$errors = $user;
