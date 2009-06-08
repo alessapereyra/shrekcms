@@ -236,6 +236,7 @@ function get_most_voted()
 	$sql['limit'] = 'LIMIT 0,1';
 	
 	$post = $wpdb->get_results(implode(' ', $sql));
+	unset($sql);	
 	return current($post);
 }
 
@@ -251,7 +252,7 @@ function get_blogs()
 	$sql['order_by'] = 'ORDER BY last_updated DESC';
 
   $blogs = $wpdb->get_results(implode(' ', $sql));
-
+	unset($sql);
   	  	
   	if ($blogs) {
   		foreach ($blogs as $blog) {
@@ -359,7 +360,7 @@ function get_blog_random()
 	$blog_id = $wpdb->get_results(implode(' ', $sql));
 	$blog_id = current($blog_id);
 	$blog_id = $blog_id->blog_id;
-	$blog_id = 1;
+  // $blog_id = 1;
 	$blog = 'wp_' . $blog_id . '_posts';
 	unset($sql);
 	
@@ -371,6 +372,7 @@ function get_blog_random()
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
 	$post = $wpdb->get_results(implode(' ', $sql));
+	unset($sql);
 	return current($post);
 }
 
@@ -391,14 +393,13 @@ function setup_featured_news($post,$type){
 
           <div class="top_news_featured_companion_text">
             <?php $post->post_content = eregi_replace($img->outertext, ' ', $post->post_content); ?>
-            <?php die("lala");          ?>
-            <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                 
+            <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                 
           </div>
           <?php } 
         else 
         {  ?>
           <div class="top_news_featured_text">
-            <?php echo mulapress_trim_excerpt($post->post_content, 235) ?>                                            
+            <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                                            
           </div>   
         <?php  }?>
 
@@ -410,7 +411,7 @@ function setup_featured_news($post,$type){
     <div class="top_news_featured_footer">
 
       <a href="<?php echo $post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-      <p class="comments"><a href="<?php echo $post->guid; ?>#comments" class="comments"><?php echo $post->comment_count; ?> comentarios</a></p>
+      <p class="comments"><a href="<?php echo $post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $post->comment_count); ?> </a></p>
       <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 
     </div>	          
@@ -418,18 +419,56 @@ function setup_featured_news($post,$type){
 <?php }
 
 
-function calcular_ranking($user_quantity = 20){
+function mostrar_ranking($ranking="mula wawa", $limit=5){
   
-  global $wpdb; 
-  
-  $sql['select'] = 'SELECT wp_users.id';
-	$sql['from'] = 'FROM wp_users';
-	$sql['where'] = 'WHERE public =1';
-	$sql['order_by'] = 'ORDER BY RAND()';
-	$sql['limit'] = 'LIMIT 0,1';
+  		global $wpdb;
+			
+			
+				$sql['select'] = 'SELECT puntaje, user_nicename, user_email, ID';
+				$sql['from'] = 'FROM wp_users';			
+				$sql['where'] = 'WHERE mularango = "' . $ranking . '"';  
+	      $sql['order_by'] = 'ORDER BY puntaje DESC';				
+				$sql['limit'] = 'LIMIT 0,' . $limit; 
+				$ranking = $wpdb->get_results(implode(' ', $sql));
+	      unset($sql);    		
+	    
+	      if ($ranking) {
+       		foreach ($ranking as $mulero) {
 	
-	$blog_id = $wpdb->get_results(implode(' ', $sql));
-  
+	
+	          	$sql['select'] = 'SELECT wp_usermeta.meta_value as avatar';
+            	$sql['from'] = 'FROM wp_usermeta ';
+            	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $mulero->ID ;	
+            	$sql['limit'] = 'LIMIT 0,1';
+              $avatar_results = $wpdb->get_results(implode(' ', $sql));
+        	    unset($sql);    		
+              $avatar_results = current($avatar_results);                    
+	
+			 ?>
+			 
+			 <li>
+         <?php if ($avatar_results->avatar == "") {
+           echo get_gravatar($blog_results->user_email);          
+         }
+         else
+         {
+           echo "<img src='".  $avatar_results->avatar . "' title='Avatar autor' /> ";          
+         }
+			    ?>
+			    <a href="http://lamula.pe/members/<?php echo $mulero->user_nicename ?>"><?php echo $mulero->user_nicename ?></a> -
+			    <strong><?php echo number_format($mulero->puntaje,0) ?></strong>
+		   </li>
+<?php  }
+    }
+    else {
+      ?>
+      <li class="not_found">
+        
+        Todav&iacute;a no hay muleros con &eacute;ste ranking. &iquest;Qu&eacute; est&aacute;s esperando para participar?
+        
+      </li>
+      
+      <?php }
 }
 
 function place_name($person){
@@ -443,6 +482,35 @@ function place_name($person){
     
     
   
+}
+
+function mostrar_mas_votados($limit = 5){
+  
+  global $wpdb;
+      
+    $sql['select'] = 'SELECT user_votes + visitor_votes as votes, 
+                             mulapress_posts.post_title, 
+                             mulapress_posts.guid as post_url';
+    $sql['from'] = 'FROM `mulapress_gdsr_data_article` 
+                    JOIN mulapress_posts 
+                    ON mulapress_gdsr_data_article.post_id = mulapress_posts.ID';
+    $sql['where'] = 'where mulapress_posts.post_status = "publish"';                    
+    $sql['order_by'] = 'order by votes';
+    $sql['limit'] = 'LIMIT 0,' . $limit;
+    
+    $most_voted = $wpdb->get_results(implode(' ', $sql));
+	  unset($sql);
+	  
+    if ($most_voted) {
+  		foreach ($most_voted as $post) {
+
+            echo "<li>";
+            echo "<a href='" .  $post->post_url . "'>" . $post->post_title . "</a>";
+            echo "</li>";
+
+      }
+    }
+
 }
 
 function mostrar_ultimos_comentarios($limit = 5){
@@ -464,7 +532,7 @@ function mostrar_ultimos_comentarios($limit = 5){
   $sql['order_by'] = 'ORDER BY post_date DESC';
   $sql['limit'] = 'LIMIT 0,' . $limit;
   $comments = $wpdb->get_results(implode(' ', $sql));
-  
+	unset($sql);  
   
   //muestra los ultimos comentarios 
   
@@ -498,8 +566,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   global $wpdb;
   
   //Obtenemos los blogs de los usuarios
-	//$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
-	$blogs = array(1);
+	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+  // $blogs = array(1);
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
 	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
@@ -512,7 +580,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
   // $sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
-	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
+	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ')';
 	$sql['order_by'] = 'ORDER BY RAND()';
 	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
 	$outsiders_blogs = $wpdb->get_results(implode(' ', $sql));
@@ -641,8 +709,8 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 function get_blog_special()
 {
 	global $wpdb;
-	//$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
-	$blogs = array(1);
+	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+  // $blogs = array(1);
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
 	$sql['where'] = 'WHERE blog_id in (' . implode(',',$blogs) . ')';
