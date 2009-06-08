@@ -62,7 +62,7 @@
               
               <div class="sidebox_wrapper">
               
-                <div class="sidebox_content">
+                <div class="sidebox_content first">
 
                     <ul id="mulakids">
                       Mulakids
@@ -103,7 +103,7 @@
          
           <div class="sidebox_wrapper">
             
-                <div class="sidebox_content">
+                <div class="sidebox_content first">
 
                     <ul id="post_most_seen">
                       <?php echo kf_get_posts_by_hits(7,10); ?>
