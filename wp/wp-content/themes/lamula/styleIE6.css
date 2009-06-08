@@ -61,6 +61,12 @@ div#top_news {
 	clear: both;
 }
 
+#sidebar_central ul.bloggers_list li {
+
+	height: 30px;
+
+}
+
 div#sidebar_recomendados {
 	width: 215px !important;
 }

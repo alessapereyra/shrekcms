@@ -7,6 +7,12 @@ jQuery(document).ready(function($) {
   from_outside = true;
 	 LAST_STATE = "";
 	 
+	   jQuery.fn.toggleText = function(a, b) {
+     return this.each(function() {
+     jQuery(this).text(jQuery(this).text() == a ? b : a);
+     });
+     };	
+	
 	  $('div#menu_bar a').click(function () { 
 	       
 	      $.get(this.href, function(data){

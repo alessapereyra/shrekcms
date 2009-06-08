@@ -438,25 +438,27 @@ default:
 			$redirect_to = admin_url('profile.php');
 			//login a ci
 		
-		$redirect_too = $redirect_to;
-    // include '/var/www/wordpress-mu2/ci/system/cidip/cidip_index.php';    
-    include '/Users/alvaropereyrarabanal/Development/shrekcms/mimula/system/cidip/cidip_index.php';    
-    // include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
+    $redirect_too = $redirect_to;
 
-		$ci =& get_instance();
-		$ci->load->model('users');
-		$ci->load->library('session');
+    include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';    
+    //     // include '/Users/alvaropereyrarabanal/Development/shrekcms/mimula/system/cidip/cidip_index.php';    
+    //     // include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
+    // 
+    $ci =& get_instance();
+    $ci->load->model('users');
+    $ci->load->library('session');
+    
+    $consulta = $ci->users->seleccionar(array('user_login' => $_POST['log'] ));
+    
+    $fila = $consulta->row();
+    
+    
+    $usuario['id'] = $fila->ID;
+    $usuario['usuario'] = $fila->user_login;
+    $usuario['nombre'] = $fila->user_nicename;   
+    
+    $ci->session->set_userdata($usuario);
 		
-		$consulta = $ci->users->seleccionar(array('user_login' => $_POST['log'] ));
-
-		$fila = $consulta->row();
-
-		
-		$usuario['id'] = $fila->ID;
-		$usuario['usuario'] = $fila->user_login;
-		$usuario['nombre'] = $fila->user_nicename;		
-		
-		$ci->session->set_userdata($usuario);
 		wp_safe_redirect($redirect_too);
 		exit();
 

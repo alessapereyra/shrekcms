@@ -166,7 +166,8 @@ jQuery(document).ready(function($) {
 		
 				$("li.s").hide("fast");
 				$("li.t").hide("fast");				
-				$("li.f").show("slow");
+				$("li.f").show("slow");				
+
 				return false;
 		
 		});

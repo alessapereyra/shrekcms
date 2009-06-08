@@ -9,7 +9,7 @@ body {
 	letter-spacing: -1px;
 	word-spacing: 4px;
 	color: #3b3330;
-	background: #f3f1f5 repeat-x;
+	background: #e7e6eb repeat-x;
 }
 
 a {
@@ -492,6 +492,20 @@ div.top_news_media {
 
 .top_news_featured_text {
 	overflow: auto;
+	font-size: 0.8em !important;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#tagline span.geomule a.geomula {
+	color: white;
+	text-decoration: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#tagline span.geomule a.geomula:hover {
+	color: yellow;
 }
 
 .top_news_featured_text p {
@@ -859,6 +873,30 @@ div#content_feed ul.post_list li {
 	float: none;
 	width: auto;
 	margin-top: 0px;
+	
+}
+
+.inner .post_list li div.post_content p {
+	list-style: 2em;
+	letter-spacing: 0;
+	word-spacing: 0;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.inner #content_feed ul.post_list li div.post_content ul {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.inner #content_feed ul.post_list li div.post_content li {
+	margin-bottom: 1em;
+	list-style-type: circle !important;
+	list-style-position: inside;
 }
 
 .inner .post_list li h5 a small.date {
@@ -1203,8 +1241,7 @@ div#sidebars div#sidebar_recomendados h4	{
 	overflow: auto;
 	margin: 0px;
 	font-size: 1.1em;
-	/*height: 30px;*/
- 	
+	/*height: 30px;*/ 	
 }
 
 #sidebar_central ul.bloggers_list li:hover {
@@ -1712,7 +1749,7 @@ div.scrollable {
 div#bloggers_navigation {
 	overflow: auto;
 	margin-top: 1em;
-	background-color: #bde5ed;
+	background-color: #a3d5ed;
 	padding: 10px 5px;
 	padding-bottom: 1.2em;
 	color: #fff;
