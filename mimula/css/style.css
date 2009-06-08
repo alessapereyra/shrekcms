@@ -169,7 +169,7 @@ p#site_stats {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   color: white;
-  width: 200px;
+  width: 280px;
   display: block;
   margin-top: 60px;
   background-image: url(images/background-yellow.png);
@@ -236,6 +236,17 @@ ul#menu ul li.current {
 }
  
 div#menu_container {
+ 
+  background: white;
+  padding: 10px;
+  margin-bottom: 1em;  
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;  
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;  
+}
+
+div#content.dashboard {
  
   background: white;
   padding: 10px;

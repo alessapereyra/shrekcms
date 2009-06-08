@@ -1,7 +1,3 @@
-<div id="content">
-Seleccione algo para hacer
-</div>
-
-<div id="sidebar">
-Sidebar
+<div id="content"  class="dashboard">
+	Seleccione algo para hacer
 </div>

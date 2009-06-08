@@ -90,7 +90,7 @@ $id = $author;
 	  		$data['myposts'] = $ci->post->get_mypost($id, $limit);
 	  		$data['myposts'] = $data['myposts']->result_array();
 
-			  echo $ci->load->view('usuarios/bloggermypost', $data, true);
+			echo $ci->load->view('usuarios/bloggermypost', $data, true);
 	  		unset($data);
 	    	?> 	      
     </div> <!-- articles_edit -->
