@@ -46,12 +46,12 @@
       <div id="sidebar_recomendados">
         
               <a href="http://lamula.lamula.pe/?p=53#respond">
-                <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" />
+                <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
               </a>
 
 
       <a href="<?php bloginfo('siteurl'); ?>/?s=friaje">
-        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" />
+        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" alt="Campaña Friaje" title="Camapaña Friaje" />
       </a>
 
 
@@ -168,7 +168,7 @@
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
               <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.5/pe/88x31.png" />
             </a><br />
-            <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dc:title" rel="dc:type">La Mula</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="www.rcp.pe" property="cc:attributionName" rel="cc:attributionURL">RCP</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">Creative Commons Reconocimiento-Compartir bajo la misma licencia 2.5 Per&#250; License</a>.<br />Based on a work at <a xmlns:dc="http://purl.org/dc/elements/1.1/" href="www.lamula.pe" rel="dc:source">www.lamula.pe</a>.
+            <span>La Mula</span> by <a href="http://rcp.pe">RCP</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">Creative Commons Reconocimiento-Compartir bajo la misma licencia 2.5 Per&#250; License</a>.<br />Based on a work at <a href="www.lamula.pe">www.lamula.pe</a>.
         </div>
         
       </div> <!-- sidebar_recomendados -->

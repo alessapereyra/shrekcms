@@ -62,7 +62,7 @@ div#top_menu {
 
 
 #top_menu p span.left a:hover {
-	color: lightgrey;
+	color: #dadada;
 }
 
 #top_menu p span.right a {
@@ -540,13 +540,13 @@ div.top_news_featured a.leer_mas_footer:hover {
 }
 
 div#top_news_footer p.comments,
-div#top_news_footer p.rate {
+div#top_news_footer div.rate {
 	float: right;
 	display: block;
 	padding: 6px 18px;
 }
 
-div#top_news_footer p.rate{
+div#top_news_footer div.rate{
 	padding: 0px;
 }
 
@@ -598,8 +598,8 @@ div#content {
 
 /* @group Content Feed */
 
-#post_list div.navigation div.alignleft a ,
-#post_list div.navigation div.alignright a {
+.post_list div.navigation div.alignleft a ,
+.post_list div.navigation div.alignright a {
 	width: 100px;
 	float: left;
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
@@ -608,12 +608,12 @@ div#content {
 	padding: 10px;
 }
 
-#post_list div.navigation div.alignleft a:hover,
-#post_list div.navigation div.alignright a:hover {
+.post_list div.navigation div.alignleft a:hover,
+.post_list div.navigation div.alignright a:hover {
 	color: black;
 }
 
-#post_list li div.news_footer span {
+.post_list li div.news_footer span {
 
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 	word-spacing: 0;
@@ -625,25 +625,25 @@ div#content {
 	padding: 5px;
 }
 
-#post_list li div.news_footer div.footer_links {
+.post_list li div.news_footer div.footer_links {
 	overflow: auto;	
 }
 
-#post_list li div.news_footer span a,
-#post_list li div.news_footer span strong,
-#post_list li div.news_footer span small {
-	color: #1192cf;	
-	padding: 0px;
-	display: inline;
-	background: none;
-	font-size: 1em;
+.post_list li div.news_footer span a,
+.post_list li div.news_footer span strong,
+.post_list li div.news_footer span small {
+	color: #1192cf !important;	
+	padding: 0px !important;
+	display: inline !important;
+	background: none !important;
+	font-size: 1em !important;
 }
 
-#post_list li div.news_footer span a {
+.post_list li div.news_footer span a {
 	font-weight: bold;
 }
 
-#post_list li div.news_footer span a:hover {
+.post_list li div.news_footer span a:hover {
 	background: none;
 	color: black !important;
 }
@@ -686,7 +686,7 @@ div#content_feed ul li a {
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-.inner ul#post_list li div.post_content p a {
+.inner ul.post_list li div.post_content p a {
 	display: inline;
 	
 }
@@ -710,45 +710,45 @@ div#content_feed ul li a.active:hover {
 
 div#content_feed ul li a:hover {
 	background-color: #9d3917;
-	color: grey;
+	color: #bdbdbd;
 }
 
 
-div#content_feed ul#post_list li {
+div#content_feed ul.post_list li {
 	float: none;
 	overflow: hidden;
 	margin-bottom: 15px;
 	padding-bottom: 0px;
 }
 
-#post_list li.even div.post_content div.news_footer {
+.post_list li.even div.post_content div.news_footer {
 	overflow: hidden;
 }
 
-.inner #post_list li div.post_content object,
+.inner .post_list li div.post_content object,
 #top_news object {
 	margin: 20px 0px;
 	width: 430px;
 }
 
- #post_list li div.post_content object {
+ .post_list li div.post_content object {
 	margin: 20px 0px;
 	width: 360px;
 }
 
 
-#post_list li div.ratingblock div.ratingblock,
-#post_list li div.ratingblock {
+.post_list li div.ratingblock div.ratingblock,
+.post_list li div.ratingblock {
 
 	padding-bottom: 0px !important;
 	margin: 0px;
 }
 
-#post_list li a.rate div.ratingblock {
+.post_list li a.rate div.ratingblock {
 	margin-top:4px !important;
 }
 
-#post_list h4 {
+.post_list h4 {
 	font-size: 1.2em;
 	text-transform: lowercase;
 	letter-spacing: -2px;
@@ -756,32 +756,32 @@ div#content_feed ul#post_list li {
 	margin-bottom: 1em;
 }
 
-#post_list li div.post_content {
+.post_list li div.post_content {
 
 	font: 0.9em/1.3px "Lucida Grande", Lucida, Verdana, sans-serif;
 	line-height: 1.5em;
 	clear: right;
 }
 
-#post_list li div.post_content p {
+.post_list li div.post_content p {
 	margin-bottom: 1em;
 	font-size: 0.9em;
 }
 
-.inner #post_list li div.post_content {
+.inner .post_list li div.post_content {
 	float: none;
 	width: auto;
 	margin-top: 0px;
 }
 
-.inner #post_list li h5 a small.date {
+.inner .post_list li h5 a small.date {
 	display: block;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 0.5em;
 }
 
-.inner #post_list li div.post_content h6.metadata {
+.inner .post_list li div.post_content h6.metadata {
 	font-size: 1.0em;
 	text-transform: lowercase;
 	margin-bottom: 1.4em;
@@ -789,54 +789,54 @@ div#content_feed ul#post_list li {
 	padding-bottom: 1em;
 }
 
-#post_list li div.post_content div.news_footer p.tags a {
+.post_list li div.post_content div.news_footer p.tags a {
 	display: inline;	
 }
 
-#post_list li div.post_content h6.metadata a {
+.post_list li div.post_content h6.metadata a {
 	display: inline;
 	font-size: 1em;
 }
 
-.inner #post_list li div.post_content h6.author {
+.inner .post_list li div.post_content h6.author {
 	margin-bottom: 0.4em;
 }
 
-.inner #post_list li div.post_content h6.date {
+.inner .post_list li div.post_content h6.date {
 	margin-bottom: 1.2em;
 }
 
-#post_list li div.post_content a,
-#post_list li h5 a{
+.post_list li div.post_content a,
+.post_list li h5 a{
 	margin: 0px;
 	padding: 0px;	
 	background: none;
 	color: #fe008a;
 }
 
-#post_list li h5 {
+.post_list li h5 {
 	font-size: 1.1em;
 
 	letter-spacing: -1px;
 }
 
-.inner #post_list li h5 {
+.inner .post_list li h5 {
 	color: #939393;
 	line-height: 1.4em;
 	margin-bottom: 0px;
 }
 
-#post_list li div.post_content a{
+.post_list li div.post_content a{
 	color: #fe008a;
 }
 
-#post_list li div.post_content a:hover{
+.post_list li div.post_content a:hover{
 	background: none;
 	color: #656d68;
 	text-decoration: underline;
 }
 
-#post_list li div.post_image {
+.post_list li div.post_image {
 	float: left;
 	width: 150px;
 	height: 100px;
@@ -846,62 +846,61 @@ div#content_feed ul#post_list li {
 	overflow: hidden;
 }
 
-#post_list li div.post_image a {
+.post_list li div.post_image a {
 	margin: 0px;
-	padding: 0px;	
+	padding: 0px !important;	
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
 
 }
 
-#post_list li div.post_image.fotos a,
-#post_list li div.post_image.videos a {
+.post_list li div.post_image.fotos a,
+.post_list li div.post_image.videos a {
 	width: 150px;
 	height: 100px;
 	border: none;
 	background: url(images/photo.png) no-repeat;
 }
 
-#post_list li div.post_image.documentos,
-#post_list li div.post_image.audios {
+.post_list li div.post_image.documentos,
+.post_list li div.post_image.audios {
 	
 	display: none;
 }
 
 
-#post_list li div.post_image.documentos a {
+.post_list li div.post_image.documentos a {
 	height: 60px;
 	width: 60px;
 	background: url(images/text.png) no-repeat;
 }
 
-#post_list li div.post_image.audios a {
+.post_list li div.post_image.audios a {
 	height: 60px;
 	width: 60px;
 	background: url(images/audio.png) no-repeat;
 }
 
-#post_list li div.post_image.videos a {
+.post_list li div.post_image.videos a {
 	height: 110px;
 	width: 150px;
 	background: url(images/movie.png) no-repeat;
-	margin-bottom: ;
 }
 
 
 
 
-#post_list li div.post_image a span {
+.post_list li div.post_image a span {
 	text-indent:  -9000em;
 	display: none;
 }
 
-#post_list li div.post_image a img{
-	width: 150px;
+.post_list li div.post_image a img{
+	width: 230px;
 	overflow: hidden;
 }
 
-#post_list li div.post_item div.post_companion_content {
+.post_list li div.post_item div.post_companion_content {
 	float: left;
 	width: 260px;
 	height: 95px;
@@ -909,12 +908,12 @@ div#content_feed ul#post_list li {
 	font: 0.9em/1.4em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-#post_list li div.news_footer {
+.post_list li div.news_footer {
 	margin-top: 0.5em;
 }
 
 
-div#content_feed ul#post_list,
+div#content_feed ul.post_list,
 div#content_feed div#user_profile
 {
 	overflow: hidden;
@@ -1001,18 +1000,18 @@ div#content_feed ul li h5 a:hover {
 	background: none;
 }
 
-#post_list li div.post_content div.news_footer {
+.post_list li div.post_content div.news_footer {
 	overflow: auto;
 	height: 30px;
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-.inner #post_list li div.post_content div.news_footer {
+.inner .post_list li div.post_content div.news_footer {
 	height: auto;
 	margin-top: 1em;
 }
 
-div#content.inner ul#post_list li {
+div#content.inner ul.post_list li {
 	margin-bottom: 0px;
 }
 
@@ -1134,13 +1133,13 @@ div#sidebars div#sidebar_recomendados ul {
 	margin: 0px;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list,
+div#sidebars div#sidebar_recomendados ul.post_list,
 div#sidebars div#sidebar_recomendados ul#post_most_seen,
 div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li,
+div#sidebars div#sidebar_recomendados ul.post_list li,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li,
 div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	float: none;
@@ -1148,7 +1147,7 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li a,
+div#sidebars div#sidebar_recomendados ul.post_list li a,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li,
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a,
 div#sidebars div#comentarios ul li a {
@@ -1164,7 +1163,7 @@ div#sidebars div#comentarios ul li a {
 	background: white url(images/background-white.png) repeat-x 0 -7px;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li a:hover,
+div#sidebars div#sidebar_recomendados ul.post_list li a:hover,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover,
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 	background-color: #000;
@@ -1365,7 +1364,7 @@ div#comentarios.sidebox {
 }
 
 #comentarios div.sidebox_wrapper ul li {
-
+	width: 160px;
 	overflow: hidden;
 	background: white url(images/background-white.png) repeat-x 0 bottom;
 	border-bottom: 1px solid #e9e9e9;
@@ -1379,30 +1378,46 @@ div#comentarios.sidebox {
 	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
+div.navigation {
+	background-color: white;
+	padding: 20px;
+	font: 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	padding-bottom: 1em;
+	overflow: auto;
+}
+
+div.navigation a {
+	float: left;
+	margin-right:20px ;
+}
+
+div.navigation a:hover {
+	color: black;
+}
 
 	
 
-#post_list li span small {
+.post_list li span small {
 	text-transform: lowercase;
 	font-size: 1em;
 	color: black;
 	font-weight: bold;
 }
 
-#post_list li small {
+.post_list li small {
 	font-weight: bold;
 	font-size: 0.8em;
 	line-height: 1.5em;
 }
 
 
-#post_list li div.post_content p {
+.post_list li div.post_content p {
 	line-height: 1.5em;
 }
 
-#post_list li div.news_footer a.leer_mas_footer:hover,
-#post_list li div.news_footer a.comments:hover{
-	color: grey;
+.post_list li div.news_footer a.leer_mas_footer:hover,
+.post_list li div.news_footer a.comments:hover{
+	color: #d4d4d4 !important;
 }
 
 .top_news_featured p span.vvqbox.vvqyoutube object,
@@ -1422,63 +1437,63 @@ div#comentarios.sidebox {
 	padding: 2px 8px;
 }
 
-#post_list li div.news_footer a.leer_mas_footer,
-#post_list li div.news_footer a.comments,
-#post_list li div.news_footer div.ratingblock {
-	float: left;
-	margin-right: 15px;
-	margin-top: 1em;
-	display: block;
+.post_list li div.news_footer a.leer_mas_footer,
+.post_list li div.news_footer a.comments,
+.post_list li div.news_footer div.ratingblock {
+	float: left !important;
+	margin-right: 15px !important;
+	margin-top: 1em !important;
+	display: block !important;
 	margin: 0px;
-	padding: 5px 18px;
-	color: black;
-	text-decoration: none;
-	margin-right: 10px;	
-	-webkit-border-radius :5px;
-	-moz-border-radius :5px;
+	padding: 5px 18px !important; 
+	color: black !important;
+	text-decoration: none !important;
+	margin-right: 10px !important;	
+	-webkit-border-radius :5px !important;
+	-moz-border-radius :5px !important;
 
-	background: #feff66 repeat-x 0 bottom;
+	background: #feff66 repeat-x 0 bottom !important;
 	text-transform: lowercase;
 	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
-#post_list li.even div.news_footer {
+.post_list li.even div.news_footer {
 	clear: both;
 	float: none;
 }
 
-#post_list li div.news_footer div.ratingblock  {
+.post_list li div.news_footer div.ratingblock  {
 	padding: 0px;
 	display: inline;
 	margin: 0px;
 	background: none;
 }
 
-.inner #post_list li div.news_footer div.ratingblock {
+.inner .post_list li div.news_footer div.ratingblock {
 	float: none;
 	display: inline;
 }
 
-.inner #post_list li a.rate {
+.inner .post_list li a.rate {
 	margin-bottom: 10px; 
 	display: block;
 }
 
-#post_list li div.news_footer p.rate {
+.post_list li div.news_footer div.rate {
 	overflow: auto;
 	margin-bottom:1px ;
 }
 
-#post_list li div.news_footer p.tags,
-#post_list li div.news_footer p.rate {
+.post_list li div.news_footer p.tags,
+.post_list li div.news_footer div.rate {
 	font-size: 0.8em;
 }
 
-#post_list li div.news_footer p.tags {
+.post_list li div.news_footer p.tags {
 	margin-top: 10px;	
 }
 
-#post_list li div.news_footer div.ratingblock div.ratingtext,
+.post_list li div.news_footer div.ratingblock div.ratingtext,
 #top_news  div.ratingblock div.ratingtext {
 	display: none !important;
 }
@@ -1492,25 +1507,25 @@ div#comentarios.sidebox {
 	clear: none;
 }
 
-#post_list li div.news_footer div.ratingblock {
+.post_list li div.news_footer div.ratingblock {
 	margin-top: 4px;
 }
 
-div#content.inner ul#post_list li h5 a {
+div#content.inner ul.post_list li h5 a {
 	font-size: 1.8em;
 	letter-spacing: -4px;
 }
 
-div#content.inner ul#post_list div.post_content p span {
+div#content.inner ul.post_list div.post_content p span {
 	font-size: 1.1em;
 }
 
-div#content.inner ul#post_list div.post_content p span.vvqbox.vvqyoutube {
+div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
 	display: block;
 	margin-bottom: 2em;
 }
 
-#post_list li div.post_item {
+.post_list li div.post_item {
 	clear: both;
 	overflow: hidden;
 
@@ -1518,7 +1533,7 @@ div#content.inner ul#post_list div.post_content p span.vvqbox.vvqyoutube {
 	line-height: 1.4em;
 }
 
-#post_list li div.news_footer a.rate {
+.post_list li div.news_footer a.rate {
 	padding: 0px;
 
 }

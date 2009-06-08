@@ -218,9 +218,9 @@ function get_gravatar($email="") {
       $email=trim($email);
       $email=md5($email);
       
-      return '<img src=http://www.gravatar.com/avatar/'.$email.'?s=40&d=http://google.com/friendconnect/static/images/NoPictureDark.png title="Avatar autor" />';
+      return '<img src="http://www.gravatar.com/avatar/'.$email.'?s=40&amp;d=http://google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" alt="Gravatar" />';
    } else {
-      return '<img src="http://www.google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" />';
+      return '<img src="http://www.google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" alt="Sin Avatar"/>';
    }
 }
 
@@ -374,7 +374,7 @@ function get_blog_random()
 }
 
 
-function setup_featured_news($post){ 
+function setup_featured_news($post,$type){ 
     
     $img_link = NULL;
     $img = NULL;

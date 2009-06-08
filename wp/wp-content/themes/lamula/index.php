@@ -24,7 +24,7 @@
     </ul>
     <div id="todo" class="class_content">
 
-      <ul id="post_list">
+      <ul class="post_list">
 
         <?php if (have_posts()) : ?>
 
@@ -48,7 +48,7 @@
             $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
             ?>
 
-            <li class=<?php echo $row; ?>>
+            <li class='<?php echo $row; ?>'>
 
               <h5>
                 <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
@@ -97,6 +97,8 @@
 
               <?php endwhile; ?>
 
+              </ul>
+            
               <div class="navigation">
                 <div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
                 <div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
@@ -110,12 +112,11 @@
 
               <?php endif; ?>
 
-            </ul>
           </div> <!-- todo -->
 
           <div id="bueno" class="class_content">
             <?php query_posts('cat=3'); ?>
-            <ul id="post_list">
+            <ul class="post_list">
 
               <?php if (have_posts()) : ?>
 
@@ -125,7 +126,7 @@
 
                   <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
 
-                  <li class=<?php echo $row; ?>>
+                  <li class='<?php echo $row; ?>'>
 
                     <?php 
                     $content = get_the_content();
@@ -194,6 +195,8 @@
 
                     <?php endwhile; ?>
 
+                  </ul>
+                
                     <div class="navigation">
                       <div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
                       <div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
@@ -207,13 +210,13 @@
 
                   <?php endif; ?>
 
-                </ul>
+
 
               </div>
 
               <div id="malo" class="class_content">
                 <?php query_posts('cat=1'); ?>
-                <ul id="post_list">
+                <ul class="post_list">
 
                   <?php if (have_posts()) : ?>
 
@@ -223,7 +226,7 @@
 
                       <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
 
-                      <li class=<?php echo $row; ?>>
+                      <li class='<?php echo $row; ?>'>
 
                         <?php 
                         $content = get_the_content();
@@ -290,6 +293,8 @@
 
                         <?php endwhile; ?>
 
+                      </ul>
+                    
                         <div class="navigation">
                           <div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
                           <div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
@@ -303,13 +308,13 @@
 
                       <?php endif; ?>
 
-                    </ul>
+
 
                   </div>
 
                   <div id="roca" class="class_content">
                     <?php query_posts('cat=4'); ?>
-                    <ul id="post_list">
+                    <ul class="post_list">
 
                       <?php if (have_posts()) : ?>
 
@@ -319,7 +324,7 @@
 
                           <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
 
-                          <li class=<?php echo $row; ?>>
+                          <li class='<?php echo $row; ?>'>
 
                             <?php 
                             $content = get_the_content();
@@ -386,6 +391,8 @@
 
                             <?php endwhile; ?>
 
+                            </ul>
+                        
                             <div class="navigation">
                               <div class="alignleft"><?php next_posts_link('&laquo; Anterior') ?></div>
                               <div class="alignright"><?php previous_posts_link('Siguiente &raquo;') ?></div>
@@ -399,7 +406,7 @@
 
                           <?php endif; ?>
 
-                        </ul>
+
 
                       </div>
 
