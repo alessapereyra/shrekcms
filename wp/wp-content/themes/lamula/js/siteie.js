@@ -51,29 +51,59 @@ jQuery(document).ready(function($) {
 	
 		$("div.class_content").hide();
 		$("div.class_content:first").show();
+		
 		$("div.tab_content").hide();
 		$("div.tab_content:first").show();
 	
-		$("div.sidebox_content").hide();
-		$("div.sidebox_content:first").show();
+		$(".sidebox_content").hide();
+		//$("div.first").show();
+		$("#ranking_usuarios .sidebox_content:first").show();
+		$("#articulos .sidebox_content:first").show();
 	
 		$("div.posts_last_content").hide();
 		$("div.posts_last_content:first").show();
+		
+		$("div.top_news_featured").hide();
+		$("div.top_news_featured:first").show();
 	 
 	
-			$("div.top_news_item h3 a").click(function(){
-
-				$(this).parent().parent().siblings().removeClass("portada-active");
-				$(this).parent().parent().addClass("portada-active");
-
-				var index = $("div.top_news_item h3 a").index(this);
-
-				$(".top_news_featured").fadeOut("slow");
-
-				$(".top_news_featured:eq(" + index + ")").fadeIn("fast");					
-
-				return false;
-			})
+		$("ul#ranking_menu li a").click(function(){
+			
+			$(this).parent().siblings().find("a").removeClass("selected");
+			$(this).addClass("selected");
+			
+			var index = $("ul#ranking_menu li a").index(this);
+			
+			$("#ranking_usuarios .sidebox_content").hide("slow");
+			$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn("fast");
+			return false;
+	});
+	
+	$("div.top_news_item h3 a").click(function(){
+		
+		$(this).parent().parent().siblings().removeClass("portada-active");
+		$(this).parent().parent().addClass("portada-active");
+		
+		var index = $("div.top_news_item h3 a").index(this);
+		
+		$(".top_news_featured").hide();
+		
+		$(".top_news_featured:eq(" + index + ")").show();					
+			
+		return false;
+	});
+	
+	$("ul#articulos_menu li a").click(function(){
+		
+		$(this).parent().siblings().find("a").removeClass("selected");
+		$(this).addClass("selected");
+		
+		var index = $("ul#articulos_menu li a").index(this);
+		
+		$("#articulos .sidebox_content").hide("slow");
+		$("#articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
+		return false;
+	});		
 	
 		$("ul#lasts_posts li a").click(function(){
 			
@@ -87,7 +117,7 @@ jQuery(document).ready(function($) {
 			$(".posts_last_content:eq(" + index + ")").show();					
 				
 			return false;
-		})
+		});
 	
 		$("ul#category_tabs li a").click(function(){
 		
@@ -101,7 +131,7 @@ jQuery(document).ready(function($) {
 				$(".class_content:eq(" + index + ")").show("fast");					
 					
 				return false;
-		})
+		});
 		
 		$("ul#corresponsales li a").click(function(){
 		
@@ -113,33 +143,7 @@ jQuery(document).ready(function($) {
 				$(".tab_content").hide("slow");
 				$(".tab_content:eq(" + index + ")").fadeIn("fast");
 				return false;
-		})
-
-
-		$("ul#articulos_menu li a").click(function(){
-		
-				$(this).parent().siblings().find("a").removeClass("selected");
-				$(this).addClass("selected");
-				
-				var index = $("ul#articulos li a").index(this);
-				
-				$("articulos .sidebox_content").hide("slow");
-				$("articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
-				return false;
-		})	
-
-		$("ul#ranking_menu li a").click(function(){
-		
-				$(this).parent().siblings().find("a").removeClass("selected");
-				$(this).addClass("selected");
-				
-				var index = $("ul#articulos li a").index(this);
-				
-				$("ranking .sidebox_content").hide("slow");
-				$("ranking .sidebox_content:eq(" + index + ")").fadeIn("fast");
-				return false;
-		})	
-
+		});
 
 		$("ul#menu > li > a").click(function(){
 			
