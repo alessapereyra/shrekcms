@@ -1,6 +1,7 @@
 <?php
 
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path() );
+
 /*! @mainpage
  *
  * HTML Purifier is an HTML filter that will take an arbitrary snippet of
