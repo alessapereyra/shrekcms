@@ -185,5 +185,16 @@ jQuery(document).ready(function($) {
 			
 			return false;
 		});
+		
+		$("div#top_news_media img").click(function(){
+			
+			//TODO aca carga el video
+			
+			if ($(this).attr("title") != '')
+			{
+				alert('tiene video');
+			}
+			return false;
+		});
 			
 });

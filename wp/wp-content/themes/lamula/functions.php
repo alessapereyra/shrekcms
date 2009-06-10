@@ -533,6 +533,7 @@ function setup_featured_news($new_post,$type){
     $html->clear(); 
     unset($html);
     
+    $youtube = get_youtubetag($new_post->post_content);
   ?>
   
     <div class="top_news_content">
@@ -544,7 +545,7 @@ function setup_featured_news($new_post,$type){
         <div>
         <?php if ($img_link != "") { ?>
           <div class="top_news_media">
-            <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+            <img title="<?php if ($youtube != FALSE) echo $youtube; ?>" src="<?php echo $img_link; ?>" alt="" title=""/>                  
           </div>
 
           <div class="top_news_featured_companion_text">
