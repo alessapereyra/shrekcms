@@ -106,12 +106,14 @@ class Terms extends Model {
     	foreach ($values as $value)
     	{
     		$value = trim($value);
-    		$this_tag = $this->_check_insert($value);
+    		
+    		$tmp['name'] = $value;
+    		$tmp['slug'] = score($value);
+    		
+    		$this_tag = $this->_check_insert($tmp);
     		
     		if ($this_tag == FALSE)
     		{
-    			$tmp['name'] = $value;
-    			$tmp['slug'] = score($value);
     			$id = $this->_insertar($tmp);
     			
     			$this->term_taxonomy->insertar_tag($id);
@@ -186,10 +188,11 @@ class Terms extends Model {
     {
     	$this->db->select('term_id');
     	$this->db->from($this->tabla);
-    	$this->db->where(array('name' => trim($value)));
+    	$this->db->or_where($value); 
     	$this->db->limit(1,0);
     	
     	$query = $this->db->get();
+      // die($this->db->last_query());
 
     	if ($query->num_rows() == 0)
     	{

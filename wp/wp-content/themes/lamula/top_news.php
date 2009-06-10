@@ -6,13 +6,13 @@
       <div id="featured" class="top_news_featured">
 
         <?php  
-           // $featured_query = new WP_Query('showposts=1&category_name=featured');
-           $featured_query = new WP_Query('showposts=1');
-           while ($featured_query->have_posts()) : $featured_query->the_post();
+           // $first_query = new WP_Query('showposts=1&category_name=featured');
+           $first_query = new WP_Query('showposts=1');
+           while ($first_query->have_posts()) : $first_query->the_post();
            
            $do_not_duplicate = $post->ID; 
            
-           $featured = $post;
+           $first = $post;
 
           ?>
 
@@ -54,7 +54,7 @@
 
           </div>
 
-          <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $featured->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
+          <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $first->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
 
         </div>
 
@@ -72,36 +72,39 @@
 
       <div id="most_voted" class="top_news_featured">
       <?php
-            $post = get_most_voted();
-            $most_voted = $post;
-            //setup_featured_news($post,"las noticias m&aacute;s votadas") 
+            unset($new_post);
+            $new_post = get_from_header(2,$text);
+            $second = $new_post;
+            setup_featured_news($new_post,$text) 
       ?>
     </div> <!-- top_news_featured -->
 
     <div id="most_viewed" class="top_news_featured">
       <?php
-            $post = kf_get_posts_by_hits(7,1,false);
-            $most_viewed = $post;
-            setup_featured_news($post,"las noticias m&aacute;s comentadas") 
+            unset($new_post);
+            $new_post = get_from_header(3,$text);
+            $third = $new_post;
+            setup_featured_news($new_post,$text); 
         ?>
     </div> <!-- top_news_featured -->
 
 
     <div id="blog_special" class="top_news_featured">
     <?php 
-
-          $post = get_blog_special();
-          $blog_special = $post;
-          setup_featured_news($post,"nuestra red") 
+          unset($new_post);
+          $new_post = get_from_header(4,$text);
+          $fourth = $new_post;
+          setup_featured_news($new_post,$text); 
      ?>
     </div> <!-- top_news_featured -->
 
 
     <div id="blog_random" class="top_news_featured">
     <?php
-          $post = get_blog_random();
-          $blog_random = $post; 
-          setup_featured_news($post,"nuestros bloggers") 
+          unset($new_post);    
+          $new_post = get_from_header(5,$text);
+          $fifth = $new_post; 
+          setup_featured_news($new_post,$text); 
     ?>          
     </div> <!-- top_news_featured -->
     
@@ -109,28 +112,28 @@
 <div id="top_news_list">
 
   <div class="top_news_item portada-active">
-    <h3><a href="#featured" class="news_item_title"><?php echo $featured->post_title; ?></a></h3>
-    <h4>publicado el <?php echo $featured->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $featured->user_nicename; ?>" ><?php echo $featured->user_nicename; ?></a></h4>					
+    <h3><a href="#featured" class="news_item_title"><?php echo $first->post_title; ?></a></h3>
+    <h4>publicado el <?php echo $first->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $first->user_nicename; ?>" ><?php echo $first->user_nicename; ?></a></h4>					
   </div>
 
   <div class="top_news_item">
-    <h3><a href="#most_voted" class="news_item_title"><?php echo $most_voted->post_title; ?></a></h3>
-    <h4>publicado el <?php echo $most_voted->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_voted->user_nicename; ?>" ><?php echo $most_voted->user_nicename; ?></a></h4>					
+    <h3><a href="#most_voted" class="news_item_title"><?php echo $second->post_title; ?></a></h3>
+    <h4>publicado el <?php echo $second->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $second->user_nicename; ?>" ><?php echo $second->user_nicename; ?></a></h4>					
   </div>          
 
   <div class="top_news_item">
-    <h3><a href="#most_viewed" class="news_item_title"><?php echo $most_viewed->post_title; ?></a></h3>
-    <h4>publicado el <?php echo $most_viewed->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $most_viewed->user_nicename; ?>"><?php echo $most_viewed->user_nicename; ?></a></h4>            	
+    <h3><a href="#most_viewed" class="news_item_title"><?php echo $third->post_title; ?></a></h3>
+    <h4>publicado el <?php echo $third->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $third->user_nicename; ?>"><?php echo $third->user_nicename; ?></a></h4>            	
   </div>
 
   <div class="top_news_item">
-    <h3><a href="#blog_special" class="news_item_title"><?php echo $blog_special->post_title; ?></a></h3>
-    <h4>publicado el <?php echo $blog_special->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_special->user_nicename; ?>" ><?php echo $blog_special->user_nicename; ?></a></h4>					
+    <h3><a href="#blog_special" class="news_item_title"><?php echo $fourth->post_title; ?></a></h3>
+    <h4>publicado el <?php echo $fourth->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $fourth->user_nicename; ?>" ><?php echo $fourth->user_nicename; ?></a></h4>					
   </div>
 
   <div class="top_news_item">
-    <h3><a href="#blog_random" class="news_item_title"><?php echo $blog_random->post_title; ?></a></h3>
-    <h4>publicado el <?php echo $blog_random->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $blog_random->user_nicename; ?>" ><?php echo $blog_random->user_nicename; ?></a></h4>					
+    <h3><a href="#blog_random" class="news_item_title"><?php echo $fifth->post_title; ?></a></h3>
+    <h4>publicado el <?php echo $fifth->post_date; ?> por <a href="http://lamula.pe/members/<?php echo $fifth->user_nicename; ?>" ><?php echo $fifth->user_nicename; ?></a></h4>					
   </div>
 
 </div> <!-- top_news_text -->

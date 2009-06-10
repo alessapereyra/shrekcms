@@ -10,6 +10,129 @@ register_sidebar(array(
 'after_title' => '4',
 ));
 
+
+// 'blog'  => 'Un Blog',
+    // get a blog 
+// 'post'    => 'Un Post',
+
+  // get a post
+  
+// 'most_voted'   => 'La más votada',
+  // get most voted
+
+// 'most_commented' => 'La más comentada',
+  // kf_get_posts_by_hits
+  
+// 'special_blogs' => 'De la red',          
+  // get blog special
+  
+// 'feature' => 'La destacada', 
+  // :?
+
+// 'random_blog' => 'Cualquier Blog'
+  // get blog random
+  
+  function get_blog_id_from_url($url){
+    
+    
+    $url = str_replace("http://", "", $url);
+    $url = str_replace("/", "", $url);
+        
+    //lamula.pe
+  	global $wpdb;
+  	$sql['select'] = 'SELECT blog_id';
+  	$sql['from'] = 'FROM wp_blogs';
+  	$sql['where'] = 'WHERE domain LIKE "' . $url .'"';
+  	$sql['limit'] = 'LIMIT 0,1';
+  	$blog_id = $wpdb->get_results(implode(' ', $sql));
+  	$blog_id = current($blog_id);
+  	$blog_id = $blog_id->blog_id;    
+  	
+
+    return $blog_id;
+    // return $wpdb->last_query;
+    
+  }
+  
+  function get_post_from_guid($guid)
+  {
+  	global $wpdb;
+
+  	$blog = 'mulapress_posts';
+  	
+  	$guid_total = explode("/",$guid);
+  	$guid = array_slice($guid_total, -2, 1);
+  	$guid = current($guid);
+  	
+    // http://lamula.pe/mulapress/2009/06/09/elcasopaname
+
+  	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+  	$sql['from'] = 'FROM ' . $blog . ' inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+  	$sql['where'] = 'where post_status = \'publish\' and mulapress_posts.post_name = "' . $guid . '"';	
+
+  	$sql['order_by'] = 'ORDER BY post_modified ASC';
+  	$sql['limit'] = 'LIMIT 0,1';	
+  	//die(implode(' ',$sql));
+  	$post = $wpdb->get_results(implode(' ', $sql));
+  	return current($post); 
+  }
+  
+  function get_from_header($id,&$text){
+    
+    global $wpdb;
+  	$sql['select'] = 'SELECT header_type, header_source';
+  	$sql['from'] = 'FROM mulapress_news_headers';
+  	$sql['where'] = 'WHERE id = ' . $id;
+  	$sql['limit'] = 'LIMIT 0,1';
+  	$header = $wpdb->get_results(implode(' ', $sql));
+  	$header = current($header);
+  	unset($sql);
+    $post = NULL;
+    
+    switch ($header->header_type) {
+
+        case "blog":
+        
+            $blog_id = get_blog_id_from_url($header->header_source);
+            $post = get_from_blog($blog_id);
+            $text = $header->header_source;
+            break;
+
+        case "post":
+            $post = get_post_from_guid($header->header_source);
+            $text = "una nota de " . $post->user_nicename;
+            break;
+
+        case "most_voted":
+            $post = get_most_voted();
+            $text = "las m&aacute;s votadas ";        
+            break;
+
+        case "most_commented":
+            $post = kf_get_posts_by_hits(7,1,false);
+            $text = "las m&aacute;s comentadas ";        
+            break;
+
+        case "special_blogs":
+            $post = get_blog_special();
+            $text = "nuestra red ";                    
+            break;    
+
+        case "feature":
+
+            $text = "las noticias destacadas ";        
+            break;
+
+        case "random_blog":
+            $post = get_blog_random();
+            $text = "nuestros bloggers ";        
+            break;
+
+    }
+    
+      return $post;
+  }
+
 function snippet($text,$length=64,$tail="[...]") {
   
     $text = trim($text);
@@ -38,7 +161,7 @@ function setup_text($content, &$img_link = NULL,&$img = NULL){
 
 function mulapress_trim_excerpt($text, $length = 55) {
 	if ( '' == $text ) {
-		$text = get_the_content('');
+	//	$text = get_the_content('');
   }   
 	
 		$text = strip_shortcodes( $text );
@@ -229,9 +352,7 @@ function get_most_voted()
 {
 	global $wpdb;
 	$sql['select'] = 'SELECT wp_users.user_nicename, `mulapress_posts`.`ID`, `mulapress_posts`.`post_author`, DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `mulapress_posts`.`post_date_gmt`, `mulapress_posts`.`post_content`, `mulapress_posts`.`post_title`, `mulapress_posts`.`post_category`, `mulapress_posts`.`post_excerpt`, `mulapress_posts`.`post_status`, `mulapress_posts`.`comment_status`, `mulapress_posts`.`ping_status`, `mulapress_posts`.`post_password`, `mulapress_posts`.`post_name`, `mulapress_posts`.`to_ping`, `mulapress_posts`.`pinged`, `mulapress_posts`.`post_modified`, `mulapress_posts`.`post_modified_gmt`, `mulapress_posts`.`post_content_filtered`, `mulapress_posts`.`post_parent`, `mulapress_posts`.`guid`, `mulapress_posts`.`menu_order`, `mulapress_posts`.`post_type`, `mulapress_posts`.`post_mime_type`, `mulapress_posts`.`comment_count`';
-	$sql['from'] = 'FROM mulapress_posts
-					inner join mulapress_gdsr_votes_log on mulapress_posts.ID = mulapress_gdsr_votes_log.id
-					inner join wp_users on mulapress_posts.post_author = wp_users.ID';
+	$sql['from'] = 'FROM mulapress_posts inner join mulapress_gdsr_votes_log on mulapress_posts.ID = mulapress_gdsr_votes_log.id inner join wp_users on mulapress_posts.post_author = wp_users.ID';
 	$sql['order_by'] = 'ORDER BY vote DESC';
 	$sql['limit'] = 'LIMIT 0,1';
 	
@@ -320,7 +441,7 @@ function get_a_post($post_id)
 	$sql['where'] = 'where post_status = \'publish\'
 	                 and mulapress_posts.ID = ' . $post_id;	
 	
-	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['order_by'] = 'ORDER BY post_modified DESC';
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
 	return $wpdb->get_results(implode(' ', $sql));
@@ -343,6 +464,8 @@ function get_a_blog($blog_id)
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
 	return $wpdb->get_results(implode(' ', $sql));
+	
+	
 }
 
 
@@ -368,7 +491,7 @@ function get_blog_random()
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'';	
-	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['order_by'] = 'ORDER BY post_modified DESC';
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
 	$post = $wpdb->get_results(implode(' ', $sql));
@@ -377,12 +500,12 @@ function get_blog_random()
 }
 
 
-function setup_featured_news($post,$type){ 
+function setup_featured_news($new_post,$type){ 
     
     $img_link = NULL;
     $img = NULL;
     // setup_text($post->post_content,$img_link,$img);
-    $html = str_get_html($post->post_content);
+    $html = str_get_html($new_post->post_content);
     $img_link = $html->find('img',0)->src;
     $img = $html->find('img',0);
     $html->clear(); 
@@ -390,7 +513,12 @@ function setup_featured_news($post,$type){
     
   ?>
   
-    <div>
+    <div class="top_news_content">
+      
+        <h3>
+            <a href="<?php echo $new_post->guid ?>"><?php echo $new_post->post_title ?></a>
+        </h3>
+      
         <div>
         <?php if ($img_link != "") { ?>
           <div class="top_news_media">
@@ -398,26 +526,26 @@ function setup_featured_news($post,$type){
           </div>
 
           <div class="top_news_featured_companion_text">
-            <?php $post->post_content = @eregi_replace($img->outertext, ' ', $post->post_content); ?>
-            <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                 
+            <?php $new_post->post_content = @eregi_replace($img->outertext, ' ', $new_post->post_content); ?>
+            <?php echo mulapress_trim_excerpt($new_post->post_content, 35) ?>                 
           </div>
           <?php } 
         else 
         {  ?>
           <div class="top_news_featured_text">
-            <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                                            
+            <?php echo mulapress_trim_excerpt($new_post->post_content, 35) ?>                                            
           </div>   
         <?php  }?>
 
         </div>
-      <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post->user_nicename; ?>" ><?php echo $post->user_nicename; ?></a> <em>el <?php echo $post->post_date; ?></em> desde <?php echo $type; ?></span>
+      <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $new_post->user_nicename; ?>" ><?php echo $new_post->user_nicename; ?></a> <em>el <?php echo $new_post->post_date; ?></em> desde <?php echo $type; ?></span>
 
     </div>
 
     <div class="top_news_featured_footer">
 
-      <a href="<?php echo $post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-      <p class="comments"><a href="<?php echo $post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $post->comment_count); ?> </a></p>
+      <a href="<?php echo $new_post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+      <p class="comments"><a href="<?php echo $new_post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $new_post->comment_count); ?> </a></p>
       <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
 
     </div>	          
@@ -535,7 +663,7 @@ function mostrar_ultimos_comentarios($limit = 5){
                  left join wp_users on mulapress_comments.user_id = wp_users.ID 
                  join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
                  ';
-  $sql['order_by'] = 'ORDER BY post_date DESC';
+  $sql['order_by'] = 'ORDER BY post_modified DESC';
   $sql['limit'] = 'LIMIT 0,' . $limit;
   $comments = $wpdb->get_results(implode(' ', $sql));
 	unset($sql);  
@@ -610,7 +738,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
     	$sql['from'] = 'FROM ' . $blog_table . '
     					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
     	$sql['where'] = 'where post_status = \'publish\'';	
-    	$sql['order_by'] = 'ORDER BY post_date DESC';
+    	$sql['order_by'] = 'ORDER BY post_modified DESC';
     	$sql['limit'] = 'LIMIT 0,1';
       $blog_results = $wpdb->get_results(implode(' ', $sql));
 	    unset($sql);    		
@@ -667,7 +795,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
         	$sql['from'] = 'FROM ' . $blog_table . '
         					inner join wp_users on ' . $blog_table . '.post_author = wp_users.ID';
         	$sql['where'] = 'where post_status = \'publish\'';	
-        	$sql['order_by'] = 'ORDER BY post_date DESC';
+        	$sql['order_by'] = 'ORDER BY post_modified DESC';
         	$sql['limit'] = 'LIMIT 0,1';
           $blog_results = $wpdb->get_results(implode(' ', $sql));
     	    unset($sql);    		
@@ -712,6 +840,26 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 
 }
 
+function get_from_blog($from_id)
+{
+	global $wpdb;
+  // $blogs = array(1);
+	$blog_id = $from_id;
+	$blog = 'wp_' . $blog_id . '_posts';
+	unset($sql);
+	
+	$sql['select'] = 'SELECT wp_users.user_nicename, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
+	$sql['from'] = 'FROM ' . $blog . '
+					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
+	$sql['where'] = 'where post_status != \'draft\'';	
+	$sql['order_by'] = 'ORDER BY post_modified DESC';
+	$sql['limit'] = 'LIMIT 0,1';	
+	//die(implode(' ',$sql));
+	$post = $wpdb->get_results(implode(' ', $sql));
+	return current($post);
+}
+
+
 function get_blog_special()
 {
 	global $wpdb;
@@ -733,7 +881,7 @@ function get_blog_special()
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'';	
-	$sql['order_by'] = 'ORDER BY post_date ASC';
+	$sql['order_by'] = 'ORDER BY post_date DESC';
 	$sql['limit'] = 'LIMIT 0,1';	
 	//die(implode(' ',$sql));
 	$post = $wpdb->get_results(implode(' ', $sql));

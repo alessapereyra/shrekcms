@@ -38,6 +38,123 @@ class Usuarios extends Controller {
 		$this->load->view('layout/' . $tmp['footer']);
 	}
 	
+	function titulares(){
+	  
+		$this->load->library('session');
+    $usuario = $this->session->userdata('usuario');
+    $id = $this->session->userdata('id'); 
+
+		$this->load->model('news_header');
+
+
+    $header_types = array(
+                      'blog'  => 'Un Blog',
+                      'post'    => 'Un Post',
+                      'most_voted'   => 'La más votada',
+                      'most_commented' => 'La más comentada',
+                      'special_blogs' => 'De la red',                      
+                      'featured' => 'La destacada',
+                      'random_blog' => 'Cualquier Blog'
+                    );
+
+  	$data['id'] = NULL;    
+    $data['header_types'] = $header_types;
+    
+    $header_1 = $this->news_header->opcion(1);
+    $header_2 = $this->news_header->opcion(2);
+    $header_3 = $this->news_header->opcion(3);
+    $header_4 = $this->news_header->opcion(4);
+    $header_5 = $this->news_header->opcion(5);
+    
+		$data['header_1_type'] = $header_1['header_type'];
+		$data['header_1_value'] = $header_1['header_source'];
+		$data['header_2_type'] = $header_2['header_type'];
+		$data['header_2_value'] = $header_2['header_source'];
+		$data['header_3_type'] = $header_3['header_type'];
+		$data['header_3_value'] = $header_3['header_source'];
+		$data['header_4_type'] = $header_4['header_type'];
+		$data['header_4_value'] = $header_4['header_source'];
+		$data['header_5_type'] = $header_5['header_type'];
+		$data['header_5_value'] = $header_5['header_source'];
+    
+
+  	$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->library('form_validation');
+		$tmp = $this->config->item('post_content');
+	  
+	  
+    $this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Titulacion', 'ie6' => $this->_is_ie6()));
+		
+		$this->load->view('usuarios/titulares', $data);
+		
+		$this->load->view('layout/' . $tmp['footer']);	  
+	  
+	}
+	
+	function enviar_titulares(){
+	  
+	  $this->load->library('session');
+    $usuario = $this->session->userdata('usuario');
+    $id = $this->session->userdata('id'); 
+
+
+    $header_types = array(
+                      'blog'  => 'Un Blog',
+                      'post'    => 'Un Post',
+                      'most_voted'   => 'La más votada',
+                      'most_commented' => 'La más comentada',
+                      'special_blogs' => 'De la red',                      
+                      'feature' => 'La destacada',
+                      'random_blog' => 'Cualquier Blog'
+                    );
+
+  	$data['id'] = NULL;    
+    $data['header_types'] = $header_types;
+
+  	$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->library('form_validation');
+		$tmp = $this->config->item('post_content');
+	  		
+		$this->load->model('news_header');
+			
+		//lleno el primer data
+		$data_1['id'] = 1;
+		$data_1['header_type'] = $this->input->post('header_1_type');
+		$data_1['header_source'] = $this->input->post('header_1_value');
+    $this->news_header->actualizar($data_1);
+
+		$data_2['id'] = 2;
+		$data_2['header_type'] = $this->input->post('header_2_type');
+		$data_2['header_source'] = $this->input->post('header_2_value');
+    $this->news_header->actualizar($data_2);
+
+
+		$data_3['id'] = 3;
+		$data_3['header_type'] = $this->input->post('header_3_type');
+		$data_3['header_source'] = $this->input->post('header_3_value');
+    $this->news_header->actualizar($data_3);
+
+		$data_4['id'] = 4;
+		$data_4['header_type'] = $this->input->post('header_4_type');
+		$data_4['header_source'] = $this->input->post('header_4_value');
+    $this->news_header->actualizar($data_4);
+
+		$data_5['id'] = 5;
+		$data_5['header_type'] = $this->input->post('header_5_type');
+		$data_5['header_source'] = $this->input->post('header_5_value');
+    $this->news_header->actualizar($data_5);
+
+			
+  	$this->load->library('session');
+		$this->session->set_flashdata('notice', 'Titulares establecidos en LaMula.');	
+		redirect('usuarios/titulares');
+	  
+	  
+	}
+	
+	
 	function perfil(){
 
 		$this->load->library('session');

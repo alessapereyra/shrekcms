@@ -43,6 +43,11 @@
           
         </div>
     
+    		<?php echo form_label('Nombre Completo:', 'full_name');?>
+    		<?php echo form_error('full_name'); ?>
+    		<?php echo form_input(array('name' => 'full_name', 'value' => "",'id' => 'full_name')); ?>
+
+    
   			<?php echo form_label('Tu DNI:', 'dni');?>
 			  <?php echo form_error('dni'); ?>
 			  <?php echo form_input(array('name' => 'dni', 'id' => 'dni')); ?>

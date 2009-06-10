@@ -144,15 +144,17 @@ class Post extends Model {
     {
     	$this->load->library('session');
     	$this->load->helper('inflector');
+      $this->load->model('options');
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = preg_replace('/[^a-zA-Z0-9]/','',score($values['post_title']));
-		$values['post_status'] = 'publish';    	
-    	
-		  $this->load->library('HTMLPurifier');
-        $config = HTMLPurifier_Config::createDefault();
-        $values['post_content'] = $this->htmlpurifier->purify( $values['post_content'] , $config );
+		  $values['post_status'] = 'publish';    
+		//	$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
+			    	
+		    //$this->load->library('HTMLPurifier');
+        //$config = HTMLPurifier_Config::createDefault();
+        //$values['post_content'] = $this->htmlpurifier->purify( $values['post_content'] , $config );
 		    
 		  
 		  
@@ -240,6 +242,12 @@ class Post extends Model {
     	$query = $query->row(); 
     	
     	return $query->ID;
+    }
+    
+    function actualizar_count($values,$where){
+      
+          $this->db->update($this->tabla, $values, $where);
+          // die($this->db->last_query());      
     }
     
     function actualizar($values, $where)

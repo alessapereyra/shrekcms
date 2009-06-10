@@ -1,7 +1,7 @@
 <?php $ci_url= "/mulapress/ci/index.php/"; ?>
 	<div id="menu_bar">
 
-      <p id="tagline"><span class="geomule"><a href="#" class="geomula"><em>geo</em>mula</a></span></p>  <!-- tagline -->
+      <p id="tagline"><span class="geomule"><a rel="limaycallao" href="#" class="geomula"><em>geo</em>mula</a></span></p>  <!-- tagline -->
       <ul id="menu">
 
         <li class="f"><a class="f" rel="limaycallao" href="#">Lima y Callao</a>

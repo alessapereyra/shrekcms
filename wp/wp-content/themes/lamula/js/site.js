@@ -191,6 +191,26 @@ jQuery(document).ready(function($) {
 			
 		}
 		
+		$("a#flag-this").click(function(){
+			
+			
+			$post_id = $(this).attr('rel');
+			
+			$.post('http://lamula.pe/mulapress/ci/index.php/flag/flag_this',{id:$post_id }, function(result){
+				
+				$("div#flag_notice").html("<strong>" + result+"</strong>");
+				$("div#flag_notice").show("slow");
+				$("a#flag-this").remove();				
+			}
+			
+			
+			)
+			
+			return false;
+			
+			
+		});
+		
 		$("ul#menu a").click(function(){
 			
 			if ($(this).find(".current").length){

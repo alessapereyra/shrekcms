@@ -781,7 +781,11 @@ div#mula_logo {
 #mula_wawa li img {
 	width: 25px;
 	height: 25px;
+	display: block;
+	float: left;
 }
+
+
 
 ul.post_list li div.news_footer div.footer_links a {
 	margin-top: 0px !important;
@@ -1075,6 +1079,8 @@ div#sidebar_central div.sidebar_foto {
 
 div#sidebar_central div.sidebar_foto img {
 	width: 30px;
+	height: 30px;
+	display: block;
 }
 
 
@@ -1156,6 +1162,8 @@ div#content.inner ul.post_list li {
 #content_feed ul li p span a {
 	display: block;	
 }
+
+
 
 
 
@@ -1699,6 +1707,11 @@ div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
 
 }
 
+a#flag-this {
+	font-size: 0.8em;	
+	padding: 10px;
+}
+
 
 /* @end */
 
@@ -2087,3 +2100,38 @@ div#city {
 
 /* @end */
 
+.inner div#content_feed ul.post_list li div.post_content div.news_footer a#flag-this {
+	display: block !important; 
+	font: 0.7em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+	padding: 4px 4px!important;
+	width: 100px;
+	float: right;
+	text-align: center;
+	background-color: #bae4ea !important;
+	color: #e10000 !important;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;	
+}
+
+.inner div#content_feed ul.post_list li div.post_content div.news_footer a#flag-this:hover {
+	background-color: #f00000 !important;
+	color: white !important;
+}
+
+div#flag_notice  {
+	display: none;
+}
+
+div#flag_notice strong{
+	display: block;
+	clear: both;
+	float: none;
+	padding: 10px;
+	color: #6c6c6c;
+	background-color: #f3f3f3;
+	border: 1px solid #dbdbdb;
+	text-align: center;
+	text-transform: lowercase;
+	font-size: 0.8em;
+	margin-top: 30px;
+}
