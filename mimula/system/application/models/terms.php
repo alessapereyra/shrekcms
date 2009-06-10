@@ -192,7 +192,11 @@ class Terms extends Model {
     	$this->db->limit(1,0);
     	
     	$query = $this->db->get();
+<<<<<<< HEAD:mimula/system/application/models/terms.php
     	//die($this->db->last_query());
+=======
+      // die($this->db->last_query());
+>>>>>>> cce9df26e349148c5a5bb09adc7714a4e5ac4466:mimula/system/application/models/terms.php
 
     	if ($query->num_rows() == 0)
     	{

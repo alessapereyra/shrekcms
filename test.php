@@ -26,6 +26,7 @@
 				//Esconde a los hijos
 				$(this).parent().find('li').hide("fast");
 	
+
 				//Muestra a los hijos
 				$(this).next().children().show("fast");
 

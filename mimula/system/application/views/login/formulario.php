@@ -1,7 +1,7 @@
 
 	<div id="content" class="login_form">
 	  
-		  <h3>Iniciando sesi&oacute;n</h3>
+		  <h3>Entrando a LaMula</h3>
 		  
 		  <div id="notice">
 		    Si ya has creado un blog en LaMula, puedes iniciar sesión usando los mismos datos.

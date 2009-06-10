@@ -37,6 +37,11 @@ get_header(); ?>
                 <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
                 <!-- Define the div tag where the gadget will be inserted. -->
                 <div id="div-8568675974817128026" style="width:100%;"></div>
+
+                <a id="flag-this" rel="<?php echo $post->ID; ?>" href="#">esto es inadecuado</a>                
+
+                <div id="flag_notice"></div>
+
                 <!-- Render the gadget into a div. -->
                 <script type="text/javascript">
                 var skin = {};
