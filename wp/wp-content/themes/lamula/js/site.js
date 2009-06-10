@@ -173,12 +173,16 @@ jQuery(document).ready(function($) {
 				//agrega el current al actual
 				$(this).addClass('current');
 			}
-   	      $.get(this.href, function(data){
-   	     	  alert("Data Loaded: " + data);
-  	     	  $('div#featured').html(data);
-   	     	  $('div#featured').innerHtml(data);
-   	     	});
-	  
+			
+			if ($(this).href() != '#')
+			{
+		   	      $.get(this.href, function(data){
+		   	     	  alert("Data Loaded: " + data);
+		  	     	  $('div#featured').html(data);
+		   	     	  $('div#featured').innerHtml(data);
+		   	     	});
+			}
+			
 			return false;
 		});
 			

@@ -500,6 +500,28 @@ function get_blog_random()
 }
 
 
+function get_youtubetag($content)
+{	
+	$find = '[y';
+	$prim = strpos($content, $find);
+	
+	$find = 'e]';
+	$ult = strrpos($content, $find) + 1;
+	
+	$cant = $ult-$prim + 1;
+	
+	$youtube =  substr($content, $prim, $cant);
+	
+	if ($youtube != '')
+	{
+		return $youtube;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function setup_featured_news($new_post,$type){ 
     
     $img_link = NULL;
@@ -509,7 +531,7 @@ function setup_featured_news($new_post,$type){
     $img_link = $html->find('img',0)->src;
     $img = $html->find('img',0);
     $html->clear(); 
-    unset($html);          
+    unset($html);
     
   ?>
   
