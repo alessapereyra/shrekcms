@@ -370,5 +370,3 @@ function _upgrade_cron_array($cron) {
 function check_server_timer( $local_time ) {
 	return true;
 }
-
-?>

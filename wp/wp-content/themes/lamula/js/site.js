@@ -167,21 +167,22 @@ jQuery(document).ready(function($) {
 				$("li.s").hide("fast");
 				$("li.t").hide("fast");				
 				$("li.f").show("slow");				
+
 				return false;
 		
 		});
 		
 		
 		function hide_menues(tag){
-
+		
 			$(tag).removeClass("current");
 			parent = $(tag).parent();
 			parent.find("li").hide("fast");
 			parent.siblings().show("fast");
-			
+			alert('asdf');
 		}
 		
-		function show_menues(tag){
+		function show_menues(tag, sec){
 			
 			parent = $(tag).parent();
 			parent.siblings().hide("fast");
@@ -217,15 +218,29 @@ jQuery(document).ready(function($) {
 				
 					hide_menues(this);				
 				
+			if (sec == 'true')
+			{
+				//alert('here');
+				$("li.t").show("fast");
 			}
 			else
 			{
-				
-					show_menues(this);
-				
+				//alert('not here');
+				parent.find("li").show("fast");
 			}
 			
-				return false;
+			
+			//alert( 'asdf' + this.hasClass('s').toString() );
+			
+		}
+		
+		$("ul#menu a").click(function(){
+			
+			//hide_menues(this);
+			//alert($(this).hasClass('s').toString());
+			show_menues(this, $(this).hasClass('s').toString());
+
+			return false;
 				
 		});
 

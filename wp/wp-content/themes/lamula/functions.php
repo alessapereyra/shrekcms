@@ -526,8 +526,11 @@ function setup_featured_news($new_post,$type){
           </div>
 
           <div class="top_news_featured_companion_text">
-            <?php $new_post->post_content = @eregi_replace($img->outertext, ' ', $new_post->post_content); ?>
-            <?php echo mulapress_trim_excerpt($new_post->post_content, 35) ?>                 
+            <?php if ($img->outertext != FALSE)
+            {
+            	$post->post_content = eregi_replace($img->outertext, ' ', $post->post_content);
+            } ?>
+            <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                 
           </div>
           <?php } 
         else 

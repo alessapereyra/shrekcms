@@ -84,5 +84,5 @@ $post = current($consulta);
           <?php }
           else
           {
-           echo 'no hay en ' . $final . ' y te jodes';
+           echo 'no hay en ' . $final . '';
 		} ?>

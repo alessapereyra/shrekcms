@@ -133,4 +133,3 @@ if ( !defined('COOKIE_DOMAIN') )
  */
 if ( !defined( 'AUTOSAVE_INTERVAL' ) )
 	define( 'AUTOSAVE_INTERVAL', 60 );
-?>

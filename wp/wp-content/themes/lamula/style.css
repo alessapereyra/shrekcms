@@ -807,6 +807,8 @@ div#content_feed div ul.post_list div.post_item a {
 .inner div#content_feed ul li a {
 	padding: 0px 0px;
 	font-size: 1em !important;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
 .inner div#content_feed ul#category_tabs li a {
@@ -880,7 +882,8 @@ div#content_feed ul.post_list li {
 	
 }
 
-.inner .post_list li div.post_content p {
+.inner .post_list li div.post_content p,
+.inner .post_list li div.post_content div {
 	list-style: 2em;
 	letter-spacing: 0;
 	word-spacing: 0;
@@ -962,8 +965,8 @@ div#content_feed ul.post_list li {
 
 .inner .post_list li h5 {
 	color: #939393;
-	line-height: 1.4em;
-	margin-bottom: 0px;
+	line-height: 1.4em; 
+	margin-bottom: 0px !important;
 }
 
 
@@ -1249,7 +1252,7 @@ div#sidebars div#sidebar_recomendados h4	{
 	overflow: auto;
 	margin: 0px;
 	font-size: 1.1em;
- 	
+	/*height: 30px;*/ 	
 }
 
 #sidebar_central ul.bloggers_list li:hover {
@@ -1551,6 +1554,10 @@ div.navigation {
 	overflow: auto;
 }
 
+.inner div.navigation {
+	display: none;
+}
+
 div.navigation a {
 	float: left;
 	margin-right:20px ;
@@ -1678,7 +1685,8 @@ div.navigation a:hover {
 
 div#content.inner ul.post_list li h5 a {
 	font-size: 1.5em !important;
-	letter-spacing: -4px;
+	letter-spacing: -2px;
+	word-spacing: 0;
 }
 
 div#content.inner ul.post_list div.post_content p span {
@@ -1707,10 +1715,6 @@ div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
 
 }
 
-a#flag-this {
-	font-size: 0.8em;	
-	padding: 10px;
-}
 
 
 /* @end */
@@ -1894,9 +1898,10 @@ div.navi a.active {
 h3#comments {
 	margin-top: 0.8em;
 	padding: 20px;
-	padding-bottom: 0px;
+	padding-bottom: 10px;
 	background-color: white;
 	font-size: 1.4em;	
+	
 }
 
 div.comment-author.vcard img.avatar.photo {
@@ -1914,6 +1919,9 @@ div.comment-author.vcard {
 div.comment-content {
 	float: left;
 	width: 350px;
+	letter-spacing: 0;
+	font: 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	word-spacing: 0;
 }
 
 div.coment-top-metadata {
@@ -1929,7 +1937,8 @@ div.comment-content div.comment-content div.ratingblock {
 	margin-bottom: 0.5em;
 }
 
-li.comment {
+li.comment,
+li.pingback {
 	overflow: hidden;
 	clear: both;
 	height: auto;
@@ -2044,8 +2053,6 @@ textarea#comment {
 	font-size: 1.2em;
 }
 
-
-
 /* @end */
 
 
@@ -2102,7 +2109,7 @@ div#city {
 
 .inner div#content_feed ul.post_list li div.post_content div.news_footer a#flag-this {
 	display: block !important; 
-	font: 0.7em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
 	padding: 4px 4px!important;
 	width: 100px;
 	float: right;
@@ -2117,6 +2124,12 @@ div#city {
 	background-color: #f00000 !important;
 	color: white !important;
 }
+
+a#flag-this {
+	font-size: 0.9em !important;	
+	padding: 10px;
+}
+
 
 div#flag_notice  {
 	display: none;

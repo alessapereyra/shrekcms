@@ -85,3 +85,7 @@ a.next {
 	margin-top:43px;
 	margin-left:5px;
 }
+
+div#footer {
+	clear:both;
+	}

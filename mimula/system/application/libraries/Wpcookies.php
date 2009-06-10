@@ -3,7 +3,8 @@ class Wpcookies
 {
 	function __construct()
 	{		
-		include('/var/local/www/wordpress-mu2/mulapress/wp/wp-config.php');
+		include('../wp/wp-config.php');
+		//include('/var/local/www/wordpress-mu2/mulapress/wp/wp-config.php');
 		//include('../wp/wp-defines.php');
 		
 		/*
@@ -12,7 +13,8 @@ class Wpcookies
 		include('../wp/wp-includes/plugin.php');
 		include('../wp/wp-includes/functions.php');
 		*/
-		include('/var/local/www/wordpress-mu2/mulapress/wp/wp-config.php');		
+		include('../wp/wp-includes/pluggable.php');		
+		//include('/var/local/www/wordpress-mu2/mulapress/wp/wp-config.php');		
 	}
 	
 	function set($user)

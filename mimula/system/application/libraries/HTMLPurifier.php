@@ -1,6 +1,7 @@
 <?php
 
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path() );
+
 /*! @mainpage
  *
  * HTML Purifier is an HTML filter that will take an arbitrary snippet of
@@ -91,9 +92,9 @@ class HTMLPurifier
      */
     public function __construct($config = null) {
 
-        $this->config = HTMLPurifier_Config::create($config);
+        //$this->config = HTMLPurifier_Config::create($config);
 
-        $this->strategy     = new HTMLPurifier_Strategy_Core();
+        //$this->strategy     = new HTMLPurifier_Strategy_Core();
 
     }
 
