@@ -17,17 +17,6 @@ jQuery(document).ready(function($) {
      jQuery(this).text(jQuery(this).text() == a ? b : a);
      });
      };
-	
-	  // $('div#menu_bar a').click(function () { 
-	  // 	       
-	  // 	      $.get(this.href, function(data){
-	  // 	     	  //alert("Data Loaded: " + data);
-	  // 	     	  $('div#featured').html(data);
-	  // 	     	  $('div#featured').innerHtml(data);
-	  // 	     	});
-	  // 	       return false;
-	  // 	     });
-
 	 
    $("div.scrollable").scrollable({
 	
@@ -154,64 +143,42 @@ jQuery(document).ready(function($) {
 				$(".tab_content:eq(" + index + ")").fadeIn("fast");
 				return false;
 		});
-
-		// $("ul#menu li.f a").click(function(){
-		// 	
-		// 		alert("click");
-		// 		return false;
-		// 	
-		// });
 		
+		$("ul#geomula li").hide();
+		$("ul#geomula li.top").show();
+
 		$("a.geomula").click(function(){
-		
-				$("li.s").hide("fast");
-				$("li.t").hide("fast");				
-				$("li.f").show("slow");				
-
-				return false;
-		
+			$("ul#geomula li").hide();
+			$("ul#geomula li.top").show();
+			$("ul#geomula a").removeClass("current");
+			return false;
 		});
 		
-		
-		function hide_menues(tag){
-		
-			$(tag).removeClass("current");
-			parent = $(tag).parent();
-			parent.find("li").hide("fast");
-			parent.siblings().show("fast");
-			alert('asdf');
-		}
-		
-		function show_menues(tag, sec){
-			
-			parent = $(tag).parent();
-			parent.siblings().hide("fast");
-			parent.siblings().find("a").removeClass("current");
-			$(tag).addClass("current");
-			if (sec == 'true')
-			{
-				//alert('here');
-				$("li.t").show("fast");
-			}
-			else
-			{
-				//alert('not here');
-				parent.find("li").show("fast");
-			}
-			
-			
-			//alert( 'asdf' + this.hasClass('s').toString() );
-			
-		}
-		
-		$("ul#menu a").click(function(){
-			
-			//hide_menues(this);
-			//alert($(this).hasClass('s').toString());
-			show_menues(this, $(this).hasClass('s').toString());
+		$("ul#geomula a").click(function(){
 
+			
+			if ($(this).hasClass("last") != true)
+			{
+				//quita el current a todos
+				$("ul#geomula a").removeClass("current");
+				//Esconder a los hermanos
+				$(this).parent().siblings().hide("fast");
+				//Esconde a los hijos
+				$(this).parent().find('li').hide("fast");
+	
+				//Muestra a los hijos
+				$(this).next().children().show("fast");
+
+				//agrega el current al actual
+				$(this).addClass('current');
+			}
+   	      $.get(this.href, function(data){
+   	     	  alert("Data Loaded: " + data);
+  	     	  $('div#featured').html(data);
+   	     	  $('div#featured').innerHtml(data);
+   	     	});
+	  
 			return false;
-				
 		});
 
 

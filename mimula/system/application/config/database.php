@@ -41,7 +41,7 @@ $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
 
 // Para Dientuki
-$db['default']['password'] = "takumi";
+$db['default']['password'] = "";
 //$db['default']['password'] = "root";
 $db['default']['database'] = "lamula";
 $db['default']['dbdriver'] = "mysql";
@@ -58,7 +58,7 @@ $db['lamula']['hostname'] = "localhost";
 $db['lamula']['username'] = "root";
 //$db['lamula']['password'] = "PjHuJGbJka";
 //$db['lamula']['password'] = "root";
-$db['lamula']['password'] = "takumi";
+$db['lamula']['password'] = "";
 $db['lamula']['database'] = "lamula";
 $db['lamula']['dbdriver'] = "mysql";
 $db['lamula']['dbprefix'] = "";

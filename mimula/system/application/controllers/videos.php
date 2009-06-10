@@ -146,7 +146,7 @@ class Videos extends DI_Controller {
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
 			$data['tags'] = $this->input->post('tags');
 			
-			
+			/*
           $this->load->library('zend');				  
 		      $this->zend->load('Zend/Gdata/YouTube');		
           $this->zend->load('Zend/Gdata/ClientLogin');	
@@ -171,7 +171,7 @@ class Videos extends DI_Controller {
          $applicationId = "SRD-LaMula-1.0";
 
          $yt = new Zend_Gdata_YouTube($httpClient);
-				  
+			*/	  
 		
 
 			
