@@ -144,13 +144,13 @@ class Post extends Model {
     {
     	$this->load->library('session');
     	$this->load->helper('inflector');
-      $this->load->model('options');
+      //$this->load->model('options');
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = preg_replace('/[^a-zA-Z0-9]/','',score($values['post_title']));
 		  $values['post_status'] = 'publish';    
-		//	$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
+			$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
 			    	
 		    //$this->load->library('HTMLPurifier');
         //$config = HTMLPurifier_Config::createDefault();
@@ -180,13 +180,13 @@ class Post extends Model {
     		}
     	}
     	
-    	$terms_taxonomy_id = $tmp; //array_merge($tags_id, $values['terms_taxonomy_id']);
+    	$terms_taxonomy_id = $tmp;
 
     	unset($values['terms_taxonomy_id']);
-    	
+
     	$post_id = $this->_insertar($values);
-    	
-    	$this->postmeta->insertar($customs, $post_id);
+     	
+    	$this->postmeta->insertar_customs_locations($customs, $post_id);
     	
     	$this->term_relationships->insertar($post_id, $terms_taxonomy_id);
     	

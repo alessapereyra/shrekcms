@@ -56,12 +56,13 @@ class Term_taxonomy extends Model {
     	$tmp['parent'] = "0";
     	$tmp['count'] = "'1'";
     	
-    	$this->_insertar($tmp);
+    	return $this->_insertar($tmp);
     }
     
     function _insertar($values)
     {   	   	   
     	$this->db->insert($this->tabla, $values);
+    	return $this->db->insert_id();
     }    
     
     /*

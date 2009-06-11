@@ -204,6 +204,11 @@ class Articulos extends DI_Controller {
 		}
 		else
 		{
+			$this->load->model('countries');
+			$this->load->model('departments');
+			$this->load->model('distrits');
+			$this->load->model('providences');
+			$this->load->model('options');
 			$this->load->model('term_taxonomy');
 			$this->load->model('terms');
 			$this->load->model('post');

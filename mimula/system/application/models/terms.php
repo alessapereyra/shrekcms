@@ -116,15 +116,16 @@ class Terms extends Model {
     		{
     			$id = $this->_insertar($tmp);
     			
-    			$this->term_taxonomy->insertar_tag($id);
+    			//$this->term_taxonomy->insertar_tag($id);
     			
-    			$tags[] = $this->_check_insert(trim($value));
+    			//$tags[] = $this->_check_insert(trim($value));
+    			$tags[] = $this->term_taxonomy->insertar_tag($id);
+    			
     		}
     		else
     		{
     			$tags[] = $this_tag; 
     		}
-    		
     	}
     	return $tags;
     }
@@ -192,11 +193,6 @@ class Terms extends Model {
     	$this->db->limit(1,0);
     	
     	$query = $this->db->get();
-<<<<<<< HEAD:mimula/system/application/models/terms.php
-    	//die($this->db->last_query());
-=======
-      // die($this->db->last_query());
->>>>>>> cce9df26e349148c5a5bb09adc7714a4e5ac4466:mimula/system/application/models/terms.php
 
     	if ($query->num_rows() == 0)
     	{

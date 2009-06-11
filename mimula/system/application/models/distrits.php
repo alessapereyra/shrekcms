@@ -57,7 +57,7 @@ class Distrits extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('id', 'DESC');
+    	$this->db->order_by('distrit_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;
