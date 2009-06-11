@@ -18,6 +18,7 @@ class Providences extends Model {
     	$this->db->select('providence');
     	$this->db->from($this->tabla);
     	$this->db->where(array('fk_department' => $id));
+    	$this->db->order_by("providence","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';

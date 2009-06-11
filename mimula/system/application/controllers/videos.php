@@ -30,7 +30,7 @@ class Videos extends DI_Controller {
 		$data['provincias_selected'] = NULL;
 		$data['distritos_selected'] = NULL;
 			
-		$data['paices'] = $this->combofiller->countries();
+		$data['paices'] = $this->combofiller->countries(TRUE);
 		$data['paices_selected'] = NULL;	
 		
 		if ($id != NULL)
@@ -140,13 +140,13 @@ class Videos extends DI_Controller {
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
-			
+	    $this->load->model('options');
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
 			$data['tags'] = $this->input->post('tags');
 			
-			
+			/*
           $this->load->library('zend');				  
 		      $this->zend->load('Zend/Gdata/YouTube');		
           $this->zend->load('Zend/Gdata/ClientLogin');	
@@ -171,7 +171,7 @@ class Videos extends DI_Controller {
          $applicationId = "SRD-LaMula-1.0";
 
          $yt = new Zend_Gdata_YouTube($httpClient);
-				  
+			*/	  
 		
 
 			
@@ -303,7 +303,8 @@ class Videos extends DI_Controller {
 			}
 
       $this->session->set_flashdata('notice', 'Video enviado exitosamente');			  
-			redirect('videos/formulario');			
+			redirect('home/dashboard');			
+			
 			
 		}			
 	}

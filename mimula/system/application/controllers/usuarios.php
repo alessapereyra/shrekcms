@@ -5,6 +5,23 @@ class Usuarios extends Controller {
 	
 	var $usuario = array();
 	
+	
+	function reglas()
+  {
+  
+		$this->load->helper('url');
+    	$tmp = $this->config->item('post_content');
+
+  		$this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Registrate', 'ie6' => $this->_is_ie6()));
+      // $this->load->view('layout/' . $tmp['menu'], array('log' => FALSE, 'ie6' => $this->_is_ie6(), 'current_controller' => $this->uri->segment(1) ));
+
+  		$this->load->view('usuarios/reglas', $data);
+
+  		$this->load->view('layout/' . $tmp['footer']);
+
+  
+  }	
+
 	function formulario($id = NULL)
 	{
 

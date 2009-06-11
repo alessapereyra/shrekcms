@@ -217,6 +217,7 @@ class Fotos extends DI_Controller {
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
+			$this->load->model('options');
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -359,13 +360,13 @@ class Fotos extends DI_Controller {
 				$where['id'] = $id;
 				//@_@
 				$this->post->actualizar($data, $where);
-				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				$this->session->set_flashdata('notice', 'Foto actualizada exitosamente');	
 				redirect('home/dashboard');
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
-       		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
+       		 $this->session->set_flashdata('notice', 'Foto enviada exitosamente');			  
 				redirect('home/dashboard');
 			}
 			else

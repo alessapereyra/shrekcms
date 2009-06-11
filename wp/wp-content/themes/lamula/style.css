@@ -231,7 +231,7 @@ div#search_bar label {
 div#menu_bar {
 	
 	clear: both;
-	overflow: auto;
+	overflow: hidden;
 	background-color: #fff469;	
 	margin-top: 1em;	
 	display: block;	
@@ -277,102 +277,70 @@ div#menu_bar p#tagline span.geomule em {
 /* @end */
 
 /* @group Setting up inline-menu */
-
-ul#menu {
-		
+ul#geomula { 
 	overflow: auto;
 	float: left;
-	width: auto;
+	width: 840px;
 	text-transform: lowercase;
 	font: 0.89em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
+	display: none;
 }
 
-ul#menu li {
+ul#geomula li.top {
 }
 
-ul#menu > li {
-	float: left;
-	overflow: auto;
-	background-color: #fff9a5;
-	color: #3b3330;
-}
-
-ul#menu > li a,
-ul#menu ul li.current {
+ul#geomula li.top a {
+	display: block;
+	text-decoration: none;
 	padding: 7px 5px;
 	color: #3b3330;
 	text-decoration: none;
-	display: block;
-	float: left;
 	background-color: #fff469;	
 }
 
-
-ul#menu li.f a.current_option {
-	background: #fff23f url(images/arrow2.jpg) no-repeat right;
-	padding-right: 20px;
-}
-
-ul#menu li.f a.current_option.current {
-	background: #a69b07 url(images/arrow1.jpg) no-repeat right; 
-	color: white;
-}
-
-
-ul#menu > li a:hover {
-	background-color: #ffa640;
-	color: white;
-}
-
-ul#menu ul,
-ul#menu ul > ul {
+ul#geomula li.top ul {
 	overflow: auto;
 	float: left;
-	
-	
 }
 
-ul#menu li ul li,
-ul#menu li ul li ul {
-	background-color: #fff9a5;
+ul#geomula li {
 	float: left;
-	display: inline;
-	display: none;	
-	
-	}
-	
-
-ul#menu li ul li ul li{
-	
-	background-color: #faffee;
+	overflow: auto;
+	background-color: #fff9a5;
+	color: #3b3330;
+	width: auto;
 }
 
-	
-ul#menu ul li.current {
-	display: none;
-	background: #fff02f url(images/arrow2.png) no-repeat right;
-	padding-right: 20px;
-}	
-
-ul#menu ul li a.current {
-	background: #fff02f url(images/arrow2.png) no-repeat right;
-	padding-right: 20px;
-	
-}
-
-ul#menu ul li a.current:hover {
-	
-	padding-right: 20px;
-}
-	
-	
-ul#menu ul li a:hover {
-	background-color: #fff654;
+ul#geomula li.top a.current,
+ul#geomula li.top a.current_father,
+ul#geomula li.top a.current_grandfather {
+	display: block;
+	text-decoration: none;
 	padding: 7px 5px;
-	color: #8d8405;
+	color: #3b3330;
+	text-decoration: none;
+	background-color: white;	
+	float: left;
 }
 
+ul#geomula li.top a.current_father {
+	background-color: #ebc600;
+	color: #fff;
+	
+}
 
+ul#geomula li.top li a.current_father {
+	background-color: #eae547;
+	color: #fff;
+	
+}
+
+ul#geomula li.top a.current_grandfather {
+	background-color: #ebc600;
+	color: #fff;
+}
 
 
 /* @end */
@@ -452,11 +420,15 @@ a.news_item_title {
 
 div#top_news div.top_news_featured h3 {
 	color: #3b3330;
-	letter-spacing: -3px;
 	margin-bottom: 0.3em;
-	word-spacing: 4px;
+	word-spacing: 0;
 	overflow: hidden;
 	font: 2.4em/1em Georgia, "Times New Roman", Times, serif;
+}
+
+#content_feed ul.post_list li div.post_content span.vvqbox.vvqyoutube {
+	clear: both;
+	margin-bottom: 2em;
 }
 
 div.top_news_featured {
@@ -492,7 +464,7 @@ div.top_news_media {
 
 .top_news_featured_text {
 	overflow: auto;
-	font-size: 0.8em !important;
+	font-size: 1.2em !important;
 	letter-spacing: 0;
 	word-spacing: 0;
 }
@@ -610,7 +582,7 @@ div.top_news_featured_content {
 
 div.top_news_featured_content.special {
 	overflow: hidden;
-	height: 200px; 
+	height: 380px; 
 }
 
 /* @end */

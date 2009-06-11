@@ -1,3 +1,17 @@
+h1 a {
+/*	background-image: url(images/logo-transparent.png);
+	text-indent: -9000em;
+	width: 240px;
+	height: 70px;
+	*/
+/*	background-image: none;*/
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/logo-transparent.png', sizingMethod='crop');
+	text-indent: -9000em;
+	width: 240px;
+	height: 70px;
+	
+}
+
 ul#menu li.f {
 	float: left;
 	overflow: auto;
@@ -89,3 +103,9 @@ a.next {
 div#footer {
 	clear:both;
 	}
+
+ul#geomula { 
+
+		display: auto;
+
+}

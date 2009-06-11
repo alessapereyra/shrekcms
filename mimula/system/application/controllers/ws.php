@@ -33,14 +33,16 @@ class Ws extends Controller {
 				{
 					if ($departamento != NULL)
 					{
-						$final = $departamento;	
+
 						if ($departamento == '0')
 						{
+  						$final = "Lima y Callao";	
 							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
 							$where = $where . ' OR (meta_key = \'departamento\' AND meta_value = \'callao\')';
 						}
 						else
 						{						
+						  $final = $departamento;	
 							$where['meta_key'] = 'departamento';
 							$where['meta_value'] = sanitize2url($departamento);
 						}		

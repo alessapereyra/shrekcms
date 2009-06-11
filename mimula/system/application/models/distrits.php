@@ -18,6 +18,7 @@ class Distrits extends Model {
     	$this->db->select('distrit');
     	$this->db->from($this->tabla);
     	$this->db->where(array('fk_providence' => $id));
+    	$this->db->order_by("distrit","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';

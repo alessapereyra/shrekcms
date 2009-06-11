@@ -26,12 +26,12 @@ class Post extends Model {
 		}
 		
     	
-		$this->db->select('mulapress_users.user_login');
-		$this->db->select('mulapress_users.user_nicename');
+		$this->db->select('wp_users.user_login');
+		$this->db->select('wp_users.user_nicename');
 		
 		$this->db->from($this->tabla);
 		$this->db->join('mulapress_postmeta', 'mulapress_posts.ID = mulapress_postmeta.post_id');
-		$this->db->join('mulapress_users', 'mulapress_posts.post_author = mulapress_users.ID');
+		$this->db->join('wp_users', 'mulapress_posts.post_author = wp_users.ID');
 			
 		$this->db->where('post_type', 'post');
 		$this->db->where('post_status', 'publish');
@@ -40,7 +40,7 @@ class Post extends Model {
 		$this->db->limit($limit['show'], $limit['from']);
 		
 		$query = $this->db->get();
-		//die($this->db->last_query());
+		// die($this->db->last_query());
 		return $query;
     }
     
@@ -144,13 +144,14 @@ class Post extends Model {
     {
     	$this->load->library('session');
     	$this->load->helper('inflector');
-      $this->load->model('options');
+
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = preg_replace('/[^a-zA-Z0-9]/','',score($values['post_title']));
 		  $values['post_status'] = 'publish';    
-		//	$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
+
+		  $values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
 			    	
 		    //$this->load->library('HTMLPurifier');
         //$config = HTMLPurifier_Config::createDefault();

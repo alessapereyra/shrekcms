@@ -83,6 +83,26 @@ $post = current($consulta);
           </div>
           <?php }
           else
-          {
-           echo 'no hay en ' . $final . '';
-		} ?>
+          { ?>
+            <h3></h3>
+             <p>
+
+   
+                 <div class="top_news_featured_content">
+
+                       <div class="top_news_featured_text nothing_found">
+                         No tenemos aún noticias geolocalizadas en <?php echo $final ?>. 
+                         <a href="http://lamula.pe/mulapress/ci">Env&iacute;anos</a> las tuyas
+                         <div style="display:none;">
+                       </div>   
+   
+                 </div>
+
+                 <span class="author"></span>
+
+             </p>
+
+             <div class="top_news_featured_footer">
+
+             </div>
+<?php	} ?>

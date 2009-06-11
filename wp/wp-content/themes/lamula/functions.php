@@ -500,6 +500,28 @@ function get_blog_random()
 }
 
 
+function get_youtubetag($content)
+{	
+	$find = '[y';
+	$prim = strpos($content, $find);
+	
+	$find = 'e]';
+	$ult = strrpos($content, $find) + 1;
+	
+	$cant = $ult-$prim + 1;
+	
+	$youtube =  substr($content, $prim, $cant);
+	
+	if ($youtube != '')
+	{
+		return $youtube;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function setup_featured_news($new_post,$type){ 
     
     $img_link = NULL;
@@ -509,8 +531,9 @@ function setup_featured_news($new_post,$type){
     $img_link = $html->find('img',0)->src;
     $img = $html->find('img',0);
     $html->clear(); 
-    unset($html);          
+    unset($html);
     
+    $youtube = get_youtubetag($new_post->post_content);
   ?>
   
     <div class="top_news_content">
@@ -522,7 +545,7 @@ function setup_featured_news($new_post,$type){
         <div>
         <?php if ($img_link != "") { ?>
           <div class="top_news_media">
-            <img src="<?php echo $img_link; ?>" alt="" title=""/>                  
+            <img title="<?php if ($youtube != FALSE) echo $youtube; ?>" src="<?php echo $img_link; ?>" alt="" title=""/>                  
           </div>
 
           <div class="top_news_featured_companion_text">
@@ -592,7 +615,7 @@ function mostrar_ranking($ranking="mula wawa", $limit=5){
            echo "<img src='".  $avatar_results->avatar . "' title='Avatar autor' /> ";          
          }
 			    ?>
-			    <a href="http://lamula.pe/members/<?php echo $mulero->user_nicename ?>"><?php echo $mulero->user_nicename ?></a> -
+			    <a href="http://lamula.pe/members/<?php echo $mulero->user_nicename ?>"><?php echo $mulero->user_nicename ?></a>
 			    <strong><?php echo number_format($mulero->puntaje,0) ?></strong>
 		   </li>
 <?php  }

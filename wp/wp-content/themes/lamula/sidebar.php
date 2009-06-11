@@ -45,9 +45,14 @@
       
       <div id="sidebar_recomendados">
         
-              <a href="http://lamula.lamula.pe/?p=53#respond">
-                <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
-              </a>
+        
+      <a href="<?php bloginfo('siteurl'); ?>/?s=bagua">
+        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/banner.gif" class="sidebox_image" id="bagua" alt="Seguimiento #bagua" title="Seguimiento #bagua"/>
+      </a>
+
+      <a href="http://lamula.lamula.pe/?p=53#respond">
+          <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
+      </a>
 
 
       <a href="<?php bloginfo('siteurl'); ?>/?s=friaje">

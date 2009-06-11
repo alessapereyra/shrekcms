@@ -133,7 +133,8 @@ class Audios extends DI_Controller {
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
-			
+			$this->load->model('options');
+      
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
@@ -258,6 +259,7 @@ class Audios extends DI_Controller {
 				$this->post->actualizar($data, $where);
 			}
 
+ 		  $this->session->set_flashdata('notice', 'Audio enviado exitosamente');			  
 			redirect('home/dashboard');			
 			
 		}			

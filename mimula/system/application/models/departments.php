@@ -17,6 +17,7 @@ class Departments extends Model {
     	$this->db->select('department_id');
     	$this->db->select('department');
     	$this->db->from($this->tabla);
+    	$this->db->order_by("department","asc");
     	$query = $this->db->get();
     	
     	$tmp = '';

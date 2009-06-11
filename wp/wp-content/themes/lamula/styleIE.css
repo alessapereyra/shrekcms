@@ -44,7 +44,6 @@ ul#post_list {
 #sidebar_recomendado ul li {
 
 	overflow: hidden !important;
-	
 }
 
 
@@ -78,9 +77,68 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 
 }
 
+.sidebox {
+	
+	background-color: white;
+}
+
+div.sidebox.cc{
+	
+	padding: 10px;
+	clear: both;
+	overflow: visible;
+	
+}
+#comentarios .sidebox_wrapper {
+	
+	clear:both;
+	overflow: visible;
+	
+}
+
+#comentarios .sidebox_wrapper ul  {
+	
+	overflow:visible !important;
+	float: none !important;
+}
+
+#comentarios .sidebox_wrapper ul li {
+	
+	width: 100%;
+	}
+
+ #sidebar_central ul.bloggers_list li {
+
+	height: 30px;
+	overflow: hidden;
+}
 
 
+#sidebar_recomendados {
+	
+	clear: both;
+}
 
+div#wrapper,
+div#content,
+#bloggers_navigation,
+#top_news_featured_footer {
+	
+	overflow: hidden;
+	
+}
 
+div#content {
+	
+	overflow: hidden;
+	
+}
+
+ul#geomula,
+div#menu_bar {
+	
+	background-color: #fff469 !important;
+	
+}
 
 

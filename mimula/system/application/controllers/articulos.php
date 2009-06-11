@@ -134,6 +134,10 @@ class Articulos extends DI_Controller {
 		$this->load->library('combofiller');
 		$this->load->library('form_validation');
 
+
+
+
+
 		$this->form_validation->set_rules($this->_reglas());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		 
@@ -209,7 +213,7 @@ class Articulos extends DI_Controller {
 			$this->load->model('post');
 			$this->load->model('postmeta');
 			$this->load->model('term_relationships');
-			
+		  $this->load->model('options');	
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -313,6 +317,7 @@ class Articulos extends DI_Controller {
 			}
 			
 			$data['post_content'] = $data['post_content'] . '';
+      // $data['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];      
 						
 			//consigue los id de las cata
 			$categorias = $this->combofiller->categorias();

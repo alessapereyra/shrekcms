@@ -11,6 +11,16 @@ jQuery(document).ready(function($) {
 	 t_outside = true;
 	
 	 LAST_STATE = "";
+	
+	
+			$('#bagua').flash({   
+				
+				// test.swf is the flash document 
+				 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
+				 width: 200,
+		     wmode: "transparent"
+			 });
+	
 
 	   jQuery.fn.toggleText = function(a, b) {
      return this.each(function() {
@@ -62,7 +72,7 @@ jQuery(document).ready(function($) {
 		$("div.top_news_featured:not(:first)").hide();
 		$("div.class_content:not(:first)").hide();
 		$("div.tab_content:not(:first)").hide();
-		$("#ranking_usuarios .sidebox_content:not(:last)").hide();
+		$("#ranking_usuarios .sidebox_content:not(:first)").hide();
 		$("#articulos .sidebox_content:not(:last)").hide();
 		$("div.posts_last_content:not(:first)").hide();
 				
@@ -145,71 +155,82 @@ jQuery(document).ready(function($) {
 		});
 		
 		
-			$("a#flag-this").click(function(){
-
-
-				$post_id = $(this).attr('rel');
-
-				$.post('http://lamula.pe/mulapress/ci/index.php/flag/flag_this',{id:$post_id }, function(result){
-
-					$("div#flag_notice").html("<strong>" + result+"</strong>");
-					$("div#flag_notice").show("slow");
-					$("a#flag-this").remove();				
-				}
-
-
-				)
-
-				return false;
-
-
-			});
-		
-		
-		
-		
 		$("ul#geomula li").hide();
 		$("ul#geomula li.top").show();
-
+		$("ul#geomula").show("fast");
+		
 		$("a.geomula").click(function(){
 			$("ul#geomula li").hide();
 			$("ul#geomula li.top").show();
 			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");						
 			return false;
 		});
 		
+		$("ul#geomula a").click(function(){
+
+
+			$("a.geomula").addClass("current");
+			//quita el current a todos
+			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");						
+			//agrega el current al actual
+			$(this).addClass('current');
+			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
+			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
+
+			window.location.hash = $(this).attr("rel");
+
+			if ($(this).hasClass("last") != true)
+			{
+				//Esconder a los hermanos
+				$(this).parent().siblings().hide("fast");
+				//Esconde a los hijos
+				$(this).parent().find('li').hide("fast");
+	
+				//Muestra a los hijos
+				$(this).next().children().show("fast");
+
+
+			}
+			if (this.href != 'http://lamula.pe/mulapress/#')
+			{
+		   	      $.get(this.href, function(data){
+		  	     	  $('div#featured').html(data);
+		   	     	  // $('div#featured').innerHtml(data);
+		   	     	});
+			}
+			
+			return false;
+		});
 		
-		
-		// $("ul#geomula a").click(function(){
-		// 
-		// 		
-		// 
-		// 		if ($(this).hasClass("last") != true)
-		// 		{
-		// 			//quita el current a todos
-		// 			$("ul#geomula a").removeClass("current");
-		// 			//Esconder a los hermanos
-		// 			$(this).parent().siblings().hide("fast");
-		// 			//Esconde a los hijos
-		// 			$(this).parent().find('li').hide("fast");
-		// 
-		// 			//Muestra a los hijos
-		// 			$(this).next().children().show("fast");
-		// 
-		// 			//agrega el current al actual
-		// 			$(this).addClass('current');
-		// 		}
-		// 		
-		// 			if ($(this).attr("href") != "#"){ 
-		// 				
-		// 				  $.get(this.href, function(data){
-		//    	     	 // alert("Data Loaded: " + data);
-		//   	     	  $('div#featured').html(data);
-		//    	     	  $('div#featured').innerHtml(data);
-		//    	     	});
-		// 
-		// 				}	  
-		// 		return false;
-		// 	});
+		$("div#top_news_media img").click(function(){
+			
+			//TODO aca carga el video
+			$youtube_link = $(this).attr("title");
+			
+			if ( $youtube_link != '')
+			{
+						var Color1 = "";
+						var Color2 = "";
+						var FS = "";
+						var Border = "";
+						var Autoplay = "";
+						var Loop = "";
+						var ShowSearch = "";
+						var ShowInfo = "";
+						var HD = "";
+						swfobject.embedSWF(
+							"http://www.youtube.com/v/" + PreviewID + Color1 + Color2 + Autoplay + Loop + Border + "&rel=" + Rel + "&showsearch=" + ShowSearch + "&showinfo=" + ShowInfo + FS + HD,
+							"top_news_media",
+							200,
+							300,
+							"9"
+						);
+			}
+			return false;
+		});
 			
 });

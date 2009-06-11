@@ -161,98 +161,117 @@ jQuery(document).ready(function($) {
 				return false;
 		});
 
-		$("ul#menu > li > a").click(function(){
-			
-			
-						father = $(this).parent();
 
-						//Hides all the siblings
-						father.siblings().toggle("fast");
-			
-						//Shows all the childs "li"
-						childs = father.find("li");
-						childs.toggle("fast");
+				$('#bagua').flash({   
+
+					// test.swf is the flash document 
+				 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
+				 width: 200,
+ 		     wmode: "transparent"
+				 });
+				
+				
+		$("ul#geomula li").hide();
+		$("ul#geomula li.top").show();
+		$("ul#geomula").css({'display':'block'});
 		
-						//Setups get back content
-						//TODO: I hate how this works
-						if ($(this)[0].textContent != BACK){
-				
-							$(this)[0].textContent = BACK;
-							$(this)[0].addClass("current_option");
-				
-						}
-						else {
-				
-							$(this)[0].textContent = childs[0].innerHTML;
-							$(this)[0].removeClass("current_option");				
-						}
-		
-			
+		$("a.geomula").click(function(){
+			$("ul#geomula li").hide();
+			$("ul#geomula li.top").show();
+			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");						
+			return false;
 		});
 		
-		
-			$("ul#menu li ul > li a").click(function(){
+		$("ul#geomula a").click(function(){
 
-				//alert();
 
-					father = $(this).parent();
+			$("a.geomula").addClass("current");
+			//quita el current a todos
+			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");						
+			//agrega el current al actual
+			$(this).addClass('current');
+			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
+			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
 
-					//Hides all the siblings
-					//Shows all the childs "li"
-					childs = father.find("ul");
-			//		alert ( childs.children().length );
+			window.location.hash = $(this).attr("rel");
 
-						if (childs.children().length > 1 ) { 
-
-						father.siblings().toggle("fast");
-						father.siblings().removeClass("current");
-						$("li.s a").removeClass("current_option");
-						$(father.siblings()[0]).addClass("current");
-
-						childs.toggle("fast");
-
-						//Setups get back content
-						//TODO: I hate how this works
-
-			//				$(this)[0].textContent = BACK_STATES;
-						if (from_outside)
-						{
-								from_outside = false;
-								$(this).addClass("current_option");							
-						}
-						else 
-							{
-								from_outside = true;
-							}
-
-					
-					}
-
-			});
+			if ($(this).hasClass("last") != true)
+			{
+				//Esconder a los hermanos
+				$(this).parent().siblings().hide("fast");
+				//Esconde a los hijos
+				$(this).parent().find('li').hide("fast");
 	
-			
+				//Muestra a los hijos
+				$(this).next().children().show("fast");
 
-		       var skin = {};
-            skin['BORDER_COLOR'] = 'transparent';
-            skin['ENDCAP_BG_COLOR'] = 'transparent';
-            skin['ENDCAP_TEXT_COLOR'] = '#333333';
-            skin['ENDCAP_LINK_COLOR'] = '#0000cc';
-            skin['ALTERNATE_BG_COLOR'] = 'transparent';
-            skin['CONTENT_BG_COLOR'] = 'transparent';
-            skin['CONTENT_LINK_COLOR'] = '#0000cc';
-            skin['CONTENT_TEXT_COLOR'] = '#333333';
-            skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
-            skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
-            skin['CONTENT_HEADLINE_COLOR'] = '#333333';
-            skin['HEADER_TEXT'] = 'Historias recomendadas';
-            skin['RECOMMENDATIONS_PER_PAGE'] = '5';
-            google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
-            google.friendconnect.container.renderOpenSocialGadget(
-             { id: 'div-6886351088514799323',
-               url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
-               site: '18025864853307811361',
-               'view-params':{"docId":"recommendedPages"}
-             },
-              skin);
+
+			}
+			if (this.href != 'http://lamula.pe/mulapress/#')
+			{
+		   	      $.get(this.href, function(data){
+		  	     	  $('div#featured').html(data);
+		   	     	  // $('div#featured').innerHtml(data);
+		   	     	});
+			}
+			
+			return false;
+		});
+		
+		$("div#top_news_media img").click(function(){
+			
+			//TODO aca carga el video
+			$youtube_link = $(this).attr("title");
+			
+			if ( $youtube_link != '')
+			{
+						var Color1 = "";
+						var Color2 = "";
+						var FS = "";
+						var Border = "";
+						var Autoplay = "";
+						var Loop = "";
+						var ShowSearch = "";
+						var ShowInfo = "";
+						var HD = "";
+						swfobject.embedSWF(
+							"http://www.youtube.com/v/" + PreviewID + Color1 + Color2 + Autoplay + Loop + Border + "&rel=" + Rel + "&showsearch=" + ShowSearch + "&showinfo=" + ShowInfo + FS + HD,
+							"top_news_media",
+							200,
+							300,
+							"9"
+						);
+			}
+			return false;
+		});
+			       // 
+			       // 			
+			       // 
+			       // var skin = {};
+			       //             skin['BORDER_COLOR'] = 'transparent';
+			       //             skin['ENDCAP_BG_COLOR'] = 'transparent';
+			       //             skin['ENDCAP_TEXT_COLOR'] = '#333333';
+			       //             skin['ENDCAP_LINK_COLOR'] = '#0000cc';
+			       //             skin['ALTERNATE_BG_COLOR'] = 'transparent';
+			       //             skin['CONTENT_BG_COLOR'] = 'transparent';
+			       //             skin['CONTENT_LINK_COLOR'] = '#0000cc';
+			       //             skin['CONTENT_TEXT_COLOR'] = '#333333';
+			       //             skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
+			       //             skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
+			       //             skin['CONTENT_HEADLINE_COLOR'] = '#333333';
+			       //             skin['HEADER_TEXT'] = 'Historias recomendadas';
+			       //             skin['RECOMMENDATIONS_PER_PAGE'] = '5';
+			       //             google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+			       //             google.friendconnect.container.renderOpenSocialGadget(
+			       //              { id: 'div-6886351088514799323',
+			       //                url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
+			       //                site: '18025864853307811361',
+			       //                'view-params':{"docId":"recommendedPages"}
+			       //              },
+			       //               skin);
 	
 });
