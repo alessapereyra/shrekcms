@@ -28,13 +28,35 @@ class Postmeta extends Model {
     	
     }
     
-    function insertar($values, $id)
+    function insertar_customs_locations($values, $id)
     {
     	$tmp['post_id'] = $id;
     	
     	foreach ($values as $key => $value)
     	{
     		$tmp['meta_key'] = $key;
+    		switch ($key)
+    		{
+    			case 'pais':
+    				$query = $this->countries->seleccionar(array('country_id' => $value));
+    				$field = 'country';
+    			break;
+    			case 'departamento':
+    				$query = $this->departments->seleccionar(array('department_id' => $value));
+    				$field = 'department';
+    			break;
+    			case 'provincia':
+    				$query = $this->providences->seleccionar(array('providence_id' => $value));
+    				$field = 'providence';
+    			break;
+    			case 'distrito':
+    				$query = $this->distrits->seleccionar(array('distrit_id' => $value));
+    				$field = 'distrit';
+    			break;
+    		}
+    		$query = $query->result_array();
+    		$query = current($query);
+    		$value = $query[$field];
     		$tmp['meta_value'] = $value;
     		$this->_insertar($tmp);
     	}	

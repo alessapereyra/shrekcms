@@ -58,7 +58,7 @@ class Providences extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('id', 'DESC');
+    	$this->db->order_by('providence_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;
