@@ -17,17 +17,6 @@ jQuery(document).ready(function($) {
      jQuery(this).text(jQuery(this).text() == a ? b : a);
      });
      };
-	
-	  // $('div#menu_bar a').click(function () { 
-	  // 	       
-	  // 	      $.get(this.href, function(data){
-	  // 	     	  //alert("Data Loaded: " + data);
-	  // 	     	  $('div#featured').html(data);
-	  // 	     	  $('div#featured').innerHtml(data);
-	  // 	     	});
-	  // 	       return false;
-	  // 	     });
-
 	 
    $("div.scrollable").scrollable({
 	
@@ -154,227 +143,73 @@ jQuery(document).ready(function($) {
 				$(".tab_content:eq(" + index + ")").fadeIn("fast");
 				return false;
 		});
+		
+		
+			$("a#flag-this").click(function(){
 
-		// $("ul#menu li.f a").click(function(){
-		// 	
-		// 		alert("click");
-		// 		return false;
-		// 	
-		// });
-		
-		$("a.geomula").click(function(){
-		
-				$("li.s").hide("fast");
-				$("li.t").hide("fast");				
-				$("li.f").show("slow");				
+
+				$post_id = $(this).attr('rel');
+
+				$.post('http://lamula.pe/mulapress/ci/index.php/flag/flag_this',{id:$post_id }, function(result){
+
+					$("div#flag_notice").html("<strong>" + result+"</strong>");
+					$("div#flag_notice").show("slow");
+					$("a#flag-this").remove();				
+				}
+
+
+				)
 
 				return false;
+
+
+			});
 		
-		});
 		
 		
-		function hide_menues(tag){
 		
-			$(tag).removeClass("current");
-			parent = $(tag).parent();
-			parent.find("li").hide("fast");
-			parent.siblings().show("fast");
-			alert('asdf');
-		}
-		
-		function show_menues(tag, sec){
-			
-			parent = $(tag).parent();
-			parent.siblings().hide("fast");
-			parent.siblings().find("a").removeClass("current");
-			$(tag).addClass("current");
-			parent.find("li").show("fast");			
-			
-		}
-		
-		$("a#flag-this").click(function(){
-			
-			
-			$post_id = $(this).attr('rel');
-			
-			$.post('http://lamula.pe/mulapress/ci/index.php/flag/flag_this',{id:$post_id }, function(result){
-				
-				$("div#flag_notice").html("<strong>" + result+"</strong>");
-				$("div#flag_notice").show("slow");
-				$("a#flag-this").remove();				
-			}
-			
-			
-			)
-			
+		$("ul#geomula li").hide();
+		$("ul#geomula li.top").show();
+
+		$("a.geomula").click(function(){
+			$("ul#geomula li").hide();
+			$("ul#geomula li.top").show();
+			$("ul#geomula a").removeClass("current");
 			return false;
-			
-			
 		});
 		
-		$("ul#menu a").click(function(){
-			
-			if ($(this).find(".current").length){
-				
-					hide_menues(this);				
-				
-			if (sec == 'true')
-			{
-				//alert('here');
-				$("li.t").show("fast");
-			}
-			else
-			{
-				//alert('not here');
-				parent.find("li").show("fast");
-			}
-			
-			
-			//alert( 'asdf' + this.hasClass('s').toString() );
-			
-		}
 		
-		$("ul#menu a").click(function(){
-			
-			//hide_menues(this);
-			//alert($(this).hasClass('s').toString());
-			show_menues(this, $(this).hasClass('s').toString());
-
-			return false;
-				
-		});
-
-
-		// $("li.f a.f").click(function(){
+		
+		// $("ul#geomula a").click(function(){
+		// 
 		// 		
+		// 
+		// 		if ($(this).hasClass("last") != true)
+		// 		{
+		// 			//quita el current a todos
+		// 			$("ul#geomula a").removeClass("current");
+		// 			//Esconder a los hermanos
+		// 			$(this).parent().siblings().hide("fast");
+		// 			//Esconde a los hijos
+		// 			$(this).parent().find('li').hide("fast");
+		// 
+		// 			//Muestra a los hijos
+		// 			$(this).next().children().show("fast");
+		// 
+		// 			//agrega el current al actual
+		// 			$(this).addClass('current');
+		// 		}
 		// 		
-		// 					father = $(this).parent();
-		// 	
-		// 					//Hides all the siblings
-		// 					father.siblings().toggle("fast");
-		// 					father.siblings().find("a").removeClass("current");
-		// 					$(this).toggleClass("current");
-		// 		
-		// 					//Shows all the childs "li"
-		// 					childs = father.find("li.s");
-		// 					childs.toggle("fast");
-		// 	
-		// 				// load stuff 
-		// 				// 		$(".top_news_item").hide("slow");
-		// 				// 					$("#featured.top_news_featured h3").hide("fast");		
-		// 				// 					
-		// 				// 					$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
-		// 				// 					
-		// 				// 						location.hash = "#" + $(this).text();
-		// 				// //					$("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
-		// 				// 
-		// 				// 					$("#featured.top_news_featured h3").show("fast");		
-		// 				// 					$("#featured.top_news_featured .top_news_featured_content").show("fast");		
-		// 				// 
-		// 				// 					$(".top_news_item").show("slow");						
+		// 			if ($(this).attr("href") != "#"){ 
 		// 				
-		// 					//Setups get back content
-		// 					//TODO: I hate how this works
-		// 					// $(this).toggleText($(this)[0].textContent,BACK);
-		// 					// 		
-		// 					// 		if ($(this)[0].textContent != BACK){
-		// 					// 
-		// 					// 			$(this).addClass("current_option");
-		// 					// 							
-		// 					// 		}
-		// 					// 		else {
-		// 					// 		
-		// 					// 			$(this)[0].textContent = childs[0].innerHTML;
-		// 					// 			$(this).removeClass("current_option");				
-		// 					// 		}
-		// 	
-		// 					return false;
-		// 		
+		// 				  $.get(this.href, function(data){
+		//    	     	 // alert("Data Loaded: " + data);
+		//   	     	  $('div#featured').html(data);
+		//    	     	  $('div#featured').innerHtml(data);
+		//    	     	});
+		// 
+		// 				}	  
+		// 		return false;
 		// 	});
-		// 	
-		// 	
-		// 		$("li.s a.s").click(function(){
-		// 	
-		// 			//alert();
-		// 	
-		// 			// 		
-		// 			// 		//Hides all the siblings
-		// 			// 		//Shows all the childs "li"
-		// 			// 		childs = father.find("ul");
-		// 			// //		alert ( childs.children().length );
-		// 			// 		
-		// 			// 			if (childs.children().length > 1 ) { 
-		// 			// 		
-		// 			// 			father.siblings().toggle("fast");
-		// 			// 			father.siblings().removeClass("current");
-		// 			// 			$("li.s a").removeClass("current_option");
-		// 			// 			$(father.siblings()[0]).addClass("current");
-		// 			// 		
-		// 			// 			childs.toggle("fast");
-		// 			// 		
-		// 			// 			//Setups get back content
-		// 			// 			//TODO: I hate how this works
-		// 			// 			
-		// 			// 			// load stuff 
-		// 			// 			$(".top_news_item").hide("slow");
-		// 			// 						$("#featured.top_news_featured h3").hide("fast");		
-		// 			// 					
-		// 			// 						$("#featured.top_news_featured .top_news_featured_content").hide("fast");		
-		// 			// 					
-		// 			// 						location.hash = "#" + $(this).text();
-		// 			// 					// $("#featured.top_news_featured h3 a").text("Noticias desde " + $(this).text());		
-		// 			// 					
-		// 			// 						$("#featured.top_news_featured h3").show("fast");		
-		// 			// 						$("#featured.top_news_featured .top_news_featured_content").show("fast");		
-		// 			// 					
-		// 			// 						$(".top_news_item").show("slow");						
-		// 			// 
-		// 			// //				$(this)[0].textContent = BACK_STATES;
-		// 			// 			if (from_outside)
-		// 			// 			{
-		// 			// 					from_outside = false;
-		// 			// 					$(this).addClass("current_option");							
-		// 			// 			}
-		// 			// 			else 
-		// 			// 				{
-		// 			// 					from_outside = true;
-		// 			// 				}
-		// 			// 		
-		// 			// 		
-		// 			// 		}
-		// 	
-		// 				return false;
-		// 	
-		// 		});
-		// 		
-		// 		$("ul#menu li.t a.t").click(function(){
-		// 			
-		// 				return false;
-		// 			
-		// 		});
-		// 	// 	
-		// 	// 			       // 
-		// 		       // var skin = {};
-		// 		       //                skin['BORDER_COLOR'] = 'transparent';
-		// 		       //                skin['ENDCAP_BG_COLOR'] = 'transparent';
-		// 		       //                skin['ENDCAP_TEXT_COLOR'] = '#333333';
-		// 		       //                skin['ENDCAP_LINK_COLOR'] = '#0000cc';
-		// 		       //                skin['ALTERNATE_BG_COLOR'] = 'transparent';
-		// 		       //                skin['CONTENT_BG_COLOR'] = 'transparent';
-		// 		       //                skin['CONTENT_LINK_COLOR'] = '#0000cc';
-		// 		       //                skin['CONTENT_TEXT_COLOR'] = '#333333';
-		// 		       //                skin['CONTENT_SECONDARY_LINK_COLOR'] = '#7777cc';
-		// 		       //                skin['CONTENT_SECONDARY_TEXT_COLOR'] = '#666666';
-		// 		       //                skin['CONTENT_HEADLINE_COLOR'] = '#333333';
-		// 		       //                skin['HEADER_TEXT'] = 'Historias recomendadas';
-		// 		       //                skin['RECOMMENDATIONS_PER_PAGE'] = '5';
-		// 		       //                google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
-		// 		       //                google.friendconnect.container.renderOpenSocialGadget(
-		// 		       //                 { id: 'div-6886351088514799323',
-		// 		       //                   url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
-		// 		       //                   site: '18025864853307811361',
-		// 		       //                   'view-params':{"docId":"recommendedPages"}
-		// 		       //                 },
-		// 		       //                  skin);
 			
 });

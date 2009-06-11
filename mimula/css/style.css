@@ -261,29 +261,13 @@ div#content.dashboard {
   -moz-border-radius-topleft: 10px;
   -moz-border-radius-topright: 10px;  
 }
-
-div#content table {
-	padding: 20px;
-	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-}
-
-div#content table th {
-	background-color: #dbd9df;
-	text-align: center;
-	padding: 5px 2px;
-} 
-
-div#content table td {
-	padding: 2px 5px;
-	text-align: center;
-}
  
 ul#menu > li a:hover {
   background: #f6ec00 0 -34px;
 }
  
 ul#menu > li.selected a {
-  background: #a9aca4 repeat-x 0 -15px;
+  background: #347996 repeat-x 0 -15px;
 	color: white;
 }
  
@@ -625,6 +609,7 @@ fieldset#localizar div.ui-tabs-panel select,
 #upload-content div.ui-tabs-panel select {
   width: 100%;
   margin-bottom: 1em;
+  padding: 0px;
 }
  
  
@@ -642,7 +627,8 @@ fieldset#localizar div.ui-tabs-panel select,
  
 #localizar .ui-state-default:hover, #localizar .ui-widget-content .ui-state-default:hover,
 #upload-content .ui-state-default:hover, #upload-content .ui-widget-content .ui-state-default:hover {
-  background: url(images/background-lightblue.png) 0 bottom;
+  background: #acc6d0 0 bottom;
+  color: white;
 }
  
 #localizar .ui-state-active, .ui-widget-content .ui-state-active,
@@ -695,8 +681,10 @@ fieldset#localizar div.ui-tabs-panel select,
  
 div#upload-content #subir p,
 div#upload-content #enlazar label {
-  font-size: 0.9em;  
-  
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	margin-top: 1em;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
  
 div#upload-content #enlazar input {
@@ -750,13 +738,15 @@ div#end_form {
  
  
 #end_form input.boton {
-  font-size: 1.0em;
   border: none;
-  background-color: #3a4324;
-  padding: 10px 20px;
-  font-style: italic;
+  background-color: #347996;
+  padding: 5px 20px;
   color: white;
   cursor: pointer;
+	font: italic 1.0em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
+	text-transform: lowercase;
 }
  
 #end_form input.boton:hover {
@@ -1026,3 +1016,27 @@ div.top_news_featured_content.special {
 }
 
 /* @end */
+
+
+/* @group Dashboard */
+
+
+div#content.dashboard table {
+	padding: 20px;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+div#content.dashboard table th {
+	background-color: #dbd9df;
+	text-align: center;
+	padding: 5px 2px;
+} 
+
+div#content.dashboard table td {
+	padding: 2px 5px;
+	text-align: center;
+}
+
+
+/* @end */
+
