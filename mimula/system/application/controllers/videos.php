@@ -150,10 +150,10 @@ class Videos extends DI_Controller {
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
 			$data['tags'] = $this->input->post('tags');
 			
-			/*
-          $this->load->library('zend');				  
-		      $this->zend->load('Zend/Gdata/YouTube');		
-          $this->zend->load('Zend/Gdata/ClientLogin');	
+      
+          $this->load->library('zend');         
+          $this->zend->load('Zend/Gdata/YouTube');    
+          $this->zend->load('Zend/Gdata/ClientLogin');  
 
           $authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
           $httpClient = Zend_Gdata_ClientLogin::getHttpClient(
@@ -167,7 +167,7 @@ class Videos extends DI_Controller {
                                                    $authenticationURL);     
 
 
-      	 $clientId = "ytapi-AlvaroPereyraRab-WebPublishing-afg0bc0f-0";
+         $clientId = "ytapi-AlvaroPereyraRab-WebPublishing-afg0bc0f-0";
 
          $developerKey = "AI39si77SKdfoJ3spb7HZHe_tUVcOKX_TAn7Fne7BU8ux6ixJ6E8ZdNmZ7UeJs7y3ZGOfVyNAzSe4nYJqIX3Lu7RNryf-dOn9A";
          $httpClient->setHeaders('X-GData-Key', "key=${developerKey}");
@@ -175,7 +175,7 @@ class Videos extends DI_Controller {
          $applicationId = "SRD-LaMula-1.0";
 
          $yt = new Zend_Gdata_YouTube($httpClient);
-			*/	  
+          
 		
 
 			

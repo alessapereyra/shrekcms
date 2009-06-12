@@ -45,8 +45,7 @@
       
       <div id="sidebar_recomendados">
         
-        
-      <a href="<?php bloginfo('siteurl'); ?>/?s=bagua">
+      <a href="<?php bloginfo('siteurl'); ?>/tag/bagua">
         <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/banner.gif" class="sidebox_image" id="bagua" alt="Seguimiento #bagua" title="Seguimiento #bagua"/>
       </a>
 

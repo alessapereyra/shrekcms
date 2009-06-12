@@ -26,7 +26,7 @@
                 setup_text(get_the_content(),$img_link,$img);
 
         ?>
-        <div class="top_news_featured_content special">
+        <div class="top_news_featured_content  <?php if ($post->ID==940){ echo "special";} ?>">
 
           <?php if ($img_link != "") { ?>  
           
@@ -47,14 +47,15 @@
             <!-- noticia a una columna -->
             
             <div class="top_news_featured_text">
-       
-              Gracias a <a href="http://www.alternativaprensa.blogspot.com/" target="_blank">Prensa Alternativa</a>
-       
-              <object id="utv_o_511689" height="326" width="400" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="http://www.ustream.tv/flash/live/511689" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="transparent" name="wmode" /><param value="viewcount=true&amp;autoplay=false" name="flashvars" /><embed name="utv_e_511689" id="utv_e_511689" flashvars="viewcount=true&amp;autoplay=false" height="326" width="400" allowfullscreen="true" allowscriptaccess="always" wmode="transparent" src="http://www.ustream.tv/flash/live/511689" type="application/x-shockwave-flash" /></object>                                      
-       
+
+                
+                <?php if ($post->ID == 940 ){ ?>
+                  <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/8HdqyvGeXjo&hl=es&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/8HdqyvGeXjo&hl=es&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+                  <?php } else { ?>
+              <?php the_excerpt(235); ?>	                                       
+                            <?php } ?>
             </div>   
-            
-            
+
           <?php  }?>
 
           </div>

@@ -39,8 +39,6 @@ tinyMCE.init({
   remove_script_host : true
 });
 
-
-
 </script>
 
 <?php
