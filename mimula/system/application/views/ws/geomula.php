@@ -29,18 +29,29 @@ function comments_number($zero,$one,$more,$comments)
 	}
 }
 
-$consulta = $consulta->result_array();
-if (count($consulta) != 0){
-$post = current($consulta);
-
 ?>
+  <div id="top_news">
 
+    <div id="top_news_content">          	          	      
+
+<?php 
+$tot = $consulta->num_rows();
+$consulta = $consulta->result_array();
+
+$ids = array('featured', 'most_voted', 'most_viewed', 'blog_special', 'blog_random');
+reset($ids);
+$id = current($ids);
+include('system/application/libraries/Simplehtml.php');
+$max = 5;
+
+foreach($consulta as $post):
+?>
+		<div id="<?php echo $id; ?>" class="top_news_featured">
           <h3><a href="<?php echo $post['guid']; ?>"><?php echo $post['post_title']; ?></a></h3>
           <p>
 
               <?php 
                     $content = $post['post_content'];
-                    include('system/application/libraries/Simplehtml.php');
                     
                     $html = str_get_html($content . ' ');
                     $img_link = @$html->find('img',0)->src;
@@ -68,11 +79,11 @@ $post = current($consulta);
                     </div>   
                 <?php   }?>
 
-              </div>
+              </div> <!-- //top_news_featured_content -->
                               
-              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date'] ?></em> en noticia destacada</span>
+              <span class="author"><?php echo $id[0]; ?> enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date'] ?></em> en noticia destacada</span>
 
-          </p>
+          </p><!-- //p -->
 
           <div class="top_news_featured_footer">
 
@@ -81,28 +92,48 @@ $post = current($consulta);
             <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
             
           </div>
-          <?php }
-          else
-          { ?>
-            <h3></h3>
-             <p>
+      </div> <!-- top_news_featured -->
+      <?php $id = next($ids);?>
+<?php endforeach; ?>
 
-   
-                 <div class="top_news_featured_content">
+<?php  for ($x=$tot; $x<$max; $x++) {?>
+	<div id="<?php echo $id; ?>" class="top_news_featured">
+		nada <?php echo $id; ?>
+	</div>
+	<?php $id = next($ids);?>
+<?php }?>
 
-                       <div class="top_news_featured_text nothing_found">
-                         No tenemos aún noticias geolocalizadas en <?php echo $final ?>. 
-                         <a href="http://lamula.pe/mulapress/ci">Env&iacute;anos</a> las tuyas
-                         <div style="display:none;">
-                       </div>   
-   
-                 </div>
+<div id="top_news_list">
+<?php $first = TRUE;
+reset($ids);
+$id = current($ids);?>
 
-                 <span class="author"></span>
+<?php foreach($consulta as $post): ?>
+  <div class="top_news_item <?php if ($first != FALSE) { echo 'portada-active'; } ?>">
+    <h3><a href="#<?php echo $id; ?>" class="news_item_title"><?php echo $post['post_title']; ?></a></h3>
+    <h4>publicado el <?php echo $post['post_date'] ?> por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a></h4>					
+  </div>
+  <?php $first = FALSE;?>
+  <?php $id = next($ids);?>
+<?php endforeach; ?>
 
-             </p>
+<?php  for ($x=$tot; $x<$max; $x++) {?>
+  <div class="top_news_item <?php if ($first != FALSE) { echo 'portada-active'; } ?>">
+    <h3>Nada</h3>
+    <h4>de nada</h4>					
+  </div>
+  <?php $first = FALSE;?>
+   <?php $id = next($ids);?>
+<?php }?>
 
-             <div class="top_news_featured_footer">
+</div> <!-- top_news_text -->
 
-             </div>
-<?php	} ?>
+</div> <!-- top_news_content -->
+
+
+<div id="top_news_footer">
+
+
+</div> <!-- top_news_footer -->  
+
+</div> <!-- top_news_wrapper -->		

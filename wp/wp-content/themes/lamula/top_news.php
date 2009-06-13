@@ -6,8 +6,8 @@
       <div id="featured" class="top_news_featured">
 
         <?php  
-           // $first_query = new WP_Query('showposts=1&category_name=featured');
-           $first_query = new WP_Query('showposts=1&category_name=featured');
+           $first_query = new WP_Query('showposts=1&p=341');
+           //$first_query = new WP_Query('showposts=1&category_name=featured');
            while ($first_query->have_posts()) : $first_query->the_post();
            
            $do_not_duplicate = $post->ID; 

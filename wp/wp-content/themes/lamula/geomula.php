@@ -1,4 +1,4 @@
-<?php $ci_url= "/shrekcms/ci/index.php/"; ?>
+<?php $ci_url= "/shrekcms/mimula/index.php/"; ?>
 	<div id="menu_bar">
 
 		<p id="tagline">

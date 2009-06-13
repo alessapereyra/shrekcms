@@ -3,6 +3,8 @@ jQuery.noConflict();
 
 jQuery(document).ready(function($) {
 	
+	var geomula_html = '';
+	
 	 BACK = "todas";
 	 BACK_STATES = "regresar";
    from_outside = true;
@@ -164,23 +166,27 @@ jQuery(document).ready(function($) {
 			$("ul#geomula li.top").show();
 			$("ul#geomula a").removeClass("current");
 			$("ul#geomula a").removeClass("current_father");
-			$("ul#geomula a").removeClass("current_grandfather");						
+			$("ul#geomula a").removeClass("current_grandfather");
+ 	    	  if (geomula_html != '')
+   	    	  {
+ 	    		 $('div#top_news').html(geomula_html);
+   	    	  }				
 			return false;
 		});
 		
 		$("ul#geomula a").click(function(){
 
-
 			$("a.geomula").addClass("current");
 			//quita el current a todos
 			$("ul#geomula a").removeClass("current");
 			$("ul#geomula a").removeClass("current_father");
-			$("ul#geomula a").removeClass("current_grandfather");						
+			$("ul#geomula a").removeClass("current_grandfather");
 			//agrega el current al actual
 			$(this).addClass('current');
 			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
 			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
 
+			//return false;
 			window.location.hash = $(this).attr("rel");
 
 			if ($(this).hasClass("last") != true)
@@ -192,14 +198,19 @@ jQuery(document).ready(function($) {
 	
 				//Muestra a los hijos
 				$(this).next().children().show("fast");
-
-
 			}
-			if (this.href != 'http://lamula.pe/mulapress/#')
+			
+			if (this.href != 'http://localhost/shrekcms/wp/#')
 			{
+				//alert(this.href);
 		   	      $.get(this.href, function(data){
-		  	     	  $('div#featured').html(data);
-		   	     	  // $('div#featured').innerHtml(data);
+		   	    	  if (geomula_html == '')
+		   	    	  {
+		   	    		geomula_html = $('div#top_news').html();
+		   	    	  }
+		  	     	  $('div#top_news').html(data);
+		   	     	  //$('div#featured').innerHtml(data);
+		  	     	  //alert(geomula_html);
 		   	     	});
 			}
 			

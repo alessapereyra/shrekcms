@@ -24,7 +24,7 @@ define('DB_USER', 'root');
 /** MySQL database password */
 
 // Para Dientuki
- define('DB_PASSWORD', 'root');
+ define('DB_PASSWORD', '');
 //define('DB_PASSWORD', 'JuhO&87$');
 
 /** MySQL hostname */

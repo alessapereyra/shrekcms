@@ -54,7 +54,7 @@ class Ws extends Controller {
 		$this->load->model('post');
 		
 		$limit['from'] = 0;
-		$limit['show'] = 1;
+		$limit['show'] = 5;
 		
 		$data['consulta'] = $this->post->get_geomula($where, $limit);
 		$data['final'] = $final;

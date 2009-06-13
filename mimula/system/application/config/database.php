@@ -41,7 +41,7 @@ $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
 
 // Para Dientuki
-$db['default']['password'] = "root";
+$db['default']['password'] = "";
 //$db['default']['password'] = "root";
 $db['default']['database'] = "lamula";
 $db['default']['dbdriver'] = "mysql";
