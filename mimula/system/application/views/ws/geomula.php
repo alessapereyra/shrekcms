@@ -30,7 +30,6 @@ function comments_number($zero,$one,$more,$comments)
 }
 
 ?>
-  <div id="top_news">
 
     <div id="top_news_content">          	          	      
 
@@ -134,6 +133,4 @@ $id = current($ids);?>
 <div id="top_news_footer">
 
 
-</div> <!-- top_news_footer -->  
-
-</div> <!-- top_news_wrapper -->		
+</div> <!-- top_news_footer -->  		
