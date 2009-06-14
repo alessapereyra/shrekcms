@@ -120,7 +120,7 @@ jQuery(document).ready(function($) {
 			return false;			
 		}
 		*/
-		$("div.top_news_item h3 a").live("click",alert('asssssf'));
+		//$("div.top_news_item h3 a").live("click",alert('asssssf'));
 		
 		$("ul#articulos_menu li a").click(function(){
 			
@@ -193,7 +193,7 @@ jQuery(document).ready(function($) {
 		});
 		
 		$("ul#geomula a").click(function(){
-
+			
 			$("a.geomula").addClass("current");
 			//quita el current a todos
 			$("ul#geomula a").removeClass("current");
@@ -204,9 +204,11 @@ jQuery(document).ready(function($) {
 			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
 			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
 
-			//return false;
-			window.location.hash = $(this).attr("rel");
-
+			if ($(this).attr("rel") != '')
+			{
+				location.hash = $(this).attr("rel");
+			}
+			
 			if ($(this).hasClass("last") != true)
 			{
 				//Esconder a los hermanos
@@ -220,7 +222,6 @@ jQuery(document).ready(function($) {
 			
 			if (this.href != 'http://localhost/shrekcms/wp/#')
 			{
-				//alert(this.href);
 		   	      $.get(this.href, function(data){
 		   	    	  if (geomula_html == '')
 		   	    	  {
