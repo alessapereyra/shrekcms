@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
 				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn("fast");
 				return false;
 		});
-		
+		/*
 		$("div.top_news_item h3 a").click(function(){
 			
 			$(this).parent().parent().siblings().removeClass("portada-active");
@@ -103,6 +103,24 @@ jQuery(document).ready(function($) {
 				
 			return false;
 		});
+		*/
+		/*
+		function show_featured()
+		{
+			alert('asdf');
+			$("div.top_news_item h3 a").parent().parent().siblings().removeClass("portada-active");
+			$("div.top_news_item h3 a").parent().parent().addClass("portada-active");
+			
+			var index = $("div.top_news_item h3 a").index("div.top_news_item h3 a");
+			
+			$(".top_news_featured").hide();
+			
+			$(".top_news_featured:eq(" + index + ")").show();					
+				
+			return false;			
+		}
+		*/
+		$("div.top_news_item h3 a").live("click",alert('asssssf'));
 		
 		$("ul#articulos_menu li a").click(function(){
 			

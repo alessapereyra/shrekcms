@@ -21,7 +21,35 @@ class Usermeta extends Model {
     		$this->_insertar($tmp);
     	}
     }
-    
+
+    function seleccionar($search = NULL, $limit = NULL)
+    {
+    	$this->load->database();
+    	
+    	$fields = $this->db->list_fields($this->tabla);
+
+		foreach ($fields as $field)
+		{
+		   $this->db->select($field);
+		}
+
+    	$this->db->from($this->tabla);
+    	
+    	if ($search != NULL)
+    	{
+    		$this->db->where($search);
+    	}
+
+        if ($limit != NULL)
+    	{
+    		$this->db->limit($limit['show'], $limit['from']);
+    	}
+    	
+        $query = $this->db->get();
+        //die($this->db->last_query());
+        return $query;
+    }
+        
     function select_all($id)
     {
     	$this->db->select('meta_key');

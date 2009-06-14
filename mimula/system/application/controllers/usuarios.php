@@ -33,6 +33,7 @@ class Usuarios extends Controller {
 		$data['url'] = NULL;
 		$data['usuario'] = NULL;	
 		$data['email'] = NULL;
+		$data['reglas'] = NULL;
 		$data['current_controller'] = $this->uri->segment(1);		
 		
 		if ($id != NULL)
@@ -291,7 +292,8 @@ class Usuarios extends Controller {
 			//$data['url'] = set_value('url');
 			$data['usuario'] = set_value('usuario');		
 			$data['email'] = set_value('email');
-  		$data['current_controller'] = $this->uri->segment(1);		
+			$data['dni'] = set_value('dni');
+  			$data['current_controller'] = $this->uri->segment(1);		
 
 			$tmp = $this->config->item('post_content');
 			
@@ -390,8 +392,9 @@ class Usuarios extends Controller {
 
 		//$reglas[] = array('field'   => 'url', 'label'   => 'lang:field_url', 'rules'   => 'trim|required|min_length[4]|max_length[40]');
 		$reglas[] = array('field'   => 'email', 'label'   => 'lang:field_email', 'rules'   => 'trim|required|min_length[5]|valid_email');
-		$reglas[] = array('field'   => 'dni', 'label'   => 'lang:field_dni', 'rules'   => 'trim|required|min_length[8]');
+		$reglas[] = array('field'   => 'dni', 'label'   => 'lang:field_dni', 'rules'   => 'trim|required|min_length[8]|callback_dni_exist');
 		$reglas[] = array('field'   => 'telefono', 'label'   => 'lang:field_telefono', 'rules'   => 'trim|required|min_length[6]');
+		$reglas[] = array('field'   => 'reglas', 'label'   => 'lang:field_reglas', 'rules'   => 'required');
 
 
 		if ($this->input->post('id') == NULL) {
@@ -429,6 +432,23 @@ class Usuarios extends Controller {
 		$this->load->model('users');
 				
 		$consulta = $this->users->seleccionar(array('user_login' => $value));
+		
+		if ($consulta->num_rows() > 0)		
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}			
+	}
+
+	function dni_exist($value)
+	{
+		$this->load->model('usermeta');
+		$where = array('meta_key' => 'dni', 'meta_value' => $value);
+				
+		$consulta = $this->usermeta->seleccionar($where);
 		
 		if ($consulta->num_rows() > 0)		
 		{

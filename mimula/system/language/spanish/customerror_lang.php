@@ -9,6 +9,7 @@ $lang['error_borrar_usuario'] = "No puede borrar su usuario";
 $lang['password_check'] = 'Revise los datos.';
 $lang['usuario_check'] = 'El %s no existe.';
 $lang['usuario_exist'] = 'El %s ya existe.';
+$lang['dni_exist'] = 'El %s ya existe.';
 $lang['zona_check'] = 'La %s ya existe.';
 $lang['codigo_check'] = 'El %s ya existe.';
 $lang['operacion_check'] = 'Ingrese por lo menos una operación.';

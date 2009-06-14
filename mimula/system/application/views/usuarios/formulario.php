@@ -47,15 +47,19 @@
     		<?php echo form_error('full_name'); ?>
     		<?php echo form_input(array('name' => 'full_name', 'value' => "",'id' => 'full_name')); ?>
 
-    
   			<?php echo form_label('Tu DNI:', 'dni');?>
 			  <?php echo form_error('dni'); ?>
-			  <?php echo form_input(array('name' => 'dni', 'id' => 'dni')); ?>
+			  <?php echo form_input(array('name' => 'dni', 'id' => 'dni', 'value' => $dni)); ?>
   			<br />
+  			
   			<?php echo form_label('Un  tel&eacute;fono:', 'telefono');?>
   			<?php echo form_error('telefono'); ?>
   			<?php echo form_input(array('name' => 'telefono', 'id' => 'telefono')); ?>
-
+  			<br />
+  			
+  			<?php echo form_label('He leido las reglas ps', 'reglas');?>
+  			<?php echo form_error('reglas'); ?>
+  			<?php echo form_checkbox(array('name' => 'reglas', 'id' => 'reglas', 'value' => 'accept','checked' => FALSE)); ?>
       </div>
 
 			</fieldset>	

@@ -34,6 +34,7 @@
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.scrollable-1.0.2.min.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.swfobject.js" type="text/javascript" charset="utf-8" ></script>
   <script src="<?php bloginfo('template_url'); ?>/js/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8" ></script>
+  <!-- <script src="<?php bloginfo('template_url'); ?>/js/jquery.livequery" type="text/javascript" charset="utf-8" ></script> --> 
   
   <!--[if !IE]><!-->
 
