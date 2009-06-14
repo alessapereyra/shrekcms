@@ -341,7 +341,24 @@ class Usuarios extends Controller {
 
 				
 				//aqui se irian agregando mas datos
-				$this->usermeta->insertar($meta, $id);	
+				$this->usermeta->insertar($meta, $id);
+				
+				//envia emails
+				$email_conf['mailtype'] = 'html';
+				
+				$this->load->library('email');
+				$this->email->initialize($config);
+				
+				$email = $this->config->item('send_welcome');
+				
+				$this->email->from($email['from_email'], $email['from_name']);
+				$this->email->to($this->input->post('email'));
+	
+				$this->email->subject($email['subject']);
+				$this->email->message($email['message']);
+				
+				$this->email->send();
+							
 			}
 			else
 			{
