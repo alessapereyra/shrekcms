@@ -191,8 +191,8 @@ jQuery(document).ready(function($) {
 		});
 		
 		
-		$("ul#geomula li").hide();
-		$("ul#geomula li.top").show();
+		$("ul#geomula li").hide("fast");
+		$("ul#geomula li.top").show("fast");
 		$("ul#geomula").show("fast");
 		
 		$("a.geomula").click(function(){

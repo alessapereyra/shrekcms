@@ -2,16 +2,20 @@ jQuery.noConflict();
 
 jQuery(document).ready(function($) {
 	
-	 BACK = "todas";
-	 BACK_STATES = "regresar";
-  from_outside = true;
-	 LAST_STATE = "";
+	var geomula_html = '';
+	
+	BACK = "todas";
+	BACK_STATES = "regresar";
+	from_outside = true;
+	LAST_STATE = "";
 	 
-	   jQuery.fn.toggleText = function(a, b) {
-     return this.each(function() {
-     jQuery(this).text(jQuery(this).text() == a ? b : a);
-     });
-     };	
+	jQuery.fn.toggleText = function(a, b)
+							{
+								return this.each(function()
+								{
+									jQuery(this).text(jQuery(this).text() == a ? b : a);
+								});
+							};	
 	
 	  $('div#menu_bar a').click(function () { 
 	       
@@ -81,7 +85,67 @@ jQuery(document).ready(function($) {
 		
 		$("div.top_news_featured").hide();
 		$("div.top_news_featured:first").show();
-	 
+	
+		$("ul#geomula li").hide();
+		$("ul#geomula li.top").show();
+		$("ul#geomula").show("fast");
+		
+		$("a.geomula").click(function(){
+			$("ul#geomula li").hide();
+			$("ul#geomula li.top").show();
+			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");
+ 	    	  if (geomula_html != '')
+   	    	  {
+ 	    		 $('div#top_news').html(geomula_html);
+   	    	  }				
+			return false;
+		});	
+		
+		$("ul#geomula a").click(function(){
+			
+			$("a.geomula").addClass("current");
+			//quita el current a todos
+			$("ul#geomula a").removeClass("current");
+			$("ul#geomula a").removeClass("current_father");
+			$("ul#geomula a").removeClass("current_grandfather");
+			//agrega el current al actual
+			$(this).addClass('current');
+			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
+			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
+
+			if ($(this).attr("rel") != '')
+			{
+				location.hash = $(this).attr("rel");
+			}
+			
+			if ($(this).hasClass("last") != true)
+			{
+				//Esconder a los hermanos
+				$(this).parent().siblings().hide("fast");
+				//Esconde a los hijos
+				$(this).parent().find('li').hide("fast");
+	
+				//Muestra a los hijos
+				$(this).next().children().show("fast");
+			}
+			
+			if (this.href != 'http://localhost/shrekcms/wp/#')
+			{
+		   	      $.get(this.href, function(data){
+		   	    	  if (geomula_html == '')
+		   	    	  {
+		   	    		geomula_html = $('div#top_news').html();
+		   	    	  }
+		  	     	  $('div#top_news').html(data);
+			  			$("div.top_news_featured").hide();
+			  			$("div.top_news_featured:first").show();
+		   	     	});
+			}
+			
+			return false;
+		});		
 	
 		$("ul#ranking_menu li a").click(function(){
 			
@@ -95,7 +159,7 @@ jQuery(document).ready(function($) {
 			return false;
 	});
 	
-	$("div.top_news_item h3 a").click(function(){
+		$("div.top_news_item h3 a").live("click", function(){
 		
 		$(this).parent().parent().siblings().removeClass("portada-active");
 		$(this).parent().parent().addClass("portada-active");
@@ -162,66 +226,17 @@ jQuery(document).ready(function($) {
 		});
 
 
-				$('#bagua').flash({   
+		$('#bagua').flash({   
 
-					// test.swf is the flash document 
-				 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
-				 width: 200,
- 		     wmode: "transparent"
-				 });
-				
-				
-		$("ul#geomula li").hide();
-		$("ul#geomula li.top").show();
-		$("ul#geomula").css({'display':'block'});
-		
-		$("a.geomula").click(function(){
-			$("ul#geomula li").hide();
-			$("ul#geomula li.top").show();
-			$("ul#geomula a").removeClass("current");
-			$("ul#geomula a").removeClass("current_father");
-			$("ul#geomula a").removeClass("current_grandfather");						
-			return false;
-		});
-		
-		$("ul#geomula a").click(function(){
+			// test.swf is the flash document 
+		 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
+		 width: 200,
+     wmode: "transparent"
+		 });
+					
+				/*
 
-
-			$("a.geomula").addClass("current");
-			//quita el current a todos
-			$("ul#geomula a").removeClass("current");
-			$("ul#geomula a").removeClass("current_father");
-			$("ul#geomula a").removeClass("current_grandfather");						
-			//agrega el current al actual
-			$(this).addClass('current');
-			$(this).parent().parent().parent().find("a:first").addClass('current_father');				
-			$(this).parent().parent().parent().parent().parent().find("a:first").addClass('current_grandfather');			
-
-			window.location.hash = $(this).attr("rel");
-
-			if ($(this).hasClass("last") != true)
-			{
-				//Esconder a los hermanos
-				$(this).parent().siblings().hide("fast");
-				//Esconde a los hijos
-				$(this).parent().find('li').hide("fast");
-	
-				//Muestra a los hijos
-				$(this).next().children().show("fast");
-
-
-			}
-			if (this.href != 'http://lamula.pe/mulapress/#')
-			{
-		   	      $.get(this.href, function(data){
-		  	     	  $('div#featured').html(data);
-		   	     	  // $('div#featured').innerHtml(data);
-		   	     	});
-			}
-			
-			return false;
-		});
-		
+		*/
 		$("div#top_news_media img").click(function(){
 			
 			//TODO aca carga el video
