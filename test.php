@@ -7,26 +7,11 @@
 	
 	<body>
 
-<?php //include('simple_html_dom.php');
+<?php 
 
-$youtube = false;
+$texto = 'asdf-áasdasd234f';
 
-$html = '<html><body>Hello!</body></html>';
-
-$find = '[y';
-$prim = strpos($html, $find);
-
-$find = 'e]';
-$ult = strrpos($html, $find) + 1;
-
-$cant = $ult-$prim + 1;
-
-$youtube =  substr($html, $prim, $cant);
-
-
-echo $youtbe . 'a';
-
-//echo $prim . ' ' . $ult;
+echo preg_replace('/[^a-zA-Z-]/', '', trim($texto));
 
 ?>
 

@@ -141,9 +141,10 @@ if ( ! function_exists('camelize'))
  */	
 if ( ! function_exists('sanitize2url'))
 {
-	function sanitize2url($str, $extras = NULL)
+	function sanitize2url($str)
 	{
-		$pattern = array('/ñ/','/á/', '/é/', '/í/', '/ó/', '/ú/');
+		//$pattern = array('/ñ/','/á/', '/é/', '/í/', '/ó/', '/ú/');
+		/*
 		if ($extras != NULL)
 		{
 			foreach($extras as $extra)
@@ -151,7 +152,9 @@ if ( ! function_exists('sanitize2url'))
 				$pattern[] = '/' . $extra . '/';
 			}
 		}
-		$str = preg_replace($pattern, '', strtolower(trim($str)));
+		*/
+		$pattern = '/[^0-9a-zA-Z-]/';
+		$str = preg_replace($pattern, '', strtolower(trim(score($str))));
 		return score($str);
 	}
 }
