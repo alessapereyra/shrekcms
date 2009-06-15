@@ -1,8 +1,6 @@
 <?php
 class Videos extends DI_Controller {
 
-	
-	
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -73,6 +71,7 @@ class Videos extends DI_Controller {
 			$data['texto'] = set_value('texto');
 			$data['tags'] = set_value('tags');
 			$data['files'] = set_value('files');
+			$data['doclink'] = set_value('doclink');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 			
 			$data['categorias'] = $this->combofiller->categorias();
@@ -144,7 +143,8 @@ class Videos extends DI_Controller {
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
-	    $this->load->model('options');
+	    	$this->load->model('options');
+	    	
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
