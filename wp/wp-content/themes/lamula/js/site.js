@@ -23,12 +23,13 @@ jQuery(document).ready(function($) {
 		     wmode: "transparent"
 			 });
 	
-
-	   jQuery.fn.toggleText = function(a, b) {
-     return this.each(function() {
-     jQuery(this).text(jQuery(this).text() == a ? b : a);
-     });
-     };
+			jQuery.fn.toggleText = function(a, b)
+			{
+				return this.each(function()
+				{
+					jQuery(this).text(jQuery(this).text() == a ? b : a);
+				});
+			};	
 	 
    $("div.scrollable").scrollable({
 	
@@ -191,8 +192,8 @@ jQuery(document).ready(function($) {
 		});
 		
 		
-		$("ul#geomula li").hide("fast");
-		$("ul#geomula li.top").show("fast");
+		$("ul#geomula li").hide();
+		$("ul#geomula li.top").show();
 		$("ul#geomula").show("fast");
 		
 		$("a.geomula").click(function(){
