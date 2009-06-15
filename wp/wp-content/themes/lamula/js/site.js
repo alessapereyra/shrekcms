@@ -39,6 +39,7 @@ jQuery(document).ready(function($) {
 	
 		//TODO agregarle los nombres de los enlazados.. ahora mismo :D
 		 //fancybox
+   /*
 		 $('div.post_content a[rel="uploaded_photo"]').fancybox({
 			 'zoomOpacity' : true,
 			 'overlayShow' : true,
@@ -71,7 +72,7 @@ jQuery(document).ready(function($) {
 			 'zoomSpeedOut' : 500			 
 			 
 		 });
-
+		*/
 		$("div.top_news_featured:not(:first)").hide();
 		$("div.class_content:not(:first)").hide();
 		$("div.tab_content:not(:first)").hide();

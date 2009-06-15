@@ -174,20 +174,12 @@ class Videos extends DI_Controller {
 
          $applicationId = "SRD-LaMula-1.0";
 
-         $yt = new Zend_Gdata_YouTube($httpClient);
-          
-		
-
-			
+         $yt = new Zend_Gdata_YouTube($httpClient);		
 	
 			switch ($this->input->post('upload-content'))
 			{
-			  
-			          
-			
 				//subir documentos
-				case 'subir':
-				
+				case 'subir':			
 				
 					if ( ($this->_is_ie6() == TRUE) OR ($ie != null) )
 					{

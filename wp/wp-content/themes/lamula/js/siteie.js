@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 			});
 		 
 		 //fancybox
-		 //fancybox
+	   	/*
 		 $('div.post_content a[rel="uploaded_photo"]').fancybox({
 			 'zoomOpacity' : true,
 			 'overlayShow' : true,
@@ -68,7 +68,7 @@ jQuery(document).ready(function($) {
 			 'zoomSpeedOut' : 500			 
 			 
 		 });
-	
+		*/
 		$("div.class_content").hide();
 		$("div.class_content:first").show();
 		
