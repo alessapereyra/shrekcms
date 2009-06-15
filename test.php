@@ -10,8 +10,9 @@
 <?php 
 
 $texto = 'asdf-áasdasd234f';
+$pattern = '/[^0-9a-zA-Z-]/';
 
-echo preg_replace('/[^a-zA-Z-]/', '', trim($texto));
+echo preg_replace($pattern, '', trim($texto));
 
 ?>
 

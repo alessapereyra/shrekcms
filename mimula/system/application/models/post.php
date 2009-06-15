@@ -233,6 +233,7 @@ class Post extends Model {
     	
     	$this->db->insert($this->tabla, $values);
     	
+    	/*
     	$this->db->select($this->tabla . '.ID');
     	$this->db->from($this->tabla);
     	
@@ -243,6 +244,8 @@ class Post extends Model {
     	$query = $query->row(); 
     	
     	return $query->ID;
+    	*/
+    	return $this->db->insert_id();
     }
     
     function actualizar_count($values,$where){

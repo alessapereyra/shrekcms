@@ -62,6 +62,18 @@ class Postmeta extends Model {
     	}	
     }
     
+    function insertar($values, $id)
+    {
+    	$tmp['post_id'] = $id;
+    	
+    	foreach ($values as $key => $value)
+    	{
+    		$tmp['meta_key'] = $key;
+    		$tmp['meta_value'] = $value;
+    		$this->_insertar($tmp);
+    	}
+    }
+    
     function _insertar($values)
     {
     	$this->db->insert($this->tabla, $values);

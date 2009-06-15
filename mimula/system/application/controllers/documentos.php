@@ -399,7 +399,9 @@ class Documentos extends DI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
+			print_r($error);
 			return NULL;	
+			
 		}	
 		else
 		{			
@@ -417,10 +419,11 @@ class Documentos extends DI_Controller {
 			$values['guid'] = $values['guid'] . $doc['file_name'];
 			
 			$the_doc = $this->post->insert_attach($values);
+			//hasta aca viene bien
 			
 			$meta['_wp_attached_file'] = date('Y/m/') . $doc['file_name'];
 			$meta['_wp_attachment_metadata'] = 'a:0{}';
-						
+			
 			$this->postmeta->insertar($meta, $the_doc);
 			
 			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))

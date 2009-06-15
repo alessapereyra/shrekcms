@@ -108,6 +108,7 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
+			//debug: false,
 			debug: false,
 	
 			// Button settings
