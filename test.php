@@ -1,5 +1,4 @@
 <?php
-$a[] = 'null';
+$a = '<img src="a" /> texto';
 
-die('asdf' . is_null($a[0]));
 ?>
