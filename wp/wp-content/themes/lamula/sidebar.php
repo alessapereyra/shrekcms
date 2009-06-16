@@ -1,182 +1,178 @@
+<?php //include 'C:\xampp\htdocs\shrekcms\mimula\system\cidip\cidip_index.php';   ?>
+<?php //include '/var/www/shrekcms/mimula/system/cidip/cidip_index.php';  ?>
+
+<?php
+
+ // $ci =& get_instance();
+
+?>
+
   <div id="sidebars">
     
-      <div id="important">
-        
-          <p>
+        <div id="important">
           
-            <a href="http://lamula.pe/mulapress/ci" class="send_news">
-              
-                publica en lamula.pe
-                <em>  
-                        envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
-                </em>
-            </a>
+            <p>
             
-          </p>
+              <a href="http://lamula.pe/mulapress/ci" class="send_news">
+                
+                  publica en lamula.pe
+                  <em>  
+                          envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
+                  </em>
+                  <em>
+                          ya tenemos 78 noticias enviadas, &iquest;qu&eacute; est&aacute;s esperando?
+                  </em>
+                  
+              </a>
+              
+            </p>
+          
+        </div>
         
-      </div>
-      
 
       <div id="sidebar_central">
-        
+
           <h4>Muleros</h4>
           
           <ul class="bloggers_list">
 
-            <li>
-
-              <div class="sidebar_foto">
-                  <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>     
-              <div class="sidebar_txt">
-                  <h6><a href="http://lavozatidebida.lamula.pe">La Voz a ti Debida</a></h6>
-                  <strong>Pedro Salinas</strong>
-                  <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>     
-            <div class="sidebar_txt">
-                <h6><a href="http://2mil32.lamula.pe">2mil32</a></h6>
-                <strong>Juan Infante</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-            
-            <li>
-              
-            <div class="sidebar_foto">
-                <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-            <div class="sidebar_txt">
-                <h6><a href="http://zonacero.lamula.pe">Zona Cero</a></h6>
-                <strong>C&eacute;sar Gutierrez</strong>                      
-                <p></p>
-            </div>
-
-            </li>
-
-            <li>
-
-            <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-            </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://datitinger.lamula.pe">Datitinger</a></h6>
-                 <strong>Daniel Titinger</strong>
-                 <p></p>
-             </div>
-
-            </li>
-            
-             <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-               </div>
-             <div class="sidebar_txt">
-                 <h6><a href="http://elarriero.lamula.pe">El Arriero</a></h6>
-                 <strong>Javier Torres</strong>                      
-                 <p></p>
-              </div>
-
-            </li>
-
-            <li>
-
-             <div class="sidebar_foto">
-                 <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-             </div>
-             <div class="sidebar_txt">
-                 <h6><a href=" http://carlostapia.lamula.pe ">Carlos Tapia</a></h6>
-                 <strong>Carlos Tapia</strong>                      
-                 <p></p>
-             </div>
-
-            </li>
+            <?php show_sidebar_bloggers(); ?>
               
           </ul>                
+        
         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
         
+      <a href="<?php bloginfo('siteurl'); ?>/tag/bagua">
+        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/banner.gif" class="sidebox_image" id="bagua" alt="Seguimiento #bagua" title="Seguimiento #bagua"/>
+      </a>
 
-        <div id="corresponsales" class="sidebox">
-   
-               <h4>Corresponsales más</h4>
-               
-               <div class="tab_content">
-                	vistos
-                  <!-- vistos -->
-                
-               </div>
-
-               <div class="tab_content">
-                votados
-                  <!-- votados -->
-                
-               </div>
+      <a href="http://lamula.lamula.pe/?p=53#respond">
+          <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
+      </a>
 
 
-               <div class="tab_content">
-                comentados
-                <!-- comentados -->
-                
-               </div>
-   
-        </div>
+      <a href="<?php bloginfo('siteurl'); ?>/?s=friaje">
+        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" alt="Campaña Friaje" title="Camapaña Friaje" />
+      </a>
 
-        <ul id="corresponsales" class="sidebox_menu">
-          <li><a href="#vistos">vistos</a></li>
-          <li><a href="#votados">votados</a></li>
-          <li><a href="#comentados" class="selected">comentados</a></li>                
+
+
+         <div id="ranking_usuarios" class="sidebox">
+
+              <h4>r&aacute;nking de usuarios</h4>
+              
+              <div class="sidebox_wrapper">
+              
+                <div class="sidebox_content first">
+
+                    <ul id="mula_wawa">
+                      <?php echo mostrar_ranking("mula wawa",5); ?>
+                    </ul>
+                    <div id="mula_wawa_logo">Mula Wawa</div>
+                </div>
+                    
+                <div class="sidebox_content">
+
+                  <ul id="mula_churre">
+                      <?php echo mostrar_ranking("mula churre",5); ?>
+                  </ul>
+                    <div id="mula_churre_logo">Mula Churre</div>                
+                </div>
+              
+                <div class="sidebox_content">
+
+                  <ul id="mula">
+                      <?php echo mostrar_ranking("mula",5); ?>
+                  </ul>
+                    <div id="mula_logo">Mula</div>
+                </div>                          
+
+              </div>                    
+                        
+            </div>     
+             
+        
+        <ul id="ranking_menu" class="sidebox_menu">
+          <li><a href="#mulakids" class="selected">wawa</a></li>
+          <li><a href="#mulitas">churre</a></li>
+          <li><a href="#mulas">mulas</a></li>                
         </ul>
-   
+        
         <div id="articulos" class="sidebox">
 
           <h4>Art&iacute;culos más</h4>
-          
-          <div class="sidebox_content">
-
-              <ul id="post_most_seen">
-                <?php echo kf_get_posts_by_hits(7,10); ?>
-              </ul>
+         
+          <div class="sidebox_wrapper">
             
-          </div>
+                <div class="sidebox_content first">
+
+                    <ul id="post_most_seen">
+                      <?php echo kf_get_posts_by_hits(7,10); ?>
+                    </ul>
+            
+                </div> <!-- sidebox_content -->
                 
-          <div class="sidebox_content">
-              <!-- VOTADOS -->
-            
-          </div>
+                <div class="sidebox_content">
+                    <!-- VOTADOS -->
+                    <ul id="post_most_voted">
+                      <?php echo mostrar_mas_votados(); ?>
+                    </ul>
+                
+                </div> <!-- sidebox_content -->
           
-          <div class="sidebox_content">
+                <div class="sidebox_content">
 
-            <?php most_popular(1); ?>
+                  <?php most_popular(1); ?>
             
-          </div>                          
+                </div>  <!-- sidebox_content -->
+          
+            </div>  <!-- sidebox_wrapper -->                 
                     
-        </div>     
+        </div>  <!-- sidebox -->
         
-        <ul id="articulos" class="sidebox_menu">
+        <ul id="articulos_menu" class="sidebox_menu">
           <li><a href="#vistos" >vistos</a></li>
           <li><a href="#votados">votados</a></li>
           <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
    
       
-        <div id="videos" class="sidebox">
+        <!-- <div id="videos" class="sidebox">
 
-          <h4>Video destacado</h4>          
+               <div class="sidebox_wrapper">
 
+                 <h4>Video destacado</h4>          
+                 
+               </div> <sidebox_wrapper
+
+             </div> <sidebox 
+              -->
+
+        <div id="comentarios" class="sidebox">
+
+          <div class="sidebox_wrapper">
+            
+            <h4>&Uacute;ltimos Comentarios</h4>          
+            
+            <ul>
+              <?php mostrar_ultimos_comentarios(); ?>
+            </ul>
+            
+          </div> <!-- sidebox_wrapper -->
+  
+        </div> <!-- sidebox -->
+
+
+                            
+        <div class="sidebox cc">
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">
+              <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.5/pe/88x31.png" />
+            </a><br />
+            <span>La Mula</span> by <a href="http://rcp.pe">RCP</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/pe/">Creative Commons Reconocimiento-Compartir bajo la misma licencia 2.5 Per&#250; License</a>.<br />Based on a work at <a href="www.lamula.pe">www.lamula.pe</a>.
         </div>
-
         
       </div> <!-- sidebar_recomendados -->
     

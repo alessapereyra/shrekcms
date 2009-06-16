@@ -9,7 +9,7 @@ get_header(); ?>
   
   <div id="content_feed">    
 
-    <ul id="post_list">
+    <ul class="post_list">
     
     <?php if (have_posts()) : ?>
         
@@ -28,14 +28,40 @@ get_header(); ?>
                     //get_the_time('g:i a')
                     
               ?>
-              <h6 class="metadata">enviado por <?php the_author_posts_link() ?> publicado a las <?php the_time('g:i a'); ?> </h6>
+              <h6 class="metadata">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> publicado a las <?php the_time('g:i a'); ?> </h6>
               
-              <?php echo get_the_content(); ?>
+              <?php the_content(); ?>
               
               <div class="news_footer">
+                <p class="tags"><!-- Include the Google Friend Connect javascript library. -->
+                <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+                <!-- Define the div tag where the gadget will be inserted. -->
+                <div id="div-8568675974817128026" style="width:100%;"></div>
 
-                <p class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></p>
-                <p class="tags">Etiquetas: <?php the_tags(); ?></p>
+                <a id="flag-this" rel="<?php echo $post->ID; ?>" href="#">esto es inadecuado</a>                
+
+                <div id="flag_notice"></div>
+
+                <!-- Render the gadget into a div. -->
+                <script type="text/javascript">
+                var skin = {};
+                skin['HEIGHT'] = '21';
+                skin['BUTTON_STYLE'] = 'compact';
+                skin['BUTTON_TEXT'] = 'Me gusta';
+                skin['BUTTON_ICON'] = 'default';
+                google.friendconnect.container.setParentUrl('/' /* location of rpc_relay.html and canvas.html */);
+                google.friendconnect.container.renderOpenSocialGadget(
+                 { id: 'div-8568675974817128026',
+                   url:'http://www.google.com/friendconnect/gadgets/recommended_pages.xml',
+                   height: 21,
+                   site: '18025864853307811361',
+                   'view-params':{"pageUrl":location.href,"pageTitle":(document.title ? document.title : location.href),"docId":"recommendedPages"}
+                 },
+                  skin);
+                </script>
+                </p>
+                <div class="rate">Califica esta nota: <?php wp_gdsr_render_article(); ?></div>
+                <p class="tags"><?php the_tags(); ?></p>
               </div> <!-- news_footer -->              
 
 
@@ -71,158 +97,6 @@ get_header(); ?>
 	 
   
 
-  <div id="sidebars">
-    
-        <div id="important">
-
-            <p>
-
-              <a href="http://lamula.pe/mulapress/ci" class="send_news">
-
-                  publica en lamula.pe
-                  <em>  
-                          envíanos tus fotos, noticias, denuncias,<br/>historias o lo que quieras
-                  </em>
-              </a>
-
-            </p>
-
-        </div>
-
-
-        <div id="sidebar_central">
-
-            <h4>Muleros</h4>
-
-            <ul class="bloggers_list">
-
-              <li>
-
-                <div class="sidebar_foto">
-                    <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-                </div>     
-                <div class="sidebar_txt">
-                    <h6><a href="http://lavozatidebida.lamula.pe">La Voz a ti Debida</a></h6>
-                    <strong>Pedro Salinas</strong>
-                    <p></p>
-                </div>
-
-              </li>
-
-              <li>
-
-              <div class="sidebar_foto">
-                  <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>     
-              <div class="sidebar_txt">
-                  <h6><a href="http://2mil32.lamula.pe">2mil32</a></h6>
-                  <strong>Juan Infante</strong>                      
-                  <p></p>
-              </div>
-
-              </li>
-
-              <li>
-
-              <div class="sidebar_foto">
-                  <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>
-              <div class="sidebar_txt">
-                  <h6><a href="http://zonacero.lamula.pe">Zona Cero</a></h6>
-                  <strong>C&eacute;sar Gutierrez</strong>                      
-                  <p></p>
-              </div>
-
-              </li>
-
-              <li>
-
-              <div class="sidebar_foto">
-                   <img src="<?php bloginfo('template_url'); ?>/images/mulero1.png" alt="Noticia 1" title="Noticia 1"/>
-              </div>
-               <div class="sidebar_txt">
-                   <h6><a href="http://datitinger.lamula.pe">Datitinger</a></h6>
-                   <strong>Daniel Titinger</strong>
-                   <p></p>
-               </div>
-
-              </li>
-
-               <li>
-
-               <div class="sidebar_foto">
-                   <img src="<?php bloginfo('template_url'); ?>/images/mulero2.png" alt="Noticia 1" title="Noticia 1"/>
-                 </div>
-               <div class="sidebar_txt">
-                   <h6><a href="http://elarriero.lamula.pe">El Arriero</a></h6>
-                   <strong>Javier Torres</strong>                      
-                   <p></p>
-                </div>
-
-              </li>
-
-              <li>
-
-               <div class="sidebar_foto">
-                   <img src="<?php bloginfo('template_url'); ?>/images/mulero3.png" alt="Noticia 1" title="Noticia 1"/>
-               </div>
-               <div class="sidebar_txt">
-                   <h6><a href=" http://carlostapia.lamula.pe ">Carlos Tapia</a></h6>
-                   <strong>Carlos Tapia</strong>                      
-                   <p></p>
-               </div>
-
-              </li>
-
-            </ul>                
-
-        </div> <!-- sidebar_central -->
-
-        <div id="sidebar_recomendados">
-
-
-          <div id="corresponsales" class="sidebox">
-
-                 <h4>Corresponsales más</h4>
-
-
-          </div>
-
-          <ul class="sidebox_menu">
-            <li><a href="#" class="selected">vistos</a></li>
-            <li><a href="#">votados</a></li>
-            <li><a href="#">comentados</a></li>                
-          </ul>
-
-          <div id="articulos" class="sidebox">
-
-            <h4>Art&iacute;culos más</h4>
-
-            <div class="sidebox_content">
-
-              <?php most_popular(1); ?>
-
-            </div>
-
-          </div>     
-
-          <ul class="sidebox_menu">
-            <li><a href="#" class="selected">vistos</a></li>
-            <li><a href="#">votados</a></li>
-            <li><a href="#">comentados</a></li>                
-          </ul>
-
-
-          <div id="videos" class="sidebox">
-
-            <h4>Video destacado</h4>          
-
-          </div>
-
-
-        </div> <!-- sidebar_recomendados -->
- 
-    
-  </div> <!-- sidebars -->
-
+  
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

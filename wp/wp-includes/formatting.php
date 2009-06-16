@@ -1479,7 +1479,7 @@ function human_time_diff( $from, $to = '' ) {
  * @param string $text The exerpt. If set to empty an excerpt is generated.
  * @return string The excerpt.
  */
-function wp_trim_excerpt($text) {
+function wp_trim_excerpt($text, $length = 55) {
 	if ( '' == $text ) {
 		$text = get_the_content('');
 
@@ -1488,11 +1488,11 @@ function wp_trim_excerpt($text) {
 		$text = apply_filters('the_content', $text);
 		$text = str_replace(']]>', ']]&gt;', $text);
 		$text = strip_tags($text);
-		$excerpt_length = apply_filters('excerpt_length', 55);
+		$excerpt_length = apply_filters('excerpt_length', $length);
 		$words = explode(' ', $text, $excerpt_length + 1);
 		if (count($words) > $excerpt_length) {
 			array_pop($words);
-			array_push($words, '[...]');
+			array_push($words, '...');
 			$text = implode(' ', $words);
 		}
 	}

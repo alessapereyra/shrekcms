@@ -3,15 +3,17 @@
     
   </div>  <!-- wrapper -->
 
+  <div id="city">desaznadamente en linea</div>
+
   <div id="footer">
     lamula.pe
   </div>
   <!-- Include the Google Friend Connect javascript library. -->
-  <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+  <!-- <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script> -->
   <!-- Define the div tag where the gadget will be inserted. -->
   <div id="div-1974448229986408181"></div>
   <!-- Render the gadget into a div. -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
   var skin = {};
   skin['BORDER_COLOR'] = '#cccccc';
   skin['ENDCAP_BG_COLOR'] = '#e0ecff';
@@ -34,7 +36,24 @@
      'view-params':{"scope":"SITE","allowAnonymousPost":"true","features":"video,comment","showWall":"true"}
    },
     skin);
-  </script>
+  </script> -->
+    
+    
+   <script src="<?php bloginfo('template_url'); ?>/js/twitter.js" type="text/javascript" charset="utf-8" ></script>
+   <!-- Include the Google Friend Connect javascript library. -->
+   <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+    
+	<script charset="utf-8" type="text/javascript">
 
+		 getTwitters('twitter_status', {
+		 id: 'mulastatus',
+		 count: 1,
+		 enableLinks: true,
+		 ignoreReplies: true,
+		 clearContents: true,
+		 template: '%text%'
+		 });
+
+</script>
 </body>
 </html>

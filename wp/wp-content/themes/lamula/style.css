@@ -1,23 +1,29 @@
 /* @override 
 	http://localhost:8888/shrekcms/wp/wp-content/themes/lamula/style.css
 	http://lamula.pe/mulapress/wp/wp-content/themes/lamula/style.css
+	http://localhost/shrekcms/wp/wp-content/themes/lamula/style.css
 */
 
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 	word-spacing: 4px;
-	background: #e8e9e9 url(images/background.png) repeat-x  center 99px;
 	color: #3b3330;
+	background: #e7e6eb repeat-x;
 }
 
 a {
-	color: #fe008a;
+	color: #1192cf;
+}
+
+object#utv_o_699958 {
+	width: 300px !important;
+	height: 200px;
 }
 
 #content_feed dl dd a {
 	display: block;
-	color: #fe008a;;
+	color: #fe008a;
 }
 
 div#wrapper {
@@ -30,38 +36,65 @@ div#wrapper {
 
 
 div#top_menu {
-	
-	background-color: #000;
 	color: #040707;
 	overflow: hidden;	
 	font-size: 0.8em;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	height: 30px;
-	padding-top: 5px;
+	padding-top: 10px;
+	background: #202020;
 }
 
+#top_menu p {
+
+}
+
+#top_menu p span.right {
+	float: right;
+	margin-right:20px ;
+}
+
+#top_menu p span.left a {
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+	font-size: 0.9em;
+	letter-spacing: 0;
+}
+
+
+#top_menu p span.left a:hover {
+	color: #dadada;
+}
+
+#top_menu p span.right a {
+	display: block;
+	float: left;
+	background-color: #5a5a5a;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	color: #fff9a5;
+	height: 20px;
+	margin-right: 10px;
+	border-top: 1px solid #757575;
+
+}
 
 div#top_menu p span.left {
 	float: left;
 	margin-left: 20px;
-	margin-top: 5px;
 	color: #fff;
+	margin-top: 3px;
+	display: block;
+	height: 30px;
 }
 
-div#top_menu p span.right {
-	float: right;
-	margin-right: 20px;
-	margin-top: 5px;
-}
-
-
-#top_menu p span.right a {
-	text-decoration: underline;
-	color: #fff9a5;
-}
 
 #top_menu p span.right a:hover {
 	color: #fff;
+	background-color: #0085cf;
+	border-top: 1px solid #277dff;
 }
 
 /* @end */
@@ -88,20 +121,39 @@ div#logo_bar {
 	margin-top: 2em;
 }
 
-hi {
-	overflow: auto;
-	float: none;
-}
 
 h1 a{
 
 	float: left;
 	background-image: url(images/logo-transparent.png);
 	text-indent: -9000em;
-	width: 310px;
+	width: 240px;
 	height: 70px;
 }
 
+div#flag {
+	position: fixed;
+	left: 0px;
+	
+}
+
+div#flag a {
+	display: block;
+	width: 72px;
+	height: 65px;
+	text-indent: -4000em;
+	background: url(images/flag-transparent.png) no-repeat;
+}
+
+
+#logo strong {
+	display: block;
+	float: left;
+	margin-top: 4em;	
+	margin-left: 1em;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #1192cf;
+}
 
 /* @end */
 
@@ -116,7 +168,7 @@ div#status_bar {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	overflow: auto;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	
 }
 
@@ -139,12 +191,12 @@ p#site_stats {
 
 
 #search_bar form {
-	background-color: #fff9a5;
 	padding: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	color: white;
+	color: #fff;
 	margin-top: 20px;
+	background: #e9e9e9 0 center;
 }
 
 
@@ -179,14 +231,17 @@ div#search_bar label {
 div#menu_bar {
 	
 	clear: both;
-	overflow: auto;
-	background-color: white;	
+	overflow: hidden;
+	background-color: #fff469;	
 	margin-top: 1em;	
 	display: block;	
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;	
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;	
+	
 	overflow: auto;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	border: 0px;
 	padding: 0px;
 	
@@ -194,18 +249,17 @@ div#menu_bar {
 
 div#menu_bar p#tagline,
 div#menu_bar p#zonas {
-	-moz-border-top-left-radius: 10px;
-	-webkit-border-top-left-radius: 10px;
-	-moz-border-bottom-left-radius: 10px;
-	-webkit-border-bottom-left-radius: 10px;
 
-	padding: 5px 10px 5px 10px;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+
+	padding: 6px 10px 5px 10px;
 	background-color: #2e290f;
 	width: 55px;
 	float: left;	
 	color: #e0e0e0;
 	border: none;
-
+	text-align: center;
 }
 
 div#menu_bar p#zonas {
@@ -223,174 +277,280 @@ div#menu_bar p#tagline span.geomule em {
 /* @end */
 
 /* @group Setting up inline-menu */
-
-ul#menu {
-		
+ul#geomula { 
 	overflow: auto;
 	float: left;
-	width: 740px;
+	width: 840px;
 	text-transform: lowercase;
-	font-size: 0.9em;
+	font: 0.89em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
+	display: none;
 }
 
-ul#menu li {
-	border-left: 1px solid #f6f6ff;
+ul#geomula li.top {
 }
 
-ul#menu > li {
-	float: left;
-	overflow: auto;
-	background-color: white;
-	color: #3b3330;
-}
-
-ul#menu > li a,
-ul#menu ul li.current {
-	padding: 6px 10px;
+ul#geomula li.top a {
+	display: block;
+	text-decoration: none;
+	padding: 7px 5px;
 	color: #3b3330;
 	text-decoration: none;
-	display: block;
-	float: left;
+	background-color: #fff469;	
 }
 
-ul#menu > li a:hover {
-	background-color: #fff654;
-}
-
-ul#menu ul,
-ul#menu ul > ul {
+ul#geomula li.top ul {
 	overflow: auto;
 	float: left;
-	
-	
 }
 
-ul#menu li ul li,
-ul#menu li ul li ul {
-	background-color: white;
+ul#geomula li {
 	float: left;
-	display: inline;
-	display: none;	
-	
-	}
-	
-
-ul#menu li ul li ul li{
-	
-	background-color: #faffee;
+	overflow: auto;
+	background-color: #fff9a5;
+	color: #3b3330;
+	width: auto;
 }
 
-	
-ul#menu ul li.current {
-	background-color: #feff7f;
-	display: none;
-}	
-	
-ul#menu ul li a:hover {
-	background-color: #fff654;
-	padding: 6px 10px;
+ul#geomula li.top a.current,
+ul#geomula li.top a.current_father,
+ul#geomula li.top a.current_grandfather {
+	display: block;
+	text-decoration: none;
+	padding: 7px 5px;
+	color: #3b3330;
+	text-decoration: none;
+	background-color: white;	
+	float: left;
 }
 
+ul#geomula li.top a.current_father {
+	background-color: #ebc600;
+	color: #fff;
+	
+}
 
+ul#geomula li.top li a.current_father {
+	background-color: #eae547;
+	color: #fff;
+	
+}
+
+ul#geomula li.top a.current_grandfather {
+	background-color: #ebc600;
+	color: #fff;
+}
 
 
 /* @end */
 
 /* @group Top News */
 
-div#top_news {
+
+div#top_news div.top_news_featured {
+	float: left;
+	width: 500px;
+	font: 0.9em/1.6em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+div#top_news div.top_news_featured img {
 	
-	margin-top: 1em;
+	margin-top: 0em;
+	width: 200px;
+	float: left;
+}
+
+div.top_news_featured_companion_text {
+	float: left;
+	width: 270px;
+}
+
+div#top_news_list {
+	
+	float: right;
+	display: block;
+	width: 360px;
+	margin-right:20px;
 	overflow: auto;
 	background-color: white;
-	padding: 20px 20px 20px;
+	margin-top: 1.4em;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
-div#top_news div#top_news_image {
-	
-	float: left;
-	width: 400px;
+/* featurerd */
+div.portada-active
+{
+
+	background: #e6f7fd url(images/background-lightblue.png) repeat-x 0 bottom !important;
+
 }
 
-div#top_news div#top_news_image img {
-	
-	width: 400px;
-	border: 5px solid #3b3330;
-	margin-top: 0em;
+#top_news div.top_news_item {
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom: 1px solid #e0e0e0;
+	background: white;	
 }
 
-div#top_news div#top_news_text {
-	
-	float: left;
-	display: block;
-	width: 445px;
-	margin-left: 35px;
-	overflow: auto;
+#top_news div.top_news_item h4 {
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	word-spacing: 0;
+	margin-top: 5px;
+	letter-spacing: 0;
 }
 
-div#top_news div#top_news_text h3 {
-	line-height: 1em;
+#top_news div.top_news_item:hover {
+	background: #edeeee url(images/background-white.png) repeat-x 0 bottom;
+
+}
+
+a.news_item_title {
+
+	font: 0.8em/1.4em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #001027;
+	letter-spacing: 0;
+}
+
+
+
+div#top_news div.top_news_featured h3 {
 	color: #3b3330;
-	text-transform: lowercase;
-	letter-spacing: -4px;
-	font-size: 3.2em;
 	margin-bottom: 0.3em;
-	word-spacing: 4px;
+	word-spacing: 0;
 	overflow: hidden;
+	font: 2.4em/1em Georgia, "Times New Roman", Times, serif;
 }
 
-div#top_news_content {
+#content_feed ul.post_list li div.post_content span.vvqbox.vvqyoutube {
+	clear: both;
+	margin-bottom: 2em;
+}
+
+div.top_news_featured {
 	overflow: auto;
+	background: white;
+	padding: 20px 0 0 20px;
+	margin-right: 15px;
 }
 
-div#top_news div#top_news_text h3 a {
+div#top_news div.top_news_featured h3 a {
 	color: #3b3330;
 	text-decoration: none;
 	display: block;
+	margin-bottom: 10px;
+
 }
 
 
-div#top_news div#top_news_text p {
-	line-height: 1.3em;
-	margin-top: 0.5em;
+div#top_news div.top_news_featured p {
+
+	overflow: inherit;
+	float: left;
+	margin-bottom: 1em;
 }
 
+div.top_news_media {
+	overflow: hidden;
+	float: left;
+	width: 200px;
+	height: 160px;
+	margin-right: 10px;
+}
 
-#top_news_text p span.author {
-	font-weight: bold;
+.top_news_featured_text {
+	overflow: auto;
+	font-size: 1.2em !important;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#tagline span.geomule a.geomula {
+	color: white;
+	text-decoration: none;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#tagline span.geomule a.geomula:hover {
+	color: yellow;
+}
+
+.top_news_featured_text p {
+	font-size: 1em !important;	
+}
+
+div#top_news div.top_news_featured div.top_news_featured_footer p {
+	overflow: hidden;
+	float: left;
+	margin-right: 10px;
+}
+
+.top_news_featured p span.author {
+	font: bold 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	text-transform: lowercase;
+	display: block;
+	margin-top: 1em;
+}
+
+div.top_news_featured_footer {
+	overflow: auto;	
+	clear: both;
+	margin-top: 10px;
+}
+
+div#top_news {
+	background-color: white;
+	padding-bottom: 1em;
 }
 
 
 div#top_news_footer {
 	clear: both;
-	border-bottom: 5px solid #3b3330;
 	overflow: hidden;
 }
 
-div#top_news_footer a#leer_mas_footer {
-	float: right;
+a.leer_mas_footer,
+.top_news_featured div.top_news_featured_footer p.comments a ,
+a#leer_mas_footer,
+.top_news_featured div.top_news_featured_footer p.comments a {
+	float: left;
+}
+
+div.top_news_featured_footer p.comments a  {
+	font-size: 1em;
+	margin-top: 0.7em;
+}
+
+div.top_news_featured a.leer_mas_footer,
+div.top_news_featured a#leer_mas_footer {
 	display: block;
 	margin: 0px;
 	padding: 6px 18px;
 	background-color: #3b3330;
 	color: white;
 	text-decoration: none;
-	margin-left: 10px;
+	margin-right: 40px;
 }
 
-div#top_news_footer a#leer_mas_footer:hover {
+div.top_news_featured a.leer_mas_footer:hover {
 	color: yellow;
 }
 
 div#top_news_footer p.comments,
-div#top_news_footer p.rate {
+div#top_news_footer div.rate {
 	float: right;
 	display: block;
 	padding: 6px 18px;
 }
 
-div#top_news_footer p.rate{
-	padding: 0px;
+div#top_news_footer div.rate{
+	margin-top: 10px;
+	display: block;
 }
 
 div#top_news_footer p.comments a {
@@ -406,6 +566,24 @@ div#top_news_footer p.comments a em {
 	color: #fe008a;
 }
 
+#top_news h2 {
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	text-transform: lowercase;
+}
+
+div.top_news_featured_content {
+	overflow: hidden;
+	height: 127px;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	letter-spacing: 0;
+}
+
+div.top_news_featured_content.special {
+	overflow: hidden;
+	height: 380px; 
+}
 
 /* @end */
 
@@ -417,11 +595,64 @@ div#top_news_footer p.comments a em {
 div#content {
 	
 	clear: both;
-	margin-top: 1em;
+	margin-top: 1.5em;
 	overflow: auto;
 }
 
 /* @group Content Feed */
+
+.post_list div.navigation div.alignleft a ,
+.post_list div.navigation div.alignright a {
+	width: 100px;
+	float: left;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background: none;
+	display: block;
+	padding: 10px;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+.post_list div.navigation div.alignleft a:hover,
+.post_list div.navigation div.alignright a:hover {
+	color: black;
+}
+
+.post_list li div.news_footer span {
+
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	word-spacing: 0;
+	display: block;
+	color: #1192cf;
+	background-color: #eee;
+	clear: both;
+	margin-top: 1em;
+	padding: 5px;
+	letter-spacing: 0;
+}
+
+.post_list li div.news_footer div.footer_links {
+	overflow: auto;	
+}
+
+.post_list li div.news_footer span a,
+.post_list li div.news_footer span strong,
+.post_list li div.news_footer span small {
+	color: #1192cf !important;	
+	padding: 0px !important;
+	display: inline !important;
+	background: none !important;
+	font-size: 1em !important;
+}
+
+.post_list li div.news_footer span a {
+	font-weight: bold !important;
+}
+
+.post_list li div.news_footer span a:hover {
+	background: none;
+	color: black !important;
+}
 
 div#content_feed {
 	
@@ -431,15 +662,19 @@ div#content_feed {
 
 }
 
+
 div#content_feed ul {
 	clear: both;
-
 	margin: 0px auto 0px 0.5em;
 }
 
 div#content_feed ul li {
 	
 	float: left;
+}
+
+div.gdsr_rating_as a {
+	padding: 0px !important;
 }
 
 div#content_feed ul li a {
@@ -450,67 +685,160 @@ div#content_feed ul li a {
 	margin: 0 4px 0px 0;
 	background-color: #3b3330;
 	color: white;
-	-moz-border-top-left-radius: 10px;
-	-moz-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;	
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-top-right-radius: 10px;
-
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
+div#content_feed ul#category_tabs li a:hover {
+	color: white;	
+}
+
+ul#mula_wawa {
+	overflow: hidden !important;
+}
+
+div#ranking_usuarios.sidebox li {
+	margin-bottom: 10px;
+	padding-left: 10px;
+	clear: both;
+	float: none !important;
+	overflow: hidden !important;
+}
+	
+div#ranking_usuarios.sidebox li a {
+	display: inline !important;
+	padding: 0px;
+}
+
+div#ranking_usuarios.sidebox li a:hover {
+	color: #3e75d0 !important;
+}
+
+ul#mula_wawa {
+	overflow: hidden;
+}
+
+div#mula_wawa_logo {
+	background: url(images/mulawawa.gif) no-repeat center;
+	height: 100px;
+	text-indent: -400em;
+	margin-bottom: 10px;
+	clear: both;
+}
+
+div#mula_churre_logo {
+	background: url(images/mulachurre.gif) no-repeat center;
+	height: 100px;
+	text-indent: -400em;
+	margin-bottom: 10px;
+	clear: both;
+}
+
+
+
+div#mula_logo {
+	background: url(images/mula.gif) no-repeat center;
+	height: 100px;
+	text-indent: -400em;
+	margin-bottom: 10px;
+	clear: both;	
+}
+
+
+#mula_wawa li img {
+	width: 25px;
+	height: 25px;
+	display: block;
+	float: left;
+}
+
+
+
+ul.post_list li div.news_footer div.footer_links a {
+	margin-top: 0px !important;
+}
+
+div#content_feed div ul.post_list div.post_item a {
+	padding: 0px ;	
+	font-size: 1em;
+	background: none;
+	color: #4fb2d9;
+	display: inline;
+	font-weight: bold;
+}
+
+.inner ul.post_list li div.post_content p a {
+	display: inline;
+	
+}
 .inner div#content_feed ul li a {
-	padding: 8px 25px;
+	padding: 0px 0px;
+	font-size: 1em !important;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+.inner div#content_feed ul#category_tabs li a {
+	padding: 10px 18px;
+	color: white;
 }
 
 div#content_feed ul li a.active,
 div#content_feed ul li a.active:hover {
 	background-color: white;
 	color: #3b3330;
-	-moz-border-top-left-radius: 10px;
-	-moz-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;	
 	-webkit-border-top-left-radius: 10px;
 	-webkit-border-top-right-radius: 10px;
 }
 
 div#content_feed ul li a:hover {
-	background-color: #9e8982;
+	background-color: #9d3917;
+	color: #bdbdbd;
 }
 
 
-div#content_feed ul#post_list li {
+div#content_feed ul.post_list li {
 	float: none;
 	overflow: hidden;
-	margin-bottom: 35px;
+	margin-bottom: 15px;
 	padding-bottom: 0px;
 }
 
-#post_list li.even div.post_content div.news_footer {
+.post_list li.even div.post_content div.news_footer {
 	overflow: hidden;
 }
 
-.inner #post_list li div.post_content object,
+.inner .post_list li div.post_content object,
 #top_news object {
 	margin: 20px 0px;
 	width: 430px;
 }
 
- #post_list li div.post_content object {
+ .post_list li div.post_content object {
 	margin: 20px 0px;
 	width: 360px;
 }
 
 
-#post_list li div.ratingblock div.ratingblock,
-#post_list li div.ratingblock {
+.post_list li div.ratingblock div.ratingblock,
+.post_list li div.ratingblock {
 
 	padding-bottom: 0px !important;
 	margin: 0px;
 }
 
-#post_list li a.rate div.ratingblock {
-	margin-top:6px !important;
+.post_list li a.rate div.ratingblock {
+	margin-top:4px !important;
 }
 
-#post_list h4 {
+.post_list h4 {
 	font-size: 1.2em;
 	text-transform: lowercase;
 	letter-spacing: -2px;
@@ -518,133 +846,183 @@ div#content_feed ul#post_list li {
 	margin-bottom: 1em;
 }
 
-#post_list li div.post_content {
-	float: left;
-	width: 350px;	
-}
 
-.inner #post_list li div.post_content {
+.inner .post_list li div.post_content {
 	float: none;
 	width: auto;
-	line-height: 1.5em;
+	margin-top: 0px;
+	
 }
 
-.inner #post_list li h5 a small.date {
+.inner .post_list li div.post_content p,
+.inner .post_list li div.post_content div {
+	list-style: 2em;
+	letter-spacing: 0;
+	word-spacing: 0;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.inner #content_feed ul.post_list li div.post_content ul {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+
+.inner #content_feed ul.post_list li div.post_content li {
+	margin-bottom: 1em;
+	list-style-type: circle !important;
+	list-style-position: inside;
+}
+
+.inner .post_list li h5 a small.date {
 	display: block;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 0.5em;
 }
 
-.inner #post_list li div.post_content h6.metadata {
-	font-size: 1.0em;
+.inner .post_list li div.post_content h6.metadata {
 	text-transform: lowercase;
 	margin-bottom: 1.4em;
 	color: #df0b7a;
 	padding-bottom: 1em;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
-#post_list li div.post_content div.news_footer p.tags a {
+.post_list li div.post_content div.news_footer p.tags a {
 	display: inline;	
 }
 
-#post_list li div.post_content h6.metadata a {
+.post_list li div.post_content h6.metadata a {
 	display: inline;
+	font-size: 1em;
 }
 
-.inner #post_list li div.post_content h6.author {
+.inner .post_list li div.post_content h6.metadata a {
+	font-size: 0.8em !important;
+}
+
+.inner .post_list li div.post_content h6.author {
 	margin-bottom: 0.4em;
 }
 
-.inner #post_list li div.post_content h6.date {
+.inner .post_list li div.post_content h6.date {
 	margin-bottom: 1.2em;
 }
 
-#post_list li div.post_content a,
-#post_list li h5 a{
-	margin: 0px;
-	padding: 0px;	
-	background: none;
-	color: #fe008a;
+.post_list li div.post_content a,
+.post_list li h5 a{
+	margin: 0px !important;
+	padding: 0px !important;	
+	background: none !important;
+	
 }
 
-#post_list li h5 {
+.post_list li div.post_content a {
+	color: #3fabd8 !important;
+	display: inline !important;
+}
+
+.post_list li h5 {
 	font-size: 1.1em;
-	margin-bottom: 0.5em;
+
 	letter-spacing: -1px;
 }
 
-.inner #post_list li h5 {
+.inner .post_list li h5 {
 	color: #939393;
-	line-height: 1.4em;
-	margin-bottom: 0px;
+	line-height: 1.4em; 
+	margin-bottom: 0px !important;
 }
 
-#post_list li div.post_content a{
-	color: #fe008a;
-}
 
-#post_list li div.post_content a:hover{
+.post_list li div.post_content a:hover{
 	background: none;
 	color: #656d68;
 	text-decoration: underline;
 }
 
-#post_list li div.post_image {
+.post_list li div.post_image {
 	float: left;
-	width: 60px;
-	margin-right: 10px;
+	width: 85px;
+	height: 60px;
+	margin-right: 15px;
 	margin-top: 3px;
+	clear: both;
+	overflow: hidden;
 }
 
-#post_list li div.post_image a {
+.post_list li div.post_image a {
 	margin: 0px;
-	padding: 0px;	
+	padding: 0px !important;	
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
 
 }
 
-#post_list li div.post_image.fotos a {
-	height: 60px;
-	width: 60px;
+.post_list li div.post_image.fotos a,
+.post_list li div.post_image.videos a {
+	width: 100px;
+	height: 100px;
 	border: none;
 	background: url(images/photo.png) no-repeat;
 }
 
-#post_list li div.post_image.documentos a {
+.post_list li div.post_image.documentos,
+.post_list li div.post_image.audios {
+	
+	display: none;
+}
+
+
+.post_list li div.post_image.documentos a {
 	height: 60px;
 	width: 60px;
 	background: url(images/text.png) no-repeat;
 }
 
-#post_list li div.post_image.audios a {
+.post_list li div.post_image.audios a {
 	height: 60px;
 	width: 60px;
 	background: url(images/audio.png) no-repeat;
 }
 
-#post_list li div.post_image.videos a {
-	height: 60px;
-	width: 60px;
+.post_list li div.post_image.videos a {
+	height: 110px;
+	width: 150px;
 	background: url(images/movie.png) no-repeat;
 }
 
 
 
 
-#post_list li div.post_image a span {
+.post_list li div.post_image a span {
 	text-indent:  -9000em;
-	display: block;
+	display: none;
 }
 
-#post_list li div.post_image a img{
-	width: 60px;
+.post_list li div.post_image a img{
+	width: 110px;
+	overflow: hidden;
+}
 
+.post_list li div.post_item div.post_companion_content {
+	float: left;
+	width: 330px;
+	height: 60px;
+	overflow: hidden;
+	margin-top: 2px;
 }
 
 
-div#content_feed ul#post_list,
+
+div#content_feed ul.post_list,
 div#content_feed div#user_profile
 {
 	overflow: hidden;
@@ -653,8 +1031,13 @@ div#content_feed div#user_profile
 	margin: 0px;
 }
 
+div.inner ul.post_list {
+	padding: 20px !important;
+}
+
 div#sidebar_central ul.bloggers_list {
-	
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
 }
 
 #content_feed ul div.navigation {
@@ -671,20 +1054,29 @@ div#sidebar_central div.sidebar_foto {
 
 div#sidebar_central div.sidebar_foto img {
 	width: 30px;
+	height: 30px;
+	display: block;
 }
 
 
 div#sidebar_central li {
 	margin-top: 1em;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
 div#sidebar_central li div.sidebar_txt {
-	width: 110px;
+	width: 130px;
 	line-height: 1.1em;	
 	margin-bottom: 1em;
 	float: left;
-	font-size: 0.8em;
+	font-size: 0.75em;
+}
+
+#sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
+	font-weight: bold;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 div#sidebar_central dl dd h6 {
@@ -707,6 +1099,7 @@ div#sidebar_central ul li p {
 div#content_feed h5 {
 	color: #ff7e00;
 	font-size: 1.4em;
+	margin-bottom: 0.5em;
 }
 
 div#content_feed ul li h5 a {
@@ -714,25 +1107,30 @@ div#content_feed ul li h5 a {
 	padding: 0px;
 	background: none;
 	color: black;
+	font: 1.0em Georgia, "Times New Roman", Times, serif;
+	margin-bottom: 0.5em;
 }
 
 div#content_feed ul li h5 a:hover {
-	color: rgb(191, 136, 0);
+	color: #777;
 	background: none;
 }
 
-#post_list li div.post_content div.news_footer {
+.post_list li div.post_content div.news_footer {
 	overflow: auto;
 	height: 30px;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
-.inner #post_list li div.post_content div.news_footer {
-	height: auto;
+.inner .post_list li div.post_content div.news_footer {
+	overflow: hidden;
 	margin-top: 1em;
+	height: auto;
 }
 
-div#content.inner ul#post_list li {
+div#content.inner ul.post_list li {
 	margin-bottom: 0px;
 }
 
@@ -740,17 +1138,23 @@ div#content.inner ul#post_list li {
 	display: block;	
 }
 
+
+
+
+
 /* @end */
-
-
 
 
 div#sidebars {
 	width: 435px;
 	float: right;
-	margin-left: 10px;
+	margin-top: 2em;
+
 }
 
+.inner div#sidebars {
+	margin: 0px;
+}
 
 
 div#sidebars p a {
@@ -760,14 +1164,13 @@ div#sidebars p a {
 div#sidebars div#sidebar_central {
 	width: 210px;
 	float: left;
-	background-color: #fcf270;
+	background-color: #feff3a;
 	overflow: hidden;
 	margin-bottom: 2em;
 }
 
 div#content.inner.author div#sidebars div#sidebar_central{
 
-	background-color: none;
 	background: none;
 	
 }
@@ -809,30 +1212,42 @@ div#sidebars div#sidebar_recomendados h4	{
 	margin-top: 1em;
 	margin-left: 1em;
 	margin-bottom: 1em;
+
+}
+
+#sidebar_recomendados div.sidebar_box h4 {
+	margin: 0px !important;	
 }
 
 #sidebar_central ul.bloggers_list li {
-	padding: 10px 8px 8px 25px;
+	padding: 10px 20px 8px 15px;
 	overflow: auto;
 	margin: 0px;
 	font-size: 1.1em;
+	/*height: 30px;*/ 	
 }
 
 #sidebar_central ul.bloggers_list li:hover {
-		background-color: #ffe250;
+		background-color: #f1ee00;
 		cursor: pointer;
 		color: black;
 
 }
+
+img.fromvideo {
+	display: none;
+}
 	
 div#sidebars div#sidebar_recomendados div.sidebox h4 {
-	font-size: 1.2em;
-	color: white;
+	color: black;
 	text-transform: lowercase;	
-	margin-bottom: 1em;
-	clear: both;
-	margin-top: 1.5em;
-	margin-left: 1.3em;
+	margin: 0px;
+	background: #fff repeat-x scroll left center;
+	padding: 20px 20px 10px;
+	position:relative;
+	border-bottom-width: 2px;
+	font-size: 1.2em;
+	
 }
 
 div#sidebars div#sidebar_recomendados ul {
@@ -840,35 +1255,48 @@ div#sidebars div#sidebar_recomendados ul {
 	margin: 0px;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list,
+div#sidebars div#sidebar_recomendados ul.post_list,
 div#sidebars div#sidebar_recomendados ul#post_most_seen,
 div#sidebars div#sidebar_recomendados ul.bloggers_list {
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li,
+div#sidebars div#sidebar_recomendados ul.post_list li,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li,
 div#sidebars div#sidebar_recomendados ul.bloggers_list {
 	float: none;
 	padding: 0px;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li a,
+div#sidebars div#sidebar_recomendados ul.post_list li a,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li,
-div#sidebars div#sidebar_recomendados ul.bloggers_list li a {
+div#sidebars div#sidebar_recomendados ul#post_most_voted li a,
+div#sidebars div#sidebar_recomendados ul.bloggers_list li a,
+div#sidebars div#comentarios ul li a {
 	float: none;
 	margin: 0px;
-	background-color: #3b3330;
-	color: #ffe250;
+	color: #3b3330 !important;
+	text-decoration: none !important;
 	text-transform: lowercase;
-	font: 1em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	border-bottom: 1px solid #e9e9e9;
+	padding-bottom: 10px;
+	display: block;
+	background: white url(images/background-white.png) repeat-x 0 -7px;
 }
 
-div#sidebars div#sidebar_recomendados ul#post_list li a:hover,
+div#sidebars div#sidebar_recomendados ul.post_list li a:hover,
 div#sidebars div#sidebar_recomendados ul#post_most_seen li a:hover,
+div#sidebars div#sidebar_recomendados ul#post_most_voted li a:hover
 div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
-	background-color: #000;
+	background-color: none;
+	color: #1192cf !important;
+	
 }
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list {
@@ -878,30 +1306,80 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list li {
 	float: none;
-	background-color: none !important;
+	background: none !important;
 }
+
+
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
+	float: left;
+	text-decoration: none !important;
+	display: block;
+	background-color: #99cefc;
+	margin-right: 1px;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #070708 !important;
+	padding: 7px 5px !important;
+	border: none !important;
+	background-image: url(images/background-blue.png) !important;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+div#sidebar_recomendados ul.sidebox_menu li a {
+	color: black !important;
+}
+
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a:hover {
+	background: url(images/background-yellow.png) center top !important;
+}
+
+div.sidebox_wrapper {
+	overflow: auto;
+	background: white;
+}
+
+
+
+div#sidebars div#sidebar_recomendados ul li a 
+{
+	font: 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	display: block;
+	padding: 5px 10px;
+	text-decoration: none;
+	float: none;
+	margin: 0px;
+	color: black;
+	text-transform: lowercase;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+
+div.inner div#sidebars div#sidebar_recomendados ul li a {
+	display: block;
+}
+
 
 #sidebar_recomendados div.sidebar_box ul.bloggers_list li a{
 	background: none !important;
 	color: #ff005f !important;
 	text-decoration: underline !important;
+	display: block !important;
+	
+
 }
 
-div#sidebars div#sidebar_recomendados ul li a{
-	float: left;
-	text-decoration: none;
-	display: block;
-	background-color: #c8c968;
-	margin-right: 1px;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
-	color: #070708;
-	padding: 5px 10px;
-	border: none !important;
+div#articles_edit {
+
+	padding: 20px;
+	background-color: white;
+	margin-top: 1em;
+
 }
 
 div#sidebars div#sidebar_recomendados ul li a.selected {
-	background-color: #3b3330;
-	color: white;
+	background: white !important;
+	color: black;
 }
 
 #sidebar_central ul.bloggers_list li div.sidebar_txt h6 a {
@@ -917,31 +1395,64 @@ div#sidebars div#sidebar_recomendados ul li a.selected {
 
 div.tab_content,
 div.sidebox_content {
-	padding: 4px 10px;	
-	padding-left: 25px;
+	padding: 8px 10px;	
 	color: #f3e250;
-	font: 0.8em "Lucida Grande", Lucida, Verdana, sans-serif;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+
+	color:#777777;
+	background: white repeat-x scroll 0 top;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
-
-
 #important p a.send_news {
+	text-align: center;
+	background:  url(images/background-blue.png) repeat-x 0 1px;
+	text-decoration: none;
+}
+
+#important p a.send_news:hover {
+	background: #bffcf3 none;
+}
+
+#important p a.send_news em {
+	display: block;
+	text-decoration: none;
+	color: #3b3330;
+	font-size: 0.7em;
+	display: none !important;
+}
+
+div#sidebars div#sidebar_recomendados ul li a:hover {
+		color: #1192cf !important;
+}
+
+#sidebars #important p a.send_news {
 	display: block;
 	text-align: center;
 	padding: 15px 60px;
 	color: #000;
-	background-color: #ffe250;
 	font-size: 2em;
 	letter-spacing: -2px;
 	word-spacing: 4px;
 	margin: 0 auto 0.5em;
+	background: url(images/boton_publicar.png) no-repeat;
+	text-indent: -2000em;
+	height: 120px;
+	
 }
 
-#important p a.send_news:hover {
-	background-color: #ffda29;
+#sidebars #important p a.send_news em {
+	display: block !important;
+	display: none !important;
+	text-indent: -3000em !important;
 }
 
-#important p a.send_news em {
+#sidebars #important p a.send_news:hover {
+
+}
+
+#sidebars #important p a.send_news em {
 	display: block;
 	font-size: 0.7em;
 	margin-top: 0.5em;
@@ -949,22 +1460,17 @@ div.sidebox_content {
 }
 
 
-div#sidebars div#sidebar_recomendados li a:hover{
-	background-color: #ffe250;
-	color: #3b3330;
-}
-
 div#sidebars div#sidebar_recomendados {
-	width: 210px;
+	width: 200px;
 	float: right;
 	color: #f23e00;
+	padding: 5px 5px;
 }
 
 div#sidebars div#sidebar_recomendados div.sidebox {
-	
-	background-color: #3b3330;
-	overflow: auto;
-	padding-bottom: 10px;
+		overflow: hidden;
+	margin:0 0 0px;
+
 }
 
 #sidebar_recomendados ul.sidebox_menu {
@@ -974,96 +1480,400 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 }
 
 
+#comentarios div.sidebox_wrapper ul {
+	padding: 10px;
+	display: block ;
+	
+}
+
+div#comentarios.sidebox {
+	display: block;
+	overflow: auto;	
+	margin-bottom: 1em !important;	
+}
+
+#sidebar_recomendados div.sidebox.cc {
+	text-align: center;
+	color: black;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	margin-bottom: 1em;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#comentarios div.sidebox_wrapper ul li {
+	width: 160px;
+	overflow: hidden;
+	background: white url(images/background-white.png) repeat-x 0 bottom;
+	border-bottom: 1px solid #e9e9e9;
+	padding-bottom: 10px !important;
+	display: block;
+	text-decoration: none !important;
+	text-transform: lowercase;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+div.navigation {
+	background-color: white;
+	padding: 20px;
+	font: 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	padding-bottom: 1em;
+	overflow: auto;
+}
+
+.inner div.navigation {
+	display: none;
+}
+
+div.navigation a {
+	float: left;
+	margin-right:20px ;
+}
+
+div.navigation a:hover {
+	color: black;
+}
 
 	
-	
 
-#post_list li span small {
+.post_list li span small {
 	text-transform: lowercase;
 	font-size: 1em;
 	color: black;
 	font-weight: bold;
 }
 
-#post_list li small {
+.post_list li small {
 	font-weight: bold;
 	font-size: 0.8em;
 	line-height: 1.5em;
 }
 
 
-#post_list li div.post_content p {
-	line-height: 1.5em;
+.post_list li div.news_footer a.leer_mas_footer:hover,
+.post_list li div.news_footer a.comments:hover{
+	color: #d4d4d4 !important;
 }
 
-#post_list li div.post_content div.news_footer a.leer_mas_footer,
-#post_list li div.post_content div.news_footer a.comments,
-#post_list li div.post_content div.news_footer div.ratingblock {
+.top_news_featured p span.vvqbox.vvqyoutube object,
+.top_news_featured p span.vvqbox.vvqyoutube {
+	width: 250px !important;
+	height: 200px !important;
+	margin: 0px;
 	float: left;
-	margin-right: 15px;
-	font-size: 0.8em;
-	margin-top: 1em;
+	margin-right: 10px;
 }
 
-.inner #post_list li div.post_content div.news_footer div.ratingblock {
+.top_news_featured span.author {
+	clear: both;
+	display: block;
+	margin-top: 10px;
+	background-color: #eee;
+	padding: 2px 8px;
+}
+
+.post_list li div.news_footer a.leer_mas_footer,
+.post_list li div.news_footer a.comments,
+.post_list li div.news_footer div.ratingblock {
+	float: left !important;
+	margin-right: 15px !important;
+	margin-top: 1em !important;
+	display: block !important;
+	margin: 0px;
+	padding: 5px 18px !important; 
+	color: black !important;
+	text-decoration: none !important;
+	margin-right: 10px !important;	
+	-webkit-border-radius :5px !important;
+	-moz-border-radius :5px !important;
+
+	background: #feff66 repeat-x 0 bottom !important;
+	text-transform: lowercase;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+.post_list li.even div.news_footer {
+	clear: both;
+	float: none;
+}
+
+.post_list li div.news_footer div.ratingblock  {
+	padding: 0px;
+	display: inline;
+	margin: 0px;
+	background: none;
+}
+
+.inner .post_list li div.news_footer div.ratingblock {
 	float: none;
 	display: inline;
+	padding: 0px !important;
+	background: none !important;
+	float: none !important
 }
 
-.inner #post_list li a.rate {
+.inner .post_list li a.rate {
 	margin-bottom: 10px; 
 	display: block;
 }
 
-#post_list li div.post_content div.news_footer p.rate {
+.post_list li div.news_footer div.rate {
 	overflow: auto;
-	margin-bottom: ;
+	margin-bottom:1px ;
 }
 
-#post_list li div.post_content div.news_footer p.tags,
-#post_list li div.post_content div.news_footer p.rate {
+.post_list li div.news_footer p.tags,
+.post_list li div.news_footer div.rate {
 	font-size: 0.8em;
+	margin-top: 1em;
 }
 
-#post_list li div.post_content div.news_footer p.tags {
+.post_list li div.news_footer p.tags {
 	margin-top: 10px;	
 }
 
-#post_list li div.post_content div.news_footer div.ratingblock div.ratingtext,
+.post_list li div.news_footer div.ratingblock div.ratingtext,
 #top_news  div.ratingblock div.ratingtext {
 	display: none !important;
 }
 
 #top_news  div.ratingblock {
-	float: right;
+	float:left;
 	margin-bottom: 0px;
+	margin-top: 7px;
+	margin-left: 0px;
+	padding: 0px;
+	clear: none;
+}
+
+.post_list li div.news_footer div.ratingblock {
 	margin-top: 4px;
 }
 
-#post_list li div.post_content div.news_footer div.ratingblock {
-	margin-top: 6px;
+div#content.inner ul.post_list li h5 a {
+	font-size: 1.5em !important;
+	letter-spacing: -2px;
+	word-spacing: 0;
 }
 
-div#content.inner ul#post_list li h5 a {
-	font-size: 1.8em;
-	letter-spacing: -4px;
-}
-
-div#content.inner ul#post_list div.post_content p span {
+div#content.inner ul.post_list div.post_content p span {
 	font-size: 1.1em;
 }
 
+div#content.inner ul.post_list div.post_content p span.vvqbox.vvqyoutube {
+	display: block;
+	margin-bottom: 2em;
+}
+
+.post_list li div.post_item {
+	clear: both;
+	overflow: hidden;
+	font: 0.75em/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;	
+	letter-spacing: 0;
+	margin-bottom: 1.2em;
+}
+
+#todo ul.post_list li div.post_item div.post_companion_content p {
+	margin-bottom: 0px;
+}
+
+.post_list li div.news_footer a.rate {
+	padding: 0px;
+
+}
+
+
 
 /* @end */
+
+/* @group BlogWidget */
+
+
+div.scrollable { 
+     
+	
+	/* required settings */
+	position:relative;
+	overflow:hidden;	 	
+	width: 360px;	
+	height:140px;	
+	padding: 10px;
+	
+	/* custom decorations */
+	padding:10px 20px;	
+	background-color: #ebf2f4;	
+}
+
+#bloggers_box ul.items li div.blogger_last_post_content h5 a {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 0.65em;
+	letter-spacing: 0;
+}
+
+#bloggers_navigation h3 {
+	font-size: 1.3em;
+	margin-top: 0.8em;
+	margin-left: 0.8em;
+	margin-bottom: 0.9em;
+	
+}
+
+#bloggers_box ul.items li h4 {
+	text-transform: uppercase;
+	font: 0.7em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #878787;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+
+#bloggers_box ul.items li div.blogger_last_post_content h5 a {
+	text-transform: lowercase;
+}
+
+div#bloggers_navigation {
+	overflow: auto;
+	margin-top: 1em;
+	background-color: #a3d5ed;
+	padding: 10px 5px;
+	padding-bottom: 1.2em;
+	color: #fff;
+}
+
+img#campana_banner.sidebox_image,
+img#comentarios_banner.sidebox_image {
+	margin: 1em 0px;
+} 	
+ 
+/*  
+    root element for scrollable items. Must be absolutely positioned 
+    and it should have a super large width to accomodate scrollable items. 
+    it's enough that you set width and height for the root element and 
+    not for this element. 
+*/ 
+div.scrollable ul.items {     
+    /* this cannot be too large */ 
+  /* this cannot be too large */
+	width:20000em;	
+	position:absolute;
+	clear:both;		
+	
+	/* decoration */
+	margin-left:10px;
+} 
+ 
+/*  
+    a single item. must be floated on horizontal scrolling 
+    typically this element is the one that *you* will style 
+    the most. 
+*/ 
+div.scrollable ul.items li { 
+
+
+	float:left;	
+	/* custom decoration */
+	text-align:center;
+	width:120px;
+	display: block;
+	margin-right: 5px;
+	padding: 3px;
+} 
+ 
+/* you may want to setup some decorations to active item */ 
+ul.items li.active { 	
+	background-color:#fff;
+ 
+}
+
+
+/* this makes it possible to add next button beside scrollable */
+div.scrollable {
+	float:left;		
+}
+
+/* prev, next, prevPage and nextPage buttons */
+a.prev, a.next, a.prevPage, a.nextPage {
+	display:block;
+	width:18px;
+	height:18px;
+	background:url(images/left.png) no-repeat;
+	float:left;
+	margin:43px 5px;
+	cursor:pointer;
+}
+
+/* mouseover state */
+a.prev:hover, a.next:hover, a.prevPage:hover, a.nextPage:hover {
+	background-position:0px -18px;		
+}
+
+/* disabled navigational button */
+a.disabled {
+	visibility:hidden !important;		
+}
+
+/* next button uses another background image */
+a.next, a.nextPage {
+	background-image:url(images/right.png);
+	clear:right;	
+}
+
+
+
+/*********** navigator ***********/
+
+
+/* position and dimensions of the navigator */
+div.navi {
+	width:260px;
+	height:13px;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	text-align: center;
+	clear: both;
+	overflow: hidden;
+}
+
+
+/* items inside navigator */
+div.navi a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url(images/navigator.png) 0 0 no-repeat;     
+	cursor:pointer;	
+}
+
+/* mouseover state */
+div.navi a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+div.navi a.active {
+	background-position:0 -16px;     
+} 	
+
+
+
+/* @end */
+
+
 
 /* @group Comments */
 
 h3#comments {
 	margin-top: 0.8em;
 	padding: 20px;
-	padding-bottom: 0px;
+	padding-bottom: 10px;
 	background-color: white;
 	font-size: 1.4em;	
+	
 }
 
 div.comment-author.vcard img.avatar.photo {
@@ -1081,6 +1891,9 @@ div.comment-author.vcard {
 div.comment-content {
 	float: left;
 	width: 350px;
+	letter-spacing: 0;
+	font: 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	word-spacing: 0;
 }
 
 div.coment-top-metadata {
@@ -1096,23 +1909,30 @@ div.comment-content div.comment-content div.ratingblock {
 	margin-bottom: 0.5em;
 }
 
-li.comment {
+li.comment,
+li.pingback {
 	overflow: hidden;
 	clear: both;
 	height: auto;
-	margin-bottom: 2em;
+	margin-top: 1em;
+	background: url(images/background-lightblue.png) repeat-x 0 bottom;
+	padding-bottom: 2em;
 }
 
 li cite.fn, span.says {
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	font-size: 0.8em;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
 div.comment-meta.commentmetadata {
 	margin-bottom: 10px;
-	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	font-size: 0.8em;
 	display: inline;
+	letter-spacing: 0;
+	word-spacing: 0;
 }
 
 div.ratingtext {
@@ -1121,13 +1941,14 @@ div.ratingtext {
 
 ol.commentlist {
 	background-color: white;	
-	padding: 20px;
+	padding: 0px 0px;
+	overflow: auto;
 }
 
 div#respond {
 	margin-top: 1em;
-	background-color: #fff9a5;
 	padding: 20px;
+	background: #bae4ea;
 }
 
 #commentform p label {
@@ -1182,10 +2003,21 @@ textarea#comment {
 	color: #806f68;
 }
 
-#sidebar_recomendados div.sidebar_box {
+#sidebar_recomendados div.sidebar_box
+ {
 	padding: 10px;	
-	background-color: #fff351;
+
 	margin-bottom: 1em;
+}
+
+#articles_edit table tbody tr td {
+	padding: 10px;
+}
+
+#articles_edit table thead tr th {
+	padding: 10px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
 }
 
 #user_profile h4 {
@@ -1193,21 +2025,98 @@ textarea#comment {
 	font-size: 1.2em;
 }
 
-
-
 /* @end */
 
 
+/* @group comentarios */
+
+div#comentarios div.sidebox_wrapper ul li a {
+	padding: 0px !important;
+	background: none !important;
+	display: inline !important;
+	color: black !important;
+	color: #3b3330 !important;
+	border: none !important;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	
+}
+
+div#comentarios li a:hover {
+	 /*color: #1192cf !important;*/
+	 color: #1192cf !important;	 
+	 text-decoration: underline !important;
+}
+	
+
+/* @end */
 
 /* @group Footer */
+
+div#city {
+	position: fixed;
+	bottom: 0px;
+	height: 140px;
+	width: 100%;
+	text-indent: -9000em;
+	background: url(images/lima-transparent.png) center;
+	display: inline;
+	z-index: 0;
+}
 
 	div#footer{
 	
 	padding: 20px;
+	padding-top: 0.5em;
+	padding-bottom: 1.5em;
 	text-align: center;
 	font-size: 3em;
 	color: white;
-	background-color: #3b3330;
+	background: #3e3e3e url(images/background-footer.gif) repeat-x;
 }
 
+
+
 /* @end */
+
+.inner div#content_feed ul.post_list li div.post_content div.news_footer a#flag-this {
+	display: block !important; 
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+	padding: 4px 4px!important;
+	width: 100px;
+	float: right;
+	text-align: center;
+	background-color: #bae4ea !important;
+	color: #e10000 !important;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;	
+}
+
+.inner div#content_feed ul.post_list li div.post_content div.news_footer a#flag-this:hover {
+	background-color: #f00000 !important;
+	color: white !important;
+}
+
+a#flag-this {
+	font-size: 0.9em !important;	
+	padding: 10px;
+}
+
+
+div#flag_notice  {
+	display: none;
+}
+
+div#flag_notice strong{
+	display: block;
+	clear: both;
+	float: none;
+	padding: 10px;
+	color: #6c6c6c;
+	background-color: #f3f3f3;
+	border: 1px solid #dbdbdb;
+	text-align: center;
+	text-transform: lowercase;
+	font-size: 0.8em;
+	margin-top: 30px;
+}

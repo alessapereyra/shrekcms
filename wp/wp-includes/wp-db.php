@@ -979,7 +979,7 @@ class wpdb {
 	 * @return false|string false on failure, version number on success
 	 */
 	function db_version() {
-		return preg_replace('/[^0-9.].*/', '', mysql_get_server_info( $this->dbh ));
+		return @preg_replace('/[^0-9.].*/', '', mysql_get_server_info( $this->dbh ));
 	}
 }
 

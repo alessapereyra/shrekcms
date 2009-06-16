@@ -17,24 +17,39 @@
 <!--  jQuery UI CSS-->
 <?php echo link_tag('css/jquery-ui.css'); ?>
 
+<!--  magicpreview -->
+<script src="<?php echo $this->config->item('base_url'); ?>/js/magicpreview.js" type="text/javascript" language="javascript"></script>
+
+
 <!--  tiny editor -->
 <script src="<?php echo $this->config->item('base_url'); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" language="javascript">
+
 tinyMCE.init({
+	theme_advanced_toolbar_location : "top",
+	theme : "advanced",
 	mode : "exact",
-	elements : "texto"
+	elements : "texto, textos",
+	extended_valid_elements:"a[name|href|target|title|onclick]",
+  theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
+	theme_advanced_buttons2 : "",
+	theme_advanced_buttons3 : "",
+  relative_urls : false, 	
+	height : "280"
 });
+
+
+
 </script>
 
 <?php
 if ($ie6 == FALSE)
 {
 
-	$subidon = array('fotos', 'documentos', 'articulos');
-	
+	$subidon = array('fotos', 'documentos', 'articulos','videos','audios');
+	$current_controller = $this->uri->segment(1);	
 	if (in_array($this->uri->segment(1), $subidon)):
-	
-	switch ($this->uri->segment(1))
+	switch ($current_controller)
 	{
 		case 'articulos':
 			$name = 'Imagenes';
@@ -47,6 +62,18 @@ if ($ie6 == FALSE)
 			$name = 'Imagenes';
 			$ext = '*.jpg;*.jpeg;*.png;*.gif';
 		break;
+
+		case 'audios':
+			$url = $this->me_url;
+			$name = 'Audios';
+			$ext = '*.mp3';
+		break;
+
+		case 'videos':
+			$url = $this->me_url;
+			$name = 'Videos';
+			$ext = '*.mov';
+		break;
 		
 		case 'documentos':
 			$url = $this->me_url;
@@ -54,6 +81,10 @@ if ($ie6 == FALSE)
 			$ext = '*.doc;*.pdf';
 		break;
 	}
+	
+	
+
+	
 	?>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
 	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.queue.js"></script>
@@ -70,7 +101,7 @@ if ($ie6 == FALSE)
 			upload_url: "<?php echo $url; ?>ajax/upload",
 			post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
 						"PHPSESSID" : "<?php echo session_id(); ?>"},
-			file_size_limit : "2 MB",
+			file_size_limit : "10 MB",
 			file_types : "<?php echo $ext; ?>",
 			file_types_description : "<?php echo $name?>",
 			file_upload_limit : 10,
@@ -113,9 +144,56 @@ if ($ie6 == FALSE)
 </script>
 <script src="<?php echo $this->config->item('base_url'); ?>js/jquery.form.js" type="text/javascript" language="javascript"></script>
 
-<!--  theMagic -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
+<!--[if !IE]><!-->
+
+  <!--  theMagic -->
+  <script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
+
+<!-- <![endif]-->
+
+
+<!--[if IE]>
+  <script src="<?php echo $this->config->item('base_url'); ?>/js/applicationie.js" type="text/javascript" language="javascript"></script>  
+<![endif]-->
 
 
 </head>
 <body>
+  
+  <div id="top_menu">
+    <p>
+      <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
+      <span class="right">
+        <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
+        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+      </span>
+    </p>
+  </div> <!-- top_menu -->
+
+  <div id="wrapper">
+
+      <div id="top_ad">
+        <!-- <img src="/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
+      </div> <!-- top_ad -->
+
+      <div id="logo_bar">
+
+        <h1><a href="http://lamula.pe/mulapress">La Mula</a></h1> 
+
+        <div id="search_bar">
+ 
+         	<?php if ($log) : ?>
+    				<ul>
+    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >Ver Perfil</a></li>
+    					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
+    				</ul>
+    			<?php endif; ?>		
+
+      </div> <!-- search_bar -->
+
+      </div> <!-- logo_bar -->
+
+      <div id="status_bar">
+          <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
+          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
+      </div> <!-- status_bar -->

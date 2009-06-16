@@ -105,6 +105,22 @@ INSERT INTO `wp_departments` (`department_id`, `department`) VALUES
 -- Estructura de tabla para la tabla `wp_distrits`
 --
 
+DROP TABLE IF EXISTS `wp_news_headers`;
+CREATE TABLE IF NOT EXISTS `wp_news_headers` (
+  `id` int(11) NOT NULL auto_increment,
+  `header_type` varchar(50) NULL,
+  `header_source` varchar(50) NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+INSERT INTO `wp_news_headers` (`id`, `header_type`, `header_source`) VALUES
+(1, 'featured',''),
+(2, 'most_voted',''),
+(3, 'most_commented',''),
+(4, 'special_blogs',''),
+(5, 'random_blog','');
+
+
 DROP TABLE IF EXISTS `wp_distrits`;
 CREATE TABLE IF NOT EXISTS `wp_distrits` (
   `distrit_id` int(11) NOT NULL auto_increment,
