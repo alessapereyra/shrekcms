@@ -95,13 +95,6 @@ foreach($consulta as $post):
       <?php $id = next($ids);?>
 <?php endforeach; ?>
 
-<?php  for ($x=$tot; $x<$max; $x++) {?>
-	<div id="<?php echo $id; ?>" class="top_news_featured">
-		nada <?php echo $id; ?>
-	</div>
-	<?php $id = next($ids);?>
-<?php }?>
-
 <div id="top_news_list">
 <?php $first = TRUE;
 reset($ids);
@@ -115,15 +108,6 @@ $id = current($ids);?>
   <?php $first = FALSE;?>
   <?php $id = next($ids);?>
 <?php endforeach; ?>
-
-<?php  for ($x=$tot; $x<$max; $x++) {?>
-  <div class="top_news_item <?php if ($first != FALSE) { echo 'portada-active'; } ?>">
-    <h3>Nada</h3>
-    <h4>de nada</h4>					
-  </div>
-  <?php $first = FALSE;?>
-   <?php $id = next($ids);?>
-<?php }?>
 
 </div> <!-- top_news_text -->
 
