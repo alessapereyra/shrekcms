@@ -238,7 +238,7 @@ jQuery(document).ready(function($) {
 				$(this).next().children().show("fast");
 			}
 			
-			if (this.href != 'http://localhost/shrekcms/wp/#')
+			if (this.href != 'http://lamula.pe/mulapress/#')
 			{
 		   	      $.get(this.href, function(data){
 		   	    	  if (geomula_html == '')
