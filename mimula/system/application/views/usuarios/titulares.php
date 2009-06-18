@@ -126,6 +126,6 @@
     	<?php echo form_label('Cantidad de bloggers', 'random');?>
     	<?php echo $this->session->flashdata('random') . $this->session->flashdata('value'); ?>
 		<?php echo form_input(array('name' => 'random', 'value' => $random, 'id' => 'random')); ?>
-		<?php echo form_submit('update_blogger', 'Remover'); ?>
+		<?php echo form_submit('update_random', 'Actualizar'); ?>
 	<?php echo form_close(); ?>
 </div>

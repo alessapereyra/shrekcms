@@ -739,7 +739,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   //Obtenemos cualquier otros
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
-  // $sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
+  //$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
 	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ')';
 	$sql['order_by'] = 'ORDER BY RAND()';
 	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
