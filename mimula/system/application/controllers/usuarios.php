@@ -5,7 +5,6 @@ class Usuarios extends Controller {
 	
 	var $usuario = array();
 	
-	
 	function reglas()
   {
   
@@ -56,16 +55,21 @@ class Usuarios extends Controller {
 		$this->load->view('layout/' . $tmp['footer']);
 	}
 	
-	function titulares(){
+	function titulares()
+	{
 	  
 		$this->load->library('session');
-    $usuario = $this->session->userdata('usuario');
-    $id = $this->session->userdata('id'); 
+		$this->load->library('combofiller');
+		
+		$usuario = $this->session->userdata('usuario');
+		$id = $this->session->userdata('id');
+		
+		$data['bloggers'] = $this->combofiller->bloggers();
+		$data['defaultsbloggers'] = $this->combofiller->defaultsbloggers();
 
 		$this->load->model('news_header');
 
-
-    $header_types = array(
+		$header_types = array(
                       'blog'  => 'Un Blog',
                       'post'    => 'Un Post',
                       'most_voted'   => 'La más votada',
@@ -75,8 +79,8 @@ class Usuarios extends Controller {
                       'random_blog' => 'Cualquier Blog'
                     );
 
-  	$data['id'] = NULL;    
-    $data['header_types'] = $header_types;
+		$data['id'] = NULL;    
+		$data['header_types'] = $header_types;
     
     $header_1 = $this->news_header->opcion(1);
     $header_2 = $this->news_header->opcion(2);
@@ -208,6 +212,45 @@ class Usuarios extends Controller {
 		
     
 	  
+	}
+	
+	function actualizar_muleros()
+	{
+		$this->load->library('session');
+		$this->load->helper('url');
+		
+		switch ($this->input->post('update_blogger'))
+		{
+			case 'Agregar':
+				if ($this->input->post('add_bloggers') != 'null')
+				{
+					$data['blogger_id'] = $this->input->post('add_bloggers');
+					
+					$this->load->model('defaultbloggers');
+					$this->defaultbloggers->insertar($data);
+					
+					//TODO: setea el flashdata
+					$this->session->set_flashdata('blogger', 'Blogger agregado con exito');
+					
+				}
+			break;
+			case 'Remover':
+				if ($this->input->post('remove_bloggers') != 'null')
+				{
+					$data['id'] = $this->input->post('remove_bloggers');
+					
+					$this->load->model('defaultbloggers');
+					$this->defaultbloggers->borrar($data);
+					
+					//TODO: setea el flashdata
+					$this->session->set_flashdata('blogger', 'Blogger borrado con exito');
+					
+				}
+			break;
+			default:
+				die('NO TOQUES TE DIJE');
+		}
+		redirect("usuarios/titulares");
 	}
 	
 	function grabar_perfil(){

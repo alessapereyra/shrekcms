@@ -130,8 +130,13 @@ class Articulos extends DI_Controller {
 	{
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->helper('inflector');		
 		$this->load->library('combofiller');
 		$this->load->library('form_validation');
+
+
+
+
 
 		$this->form_validation->set_rules($this->_reglas());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -203,12 +208,17 @@ class Articulos extends DI_Controller {
 		}
 		else
 		{
+			$this->load->model('countries');
+			$this->load->model('departments');
+			$this->load->model('distrits');
+			$this->load->model('providences');
+			$this->load->model('options');
 			$this->load->model('term_taxonomy');
 			$this->load->model('terms');
 			$this->load->model('post');
 			$this->load->model('postmeta');
 			$this->load->model('term_relationships');
-			
+		  $this->load->model('options');	
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -291,17 +301,28 @@ class Articulos extends DI_Controller {
 						
 						$photo = ereg_replace($photo_name, $metadata, $photo_data->guid);
 						
+						$tmp = '<br /><a rel="uploaded_image" href="' . $photo_data->guid . '">';
+						$tmp .= '<img rel="uploaded_image" class="alignnone size-medium wp-image-' . $img . '" src="' . $photo . '" />';
+						$tmp .= '</a>';
+						$tmp .= '<br />';
+						$data['post_content'] .= $tmp;
 					}	
 										
 				break;
 				
 				//enlazar
 				case 'enlazar': 
+					$tmp = '<br /><a rel="uploaded_image" href="' . $this->input->post('photolink') . '">';
+					$tmp .= '<img rel="uploaded_image" class="alignnone" src="' . $this->input->post('photolink') . '" />';
+					$tmp .= '</a>';
+					$tmp .= '<br />';
+					$data['post_content'] .= $tmp;
 					
 				break;
 			}
 			
 			$data['post_content'] = $data['post_content'] . '';
+      // $data['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];      
 						
 			//consigue los id de las cata
 			$categorias = $this->combofiller->categorias();
@@ -331,7 +352,7 @@ class Articulos extends DI_Controller {
 				
 				if ($this->input->post($custom) != NULL)
 				{
-					$customs[$custom] = $this->input->post($custom);
+					$customs[$custom] = sanitize2url($this->input->post($custom));
 				}	
 			}
 			
@@ -347,14 +368,14 @@ class Articulos extends DI_Controller {
 				$where['id'] = $id;
 				$this->post->actualizar($data, $where);
 				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
-				redirect('articulos/formulario/' . $id);
+				redirect('home/dashboard');
 			}
 
 			if ($this->is_ajax != TRUE)
 			{
 
        		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
-				redirect('articulos/formulario');
+				redirect('home/dashboard');
 
 			}
 			else

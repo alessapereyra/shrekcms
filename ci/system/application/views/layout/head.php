@@ -34,11 +34,10 @@ tinyMCE.init({
   theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
-  relative_urls : false, 	
-	height : "280"
+	height : "280",
+	relative_urls : true, 
+  remove_script_host : true
 });
-
-
 
 </script>
 
@@ -109,7 +108,8 @@ if ($ie6 == FALSE)
 			custom_settings : {
 				progressTarget : "fsUploadProgress"
 			},		
-			debug: true,
+			//debug: false,
+			debug: false,
 	
 			// Button settings
 			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
@@ -164,7 +164,7 @@ if ($ie6 == FALSE)
     <p>
       <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
       <span class="right">
-        <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
+        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
         <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
       </span>
     </p>
@@ -184,8 +184,9 @@ if ($ie6 == FALSE)
  
          	<?php if ($log) : ?>
     				<ul>
-    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >Ver Perfil</a></li>
-    					<li><?php echo anchor('log/logout', 'Salir'); ?></li>
+    					<li><?php echo anchor('home/dashboard', 'ver notas'); ?></li>
+    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >ver perfil </a></li>
+    					<li><?php echo anchor('log/logout', 'salir'); ?></li>
     				</ul>
     			<?php endif; ?>		
 

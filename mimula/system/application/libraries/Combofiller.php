@@ -38,6 +38,17 @@ class Combofiller {
 		$this->CI->load->model('terms');
 		return $this->CI->terms->get_categories();	
 	}	
+
+	function bloggers($empty_row = FALSE)
+	{
+		$this->CI->load->model('blogs');
+		return $this->CI->blogs->get_fkbloggers($empty_row);	
+	}
 	
+	function defaultsbloggers($empty_row = FALSE)
+	{
+		$this->CI->load->model('defaultbloggers');
+		return $this->CI->defaultbloggers->get_fkdefaults($empty_row);	
+	}	
 }
 ?>

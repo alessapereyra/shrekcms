@@ -2,11 +2,10 @@
   
   
 	<div id="news_headers_main">	 
-	
-    	<fieldset id="news_headers_content">
 
         <?php echo form_open('usuarios/enviar_titulares'); ?>
-  
+     	<fieldset id="news_headers_content">
+     	
 	<h3>Definir Titulares de LaMula</h3>
 
 	<div id="pie"></div>
@@ -106,3 +105,18 @@
   <?php echo form_close(); ?>
   
 </div> <!-- content -->
+
+<div id="sidebar_central">
+
+          <h3>Definir Muleros</h3>
+          <?php echo $this->session->flashdata('blogger'); ?>
+		<?php echo form_open('usuarios/actualizar_muleros'); ?>
+			<h4>Muleros</h4>
+			<?php echo form_dropdown('add_bloggers', $bloggers, NULL,'id="add_bloggers"'); ?>
+			<?php echo form_submit('update_blogger', 'Agregar'); ?>
+			<h4>Muleros actuales</h4>
+			<?php echo form_dropdown('remove_bloggers', $defaultsbloggers, NULL,'id="remove_bloggers" multiple="multiple"'); ?>
+			<?php echo form_submit('update_blogger', 'Remover'); ?>
+		<?php echo form_close(); ?>
+		
+</div>
