@@ -23,15 +23,16 @@
 		$sql['from'] = 'FROM wp_blogs';
 		$sql['order_by'] = 'ORDER BY last_updated DESC';
 		$sql['limit'] = 'LIMIT 10';
-		
+		//die(implode(' ', $sql));
 		return  $wpdb->get_results(implode(' ', $sql));
     }
     
 	function get_index_post($blogs, $cat = 0)
 	{
-    	global $lomalo;
-    	global $lobueno;
-    	global $loroca;
+	    global $wpdb;
+	    global $lomalo;
+	    global $lobueno;
+	    global $loroca;
 
 		foreach($blogs as $blog)
 		{
@@ -82,11 +83,12 @@
 			$sql['limit'] = 'LIMIT 10';
 			
 			$the_sql[] = implode(' ', $sql);
+			//die($the_sql[0]);
 		}
 		unset($sql);
 		
 		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 10';
-		return $wpdb->get_results(implode(' ', $sql));
+		return $wpdb->get_results($sql);
 	}    
 ?>
 
@@ -106,7 +108,7 @@
 $blogs = get_last_blogs_updated();
 $x = 0;
 $posts = get_index_post($blogs, $x);
-die($posts . 'asdf');
+
 ?>
       <ul class="post_list">
 
@@ -175,7 +177,7 @@ die($posts . 'asdf');
 
                 </li>
 
-              <?php endwhile; ?>
+              <?php endforeach; ?>
 
               </ul>
             
