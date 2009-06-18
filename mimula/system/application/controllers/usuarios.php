@@ -68,6 +68,7 @@ class Usuarios extends Controller {
 		$data['defaultsbloggers'] = $this->combofiller->defaultsbloggers();
 
 		$this->load->model('news_header');
+		$this->load->model('options');
 
 		$header_types = array(
                       'blog'  => 'Un Blog',
@@ -81,6 +82,7 @@ class Usuarios extends Controller {
 
 		$data['id'] = NULL;    
 		$data['header_types'] = $header_types;
+		$data['random'] = $this->options->get_('bloggers_random');
     
     $header_1 = $this->news_header->opcion(1);
     $header_2 = $this->news_header->opcion(2);
@@ -212,6 +214,39 @@ class Usuarios extends Controller {
 		
     
 	  
+	}
+	
+	function actualizar_random()
+	{
+		$this->load->helper('url');
+		$this->load->model('options');
+		$this->load->library('session');
+		$this->load->helper('form');
+
+		$this->load->library('form_validation');
+		
+		$reglas[] = array('field'   => 'random', 'label'   => 'lang:field_random', 'rules'   => 'trim|required|is_natural_no_zero');
+		
+		$this->form_validation->set_rules($reglas);
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		
+		
+		if ($this->form_validation->run() == FALSE)
+		{		
+		
+			$this->session->set_flashdata('random', 'Ingrese un valor numero');
+			$this->session->set_flashdata('value', '');
+		}
+		else
+		{
+			$id = $this->options->get_id_('bloggers_random');
+			$data['option_value'] = $this->input->post('random');
+		
+			$this->options->actualizar($data, $id);
+		
+			$this->session->set_flashdata('random', 'Cantidad cambiada con exito');
+		}
+		redirect("usuarios/titulares");
 	}
 	
 	function actualizar_muleros()

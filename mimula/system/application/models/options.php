@@ -21,5 +21,22 @@ class Options extends Model {
     	$query = $query->row_array();
     	return $query['option_value'];
     }
+    
+    function get_id_($value)
+    {
+    	$this->db->select('option_id');
+    	$this->db->from($this->tabla);
+    	$this->db->where(array('option_name' => $value));
+    	
+    	$query = $this->db->get();
+    	$query = $query->row_array();
+    	return $query['option_id'];
+    }  
+    
+    function actualizar($values, $where)
+    {
+		$tmp['option_id'] = $where;
+        $this->db->update($this->tabla, $values, $tmp);
+    }     
 
 }

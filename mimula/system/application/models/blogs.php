@@ -25,6 +25,8 @@ class Blogs extends Model {
     	$this->db->where('mature',0);
     	$this->db->where($this->tabla . '.spam',0);
     	$this->db->where($this->tabla . '.deleted',0);
+    	
+    	//$this->db->where_not_in('wp_users.ID', "SELECT mulapress_default_bloggers.blogger_id FROM mulapress_default_bloggers", FALSE);
 
 		$this->db->order_by('user_nicename', 'ASC'); 
   	
