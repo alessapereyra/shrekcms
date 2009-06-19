@@ -34,6 +34,7 @@ function comments_number($zero,$one,$more,$comments)
     <div id="top_news_content">          	          	      
 
 <?php 
+
 $tot = $consulta->num_rows();
 $consulta = $consulta->result_array();
 

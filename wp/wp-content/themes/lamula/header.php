@@ -49,6 +49,9 @@
 
   <![endif]-->
 
+<link rel="alternate" type="application/rss+xml" 
+  title="La Mula RSS" 
+  href="<?php bloginfo('siteurl') ?>/feed/" />
 
   <?php wp_head(); ?>
   	
@@ -90,6 +93,7 @@
         </div>
         
         <div id="search_bar">
+			<p class="feed-button"><a href="<?php bloginfo('siteurl') ?>/feed">suscribete por rss</a></p>
             <form action="<?php bloginfo('home'); ?>/" method="get" id="searchform">
               <input type="text" name="s" value="" id="busqueda" />
               <input type="submit" value="buscar" />

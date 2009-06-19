@@ -195,7 +195,7 @@ p#site_stats {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	color: #fff;
-	margin-top: 20px;
+/*	margin-top: 20px;*/
 	background: #e9e9e9 0 center;
 }
 
@@ -2111,7 +2111,7 @@ div#flag_notice strong{
 	display: block;
 	clear: both;
 	float: none;
-	padding: 10px;
+	padding: 4px 6px;
 	color: #6c6c6c;
 	background-color: #f3f3f3;
 	border: 1px solid #dbdbdb;
@@ -2119,4 +2119,25 @@ div#flag_notice strong{
 	text-transform: lowercase;
 	font-size: 0.8em;
 	margin-top: 30px;
+	font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+}
+
+
+.feed-button {
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.feed-button a {
+  color: #666;
+  padding: 8px 10px 8px 56px;
+  background: url(images/feed-icon.png) no-repeat 10px 50%;
+  font: 0.75em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+
+}
+
+.feed-button a:hover {
+  color: #444;
+  background: #eee url(images/feed-icon.png) no-repeat 10px 50%;
+
 }

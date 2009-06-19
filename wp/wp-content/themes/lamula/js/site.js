@@ -5,23 +5,6 @@ jQuery(document).ready(function($) {
 	
 	var geomula_html = '';
 	
-	 BACK = "todas";
-	 BACK_STATES = "regresar";
-   from_outside = true;
-	 f_outside = true;
-	 s_outside = true;
-	 t_outside = true;
-	
-	 LAST_STATE = "";
-	
-	
-			$('#bagua').flash({   
-				
-				// test.swf is the flash document 
-				 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
-				 width: 200,
-		     wmode: "transparent"
-			 });
 	
 			jQuery.fn.toggleText = function(a, b)
 			{
@@ -87,8 +70,8 @@ jQuery(document).ready(function($) {
 				
 				var index = $("ul#ranking_menu li a").index(this);
 				
-				$("#ranking_usuarios .sidebox_content").hide("slow");
-				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn("fast");
+				$("#ranking_usuarios .sidebox_content").hide();
+				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn();
 				return false;
 		});
 		
@@ -147,8 +130,8 @@ jQuery(document).ready(function($) {
 			
 			var index = $("ul#articulos_menu li a").index(this);
 			
-			$("#articulos .sidebox_content").hide("slow");
-			$("#articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
+			$("#articulos .sidebox_content").hide();
+			$("#articulos .sidebox_content:eq(" + index + ")").fadeIn();
 			return false;
 		});		
 		
@@ -159,9 +142,9 @@ jQuery(document).ready(function($) {
 			
 			var index = $("ul#lasts_posts li a").index(this);
 			
-			$(".posts_last_content").hide("slow");
+			$(".posts_last_content").hide();
 			
-			$(".posts_last_content:eq(" + index + ")").show("fast");					
+			$(".posts_last_content:eq(" + index + ")").show();					
 				
 			return false;
 		})
@@ -173,9 +156,9 @@ jQuery(document).ready(function($) {
 				
 				var index = $("ul#category_tabs li a").index(this);
 				
-				$(".class_content").hide("slow");
+				$(".class_content").hide();
 				
-				$(".class_content:eq(" + index + ")").show("fast");					
+				$(".class_content:eq(" + index + ")").show();					
 					
 				return false;
 		})
@@ -187,15 +170,15 @@ jQuery(document).ready(function($) {
 				
 				var index = $("ul#corresponsales li a").index(this);
 				
-				$(".tab_content").hide("slow");
-				$(".tab_content:eq(" + index + ")").fadeIn("fast");
+				$(".tab_content").hide();
+				$(".tab_content:eq(" + index + ")").fadeIn();
 				return false;
 		});
 		
 		
 		$("ul#geomula li").hide();
 		$("ul#geomula li.top").show();
-		$("ul#geomula").show("fast");
+		$("ul#geomula").show();
 		
 		$("a.geomula").click(function(){
 			$("ul#geomula li").hide();
@@ -238,7 +221,7 @@ jQuery(document).ready(function($) {
 				$(this).next().children().show("fast");
 			}
 			
-			if (this.href != 'http://grimlock/shrekcms/wp/#')
+			if (this.href != 'http://lamula.pe/mulapress/#')
 			{
 		   	      $.get(this.href, function(data){
 		   	    	  if (geomula_html == '')
