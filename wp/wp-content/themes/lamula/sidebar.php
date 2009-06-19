@@ -39,8 +39,7 @@
             <?php show_sidebar_bloggers(); ?>
               
           </ul>                
-        
-        
+         
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
