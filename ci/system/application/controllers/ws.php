@@ -62,6 +62,69 @@ class Ws extends Controller {
 		$this->load->view('ws/geomula', $data);
 	}
 	
+	
+	function geomula_bottom($pais = 0, $departamento = NULL, $provincia = NULL, $distrito = NULL)
+	{
+		
+		$final = NULL;
+		$this->load->helper('inflector');
+		
+		if ($pais != '0')
+		{
+			$final = $pais;
+			$where['meta_key'] = 'pais';
+			$where['meta_value'] = sanitize2url($pais);
+		}
+		else
+		{
+			if ($distrito != NULL)
+			{
+				$final = $distrito;	
+				$where['meta_key'] = 'distrito';
+				$where['meta_value'] = sanitize2url($distrito);	
+			}
+			else
+			{
+				if ($provincia != NULL)
+				{
+					$final = $provincia;	
+					$where['meta_key'] = 'provincia';
+					$where['meta_value'] = sanitize2url($provincia);			
+				}
+				else
+				{
+					if ($departamento != NULL)
+					{
+
+						if ($departamento == '0')
+						{
+  						$final = "Lima y Callao";	
+							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
+							$where = $where . ' OR (meta_key = \'departamento\' AND meta_value = \'callao\')';
+						}
+						else
+						{						
+						  $final = $departamento;	
+							$where['meta_key'] = 'departamento';
+							$where['meta_value'] = sanitize2url($departamento);
+						}		
+					}				
+				}
+			}
+		}
+		
+		$this->load->model('post');
+		
+		$limit['from'] = 5;
+		$limit['show'] = 25;
+		
+		$data['consulta'] = $this->post->get_geomula($where, $limit);
+		$data['final'] = $final;
+		
+		$this->load->view('ws/geomula', $data);
+	}
+	
+	
 	function mularanking()
 	{
 		$this->load->model('users');

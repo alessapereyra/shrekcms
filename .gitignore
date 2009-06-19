@@ -2,3 +2,4 @@ ci/system/application/config/config.php
 ci/system/application/config/database.php
 wp/wp-config.php
 MockupsLaMula/*
+*/.DS_Store

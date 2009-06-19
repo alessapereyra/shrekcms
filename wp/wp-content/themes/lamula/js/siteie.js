@@ -4,10 +4,6 @@ jQuery(document).ready(function($) {
 	
 	var geomula_html = '';
 	
-	BACK = "todas";
-	BACK_STATES = "regresar";
-	from_outside = true;
-	LAST_STATE = "";
 	 
 	jQuery.fn.toggleText = function(a, b)
 							{
@@ -17,15 +13,6 @@ jQuery(document).ready(function($) {
 								});
 							};	
 	
-	  $('div#menu_bar a').click(function () { 
-	       
-	      $.get(this.href, function(data){
-	     	  //alert("Data Loaded: " + data);
-	     	  $('div#featured').html(data);
-	     	  $('div#featured').innerHtml(data);
-	     	});
-	       return false;
-	     });	 
 	
 	    // initialize scrollable  
 	   $("div.scrollable").scrollable({
@@ -154,8 +141,8 @@ jQuery(document).ready(function($) {
 			
 			var index = $("ul#ranking_menu li a").index(this);
 			
-			$("#ranking_usuarios .sidebox_content").hide("slow");
-			$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn("fast");
+			$("#ranking_usuarios .sidebox_content").hide();
+			$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn();
 			return false;
 	});
 	
@@ -180,8 +167,8 @@ jQuery(document).ready(function($) {
 		
 		var index = $("ul#articulos_menu li a").index(this);
 		
-		$("#articulos .sidebox_content").hide("slow");
-		$("#articulos .sidebox_content:eq(" + index + ")").fadeIn("fast");
+		$("#articulos .sidebox_content").hide();
+		$("#articulos .sidebox_content:eq(" + index + ")").fadeIn();
 		return false;
 	});		
 	
@@ -206,9 +193,9 @@ jQuery(document).ready(function($) {
 				
 				var index = $("ul#category_tabs li a").index(this);
 				
-				$(".class_content").hide("slow");
+				$(".class_content").hide();
 				
-				$(".class_content:eq(" + index + ")").show("fast");					
+				$(".class_content:eq(" + index + ")").show();					
 					
 				return false;
 		});
@@ -220,19 +207,10 @@ jQuery(document).ready(function($) {
 				
 				var index = $("ul#corresponsales li a").index(this);
 				
-				$(".tab_content").hide("slow");
-				$(".tab_content:eq(" + index + ")").fadeIn("fast");
+				$(".tab_content").hide();
+				$(".tab_content:eq(" + index + ")").fadeIn();
 				return false;
 		});
-
-
-		$('#bagua').flash({   
-
-			// test.swf is the flash document 
-		 swf: 'http://lamula.pe/mulapress/wp/wp-content/themes/lamula/bagua.swf',
-		 width: 200,
-     wmode: "transparent"
-		 });
 					
 				/*
 

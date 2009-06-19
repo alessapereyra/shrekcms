@@ -16,6 +16,7 @@ class Post extends Model {
         $fields = array($this->tabla . '.ID',
         				$this->tabla . '.guid',
         				$this->tabla . '.post_title',
+        				$this->tabla . '.post_modified as fecha',
         				'DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date',
         				$this->tabla . '.comment_count',
         				$this->tabla . '.post_content');
@@ -39,9 +40,29 @@ class Post extends Model {
 		
 		$this->db->limit($limit['show'], $limit['from']);
 		
+		
 		$query = $this->db->get();
-		// die($this->db->last_query());
-		return $query;
+		
+		$geo_query = $this->db->last_query();
+		
+		$tag_query = "SELECT mulapress_posts.ID,mulapress_posts.guid,mulapress_posts.post_title,mulapress_posts.post_modified as fecha, ".
+					 "DATE_FORMAT(mulapress_posts.post_date, '%d-%m-%Y') AS post_date,".
+					 "mulapress_posts.comment_count, mulapress_posts.post_content, ".
+					 "wp_users.user_login, wp_users.user_nicename ".
+					 " FROM mulapress_posts JOIN mulapress_postmeta ON mulapress_posts.ID = mulapress_postmeta.post_id ".
+					 " JOIN wp_users ON mulapress_posts.post_author = wp_users.ID ".
+					 " JOIN mulapress_term_relationships mtr ON mulapress_posts.ID = mtr.object_ID ".
+					 " JOIN mulapress_term_taxonomy mtt ON mtr.term_taxonomy_id = mtt.term_taxonomy_id ".
+					 " JOIN mulapress_terms t ON mtt.term_id = t.term_id ".
+					 " WHERE t.name = '". $values['meta_value'] ."'";
+		
+
+		
+		$final_query = "(" . $geo_query .") UNION (" . $tag_query .") order by fecha DESC limit ". $limit['from'] . ", " . $limit['show'] ." ";
+		
+		$localized = $this->db->query($final_query);
+		
+		return $localized;
     }
     
     function get_lastpost($id, $posts)
