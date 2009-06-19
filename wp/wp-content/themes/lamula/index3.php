@@ -58,8 +58,10 @@
 			$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
 			
 			//where
-			$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
+			//$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
+			$sql['where'] = 'WHERE (post_type = \'post\' AND post_status = \'publish\')';
 
+			/*
 			switch ($cat)
 			{
 				case 0:
@@ -75,7 +77,8 @@
 					$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'' . $lomalo . '\' OR ' . $wp_term_taxonomy . '.term_id = \'' . $lobueno . '\' OR ' . $wp_term_taxonomy . '.term_id = \'' . $loroca . '\' ))';
 				break;
 				
-			}			
+			}
+			*/
 			
 			//order by
 			$sql['order_by'] = 'ORDER BY post_date DESC';
@@ -83,7 +86,7 @@
 			$sql['limit'] = 'LIMIT 10';
 			
 			$the_sql[] = implode(' ', $sql);
-			//die($the_sql[0]);
+			die($the_sql[0]);
 		}
 		unset($sql);
 		
@@ -98,7 +101,7 @@
 
     <ul id="category_tabs">
       <li><a href="#todo" class="active">lo todo</a></li>      
-      <li><a href="#bueno">lo bueno</a></li>
+      <li><a href="#bueno">alo bueno</a></li>
       <li><a href="#malo">lo malo</a></li>
       <li><a href="#roca">la roca</a></li>
     </ul>

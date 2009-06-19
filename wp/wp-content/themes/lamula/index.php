@@ -36,7 +36,7 @@
 
 		foreach($blogs as $blog)
 		{
-			//$blog->blog_id = 1;
+			$blog->blog_id = 130;
 			$wp_posts = 'wp_' . $blog->blog_id . '_posts';
 			$wp_term_taxonomy = 'wp_' . $blog->blog_id . '_term_taxonomy';
 			$wp_term_relationships = 'wp_' . $blog->blog_id . '_term_relationships';
@@ -83,7 +83,7 @@
 			$sql['limit'] = 'LIMIT 10';
 			
 			$the_sql[] = implode(' ', $sql);
-			//die($the_sql[0]);
+			die($the_sql[0]);
 		}
 		unset($sql);
 		
