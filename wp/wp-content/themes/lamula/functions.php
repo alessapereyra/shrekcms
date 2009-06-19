@@ -726,7 +726,13 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   global $wpdb;
   
   //Obtenemos los blogs de los usuarios
-	$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
+  	$consulta = $wpdb->get_results("SELECT blogger_id as blog FROM mulapress_default_bloggers");
+  	foreach ($consulta as $cons)
+  	{
+  		$blogs[] = $cons->blog;	
+  	}
+  
+	//$blogs = array(16,26,40,41,45,47,51,57,59,62,64,67,71,72,75,78,79,85,87,96,153,208,213,214,222);
   // $blogs = array(1);
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
@@ -737,6 +743,11 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
 	unset($sql);
 
   //Obtenemos cualquier otros
+  	$consulta = $wpdb->get_results('SELECT option_value FROM mulapress_options WHERE option_name = \'bloggers_random\'');
+	foreach ($consulta as $cons)
+	{
+		$outsiders = $cons->option_value;
+	}
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
   //$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
