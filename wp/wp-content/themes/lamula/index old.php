@@ -9,100 +9,7 @@
     include 'geomula.php';
 
     include 'top_news.php';      
-    
-    function get_last_blogs_updated()
-    {
-    	global $wpdb;
-    	
-		$sql['select'] = 'SELECT blog_id';
-		$sql['from'] = 'FROM wp_blogs';
-		$sql['order_by'] = 'ORDER BY last_updated DESC';
-		$sql['limit'] = 'LIMIT 10';
-		//die(implode(' ', $sql));
-		return  $wpdb->get_results(implode(' ', $sql));
-    }
-    
-	function get_index_post($blogs, $cat = 0)
-	{
-	    global $wpdb;
 
-		foreach($blogs as $blog)
-		{
-			//echo $blog->blog_id;
-			//$blog->blog_id = 59;
-			$wp_posts = 'wp_' . $blog->blog_id . '_posts';
-			$wp_term_taxonomy = 'wp_' . $blog->blog_id . '_term_taxonomy';
-			$wp_term_relationships = 'wp_' . $blog->blog_id . '_term_relationships';
-			$wp_terms = 'wp_' . $blog->blog_id . '_terms';
-			$wp_users = 'wp_users';
-			
-			//tabla post
-			$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
-			//time
-			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
-			//tabla user
-			$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
-			
-			//from
-			$sql['from'] = 'FROM ' . $wp_posts . ' ';
-			//inner join terms relationships
-			//$sql['from'] .= 'INNER JOIN ' . $wp_term_relationships . ' ON ' . $wp_term_relationships . '.object_id = ' . $wp_posts . '.ID ';
-			//inner join terms relationships
-			//$sql['from'] .= 'INNER JOIN ' . $wp_term_taxonomy . ' ON ' . $wp_term_taxonomy . '.term_taxonomy_id = ' . $wp_term_relationships . '.term_taxonomy_id ';
-			//inner join terms relationships
-			$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
-			
-			//where
-			$sql['where'] = 'WHERE post_type = \'post\' AND post_status = \'publish\'';			
-			
-			//order by
-			$sql['order_by'] = 'ORDER BY post_date DESC';
-			
-			$sql['limit'] = 'LIMIT 10';
-			
-			$the_sql[] = implode(' ', $sql);
-			//die($the_sql[0]);
-			//break;
-		}
-	
-		$wp_posts = 'mulapress_posts';
-		$wp_term_taxonomy = 'mulapress_term_taxonomy';
-		$wp_term_relationships = 'mulapress_term_relationships';
-		$wp_terms = 'mulapress_terms';
-		$wp_users = 'wp_users';
-					
-		//tabla post
-		$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
-		//time
-		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
-		//tabla user
-		$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
-		
-		//from
-		$sql['from'] = 'FROM ' . $wp_posts . ' ';
-		//inner join terms relationships
-		$sql['from'] .= 'INNER JOIN ' . $wp_term_relationships . ' ON ' . $wp_term_relationships . '.object_id = ' . $wp_posts . '.ID ';
-		//inner join terms relationships
-		$sql['from'] .= 'INNER JOIN ' . $wp_term_taxonomy . ' ON ' . $wp_term_taxonomy . '.term_taxonomy_id = ' . $wp_term_relationships . '.term_taxonomy_id ';
-		//inner join terms relationships
-		$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
-		
-		//where
-		$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
-		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';			
-		
-		//order by
-		$sql['order_by'] = 'ORDER BY post_date DESC';
-		
-		$sql['limit'] = 'LIMIT 10';
-		
-		$the_sql[] = implode(' ', $sql);
-	
-		unset($sql);
-		
-		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 10';
-		return $wpdb->get_results($sql);
-	}    
 ?>
 
 <div id="content">
@@ -116,22 +23,19 @@
       <li><a href="#roca">la roca</a></li>
     </ul>
     <div id="todo" class="class_content">
-<?php
 
-$blogs = get_last_blogs_updated();
-$posts = get_index_post($blogs, $x);
-
-?>
       <ul class="post_list">
 
-        <?php if ($posts) : ?>
+        <?php if (have_posts()) : ?>
 
-          <?php foreach($posts as $post): ?>
+          <?php while (have_posts()) : the_post(); ?>
+
+            <?php if( $post->ID == $do_not_duplicate ) continue; update_post_caches($posts); ?>
 
             <?php $row = ( 'odd' != $row ) ? 'odd' : 'even'; ?>
 
             <?php 
-            $content = $post->post_content;
+            $content = get_the_content();
             $html = str_get_html($content);
             $img_link = $html->find('img',0)->src;
             $html->clear(); 
@@ -139,14 +43,14 @@ $posts = get_index_post($blogs, $x);
 
             $content = apply_filters('the_content', $content);
             $content = str_replace(']]>', ']]&gt;', $content);
-            $date = "el <small class='author'>" . $post->post_date . "</small> a las <small class='author'>" . $post->post_time ."</small>";           
+            $date = "el <small class='author'>" . get_the_time('d/m/y') . "</small> a las <small class='author'>" . get_the_time('g:i a'). "</small>";           
             ?>
 
             <li class='<?php echo $row; ?>'>
 
               <h5>
-                <a href="<?php echo $post->guid; ?>" rel="bookmark" title="Enlace a <?php echo $post->post_title; ?>">
-                  <?php echo $post->post_title; ?>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
+                  <?php the_title(); ?>
                 </a>
               </h5>
 
@@ -156,19 +60,19 @@ $posts = get_index_post($blogs, $x);
 
                   <div class="post_image <?php the_category_unlinked(' '); ?>">
 
-                    <a href="<?php echo $post->guid; ?>" rel="bookmark" title="Enlace a <?php echo $post->post_title; ?>">
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Enlace a <?php the_title_attribute(); ?>">
                       <img src="<?php echo $img_link; ?>" alt="" title=""/>
-                      <span><?php //the_category_unlinked(' '); ?></span>
+                      <span><?php the_category_unlinked(' '); ?></span>
                     </a>
                   </div>
 
                   <div class="post_companion_content">
-                    <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>     	              
+                    <?php echo the_excerpt(); ?>		              
                   </div>
                   <?php } else { ?>
 
                     <div class="post_content">
-                    <?php echo mulapress_trim_excerpt($newpost->post_content, 35) ?>                   
+                    <?php echo the_excerpt(); ?>		              
                     </div>
 
                     <?php } ?>
@@ -179,17 +83,17 @@ $posts = get_index_post($blogs, $x);
 
                     <div class="footer_links">
 
-                      <a href="<?php echo $post->guid; ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-                      <a href="<?php echo $post->guid; ?>#comments" class="comments"><?php comments_number('comentar', 'un comentario', 'm&aacute;s comentario'); ?></a>
+                      <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+                      <a href="<?php comments_link(); ?>" class="comments"><?php comments_number('comenta', 'un comentario', 'm&aacute;s comentario'); ?></a>
 
                     </div>
 
-                    <span>enviado por <a href="http://lamula.pe/members/<?php echo $post->user_login; ?>"><?php echo $post->user_nicename; ?></a> <?php echo $date ?></span>	          
+                    <span>enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> <?php echo $date ?></span>	          
                   </div> <!-- news_footer -->	          
 
                 </li>
 
-              <?php endforeach; ?>
+              <?php endwhile; ?>
 
               </ul>
             
@@ -200,14 +104,14 @@ $posts = get_index_post($blogs, $x);
 
             <?php else : ?>
 
-              <h2 class="center">No hay noticias :(</h2>
+              <h2 class="center">No hay noticias</h2>
               <span class="center">Pero puedes buscar algo que te interese</p>
                 <?php get_search_form(); ?>
 
               <?php endif; ?>
 
           </div> <!-- todo -->
-          
+
           <div id="bueno" class="class_content">
             <?php query_posts('cat=3'); ?>
             <ul class="post_list">
