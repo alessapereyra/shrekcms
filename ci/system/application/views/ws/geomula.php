@@ -44,6 +44,8 @@ $id = current($ids);
 include('system/application/libraries/Simplehtml.php');
 $max = 5;
 
+if ($tot > 0){
+
 foreach($consulta as $post):
 ?>
 		<div id="<?php echo $id; ?>" class="top_news_featured">
@@ -119,3 +121,16 @@ $id = current($ids);?>
 
 
 </div> <!-- top_news_footer -->  		
+
+<?php } else
+ {
+	
+	?>
+	
+	<div class="top_news_not_found">
+		
+		No hemos encontrado noticias para <?php echo $from ?>. Ayúdanos <a href="http://lamula.pe/mulapress/ci">mandando tus propias noticias</a>.
+		
+	</div> <!-- top_news_not_found -->
+	
+<?php  } ?>

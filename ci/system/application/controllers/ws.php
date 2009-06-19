@@ -58,6 +58,7 @@ class Ws extends Controller {
 		
 		$data['consulta'] = $this->post->get_geomula($where, $limit);
 		$data['final'] = $final;
+		$data['from'] = $where['meta_value'];
 		
 		$this->load->view('ws/geomula', $data);
 	}

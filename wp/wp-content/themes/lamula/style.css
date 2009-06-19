@@ -2141,3 +2141,10 @@ div#flag_notice strong{
   background: #eee url(images/feed-icon.png) no-repeat 10px 50%;
 
 }
+
+#top_news_content div.top_news_not_found {
+	padding: 10px;
+	padding-top: 2em;
+	text-align: center;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
