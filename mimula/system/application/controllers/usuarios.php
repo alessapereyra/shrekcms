@@ -29,6 +29,7 @@ class Usuarios extends Controller {
   	$this->usuario['nombre'] = NULL;
 
 		$data['id'] = NULL;
+		$data['dni'] = NULL;
 		$data['url'] = NULL;
 		$data['usuario'] = NULL;	
 		$data['email'] = NULL;

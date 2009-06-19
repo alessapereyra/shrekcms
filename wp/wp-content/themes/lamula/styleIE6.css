@@ -1,15 +1,32 @@
 h1 a {
-/*	background-image: url(images/logo-transparent.png);
-	text-indent: -9000em;
-	width: 240px;
-	height: 70px;
-	*/
-/*	background-image: none;*/
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/logo-transparent.png', sizingMethod='crop');
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/logo-transparent.png', sizingMethod='image');
 	text-indent: -9000em;
 	width: 240px;
 	height: 70px;
 	
+}
+
+div#flag a {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/flag-transparent.png', sizingMethod='image');
+	height:65px;
+	text-indent:-4000em;
+	width:72px;
+}
+
+.feed-button a {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/feed-icon.png', sizingMethod='image');
+	height:28px;
+	height:28px;
+}
+
+.feed-button a:hover {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/feed-icon.png', sizingMethod='image');
+	height:28px;
+	height:28px;
 }
 
 ul#menu li.f {

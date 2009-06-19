@@ -39,7 +39,7 @@
 			//tabla post
 			$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 			//time
-			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_modified,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_modified,\'%l:%i %p\') as post_time, ';
+			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
 			//tabla user
 			$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 			
@@ -56,7 +56,7 @@
 			$sql['where'] = 'WHERE post_type = \'post\' AND post_status = \'publish\'';			
 			
 			//order by
-			$sql['order_by'] = 'ORDER BY post_modified DESC';
+			$sql['order_by'] = 'ORDER BY post_date DESC';
 			
 			$sql['limit'] = 'LIMIT 10';
 			
@@ -74,7 +74,7 @@
 		//tabla post
 		$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 		//time
-		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_modified,\'%d/%m/%Y\') as post_modified, DATE_FORMAT(' . $wp_posts . '.post_modified,\'%l:%i %p\') as post_time, ';
+		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
 		//tabla user
 		$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 		
@@ -92,7 +92,7 @@
 		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';			
 		
 		//order by
-		$sql['order_by'] = 'ORDER BY post_modified DESC';
+		$sql['order_by'] = 'ORDER BY post_date DESC';
 		
 		$sql['limit'] = 'LIMIT 10';
 		
@@ -100,7 +100,7 @@
 	
 		unset($sql);
 		
-		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_modified DESC LIMIT 10';
+		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 10';
 		return $wpdb->get_results($sql);
 	}    
 ?>
@@ -139,7 +139,7 @@ $posts = get_index_post($blogs, $x);
 
             $content = apply_filters('the_content', $content);
             $content = str_replace(']]>', ']]&gt;', $content);
-            $date = "el <small class='author'>" . $post->post_modified . "</small> a las <small class='author'>" . $post->post_time ."</small>";           
+            $date = "el <small class='author'>" . $post->post_date . "</small> a las <small class='author'>" . $post->post_time ."</small>";           
             ?>
 
             <li class='<?php echo $row; ?>'>
