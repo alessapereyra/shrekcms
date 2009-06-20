@@ -72,6 +72,8 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 }
 
 #sidebar_recomendados ul.sidebox_menu {
+	margin:0;
+	padding:0;
 		margin-bottom: 25px !important;
 		display: block;
 

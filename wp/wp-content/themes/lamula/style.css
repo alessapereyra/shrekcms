@@ -229,7 +229,7 @@ div#search_bar label {
 /* @group Menu Bar */
 
 div#menu_bar {
-	
+	width:920px;
 	clear: both;
 	overflow: hidden;
 	background-color: #fff469;	
@@ -1204,8 +1204,8 @@ div#blogger_data p {
 	color: #ff4692 !important;
 }
 
-div#sidebars div#sidebar_central h4,
-div#sidebars div#sidebar_recomendados h4	{
+div#sidebar_central h4
+{
 	font-size: 1.5em;
 	color: #3b3330;
 	text-transform: lowercase;
@@ -1238,16 +1238,14 @@ img.fromvideo {
 	display: none;
 }
 	
-div#sidebars div#sidebar_recomendados div.sidebox h4 {
-	color: black;
+#sidebar_recomendados h4 {
+	color: #000000;
 	text-transform: lowercase;	
 	margin: 0px;
 	background: #fff repeat-x scroll left center;
 	padding: 20px 20px 10px;
-	position:relative;
 	border-bottom-width: 2px;
 	font-size: 1.2em;
-	
 }
 
 div#sidebars div#sidebar_recomendados ul {
@@ -2147,4 +2145,8 @@ div#flag_notice strong{
 	padding-top: 2em;
 	text-align: center;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+.clear {
+clear: both;
 }

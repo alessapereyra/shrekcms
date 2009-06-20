@@ -17,13 +17,13 @@
   
   
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-  <!--[if lte IE 8]>
+  <!--[if IE 7]>
 
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE.css" type="text/css" media="screen" />
 
   <![endif]-->
 
-  <!--[if lte IE 7]>
+  <!--[if IE 6]>
 
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/styleIE6.css" type="text/css" media="screen" />
 
@@ -43,7 +43,7 @@
     <!--<![endif]-->
 
 
-  <!--[if lte IE 8]>
+  <!--[if IE]>
 
     <script src="<?php bloginfo('template_url'); ?>/js/siteie.js" type="text/javascript" charset="utf-8" ></script>
 

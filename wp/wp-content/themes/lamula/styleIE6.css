@@ -29,6 +29,10 @@ div#flag a {
 	height:28px;
 }
 
+div#content div#sidebars div#sidebar_recomendados {
+	width: 200px;
+	}
+
 ul#menu li.f {
 	float: left;
 	overflow: auto;
@@ -93,13 +97,7 @@ div#top_news {
 }
 
 #sidebar_central ul.bloggers_list li {
-
 	height: 30px;
-
-}
-
-div#sidebar_recomendados {
-	width: 215px !important;
 }
 
 div.navi {
@@ -122,7 +120,98 @@ div#footer {
 	}
 
 ul#geomula { 
-
 		display: auto;
+}
 
+#sidebar_recomendados h4 {
+	font-size:1em;
+}
+
+/* de la otra hoja */
+
+
+div#status_bar {
+	height : 100%;
+}
+
+div.class_content {
+	width:100%;
+	height:100%;
+}
+
+#post_list li  {	
+	clear:both;
+}
+
+#post_list li div.post_content {
+	overflow:hidden;
+}
+
+#sidebar_recomendado ul li {
+	overflow: hidden !important;
+}
+
+div#sidebars div#sidebar_recomendados div.sidebox {	
+	overflow: visible;
+}
+
+#sidebar_recomendados ul.sidebox_menu {
+	margin:0;
+	padding:0;
+		margin-bottom: 25px !important;
+		display: block;
+}
+
+.sidebox {
+	background-color: white;
+}
+
+div.sidebox.cc{
+	padding: 10px;
+	clear: both;
+	overflow: visible;
+}
+
+#comentarios .sidebox_wrapper {	
+	clear:both;
+	overflow: visible;
+}
+
+#comentarios .sidebox_wrapper ul  {
+	overflow:visible !important;
+	float: none !important;
+}
+
+#comentarios .sidebox_wrapper ul li {
+	width: 100%;
+}
+
+ #sidebar_central ul.bloggers_list li {
+	height: 30px;
+	overflow: hidden;
+}
+
+#sidebar_recomendados {	
+	clear: both;
+}
+
+div#wrapper,
+div#content,
+#bloggers_navigation,
+#top_news_featured_footer {
+	overflow: hidden;
+	
+}
+
+div#content {
+	
+	overflow: hidden;
+	
+}
+
+ul#geomula,
+div#menu_bar {
+	
+	background-color: #fff469 !important;
+	
 }
