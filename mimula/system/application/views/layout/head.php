@@ -35,8 +35,10 @@ tinyMCE.init({
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
 	height : "280",
-	relative_urls : true, 
-  remove_script_host : true
+	relative_urls : false,
+	remove_script_host : false,
+	document_base_url : "http://lamula.pe/mulapress/"
+
 });
 
 </script>
