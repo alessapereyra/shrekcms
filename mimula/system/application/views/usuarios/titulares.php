@@ -112,11 +112,11 @@
           <?php echo $this->session->flashdata('blogger'); ?>
 		<?php echo form_open('usuarios/actualizar_muleros'); ?>
 			<h4>Muleros</h4>
-			<?php echo form_dropdown('add_bloggers', $bloggers, NULL,'id="add_bloggers"'); ?>
-			<?php echo form_submit('update_blogger', 'Agregar'); ?>
+			<?php echo form_dropdown('add_blog', $blogs, NULL,'id="add_blog"'); ?>
+			<?php echo form_submit('update_blog', 'Agregar'); ?>
 			<h4>Muleros actuales</h4>
-			<?php echo form_dropdown('remove_bloggers', $defaultsbloggers, NULL,'id="remove_bloggers" multiple="multiple"'); ?>
-			<?php echo form_submit('update_blogger', 'Remover'); ?>
+			<?php echo form_dropdown('remove_blog', $defaultsblogs, NULL,'id="remove_blog" multiple="multiple"'); ?>
+			<?php echo form_submit('update_blog', 'Remover'); ?>
 		<?php echo form_close(); ?>
 		
 </div>

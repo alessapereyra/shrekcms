@@ -1466,9 +1466,8 @@ div#sidebars div#sidebar_recomendados {
 }
 
 div#sidebars div#sidebar_recomendados div.sidebox {
-		overflow: hidden;
-	margin:0 0 0px;
-
+	overflow: hidden;
+	margin:15px 0 0 0 !important;
 }
 
 #sidebar_recomendados ul.sidebox_menu {
@@ -1479,7 +1478,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 
 
 #comentarios div.sidebox_wrapper ul {
-	padding: 10px;
+	padding: 10px !important;
 	display: block ;
 	
 }
@@ -1497,6 +1496,8 @@ div#comentarios.sidebox {
 	margin-bottom: 1em;
 	letter-spacing: 0;
 	word-spacing: 0;
+	background: none;
+	margin-top:16px;
 }
 
 #comentarios div.sidebox_wrapper ul li {
@@ -2149,4 +2150,5 @@ div#flag_notice strong{
 
 .clear {
 clear: both;
+background: none;
 }

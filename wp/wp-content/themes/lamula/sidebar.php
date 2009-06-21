@@ -160,8 +160,8 @@
               <?php mostrar_ultimos_comentarios(); ?>
             </ul>
             
-            <div class="clear"></div>
           </div> <!-- sidebox_wrapper -->
+          <div class="clear"></div>
   
         </div> <!-- sidebox -->
 

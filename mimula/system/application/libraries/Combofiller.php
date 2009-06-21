@@ -42,13 +42,13 @@ class Combofiller {
 	function bloggers($empty_row = FALSE)
 	{
 		$this->CI->load->model('blogs');
-		return $this->CI->blogs->get_fkbloggers($empty_row);	
+		return $this->CI->blogs->get_fkblogs($empty_row);	
 	}
 	
-	function defaultsbloggers($empty_row = FALSE)
+	function defaultsblogs($empty_row = FALSE)
 	{
-		$this->CI->load->model('defaultbloggers');
-		return $this->CI->defaultbloggers->get_fkdefaults($empty_row);	
+		$this->CI->load->model('defaultblogs');
+		return $this->CI->defaultblogs->get_fkdefaults($empty_row);	
 	}	
 }
 ?>

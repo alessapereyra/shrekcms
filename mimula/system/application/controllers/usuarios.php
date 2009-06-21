@@ -65,8 +65,8 @@ class Usuarios extends Controller {
 		$usuario = $this->session->userdata('usuario');
 		$id = $this->session->userdata('id');
 		
-		$data['bloggers'] = $this->combofiller->bloggers();
-		$data['defaultsbloggers'] = $this->combofiller->defaultsbloggers();
+		$data['blogs'] = $this->combofiller->bloggers();
+		$data['defaultsblogs'] = $this->combofiller->defaultsblogs();
 
 		$this->load->model('news_header');
 		$this->load->model('options');
@@ -255,28 +255,28 @@ class Usuarios extends Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		
-		switch ($this->input->post('update_blogger'))
+		switch ($this->input->post('update_blog'))
 		{
 			case 'Agregar':
-				if ($this->input->post('add_bloggers') != 'null')
+				if ($this->input->post('add_blog') != 'null')
 				{
-					$data['blogger_id'] = $this->input->post('add_bloggers');
+					$data['blog_id'] = $this->input->post('add_blog');
 					
-					$this->load->model('defaultbloggers');
-					$this->defaultbloggers->insertar($data);
+					$this->load->model('defaultblogs');
+					$this->defaultblogs->insertar($data);
 					
 					//TODO: setea el flashdata
-					$this->session->set_flashdata('blogger', 'Blogger agregado con exito');
+					$this->session->set_flashdata('blogger', 'Blog agregado con exito');
 					
 				}
 			break;
 			case 'Remover':
-				if ($this->input->post('remove_bloggers') != 'null')
+				if ($this->input->post('remove_blog') != 'null')
 				{
-					$data['id'] = $this->input->post('remove_bloggers');
+					$data['id'] = $this->input->post('remove_blog');
 					
-					$this->load->model('defaultbloggers');
-					$this->defaultbloggers->borrar($data);
+					$this->load->model('defaultblogs');
+					$this->defaultblogs->borrar($data);
 					
 					//TODO: setea el flashdata
 					$this->session->set_flashdata('blogger', 'Blogger borrado con exito');
