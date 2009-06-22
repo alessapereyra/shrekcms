@@ -171,7 +171,7 @@ $posts = get_index_post($blogs, $x);
                   <?php } else { ?>
 
                     <div class="post_content">
-                    <?php echo mulapress_trim_excerpt($newpost->post_content, 35) ?>                   
+                    <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                   
                     </div>
 
                     <?php } ?>

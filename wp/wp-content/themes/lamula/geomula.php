@@ -1,4 +1,4 @@
-<?php $ci_url= "/shrekcms/mimula/index.php/"; ?>
+<?php $ci_url= "/mulapress/ci/index.php/"; ?>
 	<div id="menu_bar">
 
 		<p id="tagline">
@@ -26,8 +26,8 @@
 						<a href="#">Lima Central</a>
 						<ul>
 							<li><a class="last" rel="barranco" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/barranco">Barranco</a></li> 
-							<li><a class="last" rel="breña" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/breña">Breña</a></li> 
-							<li><a class="last" rel="jesús-maría" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/jess-mara">Jesús María</a></li> 
+							<li><a class="last" rel="brena" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/brena">Breña</a></li> 
+							<li><a class="last" rel="jesus-maria" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/jesus-maria">Jesús María</a></li> 
 							<li><a class="last" rel="la-victoria" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/la-victoria">La Victoria</a></li> 
 							<li><a class="last" rel="lince" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/lince">Lince</a></li> 
 							<li><a class="last" rel="miraflores" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/miraflores">Miraflores</a></li> 
