@@ -498,7 +498,7 @@ div#top_news div.top_news_featured div.top_news_featured_footer p {
 }
 
 div.top_news_featured_footer {
-	overflow: auto;	
+	overflow: hidden;	
 	clear: both;
 	margin-top: 10px;
 }

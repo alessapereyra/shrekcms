@@ -26,7 +26,12 @@ div#flag a {
 	background-image: none;
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/feed-icon.png', sizingMethod='image');
 	height:28px;
-	height:28px;
+}
+
+#sidebars #important p a.send_news {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/boton_publicar.png', sizingMethod='image');	
+	height: 120px;
 }
 
 div#content div#sidebars div#sidebar_recomendados {
@@ -126,6 +131,17 @@ ul#geomula {
 #sidebar_recomendados h4 {
 	font-size:1em;
 }
+ul#ranking_menu {
+	height: 29px;
+	margin-top: -1px;
+	background-color: #E7E6EB;
+	}
+
+ul#ranking_menu:hover {
+	height: 29px;
+	margin-top: -1px;
+	background-color: #E7E6EB;	
+}
 
 /* de la otra hoja */
 
@@ -158,7 +174,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 #sidebar_recomendados ul.sidebox_menu {
 	margin:0;
 	padding:0;
-		margin-bottom: 25px !important;
+		margin-bottom: 15px !important;
 		display: block;
 }
 

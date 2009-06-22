@@ -102,7 +102,7 @@
 	
 		unset($sql);
 		
-		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 0, 10';
+		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 0, 20';
 		//echo '<!-- '.  $sql . '-->';
 		return $wpdb->get_results($sql);
 	}    

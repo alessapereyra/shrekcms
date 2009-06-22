@@ -137,18 +137,6 @@
           <li><a href="#votados">votados</a></li>
           <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
-   
-      
-        <!-- <div id="videos" class="sidebox">
-
-               <div class="sidebox_wrapper">
-
-                 <h4>Video destacado</h4>          
-                 
-               </div> <sidebox_wrapper
-
-             </div> <sidebox 
-              -->
 
         <div id="comentarios" class="sidebox">
 
