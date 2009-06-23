@@ -113,7 +113,7 @@ class DI_Controller extends Controller {
 		$config['base_url'] = $this->me_url;
 		$config['total_rows'] = $total;
 		$config['per_page'] = $per_page;
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = 3;
 
 		$this->pagination->initialize($config);
 
