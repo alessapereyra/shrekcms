@@ -9,11 +9,14 @@
 
 <?php 
 
-$texto = 'asdf-áasdasd234f';
-$pattern = '/[^0-9a-zA-Z-]/';
+$a[1] = 1;
+$a[5] = 1;
+$a[20] = 1;
 
-echo preg_replace($pattern, '', trim($texto));
-
+for($x = 1; $x <= 20; $x++)
+{
+	echo 'el numero ' . $x . ' es: ' . isset($a[$x]) . '<br />';
+}
 ?>
 
 

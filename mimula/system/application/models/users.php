@@ -10,7 +10,21 @@ class Users extends Model {
         parent::Model();
         $this->load->database('lamula');        
     }
+    
+    function approve($aproved, $desaproved)
+    {
+    	$values['aproved'] = 1;
+    	
+    	$this->db->where_in('ID', $aproved);
+    	$this->db->update($this->tabla, $values);
 
+    	$values['aproved'] = 0;
+    	
+    	$this->db->where_in('ID', $desaproved);
+    	$this->db->update($this->tabla, $values);
+    	
+    }
+    
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$fields = $this->db->list_fields($this->tabla);
@@ -20,7 +34,7 @@ class Users extends Model {
 		   $this->db->select($field);
 		}
 
-  	$this->db->from($this->tabla);
+  		$this->db->from($this->tabla);
 		
     	
     	if ($search != NULL)

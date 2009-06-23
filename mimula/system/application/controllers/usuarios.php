@@ -1,6 +1,6 @@
 <?php
 
-class Usuarios extends Controller {
+class Usuarios extends DI_Controller {
 	
 	
 	var $usuario = array();
@@ -21,6 +21,66 @@ class Usuarios extends Controller {
   
   }	
 
+	function verificado($page = 1, $per_page = NULL)
+	{
+		
+		$data['page'] = $page;
+		$data['per_page'] = $per_page;
+				
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+				
+		if ($per_page == NULL)
+		{
+			$per_page = $this->config->item('per_page');
+		}
+		
+		$this->load->model('users');
+		
+		//arma el paginador
+		$data['consulta'] = $this->users->seleccionar();
+		$data['paginador'] = $this->_paginador($data['consulta']->num_rows(), $per_page);
+		$data['selector'] = $this->pagination->create_selector($per_page);
+		
+		//calcula cuantos mostrar
+		$limit['show'] = $per_page;
+		$limit['from'] = ($page - 1) * $per_page;
+		
+		//consulta
+		$data['consulta'] = $this->users->seleccionar(NULL, $limit);
+		$data['consulta'] = $data['consulta']->result_array();
+		
+		$data['error'] = $this->error;
+		
+		$this->load->view('usuarios/verificado', $data);
+		
+		$this->__destruct();
+	}
+	
+	function verificar()
+	{
+		$bloggers = $this->input->post('user_id');
+		$aproveds = $this->input->post('aproved');
+		$total = count($bloggers);
+		
+		for($x=1; $x <= $total; $x++)
+		{
+			if ( isset($aproveds[$x]))
+			{
+				$is_aproved[] = $bloggers[$x];
+			}
+			else
+			{
+				$is_desaproved[] = $bloggers[$x];	
+			}
+		}
+		
+		$this->load->model('users');
+		$this->users->approve($is_aproved, $is_desaproved);
+		
+		redirect('usuarios/verificado/' . $this->input->post('page') . '/' . $this->input->post('per_page'));
+	}
+	
 	function formulario($id = NULL)
 	{
 
@@ -265,7 +325,6 @@ class Usuarios extends Controller {
 					$this->load->model('defaultblogs');
 					$this->defaultblogs->insertar($data);
 					
-					//TODO: setea el flashdata
 					$this->session->set_flashdata('blogger', 'Blog agregado con exito');
 					
 				}
@@ -278,7 +337,6 @@ class Usuarios extends Controller {
 					$this->load->model('defaultblogs');
 					$this->defaultblogs->borrar($data);
 					
-					//TODO: setea el flashdata
 					$this->session->set_flashdata('blogger', 'Blogger borrado con exito');
 					
 				}

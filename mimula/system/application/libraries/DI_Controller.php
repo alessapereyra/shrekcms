@@ -44,11 +44,11 @@ class DI_Controller extends Controller {
 		
 		$this->load->library('session');
 
-		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/';
+		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/' . $this->uri->segment(2);
 		
 		if ($this->uri->segment(2) != 'ajax')
 		{
-			if ($this->uri->segment(1) != 'log')
+			if (($this->uri->segment(1) != 'log') AND ($this->uri->segment(1) != 'usuarios'))
 			{
 				if ($this->session->userdata('usuario') == NULL)
 				{
