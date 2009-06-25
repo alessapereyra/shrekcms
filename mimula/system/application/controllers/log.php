@@ -145,9 +145,10 @@ class Log extends DI_Controller {
 			$this->load->library('passwordhasher');
 			$this->passwordhasher->passwordhash(8, TRUE);
 			
-			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass == TRUE) )
+			//die ($this->input->post('password'). ' ' . $fila->user_pass);
+			
+			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass) )
 			{
-
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;
 				$this->usuario['nombre'] = $fila->user_nicename;
