@@ -482,10 +482,10 @@ class Usuarios extends DI_Controller {
 
 				
 				//aqui se irian agregando mas datos
-				$this->usermeta->insertar($meta, $id);
-				
-				//envia emails
 				$email_conf['mailtype'] = 'html';
+				
+				$this->load->library('email');
+				$this->email->initialize($email_conf);
 				
 				$this->load->library('email');
 				$this->email->initialize($config);

@@ -96,8 +96,8 @@
         
         <ul id="ranking_menu" class="sidebox_menu">
           <li><a href="#mulakids" class="selected">wawa</a></li>
-          <li><a href="#mulitas">churre</a></li>
-          <li><a href="#mulas">mulas</a></li>                
+          <li><a href="#mulitas">mulito</a></li>
+          <li><a href="#mulas">e-mulo</a></li>                
         </ul>
         
         <div id="articulos" class="sidebox">
@@ -137,6 +137,18 @@
           <li><a href="#votados">votados</a></li>
           <li><a href="#comentados" class="selected">comentados</a></li>                
         </ul>
+   
+      
+        <!-- <div id="videos" class="sidebox">
+
+               <div class="sidebox_wrapper">
+
+                 <h4>Video destacado</h4>          
+                 
+               </div> <sidebox_wrapper
+
+             </div> <sidebox 
+              -->
 
         <div id="comentarios" class="sidebox">
 

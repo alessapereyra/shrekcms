@@ -342,9 +342,9 @@ function get_gravatar($email="") {
       $email=trim($email);
       $email=md5($email);
       
-      return '<img src="http://www.gravatar.com/avatar/'.$email.'?s=40&amp;d=http://google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" alt="Gravatar" />';
+      return '<img src="http://www.gravatar.com/avatar/'.$email.'?s=40&amp;d=http://lamula.pe/wp-content/bp-themes/bpskeletonmember/images/skull-transparent.png" title="Avatar autor" alt="Gravatar" />';
    } else {
-      return '<img src="http://www.google.com/friendconnect/static/images/NoPictureDark.png" title="Avatar autor" alt="Sin Avatar"/>';
+      return '<img src="http://lamula.pe/wp-content/bp-themes/bpskeletonmember/images/skull-transparent.png" title="Avatar autor" alt="Sin Avatar"/>';
    }
 }
 
@@ -538,6 +538,7 @@ function setup_featured_news($new_post,$type){
   
     <div class="top_news_content">
       
+		<h4><?php echo $type; ?></h4>
         <h3>
             <a href="<?php echo $new_post->guid ?>"><?php echo $new_post->post_title ?></a>
         </h3>
@@ -553,28 +554,38 @@ function setup_featured_news($new_post,$type){
             {
             	$new_post->post_content = eregi_replace($img->outertext, ' ', $new_post->post_content);
             } ?>
-            <?php echo mulapress_trim_excerpt($new_post->post_content, 35) ?>                 
+
+            <?php echo mulapress_trim_excerpt($new_post->post_content, 30) ?>                 
+		    <div class="top_news_featured_footer">
+	      	<a href="<?php echo $new_post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+	      	<p class="comments"><a href="<?php echo $new_post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $new_post->comment_count); ?> </a></p>
+		     <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+
+		    </div>	          
+
           </div>
           <?php } 
         else 
         {  ?>
           <div class="top_news_featured_text">
-            <?php echo mulapress_trim_excerpt($new_post->post_content, 35) ?>                                            
+            <?php echo mulapress_trim_excerpt($new_post->post_content, 30) ?>     
+
+		    <div class="top_news_featured_footer">
+	      	<a href="<?php echo $new_post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+	      	<p class="comments"><a href="<?php echo $new_post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $new_post->comment_count); ?> </a></p>
+		     <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+
+		    </div>	          
+
+                                       
           </div>   
         <?php  }?>
 
         </div>
-      <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $new_post->user_nicename; ?>" ><?php echo $new_post->user_nicename; ?></a> <em>el <?php echo $new_post->post_date; ?></em> desde <?php echo $type; ?></span>
+      <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $new_post->user_nicename; ?>" ><?php echo $new_post->user_nicename; ?></a> <em>el <?php echo $new_post->post_date; ?></em></span>
 
     </div>
 
-    <div class="top_news_featured_footer">
-
-      <a href="<?php echo $new_post->guid ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-      <p class="comments"><a href="<?php echo $new_post->guid; ?>#comments" class="comments"><?php echo comments_number('ning&uacute;n comentario', 'un comentario', 'm&aacute;s comentarios', $new_post->comment_count); ?> </a></p>
-      <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
-
-    </div>	          
   
 <?php }
 
@@ -600,9 +611,9 @@ function mostrar_ranking($ranking="mula wawa", $limit=5){
             	$sql['from'] = 'FROM wp_usermeta ';
             	$sql['where'] = 'where wp_usermeta.meta_key = "bp_core_avatar_v1" and wp_usermeta.user_id = ' . $mulero->ID ;	
             	$sql['limit'] = 'LIMIT 0,1';
-              $avatar_results = $wpdb->get_results(implode(' ', $sql));
+              	$avatar_results = $wpdb->get_results(implode(' ', $sql));
         	    unset($sql);    		
-              $avatar_results = current($avatar_results);                    
+              	$avatar_results = current($avatar_results);                    
 	
 			 ?>
 			 

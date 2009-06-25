@@ -12,7 +12,7 @@
 				<a href="<?php echo $ci_url; ?>ws/geomula/0/lima">Lima y Callao</a>
 				<ul>
 					<li>
-						<a href="<?php echo $ci_url; ?>ws/geomula/0/callao/vc">Callao</a>
+						<a href="<?php echo $ci_url; ?>ws/geomula/0/callao">Callao</a>
 						<ul>
 							<li><a class="last" rel="bellavista" href="<?php echo $ci_url; ?>ws/geomula/0/callao/callao/bellavista">Bellavista</a></li> 
 							<li><a class="last" rel="carmen-de-la-legua" href="<?php echo $ci_url; ?>ws/geomula/0/callao/callao/carmen-de-la-legua">Carmen de la Legua</a></li> 

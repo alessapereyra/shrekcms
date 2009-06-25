@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
 				var index = $("ul#ranking_menu li a").index(this);
 				
 				$("#ranking_usuarios .sidebox_content").hide();
-				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").fadeIn();
+				$("#ranking_usuarios .sidebox_content:eq(" + index + ")").show();
 				return false;
 		});
 		
@@ -131,7 +131,7 @@ jQuery(document).ready(function($) {
 			var index = $("ul#articulos_menu li a").index(this);
 			
 			$("#articulos .sidebox_content").hide();
-			$("#articulos .sidebox_content:eq(" + index + ")").fadeIn();
+			$("#articulos .sidebox_content:eq(" + index + ")").show();
 			return false;
 		});		
 		
@@ -171,7 +171,7 @@ jQuery(document).ready(function($) {
 				var index = $("ul#corresponsales li a").index(this);
 				
 				$(".tab_content").hide();
-				$(".tab_content:eq(" + index + ")").fadeIn();
+				$(".tab_content:eq(" + index + ")").show();
 				return false;
 		});
 		

@@ -57,7 +57,7 @@
   			<?php echo form_input(array('name' => 'telefono', 'id' => 'telefono')); ?>
   			<br />
   			
-  			<?php echo form_label('He leido las reglas ps', 'reglas');?>
+  			<?php echo form_label('He leido las reglas', 'reglas');?>
   			<?php echo form_error('reglas'); ?>
   			<?php echo form_checkbox(array('name' => 'reglas', 'id' => 'reglas', 'value' => 'accept','checked' => FALSE)); ?>
       </div>

@@ -55,7 +55,7 @@
   					?>
   		</div>
   		<div id="enlazar">
-            	<?php echo form_label('Ingresa la dirección del audio que desees enviar:', 'doclink');?> 
+            	<?php echo form_label('Ingresa la dirección del documento que desees enviar:', 'doclink');?> 
             	<?php echo form_error('doclink'); ?>
             	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
   		</div>		

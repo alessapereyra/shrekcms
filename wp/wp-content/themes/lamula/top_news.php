@@ -6,8 +6,8 @@
       <div id="featured" class="top_news_featured">
 
         <?php  
-           $first_query = new WP_Query('showposts=1&p=341');
-           //$first_query = new WP_Query('showposts=1&category_name=featured');
+           // $first_query = new WP_Query('showposts=1&category_name=featured');
+           $first_query = new WP_Query('showposts=1&category_name=featured');
            while ($first_query->have_posts()) : $first_query->the_post();
            
            $do_not_duplicate = $post->ID; 
@@ -17,6 +17,7 @@
           ?>
 
         <div class="top_news_content">
+		<h4>Noticia Destacada</h4>
         <h3>
             <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
         </h3>
@@ -38,6 +39,16 @@
 
             <div class="top_news_featured_companion_text">
               <?php the_excerpt(235); ?>	                  
+
+
+			       <div class="top_news_featured_footer">
+			          <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+			          <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ningun comentario', 'un comentario', 'm&aacute;s comentarios'); ?> </a></p>
+			          <div class="rate"><?php wp_gdsr_render_article(); ?></div>
+
+			        </div>
+
+
             </div>
 
             <?php } 
@@ -49,28 +60,27 @@
             <div class="top_news_featured_text">
 
                 
-                <?php if ($post->ID == 940 ){ ?>
-                  <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/8HdqyvGeXjo&hl=es&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/8HdqyvGeXjo&hl=es&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
-                  <?php } else { ?>
               <?php the_excerpt(235); ?>	                                       
-                            <?php } ?>
+
+	        <div class="top_news_featured_footer">
+	          <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
+	          <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ningun comentario', 'un comentario', 'm&aacute;s comentarios'); ?> </a></p>
+	          <div class="rate"><?php wp_gdsr_render_article(); ?></div>
+
+	        </div>
+
+
+
             </div>   
 
           <?php  }?>
 
           </div>
 
-          <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $first->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em> desde las noticias destacadas</span>
+          <span class="author">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php $first->user_nicename = the_author(); ?></a> <em> el <?php the_date('d/m/y'); ?></em></span>
 
         </div>
 
-        <div class="top_news_featured_footer">
-
-          <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
-          <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('cero', 'uno', 'm&aacute;s'); ?> comentarios</a></p>
-          <div class="rate"><?php wp_gdsr_render_article(); ?></div>
-
-        </div>
 
       <?php endwhile; ?>
 
