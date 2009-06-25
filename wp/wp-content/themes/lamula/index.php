@@ -16,6 +16,7 @@
     	
 		$sql['select'] = 'SELECT blog_id';
 		$sql['from'] = 'FROM wp_blogs';
+		$sql['where'] = 'WHERE spam = 0';
 		$sql['order_by'] = 'ORDER BY last_updated DESC';
 		$sql['limit'] = 'LIMIT 0, 10';
 		//die(implode(' ', $sql));

@@ -38,8 +38,8 @@ class Usuarios extends DI_Controller {
 		$this->load->model('users');
 		
 		//arma el paginador
-		$data['consulta'] = $this->users->seleccionar();
-		$data['paginador'] = $this->_paginador($data['consulta']->num_rows(), $per_page);
+		$total = $this->users->count_all();
+		$data['paginador'] = $this->_paginador($total, $per_page);
 		$data['selector'] = $this->pagination->create_selector($per_page);
 		
 		//calcula cuantos mostrar
@@ -47,8 +47,12 @@ class Usuarios extends DI_Controller {
 		$limit['from'] = ($page - 1) * $per_page;
 		
 		//consulta
-		$data['consulta'] = $this->users->seleccionar(NULL, $limit);
-		$data['consulta'] = $data['consulta']->result_array();
+		$tmp = $this->users->get_view($limit);
+		$data['users'] = $tmp['users'];
+		$data['user_meta'] = $tmp['user_meta'];
+
+		$data['users'] = $data['users']->result_array();
+		$data['user_meta'] = $data['user_meta']->result_array();
 		
 		$data['error'] = $this->error;
 		
