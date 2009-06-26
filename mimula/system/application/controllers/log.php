@@ -12,7 +12,7 @@ class Log extends DI_Controller {
 		$this->usuario['usuario'] = NULL;
 		$this->usuario['nombre'] = NULL;
 	}
-	
+	/*
 	function index()
 	{
 		$this->load->helper('form');
@@ -25,8 +25,8 @@ class Log extends DI_Controller {
 		$this->load->view('login/formulario', $data);
 		$this->__destruct();		
 	}
-
-	function wpci()
+	*/
+	function index()
 	{
 		$this->load->helper('form');
 
