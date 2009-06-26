@@ -48,13 +48,34 @@ class DI_Controller extends Controller {
 		
 		if ($this->uri->segment(2) != 'ajax')
 		{
+			
 			if (($this->uri->segment(1) != 'log') AND ($this->uri->segment(1) != 'usuarios'))
 			{
 				if ($this->session->userdata('usuario') == NULL)
 				{
-					$this->session->set_userdata('info', '');
-					$this->session->set_userdata('url', $this->uri->uri_string());
-					redirect('/log');
+					if (isset($_COOKIE['to_ci']))
+					{
+						//debe loguearse y redirecciona
+						$this->load->model('users');
+						
+						$consulta = $this->users->seleccionar(array('ID' => $_COOKIE['to_ci']));
+						$fila = $consulta->row();
+						$usuario['id'] = $fila->ID;
+						$usuario['usuario'] = $fila->user_login;
+						$usuario['nombre'] = $fila->user_nicename;
+						$this->session->set_userdata($usuario);
+						
+						setcookie('to_ci', '', time() - 3600, '/', 'lamula.pe');
+						
+						redirect('home/dashboard');
+					}
+					else
+					{
+						$this->session->set_userdata('info', '');
+						$this->session->set_userdata('url', $this->uri->uri_string());
+						//die(print_r($_COOKIE['wordpress_logged_in_']));
+						redirect('/log');
+					}
 				}
 			}		
 			
