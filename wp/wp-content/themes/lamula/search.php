@@ -77,21 +77,14 @@ get_header(); ?>
   		<p class="center">Pero puedes buscar algo que te interese</p>
   		<?php get_search_form(); ?>
 
-  	<?php endif; ?>
-  	
+  	<?php endif; ?>	
 	
   </ul>
 
 
   <?php comments_template(); ?>
   
-
   </div> <!-- content_feed -->
-  
-
-	 
-  
-
   
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

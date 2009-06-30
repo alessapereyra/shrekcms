@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Wpshit {
+class Wpfunctions {
 	
 	function maybe_serialize($data)
 	{

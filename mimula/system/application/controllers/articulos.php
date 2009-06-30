@@ -505,9 +505,9 @@ class Articulos extends DI_Controller {
 				
 				//die(print_r($image_meta));
 				
-				$this->load->library('wpshit');
+				$this->load->library('wpfunctions');
 				
-				$meta['_wp_attachment_metadata'] = $this->wpshit->maybe_serialize($the_meta);				
+				$meta['_wp_attachment_metadata'] = $this->wpfunctions->maybe_serialize($the_meta);				
 			}
 			
 			$this->postmeta->insertar($meta, $the_photo);
