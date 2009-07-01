@@ -81,7 +81,9 @@ function comments_number($zero,$one,$more,$comments)
 					<p class="comments"><a href="<?php echo $post['guid']; ?>#comments" class="comments"><?php echo comments_number('cero', 'uno', 'm&aacute;s', $post['comment_count']); ?> comentarios</a></p>
 					<p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>				
 				</div>
+				<span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>"><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date']; ?></em></span>
 			</div>
+			
 		<?php endforeach;?>
 		
 		<div id="top_news_list">
