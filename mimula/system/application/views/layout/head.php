@@ -31,13 +31,19 @@ tinyMCE.init({
 	mode : "exact",
 	elements : "texto, textos",
 	extended_valid_elements:"a[name|href|target|title|onclick]",
-  theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
+	theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,cleanup,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
 	height : "280",
 	relative_urls : false,
 	remove_script_host : false,
-	document_base_url : "http://lamula.pe/mulapress/"
+	document_base_url : "http://lamula.pe/mulapress/",
+
+	setup : function(ed) {
+	    ed.onSubmit.add(function(ed) {
+	        tinyMCE.execCommand(mceCleanup);
+    });
+  }
 
 });
 
