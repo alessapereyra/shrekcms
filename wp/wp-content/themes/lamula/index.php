@@ -28,8 +28,6 @@
 
 		foreach($blogs as $blog)
 		{
-			//echo $blog->blog_id;
-			//$blog->blog_id = 59;
 			$wp_posts = 'wp_' . $blog->blog_id . '_posts';
 			$wp_term_taxonomy = 'wp_' . $blog->blog_id . '_term_taxonomy';
 			$wp_term_relationships = 'wp_' . $blog->blog_id . '_term_relationships';
@@ -39,17 +37,13 @@
 			//tabla post
 			$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 			//time
-			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
+			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as postdate, post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
 			//tabla user
 			$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 			
 			//from
 			$sql['from'] = 'FROM ' . $wp_posts . ' ';
-			//inner join terms relationships
-			//$sql['from'] .= 'INNER JOIN ' . $wp_term_relationships . ' ON ' . $wp_term_relationships . '.object_id = ' . $wp_posts . '.ID ';
-			//inner join terms relationships
-			//$sql['from'] .= 'INNER JOIN ' . $wp_term_taxonomy . ' ON ' . $wp_term_taxonomy . '.term_taxonomy_id = ' . $wp_term_relationships . '.term_taxonomy_id ';
-			//inner join terms relationships
+
 			$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
 			
 			//where
@@ -58,7 +52,7 @@
 			//order by
 			$sql['order_by'] = 'ORDER BY post_date DESC';
 			
-			$sql['limit'] = 'LIMIT 10';
+			$sql['limit'] = 'LIMIT 20';
 			
 			$the_sql[] = implode(' ', $sql);
 			//die($the_sql[0]);
@@ -74,7 +68,7 @@
 		//tabla post
 		$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 		//time
-		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
+		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as postdate, post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
 		//tabla user
 		$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 		
@@ -100,7 +94,7 @@
 	
 		unset($sql);
 		
-		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 10';
+		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 20';
 		return $wpdb->get_results($sql);
 	}    
 ?>

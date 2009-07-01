@@ -83,7 +83,7 @@ foreach($consulta as $post):
 
               </div> <!-- //top_news_featured_content -->
                               
-              <span class="author"><?php echo $id[0]; ?> enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date'] ?></em> en noticia destacada</span>
+              <span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>" ><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date'] ?></em> en noticia destacada</span>
 
           </p><!-- //p -->
 
