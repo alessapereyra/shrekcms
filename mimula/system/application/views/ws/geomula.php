@@ -55,8 +55,11 @@ function comments_number($zero,$one,$more,$comments)
 					$content = $post['post_content'];
 					                    
 					$html = str_get_html($content . ' ');
+					$img_link = '';
+					$img = @$html->find('img',0);
 					$img_link = @$html->find('img',0)->src;
-					 
+					$img = $img->outertext;
+										 
 					$html->clear();
 					unset($html);
 					?>
@@ -64,7 +67,7 @@ function comments_number($zero,$one,$more,$comments)
 						<div class="top_news_media">
 						<img src="<?php echo $img_link; ?>" alt="" title=""/>
 						</div>
-					 
+					 	<?php $content = ereg_replace($img, '', $content); ?>
 						<div class="top_news_featured_companion_text" style="overflow: hidden; height: 160px; ">
 						<?php echo $content; ?>  
 						</div>
