@@ -6,7 +6,7 @@
 
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
-	letter-spacing: -1px;
+	letter-spacing: 0px;
 	word-spacing: 4px;
 	color: #3b3330;
 	background: #e7e6eb repeat-x;
@@ -23,7 +23,7 @@ object#utv_o_699958 {
 
 #content_feed dl dd a {
 	display: block;
-	color: #fe008a;
+	color: #1192cf;
 }
 
 div#wrapper {
@@ -127,7 +127,7 @@ h1 a{
 	float: left;
 	background-image: url(images/logo-transparent.png);
 	text-indent: -9000em;
-	width: 290px;
+	width: 310px;
 	height: 70px;
 }
 
@@ -368,10 +368,9 @@ div.top_news_featured_companion_text {
 
 div#top_news_list {
 	
-	float: right;
+	float: left;
 	display: block;
-	width: 360px;
-	margin-right:20px;
+	width: 385px;
 	overflow: auto;
 	background-color: white;
 	margin-top: 1.4em;
@@ -384,17 +383,17 @@ div#top_news_list {
 div.portada-active
 {
 
-	background: #e6f7fd url(images/background-lightblue.png) repeat-x 0 bottom !important;
+	background: #ffffff !important;
 
 }
 
 #top_news div.top_news_item {
-	margin-bottom: 5px;
+
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
 	border-bottom: 1px solid #e0e0e0;
-	background: white;	
+	background: #dfe0d9;	
 }
 
 #top_news div.top_news_item h4 {
@@ -435,7 +434,8 @@ div.top_news_featured {
 	overflow: auto;
 	background: white;
 	padding: 20px 0 0 20px;
-	margin-right: 15px;
+	/*margin-right: 15px;*/
+	padding-right: 15px
 }
 
 div#top_news div.top_news_featured h3 a {
@@ -464,7 +464,6 @@ div.top_news_media {
 
 .top_news_featured_text {
 	overflow: auto;
-	font-size: 1.2em !important;
 	letter-spacing: 0;
 	word-spacing: 0;
 }
@@ -486,8 +485,7 @@ div.top_news_media {
 
 div#top_news div.top_news_featured div.top_news_featured_footer p {
 	overflow: hidden;
-	float: left;
-	margin-right: 10px;
+	margin: 0px;
 }
 
 .top_news_featured p span.author {
@@ -498,9 +496,10 @@ div#top_news div.top_news_featured div.top_news_featured_footer p {
 }
 
 div.top_news_featured_footer {
-	overflow: auto;	
+	overflow: hidden;	
 	clear: both;
 	margin-top: 10px;
+	font-size: 0.8em;
 }
 
 div#top_news {
@@ -523,18 +522,16 @@ a#leer_mas_footer,
 
 div.top_news_featured_footer p.comments a  {
 	font-size: 1em;
-	margin-top: 0.7em;
 }
 
 div.top_news_featured a.leer_mas_footer,
 div.top_news_featured a#leer_mas_footer {
 	display: block;
 	margin: 0px;
-	padding: 6px 18px;
-	background-color: #3b3330;
-	color: white;
-	text-decoration: none;
-	margin-right: 40px;
+	color: #1192d6;
+	text-decoration: underline;
+	clear: both !important;
+	margin-right: 1em ;
 }
 
 div.top_news_featured a.leer_mas_footer:hover {
@@ -575,7 +572,6 @@ div#top_news_footer p.comments a em {
 div.top_news_featured_content {
 	overflow: hidden;
 	height: 127px;
-	font-size: 0.8em;
 	line-height: 1.5em;
 	letter-spacing: 0;
 }
@@ -629,6 +625,8 @@ div#content {
 	margin-top: 1em;
 	padding: 5px;
 	letter-spacing: 0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
 }
 
 .post_list li div.news_footer div.footer_links {
@@ -841,7 +839,7 @@ div#content_feed ul.post_list li {
 .post_list h4 {
 	font-size: 1.2em;
 	text-transform: lowercase;
-	letter-spacing: -2px;
+	letter-spacing: 0px;
 	padding-bottom: 0.2em;
 	margin-bottom: 1em;
 }
@@ -932,7 +930,7 @@ div#content_feed ul.post_list li {
 .post_list li h5 {
 	font-size: 1.1em;
 
-	letter-spacing: -1px;
+	letter-spacing: 0px;
 }
 
 .inner .post_list li h5 {
@@ -1431,7 +1429,7 @@ div#sidebars div#sidebar_recomendados ul li a:hover {
 	padding: 15px 60px;
 	color: #000;
 	font-size: 2em;
-	letter-spacing: -2px;
+	letter-spacing: 0px;
 	word-spacing: 4px;
 	margin: 0 auto 0.5em;
 	background: url(images/boton_publicar.png) no-repeat;
@@ -1466,9 +1464,8 @@ div#sidebars div#sidebar_recomendados {
 }
 
 div#sidebars div#sidebar_recomendados div.sidebox {
-		overflow: hidden;
-	margin:0 0 0px;
-
+	overflow: hidden;
+	margin:15px 0 0 0 !important;
 }
 
 #sidebar_recomendados ul.sidebox_menu {
@@ -1479,7 +1476,7 @@ div#sidebars div#sidebar_recomendados div.sidebox {
 
 
 #comentarios div.sidebox_wrapper ul {
-	padding: 10px;
+	padding: 10px !important;
 	display: block ;
 	
 }
@@ -1497,6 +1494,8 @@ div#comentarios.sidebox {
 	margin-bottom: 1em;
 	letter-spacing: 0;
 	word-spacing: 0;
+	background: none;
+	margin-top:16px;
 }
 
 #comentarios div.sidebox_wrapper ul li {
@@ -1573,6 +1572,14 @@ div.navigation a:hover {
 	margin-top: 10px;
 	background-color: #eee;
 	padding: 2px 8px;
+	font-size: 0.8em;
+}
+
+div.top_news_content h4 {
+	text-transform: uppercase;
+	font-size: 0.7em;
+	color: #1192cf;
+	font-weight: bold;
 }
 
 .post_list li div.news_footer a.leer_mas_footer,
@@ -1655,7 +1662,7 @@ div.navigation a:hover {
 
 div#content.inner ul.post_list li h5 a {
 	font-size: 1.5em !important;
-	letter-spacing: -2px;
+	letter-spacing: 0px;
 	word-spacing: 0;
 }
 
@@ -2149,4 +2156,5 @@ div#flag_notice strong{
 
 .clear {
 clear: both;
+background: none;
 }

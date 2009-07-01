@@ -31,12 +31,20 @@ tinyMCE.init({
 	mode : "exact",
 	elements : "texto, textos",
 	extended_valid_elements:"a[name|href|target|title|onclick]",
-  theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
+	theme_advanced_buttons1 : "bold,italic,underline,separator,cut,copy,paste,cleanup,separator,undo,redo,separator,justifycenter,justifyright,justifyfull,separator,link,unlink,code",
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
 	height : "280",
-	relative_urls : true, 
-  remove_script_host : true
+	relative_urls : false,
+	remove_script_host : false,
+	document_base_url : "http://lamula.pe/mulapress/",
+
+	setup : function(ed) {
+	    ed.onSubmit.add(function(ed) {
+	        tinyMCE.execCommand(mceCleanup);
+    });
+  }
+
 });
 
 </script>
@@ -162,11 +170,17 @@ if ($ie6 == FALSE)
   
   <div id="top_menu">
     <p>
-      <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
-      <span class="right">
-        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
-        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
-      </span>
+  	      <span class="left">
+	        <a href="http://lamula.pe/mulapress/nosotros">nosotros</a>
+	        <a href="http://lamula.pe/mulapress/el-concepto">el concepto</a>
+	        <a href="http://lamula.pe/mulapress/te-recomendamos">te recomendamos</a>        
+	      </span>
+	      <span class="right">
+	        <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>
+	        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
+	        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+	      </span>
+
     </p>
   </div> <!-- top_menu -->
 
@@ -184,8 +198,9 @@ if ($ie6 == FALSE)
  
          	<?php if ($log) : ?>
     				<ul>
-    					<li><?php echo anchor('home/dashboard', 'ver notas'); ?></li>
-    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >ver perfil </a></li>
+    					<li><?php echo anchor('articulos/formulario', 'manda tu noticia'); ?></li>
+    					<li><?php echo anchor('home/dashboard', 'tus noticias'); ?></li>
+    					<li><a href="<?php echo "http://lamula.pe/members/" . $user_name ?>" >tu perfil </a></li>
     					<li><?php echo anchor('log/logout', 'salir'); ?></li>
     				</ul>
     			<?php endif; ?>		
@@ -194,7 +209,8 @@ if ($ie6 == FALSE)
 
       </div> <!-- logo_bar -->
 
-      <div id="status_bar">
-          <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
-          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
-      </div> <!-- status_bar -->
+      <!-- <div id="status_bar">
+           <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
+           <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
+       </div> <status_bar --> 
+ 

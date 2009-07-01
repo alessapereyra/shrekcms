@@ -1,6 +1,6 @@
 <?php
 
-class Usuarios extends Controller {
+class Usuarios extends DI_Controller {
 	
 	
 	var $usuario = array();
@@ -29,6 +29,70 @@ class Usuarios extends Controller {
   
   }	
 
+	function verificado($page = 1, $per_page = NULL)
+	{
+		
+		$data['page'] = $page;
+		$data['per_page'] = $per_page;
+				
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+				
+		if ($per_page == NULL)
+		{
+			$per_page = $this->config->item('per_page');
+		}
+		
+		$this->load->model('users');
+		
+		//arma el paginador
+		$total = $this->users->count_all();
+		$data['paginador'] = $this->_paginador($total, $per_page);
+		$data['selector'] = $this->pagination->create_selector($per_page);
+		
+		//calcula cuantos mostrar
+		$limit['show'] = $per_page;
+		$limit['from'] = ($page - 1) * $per_page;
+		
+		//consulta
+		$tmp = $this->users->get_view($limit);
+		$data['users'] = $tmp['users'];
+		$data['user_meta'] = $tmp['user_meta'];
+
+		$data['users'] = $data['users']->result_array();
+		$data['user_meta'] = $data['user_meta']->result_array();
+		
+		$data['error'] = $this->error;
+		
+		$this->load->view('usuarios/verificado', $data);
+		
+		$this->__destruct();
+	}
+	
+	function verificar()
+	{
+		$bloggers = $this->input->post('user_id');
+		$aproveds = $this->input->post('aproved');
+		$total = count($bloggers);
+		
+		for($x=1; $x <= $total; $x++)
+		{
+			if ( isset($aproveds[$x]))
+			{
+				$is_aproved[] = $bloggers[$x];
+			}
+			else
+			{
+				$is_desaproved[] = $bloggers[$x];	
+			}
+		}
+		
+		$this->load->model('users');
+		$this->users->approve($is_aproved, $is_desaproved);
+		
+		redirect('usuarios/verificado/' . $this->input->post('page') . '/' . $this->input->post('per_page'));
+	}
+	
 	function formulario($id = NULL)
 	{
 
@@ -73,8 +137,20 @@ class Usuarios extends Controller {
 		$usuario = $this->session->userdata('usuario');
 		$id = $this->session->userdata('id');
 		
-		$data['bloggers'] = $this->combofiller->bloggers();
-		$data['defaultsbloggers'] = $this->combofiller->defaultsbloggers();
+		$data['blogs'] = $this->combofiller->bloggers();
+		$data['defaultsblogs'] = $this->combofiller->defaultsblogs();
+		
+		$data['head_blogs'] = $this->combofiller->head_blogs();
+		$tmp = $this->combofiller->removed_head_blogs();
+		if ($tmp != NULL)
+		{
+			$data['removed_head_blogs'] = $tmp;
+		}
+		else
+		{
+			$data['removed_head_blogs'] = array();
+		}
+		//$data['removed_head_blogs'] = $this->combofiller->removed_head_blogs();		
 
 		$this->load->model('news_header');
 		$this->load->model('options');
@@ -263,30 +339,28 @@ class Usuarios extends Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		
-		switch ($this->input->post('update_blogger'))
+		switch ($this->input->post('update_blog'))
 		{
 			case 'Agregar':
-				if ($this->input->post('add_bloggers') != 'null')
+				if ($this->input->post('add_blog') != 'null')
 				{
-					$data['blogger_id'] = $this->input->post('add_bloggers');
+					$data['blog_id'] = $this->input->post('add_blog');
 					
-					$this->load->model('defaultbloggers');
-					$this->defaultbloggers->insertar($data);
+					$this->load->model('defaultblogs');
+					$this->defaultblogs->insertar($data);
 					
-					//TODO: setea el flashdata
-					$this->session->set_flashdata('blogger', 'Blogger agregado con exito');
+					$this->session->set_flashdata('blogger', 'Blog agregado con exito');
 					
 				}
 			break;
 			case 'Remover':
-				if ($this->input->post('remove_bloggers') != 'null')
+				if ($this->input->post('remove_blog') != 'null')
 				{
-					$data['id'] = $this->input->post('remove_bloggers');
+					$data['id'] = $this->input->post('remove_blog');
 					
-					$this->load->model('defaultbloggers');
-					$this->defaultbloggers->borrar($data);
+					$this->load->model('defaultblogs');
+					$this->defaultblogs->borrar($data);
 					
-					//TODO: setea el flashdata
 					$this->session->set_flashdata('blogger', 'Blogger borrado con exito');
 					
 				}
@@ -297,11 +371,53 @@ class Usuarios extends Controller {
 		redirect("usuarios/titulares");
 	}
 	
+	function actualizar_portada()
+	{
+		$this->load->library('session');
+		$this->load->helper('url');
+		
+		switch ($this->input->post('healines_blog'))
+		{
+			//Agrega un blog a portada
+			case 'Agregar':
+				if ($this->input->post('add_head_blog') != 'null')
+				{
+					$where['blog_id'] = $this->input->post('add_head_blog');
+					$values['headlines'] = 1;
+					
+					$this->load->model('blogs');
+					$this->blogs->actualizar($values, $where);
+					
+					$this->session->set_flashdata('headlines', 'Blog agregado con exito');
+					
+				}
+			break;
+			
+			//Quita un blog de portada
+			case 'Remover':
+				if ($this->input->post('remove_head_blog') != 'null')
+				{
+					$where['blog_id'] = $this->input->post('remove_head_blog');
+					$values['headlines'] = 0;
+					
+					$this->load->model('blogs');
+					$this->blogs->actualizar($values, $where);
+					
+					$this->session->set_flashdata('headlines', 'Blogger removido con exito');
+					
+				}
+			break;
+			default:
+				die('NO TOQUES TE DIJE');
+		}
+		redirect("usuarios/titulares");
+	}
+		
 	function grabar_perfil(){
 
 		$this->load->helper('url');
 		$this->load->helper('form');
-	  $this->load->library('form_validation');
+	 	$this->load->library('form_validation');
 		$this->form_validation->set_rules($this->_reglas_perfil());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		
@@ -428,10 +544,10 @@ class Usuarios extends Controller {
 
 				
 				//aqui se irian agregando mas datos
-				$this->usermeta->insertar($meta, $id);
-				
-				//envia emails
 				$email_conf['mailtype'] = 'html';
+				
+				$this->load->library('email');
+				$this->email->initialize($email_conf);
 				
 				$this->load->library('email');
 				$this->email->initialize($config);

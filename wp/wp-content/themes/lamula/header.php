@@ -81,15 +81,15 @@
         <!-- <img src="<?php bloginfo('template_url'); ?>/images/ad_bcp.png" alt="Ad BCP" title="AD BCP"/> -->
       </div> <!-- top_ad -->
   
-      <div id="flag">
+      <!-- <div id="flag">
         <a href="#logo_bar">Arriba</a>
-      </div>
+      </div> -->
   
       <div id="logo_bar">
 
         <div id="logo">
           <h1><a href="<?php bloginfo('siteurl'); ?>">La Mula</a></h1> 
-          <strong id="twitter_status">desaznadamente en linea</strong>
+          <strong id="twitter_status"></strong>
         </div>
         
         <div id="search_bar">

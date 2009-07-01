@@ -17,6 +17,7 @@ class Fotos extends DI_Controller {
 		$data['files'] = NULL;
 		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+		$data['has_category'] = FALSE; 
 		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');		
@@ -150,7 +151,8 @@ class Fotos extends DI_Controller {
 
 			$data['tags'] = $this->input->post('tags');
 			$data['files'] = $this->input->post('files');
-			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+			$data['has_category'] = FALSE;
 
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -165,6 +167,7 @@ class Fotos extends DI_Controller {
 			if (isset($categorias_selected))
 			{
 				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+				$data['has_category'] = TRUE;
 			}
 			else
 			{
@@ -385,7 +388,23 @@ class Fotos extends DI_Controller {
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
 		
+			$reglas[] = array('field'   => 'has_category', 'label'   => 'lang:field_has_category', 'rules'   => 'callback_has_categorys');
+		
+		
 		return $reglas;
+	}
+	
+	function has_categorys()
+	{
+			$categorias = $this->combofiller->categorias();			
+			foreach($categorias as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					return TRUE;	
+				}
+			}
+			return FALSE;	
 	}
 
 	function ajax($accion)
@@ -516,9 +535,9 @@ class Fotos extends DI_Controller {
 				
 				//die(print_r($image_meta));
 				
-				$this->load->library('wpshit');
+				$this->load->library('wpfunctions');
 				
-				$meta['_wp_attachment_metadata'] = $this->wpshit->maybe_serialize($the_meta);				
+				$meta['_wp_attachment_metadata'] = $this->wpfunctions->maybe_serialize($the_meta);				
 			}
 			
 			$this->postmeta->insertar($meta, $the_photo);

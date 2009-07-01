@@ -16,16 +16,17 @@
     	
 		$sql['select'] = 'SELECT blog_id';
 		$sql['from'] = 'FROM wp_blogs';
+		$sql['where'] = "WHERE spam = '0' AND headlines = '1' and public = '1'";
 		$sql['order_by'] = 'ORDER BY last_updated DESC';
-		$sql['limit'] = 'LIMIT 10';
-		//die(implode(' ', $sql));
+		$sql['limit'] = 'LIMIT 0, 10';
+		//echo '<!-- ' .implode(' ', $sql) . ' -->';
 		return  $wpdb->get_results(implode(' ', $sql));
     }
     
-	function get_index_post($blogs, $cat = 0)
+	function get_index_post($blogs)
 	{
 	    global $wpdb;
-
+		
 		foreach($blogs as $blog)
 		{
 			$wp_posts = 'wp_' . $blog->blog_id . '_posts';
@@ -37,7 +38,8 @@
 			//tabla post
 			$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 			//time
-			$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as postdate, post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
+			$sql['select'] .= $wp_posts . '.post_date , DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as my_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as my_time, ';
+			//$sql['select'] .= $wp_posts . '.post_date, ' . $wp_posts . '.post_date as post_time, ';
 			//tabla user
 			$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 			
@@ -47,18 +49,18 @@
 			$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
 			
 			//where
-			$sql['where'] = 'WHERE post_type = \'post\' AND post_status = \'publish\'';			
+			$sql['where'] = 'WHERE post_type = \'post\' AND post_status = \'publish\' ';			
 			
 			//order by
 			$sql['order_by'] = 'ORDER BY post_date DESC';
 			
-			$sql['limit'] = 'LIMIT 20';
+			$sql['limit'] = 'LIMIT 0, 10';
 			
 			$the_sql[] = implode(' ', $sql);
 			//die($the_sql[0]);
 			//break;
 		}
-	
+		
 		$wp_posts = 'mulapress_posts';
 		$wp_term_taxonomy = 'mulapress_term_taxonomy';
 		$wp_term_relationships = 'mulapress_term_relationships';
@@ -68,7 +70,8 @@
 		//tabla post
 		$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 		//time
-		$sql['select'] .= 'DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as postdate, post_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as post_time, ';
+		$sql['select'] .= $wp_posts . '.post_date , DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as my_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as my_time, ';
+		//$sql['select'] .= $wp_posts . '.post_date, ' . $wp_posts . '.post_date as post_time, ';
 		//tabla user
 		$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 		
@@ -83,18 +86,20 @@
 		
 		//where
 		$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
-		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';			
-		
+		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';
+		//Me excluyo para no molestar			
+		$sql['where'] .= ' AND (' . $wp_users . '.user_login != \'dientuki\')';
 		//order by
 		$sql['order_by'] = 'ORDER BY post_date DESC';
 		
-		$sql['limit'] = 'LIMIT 10';
+		$sql['limit'] = 'LIMIT 0, 10';
 		
 		$the_sql[] = implode(' ', $sql);
 	
 		unset($sql);
 		
-		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 20';
+		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 0, 20';
+		//echo '<!-- '.  $sql . '-->';
 		return $wpdb->get_results($sql);
 	}    
 ?>
@@ -133,7 +138,7 @@ $posts = get_index_post($blogs, $x);
 
             $content = apply_filters('the_content', $content);
             $content = str_replace(']]>', ']]&gt;', $content);
-            $date = "el <small class='author'>" . $post->post_date . "</small> a las <small class='author'>" . $post->post_time ."</small>";           
+            $date = "el <small class='author'>" . $post->my_date . "</small> a las <small class='author'>" . $post->my_time ."</small>";           
             ?>
 
             <li class='<?php echo $row; ?>'>
@@ -162,7 +167,7 @@ $posts = get_index_post($blogs, $x);
                   <?php } else { ?>
 
                     <div class="post_content">
-                    <?php echo mulapress_trim_excerpt($newpost->post_content, 35) ?>                   
+                    <?php echo mulapress_trim_excerpt($post->post_content, 35) ?>                   
                     </div>
 
                     <?php } ?>

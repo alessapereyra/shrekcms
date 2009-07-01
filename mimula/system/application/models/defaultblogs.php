@@ -1,8 +1,8 @@
 <?php
-class Defaultbloggers extends Model {
+class Defaultblogs extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_default_bloggers';
+    var $tabla = 'mulapress_default_blogs';
 
     function __construct()
     {
@@ -15,14 +15,19 @@ class Defaultbloggers extends Model {
     {
     	$this->db->select($this->tabla . '.id as miid', FALSE);
     	$this->db->select('user_nicename as user', FALSE);
+    	$this->db->select('wp_bp_user_blogs_blogmeta.meta_value AS blogname', FALSE);
     	
     	$this->db->from($this->tabla);
-    	$this->db->join('wp_users', 'wp_users.ID = mulapress_default_bloggers.blogger_id');
-
-		$this->db->order_by('user_nicename', 'ASC'); 
+    	$this->db->join('wp_bp_user_blogs_blogmeta', 'wp_bp_user_blogs_blogmeta.blog_id = mulapress_default_blogs.blog_id');
+    	$this->db->join('wp_bp_user_blogs', 'wp_bp_user_blogs.blog_id = mulapress_default_blogs.blog_id');
+    	$this->db->join('wp_users', 'wp_users.ID = wp_bp_user_blogs.user_id');
+    	
+    	$this->db->where('wp_bp_user_blogs_blogmeta.meta_key', 'name');
+    	
+		$this->db->order_by('wp_bp_user_blogs_blogmeta.meta_value', 'ASC'); 
   	
     	$query = $this->db->get();
-    	
+    	//die($this->db->last_query());
     	$tmp = '';
     	if ($empty_row != FALSE)
     	{
@@ -37,15 +42,15 @@ class Defaultbloggers extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->miid] = $row->user;
+			$tmp[$row->miid] = $row->blogname . ' - ' . $row->user;
 		}
 		
 		return $tmp;
     }
     
     function insertar($values)
-    {	
-        $this->db->insert($this->tabla, $values);
+    {
+		$this->db->insert($this->tabla, $values);    		    	
     }
 
     function borrar($values)

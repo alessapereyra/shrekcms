@@ -12,7 +12,7 @@ class Log extends DI_Controller {
 		$this->usuario['usuario'] = NULL;
 		$this->usuario['nombre'] = NULL;
 	}
-	
+	/*
 	function index()
 	{
 		$this->load->helper('form');
@@ -23,6 +23,18 @@ class Log extends DI_Controller {
 		$data['info'] = $this->error;
 		
 		$this->load->view('login/formulario', $data);
+		$this->__destruct();		
+	}
+	*/
+	function index()
+	{
+		$this->load->helper('form');
+
+		$data['destino'] = $this->session->userdata('url') != NULL ? $this->session->userdata('url'): $this->config->item('default_controller');
+		$data['usuario'] = NULL;
+		$data['info'] = $this->error;
+		
+		$this->load->view('login/wpci', $data);
 		$this->__destruct();		
 	}
 	
@@ -145,16 +157,21 @@ class Log extends DI_Controller {
 			$this->load->library('passwordhasher');
 			$this->passwordhasher->passwordhash(8, TRUE);
 			
-			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass == TRUE) )
+			//die ($this->input->post('password'). ' ' . $fila->user_pass);
+			
+			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass) )
 			{
-
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;
 				$this->usuario['nombre'] = $fila->user_nicename;
 				
-				$this->load->library('wpcookies');
-				$this->wpcookies->set($fila->user_login);				
-
+				/*
+				if ($this->input->post('usuario') == 'dientuki')
+				{
+					$this->load->library('wpcookies');
+					$this->wpcookies->set($fila->ID, $fila->user_login);
+				}				
+				*/
 				$this->session->set_userdata($this->usuario);
 				return TRUE;
 			}
@@ -169,8 +186,12 @@ class Log extends DI_Controller {
 		$this->session->set_userdata($this->usuario);
 		$this->session->set_userdata('info', 'Salio OK!');
 
-		$this->load->library('wpcookies');
-		$this->wpcookies->un_set();		
+		$a = 5;
+		if ($a == 6)
+		{		
+			$this->load->library('wpcookies');
+			$this->wpcookies->un_set();
+		}		
 		
 		redirect('/log');
 	}

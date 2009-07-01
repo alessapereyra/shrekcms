@@ -15,7 +15,8 @@ class Videos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
-		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+		$data['has_category'] = FALSE; 
 		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');
@@ -73,6 +74,7 @@ class Videos extends DI_Controller {
 			$data['files'] = set_value('files');
 			$data['doclink'] = set_value('doclink');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+			$data['has_category'] = FALSE;
 			
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -87,6 +89,7 @@ class Videos extends DI_Controller {
 			if (isset($categorias_selected))
 			{
 				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+				$data['has_category'] = TRUE;
 			}
 			else
 			{
@@ -309,7 +312,23 @@ class Videos extends DI_Controller {
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
 		
+			$reglas[] = array('field'   => 'has_category', 'label'   => 'lang:field_has_category', 'rules'   => 'callback_has_categorys');
+		
+		
 		return $reglas;
+	}
+	
+	function has_categorys()
+	{
+			$categorias = $this->combofiller->categorias();			
+			foreach($categorias as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					return TRUE;	
+				}
+			}
+			return FALSE;	
 	}
 
 	function ajax($accion)

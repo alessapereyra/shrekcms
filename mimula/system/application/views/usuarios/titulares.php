@@ -112,11 +112,11 @@
           <?php echo $this->session->flashdata('blogger'); ?>
 		<?php echo form_open('usuarios/actualizar_muleros'); ?>
 			<h4>Muleros</h4>
-			<?php echo form_dropdown('add_bloggers', $bloggers, NULL,'id="add_bloggers"'); ?>
-			<?php echo form_submit('update_blogger', 'Agregar'); ?>
+			<?php echo form_dropdown('add_blog', $blogs, NULL,'id="add_blog"'); ?>
+			<?php echo form_submit('update_blog', 'Agregar'); ?>
 			<h4>Muleros actuales</h4>
-			<?php echo form_dropdown('remove_bloggers', $defaultsbloggers, NULL,'id="remove_bloggers" multiple="multiple"'); ?>
-			<?php echo form_submit('update_blogger', 'Remover'); ?>
+			<?php echo form_dropdown('remove_blog', $defaultsblogs, NULL,'id="remove_blog" multiple="multiple"'); ?>
+			<?php echo form_submit('update_blog', 'Remover'); ?>
 		<?php echo form_close(); ?>
 		
 </div>
@@ -127,5 +127,17 @@
     	<?php echo $this->session->flashdata('random') . $this->session->flashdata('value'); ?>
 		<?php echo form_input(array('name' => 'random', 'value' => $random, 'id' => 'random')); ?>
 		<?php echo form_submit('update_random', 'Actualizar'); ?>
+	<?php echo form_close(); ?>
+</div>
+
+<div id="headlines">
+          <?php echo $this->session->flashdata('headlines'); ?>
+	<?php echo form_open('usuarios/actualizar_portada'); ?>
+			<h4>Blogs</h4>
+			<?php echo form_dropdown('remove_head_blog', $head_blogs, NULL,'id="remove_head_blog"'); ?>
+			<?php echo form_submit('healines_blog', 'Remover'); ?>
+			<h4>Blogs removidos</h4>
+			<?php echo form_dropdown('add_head_blog', $removed_head_blogs, NULL,'id="add_head_blog" multiple="multiple"'); ?>
+			<?php echo form_submit('healines_blog', 'Agregar'); ?>
 	<?php echo form_close(); ?>
 </div>

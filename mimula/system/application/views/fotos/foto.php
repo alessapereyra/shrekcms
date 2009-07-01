@@ -87,8 +87,10 @@
 	
 	  <div id="sidebar_content">
 	   
-	  <h3>Categorizar</h3>
+	  <h3>&iquest;Qu&eacute; es esto? *</h3>
   	<fieldset id="categories">
+    	<?php echo form_error('has_category'); ?>
+    	<?php echo form_hidden('has_category', $has_category); ?>  	
   	<?php foreach($categorias as $key => $value): ?> 
         <span>
         	  <?php
@@ -105,7 +107,7 @@
 	
   	<fieldset id="localizar">
   	  
-  	  <h3>Localizar</h3>
+  	  <h3>&iquest;D&oacute;nde ocurri&oacute;?</h3>
   		<?php echo form_hidden('localizar', 'peru'); ?>
   		<ul>
   			<li><a href="#peru">Perú</a></li>

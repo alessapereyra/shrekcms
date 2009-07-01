@@ -53,10 +53,9 @@
       </a>
 
 
-      <a href="<?php bloginfo('siteurl'); ?>/?s=friaje">
-        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/campana.png" class="sidebox_image" id="campana_banner" alt="Campaña Friaje" title="Camapaña Friaje" />
-      </a>
-
+	  <a target="_blank" href="http://tuiterton.org">
+	  	<img src="http://www.tuiterton.org/advert.jpg" alt="Tuiterton: Calor para el Perú" width="200px" height="93px" />
+	  </a>
 
 
          <div id="ranking_usuarios" class="sidebox">
@@ -96,8 +95,8 @@
         
         <ul id="ranking_menu" class="sidebox_menu">
           <li><a href="#mulakids" class="selected">wawa</a></li>
-          <li><a href="#mulitas">churre</a></li>
-          <li><a href="#mulas">mulas</a></li>                
+          <li><a href="#mulitas">mulito</a></li>
+          <li><a href="#mulas">e-mulo</a></li>                
         </ul>
         
         <div id="articulos" class="sidebox">
@@ -160,8 +159,8 @@
               <?php mostrar_ultimos_comentarios(); ?>
             </ul>
             
-            <div class="clear"></div>
           </div> <!-- sidebox_wrapper -->
+          <div class="clear"></div>
   
         </div> <!-- sidebox -->
 

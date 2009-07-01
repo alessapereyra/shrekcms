@@ -15,7 +15,8 @@ class Articulos extends DI_Controller {
 		$data['photolink'] = NULL;
 		$data['files'] = NULL;
 		$data['ret'] = TRUE;
-		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+		$data['has_category'] = FALSE; 
 		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');
@@ -133,11 +134,7 @@ class Articulos extends DI_Controller {
 		$this->load->helper('inflector');		
 		$this->load->library('combofiller');
 		$this->load->library('form_validation');
-
-
-
-
-
+		
 		$this->form_validation->set_rules($this->_reglas());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		 
@@ -145,6 +142,7 @@ class Articulos extends DI_Controller {
 		{
 			$data['id'] = $this->input->post('id');
 			$data['ret'] = $this->input->post('ret');
+			$data['has_category'] = FALSE;
 			
 			$data['titulo'] = set_value('titulo');
 			$data['textos'] = $this->input->post('textos');
@@ -158,13 +156,14 @@ class Articulos extends DI_Controller {
 			{
 				if ($this->input->post('' . $key . ''))
 				{
-					$categorias_selected[] = $key;
+					$categorias_selected[] = $key;		
 				}
 			}
 			
 			if (isset($categorias_selected))
 			{
 				$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+				$data['has_category'] = TRUE;
 			}
 			else
 			{
@@ -218,7 +217,7 @@ class Articulos extends DI_Controller {
 			$this->load->model('post');
 			$this->load->model('postmeta');
 			$this->load->model('term_relationships');
-		  $this->load->model('options');	
+			$this->load->model('options');	
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -231,8 +230,7 @@ class Articulos extends DI_Controller {
 			else
 			{
 				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
-				
-				//$data['post_content'] = $this->input->post('textos');
+
 			}
 
 			$data['tags'] = $this->input->post('tags');
@@ -321,10 +319,9 @@ class Articulos extends DI_Controller {
 				break;
 			}
 			
-			$data['post_content'] = $data['post_content'] . '';
-      // $data['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];      
+			$data['post_content'] = $data['post_content'] . '';      
 						
-			//consigue los id de las cata
+			//consigue los id de las categorias
 			$categorias = $this->combofiller->categorias();
 			
 			$terms_taxonomy_id = NULL;
@@ -389,8 +386,23 @@ class Articulos extends DI_Controller {
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
+		$reglas[] = array('field'   => 'has_category', 'label'   => 'lang:field_has_category', 'rules'   => 'callback_has_categorys');
+		
 		
 		return $reglas;
+	}
+	
+	function has_categorys()
+	{
+			$categorias = $this->combofiller->categorias();			
+			foreach($categorias as $key => $value)
+			{
+				if ($this->input->post('' . $key . ''))
+				{
+					return TRUE;	
+				}
+			}
+			return FALSE;	
 	}
 	
 	function _upload($ie = NULL)
@@ -505,9 +517,9 @@ class Articulos extends DI_Controller {
 				
 				//die(print_r($image_meta));
 				
-				$this->load->library('wpshit');
+				$this->load->library('wpfunctions');
 				
-				$meta['_wp_attachment_metadata'] = $this->wpshit->maybe_serialize($the_meta);				
+				$meta['_wp_attachment_metadata'] = $this->wpfunctions->maybe_serialize($the_meta);				
 			}
 			
 			$this->postmeta->insertar($meta, $the_photo);
