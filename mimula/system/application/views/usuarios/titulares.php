@@ -129,3 +129,15 @@
 		<?php echo form_submit('update_random', 'Actualizar'); ?>
 	<?php echo form_close(); ?>
 </div>
+
+<div id="headlines">
+          <?php echo $this->session->flashdata('headlines'); ?>
+	<?php echo form_open('usuarios/actualizar_portada'); ?>
+			<h4>Blogs</h4>
+			<?php echo form_dropdown('remove_head_blog', $head_blogs, NULL,'id="remove_head_blog"'); ?>
+			<?php echo form_submit('healines_blog', 'Remover'); ?>
+			<h4>Blogs removidos</h4>
+			<?php echo form_dropdown('add_head_blog', $removed_head_blogs, NULL,'id="add_head_blog" multiple="multiple"'); ?>
+			<?php echo form_submit('healines_blog', 'Agregar'); ?>
+	<?php echo form_close(); ?>
+</div>

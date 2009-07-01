@@ -50,5 +50,16 @@ class Combofiller {
 		$this->CI->load->model('defaultblogs');
 		return $this->CI->defaultblogs->get_fkdefaults($empty_row);	
 	}	
+	function head_blogs($empty_row = FALSE)
+	{
+		$this->CI->load->model('blogs');
+		return $this->CI->blogs->get_head_blogs($empty_row);	
+	}
+	
+	function removed_head_blogs($empty_row = FALSE)
+	{
+		$this->CI->load->model('blogs');
+		return $this->CI->blogs->get_removed_head_blogs($empty_row);	
+	}	
 }
 ?>

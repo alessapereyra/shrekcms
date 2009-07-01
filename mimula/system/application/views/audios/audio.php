@@ -3,11 +3,11 @@
 	<?php 
 		if ($ie6 == TRUE)
 		{
-			echo form_open_multipart('documentos/actualizar/1', array('class' => 'form'));
+			echo form_open_multipart('audios/actualizar/1', array('class' => 'form'));
 		}
 		else
 		{
-			echo form_open('documentos/actualizar', array('class' => 'form'));
+			echo form_open('audios/actualizar', array('class' => 'form'));
 		}	
 	
 		if ($id != NULL)
@@ -80,6 +80,8 @@
 	   
 	  <h3>&iquest;Qu&eacute; es esto? *</h3>
   	<fieldset id="categories">
+    	<?php echo form_error('has_category'); ?>
+    	<?php echo form_hidden('has_category', $has_category); ?>  	
   	<?php foreach($categorias as $key => $value): ?> 
         <span>
         	  <?php

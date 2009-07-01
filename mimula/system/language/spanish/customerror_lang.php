@@ -13,6 +13,7 @@ $lang['dni_exist'] = 'El %s ya existe.';
 $lang['zona_check'] = 'La %s ya existe.';
 $lang['codigo_check'] = 'El %s ya existe.';
 $lang['operacion_check'] = 'Ingrese por lo menos una operación.';
+$lang['has_categorys'] = 'Selecciones por lo menos una categoria.';
 
 
 /* End of file customerror_lang.php */

@@ -85,6 +85,8 @@
 	   
 	  <h3>&iquest;Qu&eacute; es esto? *</h3>
   	<fieldset id="categories">
+    	<?php echo form_error('has_category'); ?>
+    	<?php echo form_hidden('has_category', $has_category); ?>  	
   	<?php foreach($categorias as $key => $value): ?> 
         <span>
         	  <?php

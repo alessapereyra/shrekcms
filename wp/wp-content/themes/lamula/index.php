@@ -16,10 +16,10 @@
     	
 		$sql['select'] = 'SELECT blog_id';
 		$sql['from'] = 'FROM wp_blogs';
-		$sql['where'] = 'WHERE spam = 0';
+		$sql['where'] = "WHERE spam = '0' AND headlines = '1' and public = '1'";
 		$sql['order_by'] = 'ORDER BY last_updated DESC';
 		$sql['limit'] = 'LIMIT 0, 10';
-		//die(implode(' ', $sql));
+		//echo '<!-- ' .implode(' ', $sql) . ' -->';
 		return  $wpdb->get_results(implode(' ', $sql));
     }
     
@@ -92,8 +92,9 @@
 		
 		//where
 		$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
-		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';			
-		
+		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';
+		//Me excluyo para no molestar			
+		$sql['where'] .= ' AND (' . $wp_users . '.user_login != \'dientuki\')';
 		//order by
 		$sql['order_by'] = 'ORDER BY post_date DESC';
 		

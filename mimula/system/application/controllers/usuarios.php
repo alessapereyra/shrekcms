@@ -131,6 +131,18 @@ class Usuarios extends DI_Controller {
 		
 		$data['blogs'] = $this->combofiller->bloggers();
 		$data['defaultsblogs'] = $this->combofiller->defaultsblogs();
+		
+		$data['head_blogs'] = $this->combofiller->head_blogs();
+		$tmp = $this->combofiller->removed_head_blogs();
+		if ($tmp != NULL)
+		{
+			$data['removed_head_blogs'] = $tmp;
+		}
+		else
+		{
+			$data['removed_head_blogs'] = array();
+		}
+		//$data['removed_head_blogs'] = $this->combofiller->removed_head_blogs();		
 
 		$this->load->model('news_header');
 		$this->load->model('options');
@@ -351,11 +363,53 @@ class Usuarios extends DI_Controller {
 		redirect("usuarios/titulares");
 	}
 	
+	function actualizar_portada()
+	{
+		$this->load->library('session');
+		$this->load->helper('url');
+		
+		switch ($this->input->post('healines_blog'))
+		{
+			//Agrega un blog a portada
+			case 'Agregar':
+				if ($this->input->post('add_head_blog') != 'null')
+				{
+					$where['blog_id'] = $this->input->post('add_head_blog');
+					$values['headlines'] = 1;
+					
+					$this->load->model('blogs');
+					$this->blogs->actualizar($values, $where);
+					
+					$this->session->set_flashdata('headlines', 'Blog agregado con exito');
+					
+				}
+			break;
+			
+			//Quita un blog de portada
+			case 'Remover':
+				if ($this->input->post('remove_head_blog') != 'null')
+				{
+					$where['blog_id'] = $this->input->post('remove_head_blog');
+					$values['headlines'] = 0;
+					
+					$this->load->model('blogs');
+					$this->blogs->actualizar($values, $where);
+					
+					$this->session->set_flashdata('headlines', 'Blogger removido con exito');
+					
+				}
+			break;
+			default:
+				die('NO TOQUES TE DIJE');
+		}
+		redirect("usuarios/titulares");
+	}
+		
 	function grabar_perfil(){
 
 		$this->load->helper('url');
 		$this->load->helper('form');
-	  $this->load->library('form_validation');
+	 	$this->load->library('form_validation');
 		$this->form_validation->set_rules($this->_reglas_perfil());
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		
