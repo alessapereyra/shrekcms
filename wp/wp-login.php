@@ -450,7 +450,6 @@ default:
     
     $fila = $consulta->row();
     
-    
     $usuario['id'] = $fila->ID;
     $usuario['usuario'] = $fila->user_login;
     $usuario['nombre'] = $fila->user_nicename;   

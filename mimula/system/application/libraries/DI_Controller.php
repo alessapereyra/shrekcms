@@ -29,11 +29,34 @@
  */
 class DI_Controller extends Controller {
 
+    /**
+     * es ajax?
+     * @var boolean
+     *
+     */		
 	var $is_ajax = TRUE;
+    /**
+     * url actual
+     * @var string
+     *
+     */		
 	var $me_url = '';
+    /**
+     * formulario
+     * @var string
+     *
+     */		
 	var $form = 'ajax';
+    /**
+     * Error si lo hay
+     * @var string
+     *
+     */		
 	var $error = '';
-	
+
+	/**
+	 * Constructor de la case
+	 */  
 	function __construct()
 	{
 		parent::Controller();
@@ -103,7 +126,10 @@ class DI_Controller extends Controller {
 		}
 		
 	}
-	
+
+	/**
+	 * Destructor de la case
+	 */  	
 	function __destruct() {
 		if ($this->is_ajax == FALSE)
 		{
@@ -113,6 +139,10 @@ class DI_Controller extends Controller {
 		}
 	}
 	
+	/**
+	 * verifica que sea ie6
+	 * @return boolean 
+	 */  	
 	function _is_ie6()
 	{
 		$this->load->library('user_agent');
@@ -127,7 +157,13 @@ class DI_Controller extends Controller {
 		
 		return FALSE;
 	}
-	
+
+	/**
+	 * Constructor de la case
+	 * @param integer $total cantidad de registros 
+	 * @param integer $per_page cantidad de registros por pagina
+	 * @return string
+	 */  	
 	function _paginador($total, $per_page)
 	{
 		$this->load->library('pagination');
@@ -141,6 +177,10 @@ class DI_Controller extends Controller {
 		return $this->pagination->create_links();
 	}
 
+	/**
+	 * Verifica que el usuario este logueado
+	 * @return boolean
+	 */  
 	function _is_log()
 	{
 		
