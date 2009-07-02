@@ -53,7 +53,7 @@ class Audios extends DI_Controller {
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['categorias_selected'] = NULL;
 		
-		$data['departamentos'] = $this->combofiller->departments(TRUE);	
+		$data['departamentos'] = $this->combofiller->states(TRUE);	
 		$data['departamentos_selected'] = NULL;
 		$data['provincias_selected'] = NULL;
 		$data['distritos_selected'] = NULL;
@@ -130,7 +130,7 @@ class Audios extends DI_Controller {
 				$data['categorias_selected'] = NULL; 
 			}
 			
-			$data['departamentos'] = $this->combofiller->departments(TRUE);
+			$data['departamentos'] = $this->combofiller->states(TRUE);
 			$data['departamentos_selected'] = NULL;
 			$data['provincias_selected'] = NULL;
 			$data['distritos_selected'] = NULL;
@@ -171,7 +171,7 @@ class Audios extends DI_Controller {
 		else
 		{
 			$this->load->model('countries');
-			$this->load->model('departments');
+			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
 			$this->load->model('options');			

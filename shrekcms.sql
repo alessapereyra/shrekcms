@@ -81,21 +81,21 @@ INSERT INTO `wp_countries` (`country_id`, `country`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `wp_departments`
+-- Estructura de tabla para la tabla `wp_states`
 --
 
-DROP TABLE IF EXISTS `wp_departments`;
-CREATE TABLE IF NOT EXISTS `wp_departments` (
-  `department_id` int(11) NOT NULL auto_increment,
-  `department` varchar(50) NOT NULL,
-  PRIMARY KEY  (`department_id`)
+DROP TABLE IF EXISTS `wp_states`;
+CREATE TABLE IF NOT EXISTS `wp_states` (
+  `state_id` int(11) NOT NULL auto_increment,
+  `state` varchar(50) NOT NULL,
+  PRIMARY KEY  (`state_id`)
 ) TYPE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `wp_departments`
+-- Volcar la base de datos para la tabla `wp_states`
 --
 
-INSERT INTO `wp_departments` (`department_id`, `department`) VALUES
+INSERT INTO `wp_states` (`state_id`, `state`) VALUES
 (1, 'departamento 1'),
 (2, 'departamento 2');
 

@@ -2,7 +2,7 @@
 class Departments extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_departments';
+    var $tabla = 'mulapress_states';
 
     function __construct()
     {
@@ -11,13 +11,18 @@ class Departments extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue todos los estados
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */         
     function get_fkcombo($empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('department_id');
-    	$this->db->select('department');
+    	$this->db->select('state_id');
+    	$this->db->select('state');
     	$this->db->from($this->tabla);
-    	$this->db->order_by("department","asc");
+    	$this->db->order_by("state","asc");
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -28,7 +33,7 @@ class Departments extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->department_id] = $row->department;
+			$tmp[$row->state_id] = $row->state;
 		}
 		
 		return $tmp;
@@ -57,7 +62,7 @@ class Departments extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('department_id', 'DESC');
+    	$this->db->order_by('state_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;

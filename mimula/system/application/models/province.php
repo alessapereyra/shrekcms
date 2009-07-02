@@ -1,9 +1,45 @@
-<?php
-class Providences extends Model {
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de provincias
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de provincias
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+class Province extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_provinces';
 
+	/**
+	 * Constructor de la case
+	 */     
     function __construct()
     {
         // Call the Model constructor
@@ -11,13 +47,19 @@ class Providences extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue las provincias de un estado
+	 * @param integer $id id del estado
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */     
     function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
     	$this->db->select('province_id');
     	$this->db->select('province');
     	$this->db->from($this->tabla);
-    	$this->db->where(array('fk_department' => $id));
+    	$this->db->where(array('fk_state' => $id));
     	$this->db->order_by("province","asc");    	
     	$query = $this->db->get();
     	
@@ -35,6 +77,12 @@ class Providences extends Model {
 		return $tmp;
     }
     
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */    
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -64,29 +112,27 @@ class Providences extends Model {
         return $query;
     }
     
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a cambiar
+	 * @return void 
+	 */     
     function insertar($values)
     {	
         $this->db->insert($this->tabla, $values);
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */     
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
-    }
-
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    }    
+    }  
 }
-?>
+
+/* End of file province.php */
+/* Location: ./system/application/model/province.php */

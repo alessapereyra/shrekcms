@@ -15,10 +15,10 @@ class Combofiller {
 		return $this->CI->countries->get_fkcombo($empty_row);		
 	}
 
-	function departments($empty_row = FALSE)
+	function states($empty_row = FALSE)
 	{
-		$this->CI->load->model('departments');
-		return $this->CI->departments->get_fkcombo($empty_row);		
+		$this->CI->load->model('states');
+		return $this->CI->states->get_fkcombo($empty_row);		
 	}
 
 	function districts($district, $empty_row = FALSE)
