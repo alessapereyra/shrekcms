@@ -1,9 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de defaultblogs
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de defaultblogs
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Defaultblogs extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_default_blogs';
 
+	/**
+	 * Constructor de la case
+	 */    
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +47,11 @@ class Defaultblogs extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue los blogs by default
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */     
     function get_fkdefaults($empty_row = FALSE)
     {
     	$this->db->select($this->tabla . '.id as miid', FALSE);
@@ -48,11 +89,21 @@ class Defaultblogs extends Model {
 		return $tmp;
     }
     
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a insertar
+	 * @return void 
+	 */     
     function insertar($values)
     {
 		$this->db->insert($this->tabla, $values);    		    	
     }
 
+	/**
+	 * borra un registro
+	 * @param array $values valores a borrar
+	 * @return void 
+	 */     
     function borrar($values)
     {
     	$this->db->where($values);
@@ -61,3 +112,7 @@ class Defaultblogs extends Model {
     }    
     
 }
+
+
+/* End of file countries.php */
+/* Location: ./system/application/model/countries.php */

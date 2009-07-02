@@ -53,7 +53,7 @@ class Audios extends DI_Controller {
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['categorias_selected'] = NULL;
 		
-		$data['departamentos'] = $this->combofiller->departments(TRUE);	
+		$data['departamentos'] = $this->combofiller->states(TRUE);	
 		$data['departamentos_selected'] = NULL;
 		$data['provincias_selected'] = NULL;
 		$data['distritos_selected'] = NULL;
@@ -130,7 +130,7 @@ class Audios extends DI_Controller {
 				$data['categorias_selected'] = NULL; 
 			}
 			
-			$data['departamentos'] = $this->combofiller->departments(TRUE);
+			$data['departamentos'] = $this->combofiller->states(TRUE);
 			$data['departamentos_selected'] = NULL;
 			$data['provincias_selected'] = NULL;
 			$data['distritos_selected'] = NULL;
@@ -143,7 +143,7 @@ class Audios extends DI_Controller {
 			if( $this->input->post('provincia') != NULL )
 			{
 			
-				$data['provincias'] = $this->combofiller->providences($this->input->post('departamento'), TRUE);
+				$data['provincias'] = $this->combofiller->provinces($this->input->post('departamento'), TRUE);
 				if ($this->input->post('provincia') != 'null')
 				{
 					$data['provincias_selected'] = $this->input->post('provincia');
@@ -152,7 +152,7 @@ class Audios extends DI_Controller {
 			
 			if( $this->input->post('distrito') != NULL )
 			{
-				$data['distritos'] = $this->combofiller->distrits($this->input->post('provincia'), TRUE);
+				$data['distritos'] = $this->combofiller->districts($this->input->post('provincia'), TRUE);
 				if( $this->input->post('distrito') != 'null' )
 				{
 					$data['distritos_selected'] = $this->input->post('distrito');
@@ -171,9 +171,9 @@ class Audios extends DI_Controller {
 		else
 		{
 			$this->load->model('countries');
-			$this->load->model('departments');
-			$this->load->model('distrits');
-			$this->load->model('providences');
+			$this->load->model('states');
+			$this->load->model('districts');
+			$this->load->model('provinces');
 			$this->load->model('options');			
 			$this->load->model('post');
 			$this->load->model('postmeta');
@@ -326,6 +326,10 @@ class Audios extends DI_Controller {
 		return $reglas;
 	}
 	
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -339,6 +343,10 @@ class Audios extends DI_Controller {
 			return FALSE;	
 	}
 
+	/**
+	 * Funciones ajaxs
+	 * @return void 
+	 */		
 	function ajax($accion)
 	{
 		switch ($accion)
@@ -348,7 +356,12 @@ class Audios extends DI_Controller {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'doc|pdf';
@@ -403,5 +416,5 @@ class Audios extends DI_Controller {
 	
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file audios.php */
+/* Location: ./system/application/controllers/audios.php */

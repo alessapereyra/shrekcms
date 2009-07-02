@@ -2,7 +2,7 @@
 
 /**
  *
- * Modelo de paices
+ * Modelo de distritos
  *
  * @package		mulapress
  * @author		Srdperu | Juan Alberto
@@ -12,7 +12,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Modelo de paices
+ * Modelo de blogs
  *
  *
  * @package		mulapress
@@ -21,8 +21,7 @@
  * @author		Srdperu | Juan Alberto
  * @version		Version 1.0
  */
-
-class Countries extends Model {
+class Districts extends Model {
 	
     /**
      * Campos de la tabla
@@ -35,11 +34,11 @@ class Countries extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_countries';
+    var $tabla = 'mulapress_districts';
 
 	/**
 	 * Constructor de la case
-	 */      
+	 */
     function __construct()
     {
         // Call the Model constructor
@@ -48,16 +47,19 @@ class Countries extends Model {
     }
 
 	/**
-	 * Consigue los paices
+	 * Consigue los distritos de una provincia
+	 * @param integer $id id de la provincia
 	 * @param boolean $empty_row primera fila en blanco del combo
 	 * @return array 
-	 */     
-    function get_fkcombo($empty_row = FALSE)
+	 */    
+    function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('country_id');
-    	$this->db->select('country');
+    	$this->db->select('district_id');
+    	$this->db->select('district');
     	$this->db->from($this->tabla);
+    	$this->db->where(array('fk_province' => $id));
+    	$this->db->order_by("district","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -68,18 +70,18 @@ class Countries extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->country_id] = $row->country;
+			$tmp[$row->district_id] = $row->district;
 		}
 		
 		return $tmp;
     }
-
+    
 	/**
 	 * Retorna una o más instancias del modelo
 	 * @param array $search terminos de busqueda
 	 * @param array $limit cantidad de registros a retornar
 	 * @return array 
-	 */     
+	 */      
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -103,7 +105,7 @@ class Countries extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('country_id', 'DESC');
+    	$this->db->order_by('district_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;
@@ -113,7 +115,7 @@ class Countries extends Model {
 	 * Inserta un registro
 	 * @param array $values valores a insertar
 	 * @return void 
-	 */      
+	 */     
     function insertar($values)
     {	
         $this->db->insert($this->tabla, $values);
@@ -124,12 +126,13 @@ class Countries extends Model {
 	 * @param array $values valores a cambiar
 	 * @param array $where id o dato del registro
 	 * @return void 
-	 */      
+	 */    
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
-    }  
+    }   
 }
 
-/* End of file countries.php */
-/* Location: ./system/application/model/countries.php */
+
+/* End of file districts.php */
+/* Location: ./system/application/model/districts.php */

@@ -1,9 +1,38 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de logeo
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de logeo
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
 
 class Log extends DI_Controller {
 
+    /**
+     * Datos del usuario
+     * @var array
+     */	
 	var $usuario = array();
 	
+	/**
+	 * Constructor de la case
+	 */		
 	function __construct()
 	{
 		parent::__construct();
@@ -12,20 +41,11 @@ class Log extends DI_Controller {
 		$this->usuario['usuario'] = NULL;
 		$this->usuario['nombre'] = NULL;
 	}
-	/*
-	function index()
-	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
 
-		$data['destino'] = $this->session->userdata('url') != NULL ? $this->session->userdata('url'): $this->config->item('default_controller');
-		$data['usuario'] = NULL;
-		$data['info'] = $this->error;
-		
-		$this->load->view('login/formulario', $data);
-		$this->__destruct();		
-	}
-	*/
+	/**
+	 * Muestra el formulario para loguearse
+	 * @return void 
+	 */		
 	function index()
 	{
 		$this->load->helper('form');
@@ -38,6 +58,10 @@ class Log extends DI_Controller {
 		$this->__destruct();		
 	}
 	
+	/**
+	 * Hace el login
+	 * @return void 
+	 */		
 	function login()
 	{
 		$this->load->helper('url');
@@ -61,7 +85,13 @@ class Log extends DI_Controller {
 			redirect($this->input->post('destino'));		
 		}					
 	}
-	
+
+	/**
+	 * Muestra el formulario para recuperar la constraseña
+	 * @param integer $id id de un articulo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function olvido()
 	{
 		$this->load->helper('form');
@@ -71,6 +101,10 @@ class Log extends DI_Controller {
 		$this->__destruct();		
 	}
 	
+	/**
+	 * Pone una contraseña random y envia un email al usuario
+	 * @return void 
+	 */		
 	function recuperar()
 	{
 		$this->load->helper('url');
@@ -120,6 +154,10 @@ class Log extends DI_Controller {
 		}			
 	}	
 
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'password', 'label'   => 'lang:field_password', 'rules'   => 'trim|required|md5');
@@ -127,6 +165,11 @@ class Log extends DI_Controller {
 		return $reglas;
 	}
 
+	/**
+	 * Chequea que ese usuario no exista
+	 * @param string $value contenido del input
+	 * @return boolean 
+	 */		
 	function usuario_check($value)
 	{
 		$this->load->model('users');
@@ -142,7 +185,12 @@ class Log extends DI_Controller {
 			return false;
 		}			
 	}
-		
+
+	/**
+	 * Chequea que el password y hace el login
+	 * @param string $value contenido del input
+	 * @return boolean 
+	 */		
 	function password_check($value)
 	{
 
@@ -157,21 +205,12 @@ class Log extends DI_Controller {
 			$this->load->library('passwordhasher');
 			$this->passwordhasher->passwordhash(8, TRUE);
 			
-			//die ($this->input->post('password'). ' ' . $fila->user_pass);
-			
 			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass) )
 			{
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;
 				$this->usuario['nombre'] = $fila->user_nicename;
 				
-				/*
-				if ($this->input->post('usuario') == 'dientuki')
-				{
-					$this->load->library('wpcookies');
-					$this->wpcookies->set($fila->ID, $fila->user_login);
-				}				
-				*/
 				$this->session->set_userdata($this->usuario);
 				return TRUE;
 			}
@@ -180,7 +219,11 @@ class Log extends DI_Controller {
 		
 		return FALSE;			   			
 	}
-		
+
+	/**
+	 * Hace el logout
+	 * @return void 
+	 */		
 	function logout()
 	{
 		$this->session->set_userdata($this->usuario);
@@ -196,3 +239,6 @@ class Log extends DI_Controller {
 		redirect('/log');
 	}
 }
+
+/* End of file log.php */
+/* Location: ./system/application/controllers/log.php */

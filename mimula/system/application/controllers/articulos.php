@@ -53,7 +53,7 @@ class Articulos extends DI_Controller {
 		$data['categorias'] = $this->combofiller->categorias();
 		$data['categorias_selected'] = NULL;
 		
-		$data['departamentos'] = $this->combofiller->departments(TRUE);	
+		$data['departamentos'] = $this->combofiller->states(TRUE);	
 		$data['departamentos_selected'] = NULL;
 		$data['provincias_selected'] = NULL;
 		$data['distritos_selected'] = NULL;
@@ -145,14 +145,14 @@ class Articulos extends DI_Controller {
 		if (array_key_exists('departamento', $customs))
 		{	
 			$data['departamentos_selected'] = $customs['departamento'];
-			$data['provincias'] = $this->combofiller->providences($customs['departamento'], TRUE);
+			$data['provincias'] = $this->combofiller->provinces($customs['departamento'], TRUE);
 		}
 
 		
 		if (array_key_exists('provincia', $customs))
 		{
 			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->distrits($customs['provincia'], TRUE);
+			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
 		}
 		
 		if (array_key_exists('distrito', $customs))
@@ -210,7 +210,7 @@ class Articulos extends DI_Controller {
 				$data['categorias_selected'] = NULL; 
 			}
 			
-			$data['departamentos'] = $this->combofiller->departments(TRUE);
+			$data['departamentos'] = $this->combofiller->states(TRUE);
 			$data['departamentos_selected'] = NULL;
 			$data['provincias_selected'] = NULL;
 			$data['distritos_selected'] = NULL;
@@ -223,7 +223,7 @@ class Articulos extends DI_Controller {
 			if( $this->input->post('provincia') != NULL )
 			{
 			
-				$data['provincias'] = $this->combofiller->providences($this->input->post('departamento'), TRUE);
+				$data['provincias'] = $this->combofiller->provinces($this->input->post('departamento'), TRUE);
 				if ($this->input->post('provincia') != 'null')
 				{
 					$data['provincias_selected'] = $this->input->post('provincia');
@@ -232,7 +232,7 @@ class Articulos extends DI_Controller {
 			
 			if( $this->input->post('distrito') != NULL )
 			{
-				$data['distritos'] = $this->combofiller->distrits($this->input->post('provincia'), TRUE);
+				$data['distritos'] = $this->combofiller->districts($this->input->post('provincia'), TRUE);
 				if( $this->input->post('distrito') != 'null' )
 				{
 					$data['distritos_selected'] = $this->input->post('distrito');
@@ -248,9 +248,9 @@ class Articulos extends DI_Controller {
 		else
 		{
 			$this->load->model('countries');
-			$this->load->model('departments');
-			$this->load->model('distrits');
-			$this->load->model('providences');
+			$this->load->model('states');
+			$this->load->model('districts');
+			$this->load->model('provinces');
 			$this->load->model('options');
 			$this->load->model('term_taxonomy');
 			$this->load->model('terms');
@@ -715,5 +715,5 @@ class Articulos extends DI_Controller {
 
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file articulos.php */
+/* Location: ./system/application/controllers/articulos.php */

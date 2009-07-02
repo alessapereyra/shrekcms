@@ -1,9 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de terms
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de terms
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Terms extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_terms';
 
+	/**
+	 * Constructor de la case
+	 */        
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +47,10 @@ class Terms extends Model {
         $this->load->database('default');        
     }
 
+	/**
+	 * Consigue los categorias
+	 * @return array 
+	 */      
     function get_categories()
     {
     	$this->db->select($this->tabla . '.term_id');
@@ -19,7 +59,6 @@ class Terms extends Model {
     	$this->db->from($this->tabla);
     	$this->db->join('mulapress_term_taxonomy', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');
     	
-    	//$this->db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
     	$this->db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
     	
     	$query = $this->db->get();
@@ -32,6 +71,11 @@ class Terms extends Model {
 		return $tmp;       	
     }
     
+	/**
+	 * Consigue las categorias de un post
+	 * @param integer $id id de un post
+	 * @return array 
+	 */       
     function get_postcategories($id)
     {
     	$this->db->select($this->tabla . '.term_id');
@@ -53,12 +97,15 @@ class Terms extends Model {
 		{
 			$tmp[$row->term_id] = $row->name;
 		}    	
-    	
-    	
-    	//die($this->db->last_query());
+
     	return $tmp;
     }
     
+	/**
+	 * Consigue los tags de un post
+	 * @param integer $id id del post
+	 * @return array 
+	 */       
     function get_tags($id)
     {
     	$this->db->select($this->tabla . '.name');
@@ -76,7 +123,11 @@ class Terms extends Model {
     	return $query;
     }
     
-    function get_categories_perfil($db)
+	/**
+	 * Consigue las categorias privadas
+	 * @return array 
+	 */      
+    function get_categories_perfil()
     {
     
     	$db->select($this->tabla . '.term_id');
@@ -86,7 +137,6 @@ class Terms extends Model {
     	$db->join('mulapress_term_taxonomy', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');
     	
     	$db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
-	    //$db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 6));
     	
     	$query = $db->get();
     	  
@@ -98,6 +148,11 @@ class Terms extends Model {
 		return $tmp;       	
     }    
     
+	/**
+	 * Inserta un tag
+	 * @param array $values valores a insertar
+	 * @return void 
+	 */         
     function insert_tags($values)
     {
     	$values = split(',', $values);
@@ -115,10 +170,6 @@ class Terms extends Model {
     		if ($this_tag == FALSE)
     		{
     			$id = $this->_insertar($tmp);
-    			
-    			//$this->term_taxonomy->insertar_tag($id);
-    			
-    			//$tags[] = $this->_check_insert(trim($value));
     			$tags[] = $this->term_taxonomy->insertar_tag($id);
     			
     		}
@@ -129,7 +180,13 @@ class Terms extends Model {
     	}
     	return $tags;
     }
-       
+
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */         
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -157,6 +214,11 @@ class Terms extends Model {
         return $query;
     }
     
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a insertar
+	 * @return integer 
+	 */       
     function _insertar($values)
     {   	   	   
     	$this->db->insert($this->tabla, $values);
@@ -165,26 +227,22 @@ class Terms extends Model {
     	return $query->term_id;
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */       
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
     }
     
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    }
-    
+	/**
+	 * Inserta o actualiza el contador de un tag
+	 * @param array $values valores a cambiar
+	 * @return boolean | integer 
+	 */       
     function _check_insert($value)
     {
     	$this->db->select('term_id');
@@ -210,5 +268,5 @@ class Terms extends Model {
 
     }    
 }
-/* End of file PropertyType.php */
-/* Location: ./system/application/model/PropertyType.php */
+/* End of file terms.php */
+/* Location: ./system/application/model/terms.php */

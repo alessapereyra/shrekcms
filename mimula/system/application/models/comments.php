@@ -1,9 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de comentarios
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de comentarios
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Comments extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_comments';
 
+	/**
+	 * Constructor de la case
+	 */     
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +47,11 @@ class Comments extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue comentarios de un usuario
+	 * @param integer $id id del usuario
+	 * @return integer 
+	 */     
     function total_comments($id){
       
     	$db = $this->load->database('default', TRUE); 
@@ -21,6 +62,11 @@ class Comments extends Model {
       return $db->count_all_results();
     }
 
+	/**
+	 * Consigue comentarios echos a un usuario
+	 * @param integer $id id del usuario
+	 * @return integer 
+	 */      
     function total_received_comments($id)
     {
       
@@ -34,7 +80,12 @@ class Comments extends Model {
       
     }
             
-    
+	/**
+	 * Consigue los ultimos comentarios echo por un usuario
+	 * @param integer $id id del usuario
+	 * @param integer $posts cantidad de comentarios
+	 * @return integer 
+	 */      
     function get_lastowncomments($id, $posts)
     {
       
@@ -60,11 +111,14 @@ class Comments extends Model {
 		
   		$query = $db->get();
   		return $query->result_array();      
-      
     }
     
-    
-    
+	/**
+	 * Consigue los ultimos comentarios echo por un usuario
+	 * @param integer $id id del usuario
+	 * @param integer $posts cantidad de comentarios
+	 * @return integer 
+	 */    
     function get_lastcomments($id, $posts)
     {
       
@@ -93,5 +147,5 @@ class Comments extends Model {
     }
        
 }
-/* End of file PropertyType.php */
-/* Location: ./system/application/model/PropertyType.php */
+/* End of file comments.php */
+/* Location: ./system/application/model/comments.php */

@@ -1,10 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de term_taxonomy
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de term_taxonomy
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
 
 class Term_taxonomy extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_term_taxonomy';
 
+	/**
+	 * Constructor de la case
+	 */      
     function __construct()
     {
         // Call the Model constructor
@@ -12,6 +47,12 @@ class Term_taxonomy extends Model {
         $this->load->database('default');        
     }
        
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */         
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -39,6 +80,11 @@ class Term_taxonomy extends Model {
         return $query;
     }
     
+	/**
+	 * Actualizar un registro
+	 * @param integer $id id del tag a insertar
+	 * @return void 
+	 */       
     function update_record($id)
     {
     	$this->db->where('term_taxonomy_id', $id);
@@ -47,7 +93,12 @@ class Term_taxonomy extends Model {
     	$this->db->update($this->tabla);
 
     }
-    
+
+	/**
+	 * Inserta un tag
+	 * @param integer $id id del tag a insertar
+	 * @return integer 
+	 */      
     function insertar_tag($id)
     {
     	$tmp['term_taxonomy_id'] = $id;
@@ -59,45 +110,28 @@ class Term_taxonomy extends Model {
     	return $this->_insertar($tmp);
     }
     
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a insertar
+	 * @return integer 
+	 */      
     function _insertar($values)
     {   	   	   
     	$this->db->insert($this->tabla, $values);
     	return $this->db->insert_id();
     }    
     
-    /*
-    function insertar($post, $values)
-    {   	   	   
-    	$tmp['object_id'] = $post; 
-    	foreach($values as $value)
-    	{
-    		$tmp['term_taxonomy_id'] = $value; 	
-    		$this->db->insert($this->tabla, $tmp);	
-    	}
-    	
-    }
-    */
-    
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */      
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
     }
     
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    }
-    
 }
-/* End of file PropertyType.php */
-/* Location: ./system/application/model/PropertyType.php */
+/* End of file term_taxonomy.php */
+/* Location: ./system/application/model/term_taxonomy.php */

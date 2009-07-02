@@ -2,7 +2,7 @@
 
 /**
  *
- * Modelo de paices
+ * Modelo de state
  *
  * @package		mulapress
  * @author		Srdperu | Juan Alberto
@@ -12,7 +12,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Modelo de paices
+ * Modelo de state
  *
  *
  * @package		mulapress
@@ -22,7 +22,7 @@
  * @version		Version 1.0
  */
 
-class Countries extends Model {
+class State extends Model {
 	
     /**
      * Campos de la tabla
@@ -35,29 +35,30 @@ class Countries extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_countries';
+    var $tabla = 'mulapress_states';
 
 	/**
 	 * Constructor de la case
-	 */      
+	 */        
     function __construct()
     {
         // Call the Model constructor
         parent::Model();
         $this->load->database('default');        
     }
-
+    
 	/**
-	 * Consigue los paices
+	 * Consigue todos los estados
 	 * @param boolean $empty_row primera fila en blanco del combo
 	 * @return array 
-	 */     
+	 */         
     function get_fkcombo($empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('country_id');
-    	$this->db->select('country');
+    	$this->db->select('state_id');
+    	$this->db->select('state');
     	$this->db->from($this->tabla);
+    	$this->db->order_by("state","asc");
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -68,12 +69,12 @@ class Countries extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->country_id] = $row->country;
+			$tmp[$row->state_id] = $row->state;
 		}
 		
 		return $tmp;
     }
-
+    
 	/**
 	 * Retorna una o más instancias del modelo
 	 * @param array $search terminos de busqueda
@@ -103,7 +104,7 @@ class Countries extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('country_id', 'DESC');
+    	$this->db->order_by('state_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;
@@ -113,7 +114,7 @@ class Countries extends Model {
 	 * Inserta un registro
 	 * @param array $values valores a insertar
 	 * @return void 
-	 */      
+	 */    
     function insertar($values)
     {	
         $this->db->insert($this->tabla, $values);
@@ -124,12 +125,13 @@ class Countries extends Model {
 	 * @param array $values valores a cambiar
 	 * @param array $where id o dato del registro
 	 * @return void 
-	 */      
+	 */     
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
-    }  
+    }
+   
 }
 
-/* End of file countries.php */
-/* Location: ./system/application/model/countries.php */
+/* End of file state.php */
+/* Location: ./system/application/model/state.php */

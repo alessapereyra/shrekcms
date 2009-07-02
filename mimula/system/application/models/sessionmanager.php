@@ -1,16 +1,58 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de manejador de sesiones
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de manejador de sesiones
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Sessionmanager extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_session_manager';
 
+	/**
+	 * Constructor de la case
+	 */   
     function __construct()
     {
         // Call the Model constructor
         parent::Model();
         $this->load->database('default');        
     }
-    
+
+	/**
+	 * Retorna los ultimos post leido por un usuario
+	 * @param integer $id id del usuario
+	 * @param integer $posts cantidad de posts a traer
+	 * @return array 
+	 */     
     function get_lastread($id,$posts)
     {
 
@@ -33,14 +75,15 @@ class Sessionmanager extends Model {
   		$this->db->order_by($this->tabla . '.unixtime', 'ASC');
 
   		$query = $this->db->get();
-  		//die($this->db->last_query());
   		return $query->result_array();
-      
-      
-      
     }
     
-    
+	/**
+	 * Retorna los ultimos post vistos por un usuario
+	 * @param integer $id id del usuario
+	 * @param integer $posts cantidad de posts a traer
+	 * @return array 
+	 */       
     function get_lastviews($id, $posts)
     {    	
         $this->db->distinct();
@@ -61,10 +104,9 @@ class Sessionmanager extends Model {
 		$this->db->order_by($this->tabla . '.unixtime', 'ASC');
 		
 		$query = $this->db->get();
-		//die($this->db->last_query());
 		return $query->result_array();
     }
        
 }
-/* End of file PropertyType.php */
-/* Location: ./system/application/model/PropertyType.php */
+/* End of file sessionmanager.php */
+/* Location: ./system/application/model/sessionmanager.php */

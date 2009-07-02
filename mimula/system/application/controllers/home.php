@@ -1,7 +1,36 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador del home
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador del home
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 
 class Home extends DI_Controller {
 	
+	/**
+	 * Muestra dashboard
+	 * @param integer $id id de un articulo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */	
 	function dashboard()
 	{
 		$this->load->model('users');

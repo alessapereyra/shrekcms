@@ -2,7 +2,7 @@
 
 /**
  *
- * Modelo de paices
+ * Modelo de provincias
  *
  * @package		mulapress
  * @author		Srdperu | Juan Alberto
@@ -12,7 +12,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Modelo de paices
+ * Modelo de provincias
  *
  *
  * @package		mulapress
@@ -22,7 +22,7 @@
  * @version		Version 1.0
  */
 
-class Countries extends Model {
+class Province extends Model {
 	
     /**
      * Campos de la tabla
@@ -35,29 +35,32 @@ class Countries extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_countries';
+    var $tabla = 'mulapress_provinces';
 
 	/**
 	 * Constructor de la case
-	 */      
+	 */     
     function __construct()
     {
         // Call the Model constructor
         parent::Model();
         $this->load->database('default');        
     }
-
+    
 	/**
-	 * Consigue los paices
+	 * Consigue las provincias de un estado
+	 * @param integer $id id del estado
 	 * @param boolean $empty_row primera fila en blanco del combo
 	 * @return array 
 	 */     
-    function get_fkcombo($empty_row = FALSE)
+    function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('country_id');
-    	$this->db->select('country');
+    	$this->db->select('province_id');
+    	$this->db->select('province');
     	$this->db->from($this->tabla);
+    	$this->db->where(array('fk_state' => $id));
+    	$this->db->order_by("province","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -68,18 +71,18 @@ class Countries extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->country_id] = $row->country;
+			$tmp[$row->province_id] = $row->province;
 		}
 		
 		return $tmp;
     }
-
+    
 	/**
 	 * Retorna una o más instancias del modelo
 	 * @param array $search terminos de busqueda
 	 * @param array $limit cantidad de registros a retornar
 	 * @return array 
-	 */     
+	 */    
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -103,7 +106,7 @@ class Countries extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('country_id', 'DESC');
+    	$this->db->order_by('province_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;
@@ -113,7 +116,7 @@ class Countries extends Model {
 	 * Inserta un registro
 	 * @param array $values valores a insertar
 	 * @return void 
-	 */      
+	 */     
     function insertar($values)
     {	
         $this->db->insert($this->tabla, $values);
@@ -124,12 +127,12 @@ class Countries extends Model {
 	 * @param array $values valores a cambiar
 	 * @param array $where id o dato del registro
 	 * @return void 
-	 */      
+	 */     
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
     }  
 }
 
-/* End of file countries.php */
-/* Location: ./system/application/model/countries.php */
+/* End of file province.php */
+/* Location: ./system/application/model/province.php */

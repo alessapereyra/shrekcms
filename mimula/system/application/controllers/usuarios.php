@@ -1,10 +1,39 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de logeo
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de logeo
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
 
 class Usuarios extends DI_Controller {
 	
-	
+    /**
+     * Datos del usuario
+     * @var array
+     */		
 	var $usuario = array();
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function reglas()
   {
   
@@ -29,6 +58,12 @@ class Usuarios extends DI_Controller {
   
   }	
 
+	/**
+	 * Muestra los usuaris actuales
+	 * @param integer $page numero de pagina
+	 * @param integer $perpage registros por pagina 
+	 * @return void 
+	 */	  
 	function verificado($page = 1, $per_page = NULL)
 	{
 		
@@ -69,6 +104,10 @@ class Usuarios extends DI_Controller {
 		$this->__destruct();
 	}
 	
+	/**
+	 * Verifica o no los usuarios
+	 * @return void 
+	 */		
 	function verificar()
 	{
 		$bloggers = $this->input->post('user_id');
@@ -93,6 +132,11 @@ class Usuarios extends DI_Controller {
 		redirect('usuarios/verificado/' . $this->input->post('page') . '/' . $this->input->post('per_page'));
 	}
 	
+	/**
+	 * Muestra el formulario para agregar/editar un usuario
+	 * @param integer $id id de un articulo
+	 * @return void 
+	 */		
 	function formulario($id = NULL)
 	{
 
@@ -128,6 +172,10 @@ class Usuarios extends DI_Controller {
 		$this->load->view('layout/' . $tmp['footer']);
 	}
 	
+	/**
+	 * Muestra el formulario para modificar los titulares y varias cosas mas
+	 * @return void 
+	 */			
 	function titulares()
 	{
 	  
@@ -200,7 +248,11 @@ class Usuarios extends DI_Controller {
 		$this->load->view('layout/' . $tmp['footer']);	  
 	  
 	}
-	
+
+	/**
+	 * Actualiza los titulares
+	 * @return void 
+	 */			
 	function enviar_titulares(){
 	  
 	  $this->load->library('session');
@@ -263,7 +315,10 @@ class Usuarios extends DI_Controller {
 	  
 	}
 	
-	
+	/**
+	 * Muestra el perfil de un usuario
+	 * @return void 
+	 */			
 	function perfil(){
 
 		$this->load->library('session');
@@ -300,7 +355,11 @@ class Usuarios extends DI_Controller {
     
 	  
 	}
-	
+
+	/**
+	 * Actualiza la cantidad de usuarios que aparecen de forma random
+	 * @return void 
+	 */			
 	function actualizar_random()
 	{
 		$this->load->helper('url');
@@ -334,6 +393,10 @@ class Usuarios extends DI_Controller {
 		redirect("usuarios/titulares");
 	}
 	
+	/**
+	 * Actualiza los usuarios que aparecen en el home
+	 * @return void 
+	 */			
 	function actualizar_muleros()
 	{
 		$this->load->library('session');
@@ -371,6 +434,10 @@ class Usuarios extends DI_Controller {
 		redirect("usuarios/titulares");
 	}
 	
+	/**
+	 * Actualiza los blog que no salen en portada
+	 * @return void 
+	 */			
 	function actualizar_portada()
 	{
 		$this->load->library('session');
@@ -412,7 +479,11 @@ class Usuarios extends DI_Controller {
 		}
 		redirect("usuarios/titulares");
 	}
-		
+
+	/**
+	 * Actualiza el perfil
+	 * @return void 
+	 */			
 	function grabar_perfil(){
 
 		$this->load->helper('url');
@@ -459,16 +530,6 @@ class Usuarios extends DI_Controller {
 
 				//aqui se irian agregando mas datos
 				$this->usermeta->insertar($meta, $id);	
-        // }
-        // else
-        // {
-        //  //modificacion, no implementado todavia
-        //  //$where['id'] = $id;
-        //  //$this->users->actualizar($data, $where);
-        //  //arma los meta
-        //  //$this->usermeta->actualizar($meta, $id);
-        // 
-        // }
 
       	$this->load->library('session');
         $usuario = $this->session->userdata('usuario');
@@ -479,6 +540,10 @@ class Usuarios extends DI_Controller {
 	  
 	}
 	
+	/**
+	 * Agrega o actualiza un usuario
+	 * @return void 
+	 */			
 	function actualizar()
 	{
 		$this->load->helper('url');
@@ -605,7 +670,11 @@ class Usuarios extends DI_Controller {
 		} 
 		return $data;		
 	}
-	
+
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */			
 	function _reglas()
 	{
 		$tmp['usuario'] = "trim|required|min_length[4]|max_length[40]";
@@ -636,6 +705,10 @@ class Usuarios extends DI_Controller {
 		return $reglas;
 	}
 	
+	/**
+	 * Setea las reglas de validacion para el formulario de perfiles
+	 * @return array 
+	 */	
 	function _reglas_perfil()
 	{
 		//$reglas[] = array('field'   => 'url', 'label'   => 'lang:field_url', 'rules'   => 'trim|required|min_length[4]|max_length[40]');
@@ -644,9 +717,12 @@ class Usuarios extends DI_Controller {
 				
 		return $reglas;
 	}
-	
-	
-	
+
+	/**
+	 * Chequea que ese usuario no exista
+	 * @param string $value contenido del input
+	 * @return boolean 
+	 */		
 	function usuario_exist($value)
 	{
 		$this->load->model('users');
@@ -663,6 +739,11 @@ class Usuarios extends DI_Controller {
 		}			
 	}
 
+	/**
+	 * Chequea que ese dni no exista
+	 * @param string $value contenido del input
+	 * @return boolean 
+	 */		
 	function dni_exist($value)
 	{
 		$this->load->model('usermeta');
@@ -680,6 +761,10 @@ class Usuarios extends DI_Controller {
 		}			
 	}
 	
+	/**
+	 * Chequea se este usando o no ie6
+	 * @return boolean 
+	 */		
 	function _is_ie6()
 	{
 		$this->load->library('user_agent');
