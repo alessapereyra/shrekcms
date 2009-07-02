@@ -1,4 +1,9 @@
-
+<?php
+/**
+ * @package WordPress
+ * @subpackage LaMula Theme
+ */
+?>
       </div> <!-- content -->
     
   </div>  <!-- wrapper -->

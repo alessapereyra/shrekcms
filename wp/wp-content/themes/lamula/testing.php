@@ -11,7 +11,6 @@ get_header(); ?>
   <div id="top_news_content">          	          	      
 
           <?php  
-           // $featured_query = new WP_Query('category_name=featured&showposts=2');
            $featured_query = new WP_Query('showposts=1&category_name=featured');
            while ($featured_query->have_posts()) : $featured_query->the_post();
            $do_not_duplicate = $post->ID;
@@ -49,7 +48,7 @@ get_header(); ?>
 
             <a href="#" class="leer_mas_footer"></a>
             <p class="comments"></p>
-            <p class="rate"><em><?php //wp_gdsr_render_article(); ?></em></p>
+            <p class="rate"><em></em></p>
             
           </div>
 

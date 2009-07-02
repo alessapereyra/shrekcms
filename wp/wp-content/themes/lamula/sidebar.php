@@ -1,12 +1,9 @@
-<?php //include 'C:\xampp\htdocs\shrekcms\mimula\system\cidip\cidip_index.php';   ?>
-<?php include '/var/www/shrekcms/mimula/system/cidip/cidip_index.php';  ?>
-
 <?php
-
- // $ci =& get_instance();
-
+/**
+  * @package WordPress
+  * @subpackage LaMula
+  */
 ?>
-
   <div id="sidebars">
     
         <div id="important">

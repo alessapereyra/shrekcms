@@ -60,4 +60,3 @@
           <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
           <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
       </div> <!-- status_bar -->
-  
