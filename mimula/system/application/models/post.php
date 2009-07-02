@@ -180,7 +180,7 @@ class Post extends Model {
     
 	/**
 	 * Inserta un post del tipo attach
-	 * @param array $values valores a guardar
+	 * @param array $values valores a insertar
 	 * @return integer
 	 */     
     function insert_attach($values)
@@ -195,7 +195,7 @@ class Post extends Model {
     
 	/**
 	 * Inserta un post del tipo articulo
-	 * @param array $values valores a guardar
+	 * @param array $values valores a insertar
 	 * @param array $customs valores personalizados
 	 * @return integer
 	 */  
@@ -280,7 +280,7 @@ class Post extends Model {
 
 	/**
 	 * Inserta un registro
-	 * @param array $values valores a cambiar
+	 * @param array $values valores a insertar
 	 * @return integer 
 	 */       
     function _insertar($values)

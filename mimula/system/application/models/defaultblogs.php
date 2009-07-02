@@ -91,7 +91,7 @@ class Defaultblogs extends Model {
     
 	/**
 	 * Inserta un registro
-	 * @param array $values valores a cambiar
+	 * @param array $values valores a insertar
 	 * @return void 
 	 */     
     function insertar($values)

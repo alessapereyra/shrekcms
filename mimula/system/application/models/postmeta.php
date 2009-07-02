@@ -72,7 +72,7 @@ class Postmeta extends Model {
 
 	/**
 	 * Inserta la localidad de la noticia
-	 * @param array $values valores a guardar
+	 * @param array $values valores a insertar
 	 * @param integer $id id de un post
 	 * @return void 
 	 */      
@@ -112,7 +112,7 @@ class Postmeta extends Model {
     
 	/**
 	 * Inserta metadata
-	 * @param array $values valores a cambiar
+	 * @param array $values valores a insertar
 	 * @param integer $id id de un post
 	 * @return void 
 	 */       
