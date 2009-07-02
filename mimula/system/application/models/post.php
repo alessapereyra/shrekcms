@@ -1,9 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de post
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de post
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Post extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
 	var $tabla = 'mulapress_posts';
 
+	/**
+	 * Constructor de la case
+	 */  	
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +47,12 @@ class Post extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue los post para la geomula
+	 * @param array $values terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */     
     function get_geomula($values, $limit)
     {
         $fields = array($this->tabla . '.ID',
@@ -40,10 +82,15 @@ class Post extends Model {
 		$this->db->limit($limit['show'], $limit['from']);
 		
 		$query = $this->db->get();
-		// die($this->db->last_query());
 		return $query;
     }
     
+	/**
+	 * Consigue los ultimos posts de un autor
+	 * @param array $id id del autor
+	 * @param array $posts cantidad de registros a retornar
+	 * @return array 
+	 */     
     function get_lastpost($id, $posts)
     { 
     	
@@ -67,7 +114,6 @@ class Post extends Model {
 		$todo = $this->db->get();
 		$post[] = $todo->result_array();
 
-		//$categorias = $this->terms->get_categories();
 		$categorias = $this->terms->get_categories_perfil($db);
 		
 		foreach($categorias as $key => $values)
@@ -98,7 +144,13 @@ class Post extends Model {
 		return $post;
 		
     }
-    
+
+	/**
+	 * Consigue los posts de un usuario
+	 * @param array $user id del autor
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */      
     function get_mypost($user, $limit = NULL)
     {   	
     	$fields = $this->db->list_fields($this->tabla);
@@ -110,7 +162,6 @@ class Post extends Model {
 		$this->db->select('mulapress_terms.name');
 		$this->db->select('mulapress_terms.slug');
 		
-		
 		$this->db->from($this->tabla);
 		
 		$this->db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
@@ -118,17 +169,20 @@ class Post extends Model {
 		$this->db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
 		
 		$this->db->where('mulapress_posts.post_type', 'post');
-     //              $this->db->where('wp_term_taxonomy.parent', '5');
-     $this->db->where('mulapress_term_taxonomy.parent', '28');
-     $this->db->where($this->tabla . '.post_author', $user);		
+		$this->db->where('mulapress_term_taxonomy.parent', '28');
+		$this->db->where($this->tabla . '.post_author', $user);		
 		$this->db->order_by($this->tabla . '.post_date', 'DESC');
 		
 		$this->db->limit($limit['show'], $limit['from']);
 		$query = $this->db->get();
-		//die($this->db->last_query());
 		return $query;
     }
     
+	/**
+	 * Inserta un post del tipo attach
+	 * @param array $values valores a guardar
+	 * @return integer
+	 */     
     function insert_attach($values)
     {
     	$values['post_type'] = 'attachment';    	
@@ -139,25 +193,22 @@ class Post extends Model {
 		return $post_id;
     }
     
-    
+	/**
+	 * Inserta un post del tipo articulo
+	 * @param array $values valores a guardar
+	 * @param array $customs valores personalizados
+	 * @return integer
+	 */  
     function insert_article($values, $customs)
     {
     	$this->load->library('session');
     	$this->load->helper('inflector');
-      //$this->load->model('options');
     	
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
-    	//$values['post_name'] = preg_replace('/[^a-zA-Z0-9]/','',score($values['post_title']));
     	$values['post_name'] = sanitize2url($values['post_title']);
 		  $values['post_status'] = 'publish';    
 			$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
-			    	
-		    //$this->load->library('HTMLPurifier');
-        //$config = HTMLPurifier_Config::createDefault();
-        //$values['post_content'] = $this->htmlpurifier->purify( $values['post_content'] , $config );
-		    
-		  
 		  
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);
@@ -193,7 +244,13 @@ class Post extends Model {
     	
     	return $post_id;
     }
-    
+
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */     
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -220,7 +277,12 @@ class Post extends Model {
         $query = $this->db->get();
         return $query;
     }
-    
+
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a cambiar
+	 * @return integer 
+	 */       
     function _insertar($values)
     {	
     	$values['post_date'] = date('Y-m-d G:i:s');
@@ -233,30 +295,28 @@ class Post extends Model {
     	
     	$this->db->insert($this->tabla, $values);
     	
-    	/*
-    	$this->db->select($this->tabla . '.ID');
-    	$this->db->from($this->tabla);
-    	
-    	$this->db->where(array('post_date' => $values['post_date']));
-    	$this->db->limit(1, 0);
-
-    	$query = $this->db->get();
-    	$query = $query->row(); 
-    	
-    	return $query->ID;
-    	*/
     	return $this->db->insert_id();
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */     
     function actualizar_count($values,$where){
       
-          $this->db->update($this->tabla, $values, $where);
-          // die($this->db->last_query());      
+          $this->db->update($this->tabla, $values, $where);     
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */     
     function actualizar($values, $where)
     {
-    	//die(print_r($values));
     	//TODO: aca deberia limpiar esto T_T
     	
     	//inserta los tags
@@ -281,7 +341,7 @@ class Post extends Model {
     		}
     	}
     	
-    	$terms_taxonomy_id = $tmp; //array_merge($tags_id, $values['terms_taxonomy_id']);
+    	$terms_taxonomy_id = $tmp;
 
     	unset($values['terms_taxonomy_id']);
     	
@@ -289,33 +349,26 @@ class Post extends Model {
         $this->db->update($this->tabla, $values, $where);
         
     }
-    
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    }
-    
+
+	/**
+	 * Retorna la cantidad de post publicados
+	 * @param integer $id id del autor
+	 * @return integer
+	 */    
     function published_posts($id)
-    {
-      
-      $this->db->select('post_author');
-      $this->db->from($this->tabla);
-      $this->db->where('post_author',$id);
-		//$this->db->where('(post_status like "publish" or post_status like "inherit")');
+    {      
+		$this->db->select('post_author');
+		$this->db->from($this->tabla);
+		$this->db->where('post_author',$id);
 		$this->db->where('post_status like "publish"');
-      return $this->db->count_all_results();
+		return $this->db->count_all_results();
     }
- 
+
+	/**
+	 * Retorna la cantidad de post totales
+	 * @param integer $id id del autor
+	 * @return integer
+	 */       
     function total_posts($id){
        $this->db->select('post_author');
        $this->db->from($this->tabla);
@@ -323,6 +376,11 @@ class Post extends Model {
        return $this->db->count_all_results();
      }
      
+	/**
+	 * Retorna un promedio
+	 * @param integer $id id del autor
+	 * @return array
+	 */        
      function promedio($userid)
      {
      	return $this->db->query('SELECT sum(user_votes) as user_votes, sum(user_voters) as user_voters,
@@ -335,19 +393,7 @@ class Post extends Model {
 				WHERE post_author = \'' . $userid . '\'
 				AND post_status = \'publish\'
 			)');
-     }
- 
- 
-    
-    function _check($tabla, $id)
-    {
-    	$this->db->select('id');
-    	$this->db->from($tabla);
-    	$this->db->where(array($this->fk => $id));
-    	$query = $this->db->get();
-    	
-    	return $query->num_rows() == 0 ? TRUE : FALSE;
-    }    
+     }   
 }
-/* End of file PropertyType.php */
-/* Location: ./system/application/model/PropertyType.php */
+/* End of file post.php */
+/* Location: ./system/application/model/post.php */
