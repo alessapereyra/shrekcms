@@ -50,7 +50,7 @@ class Combo extends Controller {
 	function distrito($distrito = NULL)
 	{
 		$this->load->library('combofiller');
-		$combo = $this->combofiller->distrits($distrito, TRUE);
+		$combo = $this->combofiller->districts($distrito, TRUE);
 		
 		$tmp = NULL;
 		//echo print_r($combo);

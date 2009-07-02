@@ -123,16 +123,16 @@ INSERT INTO `wp_news_headers` (`id`, `header_type`, `header_source`) VALUES
 
 DROP TABLE IF EXISTS `wp_distrits`;
 CREATE TABLE IF NOT EXISTS `wp_distrits` (
-  `distrit_id` int(11) NOT NULL auto_increment,
+  `district_id` int(11) NOT NULL auto_increment,
   `distrit` varchar(50) NOT NULL,
-  PRIMARY KEY  (`distrit_id`)
+  PRIMARY KEY  (`district_id`)
 ) TYPE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `wp_distrits`
 --
 
-INSERT INTO `wp_distrits` (`distrit_id`, `distrit`) VALUES
+INSERT INTO `wp_distrits` (`district_id`, `distrit`) VALUES
 (1, 'distrito 1'),
 (2, 'distrito 2');
 

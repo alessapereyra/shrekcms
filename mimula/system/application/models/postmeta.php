@@ -50,8 +50,8 @@ class Postmeta extends Model {
     				$field = 'province';
     			break;
     			case 'distrito':
-    				$query = $this->distrits->seleccionar(array('distrit_id' => $value));
-    				$field = 'distrit';
+    				$query = $this->districts->seleccionar(array('district_id' => $value));
+    				$field = 'district';
     			break;
     		}
     		$query = $query->result_array();

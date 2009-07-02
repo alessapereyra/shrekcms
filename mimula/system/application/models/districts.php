@@ -36,11 +36,11 @@ class Districts extends Model {
     function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('distrit_id');
-    	$this->db->select('distrit');
+    	$this->db->select('district_id');
+    	$this->db->select('district');
     	$this->db->from($this->tabla);
     	$this->db->where(array('fk_province' => $id));
-    	$this->db->order_by("distrit","asc");    	
+    	$this->db->order_by("district","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -51,7 +51,7 @@ class Districts extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->distrit_id] = $row->distrit;
+			$tmp[$row->district_id] = $row->district;
 		}
 		
 		return $tmp;
@@ -80,7 +80,7 @@ class Districts extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('distrit_id', 'DESC');
+    	$this->db->order_by('district_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;

@@ -155,7 +155,7 @@ class Fotos extends DI_Controller {
 		if (array_key_exists('provincia', $customs))
 		{
 			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->distrits($customs['provincia'], TRUE);
+			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
 		}
 		
 		if (array_key_exists('distrito', $customs))
@@ -236,7 +236,7 @@ class Fotos extends DI_Controller {
 			
 			if( $this->input->post('distrito') != NULL )
 			{
-				$data['distritos'] = $this->combofiller->distrits($this->input->post('provincia'), TRUE);
+				$data['distritos'] = $this->combofiller->districts($this->input->post('provincia'), TRUE);
 				if( $this->input->post('distrito') != 'null' )
 				{
 					$data['distritos_selected'] = $this->input->post('distrito');
@@ -256,7 +256,7 @@ class Fotos extends DI_Controller {
 		{
 			$this->load->model('countries');
 			$this->load->model('departments');
-			$this->load->model('distrits');
+			$this->load->model('districts');
 			$this->load->model('provinces');
 			$this->load->model('options');			
 			$this->load->model('post');

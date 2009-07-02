@@ -21,10 +21,10 @@ class Combofiller {
 		return $this->CI->departments->get_fkcombo($empty_row);		
 	}
 
-	function distrits($distrit, $empty_row = FALSE)
+	function districts($district, $empty_row = FALSE)
 	{
-		$this->CI->load->model('distrits');
-		return $this->CI->distrits->get_fkcombo($distrit, $empty_row);		
+		$this->CI->load->model('districts');
+		return $this->CI->districts->get_fkcombo($district, $empty_row);		
 	}	
 	
 	function provinces($province, $empty_row = FALSE)
