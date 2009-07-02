@@ -23,16 +23,35 @@
  */
 class Districts extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'mulapress_districts';
 
+	/**
+	 * Constructor de la case
+	 */
     function __construct()
     {
         // Call the Model constructor
         parent::Model();
         $this->load->database('default');        
     }
-    
+
+	/**
+	 * Consigue los distritos de una provincia
+	 * @param integer $id id de la provincia
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */    
     function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
@@ -57,6 +76,12 @@ class Districts extends Model {
 		return $tmp;
     }
     
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */      
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$this->load->database();
@@ -86,29 +111,28 @@ class Districts extends Model {
         return $query;
     }
     
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a cambiar
+	 * @return void 
+	 */     
     function insertar($values)
     {	
         $this->db->insert($this->tabla, $values);
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */    
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
-    }
-
-    function borrar($values)
-    {
-		if ($this->_check('propiedades', $values['id']) == FALSE)
-    	{
-    		return $this->lang->line('error_reg_usado'); //$this->lang->line('error_' . $resultado);
-    	}
-    	else
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    }    
+    }   
 }
-?>
+
+
+/* End of file districts.php */
+/* Location: ./system/application/model/districts.php */

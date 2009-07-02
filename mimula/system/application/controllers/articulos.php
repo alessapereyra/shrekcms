@@ -152,7 +152,7 @@ class Articulos extends DI_Controller {
 		if (array_key_exists('provincia', $customs))
 		{
 			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->distrits($customs['provincia'], TRUE);
+			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
 		}
 		
 		if (array_key_exists('distrito', $customs))
@@ -232,7 +232,7 @@ class Articulos extends DI_Controller {
 			
 			if( $this->input->post('distrito') != NULL )
 			{
-				$data['distritos'] = $this->combofiller->distrits($this->input->post('provincia'), TRUE);
+				$data['distritos'] = $this->combofiller->districts($this->input->post('provincia'), TRUE);
 				if( $this->input->post('distrito') != 'null' )
 				{
 					$data['distritos_selected'] = $this->input->post('distrito');
