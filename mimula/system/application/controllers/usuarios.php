@@ -42,6 +42,14 @@ class Usuarios extends DI_Controller {
 
   		$this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Registrate', 'ie6' => $this->_is_ie6()));
       // $this->load->view('layout/' . $tmp['menu'], array('log' => FALSE, 'ie6' => $this->_is_ie6(), 'current_controller' => $this->uri->segment(1) ));
+		$data['dni'] = NULL;
+
+
+	  	$this->load->helper('form');
+		$this->load->library('form_validation');
+		$tmp = $this->config->item('post_content');
+
+
 
   		$this->load->view('usuarios/reglas', $data);
 

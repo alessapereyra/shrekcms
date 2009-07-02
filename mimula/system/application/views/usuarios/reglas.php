@@ -1,4 +1,4 @@
-<?php //$categorias = array(7 => 'articulos',8 => 'fotos', 9 => 'videos', 10 => 'documentos', 11 => 'audio')?>
+<?php  ?>
 <div id="content"  class="dashboard">
 
   <h2>Las reglas de la casa</h2>
