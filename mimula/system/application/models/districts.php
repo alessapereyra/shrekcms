@@ -1,8 +1,8 @@
 <?php
-class Distrits extends Model {
+class Districts extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_distrits';
+    var $tabla = 'mulapress_districts';
 
     function __construct()
     {
