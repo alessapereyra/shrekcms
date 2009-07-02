@@ -1,6 +1,37 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de webservices
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de webservices
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Ws extends Controller {
 
+	/**
+	 * Geomula, obtiene las noticias de la geomula
+	 * @param integer $pais de un articulo
+	 * @param integer $departamento de un articulo
+	 * @param integer $provincia de un articulo
+	 * @param integer $destrito de un articulo 
+	 * @return void 
+	 */		
 	function geomula($pais = 0, $departamento = NULL, $provincia = NULL, $distrito = NULL)
 	{
 		
@@ -62,6 +93,10 @@ class Ws extends Controller {
 		$this->load->view('ws/geomula', $data);
 	}
 	
+	/**
+	 * Calcula el ranking de los usuarios
+	 * @return void 
+	 */	
 	function mularanking()
 	{
 		$this->load->model('users');
@@ -94,8 +129,6 @@ class Ws extends Controller {
 		   $promedio = $promedio * $tmp;
 		   
 		   $total = $published_posts + $comments + $comments_received + $promedio;
-		   //echo $published_posts . ' ' . $comments . ' ' . $comments_received . ' ' . $promedio . ' ' . $tmp;
-		   //die($total);
 		   foreach($mularangos as $rango)
 		   {
 			   	if ($total >= $rango['minimo'])
@@ -103,7 +136,6 @@ class Ws extends Controller {
 			   		$where['ID'] = $userid;
 			   		$values['mularango'] = $rango['ranking'];
 			   		$values['puntaje'] = $total;
-			   		//echo 'final = ' . $total . ' ' . ($rango['ranking']) . '<br />';
 			   		$this->users->actualizar($values, $where);
 			   		break;
 			   	}  
@@ -112,3 +144,6 @@ class Ws extends Controller {
 		$this->load->view('ws/mularanking');
 	}
 }
+
+/* End of file ws.php */
+/* Location: ./system/application/controllers/ws.php */

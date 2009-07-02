@@ -1,6 +1,35 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de videos
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de videos
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Videos extends DI_Controller {
 
+	/**
+	 * Muestra el formulario para agregar/editar un video
+	 * @param integer $id id de un video
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -48,12 +77,23 @@ class Videos extends DI_Controller {
 		
 		$this->__destruct();		
 	}
-	
+
+	/**
+	 * Busca los datos de ese video
+	 * @param integer $id id de un video
+	 * @param array $data array a retornar
+	 * @return array 
+	 */		
 	function _show($id, $data)
 	{
 		return $data;
 	}
-			
+
+	/**
+	 * Agrega o modifica un video
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -308,6 +348,10 @@ class Videos extends DI_Controller {
 		}			
 	}
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
@@ -318,6 +362,10 @@ class Videos extends DI_Controller {
 		return $reglas;
 	}
 	
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -331,6 +379,10 @@ class Videos extends DI_Controller {
 			return FALSE;	
 	}
 
+	/**
+	 * Funciones ajaxs
+	 * @return void 
+	 */		
 	function ajax($accion)
 	{
 		switch ($accion)
@@ -341,6 +393,11 @@ class Videos extends DI_Controller {
 		}
 	}
 	
+	/**
+	 * Funciones ajaxs
+     * @param object $entry objeto de youtube
+	 * @return void | string
+	 */		
 	function findFlashUrl( $entry )
   {
       foreach ($entry->mediaGroup->content as $content) {
@@ -351,7 +408,11 @@ class Videos extends DI_Controller {
       return null;
   }	
 	
-	
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		
@@ -448,5 +509,5 @@ class Videos extends DI_Controller {
 	
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file videos.php */
+/* Location: ./system/application/controllers/backend/videos.php */

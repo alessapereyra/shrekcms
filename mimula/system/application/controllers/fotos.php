@@ -24,6 +24,12 @@
 
 class Fotos extends DI_Controller {
 	
+	/**
+	 * Muestra el formulario para agregar/editar una foto
+	 * @param integer $id id de una foto
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -67,7 +73,13 @@ class Fotos extends DI_Controller {
 		$this->load->view('fotos/foto', $data);
 		$this->__destruct();		
 	}
-	
+
+	/**
+	 * Busca los datos de esa foto
+	 * @param integer $id id de una foto
+	 * @param array $data array a retornar
+	 * @return array 
+	 */		
 	function _show($id, $data)
 	{
 		$this->load->model('post');
@@ -152,7 +164,12 @@ class Fotos extends DI_Controller {
 		}		
 		return $data;		
 	}
-		
+
+	/**
+	 * Agrega o modifica una foto
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -406,7 +423,11 @@ class Fotos extends DI_Controller {
 			}
 		}			
 	}
-	
+
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
@@ -416,7 +437,11 @@ class Fotos extends DI_Controller {
 		
 		return $reglas;
 	}
-	
+
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -430,6 +455,10 @@ class Fotos extends DI_Controller {
 			return FALSE;	
 	}
 
+	/**
+	 * Funciones ajaxs
+	 * @return void 
+	 */		
 	function ajax($accion)
 	{
 		switch ($accion)
@@ -439,7 +468,12 @@ class Fotos extends DI_Controller {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'jpg|jpeg|gif|png';
@@ -586,7 +620,15 @@ class Fotos extends DI_Controller {
 		}
 		
 	}
-	
+
+	/**
+	 * Recorta una imagen
+	 * @param array $from dimensiones del archivo fuente
+	 * @param array $to dimensiones del archivo destino
+	 * @param array $photo datos de la imagen
+	 * @param array $config configuracion
+	 * @return array o boolean
+	 */		
 	function _crop($from, $to, $photo, $config)
 	{
 		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
@@ -656,7 +698,15 @@ class Fotos extends DI_Controller {
 
 		return FALSE;		
 	}
-	
+
+	/**
+	 * Redimensiona una imagen
+	 * @param array $from dimensiones del archivo fuente
+	 * @param array $to dimensiones del archivo destino
+	 * @param array $photo datos de la imagen
+	 * @param array $config configuracion
+	 * @return array or boolean
+	 */		
 	function _resize($from, $to, $photo, $config)
 	{
 		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
@@ -696,5 +746,5 @@ class Fotos extends DI_Controller {
 
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file fotos.php */
+/* Location: ./system/application/controllers/fotos.php */

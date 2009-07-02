@@ -1,10 +1,39 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de logeo
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de logeo
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
 
 class Usuarios extends DI_Controller {
 	
-	
+    /**
+     * Datos del usuario
+     * @var array
+     */		
 	var $usuario = array();
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function reglas()
   {
   
@@ -21,6 +50,12 @@ class Usuarios extends DI_Controller {
   
   }	
 
+	/**
+	 * Muestra los usuaris actuales
+	 * @param integer $page numero de pagina
+	 * @param integer $perpage registros por pagina 
+	 * @return void 
+	 */	  
 	function verificado($page = 1, $per_page = NULL)
 	{
 		
@@ -61,6 +96,10 @@ class Usuarios extends DI_Controller {
 		$this->__destruct();
 	}
 	
+	/**
+	 * Verifica o no los usuarios
+	 * @return void 
+	 */		
 	function verificar()
 	{
 		$bloggers = $this->input->post('user_id');

@@ -59,6 +59,8 @@ class Flag extends Controller {
 		
 		$this->load->view('articulos/flagged', $data);
 	}
-	
-	
 }
+
+
+/* End of file flag.php */
+/* Location: ./system/application/controllers/flag.php */
