@@ -46,8 +46,8 @@ class Postmeta extends Model {
     				$field = 'department';
     			break;
     			case 'provincia':
-    				$query = $this->providences->seleccionar(array('providence_id' => $value));
-    				$field = 'providence';
+    				$query = $this->provinces->seleccionar(array('province_id' => $value));
+    				$field = 'province';
     			break;
     			case 'distrito':
     				$query = $this->distrits->seleccionar(array('distrit_id' => $value));

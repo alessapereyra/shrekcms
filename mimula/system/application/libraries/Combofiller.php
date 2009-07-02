@@ -27,10 +27,10 @@ class Combofiller {
 		return $this->CI->distrits->get_fkcombo($distrit, $empty_row);		
 	}	
 	
-	function providences($providence, $empty_row = FALSE)
+	function provinces($province, $empty_row = FALSE)
 	{
-		$this->CI->load->model('providences');
-		return $this->CI->providences->get_fkcombo($providence, $empty_row);		
+		$this->CI->load->model('provinces');
+		return $this->CI->provinces->get_fkcombo($province, $empty_row);		
 	}
 
 	function categorias()

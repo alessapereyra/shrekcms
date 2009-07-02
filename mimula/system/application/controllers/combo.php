@@ -32,7 +32,7 @@ class Combo extends Controller {
 	function provincia($departamento = NULL)
 	{
 		$this->load->library('combofiller');
-		$combo = $this->combofiller->providences($departamento, TRUE);
+		$combo = $this->combofiller->provinces($departamento, TRUE);
 		
 		$tmp = NULL;
 		foreach($combo as $key => $value)

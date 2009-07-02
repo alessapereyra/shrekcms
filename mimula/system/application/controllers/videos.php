@@ -149,7 +149,7 @@ class Videos extends DI_Controller {
 			if( $this->input->post('provincia') != NULL )
 			{
 			
-				$data['provincias'] = $this->combofiller->providences($this->input->post('departamento'), TRUE);
+				$data['provincias'] = $this->combofiller->provinces($this->input->post('departamento'), TRUE);
 				if ($this->input->post('provincia') != 'null')
 				{
 					$data['provincias_selected'] = $this->input->post('provincia');
@@ -179,7 +179,7 @@ class Videos extends DI_Controller {
 			$this->load->model('countries');
 			$this->load->model('departments');
 			$this->load->model('distrits');
-			$this->load->model('providences');
+			$this->load->model('provinces');
 			$this->load->model('options');			
 			$this->load->model('post');
 			$this->load->model('postmeta');

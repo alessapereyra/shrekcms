@@ -2,7 +2,7 @@
 class Providences extends Model {
 	
 	var $campos = array();
-    var $tabla = 'mulapress_providences';
+    var $tabla = 'mulapress_provinces';
 
     function __construct()
     {
@@ -14,11 +14,11 @@ class Providences extends Model {
     function get_fkcombo($id, $empty_row = FALSE)
     {
     	$this->load->database();
-    	$this->db->select('providence_id');
-    	$this->db->select('providence');
+    	$this->db->select('province_id');
+    	$this->db->select('province');
     	$this->db->from($this->tabla);
     	$this->db->where(array('fk_department' => $id));
-    	$this->db->order_by("providence","asc");    	
+    	$this->db->order_by("province","asc");    	
     	$query = $this->db->get();
     	
     	$tmp = '';
@@ -29,7 +29,7 @@ class Providences extends Model {
     	
     	foreach ($query->result() as $row)
 		{
-			$tmp[$row->providence_id] = $row->providence;
+			$tmp[$row->province_id] = $row->province;
 		}
 		
 		return $tmp;
@@ -58,7 +58,7 @@ class Providences extends Model {
     		$this->db->limit($limit['show'], $limit['from']);
     	}
     	
-    	$this->db->order_by('providence_id', 'DESC');
+    	$this->db->order_by('province_id', 'DESC');
     	
         $query = $this->db->get();
         return $query;

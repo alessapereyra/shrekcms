@@ -1,4 +1,26 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de distritos
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de blogs
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
 class Districts extends Model {
 	
 	var $campos = array();
@@ -17,7 +39,7 @@ class Districts extends Model {
     	$this->db->select('distrit_id');
     	$this->db->select('distrit');
     	$this->db->from($this->tabla);
-    	$this->db->where(array('fk_providence' => $id));
+    	$this->db->where(array('fk_province' => $id));
     	$this->db->order_by("distrit","asc");    	
     	$query = $this->db->get();
     	
