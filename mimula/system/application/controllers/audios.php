@@ -1,6 +1,35 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de audios
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de audios
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Audios extends DI_Controller {
-	
+
+	/**
+	 * Muestra el formulario para agregar/editar un audio
+	 * @param integer $id id de un audio
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -44,11 +73,22 @@ class Audios extends DI_Controller {
 		$this->__destruct();		
 	}
 	
+	/**
+	 * Muestra el formulario para agregar/editar un audio
+	 * @param integer $id id de un audio
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function _show($id, $data)
 	{
 		return $data;
 	}
-			
+
+	/**
+	 * Agrega o modifica un audio
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -272,6 +312,10 @@ class Audios extends DI_Controller {
 		}			
 	}
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */			
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');

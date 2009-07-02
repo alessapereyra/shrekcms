@@ -1,6 +1,35 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de articulos
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de articulos
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Articulos extends DI_Controller {
 	
+	/**
+	 * Muestra el formulario para agregar/editar un articulo
+	 * @param integer $id id de un articulo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */	
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -44,6 +73,12 @@ class Articulos extends DI_Controller {
 		$this->__destruct();
 	}
 	
+	/**
+	 * Busca los datos de ese articulo
+	 * @param integer $id id de un articulo
+	 * @param array $data array a retornar
+	 * @return array 
+	 */		
 	function _show($id, $data)
 	{
 		$this->load->model('post');
@@ -126,7 +161,12 @@ class Articulos extends DI_Controller {
 		}		
 		return $data;
 	}
-		
+
+	/**
+	 * Agrega o modifica un articulo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -383,6 +423,10 @@ class Articulos extends DI_Controller {
 		}			
 	}
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */		
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
@@ -392,6 +436,10 @@ class Articulos extends DI_Controller {
 		return $reglas;
 	}
 	
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -405,6 +453,11 @@ class Articulos extends DI_Controller {
 			return FALSE;	
 	}
 	
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'jpg|jpeg|gif|png';
@@ -536,7 +589,15 @@ class Articulos extends DI_Controller {
 		}
 		
 	}
-	
+
+	/**
+	 * Recorta una imagen
+	 * @param array $from dimensiones del archivo fuente
+	 * @param array $to dimensiones del archivo destino
+	 * @param array $photo datos de la imagen
+	 * @param array $config configuracion
+	 * @return array o boolean
+	 */		
 	function _crop($from, $to, $photo, $config)
 	{
 		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
@@ -606,7 +667,15 @@ class Articulos extends DI_Controller {
 
 		return FALSE;		
 	}
-	
+
+	/**
+	 * Redimensiona una imagen
+	 * @param array $from dimensiones del archivo fuente
+	 * @param array $to dimensiones del archivo destino
+	 * @param array $photo datos de la imagen
+	 * @param array $config configuracion
+	 * @return array or boolean
+	 */		
 	function _resize($from, $to, $photo, $config)
 	{
 		if (($from['h'] > $to['h']) OR ($from['w'] > $to['w']) )
