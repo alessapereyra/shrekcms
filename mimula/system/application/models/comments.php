@@ -2,7 +2,7 @@
 
 /**
  *
- * Modelo de blogs
+ * Modelo de comentarios
  *
  * @package		mulapress
  * @author		Srdperu | Juan Alberto
@@ -12,7 +12,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * Modelo de blogs
+ * Modelo de comentarios
  *
  *
  * @package		mulapress

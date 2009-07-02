@@ -2,7 +2,7 @@
 
 /**
  *
- * Controlador de articulos
+ * Modelo de paices
  *
  * @package		mulapress
  * @author		Srdperu | Juan Alberto
@@ -12,12 +12,12 @@
 // ------------------------------------------------------------------------
 
 /**
- * Controlador de articulos
+ * Modelo de paices
  *
  *
  * @package		mulapress
- * @subpackage	Controllers
- * @category	Controllers
+ * @subpackage	Models
+ * @category	Models
  * @author		Srdperu | Juan Alberto
  * @version		Version 1.0
  */
