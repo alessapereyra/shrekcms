@@ -326,6 +326,10 @@ class Audios extends DI_Controller {
 		return $reglas;
 	}
 	
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -339,6 +343,10 @@ class Audios extends DI_Controller {
 			return FALSE;	
 	}
 
+	/**
+	 * Funciones ajaxs
+	 * @return void 
+	 */		
 	function ajax($accion)
 	{
 		switch ($accion)
@@ -348,7 +356,12 @@ class Audios extends DI_Controller {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'doc|pdf';
@@ -403,5 +416,5 @@ class Audios extends DI_Controller {
 	
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file audios.php */
+/* Location: ./system/application/controllers/audios.php */

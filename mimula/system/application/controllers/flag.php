@@ -1,6 +1,33 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de banderas
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de banderas
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Flag extends Controller {
 
+	/**
+	 * Marca como ofensiva una noticia
+	 * @return void 
+	 */		
 	function flag_this()
 	{
 		$FLAG_COUNT = 5;

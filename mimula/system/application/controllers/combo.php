@@ -1,6 +1,34 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de combos box
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de combos box
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Combo extends Controller {
 	
+	/**
+	 * Obtiene las provincias
+	 * @param integer $departamento departamento para filtrar
+	 * @return array 
+	 */		
 	function provincia($departamento = NULL)
 	{
 		$this->load->library('combofiller');
@@ -14,6 +42,11 @@ class Combo extends Controller {
 		echo $tmp;
 	}
 		
+	/**
+	 * Obtiene los distritos
+	 * @param integer $distrito distrito para filtrar
+	 * @return array 
+	 */			
 	function distrito($distrito = NULL)
 	{
 		$this->load->library('combofiller');
@@ -29,4 +62,6 @@ class Combo extends Controller {
 	}
 
 }
-?>
+
+/* End of file combos.php */
+/* Location: ./system/application/controllers/combos.php */

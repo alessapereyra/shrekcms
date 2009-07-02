@@ -715,5 +715,5 @@ class Articulos extends DI_Controller {
 
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file articulos.php */
+/* Location: ./system/application/controllers/articulos.php */

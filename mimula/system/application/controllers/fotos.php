@@ -1,4 +1,27 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de fotos
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de fotos
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Fotos extends DI_Controller {
 	
 	function formulario($id = NULL, $ie = NULL)

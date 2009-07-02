@@ -1,6 +1,33 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de emails
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de emails
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Email extends Controller {
 	
+	/**
+	 * Envia un email
+	 * @return void 
+	 */		
 	function index()
 	{
 		//envia emails
@@ -18,8 +45,7 @@ class Email extends Controller {
 		$this->email->message($email['message']);
 		
 		$this->email->send();
-		
-		echo 'ya ps';		
+	
 	}
 
 }

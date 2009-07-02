@@ -1,6 +1,35 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Controlador de documentos
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Controlador de documentos
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Documentos extends DI_Controller {
 	
+	/**
+	 * Muestra el formulario para agregar/editar un documento
+	 * @param integer $id id de un documento
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */		
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
@@ -44,7 +73,13 @@ class Documentos extends DI_Controller {
 		$this->load->view('documentos/documento', $data);
 		$this->__destruct();		
 	}
-	
+
+	/**
+	 * Busca los datos de ese documento
+	 * @param integer $id id de un documento
+	 * @param array $data array a retornar
+	 * @return array 
+	 */		
 	function _show($id, $data)
 	{
 		$this->load->model('post');
@@ -129,7 +164,12 @@ class Documentos extends DI_Controller {
 		}		
 		return $data;		
 	}
-			
+
+	/**
+	 * Agrega o modifica un documento
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return void 
+	 */			
 	function actualizar($ie = NULL)
 	{
 		$this->load->helper('url');
@@ -224,7 +264,7 @@ class Documentos extends DI_Controller {
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
-	    $this->load->model('options');
+	    	$this->load->model('options');
 			    
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -369,6 +409,10 @@ class Documentos extends DI_Controller {
 		}			
 	}
 	
+	/**
+	 * Setea las reglas de validacion para el formulario
+	 * @return array 
+	 */			
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'titulo', 'label'   => 'lang:field_titulo', 'rules'   => 'trim|required|max_length[100]');
@@ -378,7 +422,11 @@ class Documentos extends DI_Controller {
 		
 		return $reglas;
 	}
-	
+
+	/**
+	 * Regla de validacion; Obliga a que el usuario seleccione una categoria
+	 * @return boolean 
+	 */		
 	function has_categorys()
 	{
 			$categorias = $this->combofiller->categorias();			
@@ -392,6 +440,10 @@ class Documentos extends DI_Controller {
 			return FALSE;	
 	}
 
+	/**
+	 * Funciones ajaxs
+	 * @return void 
+	 */		
 	function ajax($accion)
 	{
 		switch ($accion)
@@ -401,7 +453,12 @@ class Documentos extends DI_Controller {
 			break;
 		}
 	}
-	
+
+	/**
+	 * Sube un archivo
+	 * @param boolean $ie6 es Internet Explorer 6
+	 * @return array 
+	 */		
 	function _upload($ie = NULL)
 	{
 		$tmp['allowed_types'] = 'doc|pdf';
@@ -459,5 +516,5 @@ class Documentos extends DI_Controller {
 	
 }
 
-/* End of file monedas.php */
-/* Location: ./system/application/controllers/backend/monedas.php */
+/* End of file documentos.php */
+/* Location: ./system/application/controllers/backend/documentos.php */
