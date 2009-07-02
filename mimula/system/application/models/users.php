@@ -1,9 +1,46 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de usuarios
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de usuarios
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+
 class Users extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'wp_users';
 
+	/**
+	 * Constructor de la case
+	 */       
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +48,12 @@ class Users extends Model {
         $this->load->database('lamula');        
     }
     
+	/**
+	 * Aprueba y desaprueba usuarios
+	 * @param integer $aproved id del usuario a aprobar
+	 * @param integer $desaproved id del usuario a desaprobar
+	 * @return void 
+	 */      
     function approve($aproved, $desaproved)
     {
     	$values['aproved'] = 1;
@@ -25,6 +68,12 @@ class Users extends Model {
     	
     }
     
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $search terminos de busqueda
+	 * @param array $limit cantidad de registros a retornar
+	 * @return array 
+	 */       
     function seleccionar($search = NULL, $limit = NULL)
     {
     	$fields = $this->db->list_fields($this->tabla);
@@ -51,11 +100,20 @@ class Users extends Model {
         return $query;
     }
     
+	/**
+	 * Retorna el total de usuarios
+	 * @return integer
+	 */     
     function count_all()
     {
     	return $this->db->count_all($this->tabla);
     }
     
+	/**
+	 * Retorna una o más instancias del modelo
+	 * @param array $limit registros a traer
+	 * @return array 
+	 */     
     function get_view($limit = NULL)
     {
 		$this->db->select('ID');
@@ -101,7 +159,11 @@ class Users extends Model {
         
     }
     
-    
+	/**
+	 * Inserta un registro
+	 * @param array $values valores a insertar
+	 * @return void 
+	 */      
     function insertar($values)
     {	  
         $this->db->insert($this->tabla, $values);
@@ -112,23 +174,17 @@ class Users extends Model {
         return $query->ID;
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */     
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
     }
-    
-    function borrar($values)
-    {
-    	if ($values['id'] != $this->session->userdata('id'))
-    	{
-	    	$this->db->where($values);
-	    	$this->db->limit(1, 0);
-	    	$this->db->delete($this->tabla);
-	    	return $this->db->affected_rows() == 1 ? FALSE : $this->lang->line('error_no_borra');
-    	}
-    	return $this->lang->line('error_borrar_usuario');
-    }
   
 }
-/* End of file usuarios.php */
-/* Location: ./system/application/model/usuarios.php */
+/* End of file users.php */
+/* Location: ./system/application/model/users.php */
