@@ -1,9 +1,45 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Modelo de blogs
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Modelo de blogs
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Models
+ * @category	Models
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Blogs extends Model {
 	
+    /**
+     * Campos de la tabla
+     * @var array
+     *
+     */	
 	var $campos = array();
+    /**
+     * Tabla a utilizar
+     * @var array
+     *
+     */	
     var $tabla = 'wp_blogs';
 
+	/**
+	 * Constructor de la case
+	 */    
     function __construct()
     {
         // Call the Model constructor
@@ -11,6 +47,11 @@ class Blogs extends Model {
         $this->load->database('default');        
     }
     
+	/**
+	 * Consigue los blogs que no van a portada
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */    
     function get_removed_head_blogs($empty_row = FALSE)
     {
     	$this->db->select('wp_bp_user_blogs.blog_id AS miid', FALSE);
@@ -44,6 +85,11 @@ class Blogs extends Model {
 		return $tmp;    	
     }
     
+	/**
+	 * Consigue los blogs que si van a portada
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */       
     function get_head_blogs($empty_row = FALSE)
     {
     	$this->db->select('wp_bp_user_blogs.blog_id AS miid', FALSE);
@@ -77,6 +123,11 @@ class Blogs extends Model {
 		return $tmp;   	
     }
     
+	/**
+	 * Consigue los blogs
+	 * @param boolean $empty_row primera fila en blanco del combo
+	 * @return array 
+	 */       
     function get_fkblogs($empty_row = FALSE)
     {
     	$this->db->select('wp_bp_user_blogs.blog_id AS miid', FALSE);
@@ -117,8 +168,16 @@ class Blogs extends Model {
 		return $tmp;
     }
     
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where id o dato del registro
+	 * @return void 
+	 */       
     function actualizar($values, $where)
     {
         $this->db->update($this->tabla, $values, $where);
     }    
 }
+/* End of file blogs.php */
+/* Location: ./system/application/model/blogs.php */
