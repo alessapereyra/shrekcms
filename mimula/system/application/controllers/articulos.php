@@ -124,9 +124,12 @@ class Articulos extends DI_Controller {
 		
 		$cats = $this->terms->get_postcategories($id);
 
-		foreach($cats as $key => $value)
+		if ($cats != NULL)
 		{
-			$categorias_selected[] = $key;
+			foreach($cats as $key => $value)
+			{
+				$categorias_selected[] = $key;
+			}
 		}
 			
 		if (isset($categorias_selected))

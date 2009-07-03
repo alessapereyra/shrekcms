@@ -123,6 +123,7 @@ class Fotos extends DI_Controller {
 		}
 		
 		$cats = $this->terms->get_postcategories($id);
+		
 		if ($cats != NULL)
 		{
 			foreach($cats as $key => $value)
