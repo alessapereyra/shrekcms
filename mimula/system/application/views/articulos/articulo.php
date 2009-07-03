@@ -127,9 +127,10 @@
     			<li><a href="#mundo">El mundo</a></li>
     		</ul>
 	  		<div id="peru">
+	  		
 	    			<?php echo form_label('Departamento: ', 'departamento');?>
 	    			<?php echo form_dropdown('departamento', $departamentos, $departamentos_selected,'id="departamento"'); ?>
-	    			
+	    			 			
 	    			<?php echo form_label('Provincia: ', 'provincia');?>
 	    			<?php if (isset($provincias)): ?>
 	    				<?php echo form_dropdown('provincia', $provincias, $provincias_selected,'id="provincia"'); ?>
@@ -139,7 +140,6 @@
 	    			
 	    			<?php echo form_label('Distrito: ', 'distrito');?>
 	    			<?php if (isset($distritos)): ?>
-	    				<?php // die('asdf'); ?>
 	    				<?php echo form_dropdown('distrito', $distritos, $distritos_selected,'id="distrito"'); ?>
 	    			<?php else: ?>
 	    				<select id="distrito" name="distrito" <?php if ( ($provincias_selected == NULL) ): ?> disabled="disabled" <?php endif; ?>></select>

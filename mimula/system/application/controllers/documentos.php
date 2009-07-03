@@ -146,23 +146,31 @@ class Documentos extends DI_Controller {
 		}
 		
 		if (array_key_exists('departamento', $customs))
-		{	
-			$data['departamentos_selected'] = $customs['departamento'];
-			$data['provincias'] = $this->combofiller->provinces($customs['departamento'], TRUE);
+		{
+			if($customs['departamento'] != '')
+			{
+				$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+				$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+			}
 		}
 
-		
 		if (array_key_exists('provincia', $customs))
 		{
-			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
+			if($customs['provincia'] != '')
+			{
+				$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+				$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+			}
 		}
 		
 		if (array_key_exists('distrito', $customs))
 		{
-			$data['distritos_selected'] = $customs['distrito'];
+			if($customs['distrito'] != '')
+			{
+				$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+			}
 		}		
-		return $data;		
+		return $data;
 	}
 
 	/**
