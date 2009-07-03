@@ -207,8 +207,8 @@ class Post extends Model {
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = sanitize2url($values['post_title']);
-		  $values['post_status'] = 'publish';    
-			$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
+		$values['post_status'] = 'publish';    
+		$values['guid'] =  $this->options->get_('home') . date('Y/m/') . $values['post_name'];
 		  
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);

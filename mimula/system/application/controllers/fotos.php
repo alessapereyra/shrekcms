@@ -276,8 +276,6 @@ class Fotos extends DI_Controller {
 			else
 			{
 				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
-				
-				//$data['post_content'] = $this->input->post('textos');
 			}	
 	
 			switch ($this->input->post('upload-content'))
