@@ -483,7 +483,7 @@ class Fotos extends DI_Controller {
 		
 		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
 		$values['guid'] = $this->options->get_('upload_url_path') . date('/Y/m/');
-
+		
 		$this->load->library('upload', $tmp);
 		
 		if ( ! $this->upload->do_upload('Filedata'))

@@ -62,7 +62,7 @@ class DI_Controller extends Controller {
 		
 		$this->load->library('session');
 
-		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/' . $this->uri->segment(2);
+		$this->me_url = site_url() . '/' . $this->uri->segment(1); // . '/' . $this->uri->segment(2);
 		
 		if ($this->uri->segment(2) != 'ajax')
 		{
@@ -162,7 +162,7 @@ class DI_Controller extends Controller {
 	function _paginador($total, $per_page)
 	{
 		$this->load->library('pagination');
-		$config['base_url'] = $this->me_url;
+		$config['base_url'] = $this->me_url . '/' . $this->uri->segment(2);
 		$config['total_rows'] = $total;
 		$config['per_page'] = $per_page;
 		$config['uri_segment'] = 3;

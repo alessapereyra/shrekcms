@@ -105,7 +105,7 @@ if ($ie6 == FALSE)
 		swfu = new SWFUpload({
 			// Backend settings
 			flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
-			upload_url: "<?php echo $url; ?>ajax/upload",
+			upload_url: "<?php echo $url; ?>/ajax/upload",
 			post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
 						"PHPSESSID" : "<?php echo session_id(); ?>"},
 			file_size_limit : "10 MB",
