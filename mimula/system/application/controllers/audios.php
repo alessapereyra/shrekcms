@@ -301,7 +301,7 @@ class Audios extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 			}
 
  		  $this->session->set_flashdata('notice', 'Audio enviado exitosamente');			  

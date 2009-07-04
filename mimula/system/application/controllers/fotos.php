@@ -409,7 +409,7 @@ class Fotos extends DI_Controller {
 			{
 				$where['id'] = $id;
 				//@_@
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 				$this->session->set_flashdata('notice', 'Foto actualizada exitosamente');	
 				redirect('home/dashboard');
 			}
