@@ -270,10 +270,8 @@ class Documentos extends DI_Controller {
 			$this->load->model('options');
 			$this->load->model('postmeta');			
 			$this->load->model('post');
-			$this->load->model('terms');
 			$this->load->model('term_relationships');
-			$this->load->model('term_taxonomy');
-	    	$this->load->model('options');
+			$this->load->model('terms');
 			    
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
