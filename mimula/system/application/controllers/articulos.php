@@ -139,34 +139,37 @@ class Articulos extends DI_Controller {
 		
 		$customs = $this->postmeta->get_metas($id);
 		
-		if (array_key_exists('pais', $customs))
+		if ($customs != NULL)
 		{
-			$data['paices_selected'] = $customs['pais'];
-		}
-		
-		if (array_key_exists('departamento', $customs))
-		{
-			if($customs['departamento'] != '')
+			if (array_key_exists('pais', $customs))
 			{
-				$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
-				$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+				$data['paices_selected'] = $customs['pais'];
 			}
-		}
-
-		if (array_key_exists('provincia', $customs))
-		{
-			if($customs['provincia'] != '')
+			
+			if (array_key_exists('departamento', $customs))
 			{
-				$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
-				$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+				if($customs['departamento'] != '')
+				{
+					$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+					$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+				}
 			}
-		}
-		
-		if (array_key_exists('distrito', $customs))
-		{
-			if($customs['distrito'] != '')
+	
+			if (array_key_exists('provincia', $customs))
 			{
-				$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+				if($customs['provincia'] != '')
+				{
+					$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+					$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+				}
+			}
+			
+			if (array_key_exists('distrito', $customs))
+			{
+				if($customs['distrito'] != '')
+				{
+					$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+				}
 			}
 		}		
 		return $data;
@@ -261,18 +264,17 @@ class Articulos extends DI_Controller {
 			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
-			$this->load->model('options');
-			$this->load->model('term_taxonomy');
-			$this->load->model('terms');
+			$this->load->model('options');			
 			$this->load->model('post');
 			$this->load->model('postmeta');
+			$this->load->model('terms');
 			$this->load->model('term_relationships');
-			$this->load->model('options');	
+			$this->load->model('term_taxonomy');
+			$this->load->model('options');
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
 			
-			//die($this->input->post('texto'));
 			if ($this->input->post('id') == NULL)
 			{
 				$data['post_content'] = $this->input->post('textos');
@@ -368,7 +370,6 @@ class Articulos extends DI_Controller {
 					
 				break;
 			}
-			
 			$data['post_content'] = $data['post_content'] . '';      
 						
 			//consigue los id de las categorias
@@ -413,7 +414,7 @@ class Articulos extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
 				redirect('home/dashboard');
 			}
@@ -423,7 +424,6 @@ class Articulos extends DI_Controller {
 
        		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
 				redirect('home/dashboard');
-
 			}
 			else
 			{

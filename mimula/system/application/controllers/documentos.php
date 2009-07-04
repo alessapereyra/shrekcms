@@ -267,9 +267,9 @@ class Documentos extends DI_Controller {
 			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
-			$this->load->model('options');			
+			$this->load->model('options');
+			$this->load->model('postmeta');			
 			$this->load->model('post');
-			$this->load->model('postmeta');
 			$this->load->model('terms');
 			$this->load->model('term_relationships');
 			$this->load->model('term_taxonomy');
@@ -285,8 +285,6 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
-				
-				//$data['post_content'] = $this->input->post('textos');
 			}
 	
 			switch ($this->input->post('upload-content'))
@@ -406,8 +404,7 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
-				//@_@
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 				$this->session->set_flashdata('notice', 'Documento actualizado exitosamente');	
 				redirect('home/dashboard');
 			}

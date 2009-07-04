@@ -60,8 +60,10 @@
             	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
   		</div>		
   	</div>
-  	<?php }?>
-	<?php echo form_hidden('ret', $ret); ?>
+  		<?php echo form_hidden('ret', ''); ?>
+  	<?php } else { ?>
+		<?php echo form_hidden('ret', $ret); ?>
+	<?php }?>
 	
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>
