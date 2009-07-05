@@ -486,20 +486,20 @@ class Fotos extends DI_Controller {
 		
 		$tmp['upload_path'] = $this->options->get_('upload_path') . date('/Y/m/');
 		$values['guid'] = $this->options->get_('upload_url_path') . date('/Y/m/');
-		
+
 		$this->load->library('upload', $tmp);
 		
 		if ( ! $this->upload->do_upload('Filedata'))
 		{
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
-			
+
 			return $error;
 		}	
 		else
 		{			
 			$photo = $this->upload->data();
-
+			die(print_r($photo));
 			//debe insertar en un post, la imagen, ver wp_post id=18
 			$this->load->model('post');
 			$this->load->model('postmeta');
