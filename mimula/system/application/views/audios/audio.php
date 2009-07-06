@@ -23,44 +23,46 @@
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 
-  	<div id="upload-content">
-  		<?php echo form_hidden('upload-content', 'subir'); ?>
-  		<ul>
-  			<li><a href="#subir">Subir</a></li>
-  			<li><a href="#enlazar">Enlazar</a></li>
-  		</ul>
-  		<div id="subir">
-  					<input type="hidden" id="files" name="files" value="" />
-  					<p>Selecciona el documento que desees subir:</p>
-	  				<input type="text" id="search_field" name="examinar" value="" />  					
-  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
-  					<?php if ($ie6 == TRUE): ?>
-						<?php echo form_error('Filedata'); ?>
-						<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
-  					<?php endif; ?>
-  					</span>
-  					<div class="fieldset flash" id="fsUploadProgress"></div>
-  					<em>máximo 2mb. formatos soportados: doc, pdf</em>
-  					<?php if ($ie6 != TRUE): ?>
-  			    <p id="traditional">
-	  					Si tiene problemas para subir archivos, use la <?php echo anchor('audios/formulario/0/1', 'version tradicional') ?>
-	  				</p>
-  					<?php endif; ?>
-  					<?php 
-						$this->load->library('session');
-						echo $this->session->flashdata('fileupload');  					  					
-  					?>
-  		</div>
-  		<div id="enlazar">
-            	<?php echo form_label('Ingresa la dirección del documento que desees enviar:', 'doclink');?> 
-            	<?php echo form_error('doclink'); ?>
-            	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
-  		</div>		
-  	</div>
+	<?php if ($ret === TRUE) { ?>
+	  	<div id="upload-content">
+	  		<?php echo form_hidden('upload-content', 'subir'); ?>
+	  		<ul>
+	  			<li><a href="#subir">Subir</a></li>
+	  			<li><a href="#enlazar">Enlazar</a></li>
+	  		</ul>
+	  		<div id="subir">
+	  					<input type="hidden" id="files" name="files" value="" />
+	  					<p>Selecciona el documento que desees subir:</p>
+		  				<input type="text" id="search_field" name="examinar" value="" />  					
+	  					<span <?php if ($ie6 != TRUE): ?>id="spanButtonPlaceholder"<?php endif; ?>>
+	  					<?php if ($ie6 == TRUE): ?>
+							<?php echo form_error('Filedata'); ?>
+							<?php echo form_upload(array('name' => 'Filedata', 'value' => '', 'id' => 'Filedata')); ?>  						
+	  					<?php endif; ?>
+	  					</span>
+	  					<div class="fieldset flash" id="fsUploadProgress"></div>
+	  					<em>máximo 2mb. formatos soportados: doc, pdf</em>
+	  					<?php if ($ie6 != TRUE): ?>
+	  			    <p id="traditional">
+		  					Si tiene problemas para subir archivos, use la <?php echo anchor('audios/formulario/0/1', 'version tradicional') ?>
+		  				</p>
+	  					<?php endif; ?>
+	  					<?php 
+							$this->load->library('session');
+							echo $this->session->flashdata('fileupload');  					  					
+	  					?>
+	  		</div>
+	  		<div id="enlazar">
+	            	<?php echo form_label('Ingresa la dirección del documento que desees enviar:', 'doclink');?> 
+	            	<?php echo form_error('doclink'); ?>
+	            	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
+	  		</div>		
+	  	</div>
+	<?php }?>
 
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>
-  	<?php echo form_textarea(array('name' => 'textos', 'value' => $texto, 'id' => 'textos')); ?>
+  	<?php echo form_textarea(array('name' => 'textos', 'value' => $textos , 'id' => 'textos')); ?>
 
   	<?php echo form_label('Etiquetas (separadas por comas):', 'tags');?> 
   	<?php echo form_error('tags'); ?>

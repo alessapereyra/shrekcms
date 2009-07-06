@@ -44,6 +44,7 @@ class Audios extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
 		$data['has_category'] = FALSE;
 		
@@ -93,7 +94,7 @@ class Audios extends DI_Controller {
 		$data['id'] = $post['ID'];
 		$data['titulo'] = $post['post_title'];
 		$data['textos'] = $post['post_content'];
-		$ret = NULL;
+		$data['ret'] = FALSE;
 		
 		//Consig los tags
 		$tags = $this->terms->get_tags($id);
@@ -259,7 +260,14 @@ class Audios extends DI_Controller {
       
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			if ($id == NULL)
+			{
+				$data['post_content'] = $this->input->post('textos');
+			}
+			else
+			{
+				$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>";
+			} 
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -327,17 +335,12 @@ class Audios extends DI_Controller {
 					$data['post_content'] .= $tmp;
 					
 				break;
-			}
-			
-			//$data['post_content'] = $data['post_content'];
-			
+			}			
 			//Debo armar el texto con las img
 			$data['tags'] = $this->input->post('tags');
 			
-			//consigue los id de las cata
-			$this->load->library('combofiller');
-			
-			$categorias = $this->combofiller->categorias();			
+			//consigue los id de las categorias
+			$categorias = $this->combofiller->categorias();
 			
 			$terms_taxonomy_id = NULL;
 			
@@ -367,23 +370,33 @@ class Audios extends DI_Controller {
 					$customs[$custom] = sanitize2url($this->input->post($custom));
 				}	
 			}
-
+			
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(34));
+				$this->term_relationships->insertar($post_id, array(30));
 			}
 			else
 			{
 				$where['id'] = $id;
 				$this->post->actualizar($data, $customs, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				redirect('home/dashboard');
 			}
 
- 		  $this->session->set_flashdata('notice', 'Audio enviado exitosamente');			  
-			redirect('home/dashboard');			
-			
+			if ($this->is_ajax != TRUE)
+			{
+
+       		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
+				redirect('home/dashboard');
+			}
+			else
+			{
+				$data['accion'] = 'ok';
+				$this->load->view('', $data);
+			}			
 		}			
 	}
 	
