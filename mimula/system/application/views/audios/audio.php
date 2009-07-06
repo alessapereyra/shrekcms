@@ -18,7 +18,7 @@
 	
 	<div id="text_content">
   	<fieldset>
-    <h3>Colocando audios</h3>
+    <h3><?php echo $id == NULL ? 'Colocar' : 'Editar'; ?> audios</h3>
   	<?php echo form_label('Titulo:', 'titulo');?>
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>

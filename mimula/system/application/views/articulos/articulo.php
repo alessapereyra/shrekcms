@@ -21,7 +21,7 @@
 	<div id="text_content">	 
 	
     	<fieldset id="articulo_content">
-    	<h3>Creando un Art&iacute;culo</h3>
+    	<h3><?php echo $id == NULL ? 'Crear' : 'Editar'; ?> un Art&iacute;culo</h3>
     	<?php echo form_label('Titulo:', 'titulo');?> 
     	<?php echo form_error('titulo'); ?>
     	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>

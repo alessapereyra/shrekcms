@@ -45,8 +45,7 @@ class Audios extends DI_Controller {
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
-		$data['has_category'] = FALSE; 
-		//$data['ie6'] = $this->_is_ie6();
+		$data['has_category'] = FALSE;
 		
 		$this->load->library('combofiller');
 		

@@ -18,7 +18,7 @@
 	
 	<div id="text_content">
   	<fieldset>
-    <h3>Enviando un video</h3>
+    <h3><?php echo $id == NULL ? 'Enviando' : 'Editando'; ?> un video</h3>
     
   	<?php echo form_label('Titulo:', 'titulo');?>
   	<?php echo form_error('titulo'); ?>
