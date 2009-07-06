@@ -80,6 +80,84 @@ class Audios extends DI_Controller {
 	 */		
 	function _show($id, $data)
 	{
+		$this->load->model('post');
+		$this->load->model('postmeta');
+		$this->load->model('terms');
+		include('system/application/libraries/Simplehtml.php');
+				
+		//Consigu los datos basico
+		$post = $this->post->seleccionar(array('ID' => $id));
+		$post = $post->result_array();
+		$post = current($post);
+	
+		$data['id'] = $post['ID'];
+		$data['titulo'] = $post['post_title'];
+		$data['textos'] = $post['post_content'];
+		$ret = NULL;
+		
+		//Consig los tags
+		$tags = $this->terms->get_tags($id);
+		$tags = $tags->result_array();
+		$tmp = NULL;
+		foreach($tags as $tag)
+		{
+			$tmp[] = $tag['name'];	
+		}
+		if ($tmp != NULL)
+		{
+			$data['tags'] = implode(', ', $tmp);
+		}
+		
+		$cats = $this->terms->get_postcategories($id);
+
+		if ($cats != NULL)
+		{
+			foreach($cats as $key => $value)
+			{
+				$categorias_selected[] = $key;
+			}
+		}
+			
+		if (isset($categorias_selected))
+		{
+			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+		}
+		
+		$customs = $this->postmeta->get_metas($id);
+		
+		if ($customs != NULL)
+		{
+			if (array_key_exists('pais', $customs))
+			{
+				$data['paices_selected'] = $customs['pais'];
+			}
+			
+			if (array_key_exists('departamento', $customs))
+			{
+				if($customs['departamento'] != '')
+				{
+					$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+					$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+				}
+			}
+	
+			if (array_key_exists('provincia', $customs))
+			{
+				if($customs['provincia'] != '')
+				{
+					$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+					$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+				}
+			}
+			
+			if (array_key_exists('distrito', $customs))
+			{
+				if($customs['distrito'] != '')
+				{
+					$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+				}
+			}
+		}		
 		return $data;
 	}
 

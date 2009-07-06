@@ -84,8 +84,7 @@ class Articulos extends DI_Controller {
 		$this->load->model('postmeta');
 		$this->load->model('terms');
 		include('system/application/libraries/Simplehtml.php');
-		
-		
+				
 		//Consigu los datos basico
 		$post = $this->post->seleccionar(array('ID' => $id));
 		$post = $post->result_array();
