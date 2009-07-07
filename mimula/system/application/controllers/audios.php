@@ -255,7 +255,6 @@ class Audios extends DI_Controller {
 			$this->load->model('options');
 			$this->load->model('postmeta');			
 			$this->load->model('post');
-			$this->load->model('term_relationships');
 			$this->load->model('terms');
       
 			$id = $this->input->post('id');

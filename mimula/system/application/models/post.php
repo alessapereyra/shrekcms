@@ -323,7 +323,10 @@ class Post extends Model {
     	//Actualiza los customs
     	$this->postmeta->actualizar($customs, $where);
     	
-    	//inserta los tags
+    	//Limpia toodos los tags
+    	$tags_id = $this->terms->clear_tags($where['id']);
+    	
+    	//Los vuelve a actualizar
     	$tags_id = $this->terms->insert_tags($values['tags']);
     	
     	//limpia los tags

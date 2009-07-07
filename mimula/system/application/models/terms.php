@@ -183,6 +183,27 @@ class Terms extends Model {
     }
 
 	/**
+	 * Borra todos los tags de un post
+	 * @param integer $id id del post
+	 * @return void 
+	 */         
+    function clear_tags($id)
+    {
+    	//Consigo todos los tags/categorias
+    	$id_terms = $this->get_tags($id);
+    	
+    	//Borro todos los tags
+    	$this->term_relationships->borrar(array('object_id' => $id));
+
+    	//Descuenta uno al contador
+    	foreach ($id_terms->result() as $row)
+    	{
+    		$discount[] = $row->term_taxonomy_id;
+    	}
+    	$this->term_taxonomy->discount($discount);
+    }
+    
+	/**
 	 * Retorna una o más instancias del modelo
 	 * @param array $search terminos de busqueda
 	 * @param array $limit cantidad de registros a retornar
