@@ -47,7 +47,6 @@ class Fotos extends DI_Controller {
 		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
 		$data['has_category'] = FALSE; 
-		//$data['ie6'] = $this->_is_ie6();
 		
 		$this->load->library('combofiller');		
 
@@ -97,7 +96,6 @@ class Fotos extends DI_Controller {
 		$data['titulo'] = $post['post_title'];
 		
 		$html = str_get_html($post['post_content']);
-		//die($post['post_content']);
 		$ret = $html->find('img',0);
 		
 		if ($ret == NULL)
@@ -125,6 +123,7 @@ class Fotos extends DI_Controller {
 		}
 		
 		$cats = $this->terms->get_postcategories($id);
+		
 		if ($cats != NULL)
 		{
 			foreach($cats as $key => $value)
@@ -146,21 +145,29 @@ class Fotos extends DI_Controller {
 		}
 		
 		if (array_key_exists('departamento', $customs))
-		{	
-			$data['departamentos_selected'] = $customs['departamento'];
-			$data['provincias'] = $this->combofiller->provinces($customs['departamento'], TRUE);
+		{
+			if($customs['departamento'] != '')
+			{
+				$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+				$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+			}
 		}
 
-		
 		if (array_key_exists('provincia', $customs))
 		{
-			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
+			if($customs['provincia'] != '')
+			{
+				$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+				$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+			}
 		}
 		
 		if (array_key_exists('distrito', $customs))
 		{
-			$data['distritos_selected'] = $customs['distrito'];
+			if($customs['distrito'] != '')
+			{
+				$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+			}
 		}		
 		return $data;		
 	}
@@ -258,13 +265,11 @@ class Fotos extends DI_Controller {
 			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
-			$this->load->model('options');			
-			$this->load->model('post');
-			$this->load->model('postmeta');
-			$this->load->model('terms');
-			$this->load->model('term_relationships');
-			$this->load->model('term_taxonomy');
 			$this->load->model('options');
+			$this->load->model('postmeta');			
+			$this->load->model('post');
+			$this->load->model('term_relationships');
+			$this->load->model('terms');
 			
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -276,8 +281,6 @@ class Fotos extends DI_Controller {
 			else
 			{
 				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
-				
-				//$data['post_content'] = $this->input->post('textos');
 			}	
 	
 			switch ($this->input->post('upload-content'))
@@ -406,7 +409,7 @@ class Fotos extends DI_Controller {
 			{
 				$where['id'] = $id;
 				//@_@
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 				$this->session->set_flashdata('notice', 'Foto actualizada exitosamente');	
 				redirect('home/dashboard');
 			}
@@ -490,13 +493,13 @@ class Fotos extends DI_Controller {
 		{
 			$error = array('error' => $this->upload->display_errors(),
 							'upload_data' => $this->upload->data());
-			
+
 			return $error;
 		}	
 		else
 		{			
 			$photo = $this->upload->data();
-
+			die(print_r($photo));
 			//debe insertar en un post, la imagen, ver wp_post id=18
 			$this->load->model('post');
 			$this->load->model('postmeta');

@@ -54,7 +54,8 @@ class Log extends DI_Controller {
 		$data['usuario'] = NULL;
 		$data['info'] = $this->error;
 		
-		$this->load->view('login/wpci', $data);
+		//$this->load->view('login/wpci', $data);
+		$this->load->view('login/formulario', $data);
 		$this->__destruct();		
 	}
 	
@@ -160,8 +161,8 @@ class Log extends DI_Controller {
 	 */		
 	function _reglas()
 	{
-		$reglas[] = array('field'   => 'password', 'label'   => 'lang:field_password', 'rules'   => 'trim|required|md5');
-		$reglas[] = array('field'   => 'usuario', 'label'   => 'lang:field_usuario', 'rules'   => 'trim|required|min_length[4]|max_length[20]|callback_password_check');	
+		$reglas[] = array('field'   => 'pwd', 'label'   => 'lang:field_password', 'rules'   => 'trim|required|md5');
+		$reglas[] = array('field'   => 'log', 'label'   => 'lang:field_usuario', 'rules'   => 'trim|required|min_length[4]|max_length[20]|callback_password_check');	
 		return $reglas;
 	}
 
@@ -205,7 +206,7 @@ class Log extends DI_Controller {
 			$this->load->library('passwordhasher');
 			$this->passwordhasher->passwordhash(8, TRUE);
 			
-			if ( $this->passwordhasher->CheckPassword($this->input->post('password'), $fila->user_pass) )
+			if ( $this->passwordhasher->CheckPassword($this->input->post('pwd'), $fila->user_pass) )
 			{
 				$this->usuario['id'] = $fila->ID;
 				$this->usuario['usuario'] = $fila->user_login;

@@ -44,9 +44,9 @@ class Audios extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
-		$data['has_category'] = FALSE; 
-		//$data['ie6'] = $this->_is_ie6();
+		$data['has_category'] = FALSE;
 		
 		$this->load->library('combofiller');
 		
@@ -81,6 +81,84 @@ class Audios extends DI_Controller {
 	 */		
 	function _show($id, $data)
 	{
+		$this->load->model('post');
+		$this->load->model('postmeta');
+		$this->load->model('terms');
+		include('system/application/libraries/Simplehtml.php');
+				
+		//Consigu los datos basico
+		$post = $this->post->seleccionar(array('ID' => $id));
+		$post = $post->result_array();
+		$post = current($post);
+	
+		$data['id'] = $post['ID'];
+		$data['titulo'] = $post['post_title'];
+		$data['textos'] = $post['post_content'];
+		$data['ret'] = FALSE;
+		
+		//Consig los tags
+		$tags = $this->terms->get_tags($id);
+		$tags = $tags->result_array();
+		$tmp = NULL;
+		foreach($tags as $tag)
+		{
+			$tmp[] = $tag['name'];	
+		}
+		if ($tmp != NULL)
+		{
+			$data['tags'] = implode(', ', $tmp);
+		}
+		
+		$cats = $this->terms->get_postcategories($id);
+
+		if ($cats != NULL)
+		{
+			foreach($cats as $key => $value)
+			{
+				$categorias_selected[] = $key;
+			}
+		}
+			
+		if (isset($categorias_selected))
+		{
+			$data['categorias_selected'] = $categorias_selected == NULL ? NULL : $categorias_selected;
+		}
+		
+		$customs = $this->postmeta->get_metas($id);
+		
+		if ($customs != NULL)
+		{
+			if (array_key_exists('pais', $customs))
+			{
+				$data['paices_selected'] = $customs['pais'];
+			}
+			
+			if (array_key_exists('departamento', $customs))
+			{
+				if($customs['departamento'] != '')
+				{
+					$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+					$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+				}
+			}
+	
+			if (array_key_exists('provincia', $customs))
+			{
+				if($customs['provincia'] != '')
+				{
+					$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+					$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+				}
+			}
+			
+			if (array_key_exists('distrito', $customs))
+			{
+				if($customs['distrito'] != '')
+				{
+					$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+				}
+			}
+		}		
 		return $data;
 	}
 
@@ -174,17 +252,22 @@ class Audios extends DI_Controller {
 			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
-			$this->load->model('options');			
-			$this->load->model('post');
-			$this->load->model('postmeta');
-			$this->load->model('terms');
-			$this->load->model('term_relationships');
-			$this->load->model('term_taxonomy');
 			$this->load->model('options');
+			$this->load->model('postmeta');			
+			$this->load->model('post');
+			$this->load->model('term_relationships');
+			$this->load->model('terms');
       
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			if ($id == NULL)
+			{
+				$data['post_content'] = $this->input->post('textos');
+			}
+			else
+			{
+				$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>";
+			} 
 	
 			switch ($this->input->post('upload-content'))
 			{
@@ -252,17 +335,12 @@ class Audios extends DI_Controller {
 					$data['post_content'] .= $tmp;
 					
 				break;
-			}
-			
-			//$data['post_content'] = $data['post_content'];
-			
+			}			
 			//Debo armar el texto con las img
 			$data['tags'] = $this->input->post('tags');
 			
-			//consigue los id de las cata
-			$this->load->library('combofiller');
-			
-			$categorias = $this->combofiller->categorias();			
+			//consigue los id de las categorias
+			$categorias = $this->combofiller->categorias();
 			
 			$terms_taxonomy_id = NULL;
 			
@@ -292,23 +370,33 @@ class Audios extends DI_Controller {
 					$customs[$custom] = sanitize2url($this->input->post($custom));
 				}	
 			}
-
+			
 			$data['terms_taxonomy_id'] = $terms_taxonomy_id;
 			
 			if ($id == NULL)
 			{
 				$post_id = $this->post->insert_article($data, $customs);
-				$this->term_relationships->insertar($post_id, array(34));
+				$this->term_relationships->insertar($post_id, array(30));
 			}
 			else
 			{
 				$where['id'] = $id;
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
+				$this->session->set_flashdata('notice', 'Nota actualizada exitosamente');	
+				redirect('home/dashboard');
 			}
 
- 		  $this->session->set_flashdata('notice', 'Audio enviado exitosamente');			  
-			redirect('home/dashboard');			
-			
+			if ($this->is_ajax != TRUE)
+			{
+
+       		 $this->session->set_flashdata('notice', 'Nota enviada exitosamente');			  
+				redirect('home/dashboard');
+			}
+			else
+			{
+				$data['accion'] = 'ok';
+				$this->load->view('', $data);
+			}			
 		}			
 	}
 	

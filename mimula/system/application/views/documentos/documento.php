@@ -18,7 +18,7 @@
 	
 	<div id="text_content">
   	<fieldset>
-    <h3>Adjuntando un Documento</h3>
+    <h3><?php echo $id == NULL ? 'Adjuntando' : 'Editando'; ?> un Documento</h3>
   	<?php echo form_label('Titulo:', 'titulo');?>
   	<?php echo form_error('titulo'); ?>
   	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
@@ -60,8 +60,10 @@
             	<?php echo form_input(array('name' => 'doclink', 'value' => $doclink, 'id' => 'doclink')); ?>
   		</div>		
   	</div>
-  	<?php }?>
-	<?php echo form_hidden('ret', $ret); ?>
+  		<?php echo form_hidden('ret', ''); ?>
+  	<?php } else { ?>
+		<?php echo form_hidden('ret', $ret); ?>
+	<?php }?>
 	
   	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
   	<?php echo form_error('textos'); ?>

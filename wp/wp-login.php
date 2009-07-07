@@ -441,8 +441,6 @@ default:
     $redirect_too = $redirect_to;
 
     include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';    
-    //     // include '/Users/alvaropereyrarabanal/Development/shrekcms/mimula/system/cidip/cidip_index.php';    
-    //     // include 'C:\xampp\htdocs\shrekcms\ci\system\cidip\cidip_index.php';
     // 
     $ci =& get_instance();
     $ci->load->model('users');
@@ -451,7 +449,6 @@ default:
     $consulta = $ci->users->seleccionar(array('user_login' => $_POST['log'] ));
     
     $fila = $consulta->row();
-    
     
     $usuario['id'] = $fila->ID;
     $usuario['usuario'] = $fila->user_login;

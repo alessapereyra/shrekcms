@@ -197,8 +197,7 @@ class Usuarios extends DI_Controller {
 		else
 		{
 			$data['removed_head_blogs'] = array();
-		}
-		//$data['removed_head_blogs'] = $this->combofiller->removed_head_blogs();		
+		}	
 
 		$this->load->model('news_header');
 		$this->load->model('options');
@@ -238,8 +237,7 @@ class Usuarios extends DI_Controller {
   	$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('form_validation');
-		$tmp = $this->config->item('post_content');
-	  
+		$tmp = $this->config->item('post_content');	  
 	  
     $this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Titulacion', 'ie6' => $this->_is_ie6()));
 		

@@ -24,10 +24,6 @@ get_header(); ?>
           
           <div class="post_content">
               
-              <?php 
-                    //get_the_time('g:i a')
-                    
-              ?>
               <h6 class="metadata">enviado por <a href="http://lamula.pe/members/<?php the_author_login(); ?>"><?php the_author(); ?></a> publicado a las <?php the_time('g:i a'); ?> </h6>
               
               <?php the_content(); ?>
@@ -64,7 +60,6 @@ get_header(); ?>
                 <p class="tags"><?php the_tags(); ?></p>
               </div> <!-- news_footer -->              
 
-
           </div>
 
         </li>
@@ -83,20 +78,12 @@ get_header(); ?>
   		<?php get_search_form(); ?>
 
   	<?php endif; ?>
-  	
 	
   </ul>
 
-
   <?php comments_template(); ?>
   
-
   </div> <!-- content_feed -->
-  
 
-	 
-  
-
-  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

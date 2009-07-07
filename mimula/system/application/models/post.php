@@ -207,8 +207,8 @@ class Post extends Model {
     	$values['post_author'] = $this->session->userdata('id');
     	$values['post_type'] = 'post';
     	$values['post_name'] = sanitize2url($values['post_title']);
-		  $values['post_status'] = 'publish';    
-			$values['guid'] =  $this->options->get_('site_url') . date('/Y/m/') . "/" . $values['post_name'];
+		$values['post_status'] = 'publish';    
+		$values['guid'] =  $this->options->get_('home') . date('Y/m/') . $values['post_name'];
 		  
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);
@@ -312,12 +312,16 @@ class Post extends Model {
 	/**
 	 * Actualiza un registro
 	 * @param array $values valores a cambiar
+	 * @param array $customs metadata a cambiar
 	 * @param array $where id o dato del registro
 	 * @return void 
 	 */     
-    function actualizar($values, $where)
+    function actualizar($values, $customs, $where)
     {
     	//TODO: aca deberia limpiar esto T_T
+    	
+    	//Actualiza los customs
+    	$this->postmeta->actualizar($customs, $where);
     	
     	//inserta los tags
     	$tags_id = $this->terms->insert_tags($values['tags']);

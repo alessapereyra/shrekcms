@@ -108,7 +108,7 @@ $autoload['language'] = array('customerror', 'field');
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('term_taxonomy');
 
 
 

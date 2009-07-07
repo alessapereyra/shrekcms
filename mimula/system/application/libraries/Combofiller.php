@@ -62,6 +62,24 @@ class Combofiller {
 	}
 
 	/**
+	 * Consigue el id de un departamento
+	 * @param string $state departamento
+	 * @return integer
+	 */  	
+	function get_state($state)
+	{
+		$limit['from'] = 0;
+		$limit['show'] = 1;
+		
+		$this->CI->load->model('states');
+		$states = $this->CI->states->seleccionar(array('state' => $state), $limit);
+		
+		$fila = $states->row();
+		
+		return $fila->state_id;
+	}
+		
+	/**
 	 * Consigue los districts
 	 * @param integer $district id del distrito
 	 * @param boolean $empty_row primera fila en blanco del combo
@@ -71,8 +89,27 @@ class Combofiller {
 	{
 		$this->CI->load->model('districts');
 		return $this->CI->districts->get_fkcombo($district, $empty_row);		
-	}	
-	
+	}
+		
+	/**
+	 * Consigue el id de un distrito
+	 * @param string $district departamento
+	 * @return integer
+	 */  	
+	function get_district($district)
+	{
+		$limit['from'] = 0;
+		$limit['show'] = 1;
+		
+		$this->CI->load->model('districts');
+
+		$districts = $this->CI->districts->seleccionar(array('district' => $district), $limit);
+		
+		$fila = $districts->row();
+		
+		return $fila->district_id;		
+	}
+		
 	/**
 	 * Consigue las provincias
 	 * @param integer $province id de la provincia
@@ -85,6 +122,25 @@ class Combofiller {
 		return $this->CI->provinces->get_fkcombo($province, $empty_row);		
 	}
 
+	/**
+	 * Consigue el id de un distrito
+	 * @param string $district departamento
+	 * @return integer
+	 */  	
+	function get_province($province)
+	{
+		$limit['from'] = 0;
+		$limit['show'] = 1;
+		
+		$this->CI->load->model('provinces');
+
+		$provinces = $this->CI->provinces->seleccionar(array('province' => $province), $limit);
+		
+		$fila = $provinces->row();
+		
+		return $fila->province_id;		
+	}
+		
 	/**
 	 * Consigue las categorias
 	 * @return array 

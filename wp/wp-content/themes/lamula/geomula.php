@@ -1,3 +1,9 @@
+<?php
+/**
+ * @package WordPress
+ * @subpackage LaMula Theme
+ */
+?>
 <?php $ci_url= "/mulapress/ci/index.php/"; ?>
 	<div id="menu_bar">
 

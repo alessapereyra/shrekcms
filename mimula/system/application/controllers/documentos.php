@@ -125,6 +125,7 @@ class Documentos extends DI_Controller {
 		}
 		
 		$cats = $this->terms->get_postcategories($id);
+		
 		if ($cats != NULL)
 		{
 			foreach($cats as $key => $value)
@@ -146,23 +147,31 @@ class Documentos extends DI_Controller {
 		}
 		
 		if (array_key_exists('departamento', $customs))
-		{	
-			$data['departamentos_selected'] = $customs['departamento'];
-			$data['provincias'] = $this->combofiller->provinces($customs['departamento'], TRUE);
+		{
+			if($customs['departamento'] != '')
+			{
+				$data['departamentos_selected'] = $this->combofiller->get_state($customs['departamento']);
+				$data['provincias'] = $this->combofiller->provinces($data['departamentos_selected'], TRUE);
+			}
 		}
 
-		
 		if (array_key_exists('provincia', $customs))
 		{
-			$data['provincias_selected'] = $customs['provincia'];
-			$data['distritos'] = $this->combofiller->districts($customs['provincia'], TRUE);
+			if($customs['provincia'] != '')
+			{
+				$data['provincias_selected'] =  $this->combofiller->get_province($customs['provincia']);
+				$data['distritos'] = $this->combofiller->districts($data['provincias_selected'], TRUE);
+			}
 		}
 		
 		if (array_key_exists('distrito', $customs))
 		{
-			$data['distritos_selected'] = $customs['distrito'];
+			if($customs['distrito'] != '')
+			{
+				$data['distritos_selected'] = $this->combofiller->get_district($customs['distrito']);
+			}
 		}		
-		return $data;		
+		return $data;
 	}
 
 	/**
@@ -258,13 +267,11 @@ class Documentos extends DI_Controller {
 			$this->load->model('states');
 			$this->load->model('districts');
 			$this->load->model('provinces');
-			$this->load->model('options');			
+			$this->load->model('options');
+			$this->load->model('postmeta');			
 			$this->load->model('post');
-			$this->load->model('postmeta');
-			$this->load->model('terms');
 			$this->load->model('term_relationships');
-			$this->load->model('term_taxonomy');
-	    	$this->load->model('options');
+			$this->load->model('terms');
 			    
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
@@ -276,8 +283,6 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
-				
-				//$data['post_content'] = $this->input->post('textos');
 			}
 	
 			switch ($this->input->post('upload-content'))
@@ -397,8 +402,7 @@ class Documentos extends DI_Controller {
 			else
 			{
 				$where['id'] = $id;
-				//@_@
-				$this->post->actualizar($data, $where);
+				$this->post->actualizar($data, $customs, $where);
 				$this->session->set_flashdata('notice', 'Documento actualizado exitosamente');	
 				redirect('home/dashboard');
 			}

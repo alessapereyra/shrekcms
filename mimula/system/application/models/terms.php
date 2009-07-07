@@ -87,11 +87,12 @@ class Terms extends Model {
     	$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
     	
     	$this->db->where('taxonomy', 'category');
-    	$this->db->where('parent', '6');
+    	//Online
+    	$this->db->where('parent', '29');
     	$this->db->where('object_id', $id);
     	
     	$query = $this->db->get();
-    	
+    	//die($this->db->last_query());
     	$tmp = NULL;
         foreach ($query->result() as $row)
 		{

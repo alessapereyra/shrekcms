@@ -1,4 +1,9 @@
-
+<?php
+/**
+  * @package WordPress
+  * @subpackage LaMula
+  */
+?>
   <div id="top_news">
 
     <div id="top_news_content">          	          	      
@@ -6,7 +11,6 @@
       <div id="featured" class="top_news_featured">
 
         <?php  
-           // $first_query = new WP_Query('showposts=1&category_name=featured');
            $first_query = new WP_Query('showposts=1&category_name=featured');
            while ($first_query->have_posts()) : $first_query->the_post();
            
@@ -22,11 +26,7 @@
             <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
         </h3>
    
-        <?php 
-                  //the_content();
-                setup_text(get_the_content(),$img_link,$img);
-
-        ?>
+        <?php setup_text(get_the_content(),$img_link,$img); ?>
         <div class="top_news_featured_content  <?php if ($post->ID==940){ echo "special";} ?>">
 
           <?php if ($img_link != "") { ?>  

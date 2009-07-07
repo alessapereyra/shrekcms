@@ -1,27 +1,107 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ *
+ * Libreria para las cookies de wp
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
+// ------------------------------------------------------------------------
+
+/**
+ * Libreria para las cookies de wp
+ *
+ *
+ * @package		mulapress
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
+ */
+
 class Wpcookies
 {
+	/**
+	 * Constructor de la case
+	 */  	
 	function __construct()
-	{		
-		//include('../../wp-config.php');
-		//include('../../wpmu-settings.php');
-		//include('../../wp-includes/cache.php');	
-		include('../../wp-includes/plugin.php');
-		//include('../../wp-includes/pluggable.php');		
+	{			
+		include('../../wp-includes/plugin.php');	
 	}
 	
+/**
+ * Get salt to add to hashes to help prevent attacks.
+ *
+ * The secret key is located in two places: the database in case the secret key
+ * isn't defined in the second place, which is in the wp-config.php file. If you
+ * are going to set the secret key, then you must do so in the wp-config.php
+ * file.
+ *
+ * The secret key in the database is randomly generated and will be appended to
+ * the secret key that is in wp-config.php file in some instances. It is
+ * important to have the secret key defined or changed in wp-config.php.
+ *
+ * If you have installed WordPress 2.5 or later, then you will have the
+ * SECRET_KEY defined in the wp-config.php already. You will want to change the
+ * value in it because hackers will know what it is. If you have upgraded to
+ * WordPress 2.5 or later version from a version before WordPress 2.5, then you
+ * should add the constant to your wp-config.php file.
+ *
+ * Below is an example of how the SECRET_KEY constant is defined with a value.
+ * You must not copy the below example and paste into your wp-config.php. If you
+ * need an example, then you can have a
+ * {@link https://api.wordpress.org/secret-key/1.1/ secret key created} for you.
+ *
+ * <code>
+ * define('SECRET_KEY', 'mAry1HadA15|\/|b17w55w1t3asSn09w');
+ * </code>
+ *
+ * Salting passwords helps against tools which has stored hashed values of
+ * common dictionary strings. The added values makes it harder to crack if given
+ * salt string is not weak.
+ *
+ * @since 2.5
+ * @link https://api.wordpress.org/secret-key/1.1/ Create a Secret Key for wp-config.php
+ *
+ * @return string Salt value from either 'SECRET_KEY' or 'secret' option
+ */	
 	function _wp_salt($scheme = 'auth') {
 		$secret_key = '';
 		$salt = '1KxWxg$7mw$I';
 
 		return apply_filters('salt', $secret_key . $salt, $scheme);
 	}	
+
+/**
+ * Get hash of given string.
+ *
+ * @since 2.0.4
+ * @uses wp_salt() Get WordPress salt
+ *
+ * @param string $data Plain text to hash
+ * @return string Hash of $data
+ */		
 	function _wp_hash($data, $scheme = 'auth') {
 		$salt = $this->_wp_salt($scheme);
 	
 		return hash_hmac('md5', $data, $salt);
 	}	
 	
+/**
+ * Generate authentication cookie contents.
+ *
+ * @since 2.5
+ * @uses apply_filters() Calls 'auth_cookie' hook on $cookie contents, User ID
+ *		and expiration of cookie.
+ *
+ * @param int $user_id User ID
+ * @param int $expiration Cookie expiration in seconds
+ * @param string $scheme Optional. The cookie scheme to use: auth, secure_auth, or logged_in
+ * @return string Authentication cookie contents
+ */	
 	function _wp_generate_auth_cookie($user_login, $expiration, $scheme = 'auth', $user_id) {
 		
 		$key = $this->_wp_hash($user_login . '|' . $expiration, $scheme);
@@ -32,11 +112,21 @@ class Wpcookies
 		return apply_filters('auth_cookie', $cookie, $user_id, $expiration, $scheme);
 	}
 		
+/**
+ * Sets the authentication cookies based User ID.
+ *
+ * The $remember parameter increases the time that the cookie will be kept. The
+ * default the cookie is kept without remembering is two days. When $remember is
+ * set, the cookies will be kept for 14 days or two weeks.
+ *
+ * @since 2.5
+ *
+ * @param integer $user_id User ID
+ * @param string $user_login 
+ */
 	function set($user_id, $user_login)
 	{
-		//wp_setcookie($user, '', false, '', '' ,false ,$id);
-		//variables de wp
-		//setcookie('nombre', 'value');
+
 		$remember = false;
 		$secure = FALSE;
 		$scheme = 'auth';
@@ -44,16 +134,13 @@ class Wpcookies
 		define('AUTH_COOKIE', 'wordpress_');
 		define( 'WP_CONTENT_URL', $ci_siteurl . '/wp-content');
 		define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
-		//define( 'PLUGINS_COOKIE_PATH', preg_replace('|https?://[^/]+|i', '', WP_PLUGIN_URL)  );
 		define( 'PLUGINS_COOKIE_PATH', '/' );
 		define('COOKIE_DOMAIN', '.lamula');
 		define('SITECOOKIEPATH', '/' );
-		//define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH . 'wp-admin' );
 		define( 'ADMIN_COOKIE_PATH', '/wp-admin' );
 		define('LOGGED_IN_COOKIE', 'wordpress_logged_in_');
 		define('COOKIEPATH', '/' );
-		$auth_cookie_name = AUTH_COOKIE;
-		
+		$auth_cookie_name = AUTH_COOKIE;	
 		
 		if ( $remember == TRUE )
 		{
@@ -62,16 +149,6 @@ class Wpcookies
 			$expiration = time() + 172800;
 			$expire = 0;
 		}
-
-		/*
-		$key = $this->_wp_hash($user_login . '|' . $expiration, $scheme);
-		$hash = hash_hmac('md5', $user_login . '|' . $expiration, $key);
-				
-		$cookie = $user_login . '|' . $expiration . '|' . $hash;
-		
-		$auth_cookie = apply_filters('auth_cookie', $cookie, $user_id, $expiration, $scheme);
-		$logged_in_cookie = apply_filters('auth_cookie', $cookie, $user_id, $expiration, 'logged_in');
-		*/
 		
 		$auth_cookie = $this->_wp_generate_auth_cookie($user_login, $expiration, $scheme, $user_id);
 		$logged_in_cookie = $this->_wp_generate_auth_cookie($user_login, $expiration, 'logged_in', $user_id);
@@ -82,13 +159,6 @@ class Wpcookies
 		// Set httponly if the php version is >= 5.2.0
 		if ( version_compare(phpversion(), '5.2.0', 'ge') ) {
 			$cookie_domain = COOKIE_DOMAIN;
-			/*
-			setcookie($auth_cookie_name, $auth_cookie, $expiration, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
-			setcookie($auth_cookie_name, $auth_cookie, $expiration, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
-			setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration, COOKIEPATH, COOKIE_DOMAIN, false, true);
-			if ( COOKIEPATH != SITECOOKIEPATH )
-				setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration, SITECOOKIEPATH, COOKIE_DOMAIN, false, true);
-			*/
 		} else {
 			$cookie_domain = COOKIE_DOMAIN;
 			if ( !empty($cookie_domain) )
@@ -101,24 +171,20 @@ class Wpcookies
 		setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration);
 		if ( COOKIEPATH != SITECOOKIEPATH )
 			setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration);
-		
-		die ('hasta aca');
-		/*
-		setcookie($auth_cookie_name, $auth_cookie, $expiration, PLUGINS_COOKIE_PATH, $cookie_domain, $secure);
-		setcookie($auth_cookie_name, $auth_cookie, $expiration, ADMIN_COOKIE_PATH, $cookie_domain, $secure);
-		setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration, COOKIEPATH, $cookie_domain);
-		if ( COOKIEPATH != SITECOOKIEPATH )
-			setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expiration, SITECOOKIEPATH, $cookie_domain);
-		*/
-		//die('a:' . $auth_cookie_name . ' b:' . $auth_cookie);
-		/*
-		setcookie($auth_cookie_name.'c', $auth_cookie, $expiration, PLUGINS_COOKIE_PATH);
-		die('a:' . $auth_cookie_name . ' b:' . $auth_cookie . ' c:' . $expiration . ' d:' . PLUGINS_COOKIE_PATH . ' e:' . COOKIE_DOMAIN . ' f:' .  $secure);
-		*/
 	}
 	
+/**
+ * Clears the authentication cookie, logging the user out.
+ *
+ * @since 1.5
+ * @deprecated Use wp_clear_auth_cookie()
+ * @see wp_clear_auth_cookie()
+ */	
 	function un_set()
 	{
 		wp_clearcookie();
 	}
 }
+
+/* End of file Wpcookies.php */
+/* Location: ./system/application/libraries/Wpcookies.php */

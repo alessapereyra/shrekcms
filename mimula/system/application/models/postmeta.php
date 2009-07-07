@@ -61,12 +61,19 @@ class Postmeta extends Model {
     	$this->db->where('post_id', $id);
     	$query = $this->db->get();
     	
-        foreach ($query->result() as $row)
-		{
-			$tmp[$row->meta_key] = $row->meta_value;
-		}
-		
-		return $tmp;
+    	if ($query->num_rows() > 0)
+    	{    	
+	        foreach ($query->result() as $row)
+			{
+				$tmp[$row->meta_key] = $row->meta_value;
+			}
+			
+			return $tmp;
+    	}
+    	else
+    	{
+    		return NULL;
+    	}
     	
     }
 
@@ -122,6 +129,25 @@ class Postmeta extends Model {
     	
     	foreach ($values as $key => $value)
     	{
+    	    switch ($key)
+    		{
+    			case 'pais':
+    				$query = $this->countries->seleccionar(array('country_id' => $value));
+    				$field = 'country';
+    			break;
+    			case 'departamento':
+    				$query = $this->states->seleccionar(array('state_id' => $value));
+    				$field = 'state';
+    			break;
+    			case 'provincia':
+    				$query = $this->provinces->seleccionar(array('province_id' => $value));
+    				$field = 'province';
+    			break;
+    			case 'distrito':
+    				$query = $this->districts->seleccionar(array('district_id' => $value));
+    				$field = 'district';
+    			break;
+    		}    		
     		$tmp['meta_key'] = $key;
     		$tmp['meta_value'] = $value;
     		$this->_insertar($tmp);
@@ -137,7 +163,76 @@ class Postmeta extends Model {
     {
     	$this->db->insert($this->tabla, $values);
     }
+
+	/**
+	 * Actualiza un registro
+	 * @param array $values valores a cambiar
+	 * @param array $where post_id y meta_value a buscar
+	 * @return void 
+	 */     
+    function actualizar($values, $id)
+    {
+    	$where['post_id'] = $id['id'];
+        foreach ($values as $key => $value)
+    	{
+    		$where['meta_key'] = $key;
+    		if ($value == 'null')
+    		{
+    			//borro
+    			$this->_borrar($where);
+    		}
+    		else
+    		{
+    			//Hay algo, entonces edito
+	    		switch ($key)
+	    		{
+	    			case 'pais':
+	    				$query = $this->countries->seleccionar(array('country_id' => $value));
+	    				$field = 'country';
+	    			break;
+	    			case 'departamento':
+	    				$query = $this->states->seleccionar(array('state_id' => $value));
+	    				$field = 'state';
+	    			break;
+	    			case 'provincia':
+	    				$query = $this->provinces->seleccionar(array('province_id' => $value));
+	    				$field = 'province';
+	    			break;
+	    			case 'distrito':
+	    				$query = $this->districts->seleccionar(array('district_id' => $value));
+	    				$field = 'district';
+	    			break;
+	    		}
+	    		$row = $query->row_array();
+	    		    		
+	    		$to_db['meta_value'] = $row[$field];
+	    		
+	    		$query = $this->seleccionar($where);
+	    		
+	    		if ($query->num_rows == 0)
+	    		{
+	    			//Inserto
+	    			$to_db['meta_key'] = $key;
+	    			$to_db['post_id'] = $where['post_id'];
+	    			
+	    			$this->_insertar($to_db);
+	    		}
+	    		else
+	    		{
+	    			$this->db->update($this->tabla, $to_db, $where);
+	    		}
+	    		unset($to_db);
+    		}
+    	}    	
+    }
     
+    function _borrar($values)
+    {
+    	$this->db->where($values);
+    	$this->db->limit(1, 0);
+    	$this->db->delete($this->tabla);
+    }    
+        
 	/**
 	 * Retorna una o más instancias del modelo
 	 * @param array $search terminos de busqueda

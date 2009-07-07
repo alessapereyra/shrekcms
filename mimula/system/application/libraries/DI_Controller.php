@@ -1,39 +1,57 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
- * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * Reescritura del controlador de Codeigniter
  *
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
  */
 
 // ------------------------------------------------------------------------
 
 /**
- * CodeIgniter Application Controller Class
+ * Reescritura del controlador de Codeigniter
  *
- * This class object is the super class the every library in
- * CodeIgniter will be assigned to.
  *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/general/controllers.html
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
  */
+
 class DI_Controller extends Controller {
 
+    /**
+     * es ajax?
+     * @var boolean
+     *
+     */		
 	var $is_ajax = TRUE;
+    /**
+     * url actual
+     * @var string
+     *
+     */		
 	var $me_url = '';
+    /**
+     * formulario
+     * @var string
+     *
+     */		
 	var $form = 'ajax';
+    /**
+     * Error si lo hay
+     * @var string
+     *
+     */		
 	var $error = '';
-	
+
+	/**
+	 * Constructor de la case
+	 */  
 	function __construct()
 	{
 		parent::Controller();
@@ -44,7 +62,7 @@ class DI_Controller extends Controller {
 		
 		$this->load->library('session');
 
-		$this->me_url = site_url() . '/' . $this->uri->segment(1) . '/' . $this->uri->segment(2);
+		$this->me_url = site_url() . '/' . $this->uri->segment(1); // . '/' . $this->uri->segment(2);
 		
 		if ($this->uri->segment(2) != 'ajax')
 		{
@@ -103,7 +121,10 @@ class DI_Controller extends Controller {
 		}
 		
 	}
-	
+
+	/**
+	 * Destructor de la case
+	 */  	
 	function __destruct() {
 		if ($this->is_ajax == FALSE)
 		{
@@ -113,6 +134,10 @@ class DI_Controller extends Controller {
 		}
 	}
 	
+	/**
+	 * verifica que sea ie6
+	 * @return boolean 
+	 */  	
 	function _is_ie6()
 	{
 		$this->load->library('user_agent');
@@ -127,11 +152,17 @@ class DI_Controller extends Controller {
 		
 		return FALSE;
 	}
-	
+
+	/**
+	 * Constructor de la case
+	 * @param integer $total cantidad de registros 
+	 * @param integer $per_page cantidad de registros por pagina
+	 * @return string
+	 */  	
 	function _paginador($total, $per_page)
 	{
 		$this->load->library('pagination');
-		$config['base_url'] = $this->me_url;
+		$config['base_url'] = $this->me_url . '/' . $this->uri->segment(2);
 		$config['total_rows'] = $total;
 		$config['per_page'] = $per_page;
 		$config['uri_segment'] = 3;
@@ -141,6 +172,10 @@ class DI_Controller extends Controller {
 		return $this->pagination->create_links();
 	}
 
+	/**
+	 * Verifica que el usuario este logueado
+	 * @return boolean
+	 */  
 	function _is_log()
 	{
 		

@@ -9,7 +9,11 @@
     include 'geomula.php';
 
     include 'top_news.php';      
-    
+
+	/**
+	 * Obtiene los ultimos blogs actualizados
+	 * @return object
+	 */	    
     function get_last_blogs_updated()
     {
     	global $wpdb;
@@ -19,10 +23,14 @@
 		$sql['where'] = "WHERE spam = '0' AND headlines = '1' and public = '1'";
 		$sql['order_by'] = 'ORDER BY last_updated DESC';
 		$sql['limit'] = 'LIMIT 0, 10';
-		//echo '<!-- ' .implode(' ', $sql) . ' -->';
 		return  $wpdb->get_results(implode(' ', $sql));
     }
     
+	/**
+	 * Obtiene los post para mostrar en portada
+	 * @param object $blogs blogs a mostrar
+	 * @return object
+	 */	    
 	function get_index_post($blogs)
 	{
 	    global $wpdb;
@@ -39,13 +47,11 @@
 			$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 			//time
 			$sql['select'] .= $wp_posts . '.post_date , DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as my_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as my_time, ';
-			//$sql['select'] .= $wp_posts . '.post_date, ' . $wp_posts . '.post_date as post_time, ';
 			//tabla user
 			$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 			
 			//from
 			$sql['from'] = 'FROM ' . $wp_posts . ' ';
-
 			$sql['from'] .= 'INNER JOIN ' . $wp_users . ' ON ' . $wp_users . '.ID = ' . $wp_posts . '.post_author ';
 			
 			//where
@@ -57,8 +63,6 @@
 			$sql['limit'] = 'LIMIT 0, 10';
 			
 			$the_sql[] = implode(' ', $sql);
-			//die($the_sql[0]);
-			//break;
 		}
 		
 		$wp_posts = 'mulapress_posts';
@@ -71,7 +75,6 @@
 		$sql['select'] = 'SELECT ' . $wp_posts . '.ID, ' . $wp_posts . '.post_title, ' . $wp_posts . '.post_content, ' . $wp_posts . '.comment_count, ' . $wp_posts . '.guid, ';
 		//time
 		$sql['select'] .= $wp_posts . '.post_date , DATE_FORMAT(' . $wp_posts . '.post_date,\'%d/%m/%Y\') as my_date, DATE_FORMAT(' . $wp_posts . '.post_date,\'%l:%i %p\') as my_time, ';
-		//$sql['select'] .= $wp_posts . '.post_date, ' . $wp_posts . '.post_date as post_time, ';
 		//tabla user
 		$sql['select'] .= $wp_users . '.user_login, ' . $wp_users . '.user_nicename';
 		
@@ -88,7 +91,7 @@
 		$sql['where'] = 'WHERE ((post_type = \'post\' AND post_status = \'publish\') AND ';
 		$sql['where'] .= '(' . $wp_term_taxonomy . '.term_id = \'1\' OR ' . $wp_term_taxonomy . '.term_id = \'3\' OR ' . $wp_term_taxonomy . '.term_id = \'4\' ))';
 		//Me excluyo para no molestar			
-		$sql['where'] .= ' AND (' . $wp_users . '.user_login != \'dientuki\')';
+		//$sql['where'] .= ' AND (' . $wp_users . '.user_login != \'dientuki\')';
 		//order by
 		$sql['order_by'] = 'ORDER BY post_date DESC';
 		
@@ -99,7 +102,6 @@
 		unset($sql);
 		
 		$sql = '(' . implode(') UNION (', $the_sql) . ') ORDER BY post_date DESC LIMIT 0, 20';
-		//echo '<!-- '.  $sql . '-->';
 		return $wpdb->get_results($sql);
 	}    
 ?>

@@ -1,37 +1,84 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, EllisLab, Inc.
- * @since		Version 1.0
- * @filesource
+ *
+ * Reescritura del paginador de Codeigniter
+ *
+ * @package		mulapress
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
  */
 
 // ------------------------------------------------------------------------
 
 /**
- * Pagination Class
+ * Reescritura del paginador de Codeigniter
  *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Pagination
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/pagination.html
+ *
+ * @package		mulapress
+ * @subpackage	Controllers
+ * @category	Controllers
+ * @author		Srdperu | Juan Alberto
+ * @version		Version 1.0
  */
+
 class DI_Pagination extends CI_Pagination{
 
+    /**
+     * Tag de apertura para el tag completo
+     * @var string
+     *
+     */		
 	var $per_pages_full_tag_open = '&nbsp;';
+    /**
+     * Tag de cierre  para el tag completo
+     * @var string
+     *
+     */		
 	var $per_pages_full_tag_close = '&nbsp;';
 	
+    /**
+     * Tag de apertura para el tag
+     * @var string
+     *
+     */		
 	var $per_pages_tag_open = '&nbsp;';
+    /**
+     * Tag de cierre para el tag
+     * @var string
+     *
+     */		
 	var $per_pages_tag_close = '&nbsp;';
 
+    /**
+     * Separador
+     * @var string
+     *
+     */		
 	var $per_pages_separator = '&nbsp;';
+    /**
+     * Opciones para mostrar por pagina
+     * @var array
+     *
+     */		
 	var $per_pages = array(5, 10, 15, 20);
 	
+    /**
+     * Numero de pagina actual
+     * @var integer
+     *
+     */		
 	var $uri_page_number;
+    /**
+     * Numero de paginas
+     * @var integer
+     *
+     */		
 	var $num_pages;
 		
+	/**
+	 * Constructor de la case
+	 */  	
     function __construct($params = array())
     {
         parent::CI_Pagination();
@@ -44,12 +91,20 @@ class DI_Pagination extends CI_Pagination{
 		log_message('debug', "Pagination Class Initialized");        
     }
 
+	/**
+	 * Obtiene el numero de paginas totales
+	 * @return integer
+	 */     
     function get_pages()
     {
     	$this->num_pages = ceil($this->total_rows / $this->per_page);
     	return $this->num_pages;
     }
     
+	/**
+	 * Obtiene el numero de pagina actual
+	 * @return integer 
+	 */     
     function get_uri_page_number()
     {  		
 		$this->uri_page_number = $this->cur_page;
@@ -62,11 +117,15 @@ class DI_Pagination extends CI_Pagination{
 		return $this->uri_page_number;
     }
     
+	/**
+	 * Crea el prev/next string
+	 * @param integer $page numero de pagina actual
+	 * @return string
+	 */     
     function create_prevnext($page)
     {
     	$output = '';
     	$uri_page_number = $page;
-    	//die($uri_page_number.'asdf');
     	//prev
     	if  ($uri_page_number != 1)
 		{
@@ -80,10 +139,14 @@ class DI_Pagination extends CI_Pagination{
 			$output .= $this->next_tag_open.'<a href="'.$this->base_url.'/'.($uri_page_number + 1).'/' . $this->per_page . '">'.$this->next_link.'</a>'.$this->next_tag_close;
 		}
 
-		//die($output);
 		return $output;
     }
     
+	/**
+	 * Crea todo el selector de cuantos registros por paginas
+	 * @param integer $current pagina actual
+	 * @return string
+	 */       
     function create_selector($current)
     {
     	$output = '';
@@ -119,9 +182,12 @@ class DI_Pagination extends CI_Pagination{
 
     }
     
+	/**
+	 * Crea el navegadoral
+	 * @return string
+	 */       
 	function create_links()
 	{
-		//die($this->base_url);
 		// If our item count or per-page total is zero there is no need to continue.
 		if ($this->total_rows == 0 OR $this->per_page == 0)
 		{
