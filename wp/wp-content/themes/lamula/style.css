@@ -1162,8 +1162,8 @@ div#sidebars p a {
 div#sidebars div#sidebar_central {
 	width: 210px;
 	float: left;
-	background-color: #feff3a;
 	overflow: hidden;
+	margin-top: 1em;
 	margin-bottom: 2em;
 }
 
@@ -1204,13 +1204,16 @@ div#blogger_data p {
 
 div#sidebar_central h4
 {
-	font-size: 1.5em;
+	font-size: 1.1em;
 	color: #3b3330;
 	text-transform: lowercase;
-	margin-top: 1em;
 	margin-left: 1em;
-	margin-bottom: 1em;
 
+}
+
+div#articulos.sidebox {
+	background-color: white;
+	padding-top: 1em;	
 }
 
 #sidebar_recomendados div.sidebar_box h4 {
@@ -1246,14 +1249,16 @@ img.fromvideo {
 	font-size: 1.2em;
 }
 
-div#sidebars div#sidebar_recomendados ul {
+div#sidebars div#sidebar_recomendados ul,
+#sidebar_central ul li {
 	overflow: auto;
 	margin: 0px;
 }
 
 div#sidebars div#sidebar_recomendados ul.post_list,
 div#sidebars div#sidebar_recomendados ul#post_most_seen,
-div#sidebars div#sidebar_recomendados ul.bloggers_list {
+div#sidebars div#sidebar_recomendados ul.bloggers_list,
+div#sidebar_central ul.bloggers_list {
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	letter-spacing: 0;
 	word-spacing: 0;
@@ -1306,7 +1311,8 @@ div#sidebars div#sidebar_recomendados ul.bloggers_list li a:hover {
 }
 
 
-div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a,
+div#sidebar_central ul.sidebox_menu li a{
 	float: left;
 	text-decoration: none !important;
 	display: block;
@@ -1321,11 +1327,13 @@ div#sidebars div#sidebar_recomendados ul.sidebox_menu li a{
 	word-spacing: 0;
 }
 
-div#sidebar_recomendados ul.sidebox_menu li a {
+div#sidebar_recomendados ul.sidebox_menu li a,
+div#sidebar_central ul.sidebox_menu li a {
 	color: black !important;
 }
 
-div#sidebars div#sidebar_recomendados ul.sidebox_menu li a:hover {
+div#sidebars div#sidebar_recomendados ul.sidebox_menu li a:hover,
+div#sidebars div#sidebar_central ul.sidebox_menu li a:hover {
 	background: url(images/background-yellow.png) center top !important;
 }
 
@@ -1336,7 +1344,8 @@ div.sidebox_wrapper {
 
 
 
-div#sidebars div#sidebar_recomendados ul li a 
+div#sidebars div#sidebar_recomendados ul li a,
+div#sidebar_central ul li a  
 {
 	font: 1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	display: block;
@@ -1351,7 +1360,8 @@ div#sidebars div#sidebar_recomendados ul li a
 }
 
 
-div.inner div#sidebars div#sidebar_recomendados ul li a {
+div.inner div#sidebars div#sidebar_recomendados ul li a,
+div#sidebar_central ul li a {
 	display: block;
 }
 
@@ -1373,7 +1383,8 @@ div#articles_edit {
 
 }
 
-div#sidebars div#sidebar_recomendados ul li a.selected {
+div#sidebars div#sidebar_recomendados ul li a.selected,
+div#sidebar_central ul li a.selected {
 	background: white !important;
 	color: black;
 }
@@ -1383,7 +1394,8 @@ div#sidebars div#sidebar_recomendados ul li a.selected {
 	color: #000;
 }
 
-#sidebar_recomendados ul li {
+#sidebar_recomendados ul li,
+#sidebar_central ul li {
 	overflow: auto;
 	float: left;
 	border: none;
@@ -1419,7 +1431,8 @@ div.sidebox_content {
 	display: none !important;
 }
 
-div#sidebars div#sidebar_recomendados ul li a:hover {
+div#sidebars div#sidebar_recomendados ul li a:hover,
+div#sidebar_central ul li a:hover {
 		color: #1192cf !important;
 }
 
@@ -2158,3 +2171,114 @@ div#flag_notice strong{
 clear: both;
 background: none;
 }
+
+/* @group Columneros */
+
+#columneros ul.columneros_list {
+	background-color: white;
+	padding: 10px;
+}
+
+#columneros ul.columneros_list li {
+clear: both;
+overflow: hidden;	
+margin-bottom: 0.5em;
+padding-bottom: 1em;
+border-bottom-width: 2px;
+border-bottom-style: solid;
+	font: 0.8em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#columneros ul.columneros_list li div.sidebar_txt h6 a {
+	text-decoration: none;
+	color: #000;
+	text-transform: uppercase;
+	font: bold 0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#columneros ul.columneros_list li div.sidebar_txt strong {
+	text-transform: uppercase;
+	font-size: 0.8em;
+	color: #5c5c5c;
+}
+#columneros ul.columneros_list li div.sidebar_txt strong a {
+	color: #3f6594;
+}
+
+
+
+div.sidebar_foto {
+	float: left;
+	width: 40px;	
+	height: 25px;
+
+	margin-right: 10px;
+	overflow: hidden;
+	display: block;
+	background-color: #d6d6d6;
+}
+
+#columneros ul.columneros_list li div.columna_content div.columna_meta {
+	float: left;
+	width: 40px;
+	padding-right: 10px;
+	font-size: 1.2em;
+}
+
+#columneros ul.columneros_list li div.columna_content div.columna_excerpt h4 a {
+	text-decoration: none;
+}
+
+#columneros ul.columneros_list li div.columna_content div.columna_excerpt {
+	float: left;
+	width: 350px;
+}
+
+span.columna_date {
+	clear: both;
+	display: block;
+	text-align: right;
+	font-size: 0.9em;
+}
+
+div.columna_meta {
+	clear: both;
+	display: block;
+	text-align: right;
+}
+
+div.sidebar_foto img {
+	width: 40px;
+}
+
+div.sidebar_txt {
+float: left;
+
+}
+
+#columneros ul.columneros_list li div.columna_content {
+	clear: both;
+	overflow: auto;
+	margin-top: 10px;
+	display: block;
+}
+
+#columneros ul.columneros_list li div.columna_top {
+	overflow: auto;	
+}
+
+#columneros ul.columneros_list li div.columna_content h4 {
+	text-transform: uppercase;
+	color: #1192cf;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+#columneros ul.columneros_list li div.columna_content div.columna_meta span.columna_date {
+	font-weight: bold;
+}
+
+
+/* @end */
+
+

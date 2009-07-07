@@ -26,17 +26,59 @@
           
         </div>
         
+	
+		<div id="columneros">
+			
+			<ul class="columneros_list">
+
+		            <?php mostrar_columneros(); ?>
+
+			</ul>
+			
+		</div>
 
       <div id="sidebar_central">
 
-          <h4>Muleros</h4>
-          
-          <ul class="bloggers_list">
+            
+		  <div id="articulos" class="sidebox">
 
-            <?php show_sidebar_bloggers(); ?>
-              
-          </ul>                
+	          <h4>Art&iacute;culos más</h4>
+
+	          <div class="sidebox_wrapper">
+
+	                <div class="sidebox_content first">
+
+	                    <ul id="post_most_seen">
+	                      <?php echo kf_get_posts_by_hits(7,10); ?>
+	                    </ul>
+
+	                </div> <!-- sidebox_content -->
+
+	                <div class="sidebox_content">
+	                    <!-- VOTADOS -->
+	                    <ul id="post_most_voted">
+	                      <?php echo mostrar_mas_votados(); ?>
+	                    </ul>
+
+	                </div> <!-- sidebox_content -->
+
+	                <div class="sidebox_content">
+
+	                  <?php most_popular(1); ?>
+
+	                </div>  <!-- sidebox_content -->
+
+	            </div>  <!-- sidebox_wrapper -->                 
+
+	        </div>  <!-- sidebox -->
+
+	        <ul id="articulos_menu" class="sidebox_menu">
+	          <li><a href="#vistos" >vistos</a></li>
+	          <li><a href="#votados">votados</a></li>
+	          <li><a href="#comentados" class="selected">comentados</a></li>                
+	        </ul>
          
+
       </div> <!-- sidebar_central -->
       
       <div id="sidebar_recomendados">
@@ -96,43 +138,7 @@
           <li><a href="#mulas">e-mulo</a></li>                
         </ul>
         
-        <div id="articulos" class="sidebox">
-
-          <h4>Art&iacute;culos más</h4>
-         
-          <div class="sidebox_wrapper">
-            
-                <div class="sidebox_content first">
-
-                    <ul id="post_most_seen">
-                      <?php echo kf_get_posts_by_hits(7,10); ?>
-                    </ul>
-            
-                </div> <!-- sidebox_content -->
-                
-                <div class="sidebox_content">
-                    <!-- VOTADOS -->
-                    <ul id="post_most_voted">
-                      <?php echo mostrar_mas_votados(); ?>
-                    </ul>
-                
-                </div> <!-- sidebox_content -->
-          
-                <div class="sidebox_content">
-
-                  <?php most_popular(1); ?>
-            
-                </div>  <!-- sidebox_content -->
-          
-            </div>  <!-- sidebox_wrapper -->                 
-                    
-        </div>  <!-- sidebox -->
-        
-        <ul id="articulos_menu" class="sidebox_menu">
-          <li><a href="#vistos" >vistos</a></li>
-          <li><a href="#votados">votados</a></li>
-          <li><a href="#comentados" class="selected">comentados</a></li>                
-        </ul>
+ 
    
       
         <!-- <div id="videos" class="sidebox">

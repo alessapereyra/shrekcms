@@ -22,6 +22,9 @@
  * @version		Version 1.0
  */
 
+
+
+
 class Articulos extends DI_Controller {
 	
 	/**
@@ -29,7 +32,7 @@ class Articulos extends DI_Controller {
 	 * @param integer $id id de un articulo
 	 * @param boolean $ie6 es Internet Explorer 6
 	 * @return void 
-	 */	
+	 */		
 	function formulario($id = NULL, $ie = NULL)
 	{			
 		if ($id == 0)
