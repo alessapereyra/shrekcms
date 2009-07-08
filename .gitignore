@@ -5,3 +5,9 @@ MockupsLaMula/*
 */.DS_Store
 PEAR/
 bin/
+.DS_Store
+.buildpath
+.htaccess
+.project
+.settings/
+609309925_wpmu-latest-posts.php
