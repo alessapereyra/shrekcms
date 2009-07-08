@@ -399,7 +399,13 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
   global $wpdb;
   
   //Obtenemos los blogs de los usuarios
-  	$consulta = $wpdb->get_results("SELECT blog_id as blog FROM mulapress_default_blogs order by blog_id DESC");
+  	$sql['select'] = 'SELECT mulapress_default_blogs.blog_id AS blog';
+  	$sql['from'] = 'FROM
+					mulapress_default_blogs
+					Inner Join wp_blogs ON wp_blogs.blog_id = mulapress_default_blogs.blog_id';
+  	$sql['order_by'] = 'order by wp_blogs.last_updated DESC';
+  	$sql['limit'] = 'limit 7';
+  	$consulta = $wpdb->get_results(implode(' ', $sql));
   	foreach ($consulta as $cons)
   	{
   		$blogs[] = $cons->blog;	
