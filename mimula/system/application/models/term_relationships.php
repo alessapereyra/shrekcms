@@ -108,13 +108,15 @@ class Term_relationships extends Model {
     }
     
 	/**
-	 * Borra registros
-	 * @param array $where id o dato del registro
+	 * Borra tags
+	 * @param integer $id id del post
+	 * @param array $terms_taxonomy_id id del term taxonomy
 	 * @return void 
 	 */      
-    function borrar($where)
+    function borrar($id, $terms_taxonomy_id)
     {
-    	$this->db->where($where);
+    	$this->db->where(array('object_id' => $id));
+		$this->db->where_in('term_taxonomy_id', $terms_taxonomy_id);    		
     	$this->db->delete($this->tabla);
     }    
     

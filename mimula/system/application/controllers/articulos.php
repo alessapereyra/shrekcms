@@ -22,9 +22,6 @@
  * @version		Version 1.0
  */
 
-
-
-
 class Articulos extends DI_Controller {
 	
 	/**

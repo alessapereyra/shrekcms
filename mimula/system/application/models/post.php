@@ -328,7 +328,7 @@ class Post extends Model {
     	
     	//Los vuelve a actualizar
     	$tags_id = $this->terms->insert_tags($values['tags']);
-    	
+    	//die(print_r($tags_id));
     	//limpia los tags
     	unset($values['tags']);
 
@@ -350,8 +350,9 @@ class Post extends Model {
     	
     	$terms_taxonomy_id = $tmp;
 
-    	unset($values['terms_taxonomy_id']);
+    	$this->term_relationships->insertar($where['id'], $terms_taxonomy_id);
     	
+    	unset($values['terms_taxonomy_id']);
     	
         $this->db->update($this->tabla, $values, $where);
         

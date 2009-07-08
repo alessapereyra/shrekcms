@@ -110,6 +110,7 @@ class Terms extends Model {
     function get_tags($id)
     {
     	$this->db->select($this->tabla . '.name');
+    	$this->db->select('mulapress_term_relationships.term_taxonomy_id');
     	
     	$this->db->from($this->tabla);
 
@@ -120,11 +121,34 @@ class Terms extends Model {
     	$this->db->where('object_id', $id);
     	
     	$query = $this->db->get(); 	
-    	
+
     	return $query;
     }
     
 	/**
+	 * Consigue los tags y categorias de un post
+	 * @param integer $id id del post
+	 * @return array 
+	 */       
+    function get_tags_categorias($id)
+    {
+    	$this->db->select($this->tabla . '.name');
+    	$this->db->select('mulapress_term_relationships.term_taxonomy_id');
+    	
+    	$this->db->from($this->tabla);
+
+    	$this->db->join('mulapress_term_relationships', 'mulapress_terms.term_id = mulapress_term_relationships.term_taxonomy_id');
+    	$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
+    	
+    	$this->db->where('object_id', $id);
+    	$this->db->where('parent !=', 28);
+    	
+    	$query = $this->db->get(); 	
+
+    	return $query;
+    }
+    
+    /**
 	 * Consigue las categorias privadas
 	 * @return array 
 	 */      
@@ -172,7 +196,6 @@ class Terms extends Model {
     		{
     			$id = $this->_insertar($tmp);
     			$tags[] = $this->term_taxonomy->insertar_tag($id);
-    			
     		}
     		else
     		{
@@ -190,17 +213,20 @@ class Terms extends Model {
     function clear_tags($id)
     {
     	//Consigo todos los tags/categorias
-    	$id_terms = $this->get_tags($id);
+    	$id_terms = $this->get_tags_categorias($id);
     	
-    	//Borro todos los tags
-    	$this->term_relationships->borrar(array('object_id' => $id));
-
-    	//Descuenta uno al contador
-    	foreach ($id_terms->result() as $row)
-    	{
-    		$discount[] = $row->term_taxonomy_id;
-    	}
-    	$this->term_taxonomy->discount($discount);
+		if ($id_terms->num_rows() > 0) 
+		{
+	    	//Arma el array con los id
+	    	foreach ($id_terms->result() as $row)
+	    	{
+	    		$discount[] = $row->term_taxonomy_id;
+	    	}
+	    	//Borra esos id
+	    	$this->term_relationships->borrar($id, $discount);
+	    	//Descuenta esos id
+	    	$this->term_taxonomy->discount($discount);
+		}
     }
     
 	/**
