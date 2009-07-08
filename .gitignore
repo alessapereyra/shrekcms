@@ -11,3 +11,14 @@ bin/
 .project
 .settings/
 609309925_wpmu-latest-posts.php
+blogger_random.sql
+config.inc.php
+config.sample.inc.php
+data_paises.sql
+demos/
+frontend/
+mulapress_default_bloggers.sql
+shreckcms.sql
+simple_html_dom.php
+test.php
+tmp/
