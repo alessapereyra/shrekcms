@@ -95,6 +95,19 @@ class Term_taxonomy extends Model {
     }
 
 	/**
+	 * Descuenta un tag/categoria
+	 * @param array  $term_taxonomy_id de los registros a descontar
+	 * @return void 
+	 */       
+    function discount($ids)
+    {
+    	$this->db->where_in('term_taxonomy_id', $ids);
+    	$this->db->set('count', 'count - 1', FALSE);
+    	
+    	$this->db->update($this->tabla);
+
+    }    
+	/**
 	 * Inserta un tag
 	 * @param integer $id id del tag a insertar
 	 * @return integer 
@@ -131,7 +144,6 @@ class Term_taxonomy extends Model {
     {
         $this->db->update($this->tabla, $values, $where);
     }
-    
 }
 /* End of file term_taxonomy.php */
 /* Location: ./system/application/model/term_taxonomy.php */

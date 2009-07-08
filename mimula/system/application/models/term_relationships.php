@@ -94,7 +94,6 @@ class Term_relationships extends Model {
     		$tmp['term_taxonomy_id'] = $value; 	
     		$this->db->insert($this->tabla, $tmp);	
     	}
-
     }
     
 	/**
@@ -107,6 +106,19 @@ class Term_relationships extends Model {
     {
         $this->db->update($this->tabla, $values, $where);
     }
+    
+	/**
+	 * Borra tags
+	 * @param integer $id id del post
+	 * @param array $terms_taxonomy_id id del term taxonomy
+	 * @return void 
+	 */      
+    function borrar($id, $terms_taxonomy_id)
+    {
+    	$this->db->where(array('object_id' => $id));
+		$this->db->where_in('term_taxonomy_id', $terms_taxonomy_id);    		
+    	$this->db->delete($this->tabla);
+    }    
     
 }
 /* End of file term_relationships.php */
