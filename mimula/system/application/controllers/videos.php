@@ -44,6 +44,7 @@ class Videos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['localizar'] = 'peru';
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
 		$data['has_category'] = FALSE; 
 		//$data['ie6'] = $this->_is_ie6();
@@ -108,13 +109,16 @@ class Videos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
-			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
-			$data['doclink'] = set_value('doclink');
-			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+			$data['ret'] = $this->input->post('ret');
 			$data['has_category'] = FALSE;
+			
+			$data['titulo'] = set_value('titulo');
+			$data['texto'] = $this->input->post('texto');
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
+			$data['doclink'] = $this->input->post('doclink');
+			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
+			
 			
 			$data['categorias'] = $this->combofiller->categorias();
 			
@@ -166,7 +170,9 @@ class Videos extends DI_Controller {
 			}			
 					
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = set_value('pais');				
+			$data['paices_selected'] = $this->input->post('pais');
+
+			$data['localizar'] = $this->input->post('localizar');
 			
 			$data['form'] = $this->form;			
 			

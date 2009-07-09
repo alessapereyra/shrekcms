@@ -26,9 +26,9 @@
     	<?php echo form_error('titulo'); ?>
     	<?php echo form_input(array('name' => 'titulo', 'value' => $titulo, 'id' => 'titulo')); ?>
 
-    	<?php echo form_label('', 'textos');?>
-    	<?php echo form_error('textos'); ?>
-  	    <?php echo form_textarea(array('name' => 'textos', 'value' => $textos, 'id' => 'textos')); ?>
+    	<?php echo form_label('', 'texto');?>
+    	<?php echo form_error('texto'); ?>
+  	    <?php echo form_textarea(array('name' => 'texto', 'value' => $texto, 'id' => 'texto')); ?>
     	
     	<?php if ($ret === TRUE) { ?>	
 	    	<p id="file_info">
@@ -123,7 +123,7 @@
 	
     	<fieldset id="localizar">
     	  <h3>&iquest;D&oacute;nde ocurri&oacute;?</h3>
-    		<?php echo form_hidden('localizar', 'peru'); ?>
+    		<?php echo form_hidden('localizar', $localizar); ?>
     		<ul>
     			<li><a href="#peru">Perú</a></li>
     			<li><a href="#mundo">El mundo</a></li>
