@@ -502,7 +502,7 @@ class Fotos extends DI_Controller {
 		else
 		{			
 			$photo = $this->upload->data();
-			die(print_r($photo));
+			// die(print_r($photo));
 			//debe insertar en un post, la imagen, ver wp_post id=18
 			$this->load->model('post');
 			$this->load->model('postmeta');
@@ -536,12 +536,21 @@ class Fotos extends DI_Controller {
 					$from['w'] = $D['0'];
 					$from['h'] = $D['1'];
 				}
+
 	
+				$filename_medium = NULL;
+				$filename_width = NULL;
+				$filename_height = NULL;
+
 				
 				$the_meta['width'] = strval($from['w']);
 				$the_meta['height'] = strval($from['h']);
 				$the_meta['hwstring_small'] = "height='96' width='96'" ;
 				$the_meta['file'] = $meta['_wp_attached_file'];				
+
+				$filename_medium = $photo['file_name'];
+				$filename_width = $the_meta['width'];
+				$filename_height = $the_meta['height'];
 								
 				//thumbnail
 				$tmp_size = 'thumbnail_size';
@@ -561,10 +570,7 @@ class Fotos extends DI_Controller {
 				$to['w'] = $this->options->get_($tmp_size . '_w');
 				$to['h'] = $this->options->get_($tmp_size . '_h');			
 				
-				$filename_medium = NULL;
-				$filename_width = NULL;
-				$filename_height = NULL;
-				
+
 				$tmp = $this->_resize($from, $to, $photo, $config);
 				if ($tmp != FALSE)
 				{
@@ -605,23 +611,27 @@ class Fotos extends DI_Controller {
 			
 			$this->postmeta->insertar($meta, $the_photo);
 			
+  			$image_src = $this->options->get_('upload_url_path') . date('/Y/m/') ."/" . $filename_medium;
+  			$image_width = $filename_width;
+  			$image_height = $filename_height;
+			$tmp = '<img class="thumb-carga" src="' . $image_src . '" />';
+			  			
+  			$image = '<a title="Imagen original" rel="fancybox uploaded_photo" href="'. $this->options->get_('upload_url_path') . "/" . $photo['file_name'] .'" alt="Foto Original">';
+  			$image .= '<img id="photo-'. $the_photo . '" rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' . $image_src  . '" width = "' . $image_width . '" height="' .$image_height  . '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
+				$image .= "</a>";			
+				
+			
+			$result = $the_photo . "#" . $tmp . "#" . $image;
+			
 			if ( ($this->_is_ie6() == TRUE) OR ($ie != NULL))
 			{
-				return $the_photo;
+				return $result;
 			}
 			else
 			{
 			  	
-  			$tmp = '<img class="thumb-carga" src="' . $values['guid'] . '" />';
-  			$image_src = $this->options->get_('upload_url_path') . date('/Y/m/') ."/" . $filename_medium;
-  			$image_width = $filename_width;
-  			$image_height = $filename_height;
-  			
-  			$image = '<a rel="fancybox uploaded_photo" href="'. $this->options->get_('upload_url_path') . "/" . $photo['file_name'] .'" alt="Foto Original">';
-  			$image .= '<img id=photo-"'. $the_photo . '" rel="uploaded_photo" class="alignnone size-medium wp-image1" src="' . $image_src  . '" width = "' . $image_width . '" height="' .$image_height  . '" alt="Imagen a&ntilde;adida" title="Imagen a&ntilde;adida"/>';
-				$image .= "</a>";
-				
-				echo $the_photo . '#' . $tmp . '#' . $image;
+
+				echo $result;
 			}
 		}
 		

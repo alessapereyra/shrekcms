@@ -27,7 +27,7 @@
         </h3>
    
         <?php setup_text(get_the_content(),$img_link,$img); ?>
-        <div class="top_news_featured_content  <?php if ($post->ID==940){ echo "special";} ?>">
+        <div class="top_news_featured_content  <?php if ($post->ID==1878){ echo "special";} ?>">
 
           <?php if ($img_link != "") { ?>  
           
@@ -38,7 +38,7 @@
             </div>
 
             <div class="top_news_featured_companion_text">
-              <?php the_excerpt(235); ?>	                  
+              <?php the_excerpt(255); ?>	                  
 
 
 			       <div class="top_news_featured_footer">
@@ -58,9 +58,15 @@
             <!-- noticia a una columna -->
             
             <div class="top_news_featured_text">
-
                 
-              <?php the_excerpt(235); ?>	                                       
+			<?php if ($post->ID==1878){ ?> 
+
+<object id="utv_o_199343" height="320" width="400"  classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="http://www.ustream.tv/flash/live/786603" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="transparent" name="wmode" /><param value="viewcount=true&amp;autoplay=false&amp;brand=embed&amp;" name="flashvars" /><embed name="utv_e_920334" id="utv_e_20738" flashvars="viewcount=true&amp;autoplay=false&amp;brand=embed&amp;" height="320" width="400" allowfullscreen="true" allowscriptaccess="always" wmode="transparent" src="http://www.ustream.tv/flash/live/786603" type="application/x-shockwave-flash" /></object>
+<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" width="200" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701" height="100"><param value="200" name="width"/><param value="100" name="height"/><param value="http://99.198.110.162:8074" name="src"/><param value="http://99.198.110.162:8074" name="url"/><param value="http://99.198.110.162:8074" name="url"/><embed width="200" src="http://99.198.110.162:8074" height="100" type="application/x-mplayer2"></embed></object>
+
+			<?php } else  { ?>  
+              <?php the_excerpt(235); ?>	                                     
+				<?php } ?>
 
 	        <div class="top_news_featured_footer">
 	          <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
