@@ -522,7 +522,8 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
   //$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
-	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ') and spam not 1 ORDER BY RAND()';
+	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ') AND spam = "0"';
+	$sql['order'] = 'order by wp_blogs.last_updated DESC';
 	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
 	$outsiders_blogs = $wpdb->get_results(implode(' ', $sql));
 	unset($sql);

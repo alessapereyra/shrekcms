@@ -48,7 +48,7 @@ class Home extends DI_Controller {
     	$id = $this->session->userdata('id');
 
     	$limit['from'] = 0;
-    	$limit['show'] = 5;
+    	$limit['show'] = 25;
     	
   		$data['myposts'] = $this->post->get_mypost($id, $limit);
   		$data['myposts'] = $data['myposts']->result_array();
