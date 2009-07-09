@@ -419,8 +419,7 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
   //$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
-	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ')';
-	$sql['order_by'] = 'ORDER BY RAND()';
+	$sql['where'] = 'WHERE blog_id NOT in (' . implode(',',$blogs) . ') ORDER BY RAND()';
 	$sql['limit'] = 'LIMIT 0,' . $outsiders ;
 	$outsiders_blogs = $wpdb->get_results(implode(' ', $sql));
 	unset($sql);
