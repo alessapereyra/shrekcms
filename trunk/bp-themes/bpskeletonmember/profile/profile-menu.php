@@ -34,7 +34,7 @@ $current_profile_id =  $bp->displayed_user->id;
 
 	$sql['select'] = 'SELECT puntaje, mularango';
 	$sql['from'] = 'FROM wp_users';
-	$sql['where'] = 'ID = ' . $current_profile_id . ''; 
+	$sql['where'] = 'where ID = ' . $current_profile_id . ''; 
 
 	$ranking = $wpdb->get_results(implode(' ', $sql));
  ?>

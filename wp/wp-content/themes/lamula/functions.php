@@ -410,12 +410,17 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
   	{
   		$blogs[] = $cons->blog;	
   	}
+
+    unset($sql);    		
+
   //Obtenemos cualquier otros
   	$consulta = $wpdb->get_results('SELECT option_value FROM mulapress_options WHERE option_name = \'bloggers_random\'');
 	foreach ($consulta as $cons)
 	{
 		$outsiders = $cons->option_value;
 	}
+	
+	
 	$sql['select'] = 'SELECT blog_id';
 	$sql['from'] = 'FROM wp_blogs';
   //$sql['where'] = 'WHERE blog_id not in (' . implode(',',$blogs) . ')';
