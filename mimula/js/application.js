@@ -13,6 +13,7 @@ $(document).ready(function(){
 			$("input[name='localizar']").attr("value", ui.panel.id);
 		}
 	});
+	$("#localizar").tabs('select', '#' + $("input[name='localizar']").attr("value"));
 	
 	$("#lasts-posts").tabs();			
 	
