@@ -251,6 +251,9 @@ class Articulos extends DI_Controller {
 				}
 			}			
 			
+			$data['paices'] = $this->combofiller->countries();
+			$data['paices_selected'] = set_value('pais');				
+			
 			$data['form'] = $this->form;			
 
 			$this->load->view('articulos/articulo', $data);

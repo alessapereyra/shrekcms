@@ -39,7 +39,7 @@ class Audios extends DI_Controller {
 		
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
-		$data['texto'] = NULL;
+		$data['textos'] = NULL;
 		$data['tags'] = NULL;
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
@@ -182,9 +182,9 @@ class Audios extends DI_Controller {
 		{
 			$data['id'] = $this->input->post('id');
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = set_value('texto');
-			$data['tags'] = set_value('tags');
-			$data['files'] = set_value('files');
+			$data['texto'] = $this->input->post('texto');
+			$data['tags'] = $this->input->post('tags');
+			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
 			$data['has_category'] = FALSE;
 			
