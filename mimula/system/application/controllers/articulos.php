@@ -39,7 +39,7 @@ class Articulos extends DI_Controller {
 		
 		$data['id'] = NULL;
 		$data['titulo'] = NULL;
-		$data['textos'] = NULL;
+		$data['texto'] = NULL;
 		$data['tags'] = NULL;
 		$data['photolink'] = NULL;
 		$data['files'] = NULL;
@@ -92,7 +92,7 @@ class Articulos extends DI_Controller {
 	
 		$data['id'] = $post['ID'];
 		$data['titulo'] = $post['post_title'];
-		$data['textos'] = $post['post_content'];
+		$data['texto'] = $post['post_content'];
 		
 		$html = str_get_html($post['post_content']);
 		$ret = $html->find('img',0);
@@ -100,12 +100,12 @@ class Articulos extends DI_Controller {
 		if ($ret == NULL)
 		{
 			$data['ret'] = TRUE;
-			$data['textos'] = $post['post_content'];
+			$data['texto'] = $post['post_content'];
 		}
 		else
 		{
 			$data['ret'] = $ret->outertext;	
-			$data['textos'] = $html->plaintext;
+			$data['texto'] = $html->plaintext;
 		}
 		
 		//Consig los tags
@@ -197,7 +197,7 @@ class Articulos extends DI_Controller {
 			$data['has_category'] = FALSE;
 			
 			$data['titulo'] = set_value('titulo');
-			$data['textos'] = $this->input->post('textos');
+			$data['texto'] = $this->input->post('textos');
 			
 			$data['tags'] = $this->input->post('tags');
 			$data['files'] = $this->input->post('files');

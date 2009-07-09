@@ -108,13 +108,16 @@ class Videos extends DI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['id'] = $this->input->post('id');
+			$data['ret'] = $this->input->post('ret');
+			$data['has_category'] = FALSE;
+			
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = $this->input->post('texto');
 			$data['tags'] = $this->input->post('tags');
 			$data['files'] = $this->input->post('files');
 			$data['doclink'] = $this->input->post('doclink');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
-			$data['has_category'] = FALSE;
+			
 			
 			$data['categorias'] = $this->combofiller->categorias();
 			

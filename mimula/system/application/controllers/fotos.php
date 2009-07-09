@@ -192,14 +192,14 @@ class Fotos extends DI_Controller {
 		{
 			$data['id'] = $this->input->post('id');
 			$data['ret'] = $this->input->post('ret');
-			
+			$data['has_category'] = FALSE;
+						
 			$data['titulo'] = set_value('titulo');
 			$data['texto'] = $this->input->post('textos');
 
 			$data['tags'] = $this->input->post('tags');
 			$data['files'] = $this->input->post('files');
 			$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
-			$data['has_category'] = FALSE;
 
 			$data['categorias'] = $this->combofiller->categorias();
 			

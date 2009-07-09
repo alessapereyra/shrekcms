@@ -60,9 +60,9 @@
 	  	</div>
 	<?php }?>
 
-  	<?php echo form_label('Descripci&oacute;n:', 'textos');?>
-  	<?php echo form_error('textos'); ?>
-  	<?php echo form_textarea(array('name' => 'textos', 'value' => $textos , 'id' => 'textos')); ?>
+  	<?php echo form_label('Descripci&oacute;n:', 'texto');?>
+  	<?php echo form_error('texto'); ?>
+  	<?php echo form_textarea(array('name' => 'texto', 'value' => $texto , 'id' => 'texto')); ?>
 
   	<?php echo form_label('Etiquetas (separadas por comas):', 'tags');?> 
   	<?php echo form_error('tags'); ?>
