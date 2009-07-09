@@ -1054,6 +1054,12 @@ div#content.dashboard table td {
 	text-align: center;
 }
 
+div#paginador {
+	float: left;
+	}
+	
+div#selector {
+	float: right;
+	}
 
 /* @end */
-

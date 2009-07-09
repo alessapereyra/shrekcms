@@ -31,8 +31,14 @@ class Home extends DI_Controller {
 	 * @param boolean $ie6 es Internet Explorer 6
 	 * @return void 
 	 */	
-	function dashboard()
+	function dashboard($page = 1, $per_page = NULL)
 	{
+		
+		if ($per_page == NULL)
+		{
+			$per_page = $this->config->item('per_page');
+		}
+				
 		$this->load->model('users');
 		$this->load->model('usermeta');
 		    
@@ -47,8 +53,14 @@ class Home extends DI_Controller {
     	
     	$id = $this->session->userdata('id');
 
-    	$limit['from'] = 0;
-    	$limit['show'] = 25;
+		//arma el paginador
+		$data['myposts'] = $this->post->get_mypost($id);
+		$data['paginador'] = $this->_paginador($data['myposts']->num_rows(), $per_page);
+		$data['selector'] = $this->pagination->create_selector($per_page);
+		
+		//calcula cuantos mostrar
+		$limit['show'] = $per_page;
+		$limit['from'] = ($page - 1) * $per_page;
     	
   		$data['myposts'] = $this->post->get_mypost($id, $limit);
   		$data['myposts'] = $data['myposts']->result_array();
