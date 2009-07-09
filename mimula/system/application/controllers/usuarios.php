@@ -239,7 +239,7 @@ class Usuarios extends DI_Controller {
 		$this->load->library('form_validation');
 		$tmp = $this->config->item('post_content');	  
 	  
-    $this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Titulacion', 'ie6' => $this->_is_ie6()));
+    //$this->load->view('layout/' . $tmp['head'], array('log' => FALSE,'seccion' => 'Titulacion', 'ie6' => $this->_is_ie6()));
 		
 		$this->load->view('usuarios/titulares', $data);
 		

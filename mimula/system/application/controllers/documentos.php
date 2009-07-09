@@ -198,7 +198,7 @@ class Documentos extends DI_Controller {
 			$data['has_category'] = FALSE;
 						
 			$data['titulo'] = set_value('titulo');
-			$data['texto'] = $this->input->post('textos');
+			$data['texto'] = $this->input->post('texto');
 
 			$data['tags'] = $this->input->post('tags');
 			$data['files'] = $this->input->post('files');
@@ -281,11 +281,11 @@ class Documentos extends DI_Controller {
 			
 			if ($this->input->post('id') == NULL)
 			{
-				$data['post_content'] = $this->input->post('textos');
+				$data['post_content'] = $this->input->post('texto');
 			}
 			else
 			{
-				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
+				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('texto');
 			}
 	
 			switch ($this->input->post('upload-content'))

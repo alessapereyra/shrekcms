@@ -194,7 +194,7 @@ class Videos extends DI_Controller {
 	    	
 			$id = $this->input->post('id');
 			$data['post_title']  = $this->input->post('titulo');
-			$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>"; 
+			$data['post_content'] = "<p>" . $this->input->post('texto') . "</p>"; 
 			$data['tags'] = $this->input->post('tags');
 			
       
