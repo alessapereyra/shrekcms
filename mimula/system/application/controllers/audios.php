@@ -266,11 +266,11 @@ class Audios extends DI_Controller {
 			$data['post_title']  = $this->input->post('titulo');
 			if ($id == NULL)
 			{
-				$data['post_content'] = $this->input->post('textos');
+				$data['post_content'] = $this->input->post('texto');
 			}
 			else
 			{
-				$data['post_content'] = "<p>" . $this->input->post('textos') . "</p>";
+				$data['post_content'] = "<p>" . $this->input->post('texto') . "</p>";
 			} 
 	
 			switch ($this->input->post('upload-content'))

@@ -280,11 +280,11 @@ class Articulos extends DI_Controller {
 			
 			if ($this->input->post('id') == NULL)
 			{
-				$data['post_content'] = $this->input->post('textos');
+				$data['post_content'] = $this->input->post('texto');
 			}
 			else
 			{
-				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('textos');
+				$data['post_content'] =  $this->input->post('ret') . ' ' . $this->input->post('texto');
 
 			}
 
