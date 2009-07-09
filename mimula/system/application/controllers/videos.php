@@ -459,7 +459,7 @@ class Videos extends DI_Controller {
 
      // create a new Zend_Gdata_YouTube_MediaGroup object
      $mediaGroup = $yt->newMediaGroup();
-     $mediaGroup->title = $yt->newMediaTitle()->setText('LaMula ');
+	 $mediaGroup->title = $yt->newMediaTitle()->setText('LaMula');
      $mediaGroup->description = $yt->newMediaDescription()->setText('Subido desde LaMula');
 
      $mediaGroup->keywords = $yt->newMediaKeywords()->setText('lamula');
