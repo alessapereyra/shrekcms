@@ -44,6 +44,7 @@ class Documentos extends DI_Controller {
 		$data['doclink'] = NULL;		
 		$data['categorias_selected'] = NULL;
 		$data['files'] = NULL;
+		$data['localizar'] = 'peru';
 		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6(); 
 		$data['has_category'] = FALSE; 
@@ -253,7 +254,9 @@ class Documentos extends DI_Controller {
 			}			
 					
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = $this->input->post('pais');				
+			$data['paices_selected'] = $this->input->post('pais');		
+
+			$data['localizar'] = $this->input->post('localizar');
 			
 			$data['form'] = $this->form;			
 			

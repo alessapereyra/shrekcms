@@ -45,6 +45,7 @@ class Articulos extends DI_Controller {
 		$data['files'] = NULL;
 		$data['ret'] = TRUE;
 		$data['ie6'] = $ie != NULL ? TRUE:$this->_is_ie6();
+		$data['localizar'] = 'peru';
 		$data['has_category'] = FALSE; 
 		
 		$this->load->library('combofiller');
@@ -252,7 +253,9 @@ class Articulos extends DI_Controller {
 			}			
 			
 			$data['paices'] = $this->combofiller->countries();
-			$data['paices_selected'] = set_value('pais');				
+			$data['paices_selected'] = $this->input->post('pais');				
+
+			$data['localizar'] = $this->input->post('localizar');
 			
 			$data['form'] = $this->form;			
 

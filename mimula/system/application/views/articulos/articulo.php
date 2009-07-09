@@ -123,7 +123,7 @@
 	
     	<fieldset id="localizar">
     	  <h3>&iquest;D&oacute;nde ocurri&oacute;?</h3>
-    		<?php echo form_hidden('localizar', 'peru'); ?>
+    		<?php echo form_hidden('localizar', $localizar); ?>
     		<ul>
     			<li><a href="#peru">Perú</a></li>
     			<li><a href="#mundo">El mundo</a></li>
