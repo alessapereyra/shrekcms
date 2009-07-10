@@ -38,6 +38,8 @@ class Home extends DI_Controller {
 		{
 			$per_page = $this->config->item('per_page');
 		}
+		
+		$this->me_url .= '/home/dashboard';
 				
 		$this->load->model('users');
 		$this->load->model('usermeta');
