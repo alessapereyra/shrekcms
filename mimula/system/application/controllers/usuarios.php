@@ -79,6 +79,7 @@ class Usuarios extends DI_Controller {
 		}
 		
 		$this->load->model('users');
+		$this->load->model('usermeta');
 		
 		//arma el paginador
 		$total = $this->users->count_all();
@@ -90,12 +91,15 @@ class Usuarios extends DI_Controller {
 		$limit['from'] = ($page - 1) * $per_page;
 		
 		//consulta
-		$tmp = $this->users->get_view($limit);
-		$data['users'] = $tmp['users'];
-		$data['user_meta'] = $tmp['user_meta'];
-
+		$data['users'] = $this->users->get_view($limit);
 		$data['users'] = $data['users']->result_array();
-		$data['user_meta'] = $data['user_meta']->result_array();
+		//die(print_r($data['consulta']));
+		//$this->load->model('operations');
+		foreach($data['users'] as $usuario)
+		{
+			$consulta = $this->usermeta->select_dni_tel($usuario['ID']);
+			$data['user_meta'][$usuario['ID']] = $consulta->result_array();
+		}
 		
 		$data['error'] = $this->error;
 		
