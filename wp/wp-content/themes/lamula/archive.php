@@ -11,7 +11,7 @@ Template Name: Archive
 $row = null; 
 get_header(); ?>
 
-<?php include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';  ?>
+<?php include '/usr/local/www/wordpress-mu2/mimula/system/cidip/cidip_index.php';  ?>
 
 <div id="content">
   

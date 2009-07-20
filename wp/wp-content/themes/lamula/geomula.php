@@ -4,7 +4,7 @@
  * @subpackage LaMula Theme
  */
 ?>
-<?php $ci_url= "/mulapress/ci/index.php/"; ?>
+<?php $ci_url= "/mimula/index.php/"; ?>
 	<div id="menu_bar">
 
 		<p id="tagline">

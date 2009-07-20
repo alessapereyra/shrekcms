@@ -440,7 +440,7 @@ default:
 		
     $redirect_too = $redirect_to;
 
-    include '/usr/local/www/wordpress-mu2/mulapress/ci/system/cidip/cidip_index.php';    
+    include '/usr/local/www/wordpress-mu2/mimula/system/cidip/cidip_index.php';    
     // 
     $ci =& get_instance();
     $ci->load->model('users');

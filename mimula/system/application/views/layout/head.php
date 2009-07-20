@@ -37,7 +37,7 @@ tinyMCE.init({
 	height : "280",
 	relative_urls : false,
 	remove_script_host : false,
-	document_base_url : "http://lamula.pe/mulapress/",
+	document_base_url : "http://lamula.pe/",
 
 	setup : function(ed) {
 	    ed.onSubmit.add(function(ed) {
@@ -171,14 +171,14 @@ if ($ie6 == FALSE)
   <div id="top_menu">
     <p>
   	      <span class="left">
-	        <a href="http://lamula.pe/mulapress/nosotros">nosotros</a>
-	        <a href="http://lamula.pe/mulapress/el-concepto">el concepto</a>
-	        <a href="http://lamula.pe/mulapress/te-recomendamos">te recomendamos</a>        
+	        <a href="http://lamula.pe/nosotros">nosotros</a>
+	        <a href="http://lamula.pe/el-concepto">el concepto</a>
+	        <a href="http://lamula.pe/te-recomendamos">te recomendamos</a>        
 	      </span>
 	      <span class="right">
 	        <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>
 	        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
-	        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+	        <a href="http://lamula.pe/mimula">m&aacute;ndanos tu noticia</a>
 	      </span>
 
     </p>
@@ -192,7 +192,7 @@ if ($ie6 == FALSE)
 
       <div id="logo_bar">
 
-        <h1><a href="http://lamula.pe/mulapress">La Mula</a></h1> 
+        <h1><a href="http://lamula.pe/">La Mula</a></h1> 
 
         <div id="search_bar">
  
@@ -209,8 +209,4 @@ if ($ie6 == FALSE)
 
       </div> <!-- logo_bar -->
 
-      <!-- <div id="status_bar">
-           <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
-           <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
-       </div> <status_bar --> 
  

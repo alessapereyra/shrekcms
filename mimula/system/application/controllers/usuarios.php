@@ -335,7 +335,7 @@ class Usuarios extends DI_Controller {
 		$data['telefono'] = NULL;	
 		$data['descripcion'] = NULL;
 		$data['dni'] = NULL;		
-    $data['perfil_address'] = "http://lamula.pe/mulapress/author/" . $usuario; // la direccion!!
+    	$data['perfil_address'] = "http://lamula.pe/members/" . $usuario; // la direccion!!
 		
 		$data['current_controller'] = $this->uri->segment(1);		
 
@@ -536,7 +536,7 @@ class Usuarios extends DI_Controller {
       	$this->load->library('session');
         $usuario = $this->session->userdata('usuario');
 
-  			redirect("http://lamula.pe/mulapress/author/" . $usuario);		
+  			redirect("http://lamula.pe/members/" . $usuario);		
 
   		}	  
 	  

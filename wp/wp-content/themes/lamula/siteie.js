@@ -203,7 +203,7 @@ jQuery(document).ready(function($) {
 
 
 			}
-			if (this.href != 'http://lamula.pe/mulapress/#')
+			if (this.href != 'http://lamula.pe/#')
 			{
 		   	      $.get(this.href, function(data){
 		  	     	  $('div#featured').html(data);

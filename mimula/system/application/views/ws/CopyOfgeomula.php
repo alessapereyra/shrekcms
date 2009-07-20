@@ -135,7 +135,7 @@ foreach($consulta as $post):
   
   <div class="top_news_not_found">
     
-    No hemos encontrado noticias para <?php echo $from ?>. Ayúdanos <a href="http://lamula.pe/mulapress/ci">mandando tus propias noticias</a>.
+    No hemos encontrado noticias para <?php echo $from ?>. Ayúdanos <a href="http://lamula.pe/mimula/">mandando tus propias noticias</a>.
     
   </div> <!-- top_news_not_found -->
   
