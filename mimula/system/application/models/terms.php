@@ -35,7 +35,7 @@ class Terms extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_terms';
+    var $tabla = 'wp_1_terms';
 
 	/**
 	 * Constructor de la case
@@ -57,7 +57,7 @@ class Terms extends Model {
     	$this->db->select($this->tabla . '.name');
     	
     	$this->db->from($this->tabla);
-    	$this->db->join('mulapress_term_taxonomy', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');
+    	$this->db->join('mulapress_term_taxonomy', 'wp_1_terms.term_id = mulapress_term_taxonomy.term_id');
     	
     	$this->db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
     	
@@ -83,7 +83,7 @@ class Terms extends Model {
     	
     	$this->db->from($this->tabla);
 
-    	$this->db->join('wp_1_terms_relationships', 'mulapress_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
+    	$this->db->join('wp_1_terms_relationships', 'wp_1_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
     	$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = wp_1_terms_relationships.term_taxonomy_id');
     	
     	$this->db->where('taxonomy', 'category');
@@ -114,7 +114,7 @@ class Terms extends Model {
     	
     	$this->db->from($this->tabla);
 
-    	$this->db->join('wp_1_terms_relationships', 'mulapress_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
+    	$this->db->join('wp_1_terms_relationships', 'wp_1_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
     	$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = wp_1_terms_relationships.term_taxonomy_id');
     	
     	$this->db->where('taxonomy', 'post_tag');
@@ -137,7 +137,7 @@ class Terms extends Model {
     	
     	$this->db->from($this->tabla);
 
-    	$this->db->join('wp_1_terms_relationships', 'mulapress_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
+    	$this->db->join('wp_1_terms_relationships', 'wp_1_terms.term_id = wp_1_terms_relationships.term_taxonomy_id');
     	$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = wp_1_terms_relationships.term_taxonomy_id');
     	
     	$this->db->where('object_id', $id);
@@ -159,7 +159,7 @@ class Terms extends Model {
     	$db->select($this->tabla . '.name');
     	
     	$db->from($this->tabla);
-    	$db->join('mulapress_term_taxonomy', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');
+    	$db->join('mulapress_term_taxonomy', 'wp_1_terms.term_id = mulapress_term_taxonomy.term_id');
     	
     	$db->where(array('mulapress_term_taxonomy.taxonomy' => 'category', 'parent' => 29));
     	

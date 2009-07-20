@@ -159,14 +159,14 @@ class Post extends Model {
 		{
 		   $this->db->select($this->tabla . '.' . $field);
 		}
-		$this->db->select('mulapress_terms.name');
-		$this->db->select('mulapress_terms.slug');
+		$this->db->select('wp_1_terms.name');
+		$this->db->select('wp_1_terms.slug');
 		
 		$this->db->from($this->tabla);
 		
 		$this->db->join('wp_1_terms_relationships', 'wp_1_posts.ID = wp_1_terms_relationships.object_id');
 		$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = wp_1_terms_relationships.term_taxonomy_id');
-		$this->db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
+		$this->db->join('wp_1_terms', 'wp_1_terms.term_id = mulapress_term_taxonomy.term_id');		
 		
 		$this->db->where('wp_1_posts.post_type', 'post');
 		$this->db->where('mulapress_term_taxonomy.parent', '28');
