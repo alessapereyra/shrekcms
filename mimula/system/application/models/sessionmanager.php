@@ -35,7 +35,7 @@ class Sessionmanager extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_session_manager';
+    var $tabla = 'wp_1_session_manager';
 
 	/**
 	 * Constructor de la case
