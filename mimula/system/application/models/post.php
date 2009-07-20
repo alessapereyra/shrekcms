@@ -72,7 +72,7 @@ class Post extends Model {
 		$this->db->select('wp_users.user_nicename');
 		
 		$this->db->from($this->tabla);
-		$this->db->join('mulapress_postmeta', 'wp_1_posts.ID = mulapress_postmeta.post_id');
+		$this->db->join('wp_1_postmeta', 'wp_1_posts.ID = wp_1_postmeta.post_id');
 		$this->db->join('wp_users', 'wp_1_posts.post_author = wp_users.ID');
 			
 		$this->db->where('post_type', 'post');
