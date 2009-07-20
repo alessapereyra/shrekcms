@@ -513,7 +513,7 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
     unset($sql);    		
 
   //Obtenemos cualquier otros
-  	$consulta = $wpdb->get_results('SELECT option_value FROM mulapress_options WHERE option_name = \'bloggers_random\'');
+  	$consulta = $wpdb->get_results('SELECT option_value FROM wp_1_options WHERE option_name = \'bloggers_random\'');
 	foreach ($consulta as $cons)
 	{
 		$outsiders = $cons->option_value;
@@ -1088,7 +1088,7 @@ function show_sidebar_bloggers($insiders = 6, $outsiders = 3)
   	}
 
   //Obtenemos cualquier otros
-  	$consulta = $wpdb->get_results('SELECT option_value FROM mulapress_options WHERE option_name = \'bloggers_random\'');
+  	$consulta = $wpdb->get_results('SELECT option_value FROM wp_1_options WHERE option_name = \'bloggers_random\'');
 	foreach ($consulta as $cons)
 	{
 		$outsiders = $cons->option_value;

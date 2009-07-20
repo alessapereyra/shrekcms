@@ -35,7 +35,7 @@ class Term_relationships extends Model {
      * @var array
      *
      */	
-    var $tabla = 'wp_1_term_relationships';
+    var $tabla = 'wp_1_term_taxonomy';
 
 	/**
 	 * Constructor de la case

@@ -36,7 +36,7 @@ class Options extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_options';
+    var $tabla = 'wp_1_options';
 
 	/**
 	 * Constructor de la case
