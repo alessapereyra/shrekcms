@@ -35,7 +35,7 @@ class Post extends Model {
      * @var array
      *
      */	
-	var $tabla = 'mulapress_posts';
+	var $tabla = 'wp_1_posts';
 
 	/**
 	 * Constructor de la case
@@ -58,7 +58,7 @@ class Post extends Model {
         $fields = array($this->tabla . '.ID',
         				$this->tabla . '.guid',
         				$this->tabla . '.post_title',
-        				'DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date',
+        				'DATE_FORMAT(`wp_1_posts`.`post_date`, \'%d-%m-%Y\') as post_date',
         				$this->tabla . '.comment_count',
         				$this->tabla . '.post_content');
 
@@ -72,8 +72,8 @@ class Post extends Model {
 		$this->db->select('wp_users.user_nicename');
 		
 		$this->db->from($this->tabla);
-		$this->db->join('mulapress_postmeta', 'mulapress_posts.ID = mulapress_postmeta.post_id');
-		$this->db->join('wp_users', 'mulapress_posts.post_author = wp_users.ID');
+		$this->db->join('mulapress_postmeta', 'wp_1_posts.ID = mulapress_postmeta.post_id');
+		$this->db->join('wp_users', 'wp_1_posts.post_author = wp_users.ID');
 			
 		$this->db->where('post_type', 'post');
 		$this->db->where('post_status', 'publish');
@@ -127,7 +127,7 @@ class Post extends Model {
 			}
 			
 			$this->db->from($this->tabla);
-			$this->db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
+			$this->db->join('mulapress_term_relationships', 'wp_1_posts.ID = mulapress_term_relationships.object_id');
 			
 			$this->db->where('post_type', 'post');
 			$this->db->where('post_author', $id);
@@ -164,11 +164,11 @@ class Post extends Model {
 		
 		$this->db->from($this->tabla);
 		
-		$this->db->join('mulapress_term_relationships', 'mulapress_posts.ID = mulapress_term_relationships.object_id');
+		$this->db->join('mulapress_term_relationships', 'wp_1_posts.ID = mulapress_term_relationships.object_id');
 		$this->db->join('mulapress_term_taxonomy', 'mulapress_term_taxonomy.term_taxonomy_id = mulapress_term_relationships.term_taxonomy_id');
 		$this->db->join('mulapress_terms', 'mulapress_terms.term_id = mulapress_term_taxonomy.term_id');		
 		
-		$this->db->where('mulapress_posts.post_type', 'post');
+		$this->db->where('wp_1_posts.post_type', 'post');
 		$this->db->where('mulapress_term_taxonomy.parent', '28');
 		$this->db->where($this->tabla . '.post_author', $user);		
 		$this->db->order_by($this->tabla . '.post_date', 'DESC');
@@ -397,7 +397,7 @@ class Post extends Model {
      		WHERE (user_voters > 0 or visitor_voters > 0)  and post_id IN
      		(
 				SELECT ID
-				FROM mulapress_posts
+				FROM wp_1_posts
 				WHERE post_author = \'' . $userid . '\'
 				AND post_status = \'publish\'
 			)');
