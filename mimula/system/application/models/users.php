@@ -130,36 +130,11 @@ class Users extends Model {
     	
     	$this->db->order_by('user_login', 'ASC');
     	    	
-        $users = $this->db->get();
-        
-		foreach ($users->result() as $row)
-		{
-			$actual_users[] = $row->ID;
-		}
-		
-		
-		$this->db->select('user_id');
-		$this->db->select('meta_key');
-		$this->db->select('meta_value');
-
-		$this->db->from('wp_usermeta');
-		
-		$this->db->where("(`meta_key` = 'dni' OR `meta_key` = 'telefono' OR `meta_key` = 'first_name' OR `meta_key` = 'last_name')");
-		
-		$this->db->where_in('user_id', $actual_users);
-		
-		//$this->db->order_by('user_id', 'ASC');
-		
-		$user_meta = $this->db->get();
-		
-		$tmp['users'] = $users;
-		$tmp['user_meta'] = $user_meta;
-		
-		return $tmp;
-        
+        return $this->db->get();
+ 
     }
-    
-	/**
+
+    /**
 	 * Inserta un registro
 	 * @param array $values valores a insertar
 	 * @return void 

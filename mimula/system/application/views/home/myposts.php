@@ -31,4 +31,8 @@
 			<?php endforeach; ?>	
 		</tbody>
 	</table>
+	<div id="pag-sel">
+		<?php echo $paginador ?>
+		<?php echo $selector ?>
+	</div>
 </div>

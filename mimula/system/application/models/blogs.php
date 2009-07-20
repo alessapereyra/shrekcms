@@ -152,7 +152,7 @@ class Blogs extends Model {
   	
     	$query = $this->db->get();
     	//TODO: Mejorar esta consulta para que traiga a todos los que no estan en el otro combo
-    	//die($this->db->last_query());
+    	die($this->db->last_query());
     	
     	$tmp = '';
     	if ($empty_row != FALSE)

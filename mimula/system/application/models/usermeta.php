@@ -114,6 +114,24 @@ class Usermeta extends Model {
     }
     
 	/**
+	 * Devuelve el dni y telefono de un usuario
+	 * @param integer $id id del usuario
+	 * @return array 
+	 */        
+    function select_dni_tel($id)
+    {
+    	$this->db->select('meta_key');
+    	$this->db->select('meta_value');
+    	$this->db->from($this->tabla);
+    	$this->db->where('user_id', $id);
+    	$this->db->where('(`meta_key` = \'dni\' OR `meta_key` = \'telefono\')', NULL, FALSE);
+    	
+    	$query = $this->db->get();
+    	return $query;
+    }
+    
+    
+	/**
 	 * Inserta un registro
 	 * @param array $values valores a insertar
 	 * @return void 
