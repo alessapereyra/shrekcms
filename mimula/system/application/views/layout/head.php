@@ -171,14 +171,14 @@ if ($ie6 == FALSE)
   <div id="top_menu">
     <p>
   	      <span class="left">
-	        <a href="http://lamula.pe/nosotros">nosotros</a>
-	        <a href="http://lamula.pe/el-concepto">el concepto</a>
-	        <a href="http://lamula.pe/te-recomendamos">te recomendamos</a>        
+	        <a href="http://lamula.pe//nosotros">nosotros</a>
+	        <a href="http://lamula.pe//el-concepto">el concepto</a>
+	        <a href="http://lamula.pe//te-recomendamos">te recomendamos</a>        
 	      </span>
 	      <span class="right">
 	        <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>
 	        <a href="http://lamula.pe/wp-signup.php">crea tu blog</a>
-	        <a href="http://lamula.pe/mimula">m&aacute;ndanos tu noticia</a>
+	        <a href="http://lamula.pe/mimula">mándanos tu noticia</a>
 	      </span>
 
     </p>
@@ -209,4 +209,8 @@ if ($ie6 == FALSE)
 
       </div> <!-- logo_bar -->
 
+      <!-- <div id="status_bar">
+           <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
+           <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mimula">env&iacute;a la tuya</a></p>
+       </div> <status_bar --> 
  

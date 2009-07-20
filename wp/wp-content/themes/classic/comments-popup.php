@@ -49,7 +49,7 @@ if ( post_password_required($commentstatus) ) {  // and it doesn't match the coo
 <?php foreach ($comments as $comment) { ?>
 	<li id="comment-<?php comment_ID() ?>">
 	<?php comment_text() ?>
-	<p><cite><?php comment_type(_c('Comment|noun'), __('Trackback'), __('Pingback')); ?> <?php _e("by"); ?> <?php comment_author_link() ?> &#8212; <?php comment_date() ?> @ <a href="#comment-<?php comment_ID() ?>"><?php comment_time() ?></a></cite></p>
+	<p><cite><?php comment_type(_c('Comment|noun'), __('Trackback'), __('Pingback')); ?> <?php _e("by"); ?> <?php comment_author_link() ?> &#8212; <?php comment_date() ?> @ <a href="#comment-<?php comment_ID() ?>"><?php comment_time() ?></a></mimulate></p>
 	</li>
 
 <?php } // end for each comment ?>
@@ -112,7 +112,7 @@ else: //have_posts()
 
 <!-- // this is just the end of the motor - don't touch that line either :) -->
 <?php //} ?>
-<p class="credit"><?php timer_stop(1); ?> <?php echo sprintf(__("<cite>Powered by <a href=\"http://wordpress.org\" title=\"%s\"><strong>WordPress</strong></a></cite>"),__("Powered by WordPress, state-of-the-art semantic personal publishing platform.")); ?></p>
+<p class="credit"><?php timer_stop(1); ?> <?php echo sprintf(__("<cite>Powered by <a href=\"http://wordpress.org\" title=\"%s\"><strong>WordPress</strong></a></mimulate>"),__("Powered by WordPress, state-of-the-art semantic personal publishing platform.")); ?></p>
 <?php // Seen at http://www.mijnkopthee.nl/log2/archive/2003/05/28/esc(18) ?>
 <script type="text/javascript">
 <!--

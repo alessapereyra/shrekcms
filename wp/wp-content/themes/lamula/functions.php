@@ -72,10 +72,10 @@ register_sidebar(array(
 			$the_sql[] = implode(' ', $sql);
 		}
 		
-		$wp_posts = 'mulapress_posts';
-		$wp_term_taxonomy = 'mulapress_term_taxonomy';
-		$wp_term_relationships = 'mulapress_term_relationships';
-		$wp_terms = 'mulapress_terms';
+		$wp_posts = 'wp_1_posts';
+		$wp_term_taxonomy = 'wp_1_terms_taxonomy';
+		$wp_term_relationships = 'wp_1_terms_relationships';
+		$wp_terms = 'wp_1_terms';
 		$wp_users = 'wp_users';
 					
 		//tabla post
@@ -146,7 +146,7 @@ register_sidebar(array(
   {
   	global $wpdb;
 
-  	$blog = 'mulapress_posts';
+  	$blog = 'wp_1_posts';
   	
   	$guid_total = explode("/",$guid);
   	$guid = array_slice($guid_total, -2, 1);
@@ -154,7 +154,7 @@ register_sidebar(array(
   	
   	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
   	$sql['from'] = 'FROM ' . $blog . ' inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
-  	$sql['where'] = 'where post_status = \'publish\' and mulapress_posts.post_name = "' . $guid . '"';	
+  	$sql['where'] = 'where post_status = \'publish\' and wp_1_posts.post_name = "' . $guid . '"';	
 
   	$sql['order_by'] = 'ORDER BY post_modified ASC';
   	$sql['limit'] = 'LIMIT 0,1';	
@@ -483,8 +483,8 @@ function get_gravatar($email="") {
 function get_most_voted()
 {
 	global $wpdb;
-	$sql['select'] = 'SELECT wp_users.user_nicename, `mulapress_posts`.`ID`, `mulapress_posts`.`post_author`, DATE_FORMAT(`mulapress_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `mulapress_posts`.`post_date_gmt`, `mulapress_posts`.`post_content`, `mulapress_posts`.`post_title`, `mulapress_posts`.`post_category`, `mulapress_posts`.`post_excerpt`, `mulapress_posts`.`post_status`, `mulapress_posts`.`comment_status`, `mulapress_posts`.`ping_status`, `mulapress_posts`.`post_password`, `mulapress_posts`.`post_name`, `mulapress_posts`.`to_ping`, `mulapress_posts`.`pinged`, `mulapress_posts`.`post_modified`, `mulapress_posts`.`post_modified_gmt`, `mulapress_posts`.`post_content_filtered`, `mulapress_posts`.`post_parent`, `mulapress_posts`.`guid`, `mulapress_posts`.`menu_order`, `mulapress_posts`.`post_type`, `mulapress_posts`.`post_mime_type`, `mulapress_posts`.`comment_count`';
-	$sql['from'] = 'FROM mulapress_posts inner join mulapress_gdsr_votes_log on mulapress_posts.ID = mulapress_gdsr_votes_log.id inner join wp_users on mulapress_posts.post_author = wp_users.ID';
+	$sql['select'] = 'SELECT wp_users.user_nicename, `wp_1_posts`.`ID`, `wp_1_posts`.`post_author`, DATE_FORMAT(`wp_1_posts`.`post_date`, \'%d-%m-%Y\') as post_date, `wp_1_posts`.`post_date_gmt`, `wp_1_posts`.`post_content`, `wp_1_posts`.`post_title`, `wp_1_posts`.`post_category`, `wp_1_posts`.`post_excerpt`, `wp_1_posts`.`post_status`, `wp_1_posts`.`comment_status`, `wp_1_posts`.`ping_status`, `wp_1_posts`.`post_password`, `wp_1_posts`.`post_name`, `wp_1_posts`.`to_ping`, `wp_1_posts`.`pinged`, `wp_1_posts`.`post_modified`, `wp_1_posts`.`post_modified_gmt`, `wp_1_posts`.`post_content_filtered`, `wp_1_posts`.`post_parent`, `wp_1_posts`.`guid`, `wp_1_posts`.`menu_order`, `wp_1_posts`.`post_type`, `wp_1_posts`.`post_mime_type`, `wp_1_posts`.`comment_count`';
+	$sql['from'] = 'FROM wp_1_posts inner join mulapress_gdsr_votes_log on wp_1_posts.ID = mulapress_gdsr_votes_log.id inner join wp_users on wp_1_posts.post_author = wp_users.ID';
 	$sql['order_by'] = 'ORDER BY vote DESC';
 	$sql['limit'] = 'LIMIT 0,1';
 	
@@ -745,14 +745,14 @@ function get_a_post($post_id)
 {
 	global $wpdb;
 
-	$blog = 'mulapress_posts';
+	$blog = 'wp_1_posts';
 	unset($sql);
 	
 	$sql['select'] = 'SELECT wp_users.user_nicename, wp_users.user_login, ' . $blog . '.ID, post_author, DATE_FORMAT(post_date, \'%d-%m-%Y\') as post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count';
 	$sql['from'] = 'FROM ' . $blog . '
 					inner join wp_users on ' . $blog . '.post_author = wp_users.ID';
 	$sql['where'] = 'where post_status = \'publish\'
-	                 and mulapress_posts.ID = ' . $post_id;	
+	                 and wp_1_posts.ID = ' . $post_id;	
 	
 	$sql['order_by'] = 'ORDER BY post_modified DESC';
 	$sql['limit'] = 'LIMIT 0,1';	
@@ -998,12 +998,12 @@ function mostrar_mas_votados($limit = 5){
   global $wpdb;
       
     $sql['select'] = 'SELECT user_votes + visitor_votes as votes, 
-                             mulapress_posts.post_title, 
-                             mulapress_posts.guid as post_url';
+                             wp_1_posts.post_title, 
+                             wp_1_posts.guid as post_url';
     $sql['from'] = 'FROM `mulapress_gdsr_data_article` 
-                    JOIN mulapress_posts 
-                    ON mulapress_gdsr_data_article.post_id = mulapress_posts.ID';
-    $sql['where'] = 'where mulapress_posts.post_status = "publish"';                    
+                    JOIN wp_1_posts 
+                    ON mulapress_gdsr_data_article.post_id = wp_1_posts.ID';
+    $sql['where'] = 'where wp_1_posts.post_status = "publish"';                    
     $sql['order_by'] = 'order by votes';
     $sql['limit'] = 'LIMIT 0,' . $limit;
     
@@ -1031,17 +1031,17 @@ function mostrar_ultimos_comentarios($limit = 5){
   
   global $wpdb;
   
-  $sql['select'] = 'SELECT mulapress_comments.comment_ID, 
-                           mulapress_comments.comment_author, 
-                           mulapress_comments.comment_content,  
+  $sql['select'] = 'SELECT wp_1_comments.comment_ID, 
+                           wp_1_comments.comment_author, 
+                           wp_1_comments.comment_content,  
                            wp_users.user_nicename, 
-                           `mulapress_posts`.`post_author`, 
-                           `mulapress_posts`.`post_title`,
-                           `mulapress_posts`.`guid` as post_url';
+                           `wp_1_posts`.`post_author`, 
+                           `wp_1_posts`.`post_title`,
+                           `wp_1_posts`.`guid` as post_url';
                            
-  $sql['from'] = 'FROM mulapress_comments
-                 left join wp_users on mulapress_comments.user_id = wp_users.ID 
-                 join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
+  $sql['from'] = 'FROM wp_1_comments
+                 left join wp_users on wp_1_comments.user_id = wp_users.ID 
+                 join wp_1_posts on wp_1_comments.comment_post_id = wp_1_posts.ID
                  ';
   $sql['order_by'] = 'ORDER BY post_modified DESC';
   $sql['limit'] = 'LIMIT 0,' . $limit;

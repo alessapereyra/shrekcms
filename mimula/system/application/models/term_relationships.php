@@ -35,7 +35,7 @@ class Term_relationships extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_term_relationships';
+    var $tabla = 'wp_1_terms_relationships';
 
 	/**
 	 * Constructor de la case

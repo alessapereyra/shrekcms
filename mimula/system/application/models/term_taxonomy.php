@@ -35,7 +35,7 @@ class Term_taxonomy extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_term_taxonomy';
+    var $tabla = 'wp_1_terms_taxonomy';
 
 	/**
 	 * Constructor de la case

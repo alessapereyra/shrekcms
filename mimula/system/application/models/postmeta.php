@@ -36,7 +36,7 @@ class Postmeta extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_postmeta';
+    var $tabla = 'wp_1_postmeta';
 
 	/**
 	 * Constructor de la case

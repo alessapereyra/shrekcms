@@ -35,7 +35,7 @@ class Comments extends Model {
      * @var array
      *
      */	
-    var $tabla = 'mulapress_comments';
+    var $tabla = 'wp_1_comments';
 
 	/**
 	 * Constructor de la case
@@ -73,8 +73,8 @@ class Comments extends Model {
     	$db = $this->load->database('default', TRUE);
       $db->select('post_author');
   		$db->from($this->tabla);
-  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
-    	$db->where('mulapress_posts.post_author', $id);
+  		$db->join('wp_1_posts', 'wp_1_posts.ID = wp_1_comments.comment_post_ID');		
+    	$db->where('wp_1_posts.post_author', $id);
     
       return $db->count_all_results();
       
@@ -98,11 +98,11 @@ class Comments extends Model {
 		    $db->select($this->tabla . '.' . $field);
 		  }
 
-	      $db->select('mulapress_posts.guid');
-	      $db->select('mulapress_posts.post_title');
+	      $db->select('wp_1_posts.guid');
+	      $db->select('wp_1_posts.post_title');
 
   		$db->from($this->tabla);    
-  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		    
+  		$db->join('wp_1_posts', 'wp_1_posts.ID = wp_1_comments.comment_post_ID');		    
   		$db->where('user_id', $id);
 		
   		$db->limit($posts, 0);
@@ -131,11 +131,11 @@ class Comments extends Model {
 		    $db->select($this->tabla . '.' . $field);
 		  }
     
-      $db->select('mulapress_posts.guid');
+      $db->select('wp_1_posts.guid');
   		$db->from($this->tabla);
-  		$db->join('mulapress_posts', 'mulapress_posts.ID = mulapress_comments.comment_post_ID');		
+  		$db->join('wp_1_posts', 'wp_1_posts.ID = wp_1_comments.comment_post_ID');		
     
-  		$db->where('mulapress_posts.post_author', $id);
+  		$db->where('wp_1_posts.post_author', $id);
 		
   		$db->limit($posts, 0);
 		
