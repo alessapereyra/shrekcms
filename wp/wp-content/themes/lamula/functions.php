@@ -1031,17 +1031,17 @@ function mostrar_ultimos_comentarios($limit = 5){
   
   global $wpdb;
   
-  $sql['select'] = 'SELECT mulapress_comments.comment_ID, 
-                           mulapress_comments.comment_author, 
-                           mulapress_comments.comment_content,  
+  $sql['select'] = 'SELECT wp_1_comments.comment_ID, 
+                           wp_1_comments.comment_author, 
+                           wp_1_comments.comment_content,  
                            wp_users.user_nicename, 
                            `mulapress_posts`.`post_author`, 
                            `mulapress_posts`.`post_title`,
                            `mulapress_posts`.`guid` as post_url';
                            
-  $sql['from'] = 'FROM mulapress_comments
-                 left join wp_users on mulapress_comments.user_id = wp_users.ID 
-                 join mulapress_posts on mulapress_comments.comment_post_id = mulapress_posts.ID
+  $sql['from'] = 'FROM wp_1_comments
+                 left join wp_users on wp_1_comments.user_id = wp_users.ID 
+                 join mulapress_posts on wp_1_comments.comment_post_id = mulapress_posts.ID
                  ';
   $sql['order_by'] = 'ORDER BY post_modified DESC';
   $sql['limit'] = 'LIMIT 0,' . $limit;
