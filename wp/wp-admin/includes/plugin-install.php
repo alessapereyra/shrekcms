@@ -320,7 +320,7 @@ function display_plugins_table($plugins, $page = 1, $totalpages = 1){
 
 				$author = $plugin['author'];
 				if( ! empty($plugin['author']) )
-					$author = ' <cite>' . sprintf( __('By %s'), $author ) . '.</cite>';
+					$author = ' <cite>' . sprintf( __('By %s'), $author ) . '.</mimulate>';
 
 				$author = wp_kses($author, $plugins_allowedtags);
 

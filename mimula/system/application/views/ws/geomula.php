@@ -107,7 +107,7 @@ function comments_number($zero,$one,$more,$comments)
 		
 	<?php else:?>
 		<div class="top_news_not_found">
-			No hemos encontrado noticias para <?php echo $from ?>. Ayúdanos <a href="http://lamula.pe//ci">mandando tus propias noticias</a>.
+			No hemos encontrado noticias para <?php echo $from ?>. Ayúdanos <a href="http://lamula.pe//mimula">mandando tus propias noticias</a>.
 		</div> <!-- top_news_not_found -->
 	<?php endif;?>
 

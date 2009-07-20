@@ -7,7 +7,7 @@ $query_string = urlencode($_SERVER['QUERY_STRING']);
 // destroying the $_GET array (but reconstructed when CI leaves)
 $_GET = array();
 // let's use CI a bit to recover our $_GET array
-$_SERVER['PATH_INFO'] = '/cidip/recover_get_array/'.$query_string; 
+$_SERVER['PATH_INFO'] = '/mimuladip/recover_get_array/'.$query_string; 
 
 /*
 |---------------------------------------------------------------
@@ -122,7 +122,7 @@ else
 | And away we go...
 |
 */
-require_once BASEPATH.'cidip/cidip_CodeIgniter'.EXT;;
+require_once BASEPATH.'cidip/mimuladip_CodeIgniter'.EXT;;
 
 /* End of file index.php */
 /* Location: ./index.php */
