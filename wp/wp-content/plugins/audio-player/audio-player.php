@@ -159,7 +159,7 @@ $ap_version = "1.2.2";
 $ap_updateURL = "http://www.1pixelout.net/download/audio-player-update.txt";
 $ap_docURL = "http://www.1pixelout.net/code/audio-player-wordpress-plugin/";
 $ap_colorkeys = array("bg","leftbg","lefticon","rightbg","rightbghover","righticon","righticonhover","text","slider","track","border","loader");
-$ap_playerURL = get_settings('siteurl') . '/wp-content/plugins/audio-player/player.swf';
+$ap_playerURL = get_settings('siteurl') . '/wp-content/plugins/audio-player/audio-player/player.swf';
 $ap_audioURL = get_settings('siteurl') . get_option("audio_player_web_path");
 // Initialise playerID (each instance gets unique ID)
 $ap_playerID = 0;

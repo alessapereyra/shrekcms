@@ -428,8 +428,8 @@ class Videos extends DI_Controller {
      
      $authenticationURL= 'https://www.google.com/youtube/accounts/ClientLogin';
      $httpClient = Zend_Gdata_ClientLogin::getHttpClient(
-                                               $username = 'lamulape@gmail.com',
-                                               $password = 'mulero69',
+                                               $username = 'alvaropereyra.storage1@gmail.com',
+                                               $password = 'vossosalvarox',
                                                $service = 'youtube',
                                                $client = null,
                                                $source = 'LaMulaSRD', // a short string identifying your application

@@ -44,7 +44,7 @@
 			       <div class="top_news_featured_footer">
 			          <a href="<?php the_permalink() ?>" class="leer_mas_footer">Leer m&aacute;s</a>
 			          <p class="comments"><a href="<?php comments_link(); ?>" class="comments"><?php comments_number('ningun comentario', 'un comentario', 'm&aacute;s comentarios'); ?> </a></p>
-			          <div class="rate"><?php wp_gdsr_render_article(); ?></div>
+			          <div class="rate"><?php //wp_gdsr_render_article(); ?></div>
 
 			        </div>
 

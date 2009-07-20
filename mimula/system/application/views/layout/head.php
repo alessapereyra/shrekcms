@@ -59,31 +59,31 @@ if ($ie6 == FALSE)
 	switch ($current_controller)
 	{
 		case 'articulos':
-			$name = 'Imagenes';
+			$name = 'Imagenes' . "/fotos";
 			$ext = '*.jpg;*.jpeg;*.png;*.gif';
-			$url = ereg_replace('articulos', 'fotos', $this->me_url);	
+			$url = ereg_replace('articulos', 'fotos', $this->me_url . "/articulos");	
 		break;
 		
 		case 'fotos':
-			$url = $this->me_url;
+			$url = $this->me_url . "/fotos";
 			$name = 'Imagenes';
 			$ext = '*.jpg;*.jpeg;*.png;*.gif';
 		break;
 
 		case 'audios':
-			$url = $this->me_url;
+			$url = $this->me_url . "/audios";
 			$name = 'Audios';
 			$ext = '*.mp3';
 		break;
 
 		case 'videos':
-			$url = $this->me_url;
+			$url = $this->me_url . "/videos";
 			$name = 'Videos';
 			$ext = '*.mov';
 		break;
 		
 		case 'documentos':
-			$url = $this->me_url;
+			$url = $this->me_url . "/documentos";
 			$name = 'Documentos';
 			$ext = '*.doc;*.pdf';
 		break;

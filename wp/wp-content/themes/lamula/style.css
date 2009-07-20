@@ -10,6 +10,12 @@ body {
 	word-spacing: 4px;
 	color: #3b3330;
 	background: #e7e6eb repeat-x;
+	margin: 0px !important;
+	padding-top:0px !important;
+}
+
+html body {
+	padding-top:0px !important;
 }
 
 a {
@@ -2072,13 +2078,12 @@ div#comentarios li a:hover {
 /* @group Footer */
 
 div#city {
-	position: fixed;
-	bottom: 0px;
-	height: 140px;
+	position: relative;
+	bottom: -143px;
+	height: 180px;
 	width: 100%;
 	text-indent: -9000em;
 	background: url(images/lima-transparent.png) center;
-	display: inline;
 	z-index: 0;
 }
 
@@ -2198,8 +2203,8 @@ border-bottom-style: solid;
 
 #columneros ul.columneros_list li div.sidebar_txt strong {
 	text-transform: uppercase;
-	font-size: 0.8em;
-	color: #5c5c5c;
+	font-size: 0.95em;
+	color: #5c5c5c !important;
 }
 #columneros ul.columneros_list li div.sidebar_txt strong a {
 	color: #3f6594;

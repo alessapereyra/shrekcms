@@ -145,8 +145,8 @@ class Zend_Gdata_ClientLogin
         $goog_resp = array();
         foreach (explode("\n", $response->getBody()) as $l) {
             $l = chop($l);
-            if ($l) {
-                list($key, $val) = explode('=', chop($l), 2);
+            if ($l && chop($l)) {
+                list($key, $val) = explode('=', $l, 2);
                 $goog_resp[$key] = $val;
             }
         }

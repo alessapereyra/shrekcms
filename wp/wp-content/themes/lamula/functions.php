@@ -117,7 +117,7 @@ register_sidebar(array(
 	 * @param string $url url
 	 * @return integer
 	 */	
-  function get_blog_id_from_url($url){
+  function get_blog_id_from($url){
     
     
     $url = str_replace("http://", "", $url);
@@ -185,7 +185,7 @@ register_sidebar(array(
 
         case "blog":
         
-            $blog_id = get_blog_id_from_url($header->header_source);
+            $blog_id = get_blog_id_from($header->header_source);
             $post = get_from_blog($blog_id);
             $text = $header->header_source;
             break;
@@ -276,12 +276,13 @@ function mulapress_trim_excerpt($text, $length = 55) {
 
 		$text = apply_filters('the_content', $text);
 		$text = str_replace(']]>', ']]&gt;', $text);
-		$text = strip_tags($text);
+		// $text = strip_tags($text,'<a><strong><object><embed><em><b><i>');
+		$text = strip_tags($text);		
 		$excerpt_length = apply_filters('excerpt_length', $length);
 		$words = explode(' ', $text, $excerpt_length + 1);
 		if (count($words) > $excerpt_length) {
 			array_pop($words);
-			array_push($words, '...');
+			array_push($words, '[...]');
 			$text = implode(' ', $words);
 		}
 		
@@ -502,7 +503,7 @@ function mostrar_columneros($insiders = 6, $outsiders = 3)
 					mulapress_default_blogs
 					Inner Join wp_blogs ON wp_blogs.blog_id = mulapress_default_blogs.blog_id';
   	$sql['order_by'] = 'order by wp_blogs.last_updated DESC';
-  	$sql['limit'] = 'limit 7';
+  	$sql['limit'] = 'limit 13';
   	$consulta = $wpdb->get_results(implode(' ', $sql));
   	foreach ($consulta as $cons)
   	{
