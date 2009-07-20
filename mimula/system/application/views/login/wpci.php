@@ -11,7 +11,7 @@
   		<div class="info">
   			<?php if (isset($info)) { echo $info; } ?>
   			<form action="http://lamula.pe/wp-login.php" method="post" name="loginform">
-  				<?php $destino = 'http://lamula.pe/mulapress/ci/index.php/' . $destino; ?>
+  				<?php $destino = 'http://lamula.pe//ci/index.php/' . $destino; ?>
 	  			<?php echo form_hidden('redirect_to', $destino); ?>
 	  			<fieldset>
 		  			<?php echo form_label('Usuario:', 'usuario');?> 			

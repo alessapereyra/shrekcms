@@ -90,7 +90,7 @@ get_header(); ?>
         
           <p>
           
-            <a href="http://lamula.pe/mulapress/ci" class="send_news">
+            <a href="http://lamula.pe//ci" class="send_news">
               
                 publica en lamula.pe
                 <em>  

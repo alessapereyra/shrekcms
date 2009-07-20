@@ -10,7 +10,7 @@
           
             <p>
             
-              <a href="http://lamula.pe/mulapress/ci" class="send_news">
+              <a href="http://lamula.pe//ci" class="send_news">
                 
                   publica en lamula.pe
                   <em>  
@@ -84,11 +84,11 @@
       <div id="sidebar_recomendados">
         
       <a href="<?php bloginfo('siteurl'); ?>/tag/bagua">
-        <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/banner.gif" class="sidebox_image" id="bagua" alt="Seguimiento #bagua" title="Seguimiento #bagua"/>
+        <img src="http://lamula.pe//wp/wp-content/themes/lamula/images/banner.gif" class="sidebox_image" id="bagua" alt="Seguimiento #bagua" title="Seguimiento #bagua"/>
       </a>
 
       <a href="http://lamula.lamula.pe/?p=53#respond">
-          <img src="http://lamula.pe/mulapress/wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
+          <img src="http://lamula.pe//wp/wp-content/themes/lamula/images/comentarios.png" class="sidebox_image" id="comentarios_banner" alt="Dejanos tus comentarios" title="Dejanos tus comentarios"/>
       </a>
 
 

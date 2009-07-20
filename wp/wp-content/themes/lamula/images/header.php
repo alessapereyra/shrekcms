@@ -57,7 +57,7 @@
       <span class="left">resistencia ciudadana | mi&eacute;rcoles, 29 de abril de 2009</span>
       <span class="right">
         <a href="http://lamula.pe/crear-blog/">crea tu blog</a> |
-        <a href="http://lamula.pe/mulapress/ci">mándanos tu noticia</a>
+        <a href="http://lamula.pe//ci">mándanos tu noticia</a>
       </span>
     </p>
   </div> <!-- top_menu -->
@@ -84,7 +84,7 @@
   
       <div id="status_bar">
           <h2 id="status">lamula est&aacute;... <strong>desaznadamente en linea</strong></h2>        
-          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe/mulapress/ci">env&iacute;a la tuya</a></p>
+          <p id="site_stats">241 noticias enviadas, <a href="http://lamula.pe//ci">env&iacute;a la tuya</a></p>
       </div> <!-- status_bar -->
   
       <div id="menu_bar">
