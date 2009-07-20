@@ -1610,9 +1610,9 @@ function wp_widget_rss_output( $rss, $args = array() ) {
 			$author = '';
 			if ( $show_author ) {
 				if ( isset($item['dc']['creator']) )
-					$author = ' <cite>' . wp_specialchars( strip_tags( $item['dc']['creator'] ) ) . '</mimulate>';
+					$author = ' <cite>' . wp_specialchars( strip_tags( $item['dc']['creator'] ) ) . '</cite>';
 				elseif ( isset($item['author_name']) )
-					$author = ' <cite>' . wp_specialchars( strip_tags( $item['author_name'] ) ) . '</mimulate>';
+					$author = ' <cite>' . wp_specialchars( strip_tags( $item['author_name'] ) ) . '</cite>';
 			}
 
 			if ( $link == '' ) {

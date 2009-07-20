@@ -13,8 +13,7 @@
 
 /**
  * Modelo de usuarios
- *
- *
+ * 
  * @package		mulapress
  * @subpackage	Models
  * @category	Models

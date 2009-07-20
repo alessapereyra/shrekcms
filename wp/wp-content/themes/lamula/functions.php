@@ -304,7 +304,7 @@ function mula_comments($comment) {
       <div class="comment-content">
             
             <div class="coment-top-metadata">
-                <?php printf(__('<cite class="fn">%s</mimulate> <span class="says">dice:</span>'), get_comment_author_link()) ?>
+                <?php printf(__('<cite class="fn">%s</cite> <span class="says">dice:</span>'), get_comment_author_link()) ?>
             </div> <!-- coment-top-metadata -->
 
             <div class="comment-content">

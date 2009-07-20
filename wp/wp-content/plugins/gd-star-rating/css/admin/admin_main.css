@@ -450,7 +450,7 @@ a.rssurl:hover { color: white; }
 }
 
 .loader.circle {
-    background: url(../../gfx/loader/mimularcle.gif) no-repeat left;
+    background: url(../../gfx/loader/circle.gif) no-repeat left;
 	padding-left: 18px;
 }
 

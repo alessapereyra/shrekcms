@@ -126,7 +126,7 @@ function _get_plugin_data_markup_translate($plugin_data, $markup = true, $transl
 
 		$plugin_data['Description'] = wptexturize( $plugin_data['Description'] );
 		if( ! empty($plugin_data['Author']) )
-			$plugin_data['Description'] .= ' <cite>' . sprintf( __('By %s'), $plugin_data['Author'] ) . '.</mimulate>';
+			$plugin_data['Description'] .= ' <cite>' . sprintf( __('By %s'), $plugin_data['Author'] ) . '.</cite>';
 	}
 
 	$plugins_allowedtags = array('a' => array('href' => array(),'title' => array()),'abbr' => array('title' => array()),'acronym' => array('title' => array()),'code' => array(),'em' => array(),'strong' => array());

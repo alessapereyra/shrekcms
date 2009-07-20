@@ -302,7 +302,7 @@ function bp_adminbar_random_menu() {
 // **** "Blog Authors" Menu (visible when not logged in) ********
 function bp_adminbar_mula_menu() {
 	
-			echo '<li id="bp-adminbar-mula-menu"><a href="http://lamula.pe//mimula">';
+			echo '<li id="bp-adminbar-mula-menu"><a href="http://lamula.pe/mimula">';
 			_e('Manda tu noticia a La Mula', 'buddypress');
 			echo '</a>';
 		

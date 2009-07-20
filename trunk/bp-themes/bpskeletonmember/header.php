@@ -66,7 +66,7 @@
       <span class="right">        
         <a href="http://lamula.pe/wp-login.php">inicia sesi&oacute;n</a>        
         <a href="http://lamula.pe/crear-blog/">crea tu blog</a>
-        <a href="http://lamula.pe//mimula">mándanos tu noticia</a>
+        <a href="http://lamula.pe/mimula">mándanos tu noticia</a>
       </span>
     </p>
   </div> <!-- top_menu -->

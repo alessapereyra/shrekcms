@@ -122,7 +122,7 @@ foreach ($csss as $css) insert_styles($css, $base_url_local, $base_url_extra);
 /* loading indicators */
 .loader { margin-left: auto; margin-right: auto; text-align: left; }
 
-.loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/mimularcle.gif) no-repeat left; padding-left: 18px; }
+.loader.circle { background: url(<?php echo $base_url_local;?>gfx/loader/circle.gif) no-repeat left; padding-left: 18px; }
 .loader.circle.width { width: 16px; margin-left: auto; margin-right: auto; padding-left: 0px; }
 
 .loader.bar { background: url(<?php echo $base_url_local;?>gfx/loader/bar.gif) no-repeat left; padding-left: 216px; }

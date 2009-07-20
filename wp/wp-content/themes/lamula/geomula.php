@@ -4,7 +4,7 @@
  * @subpackage LaMula Theme
  */
 ?>
-<?php $ci_url= "//mimula/index.php/"; ?>
+<?php $ci_url= "/mimula/index.php/"; ?>
 	<div id="menu_bar">
 
 		<p id="tagline">
@@ -57,7 +57,7 @@
 						<a href="#">Lima Este</a>
 						<ul>
 							<li><a class="last" rel="chaclacayo" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/chaclacayo">Chaclacayo</a></li> 
-							<li><a class="last" rel="cieneguilla" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/mimulaeneguilla">Cieneguilla</a></li> 
+							<li><a class="last" rel="cieneguilla" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/cieneguilla">Cieneguilla</a></li> 
 							<li><a class="last" rel="el-agustino" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/el-agustino">El Agustino</a></li> 
 							<li><a class="last" rel="la-molina" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/la-molina">La Molina</a></li> 
 							<li><a class="last" rel="lurigancho" href="<?php echo $ci_url; ?>ws/geomula/0/lima/lima/lurigancho">Lurigancho</a></li> 

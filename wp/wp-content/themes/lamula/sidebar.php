@@ -10,7 +10,7 @@
           
             <p>
             
-              <a href="http://lamula.pe//mimula" class="send_news">
+              <a href="http://lamula.pe/mimula" class="send_news">
                 
                   publica en lamula.pe
                   <em>  
