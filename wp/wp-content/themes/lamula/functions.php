@@ -74,7 +74,7 @@ register_sidebar(array(
 		
 		$wp_posts = 'wp_1_posts';
 		$wp_term_taxonomy = 'mulapress_term_taxonomy';
-		$wp_term_relationships = 'mulapress_term_relationships';
+		$wp_term_relationships = 'wp_1_terms_relationships';
 		$wp_terms = 'mulapress_terms';
 		$wp_users = 'wp_users';
 					
