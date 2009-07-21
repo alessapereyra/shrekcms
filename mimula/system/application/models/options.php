@@ -61,6 +61,7 @@ class Options extends Model {
     	
     	$query = $this->db->get();
     	$query = $query->row_array();
+    	//die($this->db->last_query());
     	return $query['option_value'];
     }
 
