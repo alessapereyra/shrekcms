@@ -43,6 +43,8 @@
     skin);
   </script> -->
     
+
+<!-- test -->
     
    <script src="<?php bloginfo('template_url'); ?>/js/twitter.js" type="text/javascript" charset="utf-8" ></script>
    <!-- Include the Google Friend Connect javascript library. -->
