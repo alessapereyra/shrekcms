@@ -270,6 +270,7 @@ function setup_text($content, &$img_link = NULL,&$img = NULL){
 	 * @param integer $length cantidad de caracteres
 	 * @return string
 	 */	 
+	
 function mulapress_trim_excerpt($text, $length = 55) {
 
 		$text = strip_shortcodes( $text );
