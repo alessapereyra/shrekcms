@@ -182,7 +182,6 @@ class Usuarios extends DI_Controller {
 	 */			
 	function titulares()
 	{
-	  
 		$this->load->library('session');
 		$this->load->library('combofiller');
 		

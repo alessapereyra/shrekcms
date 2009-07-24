@@ -101,3 +101,10 @@
         </div> <!-- search_bar -->
       
       </div> <!-- logo_bar -->
+      
+      <div><object width="922" height="134" title="banner" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+		  <param value="http://lamula.pe/wp-content/themes/lamula/cabecera.swf" name="movie"/>
+		  <param value="high" name="quality"/>
+		  <embed width="922" height="134" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" src="http://lamula.pe/wp-content/themes/lamula/cabecera.swf"/>
+		</object>
+		</div>

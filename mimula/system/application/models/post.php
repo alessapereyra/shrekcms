@@ -127,11 +127,11 @@ class Post extends Model {
 			}
 			
 			$this->db->from($this->tabla);
-			$this->db->join('wp_1_terms_relationships', 'wp_1_posts.ID = wp_1_terms_relationships.object_id');
+			$this->db->join('wp_1_term_relationships', 'wp_1_posts.ID = wp_1_term_relationships.object_id');
 			
 			$this->db->where('post_type', 'post');
 			$this->db->where('post_author', $id);
-			$this->db->where('wp_1_terms_relationships.term_taxonomy_id', $key);
+			$this->db->where('wp_1_term_relationships.term_taxonomy_id', $key);
 			
 			$this->db->order_by($this->tabla . '.post_date', 'DESC');
 			
@@ -164,12 +164,12 @@ class Post extends Model {
 		
 		$this->db->from($this->tabla);
 		
-		$this->db->join('wp_1_terms_relationships', 'wp_1_posts.ID = wp_1_terms_relationships.object_id');
-		$this->db->join('wp_1_terms_taxonomy', 'wp_1_terms_taxonomy.term_taxonomy_id = wp_1_terms_relationships.term_taxonomy_id');
-		$this->db->join('wp_1_terms', 'wp_1_terms.term_id = wp_1_terms_taxonomy.term_id');		
+		$this->db->join('wp_1_term_relationships', 'wp_1_posts.ID = wp_1_term_relationships.object_id');
+		$this->db->join('wp_1_term_taxonomy', 'wp_1_term_taxonomy.term_taxonomy_id = wp_1_term_relationships.term_taxonomy_id');
+		$this->db->join('wp_1_terms', 'wp_1_terms.term_id = wp_1_term_taxonomy.term_id');		
 		
 		$this->db->where('wp_1_posts.post_type', 'post');
-		$this->db->where('wp_1_terms_taxonomy.parent', '28');
+		$this->db->where('wp_1_term_taxonomy.parent', '28');
 		$this->db->where($this->tabla . '.post_author', $user);		
 		$this->db->order_by($this->tabla . '.post_date', 'DESC');
 		
