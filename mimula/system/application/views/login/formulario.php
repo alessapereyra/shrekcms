@@ -12,6 +12,7 @@
   			<?php if (isset($info)) { echo $info; } ?>
   			<?php echo form_open('log/login', array('class' => 'log')); ?>
 	  			<?php echo form_hidden('redirect_to', $destino); ?>
+				<?php echo $error_message ?>
 	  			<fieldset>
 		  			<?php echo form_label('Usuario:', 'usuario');?> 			
 		  			<?php echo form_input(array('id' => 'usuario', 'name' => 'log', 'value' => set_value('usuario'))); ?>

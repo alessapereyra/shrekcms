@@ -35,12 +35,12 @@ class Ws extends Controller {
 	function geomula($pais = 0, $departamento = NULL, $provincia = NULL, $distrito = NULL)
 	{
 		
-		$final = NULL;
+		$from = NULL;
 		$this->load->helper('inflector');
 		
 		if ($pais != '0')
 		{
-			$final = $pais;
+			$from = $pais;
 			$where['meta_key'] = 'pais';
 			$where['meta_value'] = sanitize2url($pais);
 		}
@@ -48,7 +48,7 @@ class Ws extends Controller {
 		{
 			if ($distrito != NULL)
 			{
-				$final = $distrito;	
+				$from = $distrito;	
 				$where['meta_key'] = 'distrito';
 				$where['meta_value'] = sanitize2url($distrito);	
 			}
@@ -56,7 +56,7 @@ class Ws extends Controller {
 			{
 				if ($provincia != NULL)
 				{
-					$final = $provincia;	
+					$from = $provincia;	
 					$where['meta_key'] = 'provincia';
 					$where['meta_value'] = sanitize2url($provincia);			
 				}
@@ -67,13 +67,13 @@ class Ws extends Controller {
 
 						if ($departamento == '0')
 						{
-  						$final = "Lima y Callao";	
+  						$from = "Lima y Callao";	
 							$where = '(meta_key = \'departamento\' AND meta_value = \'lima\')';
 							$where = $where . ' OR (meta_key = \'departamento\' AND meta_value = \'callao\')';
 						}
 						else
 						{						
-						  $final = $departamento;	
+						  $from = $departamento;	
 							$where['meta_key'] = 'departamento';
 							$where['meta_value'] = sanitize2url($departamento);
 						}		
@@ -88,7 +88,7 @@ class Ws extends Controller {
 		$limit['show'] = 5;
 		
 		$data['consulta'] = $this->post->get_geomula($where, $limit);
-		$data['final'] = $final;
+		$data['from'] = $from;
 		
 		$this->load->view('ws/geomula', $data);
 	}

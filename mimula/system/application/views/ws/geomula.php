@@ -58,7 +58,7 @@ function comments_number($zero,$one,$more,$comments)
 					$img_link = '';
 					$img = @$html->find('img',0);
 					$img_link = @$html->find('img',0)->src;
-					$img = $img->outertext;
+					$img = @$img->outertext;
 										 
 					$html->clear();
 					unset($html);
@@ -86,7 +86,7 @@ function comments_number($zero,$one,$more,$comments)
 				</div>
 				<span class="author">enviado por <a href="http://lamula.pe/members/<?php echo $post['user_login']; ?>"><?php echo $post['user_nicename']; ?></a> <em> el <?php echo $post['post_date']; ?></em></span>
 			</div>
-			
+			<?php $id = next($ids); ?>
 		<?php endforeach;?>
 		
 		<div id="top_news_list">

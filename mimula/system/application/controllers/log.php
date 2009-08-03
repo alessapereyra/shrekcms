@@ -75,7 +75,8 @@ class Log extends DI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$data['destino'] = $this->input->post('destino');			
+			$data['destino'] = $this->input->post('destino');
+			$data['error_message']	= "Error de validación";	
 			$this->load->view('login/formulario', $data);
 			$this->__destruct();			
 		}
@@ -162,7 +163,7 @@ class Log extends DI_Controller {
 	function _reglas()
 	{
 		$reglas[] = array('field'   => 'pwd', 'label'   => 'lang:field_password', 'rules'   => 'trim|required|md5');
-		$reglas[] = array('field'   => 'log', 'label'   => 'lang:field_usuario', 'rules'   => 'trim|required|min_length[4]|max_length[20]|callback_password_check');	
+		$reglas[] = array('field'   => 'log', 'label'   => 'lang:field_usuario', 'rules'   => 'trim|required|min_length[4]|max_length[100]|callback_password_check');	
 		return $reglas;
 	}
 

@@ -9,20 +9,20 @@
 <?php echo link_tag('css/style.css'); ?>
 
 <!--  jQuery -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/jquery.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>js/jquery.js" type="text/javascript" language="javascript"></script>
 
 <!--  jQuery UI -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/jquery-ui.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>js/jquery-ui.js" type="text/javascript" language="javascript"></script>
 
 <!--  jQuery UI CSS-->
 <?php echo link_tag('css/jquery-ui.css'); ?>
 
 <!--  magicpreview -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/magicpreview.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>js/magicpreview.js" type="text/javascript" language="javascript"></script>
 
 
 <!--  tiny editor -->
-<script src="<?php echo $this->config->item('base_url'); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo $this->config->item('base_url'); ?>js/tiny_mce/tiny_mce.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" language="javascript">
 
 tinyMCE.init({
@@ -93,10 +93,10 @@ if ($ie6 == FALSE)
 
 	
 	?>
-	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.js"></script>
-	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/swfupload.queue.js"></script>
-	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/fileprogress.js"></script>
-	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>/js/handlers.js"></script>
+	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.js"></script>
+	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/swfupload.queue.js"></script>
+	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/fileprogress.js"></script>
+	<script type="text/javascript" src="<?php echo $this->config->item('base_url'); ?>js/handlers.js"></script>
 	<?php echo link_tag('css/swfupload.css'); ?>
 	
 	<script type="text/javascript" language="javascript">
@@ -104,7 +104,7 @@ if ($ie6 == FALSE)
 	window.onload = function () {
 		swfu = new SWFUpload({
 			// Backend settings
-			flash_url : "<?php echo $this->config->item('base_url'); ?>/mmedia/swfupload.swf",
+			flash_url : "<?php echo $this->config->item('base_url'); ?>mmedia/swfupload.swf",
 			upload_url: "<?php echo $url; ?>/ajax/upload",
 			post_params: {"id" : "<?php echo $this->session->userdata('id'); ?>", 
 						"PHPSESSID" : "<?php echo session_id(); ?>"},
@@ -120,7 +120,7 @@ if ($ie6 == FALSE)
 			debug: false,
 	
 			// Button settings
-			button_image_url: "<?php echo $this->config->item('base_url'); ?>/images/XPButtonUploadText.png",
+			button_image_url: "<?php echo $this->config->item('base_url'); ?>images/XPButtonUploadText.png",
 			button_width: 61,
 			button_height: 22,
 			button_placeholder_id: "spanButtonPlaceholder",
@@ -155,19 +155,42 @@ if ($ie6 == FALSE)
 <!--[if !IE]><!-->
 
   <!--  theMagic -->
-  <script src="<?php echo $this->config->item('base_url'); ?>/js/application.js" type="text/javascript" language="javascript"></script>
+  <script src="<?php echo $this->config->item('base_url'); ?>js/application.js" type="text/javascript" language="javascript"></script>
 
 <!-- <![endif]-->
 
 
 <!--[if IE]>
-  <script src="<?php echo $this->config->item('base_url'); ?>/js/applicationie.js" type="text/javascript" language="javascript"></script>  
+  <script src="<?php echo $this->config->item('base_url'); ?>js/applicationie.js" type="text/javascript" language="javascript"></script>  
 <![endif]-->
 
-
+<style type="text/css">
+#pop{
+ border:#000 solid 1px;
+ background:#000000;
+ left:0%;
+ top:0%;
+ margin-left:20px;
+ margin-top:20px;
+ position:fixed
+}
+</style>
+<!--[if IE]>
+<style type="text/css">
+html, body{
+ margin:0;
+ padding:0;
+ width:100%; 
+ height:100%; 
+ overflow:auto; 
+}
+#pop{
+ position:absolute;
+}
+</style>
+<![endif]--> 
 </head>
-<body>
-  
+<body> 
   <div id="top_menu">
     <p>
   	      <span class="left">
