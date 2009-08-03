@@ -595,10 +595,9 @@ div.top_news_featured_content.special {
 
 
 div#content {
-	
 	clear: both;
 	margin-top: 1.5em;
-	overflow: auto;
+	overflow: hidden;
 }
 
 /* @group Content Feed */
