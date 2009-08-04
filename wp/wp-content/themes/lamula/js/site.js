@@ -75,8 +75,8 @@ jQuery(document).ready(function($) {
 	$(".sidebox_content").hide();
 	//$("div.first").show();
 	$("#ranking_usuarios .sidebox_content:first").show();
-	$("#articulos .sidebox_content:first").show();
-
+	$("#articulos .sidebox_content:last").show();
+	
 	$("div.posts_last_content").hide();
 	$("div.posts_last_content:first").show();
 	
